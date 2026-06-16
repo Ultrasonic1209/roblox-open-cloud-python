@@ -1,0 +1,12 @@
+from enum import Enum
+
+
+class SubscriptionState(str, Enum):
+    EXPIRED = "EXPIRED"
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    SUBSCRIBED_RENEWAL_PAYMENT_PENDING = "SUBSCRIBED_RENEWAL_PAYMENT_PENDING"
+    SUBSCRIBED_WILL_NOT_RENEW = "SUBSCRIBED_WILL_NOT_RENEW"
+    SUBSCRIBED_WILL_RENEW = "SUBSCRIBED_WILL_RENEW"
+
+    def __str__(self) -> str:
+        return str(self.value)

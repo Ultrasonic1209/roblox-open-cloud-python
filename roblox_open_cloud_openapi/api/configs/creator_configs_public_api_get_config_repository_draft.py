@@ -1,0 +1,254 @@
+from http import HTTPStatus
+from typing import Any
+from urllib.parse import quote
+
+import httpx
+
+from ... import errors
+from ...client import AuthenticatedClient, Client
+from ...models.action_result import ActionResult
+from ...models.config_repository_draft import ConfigRepositoryDraft
+from ...models.repository import Repository
+from ...types import Response
+
+
+def _get_kwargs(
+    universe_id: str,
+    repository: Repository,
+) -> dict[str, Any]:
+
+    _kwargs: dict[str, Any] = {
+        "method": "get",
+        "url": "/creator-configs-public-api/v1/configs/universes/{universe_id}/repositories/{repository}/draft".format(
+            universe_id=quote(str(universe_id), safe=""),
+            repository=quote(str(repository), safe=""),
+        ),
+    }
+
+    return _kwargs
+
+
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ActionResult | ConfigRepositoryDraft | None:
+    if response.status_code == 200:
+        response_200 = ConfigRepositoryDraft.from_dict(response.json())
+
+        return response_200
+
+    if response.status_code == 400:
+        response_400 = ActionResult.from_dict(response.json())
+
+        return response_400
+
+    if response.status_code == 401:
+        response_401 = ActionResult.from_dict(response.json())
+
+        return response_401
+
+    if response.status_code == 404:
+        response_404 = ActionResult.from_dict(response.json())
+
+        return response_404
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ActionResult | ConfigRepositoryDraft]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    universe_id: str,
+    repository: Repository,
+    *,
+    client: AuthenticatedClient,
+) -> Response[ActionResult | ConfigRepositoryDraft]:
+    """Gets the current draft.
+
+     Returns the current draft changes for the configuration repository.
+
+    Args:
+        universe_id (str):
+        repository (Repository): Public API repository identifier. Only values exposed by the
+            public API are included;
+            internal repository types are not exposed to allow development and testing before
+            enabling.
+
+            InExperienceConfig
+
+            RecommendationServicesConfig
+
+            DataStoresConfig
+
+            ExtendedServicesConfig
+
+            LeaderboardsConfig
+
+            ExperienceUserConfig
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[ActionResult | ConfigRepositoryDraft]
+    """
+
+    kwargs = _get_kwargs(
+        universe_id=universe_id,
+        repository=repository,
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+
+def sync(
+    universe_id: str,
+    repository: Repository,
+    *,
+    client: AuthenticatedClient,
+) -> ActionResult | ConfigRepositoryDraft | None:
+    """Gets the current draft.
+
+     Returns the current draft changes for the configuration repository.
+
+    Args:
+        universe_id (str):
+        repository (Repository): Public API repository identifier. Only values exposed by the
+            public API are included;
+            internal repository types are not exposed to allow development and testing before
+            enabling.
+
+            InExperienceConfig
+
+            RecommendationServicesConfig
+
+            DataStoresConfig
+
+            ExtendedServicesConfig
+
+            LeaderboardsConfig
+
+            ExperienceUserConfig
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        ActionResult | ConfigRepositoryDraft
+    """
+
+    return sync_detailed(
+        universe_id=universe_id,
+        repository=repository,
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    universe_id: str,
+    repository: Repository,
+    *,
+    client: AuthenticatedClient,
+) -> Response[ActionResult | ConfigRepositoryDraft]:
+    """Gets the current draft.
+
+     Returns the current draft changes for the configuration repository.
+
+    Args:
+        universe_id (str):
+        repository (Repository): Public API repository identifier. Only values exposed by the
+            public API are included;
+            internal repository types are not exposed to allow development and testing before
+            enabling.
+
+            InExperienceConfig
+
+            RecommendationServicesConfig
+
+            DataStoresConfig
+
+            ExtendedServicesConfig
+
+            LeaderboardsConfig
+
+            ExperienceUserConfig
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[ActionResult | ConfigRepositoryDraft]
+    """
+
+    kwargs = _get_kwargs(
+        universe_id=universe_id,
+        repository=repository,
+    )
+
+    response = await client.get_async_httpx_client().request(**kwargs)
+
+    return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    universe_id: str,
+    repository: Repository,
+    *,
+    client: AuthenticatedClient,
+) -> ActionResult | ConfigRepositoryDraft | None:
+    """Gets the current draft.
+
+     Returns the current draft changes for the configuration repository.
+
+    Args:
+        universe_id (str):
+        repository (Repository): Public API repository identifier. Only values exposed by the
+            public API are included;
+            internal repository types are not exposed to allow development and testing before
+            enabling.
+
+            InExperienceConfig
+
+            RecommendationServicesConfig
+
+            DataStoresConfig
+
+            ExtendedServicesConfig
+
+            LeaderboardsConfig
+
+            ExperienceUserConfig
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        ActionResult | ConfigRepositoryDraft
+    """
+
+    return (
+        await asyncio_detailed(
+            universe_id=universe_id,
+            repository=repository,
+            client=client,
+        )
+    ).parsed

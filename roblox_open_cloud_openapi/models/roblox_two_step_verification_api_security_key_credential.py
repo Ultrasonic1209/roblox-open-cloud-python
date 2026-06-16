@@ -1,0 +1,43 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="RobloxTwoStepVerificationApiSecurityKeyCredential")
+
+
+@_attrs_define
+class RobloxTwoStepVerificationApiSecurityKeyCredential:
+    """Credential information that includes its nickname and any additional metadata.
+
+    Attributes:
+        nickname (str | Unset): Nickname the user has chosen for this credential.
+    """
+
+    nickname: str | Unset = UNSET
+
+    def to_dict(self) -> dict[str, Any]:
+        nickname = self.nickname
+
+        field_dict: dict[str, Any] = {}
+
+        field_dict.update({})
+        if nickname is not UNSET:
+            field_dict["nickname"] = nickname
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        nickname = d.pop("nickname", UNSET)
+
+        roblox_two_step_verification_api_security_key_credential = cls(
+            nickname=nickname,
+        )
+
+        return roblox_two_step_verification_api_security_key_credential

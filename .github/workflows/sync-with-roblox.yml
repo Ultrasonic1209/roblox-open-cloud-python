@@ -1,0 +1,23 @@
+name: "Listen for changes to the Roblox openapi definition"
+
+on:
+  schedule:
+    - cron: "30 5 * * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write
+    steps:
+      - name: "get days since last commit to the openapi definition file"
+        run: echo "DAYS_SINCE_UPDATE=$(gh api -X GET 'repos/Roblox/creator-docs/commits' -F 'path=content/en-us/reference/cloud/openapi.json' -F 'page=1' -F 'per_page=1' --jq '((now - ( .[0].commit.committer.date | fromdateiso8601 )) / (60*60*24) | trunc)')" >> "$GITHUB_ENV"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: "let the other workflows know"
+        uses: peter-evans/repository-dispatch@v4
+        if: ${{ env.DAYS_SINCE_UPDATE != '0' }}
+        with:
+          event-type: new-openapi-definition

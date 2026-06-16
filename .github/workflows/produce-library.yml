@@ -1,0 +1,26 @@
+name: Produce the OpenAPI Python Client
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [new-openapi-definition]
+  #push:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
+
+      - name: "Generate the OpenAPI client"
+        run: uvx --with ruff openapi-python-client@latest generate --config ./openapi-python-client.yaml --url "https://raw.githubusercontent.com/Roblox/creator-docs/refs/heads/main/content/en-us/reference/cloud/openapi.json" --meta uv --overwrite --output-path .
+
+      - name: "Push to GitHub"
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: Generate the OpenAPI client
