@@ -1,0 +1,70 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="RobloxUsersApiBirthdateRequest")
+
+
+@_attrs_define
+class RobloxUsersApiBirthdateRequest:
+    """The birthdate request
+
+    Attributes:
+        birth_month (int | Unset): The birth month
+        birth_day (int | Unset): The birth day
+        birth_year (int | Unset): The birth year
+        password (str | Unset): Password
+    """
+
+    birth_month: int | Unset = UNSET
+    birth_day: int | Unset = UNSET
+    birth_year: int | Unset = UNSET
+    password: str | Unset = UNSET
+
+    def to_dict(self) -> dict[str, Any]:
+        birth_month = self.birth_month
+
+        birth_day = self.birth_day
+
+        birth_year = self.birth_year
+
+        password = self.password
+
+        field_dict: dict[str, Any] = {}
+
+        field_dict.update({})
+        if birth_month is not UNSET:
+            field_dict["birthMonth"] = birth_month
+        if birth_day is not UNSET:
+            field_dict["birthDay"] = birth_day
+        if birth_year is not UNSET:
+            field_dict["birthYear"] = birth_year
+        if password is not UNSET:
+            field_dict["password"] = password
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        birth_month = d.pop("birthMonth", UNSET)
+
+        birth_day = d.pop("birthDay", UNSET)
+
+        birth_year = d.pop("birthYear", UNSET)
+
+        password = d.pop("password", UNSET)
+
+        roblox_users_api_birthdate_request = cls(
+            birth_month=birth_month,
+            birth_day=birth_day,
+            birth_year=birth_year,
+            password=password,
+        )
+
+        return roblox_users_api_birthdate_request

@@ -1,0 +1,12 @@
+from enum import IntEnum
+
+
+class RobloxAdConfigurationApiSponsoredGameV2ModelTargetAgeBracket(IntEnum):
+    VALUE_1 = 1
+    VALUE_2 = 2
+    VALUE_4 = 4
+    VALUE_8 = 8
+    VALUE_16 = 16
+
+    def __str__(self) -> str:
+        return str(self.value)

@@ -1,0 +1,9 @@
+from enum import Enum
+
+
+class GetV1GroupsGroupIdUniversesSortOrder(str, Enum):
+    ASC = "Asc"
+    DESC = "Desc"
+
+    def __str__(self) -> str:
+        return str(self.value)

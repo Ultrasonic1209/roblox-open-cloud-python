@@ -1,0 +1,79 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="RobloxAccountInformationApiModelsPromotionChannelsRequest")
+
+
+@_attrs_define
+class RobloxAccountInformationApiModelsPromotionChannelsRequest:
+    """The promotion channels request
+
+    Attributes:
+        facebook (str | Unset): The Facebook channel
+        twitter (str | Unset): The Twitter channel
+        youtube (str | Unset): The YouTube channel
+        twitch (str | Unset): The Twitch channel
+        promotion_channels_visibility_privacy (str | Unset): The promotion channels visibility privacy level
+    """
+
+    facebook: str | Unset = UNSET
+    twitter: str | Unset = UNSET
+    youtube: str | Unset = UNSET
+    twitch: str | Unset = UNSET
+    promotion_channels_visibility_privacy: str | Unset = UNSET
+
+    def to_dict(self) -> dict[str, Any]:
+        facebook = self.facebook
+
+        twitter = self.twitter
+
+        youtube = self.youtube
+
+        twitch = self.twitch
+
+        promotion_channels_visibility_privacy = self.promotion_channels_visibility_privacy
+
+        field_dict: dict[str, Any] = {}
+
+        field_dict.update({})
+        if facebook is not UNSET:
+            field_dict["facebook"] = facebook
+        if twitter is not UNSET:
+            field_dict["twitter"] = twitter
+        if youtube is not UNSET:
+            field_dict["youtube"] = youtube
+        if twitch is not UNSET:
+            field_dict["twitch"] = twitch
+        if promotion_channels_visibility_privacy is not UNSET:
+            field_dict["promotionChannelsVisibilityPrivacy"] = promotion_channels_visibility_privacy
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        facebook = d.pop("facebook", UNSET)
+
+        twitter = d.pop("twitter", UNSET)
+
+        youtube = d.pop("youtube", UNSET)
+
+        twitch = d.pop("twitch", UNSET)
+
+        promotion_channels_visibility_privacy = d.pop("promotionChannelsVisibilityPrivacy", UNSET)
+
+        roblox_account_information_api_models_promotion_channels_request = cls(
+            facebook=facebook,
+            twitter=twitter,
+            youtube=youtube,
+            twitch=twitch,
+            promotion_channels_visibility_privacy=promotion_channels_visibility_privacy,
+        )
+
+        return roblox_account_information_api_models_promotion_channels_request

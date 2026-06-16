@@ -1,0 +1,31 @@
+[project]
+name = "{{ project_name }}"
+version = "{{ package_version }}"
+description = "{{ package_description }}"
+authors = [
+    { name = "Ultrasonic1209", email = "ultra@ultras-playroom.xyz" },]
+requires-python = ">=3.11"
+readme = "README.md"
+dependencies = [
+    "httpx>=0.23.1,<0.29.0",
+    "attrs>=22.2.0",
+]
+
+[tool.uv.build-backend]
+module-name = "{{ package_name }}"
+module-root = ""
+
+[build-system]
+requires = ["uv_build>=0.11.0,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+required-version = "~=0.11.21"
+
+[tool.uv.sources]
+openapi-python-client = { git = "https://github.com/Ultrasonic1209/openapi-python-client.git", rev = "db605b952e0800c716c300b7bd52bbc6a0eaf275" }
+
+[dependency-groups]
+dev = [
+    "openapi-python-client",
+]

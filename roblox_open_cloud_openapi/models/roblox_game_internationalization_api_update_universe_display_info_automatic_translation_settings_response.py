@@ -1,0 +1,68 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="RobloxGameInternationalizationApiUpdateUniverseDisplayInfoAutomaticTranslationSettingsResponse")
+
+
+@_attrs_define
+class RobloxGameInternationalizationApiUpdateUniverseDisplayInfoAutomaticTranslationSettingsResponse:
+    """A response model for getting the automatic translation allowed status for game information.
+
+    Attributes:
+        game_id (int | Unset): The game id.
+        language_code (str | Unset): The language code.
+        is_universe_display_info_automatic_translation_enabled (bool | Unset): Indicates universeDisplayInformation
+            automatic translation is enabled.
+    """
+
+    game_id: int | Unset = UNSET
+    language_code: str | Unset = UNSET
+    is_universe_display_info_automatic_translation_enabled: bool | Unset = UNSET
+
+    def to_dict(self) -> dict[str, Any]:
+        game_id = self.game_id
+
+        language_code = self.language_code
+
+        is_universe_display_info_automatic_translation_enabled = (
+            self.is_universe_display_info_automatic_translation_enabled
+        )
+
+        field_dict: dict[str, Any] = {}
+
+        field_dict.update({})
+        if game_id is not UNSET:
+            field_dict["gameId"] = game_id
+        if language_code is not UNSET:
+            field_dict["languageCode"] = language_code
+        if is_universe_display_info_automatic_translation_enabled is not UNSET:
+            field_dict["isUniverseDisplayInfoAutomaticTranslationEnabled"] = (
+                is_universe_display_info_automatic_translation_enabled
+            )
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        game_id = d.pop("gameId", UNSET)
+
+        language_code = d.pop("languageCode", UNSET)
+
+        is_universe_display_info_automatic_translation_enabled = d.pop(
+            "isUniverseDisplayInfoAutomaticTranslationEnabled", UNSET
+        )
+
+        roblox_game_internationalization_api_update_universe_display_info_automatic_translation_settings_response = cls(
+            game_id=game_id,
+            language_code=language_code,
+            is_universe_display_info_automatic_translation_enabled=is_universe_display_info_automatic_translation_enabled,
+        )
+
+        return roblox_game_internationalization_api_update_universe_display_info_automatic_translation_settings_response
