@@ -23,7 +23,7 @@ build-backend = "uv_build"
 required-version = "~=0.11.21"
 
 [tool.uv.sources]
-openapi-python-client = { git = "https://github.com/Ultrasonic1209/openapi-python-client.git", rev = "db605b952e0800c716c300b7bd52bbc6a0eaf275" }
+openapi-python-client = { git = "https://github.com/Ultrasonic1209/openapi-python-client.git", rev = "b9979eb0130c527c6dcfee6aefd000cd05ba33b1" }
 
 [dependency-groups]
 dev = [
