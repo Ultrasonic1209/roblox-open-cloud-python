@@ -6,6 +6,17 @@ resolution-markers = [
     "python_full_version < '3.13'",
 ]
 
+[manifest]
+
+[[manifest.dependency-metadata]]
+name = "httpx-limiter"
+requires-dist = ["httpx2>=2.4.0,<3", "pyrate-limiter~=4.0"]
+provides-extras = ["pyrate"]
+
+[[manifest.dependency-metadata]]
+name = "httpx-retries"
+requires-dist = ["httpx2>=2.4.0,<3"]
+
 [[package]]
 name = "annotated-doc"
 version = "0.0.4"
@@ -243,6 +254,31 @@ wheels = [
 ]
 
 [[package]]
+name = "httpx-limiter"
+version = "0.6.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx2" },
+    { name = "pyrate-limiter" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/5d/6f/2148624ba67f69a6f0dc2c3b5f3cd546cbfc20e8e9e2be1ed52a3ba427a3/httpx_limiter-0.6.1.tar.gz", hash = "sha256:53c8e283e7b9308752917610edf82c30254e23d36fa8d71202c1dd09ce18a366", size = 14898, upload-time = "2026-05-01T15:24:22.259Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a0/d9/5cc0344c08cba0b2369081afcd752083bca13c454d8c0e0d8d1edb6a0cd4/httpx_limiter-0.6.1-py3-none-any.whl", hash = "sha256:98965b3f1633b164391631d269fea6cf154fa20ff51ca6495d60ac05d87f9ec0", size = 19985, upload-time = "2026-05-01T15:24:20.498Z" },
+]
+
+[[package]]
+name = "httpx-retries"
+version = "0.5.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx2" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fb/f5/046cac13877ce9b55aebdbb3999e0e45b19b989a95c5fd1040fa04bd1f92/httpx_retries-0.5.0.tar.gz", hash = "sha256:d8c8e1e0852d84be3837aba0bcf78aeb89a4b77db95e8cc988c8c058830b3044", size = 15647, upload-time = "2026-04-20T01:21:47.154Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c5/a8/aadeaa9a28510727d538636ee8688f0782a98523147852b29404ce696f1b/httpx_retries-0.5.0-py3-none-any.whl", hash = "sha256:d3124592979a9dc6197e666d1f02e9ab996a0c58fce59fad8db6201a6a87304e", size = 8908, upload-time = "2026-04-20T01:21:46.157Z" },
+]
+
+[[package]]
 name = "httpx2"
 version = "2.4.0"
 source = { registry = "https://pypi.org/simple" }
@@ -398,7 +434,7 @@ wheels = [
 [[package]]
 name = "openapi-python-client"
 version = "0.29.0"
-source = { git = "https://github.com/Ultrasonic1209/openapi-python-client.git?rev=09d83085d2c582e89525ce0123ecf07743f02510#09d83085d2c582e89525ce0123ecf07743f02510" }
+source = { git = "https://github.com/Ultrasonic1209/openapi-python-client.git?rev=b28443882086cffdff13ee9ec71f115795a1d389#b28443882086cffdff13ee9ec71f115795a1d389" }
 dependencies = [
     { name = "attrs" },
     { name = "colorama", marker = "sys_platform == 'win32'" },
@@ -547,6 +583,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pyrate-limiter"
+version = "4.4.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/19/27/e564f33ea085c63d5540f707b31aeb50a4992eac2da655dc02435a760a07/pyrate_limiter-4.4.0.tar.gz", hash = "sha256:2c0c720c4fa16c5d8199e4821bf34507fb49c007a25b786cec6fb94ffd0844aa", size = 90955, upload-time = "2026-06-14T10:52:03.021Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2b/77/2b5ea2e5e343fd7f74ba9c50a282d7cb66d1be3d12bd647510338d78fcf1/pyrate_limiter-4.4.0-py3-none-any.whl", hash = "sha256:f738dfa3c7ac1222a5ea3d31e00cfd31b5592b13ade4077afe9e8ac6293381f5", size = 43102, upload-time = "2026-06-14T10:52:01.334Z" },
+]
+
+[[package]]
 name = "rich"
 version = "15.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -565,6 +610,8 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "attrs" },
+    { name = "httpx-limiter" },
+    { name = "httpx-retries" },
     { name = "httpx2" },
 ]
 
@@ -581,13 +628,15 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "attrs", specifier = ">=22.2.0" },
+    { name = "httpx-limiter", extras = ["pyrate"], specifier = "==0.6.1" },
+    { name = "httpx-retries", specifier = "==0.5.0" },
     { name = "httpx2", specifier = ">=2.4.0,<3" },
     { name = "httpx2", extras = ["brotli", "http2", "zstd"], marker = "extra == 'speed'", specifier = ">=2.4.0,<3" },
 ]
 provides-extras = ["speed"]
 
 [package.metadata.requires-dev]
-dev = [{ name = "openapi-python-client", git = "https://github.com/Ultrasonic1209/openapi-python-client.git?rev=09d83085d2c582e89525ce0123ecf07743f02510" }]
+dev = [{ name = "openapi-python-client", git = "https://github.com/Ultrasonic1209/openapi-python-client.git?rev=b28443882086cffdff13ee9ec71f115795a1d389" }]
 
 [[package]]
 name = "ruamel-yaml"

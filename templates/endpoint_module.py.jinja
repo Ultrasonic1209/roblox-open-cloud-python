@@ -8,7 +8,8 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response, UNSET, Unset
 from ... import errors
 
-{% set deprecated = (endpoint["x-roblox-recommended-alternatives"] or endpoint.deprecated) and "@deprecated('Roblox has deprecated this endpoint. See documentation: " ~ (endpoint.external_docs and endpoint.external_docs.url or "https://create.roblox.com/docs/cloud") ~ "')" %}
+{% set extensions = endpoint["extensions"] %}
+{% set deprecated = (extensions["x-roblox-recommended-alternatives"] or endpoint.deprecated) and "@deprecated('Roblox has deprecated this endpoint. See documentation: " ~ (endpoint.external_docs and endpoint.external_docs.url or "https://create.roblox.com/docs/cloud") ~ "')" %}
 {% if deprecated %}
 import sys
 if sys.version_info >= (3, 13):
@@ -53,6 +54,10 @@ def _get_kwargs(
         {% if endpoint.cookie_parameters %}
         "cookies": cookies,
         {% endif %}
+        {% if extensions %}
+        "openapi-extensions": {{ extensions }},
+        {% endif %}
+        "openapi-id": "{{ endpoint.name }}",
     }
 
 {% if endpoint.bodies | length > 1 %}

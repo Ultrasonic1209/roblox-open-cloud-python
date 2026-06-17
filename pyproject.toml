@@ -10,7 +10,18 @@ readme = "README.md"
 dependencies = [
     "httpx2>=2.4.0,<3",
     "attrs>=22.2.0",
+    "httpx-retries==0.5.0",
+    "httpx-limiter[pyrate]==0.6.1",
 ]
+
+[[tool.uv.dependency-metadata]]
+name = "httpx-retries"
+requires-dist = ["httpx2>=2.4.0,<3"]
+
+[[tool.uv.dependency-metadata]]
+name = "httpx-limiter"
+requires-dist = ["httpx2>=2.4.0,<3", "pyrate-limiter ~=4.0"]
+provides-extra = ["pyrate"]
 
 [project.optional-dependencies]
 speed = [
@@ -29,7 +40,7 @@ build-backend = "uv_build"
 required-version = "~=0.11.21"
 
 [tool.uv.sources]
-openapi-python-client = { git = "https://github.com/Ultrasonic1209/openapi-python-client.git", rev = "09d83085d2c582e89525ce0123ecf07743f02510" }
+openapi-python-client = { git = "https://github.com/Ultrasonic1209/openapi-python-client.git", rev = "b28443882086cffdff13ee9ec71f115795a1d389" }
 
 [dependency-groups]
 dev = [
