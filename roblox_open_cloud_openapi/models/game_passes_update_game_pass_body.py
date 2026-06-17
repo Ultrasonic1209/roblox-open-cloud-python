@@ -19,18 +19,23 @@ class GamePassesUpdateGamePassBody:
     Attributes:
         name (None | str | Unset): The name of the game pass.
         description (None | str | Unset): The description of the game pass.
-        file (File | None | Unset): The thumbnail image file to be uploaded.
+        file (File | None | Unset): The thumbnail image file to be uploaded. Alias for imageFile - if both are provided,
+            imageFile will be used.
+        image_file (File | None | Unset): The thumbnail image file to be uploaded.
         is_for_sale (bool | None | Unset): Whether the game pass should be on sale.
         price (int | None | Unset): The default price of the game pass.
         is_regional_pricing_enabled (bool | None | Unset): Whether regional pricing should be enabled for the game pass.
+        is_managed_pricing_enabled (bool | None | Unset): Whether managed pricing should be enabled for the game pass.
     """
 
     name: None | str | Unset = UNSET
     description: None | str | Unset = UNSET
     file: File | None | Unset = UNSET
+    image_file: File | None | Unset = UNSET
     is_for_sale: bool | None | Unset = UNSET
     price: int | None | Unset = UNSET
     is_regional_pricing_enabled: bool | None | Unset = UNSET
+    is_managed_pricing_enabled: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,6 +60,15 @@ class GamePassesUpdateGamePassBody:
         else:
             file = self.file
 
+        image_file: FileTypes | None | Unset
+        if isinstance(self.image_file, Unset):
+            image_file = UNSET
+        elif isinstance(self.image_file, File):
+            image_file = self.image_file.to_tuple()
+
+        else:
+            image_file = self.image_file
+
         is_for_sale: bool | None | Unset
         if isinstance(self.is_for_sale, Unset):
             is_for_sale = UNSET
@@ -73,6 +87,12 @@ class GamePassesUpdateGamePassBody:
         else:
             is_regional_pricing_enabled = self.is_regional_pricing_enabled
 
+        is_managed_pricing_enabled: bool | None | Unset
+        if isinstance(self.is_managed_pricing_enabled, Unset):
+            is_managed_pricing_enabled = UNSET
+        else:
+            is_managed_pricing_enabled = self.is_managed_pricing_enabled
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -82,12 +102,16 @@ class GamePassesUpdateGamePassBody:
             field_dict["description"] = description
         if file is not UNSET:
             field_dict["file"] = file
+        if image_file is not UNSET:
+            field_dict["imageFile"] = image_file
         if is_for_sale is not UNSET:
             field_dict["isForSale"] = is_for_sale
         if price is not UNSET:
             field_dict["price"] = price
         if is_regional_pricing_enabled is not UNSET:
             field_dict["isRegionalPricingEnabled"] = is_regional_pricing_enabled
+        if is_managed_pricing_enabled is not UNSET:
+            field_dict["isManagedPricingEnabled"] = is_managed_pricing_enabled
 
         return field_dict
 
@@ -112,6 +136,12 @@ class GamePassesUpdateGamePassBody:
             else:
                 files.append(("file", (None, str(self.file).encode(), "text/plain")))
 
+        if not isinstance(self.image_file, Unset):
+            if isinstance(self.image_file, File):
+                files.append(("imageFile", self.image_file.to_tuple()))
+            else:
+                files.append(("imageFile", (None, str(self.image_file).encode(), "text/plain")))
+
         if not isinstance(self.is_for_sale, Unset):
             if isinstance(self.is_for_sale, bool):
                 files.append(("isForSale", (None, str(self.is_for_sale).encode(), "text/plain")))
@@ -132,6 +162,16 @@ class GamePassesUpdateGamePassBody:
             else:
                 files.append(
                     ("isRegionalPricingEnabled", (None, str(self.is_regional_pricing_enabled).encode(), "text/plain"))
+                )
+
+        if not isinstance(self.is_managed_pricing_enabled, Unset):
+            if isinstance(self.is_managed_pricing_enabled, bool):
+                files.append(
+                    ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
+                )
+            else:
+                files.append(
+                    ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
                 )
 
         for prop_name, prop in self.additional_properties.items():
@@ -178,6 +218,23 @@ class GamePassesUpdateGamePassBody:
 
         file = _parse_file(d.pop("file", UNSET))
 
+        def _parse_image_file(data: object) -> File | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, bytes):
+                    raise TypeError()
+                image_file_type_0 = File(payload=BytesIO(data))
+
+                return image_file_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(File | None | Unset, data)
+
+        image_file = _parse_image_file(d.pop("imageFile", UNSET))
+
         def _parse_is_for_sale(data: object) -> bool | None | Unset:
             if data is None:
                 return data
@@ -205,13 +262,24 @@ class GamePassesUpdateGamePassBody:
 
         is_regional_pricing_enabled = _parse_is_regional_pricing_enabled(d.pop("isRegionalPricingEnabled", UNSET))
 
+        def _parse_is_managed_pricing_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        is_managed_pricing_enabled = _parse_is_managed_pricing_enabled(d.pop("isManagedPricingEnabled", UNSET))
+
         game_passes_update_game_pass_body = cls(
             name=name,
             description=description,
             file=file,
+            image_file=image_file,
             is_for_sale=is_for_sale,
             price=price,
             is_regional_pricing_enabled=is_regional_pricing_enabled,
+            is_managed_pricing_enabled=is_managed_pricing_enabled,
         )
 
         game_passes_update_game_pass_body.additional_properties = d

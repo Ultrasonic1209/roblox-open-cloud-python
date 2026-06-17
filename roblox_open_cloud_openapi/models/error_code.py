@@ -12,6 +12,7 @@ class ErrorCode(str, Enum):
     INVALIDDEVELOPERPRODUCTID = "InvalidDeveloperProductId"
     INVALIDIMAGEFILE = "InvalidImageFile"
     INVALIDISFORSALE = "InvalidIsForSale"
+    INVALIDMANAGEDPRICING = "InvalidManagedPricing"
     INVALIDNAME = "InvalidName"
     INVALIDPAGENUMBER = "InvalidPageNumber"
     INVALIDPAGESIZE = "InvalidPageSize"

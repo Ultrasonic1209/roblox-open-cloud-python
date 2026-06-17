@@ -24,8 +24,11 @@ class DeveloperProductsUpdateDeveloperProductV2Body:
         image_file (File | None | Unset): The thumbnail image file to be uploaded.
         is_regional_pricing_enabled (bool | None | Unset): Whether regional pricing should be enabled for the developer
             product.
+            Should not be used when setting isManagedPricingEnabled.
         store_page_enabled (bool | None | Unset): Whether the developer product should be available for purchase on the
             external store page.
+        is_managed_pricing_enabled (bool | None | Unset): Whether managed pricing should be enabled for the developer
+            product.
     """
 
     name: None | str | Unset = UNSET
@@ -35,6 +38,7 @@ class DeveloperProductsUpdateDeveloperProductV2Body:
     image_file: File | None | Unset = UNSET
     is_regional_pricing_enabled: bool | None | Unset = UNSET
     store_page_enabled: bool | None | Unset = UNSET
+    is_managed_pricing_enabled: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -83,6 +87,12 @@ class DeveloperProductsUpdateDeveloperProductV2Body:
         else:
             store_page_enabled = self.store_page_enabled
 
+        is_managed_pricing_enabled: bool | None | Unset
+        if isinstance(self.is_managed_pricing_enabled, Unset):
+            is_managed_pricing_enabled = UNSET
+        else:
+            is_managed_pricing_enabled = self.is_managed_pricing_enabled
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -100,6 +110,8 @@ class DeveloperProductsUpdateDeveloperProductV2Body:
             field_dict["isRegionalPricingEnabled"] = is_regional_pricing_enabled
         if store_page_enabled is not UNSET:
             field_dict["storePageEnabled"] = store_page_enabled
+        if is_managed_pricing_enabled is not UNSET:
+            field_dict["isManagedPricingEnabled"] = is_managed_pricing_enabled
 
         return field_dict
 
@@ -151,6 +163,16 @@ class DeveloperProductsUpdateDeveloperProductV2Body:
                 files.append(("storePageEnabled", (None, str(self.store_page_enabled).encode(), "text/plain")))
             else:
                 files.append(("storePageEnabled", (None, str(self.store_page_enabled).encode(), "text/plain")))
+
+        if not isinstance(self.is_managed_pricing_enabled, Unset):
+            if isinstance(self.is_managed_pricing_enabled, bool):
+                files.append(
+                    ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
+                )
+            else:
+                files.append(
+                    ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
+                )
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -232,6 +254,15 @@ class DeveloperProductsUpdateDeveloperProductV2Body:
 
         store_page_enabled = _parse_store_page_enabled(d.pop("storePageEnabled", UNSET))
 
+        def _parse_is_managed_pricing_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        is_managed_pricing_enabled = _parse_is_managed_pricing_enabled(d.pop("isManagedPricingEnabled", UNSET))
+
         developer_products_update_developer_product_v2_body = cls(
             name=name,
             description=description,
@@ -240,6 +271,7 @@ class DeveloperProductsUpdateDeveloperProductV2Body:
             image_file=image_file,
             is_regional_pricing_enabled=is_regional_pricing_enabled,
             store_page_enabled=store_page_enabled,
+            is_managed_pricing_enabled=is_managed_pricing_enabled,
         )
 
         developer_products_update_developer_product_v2_body.additional_properties = d

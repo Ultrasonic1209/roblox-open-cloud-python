@@ -24,6 +24,9 @@ class DeveloperProductsCreateDeveloperProductV2Body:
         image_file (File | None | Unset): The thumbnail image file to be uploaded.
         is_regional_pricing_enabled (bool | None | Unset): Whether regional pricing should be enabled for the developer
             product.
+            Should not be used when setting isManagedPricingEnabled.
+        is_managed_pricing_enabled (bool | None | Unset): Whether managed pricing should be enabled for the developer
+            product.
     """
 
     name: str
@@ -32,6 +35,7 @@ class DeveloperProductsCreateDeveloperProductV2Body:
     price: int | None | Unset = UNSET
     image_file: File | None | Unset = UNSET
     is_regional_pricing_enabled: bool | None | Unset = UNSET
+    is_managed_pricing_enabled: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,6 +74,12 @@ class DeveloperProductsCreateDeveloperProductV2Body:
         else:
             is_regional_pricing_enabled = self.is_regional_pricing_enabled
 
+        is_managed_pricing_enabled: bool | None | Unset
+        if isinstance(self.is_managed_pricing_enabled, Unset):
+            is_managed_pricing_enabled = UNSET
+        else:
+            is_managed_pricing_enabled = self.is_managed_pricing_enabled
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -87,6 +97,8 @@ class DeveloperProductsCreateDeveloperProductV2Body:
             field_dict["imageFile"] = image_file
         if is_regional_pricing_enabled is not UNSET:
             field_dict["isRegionalPricingEnabled"] = is_regional_pricing_enabled
+        if is_managed_pricing_enabled is not UNSET:
+            field_dict["isManagedPricingEnabled"] = is_managed_pricing_enabled
 
         return field_dict
 
@@ -127,6 +139,16 @@ class DeveloperProductsCreateDeveloperProductV2Body:
             else:
                 files.append(
                     ("isRegionalPricingEnabled", (None, str(self.is_regional_pricing_enabled).encode(), "text/plain"))
+                )
+
+        if not isinstance(self.is_managed_pricing_enabled, Unset):
+            if isinstance(self.is_managed_pricing_enabled, bool):
+                files.append(
+                    ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
+                )
+            else:
+                files.append(
+                    ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
                 )
 
         for prop_name, prop in self.additional_properties.items():
@@ -192,6 +214,15 @@ class DeveloperProductsCreateDeveloperProductV2Body:
 
         is_regional_pricing_enabled = _parse_is_regional_pricing_enabled(d.pop("isRegionalPricingEnabled", UNSET))
 
+        def _parse_is_managed_pricing_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        is_managed_pricing_enabled = _parse_is_managed_pricing_enabled(d.pop("isManagedPricingEnabled", UNSET))
+
         developer_products_create_developer_product_v2_body = cls(
             name=name,
             description=description,
@@ -199,6 +230,7 @@ class DeveloperProductsCreateDeveloperProductV2Body:
             price=price,
             image_file=image_file,
             is_regional_pricing_enabled=is_regional_pricing_enabled,
+            is_managed_pricing_enabled=is_managed_pricing_enabled,
         )
 
         developer_products_create_developer_product_v2_body.additional_properties = d

@@ -263,6 +263,7 @@ from .get_v1_universes_universe_id_places_sort_order import GetV1UniversesUniver
 from .get_v1_universes_universe_id_stats_type import GetV1UniversesUniverseIdStatsType
 from .get_v1_user_universes_limit import GetV1UserUniversesLimit
 from .get_v1_user_universes_sort_order import GetV1UserUniversesSortOrder
+from .get_v1_usernames_validate_context import GetV1UsernamesValidateContext
 from .get_v1_users_avatar_bust_format import GetV1UsersAvatarBustFormat
 from .get_v1_users_avatar_bust_size import GetV1UsersAvatarBustSize
 from .get_v1_users_avatar_format import GetV1UsersAvatarFormat
@@ -1073,9 +1074,24 @@ from .roblox_authentication_api_models_account_link_parameters import RobloxAuth
 from .roblox_authentication_api_models_account_link_parameters_linking_platform import (
     RobloxAuthenticationApiModelsAccountLinkParametersLinkingPlatform,
 )
+from .roblox_authentication_api_models_account_pin_request import RobloxAuthenticationApiModelsAccountPinRequest
+from .roblox_authentication_api_models_account_pin_response import RobloxAuthenticationApiModelsAccountPinResponse
+from .roblox_authentication_api_models_account_pin_status_response import (
+    RobloxAuthenticationApiModelsAccountPinStatusResponse,
+)
 from .roblox_authentication_api_models_auth_meta_data_response import RobloxAuthenticationApiModelsAuthMetaDataResponse
+from .roblox_authentication_api_models_auth_methods_metadata_response import (
+    RobloxAuthenticationApiModelsAuthMethodsMetadataResponse,
+)
+from .roblox_authentication_api_models_email_validation_response import (
+    RobloxAuthenticationApiModelsEmailValidationResponse,
+)
 from .roblox_authentication_api_models_forgot_password_user_response import (
     RobloxAuthenticationApiModelsForgotPasswordUserResponse,
+)
+from .roblox_authentication_api_models_login_method_model import RobloxAuthenticationApiModelsLoginMethodModel
+from .roblox_authentication_api_models_login_method_model_method import (
+    RobloxAuthenticationApiModelsLoginMethodModelMethod,
 )
 from .roblox_authentication_api_models_login_request import RobloxAuthenticationApiModelsLoginRequest
 from .roblox_authentication_api_models_login_request_ctype import RobloxAuthenticationApiModelsLoginRequestCtype
@@ -1110,6 +1126,16 @@ from .roblox_authentication_api_models_password_validation_response import (
 from .roblox_authentication_api_models_password_validation_response_code import (
     RobloxAuthenticationApiModelsPasswordValidationResponseCode,
 )
+from .roblox_authentication_api_models_provider_info_model import RobloxAuthenticationApiModelsProviderInfoModel
+from .roblox_authentication_api_models_recommended_username_from_display_name_request import (
+    RobloxAuthenticationApiModelsRecommendedUsernameFromDisplayNameRequest,
+)
+from .roblox_authentication_api_models_recommended_username_request import (
+    RobloxAuthenticationApiModelsRecommendedUsernameRequest,
+)
+from .roblox_authentication_api_models_recommended_username_response import (
+    RobloxAuthenticationApiModelsRecommendedUsernameResponse,
+)
 from .roblox_authentication_api_models_recover_username_request import (
     RobloxAuthenticationApiModelsRecoverUsernameRequest,
 )
@@ -1141,8 +1167,77 @@ from .roblox_authentication_api_models_request_audit_system_content_additional_a
 from .roblox_authentication_api_models_request_audit_system_content_captured_audit_content import (
     RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent,
 )
+from .roblox_authentication_api_models_request_delete_passkeys_request import (
+    RobloxAuthenticationApiModelsRequestDeletePasskeysRequest,
+)
+from .roblox_authentication_api_models_request_external_access_request import (
+    RobloxAuthenticationApiModelsRequestExternalAccessRequest,
+)
+from .roblox_authentication_api_models_request_external_access_request_additional_info_payload import (
+    RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload,
+)
+from .roblox_authentication_api_models_request_external_access_request_identity_provider_platform_type import (
+    RobloxAuthenticationApiModelsRequestExternalAccessRequestIdentityProviderPlatformType,
+)
+from .roblox_authentication_api_models_request_external_login_and_link_request import (
+    RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequest,
+)
+from .roblox_authentication_api_models_request_external_login_and_link_request_additional_info_payload import (
+    RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestAdditionalInfoPayload,
+)
+from .roblox_authentication_api_models_request_external_login_and_link_request_ctype import (
+    RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestCtype,
+)
+from .roblox_authentication_api_models_request_external_login_and_link_request_identity_provider_platform_type import (
+    RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestIdentityProviderPlatformType,
+)
+from .roblox_authentication_api_models_request_external_login_request import (
+    RobloxAuthenticationApiModelsRequestExternalLoginRequest,
+)
+from .roblox_authentication_api_models_request_external_login_request_additional_data import (
+    RobloxAuthenticationApiModelsRequestExternalLoginRequestAdditionalData,
+)
+from .roblox_authentication_api_models_request_external_login_request_identity_provider import (
+    RobloxAuthenticationApiModelsRequestExternalLoginRequestIdentityProvider,
+)
+from .roblox_authentication_api_models_request_external_signup_request import (
+    RobloxAuthenticationApiModelsRequestExternalSignupRequest,
+)
+from .roblox_authentication_api_models_request_external_signup_request_additional_info_payload import (
+    RobloxAuthenticationApiModelsRequestExternalSignupRequestAdditionalInfoPayload,
+)
+from .roblox_authentication_api_models_request_external_signup_request_identity_provider_platform_type import (
+    RobloxAuthenticationApiModelsRequestExternalSignupRequestIdentityProviderPlatformType,
+)
+from .roblox_authentication_api_models_request_external_unlink_request import (
+    RobloxAuthenticationApiModelsRequestExternalUnlinkRequest,
+)
+from .roblox_authentication_api_models_request_external_unlink_request_additional_info_payload import (
+    RobloxAuthenticationApiModelsRequestExternalUnlinkRequestAdditionalInfoPayload,
+)
+from .roblox_authentication_api_models_request_external_unlink_request_identity_provider_platform_type import (
+    RobloxAuthenticationApiModelsRequestExternalUnlinkRequestIdentityProviderPlatformType,
+)
+from .roblox_authentication_api_models_request_finish_ar_pre_auth_passkey_registration_request import (
+    RobloxAuthenticationApiModelsRequestFinishARPreAuthPasskeyRegistrationRequest,
+)
+from .roblox_authentication_api_models_request_finish_passkey_preauth_registration_request import (
+    RobloxAuthenticationApiModelsRequestFinishPasskeyPreauthRegistrationRequest,
+)
+from .roblox_authentication_api_models_request_finish_passkey_registration_request import (
+    RobloxAuthenticationApiModelsRequestFinishPasskeyRegistrationRequest,
+)
 from .roblox_authentication_api_models_request_identity_verification_login_request import (
     RobloxAuthenticationApiModelsRequestIdentityVerificationLoginRequest,
+)
+from .roblox_authentication_api_models_request_initialize_login_request import (
+    RobloxAuthenticationApiModelsRequestInitializeLoginRequest,
+)
+from .roblox_authentication_api_models_request_initialize_login_request_ctype import (
+    RobloxAuthenticationApiModelsRequestInitializeLoginRequestCtype,
+)
+from .roblox_authentication_api_models_request_list_passkeys_request import (
+    RobloxAuthenticationApiModelsRequestListPasskeysRequest,
 )
 from .roblox_authentication_api_models_request_logout_from_all_sessions_and_reauthenticate_request import (
     RobloxAuthenticationApiModelsRequestLogoutFromAllSessionsAndReauthenticateRequest,
@@ -1158,6 +1253,51 @@ from .roblox_authentication_api_models_request_otp_session_model_otp_contact_typ
 )
 from .roblox_authentication_api_models_request_secure_authentication_intent_model import (
     RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel,
+)
+from .roblox_authentication_api_models_request_start_authentication_by_user_request import (
+    RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequest,
+)
+from .roblox_authentication_api_models_request_start_authentication_by_user_request_ctype import (
+    RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequestCtype,
+)
+from .roblox_authentication_api_models_request_start_passkey_preauth_registration_request import (
+    RobloxAuthenticationApiModelsRequestStartPasskeyPreauthRegistrationRequest,
+)
+from .roblox_authentication_api_models_request_start_passkey_registration_request import (
+    RobloxAuthenticationApiModelsRequestStartPasskeyRegistrationRequest,
+)
+from .roblox_authentication_api_models_response_external_identity_gateway_external_identity_access_response import (
+    RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse,
+)
+from .roblox_authentication_api_models_response_external_identity_gateway_external_login_response import (
+    RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalLoginResponse,
+)
+from .roblox_authentication_api_models_response_get_client_assertion_response import (
+    RobloxAuthenticationApiModelsResponseGetClientAssertionResponse,
+)
+from .roblox_authentication_api_models_response_initialize_login_response import (
+    RobloxAuthenticationApiModelsResponseInitializeLoginResponse,
+)
+from .roblox_authentication_api_models_response_list_passkey_credential_response import (
+    RobloxAuthenticationApiModelsResponseListPasskeyCredentialResponse,
+)
+from .roblox_authentication_api_models_response_passkey_credential import (
+    RobloxAuthenticationApiModelsResponsePasskeyCredential,
+)
+from .roblox_authentication_api_models_response_silent_upgrade_eligibility_response import (
+    RobloxAuthenticationApiModelsResponseSilentUpgradeEligibilityResponse,
+)
+from .roblox_authentication_api_models_response_start_authentication_by_user_response import (
+    RobloxAuthenticationApiModelsResponseStartAuthenticationByUserResponse,
+)
+from .roblox_authentication_api_models_response_start_authentication_response import (
+    RobloxAuthenticationApiModelsResponseStartAuthenticationResponse,
+)
+from .roblox_authentication_api_models_response_start_passkey_preauth_registration_response import (
+    RobloxAuthenticationApiModelsResponseStartPasskeyPreauthRegistrationResponse,
+)
+from .roblox_authentication_api_models_response_start_passkey_registration_response import (
+    RobloxAuthenticationApiModelsResponseStartPasskeyRegistrationResponse,
 )
 from .roblox_authentication_api_models_revert_account_info_response import (
     RobloxAuthenticationApiModelsRevertAccountInfoResponse,
@@ -1180,6 +1320,12 @@ from .roblox_authentication_api_models_send_reset_password_response_transmission
 from .roblox_authentication_api_models_signup_request import RobloxAuthenticationApiModelsSignupRequest
 from .roblox_authentication_api_models_signup_request_gender import RobloxAuthenticationApiModelsSignupRequestGender
 from .roblox_authentication_api_models_signup_response import RobloxAuthenticationApiModelsSignupResponse
+from .roblox_authentication_api_models_social_authentication_disconnect_request import (
+    RobloxAuthenticationApiModelsSocialAuthenticationDisconnectRequest,
+)
+from .roblox_authentication_api_models_social_providers_response import (
+    RobloxAuthenticationApiModelsSocialProvidersResponse,
+)
 from .roblox_authentication_api_models_two_step_verification_sent_response import (
     RobloxAuthenticationApiModelsTwoStepVerificationSentResponse,
 )
@@ -1206,6 +1352,15 @@ from .roblox_authentication_api_models_username_validation_response_code import 
     RobloxAuthenticationApiModelsUsernameValidationResponseCode,
 )
 from .roblox_authentication_api_models_usernames_response import RobloxAuthenticationApiModelsUsernamesResponse
+from .roblox_authentication_api_models_xbox_collections_of_user_response import (
+    RobloxAuthenticationApiModelsXboxCollectionsOfUserResponse,
+)
+from .roblox_authentication_api_models_xbox_connection_model import RobloxAuthenticationApiModelsXboxConnectionModel
+from .roblox_authentication_api_models_xbox_login_consecutive_days_response import (
+    RobloxAuthenticationApiModelsXboxLoginConsecutiveDaysResponse,
+)
+from .roblox_authentication_api_models_xbox_translate_request import RobloxAuthenticationApiModelsXboxTranslateRequest
+from .roblox_authentication_api_models_xbox_user_model import RobloxAuthenticationApiModelsXboxUserModel
 from .roblox_authentication_api_two_step_verification_login_request import (
     RobloxAuthenticationApiTwoStepVerificationLoginRequest,
 )
@@ -2604,6 +2759,7 @@ from .roblox_web_web_api_models_api_page_response_roblox_web_responses_games_gam
 from .roblox_web_web_api_models_api_page_response_roblox_web_responses_games_game_server_response import (
     RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameServerResponse,
 )
+from .roblox_web_web_api_models_api_success_response import RobloxWebWebAPIModelsApiSuccessResponse
 from .robux_rate_breakdown import RobuxRateBreakdown
 from .rpn_operand_dto import RpnOperandDto
 from .rpn_token_dto import RpnTokenDto
@@ -2963,6 +3119,7 @@ __all__ = (
     "GetV1UniversesUniverseIdPlacesLimit",
     "GetV1UniversesUniverseIdPlacesSortOrder",
     "GetV1UniversesUniverseIdStatsType",
+    "GetV1UsernamesValidateContext",
     "GetV1UsersAvatarBustFormat",
     "GetV1UsersAvatarBustSize",
     "GetV1UsersAvatarFormat",
@@ -3459,8 +3616,15 @@ __all__ = (
     "RobloxAssetDeliveryApiAssetMetadataMetadataType",
     "RobloxAuthenticationApiModelsAccountLinkParameters",
     "RobloxAuthenticationApiModelsAccountLinkParametersLinkingPlatform",
+    "RobloxAuthenticationApiModelsAccountPinRequest",
+    "RobloxAuthenticationApiModelsAccountPinResponse",
+    "RobloxAuthenticationApiModelsAccountPinStatusResponse",
     "RobloxAuthenticationApiModelsAuthMetaDataResponse",
+    "RobloxAuthenticationApiModelsAuthMethodsMetadataResponse",
+    "RobloxAuthenticationApiModelsEmailValidationResponse",
     "RobloxAuthenticationApiModelsForgotPasswordUserResponse",
+    "RobloxAuthenticationApiModelsLoginMethodModel",
+    "RobloxAuthenticationApiModelsLoginMethodModelMethod",
     "RobloxAuthenticationApiModelsLoginRequest",
     "RobloxAuthenticationApiModelsLoginRequestCtype",
     "RobloxAuthenticationApiModelsLoginResponse",
@@ -3476,6 +3640,10 @@ __all__ = (
     "RobloxAuthenticationApiModelsPasswordValidationModel",
     "RobloxAuthenticationApiModelsPasswordValidationResponse",
     "RobloxAuthenticationApiModelsPasswordValidationResponseCode",
+    "RobloxAuthenticationApiModelsProviderInfoModel",
+    "RobloxAuthenticationApiModelsRecommendedUsernameFromDisplayNameRequest",
+    "RobloxAuthenticationApiModelsRecommendedUsernameRequest",
+    "RobloxAuthenticationApiModelsRecommendedUsernameResponse",
     "RobloxAuthenticationApiModelsRecoverUsernameRequest",
     "RobloxAuthenticationApiModelsRecoverUsernameRequestTargetType",
     "RobloxAuthenticationApiModelsRecoverUsernameResponse",
@@ -3487,12 +3655,50 @@ __all__ = (
     "RobloxAuthenticationApiModelsRequestAuditSystemContent",
     "RobloxAuthenticationApiModelsRequestAuditSystemContentAdditionalAuditContent",
     "RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent",
+    "RobloxAuthenticationApiModelsRequestDeletePasskeysRequest",
+    "RobloxAuthenticationApiModelsRequestExternalAccessRequest",
+    "RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload",
+    "RobloxAuthenticationApiModelsRequestExternalAccessRequestIdentityProviderPlatformType",
+    "RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequest",
+    "RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestAdditionalInfoPayload",
+    "RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestCtype",
+    "RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestIdentityProviderPlatformType",
+    "RobloxAuthenticationApiModelsRequestExternalLoginRequest",
+    "RobloxAuthenticationApiModelsRequestExternalLoginRequestAdditionalData",
+    "RobloxAuthenticationApiModelsRequestExternalLoginRequestIdentityProvider",
+    "RobloxAuthenticationApiModelsRequestExternalSignupRequest",
+    "RobloxAuthenticationApiModelsRequestExternalSignupRequestAdditionalInfoPayload",
+    "RobloxAuthenticationApiModelsRequestExternalSignupRequestIdentityProviderPlatformType",
+    "RobloxAuthenticationApiModelsRequestExternalUnlinkRequest",
+    "RobloxAuthenticationApiModelsRequestExternalUnlinkRequestAdditionalInfoPayload",
+    "RobloxAuthenticationApiModelsRequestExternalUnlinkRequestIdentityProviderPlatformType",
+    "RobloxAuthenticationApiModelsRequestFinishARPreAuthPasskeyRegistrationRequest",
+    "RobloxAuthenticationApiModelsRequestFinishPasskeyPreauthRegistrationRequest",
+    "RobloxAuthenticationApiModelsRequestFinishPasskeyRegistrationRequest",
     "RobloxAuthenticationApiModelsRequestIdentityVerificationLoginRequest",
+    "RobloxAuthenticationApiModelsRequestInitializeLoginRequest",
+    "RobloxAuthenticationApiModelsRequestInitializeLoginRequestCtype",
+    "RobloxAuthenticationApiModelsRequestListPasskeysRequest",
     "RobloxAuthenticationApiModelsRequestLogoutFromAllSessionsAndReauthenticateRequest",
     "RobloxAuthenticationApiModelsRequestLogoutV3Request",
     "RobloxAuthenticationApiModelsRequestOtpSessionModel",
     "RobloxAuthenticationApiModelsRequestOtpSessionModelOtpContactType",
     "RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel",
+    "RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequest",
+    "RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequestCtype",
+    "RobloxAuthenticationApiModelsRequestStartPasskeyPreauthRegistrationRequest",
+    "RobloxAuthenticationApiModelsRequestStartPasskeyRegistrationRequest",
+    "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse",
+    "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalLoginResponse",
+    "RobloxAuthenticationApiModelsResponseGetClientAssertionResponse",
+    "RobloxAuthenticationApiModelsResponseInitializeLoginResponse",
+    "RobloxAuthenticationApiModelsResponseListPasskeyCredentialResponse",
+    "RobloxAuthenticationApiModelsResponsePasskeyCredential",
+    "RobloxAuthenticationApiModelsResponseSilentUpgradeEligibilityResponse",
+    "RobloxAuthenticationApiModelsResponseStartAuthenticationByUserResponse",
+    "RobloxAuthenticationApiModelsResponseStartAuthenticationResponse",
+    "RobloxAuthenticationApiModelsResponseStartPasskeyPreauthRegistrationResponse",
+    "RobloxAuthenticationApiModelsResponseStartPasskeyRegistrationResponse",
     "RobloxAuthenticationApiModelsRevertAccountInfoResponse",
     "RobloxAuthenticationApiModelsRevertAccountSubmitRequest",
     "RobloxAuthenticationApiModelsSendResetPasswordRequest",
@@ -3502,6 +3708,8 @@ __all__ = (
     "RobloxAuthenticationApiModelsSignupRequest",
     "RobloxAuthenticationApiModelsSignupRequestGender",
     "RobloxAuthenticationApiModelsSignupResponse",
+    "RobloxAuthenticationApiModelsSocialAuthenticationDisconnectRequest",
+    "RobloxAuthenticationApiModelsSocialProvidersResponse",
     "RobloxAuthenticationApiModelsTwoStepVerificationSentResponse",
     "RobloxAuthenticationApiModelsTwoStepVerificationSentResponseMediaType",
     "RobloxAuthenticationApiModelsTwoStepVerificationV3LoginResponse",
@@ -3512,6 +3720,11 @@ __all__ = (
     "RobloxAuthenticationApiModelsUsernameValidationRequestContext",
     "RobloxAuthenticationApiModelsUsernameValidationResponse",
     "RobloxAuthenticationApiModelsUsernameValidationResponseCode",
+    "RobloxAuthenticationApiModelsXboxCollectionsOfUserResponse",
+    "RobloxAuthenticationApiModelsXboxConnectionModel",
+    "RobloxAuthenticationApiModelsXboxLoginConsecutiveDaysResponse",
+    "RobloxAuthenticationApiModelsXboxTranslateRequest",
+    "RobloxAuthenticationApiModelsXboxUserModel",
     "RobloxAuthenticationApiTwoStepVerificationLoginRequest",
     "RobloxBadgesApiBadgeAwardResponse",
     "RobloxBadgesApiBadgeCreatorResponse",
@@ -4194,6 +4407,7 @@ __all__ = (
     "RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameFavoriteResponseModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameResponseV2",
     "RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameServerResponse",
+    "RobloxWebWebAPIModelsApiSuccessResponse",
     "RobuxRateBreakdown",
     "RpnOperandDto",
     "RpnTokenDto",

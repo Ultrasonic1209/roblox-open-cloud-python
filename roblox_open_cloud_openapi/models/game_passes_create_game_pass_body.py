@@ -23,6 +23,7 @@ class GamePassesCreateGamePassBody:
         is_for_sale (bool | None | Unset): Whether the game pass should be on sale.
         price (int | None | Unset): The default price of the game pass.
         is_regional_pricing_enabled (bool | None | Unset): Whether regional pricing should be enabled for the game pass.
+        is_managed_pricing_enabled (bool | None | Unset): Whether managed pricing should be enabled for the game pass.
     """
 
     name: str
@@ -31,6 +32,7 @@ class GamePassesCreateGamePassBody:
     is_for_sale: bool | None | Unset = UNSET
     price: int | None | Unset = UNSET
     is_regional_pricing_enabled: bool | None | Unset = UNSET
+    is_managed_pricing_enabled: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -69,6 +71,12 @@ class GamePassesCreateGamePassBody:
         else:
             is_regional_pricing_enabled = self.is_regional_pricing_enabled
 
+        is_managed_pricing_enabled: bool | None | Unset
+        if isinstance(self.is_managed_pricing_enabled, Unset):
+            is_managed_pricing_enabled = UNSET
+        else:
+            is_managed_pricing_enabled = self.is_managed_pricing_enabled
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -86,6 +94,8 @@ class GamePassesCreateGamePassBody:
             field_dict["price"] = price
         if is_regional_pricing_enabled is not UNSET:
             field_dict["isRegionalPricingEnabled"] = is_regional_pricing_enabled
+        if is_managed_pricing_enabled is not UNSET:
+            field_dict["isManagedPricingEnabled"] = is_managed_pricing_enabled
 
         return field_dict
 
@@ -126,6 +136,16 @@ class GamePassesCreateGamePassBody:
             else:
                 files.append(
                     ("isRegionalPricingEnabled", (None, str(self.is_regional_pricing_enabled).encode(), "text/plain"))
+                )
+
+        if not isinstance(self.is_managed_pricing_enabled, Unset):
+            if isinstance(self.is_managed_pricing_enabled, bool):
+                files.append(
+                    ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
+                )
+            else:
+                files.append(
+                    ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
                 )
 
         for prop_name, prop in self.additional_properties.items():
@@ -191,6 +211,15 @@ class GamePassesCreateGamePassBody:
 
         is_regional_pricing_enabled = _parse_is_regional_pricing_enabled(d.pop("isRegionalPricingEnabled", UNSET))
 
+        def _parse_is_managed_pricing_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        is_managed_pricing_enabled = _parse_is_managed_pricing_enabled(d.pop("isManagedPricingEnabled", UNSET))
+
         game_passes_create_game_pass_body = cls(
             name=name,
             description=description,
@@ -198,6 +227,7 @@ class GamePassesCreateGamePassBody:
             is_for_sale=is_for_sale,
             price=price,
             is_regional_pricing_enabled=is_regional_pricing_enabled,
+            is_managed_pricing_enabled=is_managed_pricing_enabled,
         )
 
         game_passes_create_game_pass_body.additional_properties = d

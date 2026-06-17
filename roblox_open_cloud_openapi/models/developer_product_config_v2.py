@@ -31,6 +31,7 @@ class DeveloperProductConfigV2:
             product.
         created_timestamp (datetime.datetime): The timestamp when the developer product was created.
         updated_timestamp (datetime.datetime): The timestamp when the developer product was last updated.
+        is_managed_pricing_enabled (bool): Whether managed pricing is enabled for the developer product.
     """
 
     product_id: int
@@ -44,6 +45,7 @@ class DeveloperProductConfigV2:
     is_immutable: bool
     created_timestamp: datetime.datetime
     updated_timestamp: datetime.datetime
+    is_managed_pricing_enabled: bool
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.price_information_struct import PriceInformationStruct
@@ -75,6 +77,8 @@ class DeveloperProductConfigV2:
 
         updated_timestamp = self.updated_timestamp.isoformat()
 
+        is_managed_pricing_enabled = self.is_managed_pricing_enabled
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -90,6 +94,7 @@ class DeveloperProductConfigV2:
                 "isImmutable": is_immutable,
                 "createdTimestamp": created_timestamp,
                 "updatedTimestamp": updated_timestamp,
+                "isManagedPricingEnabled": is_managed_pricing_enabled,
             }
         )
 
@@ -140,6 +145,8 @@ class DeveloperProductConfigV2:
 
         updated_timestamp = datetime.datetime.fromisoformat(d.pop("updatedTimestamp"))
 
+        is_managed_pricing_enabled = d.pop("isManagedPricingEnabled")
+
         developer_product_config_v2 = cls(
             product_id=product_id,
             name=name,
@@ -152,6 +159,7 @@ class DeveloperProductConfigV2:
             is_immutable=is_immutable,
             created_timestamp=created_timestamp,
             updated_timestamp=updated_timestamp,
+            is_managed_pricing_enabled=is_managed_pricing_enabled,
         )
 
         return developer_product_config_v2

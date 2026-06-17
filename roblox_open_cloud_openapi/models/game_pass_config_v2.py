@@ -27,6 +27,7 @@ class GamePassConfigV2:
         updated_timestamp (datetime.datetime): The timestamp when the game pass was last updated.
         price_information (GamePassesPriceInformationStruct | None): The pricing configuration associated with the game
             pass.
+        is_managed_pricing_enabled (bool): Whether managed pricing is enabled for the game pass.
     """
 
     game_pass_id: int
@@ -37,6 +38,7 @@ class GamePassConfigV2:
     created_timestamp: datetime.datetime
     updated_timestamp: datetime.datetime
     price_information: GamePassesPriceInformationStruct | None
+    is_managed_pricing_enabled: bool
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.game_passes_price_information_struct import GamePassesPriceInformationStruct
@@ -61,6 +63,8 @@ class GamePassConfigV2:
         else:
             price_information = self.price_information
 
+        is_managed_pricing_enabled = self.is_managed_pricing_enabled
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -73,6 +77,7 @@ class GamePassConfigV2:
                 "createdTimestamp": created_timestamp,
                 "updatedTimestamp": updated_timestamp,
                 "priceInformation": price_information,
+                "isManagedPricingEnabled": is_managed_pricing_enabled,
             }
         )
 
@@ -112,6 +117,8 @@ class GamePassConfigV2:
 
         price_information = _parse_price_information(d.pop("priceInformation"))
 
+        is_managed_pricing_enabled = d.pop("isManagedPricingEnabled")
+
         game_pass_config_v2 = cls(
             game_pass_id=game_pass_id,
             name=name,
@@ -121,6 +128,7 @@ class GamePassConfigV2:
             created_timestamp=created_timestamp,
             updated_timestamp=updated_timestamp,
             price_information=price_information,
+            is_managed_pricing_enabled=is_managed_pricing_enabled,
         )
 
         return game_pass_config_v2
