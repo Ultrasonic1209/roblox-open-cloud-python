@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -26,7 +26,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | AssetVersion | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | AssetVersion | None:
     if response.status_code == 200:
         response_200 = AssetVersion.from_dict(response.json())
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | AssetVersion]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | AssetVersion]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,7 +82,7 @@ def sync_detailed(
         version_number=version_number,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -145,7 +145,7 @@ async def asyncio_detailed(
         version_number=version_number,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

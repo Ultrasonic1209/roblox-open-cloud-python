@@ -3,11 +3,11 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -21,7 +21,6 @@ from ...models.get_v1_groups_group_id_roles_role_set_id_users_sort_order import 
 from ...models.roblox_web_web_api_models_api_page_response_roblox_groups_api_models_response_user_model import (
     RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseUserModel,
 )
-from ...types import Unset
 
 
 def _get_kwargs(
@@ -54,7 +53,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/groups/{group_id}/roles/{role_set_id}/users".format(
+        "url": "https://groups.roblox.com/v1/groups/{group_id}/roles/{role_set_id}/users".format(
             group_id=quote(str(group_id), safe=""),
             role_set_id=quote(str(role_set_id), safe=""),
         ),
@@ -65,7 +64,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseUserModel | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseUserModel.from_dict(
@@ -89,7 +88,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseUserModel]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -139,7 +138,7 @@ def sync_detailed(
         sort_order=sort_order,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -228,7 +227,7 @@ async def asyncio_detailed(
         sort_order=sort_order,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

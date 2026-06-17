@@ -3,11 +3,11 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -31,7 +31,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/game-thumbnails/games/{game_id}/language-codes/{language_code}/alt-text".format(
+        "url": "https://gameinternationalization.roblox.com/v1/game-thumbnails/games/{game_id}/language-codes/{language_code}/alt-text".format(
             game_id=quote(str(game_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
@@ -50,7 +50,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | str | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | str | None:
     if response.status_code == 200:
         response_200 = cast(str, response.json())
         return response_200
@@ -85,7 +85,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | str]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -128,7 +128,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -205,7 +205,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

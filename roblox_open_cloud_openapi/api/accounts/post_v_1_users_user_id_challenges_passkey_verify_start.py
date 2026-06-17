@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -10,7 +10,7 @@ from ...models.roblox_two_step_verification_api_send_code_request import RobloxT
 from ...models.roblox_two_step_verification_api_verify_start_passkey_response import (
     RobloxTwoStepVerificationApiVerifyStartPasskeyResponse,
 )
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -22,7 +22,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/users/{user_id}/challenges/passkey/verify-start".format(
+        "url": "https://twostepverification.roblox.com/v1/users/{user_id}/challenges/passkey/verify-start".format(
             user_id=quote(str(user_id), safe=""),
         ),
     }
@@ -41,7 +41,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxTwoStepVerificationApiVerifyStartPasskeyResponse | None:
     if response.status_code == 200:
         response_200 = RobloxTwoStepVerificationApiVerifyStartPasskeyResponse.from_dict(response.json())
@@ -67,7 +67,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxTwoStepVerificationApiVerifyStartPasskeyResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -105,7 +105,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -170,7 +170,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

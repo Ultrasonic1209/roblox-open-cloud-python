@@ -3,11 +3,11 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -16,7 +16,6 @@ else:
 
 from ...models.entry import Entry
 from ...models.update_entry_request import UpdateEntryRequest
-from ...types import Unset
 
 
 def _get_kwargs(
@@ -55,7 +54,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | Entry | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | Entry | None:
     if response.status_code == 200:
         response_200 = Entry.from_dict(response.json())
 
@@ -87,7 +86,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | Entry]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | Entry]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -136,7 +135,7 @@ def sync_detailed(
         allow_missing=allow_missing,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -225,7 +224,7 @@ async def asyncio_detailed(
         allow_missing=allow_missing,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

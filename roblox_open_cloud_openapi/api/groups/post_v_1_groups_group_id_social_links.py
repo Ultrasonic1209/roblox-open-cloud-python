@@ -2,13 +2,13 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.roblox_groups_api_social_link_request import RobloxGroupsApiSocialLinkRequest
 from ...models.roblox_groups_api_social_link_response import RobloxGroupsApiSocialLinkResponse
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -20,7 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/groups/{group_id}/social-links".format(
+        "url": "https://groups.roblox.com/v1/groups/{group_id}/social-links".format(
             group_id=quote(str(group_id), safe=""),
         ),
     }
@@ -39,7 +39,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxGroupsApiSocialLinkResponse | None:
     if response.status_code == 200:
         response_200 = RobloxGroupsApiSocialLinkResponse.from_dict(response.json())
@@ -73,7 +73,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxGroupsApiSocialLinkResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -109,7 +109,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -170,7 +170,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

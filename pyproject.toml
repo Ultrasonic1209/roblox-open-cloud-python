@@ -3,7 +3,8 @@ name = "roblox-open-cloud-openapi"
 version = "0.1.0"
 description = "A client library for accessing Roblox API"
 authors = [
-    { name = "Ultrasonic1209", email = "ultra@ultras-playroom.xyz" },]
+    { name = "Ultrasonic1209", email = "ultra@ultras-playroom.xyz" },
+]
 requires-python = ">=3.11"
 readme = "README.md"
 dependencies = [

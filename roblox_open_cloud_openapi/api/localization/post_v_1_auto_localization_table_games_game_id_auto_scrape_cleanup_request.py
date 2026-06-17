@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -12,7 +12,7 @@ from ...models.post_v1_auto_localization_table_games_game_id_auto_scrape_cleanup
 from ...models.roblox_localization_tables_api_raise_event_for_auto_scraped_entries_cleanup_request import (
     RobloxLocalizationTablesApiRaiseEventForAutoScrapedEntriesCleanupRequest,
 )
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -26,7 +26,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/auto-localization-table/games/{game_id}/auto-scrape-cleanup-request".format(
+        "url": "https://localizationtables.roblox.com/v1/auto-localization-table/games/{game_id}/auto-scrape-cleanup-request".format(
             game_id=quote(str(game_id), safe=""),
         ),
     }
@@ -45,7 +45,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200 | None:
     if response.status_code == 200:
         response_200 = PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200.from_dict(
@@ -77,7 +77,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -115,7 +115,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -180,7 +180,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -1,13 +1,13 @@
 from http import HTTPStatus
 from typing import Any
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.roblox_web_assets_asset_response_item_v2 import RobloxWebAssetsAssetResponseItemV2
 from ...models.roblox_web_assets_batch_asset_request_item import RobloxWebAssetsBatchAssetRequestItem
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -26,7 +26,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v2/assets/batch",
+        "url": "https://assetdelivery.roblox.com/v2/assets/batch",
     }
 
     if isinstance(body, list[RobloxWebAssetsBatchAssetRequestItem]):
@@ -49,7 +49,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> list[RobloxWebAssetsAssetResponseItemV2] | None:
     if response.status_code == 200:
         response_200 = []
@@ -68,7 +68,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[list[RobloxWebAssetsAssetResponseItemV2]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -109,7 +109,7 @@ def sync_detailed(
         roblox_browser_asset_request=roblox_browser_asset_request,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -180,7 +180,7 @@ async def asyncio_detailed(
         roblox_browser_asset_request=roblox_browser_asset_request,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

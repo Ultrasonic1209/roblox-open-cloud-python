@@ -3,7 +3,7 @@ from typing import Any, cast
 from urllib.parse import quote
 from uuid import UUID
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -34,7 +34,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/localization-table/tables/{table_id}/entries/translation-feedback".format(
+        "url": "https://localizationtables.roblox.com/v1/localization-table/tables/{table_id}/entries/translation-feedback".format(
             table_id=quote(str(table_id), safe=""),
         ),
         "params": params,
@@ -54,7 +54,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackResponse | None:
     if response.status_code == 200:
         response_200 = RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackResponse.from_dict(response.json())
@@ -88,7 +88,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -131,7 +131,7 @@ def sync_detailed(
         game_id=game_id,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -206,7 +206,7 @@ async def asyncio_detailed(
         game_id=game_id,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

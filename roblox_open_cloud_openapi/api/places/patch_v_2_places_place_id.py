@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -10,7 +10,7 @@ from ...models.roblox_api_develop_models_place_configuration_model_v2 import (
     RobloxApiDevelopModelsPlaceConfigurationModelV2,
 )
 from ...models.roblox_api_develop_models_place_model_v2 import RobloxApiDevelopModelsPlaceModelV2
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -24,7 +24,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "patch",
-        "url": "/v2/places/{place_id}".format(
+        "url": "https://develop.roblox.com/v2/places/{place_id}".format(
             place_id=quote(str(place_id), safe=""),
         ),
     }
@@ -43,7 +43,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxApiDevelopModelsPlaceModelV2 | None:
     if response.status_code == 200:
         response_200 = RobloxApiDevelopModelsPlaceModelV2.from_dict(response.json())
@@ -69,7 +69,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxApiDevelopModelsPlaceModelV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -109,7 +109,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -178,7 +178,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

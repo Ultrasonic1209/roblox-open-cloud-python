@@ -3,11 +3,11 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -22,7 +22,6 @@ from ...models.roblox_localization_tables_api_update_table_contents_request impo
 from ...models.roblox_localization_tables_api_update_table_contents_response import (
     RobloxLocalizationTablesApiUpdateTableContentsResponse,
 )
-from ...types import Unset
 
 
 def _get_kwargs(
@@ -43,7 +42,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "patch",
-        "url": "/v1/localization-table/tables/{table_id}".format(
+        "url": "https://localizationtables.roblox.com/v1/localization-table/tables/{table_id}".format(
             table_id=quote(str(table_id), safe=""),
         ),
         "params": params,
@@ -63,7 +62,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxLocalizationTablesApiUpdateTableContentsResponse | None:
     if response.status_code == 200:
         response_200 = RobloxLocalizationTablesApiUpdateTableContentsResponse.from_dict(response.json())
@@ -93,7 +92,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxLocalizationTablesApiUpdateTableContentsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -137,7 +136,7 @@ def sync_detailed(
         game_id=game_id,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -214,7 +213,7 @@ async def asyncio_detailed(
         game_id=game_id,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

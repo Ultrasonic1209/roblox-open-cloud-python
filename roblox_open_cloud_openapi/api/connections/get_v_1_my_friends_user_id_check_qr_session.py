@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -15,7 +15,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/my/friends/{user_id}/check-qr-session".format(
+        "url": "https://friends.roblox.com/v1/my/friends/{user_id}/check-qr-session".format(
             user_id=quote(str(user_id), safe=""),
         ),
     }
@@ -23,7 +23,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | bool | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | bool | None:
     if response.status_code == 200:
         response_200 = cast(bool, response.json())
         return response_200
@@ -38,7 +38,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | bool]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | bool]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,7 +68,7 @@ def sync_detailed(
         user_id=user_id,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -119,7 +119,7 @@ async def asyncio_detailed(
         user_id=user_id,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

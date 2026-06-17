@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from typing import Any, cast
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -38,7 +38,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/users/search",
+        "url": "https://users.roblox.com/v1/users/search",
         "params": params,
     }
 
@@ -46,7 +46,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiSearchGetUserResponse | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiSearchGetUserResponse.from_dict(
@@ -70,7 +70,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiSearchGetUserResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -111,7 +111,7 @@ def sync_detailed(
         cursor=cursor,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -182,7 +182,7 @@ async def asyncio_detailed(
         cursor=cursor,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

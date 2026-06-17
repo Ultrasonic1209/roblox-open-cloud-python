@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -19,7 +19,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v2/client-version/{binary_type}/channel/{channel_name}".format(
+        "url": "https://clientsettings.roblox.com/v2/client-version/{binary_type}/channel/{channel_name}".format(
             binary_type=quote(str(binary_type), safe=""),
             channel_name=quote(str(channel_name), safe=""),
         ),
@@ -29,7 +29,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxClientSettingsApiModelsResponseClientVersionResponse | None:
     if response.status_code == 200:
         response_200 = RobloxClientSettingsApiModelsResponseClientVersionResponse.from_dict(response.json())
@@ -47,7 +47,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxClientSettingsApiModelsResponseClientVersionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -82,7 +82,7 @@ def sync_detailed(
         channel_name=channel_name,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -141,7 +141,7 @@ async def asyncio_detailed(
         channel_name=channel_name,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

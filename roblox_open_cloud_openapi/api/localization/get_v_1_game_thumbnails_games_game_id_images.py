@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -29,7 +29,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/game-thumbnails/games/{game_id}/images".format(
+        "url": "https://gameinternationalization.roblox.com/v1/game-thumbnails/games/{game_id}/images".format(
             game_id=quote(str(game_id), safe=""),
         ),
         "params": params,
@@ -39,7 +39,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiGetGameThumbnailsResponse | None:
     if response.status_code == 200:
         response_200 = (
@@ -69,7 +69,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiGetGameThumbnailsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -107,7 +107,7 @@ def sync_detailed(
         height=height,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -172,7 +172,7 @@ async def asyncio_detailed(
         height=height,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

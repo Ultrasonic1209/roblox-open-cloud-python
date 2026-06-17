@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -39,7 +39,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/users/{user_id}/bundles/{bundle_type}".format(
+        "url": "https://catalog.roblox.com/v1/users/{user_id}/bundles/{bundle_type}".format(
             user_id=quote(str(user_id), safe=""),
             bundle_type=quote(str(bundle_type), safe=""),
         ),
@@ -50,7 +50,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiOwnedBundleModel | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiOwnedBundleModel.from_dict(response.json())
@@ -64,7 +64,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiOwnedBundleModel]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -108,7 +108,7 @@ def sync_detailed(
         sort_order=sort_order,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -185,7 +185,7 @@ async def asyncio_detailed(
         sort_order=sort_order,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

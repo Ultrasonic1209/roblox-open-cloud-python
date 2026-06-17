@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -18,7 +18,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/groups/{group_id}/revenue/summary/{time_frame}".format(
+        "url": "https://economy.roblox.com/v1/groups/{group_id}/revenue/summary/{time_frame}".format(
             group_id=quote(str(group_id), safe=""),
             time_frame=quote(str(time_frame), safe=""),
         ),
@@ -27,7 +27,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RevenueSummaryResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
+) -> RevenueSummaryResponse | None:
     if response.status_code == 200:
         response_200 = RevenueSummaryResponse.from_dict(response.json())
 
@@ -40,7 +42,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[RevenueSummaryResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -74,7 +76,7 @@ def sync_detailed(
         time_frame=time_frame,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -131,7 +133,7 @@ async def asyncio_detailed(
         time_frame=time_frame,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

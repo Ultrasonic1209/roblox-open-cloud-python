@@ -1,14 +1,14 @@
 from http import HTTPStatus
 from typing import Any, cast
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.roblox_ad_configuration_api_models_create_sponsored_campaign_request import (
     RobloxAdConfigurationApiModelsCreateSponsoredCampaignRequest,
 )
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -21,7 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v2/sponsored-campaigns/create",
+        "url": "https://adconfiguration.roblox.com/v2/sponsored-campaigns/create",
     }
 
     if isinstance(body, RobloxAdConfigurationApiModelsCreateSponsoredCampaignRequest):
@@ -37,7 +37,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | int | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | int | None:
     if response.status_code == 200:
         response_200 = cast(int, response.json())
         return response_200
@@ -68,7 +68,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | int]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -105,7 +105,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -170,7 +170,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

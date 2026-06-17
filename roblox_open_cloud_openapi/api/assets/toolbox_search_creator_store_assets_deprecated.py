@@ -2,11 +2,11 @@ import sys
 from http import HTTPStatus
 from typing import Any, cast
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -23,7 +23,6 @@ from ...models.search_creator_store_assets_response_type_0 import SearchCreatorS
 from ...models.search_view import SearchView
 from ...models.sort_category import SortCategory
 from ...models.sort_direction import SortDirection
-from ...types import Unset
 
 
 def _get_kwargs(
@@ -226,7 +225,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0 | None:
     if response.status_code == 200:
 
@@ -298,7 +297,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -418,7 +417,7 @@ def sync_detailed(
         music_chart_type=music_chart_type,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -647,7 +646,7 @@ async def asyncio_detailed(
         music_chart_type=music_chart_type,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -88,7 +88,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Any | RobloxWebAssetsAssetResponseItemV1 | None:
     if response.status_code == 200:
         response_200 = RobloxWebAssetsAssetResponseItemV1.from_dict(response.json())
@@ -106,7 +106,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[Any | RobloxWebAssetsAssetResponseItemV1]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -197,7 +197,7 @@ def sync_detailed(
         roblox_asset_format=roblox_asset_format,
     )
 
-    response = client.get_httpx_client().request(
+    response = client.get_httpx2_client().request(
         **kwargs,
     )
 
@@ -368,7 +368,7 @@ async def asyncio_detailed(
         roblox_asset_format=roblox_asset_format,
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
