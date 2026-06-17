@@ -12,6 +12,11 @@ dependencies = [
     "attrs>=22.2.0",
 ]
 
+[project.optional-dependencies]
+speed = [
+    "httpx2[brotli,http2,zstd]>=2.4.0,<3",
+]
+
 [tool.uv.build-backend]
 module-name = "roblox_open_cloud_openapi"
 module-root = ""
