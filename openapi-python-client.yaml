@@ -3,10 +3,9 @@ package_name_override: roblox_open_cloud_openapi
 
 package_version_override: 0.1.0
 
-#post_hooks:
-#  - "rm uv.lock"
-#  - "uvx migrate-to-uv"
-#  - "uv format"
+post_hooks:
+  - "ruff check --fix-only ./roblox_open_cloud_openapi"
+  - "ruff format ./roblox_open_cloud_openapi"
 
 content_type_overrides:
   text/json: application/json
