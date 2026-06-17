@@ -40,6 +40,17 @@ def _get_kwargs(
             developer_product_id=quote(str(developer_product_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/icons",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/developer-products#get_legacy_game_internationalization_v1_developer_products__developerProductId__icons",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_developer-products_developerProductId_icons",
     }
 
     return _kwargs

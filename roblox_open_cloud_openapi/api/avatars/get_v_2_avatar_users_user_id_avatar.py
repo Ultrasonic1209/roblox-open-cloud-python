@@ -32,6 +32,8 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v2_avatar_users_userId_avatar",
     }
 
     _kwargs["headers"] = headers

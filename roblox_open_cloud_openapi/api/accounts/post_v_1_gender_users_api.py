@@ -19,6 +19,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://users.roblox.com/v1/gender#UsersApi",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_gender#UsersApi",
     }
 
     if isinstance(body, RobloxUsersApiGenderRequest):

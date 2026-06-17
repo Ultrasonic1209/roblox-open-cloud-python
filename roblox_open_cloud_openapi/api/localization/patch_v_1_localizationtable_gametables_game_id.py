@@ -29,6 +29,8 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/localizationtable/gametables/{game_id}".format(
             game_id=quote(str(game_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "patch_v1_localizationtable_gametables_gameId",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiAssociateLocalizationTablesToGameRequest):

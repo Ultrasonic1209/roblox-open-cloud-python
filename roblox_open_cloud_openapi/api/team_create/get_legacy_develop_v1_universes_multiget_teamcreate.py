@@ -28,6 +28,15 @@ def _get_kwargs(
         "method": "get",
         "url": "/legacy-develop/v1/universes/multiget/teamcreate",
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-team-collaboration:manage"}],
+        },
+        "openapi-id": "get_legacy-develop_v1_universes_multiget_teamcreate",
     }
 
     return _kwargs

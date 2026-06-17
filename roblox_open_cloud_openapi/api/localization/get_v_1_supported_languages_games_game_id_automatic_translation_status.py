@@ -28,6 +28,17 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/supported-languages/games/{game_id}/automatic-translation-status".format(
             game_id=quote(str(game_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/supported-languages/games/{gameId}/automatic-translation-status",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#get_legacy_game_internationalization_v1_supported_languages_games__gameId__automatic_translation_status",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_supported-languages_games_gameId_automatic-translation-status",
     }
 
     return _kwargs

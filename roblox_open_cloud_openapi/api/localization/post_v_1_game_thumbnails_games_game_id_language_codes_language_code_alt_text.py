@@ -35,6 +35,17 @@ def _get_kwargs(
             game_id=quote(str(game_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-thumbnails/games/{gameId}/language-codes/{languageCode}/alt-text",
+                    "httpMethod": "POST",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#post_legacy_game_internationalization_v1_game_thumbnails_games__gameId__language_codes__languageCode__alt_text",
+                }
+            ],
+        },
+        "openapi-id": "post_v1_game-thumbnails_games_gameId_language-codes_languageCode_alt-text",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiUpdateThumbnailAltTextRequest):

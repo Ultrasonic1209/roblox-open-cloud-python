@@ -33,6 +33,17 @@ def _get_kwargs(
             game_id=quote(str(game_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/supported-languages/games/{gameId}/languages/{languageCode}/automatic-translation-status",
+                    "httpMethod": "PATCH",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#patch_legacy_game_internationalization_v1_supported_languages_games__gameId__languages__languageCode__automatic_translation_status",
+                }
+            ],
+        },
+        "openapi-id": "patch_v1_supported-languages_games_gameId_languages_languageCode_automatic-translation-status",
     }
 
     if isinstance(body, bool):

@@ -18,6 +18,8 @@ def _get_kwargs(
         "url": "https://catalog.roblox.com/v1/favorites/assets/{asset_id}/count".format(
             asset_id=quote(str(asset_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_favorites_assets_assetId_count",
     }
 
     return _kwargs

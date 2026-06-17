@@ -36,6 +36,18 @@ def _get_kwargs(
             queue_id=quote(str(queue_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "memory-store.queue:dequeue"}],
+            "x-roblox-docs": {
+                "category": "Data and memory stores",
+                "methodProperties": {"scopes": ["memory-store.queue:dequeue"]},
+                "resource": {"$ref": "#/components/schemas/MemoryStoreQueueItem", "name": "MemoryStoreQueueItem"},
+            },
+            "x-roblox-stability": "STABLE",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
+        },
+        "openapi-id": "Cloud_ReadMemoryStoreQueueItems",
     }
 
     return _kwargs

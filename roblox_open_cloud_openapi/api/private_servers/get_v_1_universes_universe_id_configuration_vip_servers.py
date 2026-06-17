@@ -21,6 +21,8 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/universes/{universe_id}/configuration/vip-servers".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_universes_universeId_configuration_vip-servers",
     }
 
     return _kwargs

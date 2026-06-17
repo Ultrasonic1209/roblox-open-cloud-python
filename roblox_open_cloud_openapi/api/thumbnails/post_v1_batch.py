@@ -28,6 +28,11 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://thumbnails.roblox.com/v1/batch",
+        "openapi-extensions": {
+            "x-roblox-stability": "STABLE",
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "post_v1_batch",
     }
 
     if isinstance(body, list[RobloxThumbnailsApisModelsThumbnailBatchRequest]):

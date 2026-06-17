@@ -33,6 +33,21 @@ def _get_kwargs(
             creator_store_product_id=quote(str(creator_store_product_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "creator-store-product:write"}],
+            "x-roblox-docs": {
+                "category": "Monetization",
+                "methodProperties": {"scopes": ["creator-store-product:write"]},
+                "resource": {"$ref": "#/components/schemas/CreatorStoreProduct", "name": "CreatorStoreProduct"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 30},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
+            },
+        },
+        "openapi-id": "Cloud_UpdateCreatorStoreProduct",
     }
 
     _kwargs["json"] = body.to_dict()

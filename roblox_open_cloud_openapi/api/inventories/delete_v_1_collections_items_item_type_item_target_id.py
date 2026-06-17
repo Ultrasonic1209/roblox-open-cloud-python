@@ -24,6 +24,8 @@ def _get_kwargs(
             item_type=quote(str(item_type), safe=""),
             item_target_id=quote(str(item_target_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "delete_v1_collections_items_itemType_itemTargetId",
     }
 
     return _kwargs

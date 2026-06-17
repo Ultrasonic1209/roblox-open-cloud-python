@@ -22,6 +22,16 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             game_pass_id=quote(str(game_pass_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 10},
+                "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 10},
+            },
+            "x-roblox-scopes": [{"name": "game-pass:read", "targetResourceSpecifier": "universes"}],
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+        },
+        "openapi-id": "GamePasses_GetGamePassConfig",
     }
 
     return _kwargs

@@ -33,6 +33,15 @@ def _get_kwargs(
             game_pass_id=quote(str(game_pass_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-game-pass:manage"}],
+        },
+        "openapi-id": "get_legacy-game-internationalization_v1_game-passes_gamePassId_icons",
     }
 
     return _kwargs

@@ -28,6 +28,17 @@ def _get_kwargs(
         "url": "https://clientsettings.roblox.com/v1/client-version/{binary_type}".format(
             binary_type=quote(str(binary_type), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://clientsettings.roblox.com/v2/client-version/{binaryType}",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/metadata#clientsettings_get_v2_client_version__binaryType_",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_client-version_binaryType",
     }
 
     return _kwargs

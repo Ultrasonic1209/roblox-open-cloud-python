@@ -38,6 +38,17 @@ def _get_kwargs(
             game_pass_id=quote(str(game_pass_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-passes/{gamePassId}/name/language-codes/{languageCode}",
+                    "httpMethod": "PATCH",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/game-passes#patch_legacy_game_internationalization_v1_game_passes__gamePassId__name_language_codes__languageCode_",
+                }
+            ],
+        },
+        "openapi-id": "patch_v1_game-passes_gamePassId_name_language-codes_languageCode",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiUpdateGamePassNameRequest):

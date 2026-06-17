@@ -19,6 +19,21 @@ def _get_kwargs(
         "url": "/cloud/v2/creator-store-products/{creator_store_product_id}".format(
             creator_store_product_id=quote(str(creator_store_product_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "creator-store-product:read"}],
+            "x-roblox-docs": {
+                "category": "Monetization",
+                "methodProperties": {"scopes": ["creator-store-product:read"]},
+                "resource": {"$ref": "#/components/schemas/CreatorStoreProduct", "name": "CreatorStoreProduct"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 30},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
+            },
+        },
+        "openapi-id": "Cloud_GetCreatorStoreProduct",
     }
 
     return _kwargs

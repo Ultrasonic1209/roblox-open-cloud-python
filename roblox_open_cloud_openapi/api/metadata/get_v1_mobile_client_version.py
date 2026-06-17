@@ -26,6 +26,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://clientsettings.roblox.com/v1/mobile-client-version",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_mobile-client-version",
     }
 
     return _kwargs

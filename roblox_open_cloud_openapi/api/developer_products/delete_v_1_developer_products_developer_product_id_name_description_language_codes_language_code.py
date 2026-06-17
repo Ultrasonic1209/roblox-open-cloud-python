@@ -28,6 +28,17 @@ def _get_kwargs(
             developer_product_id=quote(str(developer_product_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/name-description/language-codes/{languageCode}",
+                    "httpMethod": "DELETE",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/developer-products#delete_legacy_game_internationalization_v1_developer_products__developerProductId__name_description_language_codes__languageCode_",
+                }
+            ],
+        },
+        "openapi-id": "delete_v1_developer-products_developerProductId_name-description_language-codes_languageCode",
     }
 
     return _kwargs

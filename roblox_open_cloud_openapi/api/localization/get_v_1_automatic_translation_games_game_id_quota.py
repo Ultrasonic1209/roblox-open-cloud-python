@@ -21,6 +21,8 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/automatic-translation/games/{game_id}/quota".format(
             game_id=quote(str(game_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_automatic-translation_games_gameId_quota",
     }
 
     return _kwargs

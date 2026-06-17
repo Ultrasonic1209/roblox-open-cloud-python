@@ -22,6 +22,22 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}:publishMessage".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-rate-limits": {
+                "description": "Messaging Service requests are subject to additional throttling limits described in the [Open Cloud guide for Messaging Service](https://create.roblox.com/docs/cloud/guides/usage-messaging#limits).",
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 5000},
+            },
+            "x-roblox-scopes": [{"name": "universe-messaging-service:publish"}],
+            "x-roblox-docs": {
+                "category": "Universes and places",
+                "methodProperties": {"scopes": ["universe-messaging-service:publish"]},
+                "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
+            },
+            "x-roblox-stability": "STABLE",
+        },
+        "openapi-id": "Cloud_PublishUniverseMessage",
     }
 
     _kwargs["json"] = body.to_dict()

@@ -21,6 +21,8 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
             bundle_id=quote(str(bundle_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "delete_v1_favorites_users_userId_bundles_bundleId_favorite",
     }
 
     return _kwargs

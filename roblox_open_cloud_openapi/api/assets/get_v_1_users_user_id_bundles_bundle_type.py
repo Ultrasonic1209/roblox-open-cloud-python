@@ -44,6 +44,8 @@ def _get_kwargs(
             bundle_type=quote(str(bundle_type), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_users_userId_bundles_bundleType",
     }
 
     return _kwargs

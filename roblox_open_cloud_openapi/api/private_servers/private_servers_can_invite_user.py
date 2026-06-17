@@ -19,6 +19,8 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/vip-server/can-invite/{user_id}".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "PrivateServers_CanInviteUser",
     }
 
     return _kwargs

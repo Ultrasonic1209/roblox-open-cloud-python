@@ -23,6 +23,8 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/plugins/{plugin_id}".format(
             plugin_id=quote(str(plugin_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "patch_v1_plugins_pluginId",
     }
 
     if isinstance(body, RobloxDevelopApiUpdatePluginRequest):

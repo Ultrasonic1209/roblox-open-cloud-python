@@ -21,6 +21,8 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/supported-languages/games/{game_id}/in-experience-language-selection".format(
             game_id=quote(str(game_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_supported-languages_games_gameId_in-experience-language-selection",
     }
 
     return _kwargs

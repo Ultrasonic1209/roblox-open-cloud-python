@@ -44,6 +44,21 @@ def _get_kwargs(
             forum_category_id=quote(str(forum_category_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "group-forum:read"}],
+            "x-roblox-docs": {
+                "category": "Users and groups",
+                "methodProperties": {"scopes": ["group-forum:read"]},
+                "resource": {"$ref": "#/components/schemas/GroupForumPost", "name": "GroupForumPost"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 150},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
+            },
+        },
+        "openapi-id": "Cloud_ListGroupForumPosts",
     }
 
     return _kwargs

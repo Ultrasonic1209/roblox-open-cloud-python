@@ -34,6 +34,21 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "asset:read"}],
+            "x-roblox-docs": {
+                "category": "Users and groups",
+                "methodProperties": {"scopes": ["asset:read"]},
+                "resource": {"$ref": "#/components/schemas/AssetQuota", "name": "AssetQuota"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 60},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 60},
+            },
+        },
+        "openapi-id": "Cloud_ListAssetQuotas",
     }
 
     return _kwargs

@@ -36,6 +36,16 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-scopes": [{"name": "universe:read", "targetResourceSpecifier": "universes"}],
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+        },
+        "openapi-id": "GameServers_GetFilterOptions",
     }
 
     return _kwargs

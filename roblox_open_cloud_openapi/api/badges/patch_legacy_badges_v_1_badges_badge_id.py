@@ -23,6 +23,15 @@ def _get_kwargs(
         "url": "/legacy-badges/v1/badges/{badge_id}".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-universe.badge:write"}],
+        },
+        "openapi-id": "patch_legacy-badges_v1_badges_badgeId",
     }
 
     if isinstance(body, RobloxBadgesApiUpdateBadgeRequest):

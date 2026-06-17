@@ -51,6 +51,32 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-cloud-api-operation-name": "List Data Stores",
+            "x-roblox-stability": "BETA",
+            "x-roblox-scopes": [{"name": "universe-datastores.control:list"}],
+            "x-roblox-cloud-api-operation": True,
+            "x-roblox-lua-equivalent": "DataStoreService:ListDataStoresAsync",
+            "x-roblox-cloud-api-operation-code-samples": [
+                {
+                    "language": "curl",
+                    "script": 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "prefix=Player" \\\n-d "limit=5"',
+                }
+            ],
+            "x-roblox-rate-limits": {
+                "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
+            },
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStores",
+                }
+            ],
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "Datastores_ListDatastoresAsync",
     }
 
     return _kwargs

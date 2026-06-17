@@ -33,6 +33,15 @@ def _get_kwargs(
             badge_id=quote(str(badge_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-badge:manage"}],
+        },
+        "openapi-id": "get_legacy-game-internationalization_v1_badges_badgeId_icons",
     }
 
     return _kwargs

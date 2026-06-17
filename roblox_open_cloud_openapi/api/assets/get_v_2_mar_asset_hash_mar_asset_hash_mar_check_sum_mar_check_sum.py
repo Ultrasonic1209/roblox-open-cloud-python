@@ -63,6 +63,8 @@ def _get_kwargs(
             mar_check_sum=quote(str(mar_check_sum), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v2_marAssetHash_marAssetHash_marCheckSum_marCheckSum",
     }
 
     _kwargs["headers"] = headers

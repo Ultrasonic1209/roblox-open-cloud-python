@@ -34,6 +34,23 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-cloud-api-operation-name": "Publish a Place",
+            "x-roblox-stability": "BETA",
+            "x-roblox-scopes": [{"name": "universe-places:write"}],
+            "x-roblox-cloud-api-operation": True,
+            "x-roblox-code-samples": [
+                {
+                    "language": "curl",
+                    "script": "curl --location --request POST 'https://apis.roblox.com/universes/v1/{universeId}/places/{placeId}/versions?versionType=Published' \n--header 'x-api-key: abc...' \n--header 'Content-Type: application/xml' \n--data-raw '<roblox></roblox>'\n",
+                }
+            ],
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 30}},
+            "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 30}},
+            "x-roblox-size-limit": 10485760,
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "Places_CreatePlaceVersionApiKey",
     }
 
     return _kwargs

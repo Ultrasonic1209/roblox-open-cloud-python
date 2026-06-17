@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 from urllib.parse import quote
 
 import httpx2
@@ -21,6 +21,8 @@ def _get_kwargs(
         "url": "https://groups.roblox.com/v1/groups/{group_id}/community-feature-freezes".format(
             group_id=quote(str(group_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_groups_groupId_community-feature-freezes",
     }
 
     return _kwargs
@@ -28,19 +30,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse | None:
+) -> RobloxGroupsApiGetCommunityFeatureFreezesResponse | None:
     if response.status_code == 200:
         response_200 = RobloxGroupsApiGetCommunityFeatureFreezesResponse.from_dict(response.json())
 
         return response_200
-
-    if response.status_code == 401:
-        response_401 = cast(Any, None)
-        return response_401
-
-    if response.status_code == 403:
-        response_403 = cast(Any, None)
-        return response_403
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -50,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse]:
+) -> Response[RobloxGroupsApiGetCommunityFeatureFreezesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,7 +57,7 @@ def sync_detailed(
     group_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse]:
+) -> Response[RobloxGroupsApiGetCommunityFeatureFreezesResponse]:
     """Gets the freeze status of the community features for a group.
 
     Args:
@@ -74,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse]
+        Response[RobloxGroupsApiGetCommunityFeatureFreezesResponse]
     """
 
     kwargs = _get_kwargs(
@@ -92,7 +86,7 @@ def sync(
     group_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse | None:
+) -> RobloxGroupsApiGetCommunityFeatureFreezesResponse | None:
     """Gets the freeze status of the community features for a group.
 
     Args:
@@ -103,7 +97,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse
+        RobloxGroupsApiGetCommunityFeatureFreezesResponse
     """
 
     return sync_detailed(
@@ -116,7 +110,7 @@ async def asyncio_detailed(
     group_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse]:
+) -> Response[RobloxGroupsApiGetCommunityFeatureFreezesResponse]:
     """Gets the freeze status of the community features for a group.
 
     Args:
@@ -127,7 +121,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse]
+        Response[RobloxGroupsApiGetCommunityFeatureFreezesResponse]
     """
 
     kwargs = _get_kwargs(
@@ -143,7 +137,7 @@ async def asyncio(
     group_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse | None:
+) -> RobloxGroupsApiGetCommunityFeatureFreezesResponse | None:
     """Gets the freeze status of the community features for a group.
 
     Args:
@@ -154,7 +148,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | RobloxGroupsApiGetCommunityFeatureFreezesResponse
+        RobloxGroupsApiGetCommunityFeatureFreezesResponse
     """
 
     return (

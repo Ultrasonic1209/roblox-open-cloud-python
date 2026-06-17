@@ -27,6 +27,8 @@ def _get_kwargs(
         "url": "https://friends.roblox.com/v1/user/{user_id}/multiget-are-friends".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_user_userId_multiget-are-friends",
     }
 
     if isinstance(body, RobloxFriendsApiMultigetAreFriendsRequestModel):

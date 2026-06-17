@@ -37,6 +37,24 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}/join-requests",
+                    "httpMethod": "GET",
+                    "description": "To get group role id.",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#Cloud_ListGroupJoinRequests",
+                },
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}/roles/{role_id}",
+                    "httpMethod": "GET",
+                    "description": "To get role and permissions information.",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#Cloud_GetGroupRole",
+                },
+            ],
+        },
+        "openapi-id": "get_v1_groups_groupId_membership",
     }
 
     return _kwargs

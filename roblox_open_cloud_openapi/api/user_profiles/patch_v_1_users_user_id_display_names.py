@@ -23,6 +23,8 @@ def _get_kwargs(
         "url": "https://users.roblox.com/v1/users/{user_id}/display-names".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "patch_v1_users_userId_display-names",
     }
 
     if isinstance(body, RobloxUsersApiSetDisplayNameRequest):

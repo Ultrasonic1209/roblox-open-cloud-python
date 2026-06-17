@@ -28,6 +28,16 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/toolbox-service/v2/assets:search",
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
+            },
+            "x-roblox-scopes": [{"name": "creator-store-product:read"}],
+        },
+        "openapi-id": "Toolbox_SearchCreatorStoreAssets",
     }
 
     if isinstance(body, None | SearchCreatorStoreAssetsRequestType0):

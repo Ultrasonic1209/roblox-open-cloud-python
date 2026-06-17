@@ -25,6 +25,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://privatemessages.roblox.com/v1/messages/mark-read",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_messages_mark-read",
     }
 
     if isinstance(body, RobloxPrivateMessagesApiModelsBatchMessagesRequest):

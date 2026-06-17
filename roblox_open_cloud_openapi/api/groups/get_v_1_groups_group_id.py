@@ -26,6 +26,23 @@ def _get_kwargs(
         "url": "https://groups.roblox.com/v1/groups/{group_id}".format(
             group_id=quote(str(group_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}",
+                    "httpMethod": "GET",
+                    "description": "For core group information.",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#Cloud_GetGroup",
+                },
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}/shout",
+                    "httpMethod": "GET",
+                    "description": "For the group shout information",
+                },
+            ],
+        },
+        "openapi-id": "get_v1_groups_groupId",
     }
 
     return _kwargs

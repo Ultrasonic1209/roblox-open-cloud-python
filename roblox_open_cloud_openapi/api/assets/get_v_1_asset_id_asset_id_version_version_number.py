@@ -82,6 +82,17 @@ def _get_kwargs(
             version_number=quote(str(version_number), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://assetdelivery.roblox.com/v2/assetId/{assetId}/version/{versionNumber}",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_assetId__assetId__version__versionNumber_",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_assetId_assetId_version_versionNumber",
     }
 
     _kwargs["headers"] = headers

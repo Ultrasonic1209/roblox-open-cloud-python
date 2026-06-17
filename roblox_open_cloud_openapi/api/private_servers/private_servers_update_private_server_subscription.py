@@ -26,6 +26,8 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/vip-servers/{id}/subscription".format(
             id=quote(str(id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "PrivateServers_UpdatePrivateServerSubscription",
     }
 
     if isinstance(body, PrivateServerUpdateSubscriptionRequest):

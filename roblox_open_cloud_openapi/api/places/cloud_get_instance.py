@@ -23,6 +23,22 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
             instance_id=quote(str(instance_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-long-running-operation-parameters": {
+                "metadata": {"$ref": "#/components/schemas/GetInstanceMetadata"},
+                "response": {"$ref": "#/components/schemas/Instance"},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "universe.place.instance:read"}],
+            "x-roblox-docs": {
+                "category": "Universes and places",
+                "methodProperties": {"scopes": ["universe.place.instance:read"]},
+                "resource": {"$ref": "#/components/schemas/Instance", "name": "Instance"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 45}},
+        },
+        "openapi-id": "Cloud_GetInstance",
     }
 
     return _kwargs

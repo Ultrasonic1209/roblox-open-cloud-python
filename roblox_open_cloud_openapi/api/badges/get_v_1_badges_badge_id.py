@@ -19,6 +19,8 @@ def _get_kwargs(
         "url": "https://badges.roblox.com/v1/badges/{badge_id}".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_badges_badgeId",
     }
 
     return _kwargs

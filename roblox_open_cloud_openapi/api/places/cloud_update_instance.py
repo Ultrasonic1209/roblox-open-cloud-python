@@ -35,6 +35,22 @@ def _get_kwargs(
             instance_id=quote(str(instance_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-long-running-operation-parameters": {
+                "metadata": {"$ref": "#/components/schemas/UpdateInstanceMetadata"},
+                "response": {"$ref": "#/components/schemas/Instance"},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "universe.place.instance:write"}],
+            "x-roblox-docs": {
+                "category": "Universes and places",
+                "methodProperties": {"scopes": ["universe.place.instance:write"]},
+                "resource": {"$ref": "#/components/schemas/Instance", "name": "Instance"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 45}},
+        },
+        "openapi-id": "Cloud_UpdateInstance",
     }
 
     _kwargs["json"] = body.to_dict()

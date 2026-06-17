@@ -26,6 +26,8 @@ def _get_kwargs(
         "url": "https://avatar.roblox.com/v3/outfits/{user_outfit_id}".format(
             user_outfit_id=quote(str(user_outfit_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "patch_v3_outfits_userOutfitId",
     }
 
     if isinstance(body, RobloxApiAvatarModelsOutfitUpdateModelV3):

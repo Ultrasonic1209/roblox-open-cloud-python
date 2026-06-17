@@ -19,6 +19,15 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/legacy-groups/v1/groups/policies",
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-group:manage"}],
+        },
+        "openapi-id": "post_legacy-groups_v1_groups_policies",
     }
 
     if isinstance(body, RobloxGroupsApiGroupPolicyRequest):

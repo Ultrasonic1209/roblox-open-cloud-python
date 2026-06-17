@@ -21,6 +21,8 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/source-language/games/{game_id}/language-with-locales".format(
             game_id=quote(str(game_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_source-language_games_gameId_language-with-locales",
     }
 
     return _kwargs

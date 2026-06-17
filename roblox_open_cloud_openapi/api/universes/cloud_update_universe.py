@@ -30,6 +30,21 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "universe:write"}],
+            "x-roblox-docs": {
+                "category": "Universes and places",
+                "methodProperties": {"scopes": ["universe:write"]},
+                "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
+            },
+            "x-roblox-stability": "STABLE",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+        },
+        "openapi-id": "Cloud_UpdateUniverse",
     }
 
     _kwargs["json"] = body.to_dict()

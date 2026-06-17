@@ -18,6 +18,8 @@ def _get_kwargs(
         "url": "https://catalog.roblox.com/v1/favorites/bundles/{bundle_id}/count".format(
             bundle_id=quote(str(bundle_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_favorites_bundles_bundleId_count",
     }
 
     return _kwargs

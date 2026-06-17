@@ -27,6 +27,8 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v2/places/{place_id}".format(
             place_id=quote(str(place_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "patch_v2_places_placeId",
     }
 
     if isinstance(body, RobloxApiDevelopModelsPlaceConfigurationModelV2):

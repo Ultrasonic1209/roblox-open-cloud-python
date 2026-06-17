@@ -23,6 +23,21 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}:restartServers".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "universe:write"}],
+            "x-roblox-docs": {
+                "category": "Universes and places",
+                "methodProperties": {"scopes": ["universe:write"]},
+                "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
+            },
+            "x-roblox-stability": "STABLE",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 30},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
+            },
+        },
+        "openapi-id": "Cloud_RestartUniverseServers",
     }
 
     _kwargs["json"] = body.to_dict()

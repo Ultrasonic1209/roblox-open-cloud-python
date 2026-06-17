@@ -19,6 +19,8 @@ def _get_kwargs(
         "url": "https://economy.roblox.com/v2/users/{user_id}/transaction-types".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "TransactionRecords_GetUsedTransactionTypes",
     }
 
     return _kwargs

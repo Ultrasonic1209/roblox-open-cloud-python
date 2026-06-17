@@ -14,6 +14,8 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://friends.roblox.com/v1/my/friends/count",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_my_friends_count",
     }
 
     return _kwargs

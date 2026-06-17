@@ -31,6 +31,25 @@ def _get_kwargs(
             asset_id=quote(str(asset_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-cloud-api-operation": True,
+            "x-roblox-cloud-api-operation-name": "List Asset Versions",
+            "x-roblox-stability": "BETA",
+            "x-roblox-scopes": [{"name": "asset:read"}],
+            "x-roblox-cloud-api-operation-code-samples": [
+                {
+                    "language": "List Asset Versions",
+                    "script": "curl --location 'https://apis.roblox.com/assets/v1/assets/{assetid}/versions?pageToken=&maxPageSize=' \\\n--header 'x-api-key: {apiKey}'",
+                }
+            ],
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 100}},
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+        },
+        "openapi-id": "listAssetVersions",
     }
 
     return _kwargs

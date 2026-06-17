@@ -30,6 +30,17 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-followings/v1/users/{userId}/universes/{universeId}",
+                    "httpMethod": "DELETE",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/interactions#delete_legacy_followings_v1_users__userId__universes__universeId_",
+                }
+            ],
+        },
+        "openapi-id": "delete_v1_users_userId_universes_universeId",
     }
 
     return _kwargs

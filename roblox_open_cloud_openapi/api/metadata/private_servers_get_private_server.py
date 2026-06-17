@@ -19,6 +19,8 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/vip-servers/{id}".format(
             id=quote(str(id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "PrivateServers_GetPrivateServer",
     }
 
     return _kwargs

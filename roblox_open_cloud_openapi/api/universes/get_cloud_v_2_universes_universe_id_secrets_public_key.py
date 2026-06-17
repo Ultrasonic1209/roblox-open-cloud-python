@@ -20,6 +20,16 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}/secrets/public-key".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-scopes": [{"name": "universe.secret:read", "description": "Required"}],
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "get_cloud_v2_universes_universeId_secrets_public-key",
     }
 
     return _kwargs

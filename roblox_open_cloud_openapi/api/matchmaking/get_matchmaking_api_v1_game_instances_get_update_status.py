@@ -24,6 +24,11 @@ def _get_kwargs(
         "method": "get",
         "url": "/matchmaking-api/v1/game-instances/get-update-status",
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "get_matchmaking-api_v1_game-instances_get-update-status",
     }
 
     return _kwargs

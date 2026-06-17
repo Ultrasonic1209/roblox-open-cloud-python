@@ -40,6 +40,17 @@ def _get_kwargs(
             game_pass_id=quote(str(game_pass_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-passes/{gamePassId}/icons",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/game-passes#get_legacy_game_internationalization_v1_game_passes__gamePassId__icons",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_game-passes_gamePassId_icons",
     }
 
     return _kwargs

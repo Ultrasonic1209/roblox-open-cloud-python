@@ -32,6 +32,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://accountinformation.roblox.com/v1/promotion-channels",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_promotion-channels",
     }
 
     return _kwargs

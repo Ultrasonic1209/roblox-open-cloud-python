@@ -28,6 +28,15 @@ def _get_kwargs(
             game_id=quote(str(game_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-universe:manage"}],
+        },
+        "openapi-id": "patch_legacy-game-internationalization_v1_source-language_games_gameId",
     }
 
     return _kwargs

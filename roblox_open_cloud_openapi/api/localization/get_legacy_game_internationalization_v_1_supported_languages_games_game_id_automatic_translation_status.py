@@ -21,6 +21,15 @@ def _get_kwargs(
         "url": "/legacy-game-internationalization/v1/supported-languages/games/{game_id}/automatic-translation-status".format(
             game_id=quote(str(game_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-universe:manage"}],
+        },
+        "openapi-id": "get_legacy-game-internationalization_v1_supported-languages_games_gameId_automatic-translation-status",
     }
 
     return _kwargs

@@ -28,6 +28,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://develop.roblox.com/v1/plugins",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_plugins",
     }
 
     return _kwargs

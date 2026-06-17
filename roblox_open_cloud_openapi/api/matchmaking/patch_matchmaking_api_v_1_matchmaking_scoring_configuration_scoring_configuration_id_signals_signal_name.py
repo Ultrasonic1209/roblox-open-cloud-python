@@ -29,6 +29,11 @@ def _get_kwargs(
             scoring_configuration_id=quote(str(scoring_configuration_id), safe=""),
             signal_name=quote(str(signal_name), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "patch_matchmaking-api_v1_matchmaking_scoring-configuration_scoringConfigurationId_signals_signalName",
     }
 
     if isinstance(body, UpdateCustomMatchmakingSignalRequest):

@@ -14,6 +14,8 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://accountsettings.roblox.com/v1/trade-value",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_trade-value",
     }
 
     return _kwargs

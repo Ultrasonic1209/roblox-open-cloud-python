@@ -20,6 +20,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://avatar.roblox.com/v1/avatar-rules",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_avatar-rules",
     }
 
     _kwargs["headers"] = headers

@@ -36,6 +36,17 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/name-description/games/{game_id}".format(
             game_id=quote(str(game_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/name-description/games/{gameId}",
+                    "httpMethod": "PATCH",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#patch_legacy_game_internationalization_v1_name_description_games__gameId_",
+                }
+            ],
+        },
+        "openapi-id": "patch_v1_name-description_games_gameId",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiUpdateNameDescriptionsRequest):

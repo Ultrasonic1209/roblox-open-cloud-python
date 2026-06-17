@@ -32,6 +32,8 @@ def _get_kwargs(
             consumer_type=quote(str(consumer_type), safe=""),
             consumer_id=quote(str(consumer_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "patch_v1_themes_consumerType_consumerId",
     }
 
     if isinstance(body, RobloxAccountSettingsApiThemeConfigurationRequest):

@@ -19,6 +19,20 @@ def _get_kwargs(
         "url": "/cloud/v2/groups/{group_id}".format(
             group_id=quote(str(group_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-docs": {
+                "category": "Users and groups",
+                "methodProperties": {"scopes": []},
+                "resource": {"$ref": "#/components/schemas/Group", "name": "Group"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 150},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
+            },
+        },
+        "openapi-id": "Cloud_GetGroup",
     }
 
     return _kwargs

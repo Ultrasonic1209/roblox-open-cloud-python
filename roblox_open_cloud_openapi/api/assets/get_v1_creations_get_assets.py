@@ -43,6 +43,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://itemconfiguration.roblox.com/v1/creations/get-assets",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_creations_get-assets",
     }
 
     return _kwargs

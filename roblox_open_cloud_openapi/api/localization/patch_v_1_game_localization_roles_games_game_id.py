@@ -25,6 +25,8 @@ def _get_kwargs(
         "url": "https://translationroles.roblox.com/v1/game-localization-roles/games/{game_id}".format(
             game_id=quote(str(game_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "patch_v1_game-localization-roles_games_gameId",
     }
 
     if isinstance(body, RobloxTranslationRolesApiUpdateRoleRequest):

@@ -14,6 +14,8 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "https://groups.roblox.com/v1/user/groups/primary",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "delete_v1_user_groups_primary",
     }
 
     return _kwargs

@@ -44,6 +44,24 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-long-running-operation-parameters": {
+                "metadata": {"$ref": "#/components/schemas/GenerateUserThumbnailMetadata"},
+                "response": {"$ref": "#/components/schemas/GenerateUserThumbnailResponse"},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-docs": {
+                "category": "Users and groups",
+                "methodProperties": {"scopes": []},
+                "resource": {"$ref": "#/components/schemas/User", "name": "User"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
+            },
+        },
+        "openapi-id": "Cloud_GenerateUserThumbnail",
     }
 
     return _kwargs

@@ -26,6 +26,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://locale.roblox.com/v1/locales/supported-locales-for-creators",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_locales_supported-locales-for-creators",
     }
 
     return _kwargs

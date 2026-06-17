@@ -26,14 +26,13 @@ class LaunchRestartRequest:
             objects.
             If empty for a place, restart all versions of that place.
             If null/omitted entirely, restart all places in the universe.
-        attributes (None | str | Unset): Optional JSON string included in the ServerLifecycleChanged payload published
-            to game servers.
-            Must be valid JSON and at most 500 bytes (UTF-8).
+        attributes (Any | Unset): Optional JSON object sent to game servers when the restart is scheduled.
+            Must be a JSON object and at most 500 bytes when serialized (UTF-8).
     """
 
     bleed_off_duration_minutes: int | None | Unset = UNSET
     places: LaunchRestartRequestPlacesType0 | None | Unset = UNSET
-    attributes: None | str | Unset = UNSET
+    attributes: Any | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.launch_restart_request_places_type_0 import LaunchRestartRequestPlacesType0
@@ -52,11 +51,7 @@ class LaunchRestartRequest:
         else:
             places = self.places
 
-        attributes: None | str | Unset
-        if isinstance(self.attributes, Unset):
-            attributes = UNSET
-        else:
-            attributes = self.attributes
+        attributes = self.attributes
 
         field_dict: dict[str, Any] = {}
 
@@ -102,14 +97,7 @@ class LaunchRestartRequest:
 
         places = _parse_places(d.pop("places", UNSET))
 
-        def _parse_attributes(data: object) -> None | str | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
-
-        attributes = _parse_attributes(d.pop("attributes", UNSET))
+        attributes = d.pop("attributes", UNSET)
 
         launch_restart_request = cls(
             bleed_off_duration_minutes=bleed_off_duration_minutes,

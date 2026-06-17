@@ -40,6 +40,21 @@ def _get_kwargs(
             entry_id=quote(str(entry_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-rate-limits": {
+                "description": "Data stores requests are subject to additional throttling limits described in the [Open Cloud guide for data stores](https://create.roblox.com/docs/cloud/guides/data-stores/throttling).",
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100000},
+            },
+            "x-roblox-scopes": [{"name": "universe-datastores.versions:list"}],
+            "x-roblox-docs": {
+                "category": "Data and memory stores",
+                "methodProperties": {"scopes": ["universe-datastores.versions:list"]},
+                "resource": {"$ref": "#/components/schemas/DataStoreEntry", "name": "DataStoreEntry"},
+            },
+            "x-roblox-stability": "STABLE",
+        },
+        "openapi-id": "Cloud_ListDataStoreEntryRevisions__Using_Universes_DataStores_Scopes",
     }
 
     return _kwargs

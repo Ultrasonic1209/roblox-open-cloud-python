@@ -31,6 +31,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://notifications.roblox.com/v2/push-notifications/metadata",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v2_push-notifications_metadata",
     }
 
     return _kwargs

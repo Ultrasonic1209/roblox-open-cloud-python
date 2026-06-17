@@ -25,6 +25,8 @@ def _get_kwargs(
             item_type=quote(str(item_type), safe=""),
             item_target_id=quote(str(item_target_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_users_userId_items_itemType_itemTargetId_is-owned",
     }
 
     return _kwargs

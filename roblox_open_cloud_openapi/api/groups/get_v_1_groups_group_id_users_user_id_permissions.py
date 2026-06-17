@@ -28,6 +28,24 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}/memberships",
+                    "httpMethod": "GET",
+                    "description": "Fetch the role associated with the user's membership first.",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#Cloud_ListGroupMemberships",
+                },
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}/roles",
+                    "httpMethod": "GET",
+                    "description": "Fetch the permissions from the role id.",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#Cloud_ListGroupRoles",
+                },
+            ],
+        },
+        "openapi-id": "get_v1_groups_groupId_users_userId_permissions",
     }
 
     return _kwargs

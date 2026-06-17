@@ -29,6 +29,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://notifications.roblox.com/v2/stream-notifications/get-recent",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v2_stream-notifications_get-recent",
     }
 
     return _kwargs

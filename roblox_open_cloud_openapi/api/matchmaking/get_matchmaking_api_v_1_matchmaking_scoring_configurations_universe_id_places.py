@@ -21,6 +21,11 @@ def _get_kwargs(
         "url": "/matchmaking-api/v1/matchmaking/scoring-configurations/{universe_id}/places".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "get_matchmaking-api_v1_matchmaking_scoring-configurations_universeId_places",
     }
 
     return _kwargs

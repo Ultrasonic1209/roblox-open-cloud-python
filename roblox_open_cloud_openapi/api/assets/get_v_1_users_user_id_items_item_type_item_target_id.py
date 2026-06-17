@@ -35,6 +35,17 @@ def _get_kwargs(
             item_type=quote(str(item_type), safe=""),
             item_target_id=quote(str(item_target_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_users_userId_items_itemType_itemTargetId",
     }
 
     return _kwargs

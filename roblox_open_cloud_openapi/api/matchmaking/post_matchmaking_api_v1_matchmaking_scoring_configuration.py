@@ -23,6 +23,11 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/matchmaking-api/v1/matchmaking/scoring-configuration",
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "post_matchmaking-api_v1_matchmaking_scoring-configuration",
     }
 
     if isinstance(body, CreateMatchmakingScoringConfigurationRequest):

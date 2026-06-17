@@ -16,6 +16,8 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://notifications.roblox.com/v2/stream-notifications/clear-unread",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v2_stream-notifications_clear-unread",
     }
 
     return _kwargs

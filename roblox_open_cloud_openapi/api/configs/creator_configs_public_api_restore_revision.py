@@ -25,6 +25,16 @@ def _get_kwargs(
             repository=quote(str(repository), safe=""),
             revision_id=quote(str(revision_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 10},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
+            },
+            "x-roblox-scopes": [{"name": "universe:write", "targetResourceSpecifier": "universes"}],
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+        },
+        "openapi-id": "CreatorConfigsPublicApi_RestoreRevision",
     }
 
     return _kwargs

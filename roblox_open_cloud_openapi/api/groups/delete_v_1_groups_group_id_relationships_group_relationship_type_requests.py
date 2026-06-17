@@ -25,6 +25,8 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             group_relationship_type=quote(str(group_relationship_type), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "delete_v1_groups_groupId_relationships_groupRelationshipType_requests",
     }
 
     if isinstance(body, RobloxGroupsApiRelationshipsRequest):

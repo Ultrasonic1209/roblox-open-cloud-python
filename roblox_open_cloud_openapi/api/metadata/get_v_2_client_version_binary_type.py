@@ -21,6 +21,8 @@ def _get_kwargs(
         "url": "https://clientsettings.roblox.com/v2/client-version/{binary_type}".format(
             binary_type=quote(str(binary_type), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v2_client-version_binaryType",
     }
 
     return _kwargs

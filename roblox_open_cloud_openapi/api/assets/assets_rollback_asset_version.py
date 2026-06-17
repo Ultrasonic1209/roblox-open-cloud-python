@@ -23,6 +23,25 @@ def _get_kwargs(
         "url": "/assets/v1/assets/{asset_id}/versions:rollback".format(
             asset_id=quote(str(asset_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-cloud-api-operation": True,
+            "x-roblox-cloud-api-operation-name": "Rollback Asset Version",
+            "x-roblox-stability": "BETA",
+            "x-roblox-scopes": [{"name": "asset:read"}, {"name": "asset:write"}],
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-cloud-api-operation-code-samples": [
+                {
+                    "language": "Rollback Asset Versions",
+                    "script": "curl --location 'https://apis.roblox.com/assets/v1/assets/{assetid}/versions:rollback' \\\n--header 'x-api-key: {apiKey}' \\\n--header 'Content-Type: application/json' \\\n--data '{\\\"assetVersion\\\":\\\"assets/{assetId}/versions/{versionNumber}\\\"}'",
+                }
+            ],
+            "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 100}},
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "Assets_RollbackAssetVersion",
     }
 
     if not isinstance(body, Unset):

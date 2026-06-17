@@ -13,6 +13,8 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://clientsettings.roblox.com/v1/installer-cdns",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_installer-cdns",
     }
 
     return _kwargs

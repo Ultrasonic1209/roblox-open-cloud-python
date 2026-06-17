@@ -25,6 +25,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://catalog.roblox.com/v1/catalog/items/details",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_catalog_items_details",
     }
 
     if isinstance(body, RobloxCatalogApiMultigetItemDetailsRequestModel):

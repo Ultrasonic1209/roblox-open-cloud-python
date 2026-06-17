@@ -34,6 +34,26 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [
+                {
+                    "description": "Grants access to read the target user&#x27;s private inventory.",
+                    "name": "user.inventory-item:read",
+                }
+            ],
+            "x-roblox-docs": {
+                "category": "Users and groups",
+                "methodProperties": {"scopes": []},
+                "resource": {"$ref": "#/components/schemas/InventoryItem", "name": "InventoryItem"},
+            },
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 20},
+            },
+        },
+        "openapi-id": "Cloud_ListInventoryItems",
     }
 
     return _kwargs

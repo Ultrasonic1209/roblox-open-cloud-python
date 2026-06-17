@@ -23,6 +23,15 @@ def _get_kwargs(
         "url": "/legacy-publish/v1/badges/{badge_id}/icon".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-badge:manage"}],
+        },
+        "openapi-id": "post_legacy-publish_v1_badges_badgeId_icon",
     }
 
     if not isinstance(body, Unset):

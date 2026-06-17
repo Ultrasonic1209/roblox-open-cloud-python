@@ -32,6 +32,17 @@ def _get_kwargs(
         "url": "https://groups.roblox.com/v1/groups/{group_id}/wall/posts".format(
             group_id=quote(str(group_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://groups.roblox.com/v2/groups/{groupId}/wall/posts",
+                    "httpMethod": "POST",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#groups_post_v2_groups__groupId__wall_posts",
+                }
+            ],
+        },
+        "openapi-id": "post_v1_groups_groupId_wall_posts",
     }
 
     if isinstance(body, RobloxGroupsApiCreateWallPostRequest):

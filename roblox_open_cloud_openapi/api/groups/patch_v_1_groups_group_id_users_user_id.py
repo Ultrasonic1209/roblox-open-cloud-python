@@ -32,6 +32,17 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}/memberships/{membership_id}",
+                    "httpMethod": "PATCH",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#Cloud_UpdateGroupMembership",
+                }
+            ],
+        },
+        "openapi-id": "patch_v1_groups_groupId_users_userId",
     }
 
     if isinstance(body, RobloxGroupsApiUpdateUserRoleRequest):

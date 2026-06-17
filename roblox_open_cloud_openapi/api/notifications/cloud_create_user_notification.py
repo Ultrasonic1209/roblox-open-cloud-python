@@ -22,6 +22,21 @@ def _get_kwargs(
         "url": "/cloud/v2/users/{user_id}/notifications".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "user.user-notification:write"}],
+            "x-roblox-docs": {
+                "category": "Users and groups",
+                "methodProperties": {"scopes": ["user.user-notification:write"]},
+                "resource": {"$ref": "#/components/schemas/UserNotification", "name": "UserNotification"},
+            },
+            "x-roblox-stability": "STABLE",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 4000},
+                "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 4000},
+            },
+        },
+        "openapi-id": "Cloud_CreateUserNotification",
     }
 
     _kwargs["json"] = body.to_dict()

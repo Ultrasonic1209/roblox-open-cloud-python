@@ -19,6 +19,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://publish.roblox.com/v1/audio/verify",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_audio_verify",
     }
 
     if isinstance(body, RobloxPublishApiVerifyAudioRequest):

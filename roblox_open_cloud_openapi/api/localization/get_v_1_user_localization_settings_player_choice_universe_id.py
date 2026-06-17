@@ -21,6 +21,8 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/user-localization-settings/player-choice/{universe_id}".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_user-localization-settings_player-choice_universeId",
     }
 
     return _kwargs

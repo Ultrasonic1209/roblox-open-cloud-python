@@ -19,6 +19,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://groups.roblox.com/v1/groups/create",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_groups_create",
     }
 
     if not isinstance(body, Unset):

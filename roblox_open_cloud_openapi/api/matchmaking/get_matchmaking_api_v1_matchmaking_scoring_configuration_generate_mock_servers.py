@@ -36,6 +36,11 @@ def _get_kwargs(
         "method": "get",
         "url": "/matchmaking-api/v1/matchmaking/scoring-configuration/generate-mock-servers",
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "get_matchmaking-api_v1_matchmaking_scoring-configuration_generate-mock-servers",
     }
 
     return _kwargs

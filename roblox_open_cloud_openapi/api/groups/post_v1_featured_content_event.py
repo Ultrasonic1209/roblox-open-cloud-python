@@ -29,6 +29,8 @@ def _get_kwargs(
         "method": "post",
         "url": "https://groups.roblox.com/v1/featured-content/event",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_featured-content_event",
     }
 
     return _kwargs

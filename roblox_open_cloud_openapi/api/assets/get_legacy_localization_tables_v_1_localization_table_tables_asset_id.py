@@ -19,6 +19,15 @@ def _get_kwargs(
         "url": "/legacy-localization-tables/v1/localization-table/tables/{asset_id}".format(
             asset_id=quote(str(asset_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-universe:manage"}],
+        },
+        "openapi-id": "get_legacy-localization-tables_v1_localization-table_tables_assetId",
     }
 
     return _kwargs

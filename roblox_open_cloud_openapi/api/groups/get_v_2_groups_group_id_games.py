@@ -61,6 +61,17 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://games.roblox.com/v2/groups/{groupId}/gamesV2",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#games_get_v2_groups__groupId__gamesV2",
+                }
+            ],
+        },
+        "openapi-id": "get_v2_groups_groupId_games",
     }
 
     return _kwargs

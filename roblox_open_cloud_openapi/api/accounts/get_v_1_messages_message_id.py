@@ -21,6 +21,8 @@ def _get_kwargs(
         "url": "https://privatemessages.roblox.com/v1/messages/{message_id}".format(
             message_id=quote(str(message_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_messages_messageId",
     }
 
     return _kwargs

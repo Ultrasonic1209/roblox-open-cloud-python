@@ -20,6 +20,16 @@ def _get_kwargs(
         "url": "/toolbox-service/v2/assets/{id}".format(
             id=quote(str(id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
+            },
+            "x-roblox-scopes": [{"name": "creator-store-product:read"}],
+        },
+        "openapi-id": "Toolbox_GetAssetDetails",
     }
 
     return _kwargs

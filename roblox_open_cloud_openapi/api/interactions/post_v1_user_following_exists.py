@@ -21,6 +21,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://friends.roblox.com/v1/user/following-exists",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_user_following-exists",
     }
 
     if isinstance(body, RobloxFriendsApiFollowingExistsRequestModel):

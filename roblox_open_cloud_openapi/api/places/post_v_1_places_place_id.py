@@ -30,6 +30,17 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/places/{place_id}".format(
             place_id=quote(str(place_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://develop.roblox.com/v2/places/{placeId}",
+                    "httpMethod": "PATCH",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/places#develop_patch_v2_places__placeId_",
+                }
+            ],
+        },
+        "openapi-id": "post_v1_places_placeId",
     }
 
     if isinstance(body, RobloxApiDevelopModelsPlaceConfigurationModel):

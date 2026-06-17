@@ -28,6 +28,17 @@ def _get_kwargs(
         "url": "https://followings.roblox.com/v2/users/{user_id}/universes".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-followings/v2/users/{userId}/universes",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/interactions#get_legacy_followings_v2_users__userId__universes",
+                }
+            ],
+        },
+        "openapi-id": "get_v2_users_userId_universes",
     }
 
     return _kwargs

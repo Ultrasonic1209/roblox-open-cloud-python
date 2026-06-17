@@ -29,6 +29,8 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             roleset_id=quote(str(roleset_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "patch_v1_groups_groupId_rolesets_rolesetId",
     }
 
     if isinstance(body, RobloxGroupsApiModelsRequestUpdateRoleSetRequest):

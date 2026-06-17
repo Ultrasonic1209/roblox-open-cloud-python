@@ -14,6 +14,8 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://trades.roblox.com/v1/trades/expire-outdated",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_trades_expire-outdated",
     }
 
     return _kwargs

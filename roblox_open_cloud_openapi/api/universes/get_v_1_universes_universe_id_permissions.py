@@ -28,6 +28,17 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/universes/{universe_id}/permissions".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-develop/v1/universes/{universeId}/permissions",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/universes#get_legacy_develop_v1_universes__universeId__permissions",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_universes_universeId_permissions",
     }
 
     return _kwargs

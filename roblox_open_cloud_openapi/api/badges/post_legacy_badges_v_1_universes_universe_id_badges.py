@@ -25,6 +25,15 @@ def _get_kwargs(
         "url": "/legacy-badges/v1/universes/{universe_id}/badges".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-universe.badge:manage-and-spend-robux"}],
+        },
+        "openapi-id": "post_legacy-badges_v1_universes_universeId_badges",
     }
 
     if not isinstance(body, Unset):

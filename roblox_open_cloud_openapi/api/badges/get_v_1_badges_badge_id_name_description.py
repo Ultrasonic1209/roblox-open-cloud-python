@@ -28,6 +28,17 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/badges/{badge_id}/name-description".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/badges/{badgeId}/name-description",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#get_legacy_game_internationalization_v1_badges__badgeId__name_description",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_badges_badgeId_name-description",
     }
 
     return _kwargs

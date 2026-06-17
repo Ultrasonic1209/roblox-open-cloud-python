@@ -30,6 +30,17 @@ def _get_kwargs(
         "url": "https://publish.roblox.com/v1/badges/{badge_id}/icon#PublishApi".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-publish/v1/badges/{badgeId}/icon",
+                    "httpMethod": "POST",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#post_legacy_publish_v1_badges__badgeId__icon",
+                }
+            ],
+        },
+        "openapi-id": "post_v1_badges_badgeId_icon#PublishApi",
     }
 
     if not isinstance(body, Unset):

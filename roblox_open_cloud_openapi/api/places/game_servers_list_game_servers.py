@@ -44,6 +44,16 @@ def _get_kwargs(
             version_number=quote(str(version_number), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-scopes": [{"name": "universe:read", "targetResourceSpecifier": "universes"}],
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+        },
+        "openapi-id": "GameServers_ListGameServers",
     }
 
     return _kwargs

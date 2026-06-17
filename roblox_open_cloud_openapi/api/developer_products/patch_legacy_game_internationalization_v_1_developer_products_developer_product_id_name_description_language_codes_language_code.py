@@ -31,6 +31,15 @@ def _get_kwargs(
             developer_product_id=quote(str(developer_product_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-developer-product:manage"}],
+        },
+        "openapi-id": "patch_legacy-game-internationalization_v1_developer-products_developerProductId_name-description_language-codes_languageCode",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiUpdateDeveloperProductNameDescriptionRequest):

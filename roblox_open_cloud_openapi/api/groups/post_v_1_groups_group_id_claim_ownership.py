@@ -19,6 +19,8 @@ def _get_kwargs(
         "url": "https://groups.roblox.com/v1/groups/{group_id}/claim-ownership".format(
             group_id=quote(str(group_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_groups_groupId_claim-ownership",
     }
 
     return _kwargs

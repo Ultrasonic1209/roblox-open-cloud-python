@@ -33,6 +33,22 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-long-running-operation-parameters": {
+                "metadata": {"$ref": "#/components/schemas/FlushMemoryStoreMetadata"},
+                "response": {"$ref": "#/components/schemas/FlushMemoryStoreResponse"},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "memory-store:flush"}],
+            "x-roblox-docs": {
+                "category": "Data and memory stores",
+                "methodProperties": {"scopes": ["memory-store:flush"]},
+                "resource": {"$ref": "#/components/schemas/MemoryStore", "name": "MemoryStore"},
+            },
+            "x-roblox-stability": "STABLE",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
+        },
+        "openapi-id": "Cloud_FlushMemoryStore",
     }
 
     return _kwargs

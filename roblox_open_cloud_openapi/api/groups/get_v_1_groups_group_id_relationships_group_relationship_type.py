@@ -33,6 +33,8 @@ def _get_kwargs(
             group_relationship_type=quote(str(group_relationship_type), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_groups_groupId_relationships_groupRelationshipType",
     }
 
     return _kwargs

@@ -25,6 +25,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://notifications.roblox.com/v2/push-notifications/register-android-native",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v2_push-notifications_register-android-native",
     }
 
     if isinstance(body, RobloxApiNotificationsModelsRegisterAndroidRequestModel):

@@ -28,6 +28,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://games.roblox.com/v1/games/games-product-info",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_games_games-product-info",
     }
 
     return _kwargs

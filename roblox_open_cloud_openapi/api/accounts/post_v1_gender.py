@@ -30,6 +30,17 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://accountinformation.roblox.com/v1/gender",
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://users.roblox.com/v1/gender",
+                    "httpMethod": "POST",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#users_post_v1_gender",
+                }
+            ],
+        },
+        "openapi-id": "post_v1_gender",
     }
 
     if isinstance(body, RobloxAccountInformationApiModelsGenderRequest):

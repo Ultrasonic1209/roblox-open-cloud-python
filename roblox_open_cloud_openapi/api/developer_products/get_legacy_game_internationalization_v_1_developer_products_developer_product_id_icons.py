@@ -33,6 +33,15 @@ def _get_kwargs(
             developer_product_id=quote(str(developer_product_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-developer-product:manage"}],
+        },
+        "openapi-id": "get_legacy-game-internationalization_v1_developer-products_developerProductId_icons",
     }
 
     return _kwargs

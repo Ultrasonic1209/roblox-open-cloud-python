@@ -46,6 +46,17 @@ def _get_kwargs(
             table_id=quote(str(table_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-localization-tables/v1/localization-table/tables/{tableId}/entries/translation-history",
+                    "httpMethod": "POST",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#post_legacy_localization_tables_v1_localization_table_tables__tableId__entries_translation_history",
+                }
+            ],
+        },
+        "openapi-id": "post_v1_localization-table_tables_tableId_entries_translation-history",
     }
 
     if isinstance(body, RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryRequest):

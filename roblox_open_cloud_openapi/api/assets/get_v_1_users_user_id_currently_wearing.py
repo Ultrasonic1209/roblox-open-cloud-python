@@ -24,6 +24,8 @@ def _get_kwargs(
         "url": "https://avatar.roblox.com/v1/users/{user_id}/currently-wearing".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_users_userId_currently-wearing",
     }
 
     _kwargs["headers"] = headers

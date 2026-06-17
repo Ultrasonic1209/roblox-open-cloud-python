@@ -19,6 +19,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://trades.roblox.com/v2/trades/send",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v2_trades_send",
     }
 
     if isinstance(body, RobloxTradesApiModelsV2TradeRequest):

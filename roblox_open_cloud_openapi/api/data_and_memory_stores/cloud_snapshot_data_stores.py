@@ -23,6 +23,21 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}/data-stores:snapshot".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-rate-limits": {
+                "description": "Data stores requests are subject to additional throttling limits described in the [Open Cloud guide for data stores](https://create.roblox.com/docs/cloud/guides/data-stores/throttling).",
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 60},
+            },
+            "x-roblox-scopes": [{"name": "universe-datastores.control:snapshot"}],
+            "x-roblox-docs": {
+                "category": "Data and memory stores",
+                "methodProperties": {"scopes": ["universe-datastores.control:snapshot"]},
+                "resource": {"$ref": "#/components/schemas/DataStore", "name": "DataStore"},
+            },
+            "x-roblox-stability": "STABLE",
+        },
+        "openapi-id": "Cloud_SnapshotDataStores",
     }
 
     _kwargs["json"] = body.to_dict()

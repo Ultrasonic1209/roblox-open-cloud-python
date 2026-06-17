@@ -19,6 +19,8 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/games/{universe_id}/votes/user".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "Voting_GetGameVoteStatusForUser",
     }
 
     return _kwargs

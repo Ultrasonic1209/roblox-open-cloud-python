@@ -64,6 +64,17 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-groups/v1/groups/{groupId}/audit-log",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_groups__groupId__audit_log",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_groups_groupId_audit-log",
     }
 
     return _kwargs

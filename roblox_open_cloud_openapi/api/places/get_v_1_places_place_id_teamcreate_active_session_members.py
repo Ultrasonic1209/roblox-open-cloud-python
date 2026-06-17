@@ -48,6 +48,17 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-develop/v1/places/{placeId}/teamcreate/active_session/members",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/places#get_legacy_develop_v1_places__placeId__teamcreate_active_session_members",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_places_placeId_teamcreate_active_session_members",
     }
 
     return _kwargs

@@ -16,6 +16,8 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://locale.roblox.com/v1/locales/user-localization-locus-supported-locales",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_locales_user-localization-locus-supported-locales",
     }
 
     return _kwargs

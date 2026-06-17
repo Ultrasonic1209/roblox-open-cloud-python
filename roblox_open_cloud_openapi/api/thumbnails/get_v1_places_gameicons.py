@@ -55,6 +55,11 @@ def _get_kwargs(
         "method": "get",
         "url": "https://thumbnails.roblox.com/v1/places/gameicons",
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-stability": "STABLE",
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "get_v1_places_gameicons",
     }
 
     return _kwargs

@@ -41,6 +41,29 @@ def _get_kwargs(
             task_id=quote(str(task_id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [
+                {"name": "universe.place.luau-execution-session:read"},
+                {"name": "universe.place.luau-execution-session:write"},
+            ],
+            "x-roblox-docs": {
+                "category": "Luau execution",
+                "methodProperties": {
+                    "scopes": [
+                        "universe.place.luau-execution-session:read",
+                        "universe.place.luau-execution-session:write",
+                    ]
+                },
+                "resource": {
+                    "$ref": "#/components/schemas/LuauExecutionSessionTask",
+                    "name": "LuauExecutionSessionTask",
+                },
+            },
+            "x-roblox-stability": "STABLE",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 200}},
+        },
+        "openapi-id": "Cloud_GetLuauExecutionSessionTask",
     }
 
     return _kwargs

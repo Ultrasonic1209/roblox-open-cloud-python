@@ -219,6 +219,23 @@ def _get_kwargs(
         "method": "get",
         "url": "/toolbox-service/v2/assets:search",
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/toolbox/v2/assets:search",
+                    "httpMethod": "POST",
+                    "description": "This endpoint is being deprecated in favor of using POST which has the same functionality but with better structured data & support for image-based search.",
+                }
+            ],
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
+            },
+            "x-roblox-scopes": [{"name": "creator-store-product:read"}],
+        },
+        "openapi-id": "Toolbox_SearchCreatorStoreAssetsDeprecated",
     }
 
     return _kwargs

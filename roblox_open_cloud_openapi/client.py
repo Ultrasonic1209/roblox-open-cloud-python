@@ -1,15 +1,70 @@
 import ssl
-from typing import Any
+import sys
+from typing import Any, Literal, TypedDict, cast
 
 import httpx2
 from attrs import define, evolve, field
+from httpx_limiter import AbstractRateLimiterRepository, AsyncMultiRateLimitedTransport, Rate
+from httpx_limiter.pyrate import PyrateAsyncLimiter
+from httpx_retries import Retry, RetryTransport
+
+assert not "httpx" in sys.modules, "httpx is not supported"
+assert "httpx2" in sys.modules, "httpx2 is required"
+
+sys.modules["httpx"] = sys.modules["httpx2"]
+for name, module in list(sys.modules.items()):
+    if name.startswith("httpx2.") and module is not None:
+        sys.modules.setdefault("httpx." + name.removeprefix("httpx2."), module)
+
+
+class RobloxRateLimit(TypedDict):
+    period: Literal["MINUTE"] | Literal["SECOND"]
+    maxInPeriod: int
+
+
+class AsyncRobloxOpenAPIDefinedRateLimiterRepository(AbstractRateLimiterRepository):
+    """Apply different rate limits based on the endpoint being requested, based off endpoint extension "x-roblox-rate-limits"."""
+
+    def get_identifier(self, request: httpx2.Request) -> str:
+        """Return the OpenAPI Endpoint ID as the identifier for rate limiting."""
+        identifier = cast(str | None, request.extensions.get("openapi-id"))
+
+        return identifier or (request.url.host + request.url.path + ":" + request.method)
+
+    def create_rate(self, request: httpx2.Request) -> Rate:
+        extensions = cast(dict[str, Any] | None, request.extensions.get("openapi-extensions"))
+
+        default_ret = Rate.create(magnitude=1000)
+        if not extensions:
+            return default_ret
+
+        roblox_rate_limits = cast(dict[str, RobloxRateLimit] | None, extensions.get("x-roblox-rate-limits"))
+
+        if not roblox_rate_limits:
+            return default_ret
+
+        api_key_limits = roblox_rate_limits.get("perApiKeyOwner")
+
+        if not api_key_limits:
+            return default_ret
+
+        magnitude = api_key_limits["maxInPeriod"]
+        duration = 60 if api_key_limits["maxInPeriod"] == "MINUTE" else 1
+
+        return Rate.create(magnitude=magnitude, duration=duration)
+
+    def create(self, request: httpx2.Request) -> PyrateAsyncLimiter:
+        """Create a rate limiter for the endpoint."""
+        rate = self.create_rate(request)
+
+        return PyrateAsyncLimiter.create(rate)
 
 
 @define
 class Client:
     """A class for keeping track of data related to the API
 
-    The following are accepted as keyword arguments and will be used to construct httpx2 Clients internally:
+        The following are accepted as keyword arguments and will be used to construct httpx2 Clients internally:
 
         ``base_url``: The base URL for the API, all requests are made to a relative path to this URL
 
@@ -29,9 +84,9 @@ class Client:
 
 
     Attributes:
-        raise_on_unexpected_status: Whether or not to raise an errors.UnexpectedStatus if the API returns a
-            status code that was not documented in the source OpenAPI document. Can also be provided as a keyword
-            argument to the constructor.
+            raise_on_unexpected_status: Whether or not to raise an errors.UnexpectedStatus if the API returns
+            a status code that was not documented in the source OpenAPI document. Can also be provided as a
+            keyword argument to the constructor.
     """
 
     raise_on_unexpected_status: bool = field(default=False, kw_only=True)
@@ -80,6 +135,8 @@ class Client:
     def get_httpx2_client(self) -> httpx2.Client:
         """Get the underlying httpx2.Client, constructing a new one if not previously set"""
         if self._client is None:
+            transport = RetryTransport(Retry(total=5, backoff_factor=0.5))
+
             self._client = httpx2.Client(
                 base_url=self._base_url,
                 cookies=self._cookies,
@@ -87,6 +144,7 @@ class Client:
                 timeout=self._timeout,
                 verify=self._verify_ssl,
                 follow_redirects=self._follow_redirects,
+                transport=transport,
                 **self._httpx2_args,
             )
         return self._client
@@ -111,6 +169,11 @@ class Client:
     def get_async_httpx2_client(self) -> httpx2.AsyncClient:
         """Get the underlying httpx2.AsyncClient, constructing a new one if not previously set"""
         if self._async_client is None:
+            transport = RetryTransport(
+                AsyncMultiRateLimitedTransport.create(repository=AsyncRobloxOpenAPIDefinedRateLimiterRepository()),
+                retry=Retry(total=5, backoff_factor=0.5),
+            )
+
             self._async_client = httpx2.AsyncClient(
                 base_url=self._base_url,
                 cookies=self._cookies,
@@ -118,6 +181,7 @@ class Client:
                 timeout=self._timeout,
                 verify=self._verify_ssl,
                 follow_redirects=self._follow_redirects,
+                transport=transport,
                 **self._httpx2_args,
             )
         return self._async_client
@@ -156,12 +220,12 @@ class AuthenticatedClient:
 
 
     Attributes:
-        raise_on_unexpected_status: Whether or not to raise an errors.UnexpectedStatus if the API returns a
-            status code that was not documented in the source OpenAPI document. Can also be provided as a keyword
-            argument to the constructor.
-        token: The token to use for authentication
-        prefix: The prefix to use for the Authorization header
-        auth_header_name: The name of the Authorization header
+            raise_on_unexpected_status: Whether or not to raise an errors.UnexpectedStatus if the API returns
+            a status code that was not documented in the source OpenAPI document. Can also be provided as a
+            keyword argument to the constructor.
+            token: The token to use for authentication
+            prefix: The prefix to use for the Authorization header
+            auth_header_name: The name of the Authorization header
     """
 
     raise_on_unexpected_status: bool = field(default=False, kw_only=True)
@@ -215,6 +279,8 @@ class AuthenticatedClient:
         """Get the underlying httpx2.Client, constructing a new one if not previously set"""
         if self._client is None:
             self._headers[self.auth_header_name] = f"{self.prefix} {self.token}" if self.prefix else self.token
+            transport = RetryTransport(Retry(total=5, backoff_factor=0.5))
+
             self._client = httpx2.Client(
                 base_url=self._base_url,
                 cookies=self._cookies,
@@ -222,6 +288,7 @@ class AuthenticatedClient:
                 timeout=self._timeout,
                 verify=self._verify_ssl,
                 follow_redirects=self._follow_redirects,
+                transport=transport,
                 **self._httpx2_args,
             )
         return self._client
@@ -247,6 +314,11 @@ class AuthenticatedClient:
         """Get the underlying httpx2.AsyncClient, constructing a new one if not previously set"""
         if self._async_client is None:
             self._headers[self.auth_header_name] = f"{self.prefix} {self.token}" if self.prefix else self.token
+            transport = RetryTransport(
+                AsyncMultiRateLimitedTransport.create(repository=AsyncRobloxOpenAPIDefinedRateLimiterRepository()),
+                retry=Retry(total=5, backoff_factor=0.5),
+            )
+
             self._async_client = httpx2.AsyncClient(
                 base_url=self._base_url,
                 cookies=self._cookies,
@@ -254,6 +326,7 @@ class AuthenticatedClient:
                 timeout=self._timeout,
                 verify=self._verify_ssl,
                 follow_redirects=self._follow_redirects,
+                transport=transport,
                 **self._httpx2_args,
             )
         return self._async_client

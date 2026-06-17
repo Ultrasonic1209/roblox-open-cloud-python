@@ -21,6 +21,15 @@ def _get_kwargs(
         "url": "/legacy-followings/v1/users/{user_id}/universes".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-universe.following:read"}],
+        },
+        "openapi-id": "get_legacy-followings_v1_users_userId_universes",
     }
 
     return _kwargs

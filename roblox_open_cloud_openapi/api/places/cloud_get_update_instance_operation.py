@@ -25,6 +25,12 @@ def _get_kwargs(
             instance_id=quote(str(instance_id), safe=""),
             operation_id=quote(str(operation_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 45}},
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+        },
+        "openapi-id": "Cloud_GetUpdateInstanceOperation",
     }
 
     return _kwargs

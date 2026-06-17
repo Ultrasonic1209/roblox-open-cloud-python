@@ -19,6 +19,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://accountsettings.roblox.com/v1/email",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_email",
     }
 
     if isinstance(body, RobloxAccountSettingsApiUpdateEmailRequest):

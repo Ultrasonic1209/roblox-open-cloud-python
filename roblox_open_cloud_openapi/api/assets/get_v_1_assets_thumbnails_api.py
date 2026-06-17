@@ -59,6 +59,11 @@ def _get_kwargs(
         "method": "get",
         "url": "https://thumbnails.roblox.com/v1/assets#ThumbnailsApi",
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-stability": "STABLE",
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "get_v1_assets#ThumbnailsApi",
     }
 
     _kwargs["headers"] = headers

@@ -26,6 +26,21 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
             version_id=quote(str(version_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "universe.place.luau-execution-session:write"}],
+            "x-roblox-docs": {
+                "category": "Luau execution",
+                "methodProperties": {"scopes": ["universe.place.luau-execution-session:write"]},
+                "resource": {
+                    "$ref": "#/components/schemas/LuauExecutionSessionTask",
+                    "name": "LuauExecutionSessionTask",
+                },
+            },
+            "x-roblox-stability": "STABLE",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5}},
+        },
+        "openapi-id": "Cloud_CreateLuauExecutionSessionTask__Using_Universes_Places",
     }
 
     _kwargs["json"] = body.to_dict()

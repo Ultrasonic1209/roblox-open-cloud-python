@@ -20,6 +20,25 @@ def _get_kwargs(
         "url": "/assets/v1/operations/{operation_id}".format(
             operation_id=quote(str(operation_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-cloud-api-operation": True,
+            "x-roblox-cloud-api-operation-name": "Get Operation",
+            "x-roblox-stability": "BETA",
+            "x-roblox-scopes": [{"name": "asset:read"}],
+            "x-roblox-cloud-api-operation-code-samples": [
+                {
+                    "language": "Get Operation",
+                    "script": "curl --location 'https://apis.roblox.com/assets/v1/operations/{operationId}' \\\n--header 'x-api-key: {apiKey}'\n",
+                }
+            ],
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 300},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 300},
+            },
+            "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 100}},
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "Assets_GetOperation",
     }
 
     return _kwargs

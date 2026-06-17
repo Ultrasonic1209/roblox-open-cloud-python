@@ -26,6 +26,8 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/vip-servers/{id}/permissions".format(
             id=quote(str(id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "PrivateServers_UpdatePrivateServerPermissions",
     }
 
     if isinstance(body, PrivateServerUpdatePermissionsRequest):

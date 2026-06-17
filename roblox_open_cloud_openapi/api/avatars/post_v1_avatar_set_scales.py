@@ -22,6 +22,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://avatar.roblox.com/v1/avatar/set-scales",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_avatar_set-scales",
     }
 
     if isinstance(body, RobloxWebResponsesAvatarScaleModel):

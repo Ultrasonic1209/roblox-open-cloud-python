@@ -38,6 +38,17 @@ def _get_kwargs(
             badge_id=quote(str(badge_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/badges/{badgeId}/description/language-codes/{languageCode}",
+                    "httpMethod": "PATCH",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#patch_legacy_game_internationalization_v1_badges__badgeId__description_language_codes__languageCode_",
+                }
+            ],
+        },
+        "openapi-id": "patch_v1_badges_badgeId_description_language-codes_languageCode",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiUpdateBadgeDescriptionRequest):

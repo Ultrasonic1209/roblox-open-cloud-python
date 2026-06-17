@@ -21,6 +21,8 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
             asset_id=quote(str(asset_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_favorites_users_userId_assets_assetId_favorite",
     }
 
     return _kwargs

@@ -16,6 +16,8 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://notifications.roblox.com/v2/push-notifications/deregister-current-device",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v2_push-notifications_deregister-current-device",
     }
 
     return _kwargs

@@ -23,6 +23,8 @@ def _get_kwargs(
         "url": "https://groups.roblox.com/v2/groups/{group_id}/wall/posts".format(
             group_id=quote(str(group_id), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v2_groups_groupId_wall_posts",
     }
 
     if isinstance(body, RobloxGroupsApiCreateWallPostRequest):

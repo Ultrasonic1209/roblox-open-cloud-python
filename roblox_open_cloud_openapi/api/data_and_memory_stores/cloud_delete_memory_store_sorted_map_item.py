@@ -22,6 +22,21 @@ def _get_kwargs(
             sorted_map_id=quote(str(sorted_map_id), safe=""),
             item_id=quote(str(item_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "x-roblox-scopes": [{"name": "memory-store.sorted-map:write"}],
+            "x-roblox-docs": {
+                "category": "Data and memory stores",
+                "methodProperties": {"scopes": ["memory-store.sorted-map:write"]},
+                "resource": {
+                    "$ref": "#/components/schemas/MemoryStoreSortedMapItem",
+                    "name": "MemoryStoreSortedMapItem",
+                },
+            },
+            "x-roblox-stability": "STABLE",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
+        },
+        "openapi-id": "Cloud_DeleteMemoryStoreSortedMapItem",
     }
 
     return _kwargs

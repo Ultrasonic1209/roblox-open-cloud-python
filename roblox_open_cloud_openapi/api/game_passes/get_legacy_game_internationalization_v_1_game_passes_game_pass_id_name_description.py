@@ -21,6 +21,15 @@ def _get_kwargs(
         "url": "/legacy-game-internationalization/v1/game-passes/{game_pass_id}/name-description".format(
             game_pass_id=quote(str(game_pass_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-scopes": [{"name": "legacy-game-pass:manage"}],
+        },
+        "openapi-id": "get_legacy-game-internationalization_v1_game-passes_gamePassId_name-description",
     }
 
     return _kwargs

@@ -23,6 +23,8 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://locale.roblox.com/v1/locales/set-user-supported-locale",
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "post_v1_locales_set-user-supported-locale",
     }
 
     if isinstance(body, RobloxLocaleApiSetSupportedLocaleForUserRequest):

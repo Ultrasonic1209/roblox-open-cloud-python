@@ -26,6 +26,8 @@ def _get_kwargs(
         "method": "get",
         "url": "https://games.roblox.com/v1/games/multiget-place-details",
         "params": params,
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_games_multiget-place-details",
     }
 
     return _kwargs

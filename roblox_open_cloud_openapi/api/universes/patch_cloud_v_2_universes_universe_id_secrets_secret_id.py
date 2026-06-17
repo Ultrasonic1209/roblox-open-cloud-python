@@ -25,6 +25,16 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             secret_id=quote(str(secret_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-scopes": [{"name": "universe.secret:write", "description": "Required"}],
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
+            },
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "patch_cloud_v2_universes_universeId_secrets_secretId",
     }
 
     if not isinstance(body, Unset):

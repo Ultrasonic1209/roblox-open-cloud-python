@@ -26,6 +26,8 @@ def _get_kwargs(
             game_id=quote(str(game_id), safe=""),
             role=quote(str(role), safe=""),
         ),
+        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+        "openapi-id": "get_v1_game-localization-roles_games_gameId_roles_role_assignees",
     }
 
     return _kwargs

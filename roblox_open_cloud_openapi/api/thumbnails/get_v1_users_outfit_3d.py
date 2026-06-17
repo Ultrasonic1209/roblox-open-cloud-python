@@ -26,6 +26,16 @@ def _get_kwargs(
         "method": "get",
         "url": "https://thumbnails.roblox.com/v1/users/outfit-3d",
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-scopes": [{"name": "thumbnail:read", "targetResourceSpecifier": ""}],
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "get_v1_users_outfit-3d",
     }
 
     return _kwargs

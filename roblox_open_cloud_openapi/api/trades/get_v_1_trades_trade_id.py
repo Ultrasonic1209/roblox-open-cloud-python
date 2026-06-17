@@ -26,6 +26,17 @@ def _get_kwargs(
         "url": "https://trades.roblox.com/v1/trades/{trade_id}".format(
             trade_id=quote(str(trade_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://trades.roblox.com/v2/trades/{tradeId}",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/trades#trades_get_v2_trades__tradeId_",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_trades_tradeId",
     }
 
     return _kwargs

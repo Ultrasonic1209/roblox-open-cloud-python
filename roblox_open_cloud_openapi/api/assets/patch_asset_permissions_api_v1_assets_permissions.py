@@ -24,6 +24,13 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "patch",
         "url": "/asset-permissions-api/v1/assets/permissions",
+        "openapi-extensions": {
+            "x-roblox-stability": "BETA",
+            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100}},
+            "x-roblox-scopes": [{"name": "asset-permissions:write", "targetResourceSpecifier": ""}],
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "patch_asset-permissions-api_v1_assets_permissions",
     }
 
     if isinstance(body, BatchGrantPermissionsRequest):

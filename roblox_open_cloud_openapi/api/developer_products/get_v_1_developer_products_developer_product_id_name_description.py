@@ -28,6 +28,17 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/developer-products/{developer_product_id}/name-description".format(
             developer_product_id=quote(str(developer_product_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/name-description",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/developer-products#get_legacy_game_internationalization_v1_developer_products__developerProductId__name_description",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_developer-products_developerProductId_name-description",
     }
 
     return _kwargs

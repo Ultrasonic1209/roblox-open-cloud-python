@@ -26,6 +26,17 @@ def _get_kwargs(
         "url": "https://trades.roblox.com/v1/users/{user_id}/can-trade-with".format(
             user_id=quote(str(user_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://trades.roblox.com/v2/users/{userId}/can-trade-with",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/trades#trades_get_v2_users__userId__can_trade_with",
+                }
+            ],
+        },
+        "openapi-id": "get_v1_users_userId_can-trade-with",
     }
 
     return _kwargs

@@ -56,6 +56,17 @@ def _get_kwargs(
             id=quote(str(id), safe=""),
         ),
         "params": params,
+        "openapi-extensions": {
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "x-roblox-recommended-alternatives": [
+                {
+                    "url": "https://apis.roblox.com/assets/v1/assets/{assetId}",
+                    "httpMethod": "GET",
+                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#Assets_GetAsset",
+                }
+            ],
+        },
+        "openapi-id": "get_v2_assets_id_versions",
     }
 
     _kwargs["headers"] = headers

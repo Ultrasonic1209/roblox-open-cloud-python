@@ -19,6 +19,25 @@ def _get_kwargs(
         "url": "/assets/v1/assets/{asset_id}:restore".format(
             asset_id=quote(str(asset_id), safe=""),
         ),
+        "openapi-extensions": {
+            "x-roblox-cloud-api-operation": True,
+            "x-roblox-cloud-api-operation-name": "Restore Asset",
+            "x-roblox-stability": "BETA",
+            "x-roblox-scopes": [{"name": "asset:read"}, {"name": "asset:write"}],
+            "x-roblox-cloud-api-operation-code-samples": [
+                {
+                    "language": "Restore Asset",
+                    "script": "curl --location 'https://apis.roblox.com/assets/v1/assets/{assetid}:restore' \\\n--header 'x-api-key: {apiKey}' \\\n--header 'Content-Type: application/json'",
+                }
+            ],
+            "x-roblox-rate-limits": {
+                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+            },
+            "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 100}},
+            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        },
+        "openapi-id": "Assets_RestoreAsset",
     }
 
     return _kwargs
