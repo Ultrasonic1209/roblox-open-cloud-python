@@ -92,7 +92,13 @@ class Client:
     raise_on_unexpected_status: bool = field(default=False, kw_only=True)
     _base_url: str = field(default="https://apis.roblox.com", kw_only=True, alias="base_url")
     _cookies: dict[str, str] = field(factory=dict, kw_only=True, alias="cookies")
-    _headers: dict[str, str] = field(factory=dict, kw_only=True, alias="headers")
+
+    _headers: dict[str, str] = field(
+        factory=dict,
+        converter=lambda h: {"User-Agent": "roblox_open_cloud_openapi/0.1.0"} | h,
+        kw_only=True,
+        alias="headers",
+    )
     _timeout: httpx2.Timeout | None = field(default=None, kw_only=True, alias="timeout")
     _verify_ssl: str | bool | ssl.SSLContext = field(default=True, kw_only=True, alias="verify_ssl")
     _follow_redirects: bool = field(default=False, kw_only=True, alias="follow_redirects")
@@ -231,7 +237,13 @@ class AuthenticatedClient:
     raise_on_unexpected_status: bool = field(default=False, kw_only=True)
     _base_url: str = field(default="https://apis.roblox.com", kw_only=True, alias="base_url")
     _cookies: dict[str, str] = field(factory=dict, kw_only=True, alias="cookies")
-    _headers: dict[str, str] = field(factory=dict, kw_only=True, alias="headers")
+
+    _headers: dict[str, str] = field(
+        factory=dict,
+        converter=lambda h: {"User-Agent": "roblox_open_cloud_openapi/0.1.0"} | h,
+        kw_only=True,
+        alias="headers",
+    )
     _timeout: httpx2.Timeout | None = field(default=None, kw_only=True, alias="timeout")
     _verify_ssl: str | bool | ssl.SSLContext = field(default=True, kw_only=True, alias="verify_ssl")
     _follow_redirects: bool = field(default=False, kw_only=True, alias="follow_redirects")

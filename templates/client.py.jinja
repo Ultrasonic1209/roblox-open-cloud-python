@@ -130,7 +130,8 @@ class Client:
     _base_url: str = field(alias="base_url")
     {% endif %}
     _cookies: dict[str, str] = field(factory=dict, kw_only=True, alias="cookies")
-    _headers: dict[str, str] = field(factory=dict, kw_only=True, alias="headers")
+
+    _headers: dict[str, str] = field(factory=dict, converter=lambda h: {"User-Agent": "{{ config.package_name_override}}/{{ config.package_version_override }}"} | h, kw_only=True, alias="headers")
     _timeout: httpx2.Timeout | None = field(default=None, kw_only=True, alias="timeout")
     _verify_ssl: str | bool | ssl.SSLContext = field(default=True, kw_only=True, alias="verify_ssl")
     _follow_redirects: bool = field(default=False, kw_only=True, alias="follow_redirects")
