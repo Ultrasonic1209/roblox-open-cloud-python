@@ -89,7 +89,7 @@ def sync_detailed(
 ) -> Response[ListGroupJoinRequestsResponse]:
     """List Group Join Requests
 
-     List join requests under a group.
+     List join requests under a group. Supports filtering.
 
     Args:
         group_id (str):
@@ -129,7 +129,7 @@ def sync(
 ) -> ListGroupJoinRequestsResponse | None:
     """List Group Join Requests
 
-     List join requests under a group.
+     List join requests under a group. Supports filtering.
 
     Args:
         group_id (str):
@@ -164,7 +164,7 @@ async def asyncio_detailed(
 ) -> Response[ListGroupJoinRequestsResponse]:
     """List Group Join Requests
 
-     List join requests under a group.
+     List join requests under a group. Supports filtering.
 
     Args:
         group_id (str):
@@ -202,7 +202,7 @@ async def asyncio(
 ) -> ListGroupJoinRequestsResponse | None:
     """List Group Join Requests
 
-     List join requests under a group.
+     List join requests under a group. Supports filtering.
 
     Args:
         group_id (str):

@@ -95,7 +95,7 @@ def sync_detailed(
 ) -> Response[ListGroupForumCommentsResponse]:
     """List Group Forum Comments
 
-     Lists forum comments on a group's forum post.
+     Lists forum comments on a group's forum post. Supports filtering.
 
     Args:
         group_id (str):
@@ -141,7 +141,7 @@ def sync(
 ) -> ListGroupForumCommentsResponse | None:
     """List Group Forum Comments
 
-     Lists forum comments on a group's forum post.
+     Lists forum comments on a group's forum post. Supports filtering.
 
     Args:
         group_id (str):
@@ -182,7 +182,7 @@ async def asyncio_detailed(
 ) -> Response[ListGroupForumCommentsResponse]:
     """List Group Forum Comments
 
-     Lists forum comments on a group's forum post.
+     Lists forum comments on a group's forum post. Supports filtering.
 
     Args:
         group_id (str):
@@ -226,7 +226,7 @@ async def asyncio(
 ) -> ListGroupForumCommentsResponse | None:
     """List Group Forum Comments
 
-     Lists forum comments on a group's forum post.
+     Lists forum comments on a group's forum post. Supports filtering.
 
     Args:
         group_id (str):

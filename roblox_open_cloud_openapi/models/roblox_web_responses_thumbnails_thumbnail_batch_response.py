@@ -25,6 +25,7 @@ class RobloxWebResponsesThumbnailsThumbnailBatchResponse:
             'InReview' = 2, 'Pending' = 3, 'Blocked' = 4, 'TemporarilyUnavailable' = 5]
         image_url (str | Unset):
         version (str | Unset):
+        thumbnail_source (str | Unset):
     """
 
     request_id: str | Unset = UNSET
@@ -34,6 +35,7 @@ class RobloxWebResponsesThumbnailsThumbnailBatchResponse:
     state: RobloxWebResponsesThumbnailsThumbnailBatchResponseState | Unset = UNSET
     image_url: str | Unset = UNSET
     version: str | Unset = UNSET
+    thumbnail_source: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         request_id = self.request_id
@@ -52,6 +54,8 @@ class RobloxWebResponsesThumbnailsThumbnailBatchResponse:
 
         version = self.version
 
+        thumbnail_source = self.thumbnail_source
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -69,6 +73,8 @@ class RobloxWebResponsesThumbnailsThumbnailBatchResponse:
             field_dict["imageUrl"] = image_url
         if version is not UNSET:
             field_dict["version"] = version
+        if thumbnail_source is not UNSET:
+            field_dict["thumbnailSource"] = thumbnail_source
 
         return field_dict
 
@@ -94,6 +100,8 @@ class RobloxWebResponsesThumbnailsThumbnailBatchResponse:
 
         version = d.pop("version", UNSET)
 
+        thumbnail_source = d.pop("thumbnailSource", UNSET)
+
         roblox_web_responses_thumbnails_thumbnail_batch_response = cls(
             request_id=request_id,
             error_code=error_code,
@@ -102,6 +110,7 @@ class RobloxWebResponsesThumbnailsThumbnailBatchResponse:
             state=state,
             image_url=image_url,
             version=version,
+            thumbnail_source=thumbnail_source,
         )
 
         return roblox_web_responses_thumbnails_thumbnail_batch_response

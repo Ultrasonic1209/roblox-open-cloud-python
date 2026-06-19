@@ -1,5 +1,7 @@
 import ssl
 import sys
+from collections.abc import Callable, Coroutine
+from http import HTTPStatus
 from typing import Any, Literal, TypedDict, cast
 
 import httpx2
@@ -58,6 +60,110 @@ class AsyncRobloxOpenAPIDefinedRateLimiterRepository(AbstractRateLimiterReposito
         rate = self.create_rate(request)
 
         return PyrateAsyncLimiter.create(rate)
+
+
+class CSRFHandlingTransport(httpx2.BaseTransport, httpx2.AsyncBaseTransport):
+    """
+    A transport that handles Roblox's CSRF header flow by automatically retrying requests
+    if they are responded with HTTP 403 (Forbidden) along with a new X-CSRF-Token
+
+    in any case, all CSRF-eligible requests are sent with the last recieved X-CSRF-Token
+    header injected
+    """
+
+    def __init__(self, transport: httpx2.BaseTransport | httpx2.AsyncBaseTransport | None = None):
+        if transport is not None:
+            self._sync_transport = transport if isinstance(transport, httpx2.BaseTransport) else None
+            self._async_transport = transport if isinstance(transport, httpx2.AsyncBaseTransport) else None
+        else:
+            self._sync_transport = httpx2.HTTPTransport()
+            self._async_transport = httpx2.AsyncHTTPTransport()
+
+        self.__X_CSRF_TOKEN = None
+
+    @staticmethod
+    def _can_use_csrf(request: httpx2.Request) -> bool:
+        """
+        Returns whether the request should be subject to this transport's logic
+        """
+
+        return request.method in ("POST", "PUT", "PATCH", "DELETE")
+
+    def close(self) -> None:
+        """
+        Closes this transport.
+        """
+        if self._sync_transport is not None:
+            self._sync_transport.close()
+
+    async def aclose(self) -> None:
+        """
+        Closes this transport.
+        """
+        if self._async_transport is not None:
+            await self._async_transport.aclose()
+
+    def _handle_request_with_csrf(
+        self, request: httpx2.Request, handle_request: Callable[..., httpx2.Response]
+    ) -> httpx2.Response:
+
+        if self.__X_CSRF_TOKEN:
+            request.headers["X-CSRF-Token"] = self.__X_CSRF_TOKEN
+
+        response = handle_request(request)
+
+        return response
+
+    async def _handle_request_with_csrf_async(
+        self, request: httpx2.Request, handle_request: Callable[..., Coroutine[Any, Any, httpx2.Response]]
+    ) -> httpx2.Response:
+
+        if self.__X_CSRF_TOKEN:
+            request.headers["X-CSRF-Token"] = self.__X_CSRF_TOKEN
+
+        response = await handle_request(request)
+
+        return response
+
+    def handle_request(self, request: httpx2.Request) -> httpx2.Response:
+        if self._sync_transport is None:
+            raise RuntimeError(
+                "This transport was initalised with an underlying AsyncBaseTransport, so it cannot accept synchronous requests"
+            )
+
+        if self._can_use_csrf(request):
+            response = self._handle_request_with_csrf(request, self._sync_transport.handle_request)
+
+            if x_csrf_token := response.headers.get("X-CSRF-Token"):
+                is_new_csrf = x_csrf_token != self.__X_CSRF_TOKEN
+                self.__X_CSRF_TOKEN = x_csrf_token
+                if is_new_csrf and (response.status_code == HTTPStatus.FORBIDDEN):
+                    response = self._handle_request_with_csrf(request, self._sync_transport.handle_request)
+        else:
+            response = self._sync_transport.handle_request(request)
+
+        return response
+
+    async def handle_async_request(self, request: httpx2.Request) -> httpx2.Response:
+        if self._async_transport is None:
+            raise RuntimeError(
+                "This transport was initalised with an underlying BaseTransport, so it cannot accept asynchronous requests"
+            )
+
+        if self._can_use_csrf(request):
+            response = await self._handle_request_with_csrf_async(request, self._async_transport.handle_async_request)
+
+            if x_csrf_token := response.headers.get("X-CSRF-Token"):
+                is_new_csrf = x_csrf_token != self.__X_CSRF_TOKEN
+                self.__X_CSRF_TOKEN = x_csrf_token
+                if is_new_csrf and (response.status_code == HTTPStatus.FORBIDDEN):
+                    response = await self._handle_request_with_csrf_async(
+                        request, self._async_transport.handle_async_request
+                    )
+        else:
+            response = await self._async_transport.handle_async_request(request)
+
+        return response
 
 
 @define
@@ -141,7 +247,7 @@ class Client:
     def get_httpx2_client(self) -> httpx2.Client:
         """Get the underlying httpx2.Client, constructing a new one if not previously set"""
         if self._client is None:
-            transport = RetryTransport(Retry(total=5, backoff_factor=0.5))
+            transport = CSRFHandlingTransport(RetryTransport(retry=Retry(total=5, backoff_factor=0.5)))
 
             self._client = httpx2.Client(
                 base_url=self._base_url,
@@ -175,9 +281,13 @@ class Client:
     def get_async_httpx2_client(self) -> httpx2.AsyncClient:
         """Get the underlying httpx2.AsyncClient, constructing a new one if not previously set"""
         if self._async_client is None:
-            transport = RetryTransport(
-                AsyncMultiRateLimitedTransport.create(repository=AsyncRobloxOpenAPIDefinedRateLimiterRepository()),
-                retry=Retry(total=5, backoff_factor=0.5),
+            transport = AsyncMultiRateLimitedTransport(
+                repository=AsyncRobloxOpenAPIDefinedRateLimiterRepository(),
+                transport=CSRFHandlingTransport(
+                    RetryTransport(
+                        retry=Retry(total=5, backoff_factor=0.5),
+                    )
+                ),
             )
 
             self._async_client = httpx2.AsyncClient(
@@ -291,7 +401,7 @@ class AuthenticatedClient:
         """Get the underlying httpx2.Client, constructing a new one if not previously set"""
         if self._client is None:
             self._headers[self.auth_header_name] = f"{self.prefix} {self.token}" if self.prefix else self.token
-            transport = RetryTransport(Retry(total=5, backoff_factor=0.5))
+            transport = CSRFHandlingTransport(RetryTransport(retry=Retry(total=5, backoff_factor=0.5)))
 
             self._client = httpx2.Client(
                 base_url=self._base_url,
@@ -326,9 +436,13 @@ class AuthenticatedClient:
         """Get the underlying httpx2.AsyncClient, constructing a new one if not previously set"""
         if self._async_client is None:
             self._headers[self.auth_header_name] = f"{self.prefix} {self.token}" if self.prefix else self.token
-            transport = RetryTransport(
-                AsyncMultiRateLimitedTransport.create(repository=AsyncRobloxOpenAPIDefinedRateLimiterRepository()),
-                retry=Retry(total=5, backoff_factor=0.5),
+            transport = AsyncMultiRateLimitedTransport(
+                repository=AsyncRobloxOpenAPIDefinedRateLimiterRepository(),
+                transport=CSRFHandlingTransport(
+                    RetryTransport(
+                        retry=Retry(total=5, backoff_factor=0.5),
+                    )
+                ),
             )
 
             self._async_client = httpx2.AsyncClient(

@@ -88,7 +88,7 @@ def sync_detailed(
 ) -> Response[ListGroupMembershipsResponse]:
     """List Group Memberships
 
-     List group members in a group.
+     List group members in a group. Supports filtering.
 
     Args:
         group_id (str):
@@ -128,7 +128,7 @@ def sync(
 ) -> ListGroupMembershipsResponse | None:
     """List Group Memberships
 
-     List group members in a group.
+     List group members in a group. Supports filtering.
 
     Args:
         group_id (str):
@@ -163,7 +163,7 @@ async def asyncio_detailed(
 ) -> Response[ListGroupMembershipsResponse]:
     """List Group Memberships
 
-     List group members in a group.
+     List group members in a group. Supports filtering.
 
     Args:
         group_id (str):
@@ -201,7 +201,7 @@ async def asyncio(
 ) -> ListGroupMembershipsResponse | None:
     """List Group Memberships
 
-     List group members in a group.
+     List group members in a group. Supports filtering.
 
     Args:
         group_id (str):

@@ -23,7 +23,7 @@ class RobloxFriendsApiFriendRequest:
         origin_source_type (RobloxFriendsApiFriendRequestOriginSourceType | Unset): The origin source type associated
             with the friend request. ['Unknown' = 0, 'PlayerSearch' = 1, 'QrCode' = 2, 'InGame' = 3, 'UserProfile' = 4,
             'QqContactImporter' = 5, 'WeChatContactImporter' = 6, 'ProfileShare' = 7, 'PhoneContactImporter' = 8,
-            'FriendRecommendations' = 9, 'UserCommunities' = 10]
+            'FriendRecommendations' = 9, 'UserCommunities' = 10, 'TrustedFriend' = 11]
         contact_name (str | Unset): The contact name associated with the friend request.
         sender_nickname (str | Unset): The nickname associated with the friend request.
     """

@@ -101,7 +101,7 @@ def sync_detailed(
 ) -> Response[ListGroupForumPostsResponse]:
     """List Group Forum Posts
 
-     Lists forum posts in the group's forum category.
+     Lists forum posts in the group's forum category. Supports filtering.
 
     Args:
         group_id (str):
@@ -147,7 +147,7 @@ def sync(
 ) -> ListGroupForumPostsResponse | None:
     """List Group Forum Posts
 
-     Lists forum posts in the group's forum category.
+     Lists forum posts in the group's forum category. Supports filtering.
 
     Args:
         group_id (str):
@@ -188,7 +188,7 @@ async def asyncio_detailed(
 ) -> Response[ListGroupForumPostsResponse]:
     """List Group Forum Posts
 
-     Lists forum posts in the group's forum category.
+     Lists forum posts in the group's forum category. Supports filtering.
 
     Args:
         group_id (str):
@@ -232,7 +232,7 @@ async def asyncio(
 ) -> ListGroupForumPostsResponse | None:
     """List Group Forum Posts
 
-     Lists forum posts in the group's forum category.
+     Lists forum posts in the group's forum category. Supports filtering.
 
     Args:
         group_id (str):
