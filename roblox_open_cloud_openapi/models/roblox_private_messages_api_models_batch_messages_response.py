@@ -47,7 +47,7 @@ class RobloxPrivateMessagesApiModelsBatchMessagesResponse:
             RobloxPrivateMessagesApiModelsFailedMessageResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _failed_messages = d.pop("failedMessages", UNSET)
         failed_messages: list[RobloxPrivateMessagesApiModelsFailedMessageResponse] | Unset = UNSET
         if _failed_messages is not UNSET:

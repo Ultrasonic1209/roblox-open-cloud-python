@@ -33,7 +33,7 @@ class RobloxGameInternationalizationApiUpdateBadgeDescriptionResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         description = d.pop("description", UNSET)
 
         roblox_game_internationalization_api_update_badge_description_response = cls(

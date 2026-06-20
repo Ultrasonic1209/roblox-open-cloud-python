@@ -59,7 +59,7 @@ class RobloxClientSettingsApiModelsResponseAndroidBinaryResponse:
             RobloxClientSettingsApiModelsResponseAndroidBinaryLibraryNames,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         module_name = d.pop("moduleName", UNSET)
 
         _library_names = d.pop("libraryNames", UNSET)

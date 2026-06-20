@@ -55,7 +55,7 @@ class RobloxTwoStepVerificationApiUserConfigurationMethod:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _media_type = d.pop("mediaType", UNSET)
         media_type: RobloxTwoStepVerificationApiUserConfigurationMethodMediaType | Unset
         if isinstance(_media_type, Unset):

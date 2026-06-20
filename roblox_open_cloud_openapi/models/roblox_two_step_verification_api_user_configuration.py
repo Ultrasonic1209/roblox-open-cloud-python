@@ -61,7 +61,7 @@ class RobloxTwoStepVerificationApiUserConfiguration:
             RobloxTwoStepVerificationApiUserConfigurationMethod,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _primary_media_type = d.pop("primaryMediaType", UNSET)
         primary_media_type: RobloxTwoStepVerificationApiUserConfigurationPrimaryMediaType | Unset
         if isinstance(_primary_media_type, Unset):

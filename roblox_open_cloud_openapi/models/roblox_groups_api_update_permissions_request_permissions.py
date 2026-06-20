@@ -225,7 +225,7 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         delete_from_wall = d.pop("DeleteFromWall", UNSET)
 
         post_to_wall = d.pop("PostToWall", UNSET)

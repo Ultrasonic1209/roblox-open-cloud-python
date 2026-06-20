@@ -48,7 +48,7 @@ class SnapshotDataStoresResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         new_snapshot_taken = d.pop("newSnapshotTaken", UNSET)
 
         _latest_snapshot_time = d.pop("latestSnapshotTime", UNSET)

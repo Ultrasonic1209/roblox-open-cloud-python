@@ -53,7 +53,7 @@ class ListAssetQuotasResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.asset_quota import AssetQuota
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _asset_quotas = d.pop("assetQuotas", UNSET)
         asset_quotas: list[AssetQuota] | Unset = UNSET
         if _asset_quotas is not UNSET:

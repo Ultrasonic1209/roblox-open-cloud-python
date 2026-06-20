@@ -51,7 +51,7 @@ class RobloxApiAvatarModelsAvatarPageResponseRobloxApiAvatarModelsOutfitModel:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_avatar_models_outfit_model import RobloxApiAvatarModelsOutfitModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[RobloxApiAvatarModelsOutfitModel] | Unset = UNSET
         if _data is not UNSET:

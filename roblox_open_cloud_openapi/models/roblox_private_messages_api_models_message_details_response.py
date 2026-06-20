@@ -108,7 +108,7 @@ class RobloxPrivateMessagesApiModelsMessageDetailsResponse:
             RobloxPrivateMessagesApiModelsVerifiedSkinnyUserResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         _sender = d.pop("sender", UNSET)

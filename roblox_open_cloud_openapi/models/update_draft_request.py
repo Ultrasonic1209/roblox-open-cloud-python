@@ -85,7 +85,7 @@ class UpdateDraftRequest:
         from ..models.conditional_rules_payload import ConditionalRulesPayload
         from ..models.update_draft_request_entries_type_0 import UpdateDraftRequestEntriesType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_draft_hash(data: object) -> None | str | Unset:
             if data is None:

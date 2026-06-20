@@ -37,7 +37,7 @@ class RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent
             RobloxAuthenticationApiModelsRequestAuditContentValue,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         roblox_authentication_api_models_request_audit_system_content_captured_audit_content = cls()
 
         additional_properties = {}

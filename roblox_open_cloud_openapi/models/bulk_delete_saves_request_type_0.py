@@ -53,7 +53,7 @@ class BulkDeleteSavesRequestType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.delete_save_request_type_0 import DeleteSaveRequestType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_targets(data: object) -> list[DeleteSaveRequestType0 | None] | None:
             if data is None:

@@ -56,7 +56,7 @@ class RobloxLocalizationtablesLocalizationtablesV1ChangeAgent:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _change_agent_type = d.pop("ChangeAgentType", UNSET)
         change_agent_type: RobloxLocalizationtablesLocalizationtablesV1ChangeAgentChangeAgentType | Unset
         if isinstance(_change_agent_type, Unset):

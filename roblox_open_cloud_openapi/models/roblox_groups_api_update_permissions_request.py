@@ -46,7 +46,7 @@ class RobloxGroupsApiUpdatePermissionsRequest:
             RobloxGroupsApiUpdatePermissionsRequestPermissions,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _permissions = d.pop("permissions", UNSET)
         permissions: RobloxGroupsApiUpdatePermissionsRequestPermissions | Unset
         if isinstance(_permissions, Unset):

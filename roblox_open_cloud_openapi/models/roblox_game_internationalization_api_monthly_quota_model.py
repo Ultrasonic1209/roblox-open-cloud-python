@@ -55,7 +55,7 @@ class RobloxGameInternationalizationApiMonthlyQuotaModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _previous_refresh_date = d.pop("previousRefreshDate", UNSET)
         previous_refresh_date: datetime.datetime | Unset
         if isinstance(_previous_refresh_date, Unset):

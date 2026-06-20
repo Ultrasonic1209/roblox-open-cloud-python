@@ -64,7 +64,7 @@ class MatchmakingServerAttributeDefaultValue:
         from ..models.matchmaking_attribute_reference import MatchmakingAttributeReference
         from ..models.matchmaking_attribute_value import MatchmakingAttributeValue
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _source_case = d.pop("sourceCase", UNSET)
         source_case: MatchmakingServerAttributeDefaultValueSourceCase | Unset
         if isinstance(_source_case, Unset):

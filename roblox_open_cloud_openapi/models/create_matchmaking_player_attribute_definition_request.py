@@ -77,7 +77,7 @@ class CreateMatchmakingPlayerAttributeDefinitionRequest:
         from ..models.matchmaking_attribute_value import MatchmakingAttributeValue
         from ..models.matchmaking_attribute_value_location import MatchmakingAttributeValueLocation
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         universe_id = d.pop("universeId", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:

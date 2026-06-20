@@ -97,7 +97,7 @@ class RobloxGroupsApiGroupConfigurationDisplayOptionsResponse:
         )
         from ..models.roblox_groups_api_role_configuration_response import RobloxGroupsApiRoleConfigurationResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _group_configuration = d.pop("groupConfiguration", UNSET)
         group_configuration: RobloxGroupsApiGroupConfigurationResponse | Unset
         if isinstance(_group_configuration, Unset):

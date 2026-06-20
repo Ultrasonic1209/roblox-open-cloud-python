@@ -48,7 +48,7 @@ class ListGamePassConfigsByUniverseResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.game_pass_config_v2 import GamePassConfigV2
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         game_passes = []
         _game_passes = d.pop("gamePasses")
         for game_passes_item_data in _game_passes:

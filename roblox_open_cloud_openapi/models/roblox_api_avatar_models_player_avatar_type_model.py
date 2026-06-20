@@ -38,7 +38,7 @@ class RobloxApiAvatarModelsPlayerAvatarTypeModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _player_avatar_type = d.pop("playerAvatarType", UNSET)
         player_avatar_type: RobloxApiAvatarModelsPlayerAvatarTypeModelPlayerAvatarType | Unset
         if isinstance(_player_avatar_type, Unset):

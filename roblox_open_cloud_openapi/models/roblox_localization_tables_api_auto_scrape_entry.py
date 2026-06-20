@@ -62,7 +62,7 @@ class RobloxLocalizationTablesApiAutoScrapeEntry:
             RobloxLocalizationTablesApiAutoScrapeEntryMetadata,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         context = d.pop("context", UNSET)
 
         source = d.pop("source", UNSET)

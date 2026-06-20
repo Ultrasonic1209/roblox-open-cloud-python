@@ -59,7 +59,7 @@ class RpnTokenDto:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.rpn_operand_dto import RpnOperandDto
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_operator(data: object) -> None | str | Unset:
             if data is None:

@@ -164,7 +164,7 @@ class TransactionUsedTypesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         has_purchase = d.pop("HasPurchase", UNSET)
 
         has_sale = d.pop("HasSale", UNSET)

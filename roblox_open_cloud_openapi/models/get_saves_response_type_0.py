@@ -58,7 +58,7 @@ class GetSavesResponseType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.hydrated_save_type_0 import HydratedSaveType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         total_count = d.pop("totalCount")
 
         def _parse_saves(data: object) -> list[HydratedSaveType0 | None] | None:

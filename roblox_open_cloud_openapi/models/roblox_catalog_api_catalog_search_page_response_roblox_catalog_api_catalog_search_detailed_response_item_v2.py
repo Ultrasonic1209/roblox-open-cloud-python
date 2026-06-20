@@ -76,7 +76,7 @@ class RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDeta
         )
         from ..models.roblox_catalog_api_elasticsearch_debug_info import RobloxCatalogApiElasticsearchDebugInfo
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         keyword = d.pop("keyword", UNSET)
 
         _elasticsearch_debug_info = d.pop("elasticsearchDebugInfo", UNSET)

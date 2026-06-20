@@ -70,7 +70,7 @@ class RobloxFriendsApiModelsResponseUserPresenceResponse:
             RobloxFriendsApiModelsResponseUserPresenceResponseModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _user_presence = d.pop("userPresence", UNSET)
         user_presence: RobloxFriendsApiModelsResponseUserPresenceResponseModel | Unset
         if isinstance(_user_presence, Unset):

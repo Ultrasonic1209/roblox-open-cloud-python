@@ -45,7 +45,7 @@ class RobloxAuthenticationApiModelsPasswordValidationResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _code = d.pop("code", UNSET)
         code: RobloxAuthenticationApiModelsPasswordValidationResponseCode | Unset
         if isinstance(_code, Unset):

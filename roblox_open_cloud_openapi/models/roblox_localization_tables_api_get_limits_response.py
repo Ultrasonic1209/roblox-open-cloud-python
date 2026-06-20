@@ -58,7 +58,7 @@ class RobloxLocalizationTablesApiGetLimitsResponse:
             RobloxLocalizationTablesApiTableOperationLimits,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _entry_operation_limits = d.pop("entryOperationLimits", UNSET)
         entry_operation_limits: RobloxLocalizationTablesApiEntryOperationLimits | Unset
         if isinstance(_entry_operation_limits, Unset):

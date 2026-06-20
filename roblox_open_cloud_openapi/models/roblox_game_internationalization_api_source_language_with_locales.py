@@ -61,7 +61,7 @@ class RobloxGameInternationalizationApiSourceLanguageWithLocales:
         from ..models.roblox_game_internationalization_api_language import RobloxGameInternationalizationApiLanguage
         from ..models.roblox_localization_client_supported_locale import RobloxLocalizationClientSupportedLocale
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _language_family = d.pop("languageFamily", UNSET)
         language_family: RobloxGameInternationalizationApiLanguage | Unset
         if isinstance(_language_family, Unset):

@@ -61,7 +61,7 @@ class UpdateMatchmakingPlayerAttributeDefinitionRequest:
         from ..models.matchmaking_attribute_value import MatchmakingAttributeValue
         from ..models.matchmaking_attribute_value_location import MatchmakingAttributeValueLocation
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_attribute_id(data: object) -> None | str | Unset:
             if data is None:

@@ -114,7 +114,7 @@ class CustomSignalConfiguration:
         from ..models.server_categorical_signal_configuration import ServerCategoricalSignalConfiguration
         from ..models.server_numerical_signal_configuration import ServerNumericalSignalConfiguration
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_name(data: object) -> None | str | Unset:
             if data is None:

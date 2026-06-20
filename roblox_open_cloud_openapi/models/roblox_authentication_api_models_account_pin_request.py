@@ -38,7 +38,7 @@ class RobloxAuthenticationApiModelsAccountPinRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         pin = d.pop("pin", UNSET)
 
         reauthentication_token = d.pop("reauthenticationToken", UNSET)

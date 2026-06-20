@@ -38,7 +38,7 @@ class RobloxAuthenticationApiModelsRequestIdentityVerificationLoginRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         login_ticket = d.pop("loginTicket", UNSET)
 
         result_token = d.pop("resultToken", UNSET)

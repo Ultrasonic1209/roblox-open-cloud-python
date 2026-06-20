@@ -65,7 +65,7 @@ class OCV1AssetsOperation:
         from ..models.asset import Asset
         from ..models.ocv1_assets_status import OCV1AssetsStatus
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         path = d.pop("path", UNSET)
 
         done = d.pop("done", UNSET)

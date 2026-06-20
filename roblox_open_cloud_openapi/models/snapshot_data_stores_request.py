@@ -24,7 +24,7 @@ class SnapshotDataStoresRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         snapshot_data_stores_request = cls()
 
         snapshot_data_stores_request.additional_properties = d

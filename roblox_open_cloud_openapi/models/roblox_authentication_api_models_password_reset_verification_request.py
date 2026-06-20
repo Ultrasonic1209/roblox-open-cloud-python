@@ -50,7 +50,7 @@ class RobloxAuthenticationApiModelsPasswordResetVerificationRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _target_type = d.pop("targetType", UNSET)
         target_type: RobloxAuthenticationApiModelsPasswordResetVerificationRequestTargetType | Unset
         if isinstance(_target_type, Unset):

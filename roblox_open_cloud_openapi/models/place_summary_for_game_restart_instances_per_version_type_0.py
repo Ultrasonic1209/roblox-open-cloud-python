@@ -24,7 +24,7 @@ class PlaceSummaryForGameRestartInstancesPerVersionType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         place_summary_for_game_restart_instances_per_version_type_0 = cls()
 
         place_summary_for_game_restart_instances_per_version_type_0.additional_properties = d

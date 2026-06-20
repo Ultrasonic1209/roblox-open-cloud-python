@@ -33,7 +33,7 @@ class RobloxLocaleApiSetShowRobloxTranslationsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         show_roblox_translations = d.pop("showRobloxTranslations", UNSET)
 
         roblox_locale_api_set_show_roblox_translations_request = cls(

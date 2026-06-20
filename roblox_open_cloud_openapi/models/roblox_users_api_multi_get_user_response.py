@@ -56,7 +56,7 @@ class RobloxUsersApiMultiGetUserResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         has_verified_badge = d.pop("hasVerifiedBadge", UNSET)
 
         id = d.pop("id", UNSET)

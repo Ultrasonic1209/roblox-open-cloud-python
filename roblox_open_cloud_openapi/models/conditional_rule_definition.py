@@ -50,7 +50,7 @@ class ConditionalRuleDefinition:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.rpn_token_dto import RpnTokenDto
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_tokens(data: object) -> list[RpnTokenDto] | None | Unset:
             if data is None:

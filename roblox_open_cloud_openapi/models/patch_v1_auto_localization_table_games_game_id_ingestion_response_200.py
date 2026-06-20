@@ -24,7 +24,7 @@ class PatchV1AutoLocalizationTableGamesGameIdIngestionResponse200:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         patch_v1_auto_localization_table_games_game_id_ingestion_response_200 = cls()
 
         patch_v1_auto_localization_table_games_game_id_ingestion_response_200.additional_properties = d

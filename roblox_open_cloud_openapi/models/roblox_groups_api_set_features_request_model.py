@@ -43,7 +43,7 @@ class RobloxGroupsApiSetFeaturesRequestModel:
             RobloxGroupsApiSetFeaturesRequestModelFeatures,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         features = RobloxGroupsApiSetFeaturesRequestModelFeatures.from_dict(d.pop("Features"))
 
         roblox_groups_api_set_features_request_model = cls(

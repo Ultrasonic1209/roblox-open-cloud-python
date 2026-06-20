@@ -34,7 +34,7 @@ class RobloxAuthenticationApiModelsXboxTranslateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         ids = cast(list[str], d.pop("ids", UNSET))
 
         roblox_authentication_api_models_xbox_translate_request = cls(

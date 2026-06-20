@@ -43,7 +43,7 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxLocaleApiSupportedLocaleLocus:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_locale_api_supported_locale_locus import RobloxLocaleApiSupportedLocaleLocus
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[RobloxLocaleApiSupportedLocaleLocus] | Unset = UNSET
         if _data is not UNSET:

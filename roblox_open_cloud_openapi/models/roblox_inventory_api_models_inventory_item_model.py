@@ -103,7 +103,7 @@ class RobloxInventoryApiModelsInventoryItemModel:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_inventory_api_models_user_model import RobloxInventoryApiModelsUserModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _expire_at = d.pop("expireAt", UNSET)
         expire_at: datetime.datetime | Unset
         if isinstance(_expire_at, Unset):

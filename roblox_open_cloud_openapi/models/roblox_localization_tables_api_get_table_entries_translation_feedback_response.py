@@ -58,7 +58,7 @@ class RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackResponse:
             RobloxLocalizationTablesApiEntryTranslationFeedback,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _table_id = d.pop("tableId", UNSET)
         table_id: UUID | Unset
         if isinstance(_table_id, Unset):

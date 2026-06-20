@@ -35,7 +35,7 @@ class RobloxTwoStepVerificationApiDisableSecurityKeyRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         credential_nicknames = cast(list[str], d.pop("credentialNicknames", UNSET))
 
         roblox_two_step_verification_api_disable_security_key_request = cls(

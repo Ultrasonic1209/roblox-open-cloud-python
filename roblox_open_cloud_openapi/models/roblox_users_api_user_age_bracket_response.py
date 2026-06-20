@@ -33,7 +33,7 @@ class RobloxUsersApiUserAgeBracketResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         age_bracket = d.pop("ageBracket", UNSET)
 
         roblox_users_api_user_age_bracket_response = cls(

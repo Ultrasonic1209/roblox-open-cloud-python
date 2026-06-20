@@ -50,7 +50,7 @@ class RobloxApiNotificationsModelsGetMetadataResponseModel:
             RobloxApiNotificationsModelsPushNotificationClientMetadata,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _metadata = d.pop("metadata", UNSET)
         metadata: RobloxApiNotificationsModelsPushNotificationClientMetadata | Unset
         if isinstance(_metadata, Unset):

@@ -24,7 +24,7 @@ class UserRestrictionLogModeratorGameServerScript:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         user_restriction_log_moderator_game_server_script = cls()
 
         user_restriction_log_moderator_game_server_script.additional_properties = d

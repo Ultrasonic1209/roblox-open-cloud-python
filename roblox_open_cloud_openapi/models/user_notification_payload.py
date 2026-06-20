@@ -97,7 +97,7 @@ class UserNotificationPayload:
         from ..models.user_notification_payload_join_experience import UserNotificationPayloadJoinExperience
         from ..models.user_notification_payload_parameters import UserNotificationPayloadParameters
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _type_ = d.pop("type", UNSET)
         type_: UserNotificationPayloadType | Unset
         if isinstance(_type_, Unset):

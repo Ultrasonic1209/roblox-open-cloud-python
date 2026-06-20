@@ -62,7 +62,7 @@ class ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         target_id = d.pop("targetId", UNSET)
 
         _state = d.pop("state", UNSET)

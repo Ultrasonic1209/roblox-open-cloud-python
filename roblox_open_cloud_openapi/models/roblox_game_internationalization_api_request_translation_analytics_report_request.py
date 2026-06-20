@@ -62,7 +62,7 @@ class RobloxGameInternationalizationApiRequestTranslationAnalyticsReportRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _start_date_time = d.pop("startDateTime", UNSET)
         start_date_time: datetime.datetime | Unset
         if isinstance(_start_date_time, Unset):

@@ -173,7 +173,7 @@ class RobloxApiAvatarModelsAvatarRulesModel:
         from ..models.roblox_api_avatar_models_body_color_model import RobloxApiAvatarModelsBodyColorModel
         from ..models.roblox_api_avatar_models_default_clothing_assets import RobloxApiAvatarModelsDefaultClothingAssets
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _player_avatar_types = d.pop("playerAvatarTypes", UNSET)
         player_avatar_types: list[RobloxApiAvatarModelsAvatarRulesModelPlayerAvatarTypesItem] | Unset = UNSET
         if _player_avatar_types is not UNSET:

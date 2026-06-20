@@ -61,7 +61,7 @@ class RobloxAuthenticationApiModelsRequestExternalLoginRequest:
             RobloxAuthenticationApiModelsRequestExternalLoginRequestAdditionalData,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _identity_provider = d.pop("identityProvider", UNSET)
         identity_provider: RobloxAuthenticationApiModelsRequestExternalLoginRequestIdentityProvider | Unset
         if isinstance(_identity_provider, Unset):

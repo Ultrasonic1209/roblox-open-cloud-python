@@ -44,7 +44,7 @@ class RobloxAuthenticationApiModelsRequestLogoutFromAllSessionsAndReauthenticate
             RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _secure_authentication_intent = d.pop("SecureAuthenticationIntent", UNSET)
         secure_authentication_intent: RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel | Unset
         if isinstance(_secure_authentication_intent, Unset):

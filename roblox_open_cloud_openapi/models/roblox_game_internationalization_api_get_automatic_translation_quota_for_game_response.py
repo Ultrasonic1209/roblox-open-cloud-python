@@ -57,7 +57,7 @@ class RobloxGameInternationalizationApiGetAutomaticTranslationQuotaForGameRespon
             RobloxGameInternationalizationApiQuotaModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _monthly_quota = d.pop("monthlyQuota", UNSET)
         monthly_quota: RobloxGameInternationalizationApiMonthlyQuotaModel | Unset
         if isinstance(_monthly_quota, Unset):

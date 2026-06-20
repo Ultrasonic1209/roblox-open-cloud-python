@@ -54,7 +54,7 @@ class ListOrderedDataStoreEntriesResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.ordered_data_store_entry import OrderedDataStoreEntry
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _ordered_data_store_entries = d.pop("orderedDataStoreEntries", UNSET)
         ordered_data_store_entries: list[OrderedDataStoreEntry] | Unset = UNSET
         if _ordered_data_store_entries is not UNSET:

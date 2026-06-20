@@ -53,7 +53,7 @@ class RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryRequest:
             RobloxLocalizationTablesApiCursorEntryIdentifier,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         locale = d.pop("locale", UNSET)
 
         _entries = d.pop("entries", UNSET)

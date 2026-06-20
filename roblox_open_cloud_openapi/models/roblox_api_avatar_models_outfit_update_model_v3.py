@@ -88,7 +88,7 @@ class RobloxApiAvatarModelsOutfitUpdateModelV3:
         from ..models.roblox_api_avatar_models_body_colors_3_model import RobloxApiAvatarModelsBodyColors3Model
         from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         name = d.pop("name", UNSET)
 
         _body_color_3_s = d.pop("bodyColor3s", UNSET)

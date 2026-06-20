@@ -69,7 +69,7 @@ class LaunchRestartRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.launch_restart_request_places_type_0 import LaunchRestartRequestPlacesType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_bleed_off_duration_minutes(data: object) -> int | None | Unset:
             if data is None:

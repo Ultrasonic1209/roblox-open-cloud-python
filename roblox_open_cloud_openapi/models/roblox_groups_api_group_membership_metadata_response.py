@@ -151,7 +151,7 @@ class RobloxGroupsApiGroupMembershipMetadataResponse:
         from ..models.roblox_groups_api_group_permissions_model import RobloxGroupsApiGroupPermissionsModel
         from ..models.roblox_groups_api_user_group_role_response import RobloxGroupsApiUserGroupRoleResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         group_id = d.pop("groupId", UNSET)
 
         is_primary = d.pop("isPrimary", UNSET)

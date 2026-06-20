@@ -49,7 +49,7 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiGetG
             RobloxGameInternationalizationApiGetGameThumbnailsResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[RobloxGameInternationalizationApiGetGameThumbnailsResponse] | Unset = UNSET
         if _data is not UNSET:

@@ -53,7 +53,7 @@ class ListDataStoresResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.data_store import DataStore
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data_stores = d.pop("dataStores", UNSET)
         data_stores: list[DataStore] | Unset = UNSET
         if _data_stores is not UNSET:

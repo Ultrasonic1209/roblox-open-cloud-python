@@ -84,7 +84,7 @@ class Operation:
         from ..models.google_protobuf_any import GoogleProtobufAny
         from ..models.status import Status
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         path = d.pop("path", UNSET)
 
         _metadata = d.pop("metadata", UNSET)

@@ -53,7 +53,7 @@ class ListInventoryItemsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.inventory_item import InventoryItem
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _inventory_items = d.pop("inventoryItems", UNSET)
         inventory_items: list[InventoryItem] | Unset = UNSET
         if _inventory_items is not UNSET:

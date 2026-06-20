@@ -45,7 +45,7 @@ class RobloxBadgesApiBadgeMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         badge_creation_price = d.pop("badgeCreationPrice", UNSET)
 
         max_badge_name_length = d.pop("maxBadgeNameLength", UNSET)

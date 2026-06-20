@@ -48,7 +48,7 @@ class RobloxCatalogApiMultigetItemDetailsRequestModel:
             RobloxCatalogApiMultigetItemDetailsRequestItem,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _items = d.pop("items", UNSET)
         items: list[RobloxCatalogApiMultigetItemDetailsRequestItem] | Unset = UNSET
         if _items is not UNSET:

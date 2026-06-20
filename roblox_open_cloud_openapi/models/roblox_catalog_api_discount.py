@@ -50,7 +50,7 @@ class RobloxCatalogApiDiscount:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         robux_discount_amount = d.pop("robuxDiscountAmount", UNSET)
 
         robux_discount_percentage = d.pop("robuxDiscountPercentage", UNSET)

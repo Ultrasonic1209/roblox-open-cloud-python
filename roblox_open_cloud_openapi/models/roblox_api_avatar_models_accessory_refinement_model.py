@@ -70,7 +70,7 @@ class RobloxApiAvatarModelsAccessoryRefinementModel:
         )
         from ..models.roblox_api_avatar_models_accessory_scale_model import RobloxApiAvatarModelsAccessoryScaleModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _position = d.pop("position", UNSET)
         position: RobloxApiAvatarModelsAccessoryPositionModel | Unset
         if isinstance(_position, Unset):

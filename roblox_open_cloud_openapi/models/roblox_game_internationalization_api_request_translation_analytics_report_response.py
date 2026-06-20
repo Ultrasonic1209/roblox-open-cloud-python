@@ -41,7 +41,7 @@ class RobloxGameInternationalizationApiRequestTranslationAnalyticsReportResponse
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _report_generation_status = d.pop("reportGenerationStatus", UNSET)
         report_generation_status: (
             RobloxGameInternationalizationApiRequestTranslationAnalyticsReportResponseReportGenerationStatus | Unset

@@ -50,7 +50,7 @@ class RobloxLocaleApiUserLocaleResponse:
         from ..models.roblox_locale_api_language import RobloxLocaleApiLanguage
         from ..models.roblox_locale_api_supported_locale import RobloxLocaleApiSupportedLocale
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _supported_locale = d.pop("supportedLocale", UNSET)
         supported_locale: RobloxLocaleApiSupportedLocale | Unset
         if isinstance(_supported_locale, Unset):

@@ -108,7 +108,7 @@ class CreateMatchmakingScoringConfigurationRequest:
             CreateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         universe_id = d.pop("universeId", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:

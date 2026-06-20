@@ -56,7 +56,7 @@ class RobloxAuthenticationApiModelsPasswordChangeModel:
             RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         current_password = d.pop("currentPassword", UNSET)
 
         new_password = d.pop("newPassword", UNSET)

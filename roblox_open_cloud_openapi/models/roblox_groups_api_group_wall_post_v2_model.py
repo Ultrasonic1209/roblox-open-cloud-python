@@ -70,7 +70,7 @@ class RobloxGroupsApiGroupWallPostV2Model:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_user_group_role_response import RobloxGroupsApiUserGroupRoleResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         _poster = d.pop("poster", UNSET)

@@ -45,7 +45,7 @@ class RobloxApiAvatarModelsDefaultClothingAssets:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         default_shirt_asset_ids = cast(list[int], d.pop("defaultShirtAssetIds", UNSET))
 
         default_pant_asset_ids = cast(list[int], d.pop("defaultPantAssetIds", UNSET))

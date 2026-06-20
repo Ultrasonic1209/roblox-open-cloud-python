@@ -314,7 +314,7 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemV2:
         from ..models.roblox_catalog_api_taxonomy_model import RobloxCatalogApiTaxonomyModel
         from ..models.roblox_catalog_api_timed_option import RobloxCatalogApiTimedOption
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _bundled_items = d.pop("bundledItems", UNSET)
         bundled_items: list[RobloxCatalogApiBundleItemDetailModelV2] | Unset = UNSET
         if _bundled_items is not UNSET:

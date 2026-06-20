@@ -47,7 +47,7 @@ class RobloxAuthenticationApiModelsResponseListPasskeyCredentialResponse:
             RobloxAuthenticationApiModelsResponsePasskeyCredential,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _credentials = d.pop("credentials", UNSET)
         credentials: list[RobloxAuthenticationApiModelsResponsePasskeyCredential] | Unset = UNSET
         if _credentials is not UNSET:

@@ -56,7 +56,7 @@ class GenerateSpeechAssetRequest:
             GenerateSpeechAssetRequestGeneratedSpeechStyle,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         text = d.pop("text")
 
         _speech_style = d.pop("speechStyle", UNSET)

@@ -49,7 +49,7 @@ class ForecastRestartResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.forecast_restart_response_place_forecasts_type_0 import ForecastRestartResponsePlaceForecastsType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_place_forecasts(data: object) -> ForecastRestartResponsePlaceForecastsType0 | None | Unset:
             if data is None:

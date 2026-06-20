@@ -34,7 +34,7 @@ class RobloxAuthenticationApiModelsRequestDeletePasskeysRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         credential_nicknames = cast(list[str], d.pop("credentialNicknames", UNSET))
 
         roblox_authentication_api_models_request_delete_passkeys_request = cls(

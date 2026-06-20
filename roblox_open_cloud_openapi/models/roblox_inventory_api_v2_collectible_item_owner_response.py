@@ -56,7 +56,7 @@ class RobloxInventoryApiV2CollectibleItemOwnerResponse:
             RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentType,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         collectible_item_instance_id = d.pop("collectibleItemInstanceId", UNSET)
 
         serial_number = d.pop("serialNumber", UNSET)

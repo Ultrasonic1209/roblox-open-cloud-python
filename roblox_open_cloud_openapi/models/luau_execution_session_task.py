@@ -222,7 +222,7 @@ class LuauExecutionSessionTask:
         from ..models.luau_execution_session_task_error import LuauExecutionSessionTaskError
         from ..models.luau_execution_session_task_output import LuauExecutionSessionTaskOutput
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         path = d.pop("path", UNSET)
 
         _create_time = d.pop("createTime", UNSET)

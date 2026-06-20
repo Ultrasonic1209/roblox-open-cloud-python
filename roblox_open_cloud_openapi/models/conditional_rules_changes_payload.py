@@ -62,7 +62,7 @@ class ConditionalRulesChangesPayload:
         from ..models.conditional_rules_changes_payload_rules_type_0 import ConditionalRulesChangesPayloadRulesType0
         from ..models.rules_order_delta_payload import RulesOrderDeltaPayload
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_rules_order(data: object) -> None | RulesOrderDeltaPayload | Unset:
             if data is None:

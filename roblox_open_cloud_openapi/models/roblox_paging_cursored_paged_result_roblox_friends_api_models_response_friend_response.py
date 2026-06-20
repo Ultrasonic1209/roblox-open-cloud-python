@@ -63,7 +63,7 @@ class RobloxPagingCursoredPagedResultRobloxFriendsApiModelsResponseFriendRespons
             RobloxFriendsApiModelsResponseFriendResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         previous_cursor = d.pop("PreviousCursor", UNSET)
 
         _page_items = d.pop("PageItems", UNSET)

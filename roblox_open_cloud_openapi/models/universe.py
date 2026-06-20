@@ -269,7 +269,7 @@ class Universe:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.universe_social_link import UniverseSocialLink
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         template_root_place = d.pop("templateRootPlace")
 
         path = d.pop("path", UNSET)

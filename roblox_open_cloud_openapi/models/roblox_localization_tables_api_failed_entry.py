@@ -82,7 +82,7 @@ class RobloxLocalizationTablesApiFailedEntry:
         from ..models.roblox_localization_tables_api_error import RobloxLocalizationTablesApiError
         from ..models.roblox_localization_tables_api_translation import RobloxLocalizationTablesApiTranslation
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _error = d.pop("error", UNSET)
         error: RobloxLocalizationTablesApiError | Unset
         if isinstance(_error, Unset):

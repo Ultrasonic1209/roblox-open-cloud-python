@@ -212,7 +212,7 @@ class TransactionTotalsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         sales_total = d.pop("salesTotal", UNSET)
 
         purchases_total = d.pop("purchasesTotal", UNSET)

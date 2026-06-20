@@ -43,7 +43,7 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseModel:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_develop_models_universe_model import RobloxApiDevelopModelsUniverseModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[RobloxApiDevelopModelsUniverseModel] | Unset = UNSET
         if _data is not UNSET:

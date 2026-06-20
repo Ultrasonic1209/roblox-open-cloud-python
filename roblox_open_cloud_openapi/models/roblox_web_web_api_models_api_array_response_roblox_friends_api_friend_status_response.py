@@ -43,7 +43,7 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxFriendsApiFriendStatusResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_friends_api_friend_status_response import RobloxFriendsApiFriendStatusResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[RobloxFriendsApiFriendStatusResponse] | Unset = UNSET
         if _data is not UNSET:

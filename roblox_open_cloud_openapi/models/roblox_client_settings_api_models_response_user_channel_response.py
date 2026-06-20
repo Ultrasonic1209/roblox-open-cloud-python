@@ -81,7 +81,7 @@ class RobloxClientSettingsApiModelsResponseUserChannelResponse:
             RobloxClientSettingsApiModelsResponseBetaProgramInfo,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         channel_name = d.pop("channelName", UNSET)
 
         _channel_assignment_type = d.pop("channelAssignmentType", UNSET)

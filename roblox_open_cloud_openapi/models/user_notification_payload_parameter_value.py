@@ -41,7 +41,7 @@ class UserNotificationPayloadParameterValue:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         string_value = d.pop("stringValue", UNSET)
 
         int_64_value = d.pop("int64Value", UNSET)

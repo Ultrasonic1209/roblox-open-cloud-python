@@ -61,7 +61,7 @@ class RobloxAdConfigurationApiGetSponsoredGamesResponse:
             RobloxAdConfigurationApiSponsoredGameV2Model,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _sponsored_games = d.pop("sponsoredGames", UNSET)
         sponsored_games: list[RobloxAdConfigurationApiSponsoredGameV2Model] | Unset = UNSET
         if _sponsored_games is not UNSET:

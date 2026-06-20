@@ -111,7 +111,7 @@ class PlaceRestartStatus:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.place_filter import PlaceFilter
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _state = d.pop("state", UNSET)
         state: RestartState | Unset
         if isinstance(_state, Unset):

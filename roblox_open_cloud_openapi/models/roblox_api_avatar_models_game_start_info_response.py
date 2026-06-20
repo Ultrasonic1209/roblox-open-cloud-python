@@ -109,7 +109,7 @@ class RobloxApiAvatarModelsGameStartInfoResponse:
         )
         from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         game_avatar_type = d.pop("gameAvatarType", UNSET)
 
         allow_custom_animations = d.pop("allowCustomAnimations", UNSET)

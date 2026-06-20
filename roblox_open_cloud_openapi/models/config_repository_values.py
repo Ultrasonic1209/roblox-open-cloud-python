@@ -80,7 +80,7 @@ class ConfigRepositoryValues:
         from ..models.config_repository_metadata import ConfigRepositoryMetadata
         from ..models.config_repository_values_entries_type_0 import ConfigRepositoryValuesEntriesType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_metadata(data: object) -> ConfigRepositoryMetadata | None | Unset:
             if data is None:

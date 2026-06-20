@@ -33,7 +33,7 @@ class RobloxAccountSettingsApiUpdateAccountCountryRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         target_country_id = d.pop("targetCountryId", UNSET)
 
         roblox_account_settings_api_update_account_country_request = cls(

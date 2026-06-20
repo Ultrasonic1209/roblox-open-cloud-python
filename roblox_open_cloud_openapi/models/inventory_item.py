@@ -95,7 +95,7 @@ class InventoryItem:
         from ..models.inventory_item_game_pass_details import InventoryItemGamePassDetails
         from ..models.inventory_item_private_server_details import InventoryItemPrivateServerDetails
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         path = d.pop("path", UNSET)
 
         _asset_details = d.pop("assetDetails", UNSET)

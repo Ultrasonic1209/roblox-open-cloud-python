@@ -55,7 +55,7 @@ class RobloxWebAssetsAssetFormatLocation:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_asset_delivery_api_asset_metadata import RobloxAssetDeliveryApiAssetMetadata
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         asset_format = d.pop("assetFormat", UNSET)
 
         location = d.pop("location", UNSET)

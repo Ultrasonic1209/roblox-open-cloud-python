@@ -68,7 +68,7 @@ class TransactionResponseApiPageResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.transaction_response import TransactionResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_previous_page_cursor(data: object) -> None | str | Unset:
             if data is None:

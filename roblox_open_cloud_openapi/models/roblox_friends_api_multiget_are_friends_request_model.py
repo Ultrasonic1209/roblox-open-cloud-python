@@ -36,7 +36,7 @@ class RobloxFriendsApiMultigetAreFriendsRequestModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         target_user_ids = cast(list[int], d.pop("targetUserIds", UNSET))
 
         roblox_friends_api_multiget_are_friends_request_model = cls(

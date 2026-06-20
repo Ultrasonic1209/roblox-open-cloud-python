@@ -64,7 +64,7 @@ class RobloxGameInternationalizationApiUpdateNameDescriptionsResponse:
             RobloxGameInternationalizationApiNameDescription,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _success_operations = d.pop("successOperations", UNSET)
         success_operations: list[RobloxGameInternationalizationApiNameDescription] | Unset = UNSET
         if _success_operations is not UNSET:

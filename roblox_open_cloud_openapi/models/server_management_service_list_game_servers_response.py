@@ -84,7 +84,7 @@ class ServerManagementServiceListGameServersResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.server_management_service_game_server import ServerManagementServiceGameServer
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_game_servers(data: object) -> list[ServerManagementServiceGameServer] | None | Unset:
             if data is None:

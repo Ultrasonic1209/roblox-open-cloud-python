@@ -38,7 +38,7 @@ class RobloxAuthenticationApiModelsXboxConnectionModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         has_connected_xbox_account = d.pop("hasConnectedXboxAccount", UNSET)
 
         gamertag = d.pop("gamertag", UNSET)

@@ -24,7 +24,7 @@ class RobloxClientSettingsApiModelsResponseOtaVersionResponseAssetsManifest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         roblox_client_settings_api_models_response_ota_version_response_assets_manifest = cls()
 
         roblox_client_settings_api_models_response_ota_version_response_assets_manifest.additional_properties = d

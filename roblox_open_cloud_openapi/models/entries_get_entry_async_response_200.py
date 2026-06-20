@@ -24,7 +24,7 @@ class EntriesGetEntryAsyncResponse200:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         entries_get_entry_async_response_200 = cls()
 
         entries_get_entry_async_response_200.additional_properties = d

@@ -62,7 +62,7 @@ class RobloxAuthenticationApiModelsRequestAuditContentValue:
             RobloxAuthenticationApiModelsRequestAuditContentValueParameters,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         translation_key = d.pop("translationKey", UNSET)
 
         translation_namespace = d.pop("translationNamespace", UNSET)

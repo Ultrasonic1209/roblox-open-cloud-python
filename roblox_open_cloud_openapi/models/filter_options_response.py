@@ -48,7 +48,7 @@ class FilterOptionsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_filters(data: object) -> FilterOptionsResponseFiltersType0 | None | Unset:
             if data is None:

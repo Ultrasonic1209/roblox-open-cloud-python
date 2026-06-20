@@ -46,7 +46,7 @@ class RobloxLocalizationTablesApiIngestContentMetadata:
             RobloxLocalizationTablesApiIngestContentMetadataPlaceInformation,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _place_information = d.pop("placeInformation", UNSET)
         place_information: RobloxLocalizationTablesApiIngestContentMetadataPlaceInformation | Unset
         if isinstance(_place_information, Unset):

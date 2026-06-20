@@ -76,7 +76,7 @@ class RobloxGroupsApiPayoutRequest:
             RobloxGroupsApiWatermarkContributionRequest,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _payout_type = d.pop("PayoutType", UNSET)
         payout_type: RobloxGroupsApiPayoutRequestPayoutType | Unset
         if isinstance(_payout_type, Unset):

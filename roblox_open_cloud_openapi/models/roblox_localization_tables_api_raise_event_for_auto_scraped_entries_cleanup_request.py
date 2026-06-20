@@ -32,7 +32,7 @@ class RobloxLocalizationTablesApiRaiseEventForAutoScrapedEntriesCleanupRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         max_age_for_flush = d.pop("maxAgeForFlush", UNSET)
 
         roblox_localization_tables_api_raise_event_for_auto_scraped_entries_cleanup_request = cls(

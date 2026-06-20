@@ -78,7 +78,7 @@ class ContentMessage:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.message_reaction import MessageReaction
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _create_time = d.pop("createTime", UNSET)
         create_time: datetime.datetime | Unset
         if isinstance(_create_time, Unset):

@@ -249,7 +249,7 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
         from ..models.roblox_games_api_models_response_game_creator import RobloxGamesApiModelsResponseGameCreator
         from ..models.roblox_games_api_models_response_refund_policy import RobloxGamesApiModelsResponseRefundPolicy
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         root_place_id = d.pop("rootPlaceId", UNSET)

@@ -302,7 +302,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
         )
         from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         allow_private_servers = d.pop("allowPrivateServers", UNSET)
 
         private_server_price = d.pop("privateServerPrice", UNSET)

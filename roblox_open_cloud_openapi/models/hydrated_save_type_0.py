@@ -62,7 +62,7 @@ class HydratedSaveType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.creator_store_asset_type_0 import CreatorStoreAssetType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         owned = d.pop("owned", UNSET)
 
         _date_saved = d.pop("dateSaved", UNSET)

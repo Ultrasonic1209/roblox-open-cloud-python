@@ -64,7 +64,7 @@ class InstanceCountsType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         script = d.pop("script", UNSET)
 
         mesh_part = d.pop("meshPart", UNSET)

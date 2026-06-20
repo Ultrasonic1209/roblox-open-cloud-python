@@ -52,7 +52,7 @@ class RobloxGroupsApiUserGroupRoleResponse:
         from ..models.roblox_groups_api_group_role_response import RobloxGroupsApiGroupRoleResponse
         from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _user = d.pop("user", UNSET)
         user: RobloxGroupsApiModelsResponseUserModel | Unset
         if isinstance(_user, Unset):

@@ -65,7 +65,7 @@ class RobloxThumbnailsApiModelsUniverseThumbnailsResponse:
             ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         universe_id = d.pop("universeId", UNSET)
 
         _error = d.pop("error", UNSET)

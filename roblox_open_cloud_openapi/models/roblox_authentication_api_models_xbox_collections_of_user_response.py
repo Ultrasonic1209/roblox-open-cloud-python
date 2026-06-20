@@ -43,7 +43,7 @@ class RobloxAuthenticationApiModelsXboxCollectionsOfUserResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_authentication_api_models_xbox_user_model import RobloxAuthenticationApiModelsXboxUserModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _users = d.pop("Users", UNSET)
         users: list[RobloxAuthenticationApiModelsXboxUserModel] | Unset = UNSET
         if _users is not UNSET:

@@ -68,7 +68,7 @@ class RobloxTradesApiModelsV2TradeDetailsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_trades_api_models_v2_trade_offer import RobloxTradesApiModelsV2TradeOffer
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         trade_id = d.pop("tradeId", UNSET)
 
         _status = d.pop("status", UNSET)

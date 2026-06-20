@@ -152,7 +152,7 @@ class ToolboxServiceAssetType0:
         from ..models.preview_assets_model_type_0 import PreviewAssetsModelType0
         from ..models.social_link_model_type_0 import SocialLinkModelType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:

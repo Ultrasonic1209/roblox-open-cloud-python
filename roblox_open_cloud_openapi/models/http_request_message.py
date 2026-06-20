@@ -138,7 +138,7 @@ class HttpRequestMessage:
         from ..models.http_request_message_properties_type_0 import HttpRequestMessagePropertiesType0
         from ..models.string_string_i_enumerable_key_value_pair import StringStringIEnumerableKeyValuePair
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_version(data: object) -> None | str | Unset:
             if data is None:

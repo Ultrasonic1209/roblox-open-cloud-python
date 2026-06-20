@@ -27,7 +27,7 @@ class PlaceSummaryForGameUpdateVersionToPlayerCountsType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         place_summary_for_game_update_version_to_player_counts_type_0 = cls()
 
         place_summary_for_game_update_version_to_player_counts_type_0.additional_properties = d

@@ -48,7 +48,7 @@ class UserRestrictionLogRestrictionType:
             UserRestrictionLogRestrictionTypeGameJoinRestriction,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _game_join_restriction = d.pop("gameJoinRestriction", UNSET)
         game_join_restriction: UserRestrictionLogRestrictionTypeGameJoinRestriction | Unset
         if isinstance(_game_join_restriction, Unset):

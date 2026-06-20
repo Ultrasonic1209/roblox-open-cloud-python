@@ -64,7 +64,7 @@ class RobloxAccountSettingsApiModelsAccountsSettingsMetadataModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_accounts_restrictions_spam_bug_fix_enabled = d.pop("IsAccountsRestrictionsSpamBugFixEnabled", UNSET)
 
         maximum_parental_controls_monthly_spend_limit_in_usd = d.pop(

@@ -56,7 +56,7 @@ class RobloxLocalizationTablesApiUpdateTableContentsResponse:
         from ..models.roblox_localization_tables_api_failed_entry import RobloxLocalizationTablesApiFailedEntry
         from ..models.roblox_localization_tables_api_modified_entry import RobloxLocalizationTablesApiModifiedEntry
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _failed_entries_and_translations = d.pop("failedEntriesAndTranslations", UNSET)
         failed_entries_and_translations: list[RobloxLocalizationTablesApiFailedEntry] | Unset = UNSET
         if _failed_entries_and_translations is not UNSET:

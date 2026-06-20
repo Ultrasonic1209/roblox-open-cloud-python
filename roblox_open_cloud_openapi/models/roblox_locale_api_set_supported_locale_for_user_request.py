@@ -33,7 +33,7 @@ class RobloxLocaleApiSetSupportedLocaleForUserRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         supported_locale_code = d.pop("supportedLocaleCode", UNSET)
 
         roblox_locale_api_set_supported_locale_for_user_request = cls(

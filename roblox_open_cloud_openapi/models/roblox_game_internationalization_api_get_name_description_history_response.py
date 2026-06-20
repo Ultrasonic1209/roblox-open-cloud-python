@@ -53,7 +53,7 @@ class RobloxGameInternationalizationApiGetNameDescriptionHistoryResponse:
             RobloxGameInternationalizationApiTranslationHistory,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _history = d.pop("history", UNSET)
         history: list[RobloxGameInternationalizationApiTranslationHistory] | Unset = UNSET
         if _history is not UNSET:

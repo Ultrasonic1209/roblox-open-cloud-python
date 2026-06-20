@@ -66,7 +66,7 @@ class RobloxTwoStepVerificationApiEnableVerifyAuthenticatorRequest:
             RobloxTwoStepVerificationApiModelsRequestSecureAuthenticationIntentModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         setup_token = d.pop("setupToken", UNSET)
 
         code = d.pop("code", UNSET)

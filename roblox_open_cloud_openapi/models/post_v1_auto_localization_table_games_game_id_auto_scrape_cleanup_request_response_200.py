@@ -24,7 +24,7 @@ class PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         post_v1_auto_localization_table_games_game_id_auto_scrape_cleanup_request_response_200 = cls()
 
         post_v1_auto_localization_table_games_game_id_auto_scrape_cleanup_request_response_200.additional_properties = d

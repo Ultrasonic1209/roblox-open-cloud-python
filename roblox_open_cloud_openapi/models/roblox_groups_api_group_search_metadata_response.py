@@ -42,7 +42,7 @@ class RobloxGroupsApiGroupSearchMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         suggested_group_keywords = cast(list[str], d.pop("SuggestedGroupKeywords", UNSET))
 
         show_friends_groups_sort = d.pop("ShowFriendsGroupsSort", UNSET)

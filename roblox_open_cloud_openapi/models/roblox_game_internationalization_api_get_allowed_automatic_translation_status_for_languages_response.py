@@ -56,7 +56,7 @@ class RobloxGameInternationalizationApiGetAllowedAutomaticTranslationStatusForLa
             RobloxGameInternationalizationApiAutomaticTranslationStatusTargetLanguage,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         source_language = d.pop("sourceLanguage", UNSET)
 
         _target_languages = d.pop("targetLanguages", UNSET)

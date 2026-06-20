@@ -54,7 +54,7 @@ class RobloxTwoStepVerificationApiEnableTwoStepVerificationRequest:
             RobloxTwoStepVerificationApiModelsRequestSecureAuthenticationIntentModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         password = d.pop("password", UNSET)
 
         _secure_authentication_intent = d.pop("secureAuthenticationIntent", UNSET)

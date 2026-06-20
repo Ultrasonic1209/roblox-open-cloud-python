@@ -67,7 +67,7 @@ class RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse:
             RobloxGameInternationalizationApiTranslationCount,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _category = d.pop("category", UNSET)
         category: RobloxGameInternationalizationApiTranslationCountCategoryInfoResponseCategory | Unset
         if isinstance(_category, Unset):

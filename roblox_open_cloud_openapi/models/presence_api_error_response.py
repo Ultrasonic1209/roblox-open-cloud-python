@@ -48,7 +48,7 @@ class PresenceApiErrorResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.error import Error
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_errors(data: object) -> list[Error] | None | Unset:
             if data is None:

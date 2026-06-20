@@ -49,7 +49,7 @@ class RobloxFriendsApiModelsResponseFollowingExistsResponseModel:
             RobloxFriendsApiModelsResponseFollowingExistsResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _followings = d.pop("followings", UNSET)
         followings: list[RobloxFriendsApiModelsResponseFollowingExistsResponse] | Unset = UNSET
         if _followings is not UNSET:

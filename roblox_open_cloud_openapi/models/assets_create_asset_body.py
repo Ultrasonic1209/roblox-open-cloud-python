@@ -63,7 +63,7 @@ class AssetsCreateAssetBody:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.asset import Asset
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         request = Asset.from_dict(d.pop("request"))
 
         file_content = File(payload=BytesIO(d.pop("fileContent")))

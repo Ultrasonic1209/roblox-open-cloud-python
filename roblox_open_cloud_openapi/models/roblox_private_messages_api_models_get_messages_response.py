@@ -65,7 +65,7 @@ class RobloxPrivateMessagesApiModelsGetMessagesResponse:
             RobloxPrivateMessagesApiModelsMessageDetailsResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _collection = d.pop("collection", UNSET)
         collection: list[RobloxPrivateMessagesApiModelsMessageDetailsResponse] | Unset = UNSET
         if _collection is not UNSET:

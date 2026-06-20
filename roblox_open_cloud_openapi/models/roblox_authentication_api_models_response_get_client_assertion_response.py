@@ -32,7 +32,7 @@ class RobloxAuthenticationApiModelsResponseGetClientAssertionResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         client_assertion = d.pop("clientAssertion", UNSET)
 
         roblox_authentication_api_models_response_get_client_assertion_response = cls(

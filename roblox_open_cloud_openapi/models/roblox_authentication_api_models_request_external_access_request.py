@@ -68,7 +68,7 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
             RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         authentication_proof = d.pop("authenticationProof", UNSET)
 
         _identity_provider_platform_type = d.pop("identityProviderPlatformType", UNSET)

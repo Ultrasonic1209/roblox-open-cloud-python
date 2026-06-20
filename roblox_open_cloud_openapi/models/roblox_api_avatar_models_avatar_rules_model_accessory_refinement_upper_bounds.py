@@ -37,7 +37,7 @@ class RobloxApiAvatarModelsAvatarRulesModelAccessoryRefinementUpperBounds:
             RobloxApiAvatarModelsAccessoryRefinementModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         roblox_api_avatar_models_avatar_rules_model_accessory_refinement_upper_bounds = cls()
 
         additional_properties = {}

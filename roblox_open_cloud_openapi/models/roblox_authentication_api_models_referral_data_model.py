@@ -95,7 +95,7 @@ class RobloxAuthenticationApiModelsReferralDataModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _acquisition_time = d.pop("acquisitionTime", UNSET)
         acquisition_time: datetime.datetime | Unset
         if isinstance(_acquisition_time, Unset):

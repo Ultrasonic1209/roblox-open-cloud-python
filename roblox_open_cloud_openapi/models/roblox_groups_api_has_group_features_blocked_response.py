@@ -33,7 +33,7 @@ class RobloxGroupsApiHasGroupFeaturesBlockedResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         has_features_blocked = d.pop("hasFeaturesBlocked", UNSET)
 
         roblox_groups_api_has_group_features_blocked_response = cls(

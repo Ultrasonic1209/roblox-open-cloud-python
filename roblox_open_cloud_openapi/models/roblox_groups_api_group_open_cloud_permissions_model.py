@@ -38,7 +38,7 @@ class RobloxGroupsApiGroupOpenCloudPermissionsModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         use_cloud_authentication = d.pop("useCloudAuthentication", UNSET)
 
         administer_cloud_authentication = d.pop("administerCloudAuthentication", UNSET)

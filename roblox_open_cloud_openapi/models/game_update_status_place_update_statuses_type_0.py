@@ -31,7 +31,7 @@ class GameUpdateStatusPlaceUpdateStatusesType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.place_update_status import PlaceUpdateStatus
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         game_update_status_place_update_statuses_type_0 = cls()
 
         additional_properties = {}

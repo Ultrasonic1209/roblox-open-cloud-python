@@ -76,7 +76,7 @@ class RobloxCatalogApiTopicRequestModel:
             RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItem,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _items = d.pop("items", UNSET)
         items: list[RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItem] | Unset = UNSET
         if _items is not UNSET:

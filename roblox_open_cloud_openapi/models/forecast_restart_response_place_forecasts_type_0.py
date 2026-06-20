@@ -34,7 +34,7 @@ class ForecastRestartResponsePlaceForecastsType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.place_summary_for_game_restart import PlaceSummaryForGameRestart
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         forecast_restart_response_place_forecasts_type_0 = cls()
 
         additional_properties = {}

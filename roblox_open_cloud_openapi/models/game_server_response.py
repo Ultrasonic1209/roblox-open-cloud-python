@@ -146,7 +146,7 @@ class GameServerResponse:
         from ..models.private_server_player_response import PrivateServerPlayerResponse
         from ..models.verified_badge_user_response import VerifiedBadgeUserResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_id(data: object) -> None | Unset | UUID:
             if data is None:

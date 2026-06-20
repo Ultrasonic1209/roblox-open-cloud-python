@@ -54,7 +54,7 @@ class GetMatchmakingScoringDefaultWeightsResponse:
             GetMatchmakingScoringDefaultWeightsResponseWeightsType0,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_weights(data: object) -> GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None | Unset:
             if data is None:

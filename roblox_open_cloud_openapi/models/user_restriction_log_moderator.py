@@ -52,7 +52,7 @@ class UserRestrictionLogModerator:
             UserRestrictionLogModeratorGameServerScript,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         roblox_user = d.pop("robloxUser", UNSET)
 
         _game_server_script = d.pop("gameServerScript", UNSET)

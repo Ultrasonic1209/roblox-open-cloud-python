@@ -92,7 +92,7 @@ class CreatorStoreAssetType0:
         from ..models.toolbox_service_creator_store_product_type_0 import ToolboxServiceCreatorStoreProductType0
         from ..models.voting_model_type_0 import VotingModelType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_voting(data: object) -> None | Unset | VotingModelType0:
             if data is None:

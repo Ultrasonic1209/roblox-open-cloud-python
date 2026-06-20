@@ -47,7 +47,7 @@ class RobloxGameInternationalizationApiAssociateLocalizationTablesToGameRequest:
             RobloxGameInternationalizationApiLocalizationTableGameAssociation,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _tables = d.pop("tables", UNSET)
         tables: list[RobloxGameInternationalizationApiLocalizationTableGameAssociation] | Unset = UNSET
         if _tables is not UNSET:

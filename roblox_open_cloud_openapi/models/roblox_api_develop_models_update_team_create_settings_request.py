@@ -33,7 +33,7 @@ class RobloxApiDevelopModelsUpdateTeamCreateSettingsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_enabled = d.pop("isEnabled", UNSET)
 
         roblox_api_develop_models_update_team_create_settings_request = cls(

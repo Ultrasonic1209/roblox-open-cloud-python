@@ -65,7 +65,7 @@ class RobloxLocalizationTablesApiCursorEntryIdentifier:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_localization_tables_api_entry_identifier import RobloxLocalizationTablesApiEntryIdentifier
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         cursor = d.pop("cursor", UNSET)
 
         _identifier = d.pop("identifier", UNSET)

@@ -62,7 +62,7 @@ class RobloxClientSettingsApiModelsResponseMobileClientVersionResponse:
             RobloxClientSettingsApiModelsResponseMobileClientVersionResponseData,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         active_version = d.pop("activeVersion", UNSET)
 
         upgrade_source = d.pop("upgradeSource", UNSET)

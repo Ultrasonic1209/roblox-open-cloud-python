@@ -33,7 +33,7 @@ class RobloxTwoStepVerificationApiVerifyApprovalResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         verification_token = d.pop("verificationToken", UNSET)
 
         roblox_two_step_verification_api_verify_approval_response = cls(

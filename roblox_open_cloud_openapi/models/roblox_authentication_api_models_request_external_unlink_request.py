@@ -62,7 +62,7 @@ class RobloxAuthenticationApiModelsRequestExternalUnlinkRequest:
             RobloxAuthenticationApiModelsRequestExternalUnlinkRequestAdditionalInfoPayload,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _identity_provider_platform_type = d.pop("IdentityProviderPlatformType", UNSET)
         identity_provider_platform_type: (
             RobloxAuthenticationApiModelsRequestExternalUnlinkRequestIdentityProviderPlatformType | Unset

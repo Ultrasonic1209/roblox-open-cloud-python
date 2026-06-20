@@ -32,7 +32,7 @@ class RobloxAuthenticationApiModelsPasswordStatusResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         valid = d.pop("valid", UNSET)
 
         roblox_authentication_api_models_password_status_response = cls(

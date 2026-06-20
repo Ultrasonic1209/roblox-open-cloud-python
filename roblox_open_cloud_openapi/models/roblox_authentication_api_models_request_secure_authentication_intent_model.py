@@ -50,7 +50,7 @@ class RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         client_public_key = d.pop("clientPublicKey", UNSET)
 
         client_epoch_timestamp = d.pop("clientEpochTimestamp", UNSET)

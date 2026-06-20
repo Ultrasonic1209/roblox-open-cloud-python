@@ -45,7 +45,7 @@ class RobloxLocaleApiCountryRegionListResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_locale_api_country_region import RobloxLocaleApiCountryRegion
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _country_region_list = d.pop("countryRegionList", UNSET)
         country_region_list: list[RobloxLocaleApiCountryRegion] | Unset = UNSET
         if _country_region_list is not UNSET:

@@ -32,7 +32,7 @@ class RobloxAuthenticationApiModelsXboxLoginConsecutiveDaysResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         count = d.pop("count", UNSET)
 
         roblox_authentication_api_models_xbox_login_consecutive_days_response = cls(

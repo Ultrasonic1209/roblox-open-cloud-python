@@ -24,7 +24,7 @@ class RestartUniverseServersResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         restart_universe_servers_response = cls()
 
         restart_universe_servers_response.additional_properties = d

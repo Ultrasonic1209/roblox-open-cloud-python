@@ -48,7 +48,7 @@ class RobloxGroupsApiSocialLinkRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _type_ = d.pop("type", UNSET)
         type_: RobloxGroupsApiSocialLinkRequestType | Unset
         if isinstance(_type_, Unset):

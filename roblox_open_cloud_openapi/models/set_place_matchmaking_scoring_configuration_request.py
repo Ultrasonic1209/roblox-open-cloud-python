@@ -43,7 +43,7 @@ class SetPlaceMatchmakingScoringConfigurationRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         place_id = d.pop("placeId", UNSET)
 
         def _parse_scoring_configuration_id(data: object) -> None | str | Unset:

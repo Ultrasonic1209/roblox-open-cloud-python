@@ -82,7 +82,7 @@ class RobloxCatalogApiBundleProductModel:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_catalog_api_premium_pricing_model import RobloxCatalogApiPremiumPricingModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         type_ = d.pop("type", UNSET)

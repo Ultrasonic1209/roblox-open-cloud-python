@@ -123,7 +123,7 @@ class UserRestrictionLog:
         from ..models.user_restriction_log_moderator import UserRestrictionLogModerator
         from ..models.user_restriction_log_restriction_type import UserRestrictionLogRestrictionType
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         user = d.pop("user", UNSET)
 
         place = d.pop("place", UNSET)

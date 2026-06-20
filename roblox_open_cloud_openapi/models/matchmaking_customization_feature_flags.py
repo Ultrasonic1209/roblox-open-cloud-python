@@ -49,7 +49,7 @@ class MatchmakingCustomizationFeatureFlags:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_matchmaking_customization_allowed = d.pop("isMatchmakingCustomizationAllowed", UNSET)
 
         is_matchmaking_customization_experiments_allowed = d.pop("isMatchmakingCustomizationExperimentsAllowed", UNSET)

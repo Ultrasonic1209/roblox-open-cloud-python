@@ -30,7 +30,7 @@ class GenerateUserThumbnailMetadata:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         generate_user_thumbnail_metadata = cls()
 
         generate_user_thumbnail_metadata.additional_properties = d

@@ -46,7 +46,7 @@ class RobloxGameLocalizationClientGameLocalizationRolesAssignee:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _assignee_type = d.pop("assigneeType", UNSET)
         assignee_type: RobloxGameLocalizationClientGameLocalizationRolesAssigneeAssigneeType | Unset
         if isinstance(_assignee_type, Unset):

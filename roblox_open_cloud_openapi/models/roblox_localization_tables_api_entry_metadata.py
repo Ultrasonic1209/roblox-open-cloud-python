@@ -62,7 +62,7 @@ class RobloxLocalizationTablesApiEntryMetadata:
             RobloxInGameContentTablesClientGameLocation,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         example = d.pop("example", UNSET)
 
         _game_locations = d.pop("gameLocations", UNSET)

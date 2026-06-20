@@ -107,7 +107,7 @@ class RobloxApiAvatarModelsOutfitDetailsModel:
         from ..models.roblox_api_avatar_models_body_colors_model import RobloxApiAvatarModelsBodyColorsModel
         from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         universe_id = d.pop("universeId", UNSET)

@@ -31,7 +31,7 @@ class ConfigRepositoryFullEntriesType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.config_value_full import ConfigValueFull
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         config_repository_full_entries_type_0 = cls()
 
         additional_properties = {}

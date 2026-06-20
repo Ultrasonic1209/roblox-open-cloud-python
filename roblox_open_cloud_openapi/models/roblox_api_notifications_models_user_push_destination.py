@@ -86,7 +86,7 @@ class RobloxApiNotificationsModelsUserPushDestination:
             RobloxApiNotificationsModelsNotificationUser,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _user = d.pop("user", UNSET)
         user: RobloxApiNotificationsModelsNotificationUser | Unset
         if isinstance(_user, Unset):

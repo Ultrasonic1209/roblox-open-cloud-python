@@ -79,7 +79,7 @@ class RobloxGroupsApiGroupRoleDetailResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         group_id = d.pop("groupId", UNSET)
 
         id = d.pop("id", UNSET)

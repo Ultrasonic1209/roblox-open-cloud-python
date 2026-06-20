@@ -54,7 +54,7 @@ class RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackRequest:
             RobloxLocalizationTablesApiEntryIdentifierWithTranslation,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         source_locale = d.pop("sourceLocale", UNSET)
 
         _entries = d.pop("entries", UNSET)

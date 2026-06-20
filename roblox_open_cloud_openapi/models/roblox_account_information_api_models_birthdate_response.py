@@ -45,7 +45,7 @@ class RobloxAccountInformationApiModelsBirthdateResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         birth_month = d.pop("birthMonth", UNSET)
 
         birth_day = d.pop("birthDay", UNSET)

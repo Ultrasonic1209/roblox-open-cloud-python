@@ -47,7 +47,7 @@ class RobloxAuthenticationApiModelsSocialProvidersResponse:
             RobloxAuthenticationApiModelsProviderInfoModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _providers = d.pop("providers", UNSET)
         providers: list[RobloxAuthenticationApiModelsProviderInfoModel] | Unset = UNSET
         if _providers is not UNSET:

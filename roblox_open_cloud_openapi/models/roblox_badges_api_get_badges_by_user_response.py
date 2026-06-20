@@ -135,7 +135,7 @@ class RobloxBadgesApiGetBadgesByUserResponse:
             RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformBadgesBadgeAwarderType,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _creator = d.pop("creator", UNSET)
         creator: RobloxBadgesApiBadgeCreatorResponse | Unset
         if isinstance(_creator, Unset):

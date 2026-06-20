@@ -53,7 +53,7 @@ class ListGroupForumCategoriesResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.group_forum_category import GroupForumCategory
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _group_forum_categories = d.pop("groupForumCategories", UNSET)
         group_forum_categories: list[GroupForumCategory] | Unset = UNSET
         if _group_forum_categories is not UNSET:

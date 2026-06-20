@@ -100,7 +100,7 @@ class RobloxApiAvatarModelsAssetMetaModelV1:
         from ..models.roblox_api_avatar_models_asset_rotation import RobloxApiAvatarModelsAssetRotation
         from ..models.roblox_api_avatar_models_asset_scale import RobloxApiAvatarModelsAssetScale
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         order = d.pop("order", UNSET)
 
         puffiness = d.pop("puffiness", UNSET)

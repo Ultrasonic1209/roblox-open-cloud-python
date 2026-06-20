@@ -33,7 +33,7 @@ class RobloxGroupsApiSetFeaturesResponseModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         updated = d.pop("Updated")
 
         roblox_groups_api_set_features_response_model = cls(

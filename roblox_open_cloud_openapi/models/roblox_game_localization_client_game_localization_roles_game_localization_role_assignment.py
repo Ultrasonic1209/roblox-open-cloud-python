@@ -52,7 +52,7 @@ class RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssig
             RobloxGameLocalizationClientGameLocalizationRolesAssignee,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         game_id = d.pop("gameId", UNSET)
 
         _assignee = d.pop("assignee", UNSET)

@@ -107,7 +107,7 @@ class User:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.user_social_network_profiles import UserSocialNetworkProfiles
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         path = d.pop("path", UNSET)
 
         _create_time = d.pop("createTime", UNSET)

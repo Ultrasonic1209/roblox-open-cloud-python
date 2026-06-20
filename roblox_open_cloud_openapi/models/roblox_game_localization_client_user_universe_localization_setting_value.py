@@ -50,7 +50,7 @@ class RobloxGameLocalizationClientUserUniverseLocalizationSettingValue:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _setting_type = d.pop("settingType", UNSET)
         setting_type: RobloxGameLocalizationClientUserUniverseLocalizationSettingValueSettingType | Unset
         if isinstance(_setting_type, Unset):

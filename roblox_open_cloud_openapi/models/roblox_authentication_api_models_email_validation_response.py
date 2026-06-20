@@ -32,7 +32,7 @@ class RobloxAuthenticationApiModelsEmailValidationResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_email_valid = d.pop("isEmailValid", UNSET)
 
         roblox_authentication_api_models_email_validation_response = cls(

@@ -43,7 +43,7 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsGameTemplateMod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_develop_models_game_template_model import RobloxApiDevelopModelsGameTemplateModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[RobloxApiDevelopModelsGameTemplateModel] | Unset = UNSET
         if _data is not UNSET:

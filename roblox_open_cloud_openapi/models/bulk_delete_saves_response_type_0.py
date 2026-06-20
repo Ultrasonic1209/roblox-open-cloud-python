@@ -33,7 +33,7 @@ class BulkDeleteSavesResponseType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         deleted_count = d.pop("deletedCount", UNSET)
 
         bulk_delete_saves_response_type_0 = cls(

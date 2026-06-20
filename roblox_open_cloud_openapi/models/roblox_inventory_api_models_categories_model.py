@@ -49,7 +49,7 @@ class RobloxInventoryApiModelsCategoriesModel:
             RobloxInventoryApiModelsAssetsExplorerCategoryModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _categories = d.pop("categories", UNSET)
         categories: list[RobloxInventoryApiModelsAssetsExplorerCategoryModel] | Unset = UNSET
         if _categories is not UNSET:

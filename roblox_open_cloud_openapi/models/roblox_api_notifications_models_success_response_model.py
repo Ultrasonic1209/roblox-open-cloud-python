@@ -32,7 +32,7 @@ class RobloxApiNotificationsModelsSuccessResponseModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         status_message = d.pop("statusMessage", UNSET)
 
         roblox_api_notifications_models_success_response_model = cls(

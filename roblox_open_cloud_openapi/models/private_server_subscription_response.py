@@ -121,7 +121,7 @@ class PrivateServerSubscriptionResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.private_server_subscription_metadata import PrivateServerSubscriptionMetadata
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         active = d.pop("active", UNSET)
 
         expired = d.pop("expired", UNSET)

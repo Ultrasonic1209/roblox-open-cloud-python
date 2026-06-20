@@ -53,7 +53,7 @@ class ListGroupMembershipsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.group_membership import GroupMembership
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _group_memberships = d.pop("groupMemberships", UNSET)
         group_memberships: list[GroupMembership] | Unset = UNSET
         if _group_memberships is not UNSET:

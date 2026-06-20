@@ -33,7 +33,7 @@ class RobloxTwoStepVerificationApiRegenerateRecoveryCodesRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         password = d.pop("password", UNSET)
 
         roblox_two_step_verification_api_regenerate_recovery_codes_request = cls(

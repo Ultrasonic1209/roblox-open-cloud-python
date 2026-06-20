@@ -62,7 +62,7 @@ class ConditionalRulesPayload:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.conditional_rules_payload_rules_type_0 import ConditionalRulesPayloadRulesType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_rules(data: object) -> ConditionalRulesPayloadRulesType0 | None | Unset:
             if data is None:

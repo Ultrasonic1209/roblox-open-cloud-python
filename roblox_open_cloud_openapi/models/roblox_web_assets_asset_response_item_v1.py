@@ -100,7 +100,7 @@ class RobloxWebAssetsAssetResponseItemV1:
         )
         from ..models.roblox_web_assets_i_asset_item_error import RobloxWebAssetsIAssetItemError
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         location = d.pop("location", UNSET)
 
         _errors = d.pop("errors", UNSET)

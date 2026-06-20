@@ -46,7 +46,7 @@ class RobloxGroupsApiUpdateGroupNotificationPreferenceRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         notifications_enabled = d.pop("notificationsEnabled", UNSET)
 
         _type_ = d.pop("type", UNSET)

@@ -139,7 +139,7 @@ class RobloxApiAvatarModelsAvatarMetadataModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         enable_default_clothing_message = d.pop("enableDefaultClothingMessage", UNSET)
 
         is_avatar_scale_embedded_in_tab = d.pop("isAvatarScaleEmbeddedInTab", UNSET)

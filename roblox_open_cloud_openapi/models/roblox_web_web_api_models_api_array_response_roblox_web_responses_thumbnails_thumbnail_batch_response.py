@@ -47,7 +47,7 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnail
             RobloxWebResponsesThumbnailsThumbnailBatchResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[RobloxWebResponsesThumbnailsThumbnailBatchResponse] | Unset = UNSET
         if _data is not UNSET:

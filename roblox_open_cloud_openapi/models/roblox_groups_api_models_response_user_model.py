@@ -63,7 +63,7 @@ class RobloxGroupsApiModelsResponseUserModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _builders_club_membership_type = d.pop("buildersClubMembershipType", UNSET)
         builders_club_membership_type: RobloxGroupsApiModelsResponseUserModelBuildersClubMembershipType | Unset
         if isinstance(_builders_club_membership_type, Unset):

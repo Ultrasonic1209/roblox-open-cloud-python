@@ -32,7 +32,7 @@ class RobloxInGameContentTablesClientGameLocation:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         path = d.pop("path", UNSET)
 
         roblox_in_game_content_tables_client_game_location = cls(

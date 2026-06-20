@@ -100,7 +100,7 @@ class RobloxApiAvatarModelsAvatarModelV2:
         from ..models.roblox_api_avatar_models_emote_response_model import RobloxApiAvatarModelsEmoteResponseModel
         from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _scales = d.pop("scales", UNSET)
         scales: RobloxWebResponsesAvatarScaleModel | Unset
         if isinstance(_scales, Unset):

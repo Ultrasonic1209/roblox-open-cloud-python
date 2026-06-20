@@ -173,7 +173,7 @@ class CreatorStoreProduct:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.money import Money
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         path = d.pop("path", UNSET)
 
         _base_price = d.pop("basePrice", UNSET)

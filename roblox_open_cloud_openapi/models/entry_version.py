@@ -66,7 +66,7 @@ class EntryVersion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _version = d.pop("version", UNSET)
         version: File | Unset
         if isinstance(_version, Unset):

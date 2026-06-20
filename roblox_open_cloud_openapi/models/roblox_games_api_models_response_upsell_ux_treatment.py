@@ -59,7 +59,7 @@ class RobloxGamesApiModelsResponseUpsellUxTreatment:
             RobloxGamesApiModelsResponseUpsellUxTreatmentData,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         treatment = d.pop("treatment", UNSET)
 
         _data = d.pop("data", UNSET)

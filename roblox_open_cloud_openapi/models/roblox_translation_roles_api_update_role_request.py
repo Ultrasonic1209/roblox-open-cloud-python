@@ -65,7 +65,7 @@ class RobloxTranslationRolesApiUpdateRoleRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         assignee_id = d.pop("assigneeId", UNSET)
 
         _assignee_type = d.pop("assigneeType", UNSET)

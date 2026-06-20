@@ -72,7 +72,7 @@ class RobloxLocalizationTablesApiEntry:
         from ..models.roblox_localization_tables_api_entry_metadata import RobloxLocalizationTablesApiEntryMetadata
         from ..models.roblox_localization_tables_api_translation import RobloxLocalizationTablesApiTranslation
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _identifier = d.pop("identifier", UNSET)
         identifier: RobloxLocalizationTablesApiEntryIdentifier | Unset
         if isinstance(_identifier, Unset):

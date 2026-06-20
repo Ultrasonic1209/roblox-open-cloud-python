@@ -54,7 +54,7 @@ class RobloxApiNotificationsModelsGetPushDestinationsResponseModel:
             RobloxApiNotificationsModelsUserPushDestination,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _destinations = d.pop("destinations", UNSET)
         destinations: list[RobloxApiNotificationsModelsUserPushDestination] | Unset = UNSET
         if _destinations is not UNSET:

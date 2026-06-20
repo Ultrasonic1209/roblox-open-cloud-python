@@ -63,7 +63,7 @@ class RobloxTranslationRolesApiGetGameLocalizationRoleAssignmentsForUserResponse
             RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssignment,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _games = d.pop("games", UNSET)
         games: list[RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssignment] | Unset = UNSET
         if _games is not UNSET:

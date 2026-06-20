@@ -33,7 +33,7 @@ class RobloxAccountInformationApiModelsVerifyEmailResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         verified_user_hat_asset_id = d.pop("verifiedUserHatAssetId", UNSET)
 
         roblox_account_information_api_models_verify_email_response = cls(

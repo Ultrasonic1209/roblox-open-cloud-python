@@ -284,7 +284,7 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItem:
         from ..models.roblox_catalog_api_bundle_item_detail_model import RobloxCatalogApiBundleItemDetailModel
         from ..models.roblox_catalog_api_timed_option import RobloxCatalogApiTimedOption
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         _item_type = d.pop("itemType", UNSET)

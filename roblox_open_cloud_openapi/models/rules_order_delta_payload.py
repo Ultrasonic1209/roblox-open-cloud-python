@@ -52,7 +52,7 @@ class RulesOrderDeltaPayload:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_before(data: object) -> list[str] | None | Unset:
             if data is None:

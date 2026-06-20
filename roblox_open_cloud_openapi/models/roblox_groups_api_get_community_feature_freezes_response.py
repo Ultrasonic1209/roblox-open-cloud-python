@@ -47,7 +47,7 @@ class RobloxGroupsApiGetCommunityFeatureFreezesResponse:
             RobloxGroupsApiCommunityFeatureFreezeStatus,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _features = d.pop("features", UNSET)
         features: list[RobloxGroupsApiCommunityFeatureFreezeStatus] | Unset = UNSET
         if _features is not UNSET:

@@ -62,7 +62,7 @@ class RobloxFriendsApiModelsResponseFriendsPageMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_friends_filter_bar_enabled = d.pop("isFriendsFilterBarEnabled", UNSET)
 
         is_friends_page_sort_experiment_enabled = d.pop("isFriendsPageSortExperimentEnabled", UNSET)

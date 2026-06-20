@@ -104,7 +104,7 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             RobloxGamesApiModelsResponseUpsellUxTreatment,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _playability_status = d.pop("playabilityStatus", UNSET)
         playability_status: RobloxGamesApiModelsResponsePlayabilityStatusResponsePlayabilityStatus | Unset
         if isinstance(_playability_status, Unset):

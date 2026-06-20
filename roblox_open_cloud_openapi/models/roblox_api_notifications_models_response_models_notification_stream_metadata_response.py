@@ -44,7 +44,7 @@ class RobloxApiNotificationsModelsResponseModelsNotificationStreamMetadataRespon
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         banner_dismiss_time_span = d.pop("bannerDismissTimeSpan", UNSET)
 
         signal_r_disconnection_response_in_milliseconds = d.pop("signalRDisconnectionResponseInMilliseconds", UNSET)

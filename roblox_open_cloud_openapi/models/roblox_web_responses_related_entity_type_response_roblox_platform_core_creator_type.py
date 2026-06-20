@@ -50,7 +50,7 @@ class RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)

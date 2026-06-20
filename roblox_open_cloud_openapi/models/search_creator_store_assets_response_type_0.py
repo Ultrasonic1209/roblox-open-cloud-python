@@ -113,7 +113,7 @@ class SearchCreatorStoreAssetsResponseType0:
         from ..models.query_correction_type_0 import QueryCorrectionType0
         from ..models.query_facets_type_0 import QueryFacetsType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_next_page_token(data: object) -> None | str | Unset:
             if data is None:

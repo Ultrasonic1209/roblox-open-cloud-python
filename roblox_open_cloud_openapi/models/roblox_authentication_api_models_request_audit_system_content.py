@@ -60,7 +60,7 @@ class RobloxAuthenticationApiModelsRequestAuditSystemContent:
             RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _captured_audit_content = d.pop("capturedAuditContent", UNSET)
         captured_audit_content: RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent | Unset
         if isinstance(_captured_audit_content, Unset):

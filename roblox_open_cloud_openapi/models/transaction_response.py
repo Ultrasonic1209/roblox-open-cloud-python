@@ -130,7 +130,7 @@ class TransactionResponse:
         from ..models.generic_currency_response import GenericCurrencyResponse
         from ..models.transaction_details_response import TransactionDetailsResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         def _parse_id_hash(data: object) -> None | str | Unset:

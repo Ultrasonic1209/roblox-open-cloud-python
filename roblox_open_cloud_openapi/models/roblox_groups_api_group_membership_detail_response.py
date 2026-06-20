@@ -80,7 +80,7 @@ class RobloxGroupsApiGroupMembershipDetailResponse:
         )
         from ..models.roblox_groups_api_group_role_response import RobloxGroupsApiGroupRoleResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _group = d.pop("group", UNSET)
         group: RobloxGroupsApiGroupDetailResponse | Unset
         if isinstance(_group, Unset):

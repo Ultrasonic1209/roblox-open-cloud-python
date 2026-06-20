@@ -71,7 +71,7 @@ class RobloxLocalizationTablesApiPatchTranslation:
             RobloxLocalizationtablesLocalizationtablesV1ChangeAgent,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         locale = d.pop("locale", UNSET)
 
         translation_text = d.pop("translationText", UNSET)

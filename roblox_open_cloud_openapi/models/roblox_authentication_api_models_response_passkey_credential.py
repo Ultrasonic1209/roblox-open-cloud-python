@@ -32,7 +32,7 @@ class RobloxAuthenticationApiModelsResponsePasskeyCredential:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         nickname = d.pop("nickname", UNSET)
 
         roblox_authentication_api_models_response_passkey_credential = cls(

@@ -32,7 +32,7 @@ class RobloxGameInternationalizationApiModelsResponseGameNameDescriptionMetadata
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_name_description_migration_enabled = d.pop("isNameDescriptionMigrationEnabled", UNSET)
 
         roblox_game_internationalization_api_models_response_game_name_description_metadata_response = cls(

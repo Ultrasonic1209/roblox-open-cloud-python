@@ -53,7 +53,7 @@ class ListEntriesResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.entry import Entry
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _entries = d.pop("entries", UNSET)
         entries: list[Entry] | Unset = UNSET
         if _entries is not UNSET:

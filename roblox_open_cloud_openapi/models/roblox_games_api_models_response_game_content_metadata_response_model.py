@@ -57,7 +57,7 @@ class RobloxGamesApiModelsResponseGameContentMetadataResponseModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         badge_position = d.pop("badgePosition", UNSET)
 
         badge_analytics_id = d.pop("badgeAnalyticsId", UNSET)

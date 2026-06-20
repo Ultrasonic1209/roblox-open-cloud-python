@@ -50,7 +50,7 @@ class ListDeveloperProductConfigsV2Response:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.developer_product_config_v2 import DeveloperProductConfigV2
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         developer_products = []
         _developer_products = d.pop("developerProducts")
         for developer_products_item_data in _developer_products:

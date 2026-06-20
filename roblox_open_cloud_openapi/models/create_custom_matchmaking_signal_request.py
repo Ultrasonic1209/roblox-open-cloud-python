@@ -53,7 +53,7 @@ class CreateCustomMatchmakingSignalRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.custom_signal_configuration import CustomSignalConfiguration
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_scoring_configuration_id(data: object) -> None | str | Unset:
             if data is None:

@@ -120,7 +120,7 @@ class RobloxBadgesApiBadgeResponse:
             RobloxWebResponsesBadgesBadgeAwardStatisticsResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)

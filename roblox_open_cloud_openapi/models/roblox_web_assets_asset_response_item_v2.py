@@ -94,7 +94,7 @@ class RobloxWebAssetsAssetResponseItemV2:
         from ..models.roblox_web_assets_asset_format_location import RobloxWebAssetsAssetFormatLocation
         from ..models.roblox_web_assets_i_asset_item_error import RobloxWebAssetsIAssetItemError
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _locations = d.pop("locations", UNSET)
         locations: list[RobloxWebAssetsAssetFormatLocation] | Unset = UNSET
         if _locations is not UNSET:

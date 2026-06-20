@@ -53,7 +53,7 @@ class ListGroupJoinRequestsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.group_join_request import GroupJoinRequest
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _group_join_requests = d.pop("groupJoinRequests", UNSET)
         group_join_requests: list[GroupJoinRequest] | Unset = UNSET
         if _group_join_requests is not UNSET:

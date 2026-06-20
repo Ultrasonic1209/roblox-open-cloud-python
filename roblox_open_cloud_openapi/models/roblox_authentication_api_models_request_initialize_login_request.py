@@ -66,7 +66,7 @@ class RobloxAuthenticationApiModelsRequestInitializeLoginRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         ctype = RobloxAuthenticationApiModelsRequestInitializeLoginRequestCtype(d.pop("ctype"))
 
         cvalue = d.pop("cvalue")

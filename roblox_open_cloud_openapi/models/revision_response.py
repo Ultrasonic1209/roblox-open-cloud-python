@@ -124,7 +124,7 @@ class RevisionResponse:
         from ..models.conditional_rules_changes_payload import ConditionalRulesChangesPayload
         from ..models.revision_response_changes_type_0 import RevisionResponseChangesType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_revision_id(data: object) -> None | str | Unset:
             if data is None:

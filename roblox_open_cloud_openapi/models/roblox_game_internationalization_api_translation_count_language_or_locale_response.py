@@ -86,7 +86,7 @@ class RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponse:
             RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _status = d.pop("status", UNSET)
         status: RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponseStatus | Unset
         if isinstance(_status, Unset):

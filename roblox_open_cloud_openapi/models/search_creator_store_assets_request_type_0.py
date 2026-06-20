@@ -256,7 +256,7 @@ class SearchCreatorStoreAssetsRequestType0:
         from ..models.audio_search_filters_type_0 import AudioSearchFiltersType0
         from ..models.model_search_filters_type_0 import ModelSearchFiltersType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_search_category_type(data: object) -> None | SearchCategoryType | Unset:
             if data is None:

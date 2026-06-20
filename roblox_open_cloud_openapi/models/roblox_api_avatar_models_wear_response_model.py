@@ -59,7 +59,7 @@ class RobloxApiAvatarModelsWearResponseModel:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _invalid_assets = d.pop("invalidAssets", UNSET)
         invalid_assets: list[RobloxApiAvatarModelsAssetModelV2] | Unset = UNSET
         if _invalid_assets is not UNSET:

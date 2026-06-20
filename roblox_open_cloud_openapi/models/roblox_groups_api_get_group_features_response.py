@@ -50,7 +50,7 @@ class RobloxGroupsApiGetGroupFeaturesResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_group_feature_response import RobloxGroupsApiGroupFeatureResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_locked = d.pop("isLocked", UNSET)
 
         _features = d.pop("features", UNSET)

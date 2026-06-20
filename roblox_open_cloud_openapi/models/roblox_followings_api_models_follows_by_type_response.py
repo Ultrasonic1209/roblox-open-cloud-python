@@ -76,7 +76,7 @@ class RobloxFollowingsApiModelsFollowsByTypeResponse:
             RobloxFollowingsApiModelsFollowsByTypeResponseFollowedSources,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _follower_type = d.pop("followerType", UNSET)
         follower_type: RobloxFollowingsApiModelsFollowsByTypeResponseFollowerType | Unset
         if isinstance(_follower_type, Unset):

@@ -49,7 +49,7 @@ class RobloxAdConfigurationApiModelsGetCampaignTargetsResponse:
             RobloxAdConfigurationApiModelsCampaignTargetModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _campaign_target_models = d.pop("campaignTargetModels", UNSET)
         campaign_target_models: list[RobloxAdConfigurationApiModelsCampaignTargetModel] | Unset = UNSET
         if _campaign_target_models is not UNSET:

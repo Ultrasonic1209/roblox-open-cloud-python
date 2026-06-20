@@ -49,7 +49,7 @@ class RobloxGameInternationalizationApiTranslationAnalyticsMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_feature_enabled_on_ui = d.pop("isFeatureEnabledOnUI", UNSET)
 
         report_request_polling_interval_seconds = d.pop("reportRequestPollingIntervalSeconds", UNSET)

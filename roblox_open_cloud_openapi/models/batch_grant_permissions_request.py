@@ -121,7 +121,7 @@ class BatchGrantPermissionsRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.asset_grant_request import AssetGrantRequest
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _subject_type = d.pop("subjectType", UNSET)
         subject_type: SubjectType | Unset
         if isinstance(_subject_type, Unset):

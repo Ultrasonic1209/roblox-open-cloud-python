@@ -54,7 +54,7 @@ class ListMemoryStoreSortedMapItemsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.memory_store_sorted_map_item import MemoryStoreSortedMapItem
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _memory_store_sorted_map_items = d.pop("memoryStoreSortedMapItems", UNSET)
         memory_store_sorted_map_items: list[MemoryStoreSortedMapItem] | Unset = UNSET
         if _memory_store_sorted_map_items is not UNSET:

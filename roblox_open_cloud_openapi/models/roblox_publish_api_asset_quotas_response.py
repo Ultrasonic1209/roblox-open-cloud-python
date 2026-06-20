@@ -44,7 +44,7 @@ class RobloxPublishApiAssetQuotasResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_publish_api_asset_quota import RobloxPublishApiAssetQuota
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _quotas = d.pop("quotas", UNSET)
         quotas: list[RobloxPublishApiAssetQuota] | Unset = UNSET
         if _quotas is not UNSET:

@@ -65,7 +65,7 @@ class IncrementDataStoreEntryRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.increment_data_store_entry_request_attributes import IncrementDataStoreEntryRequestAttributes
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         amount = d.pop("amount", UNSET)
 
         users = cast(list[str], d.pop("users", UNSET))

@@ -104,7 +104,7 @@ class DeveloperProductConfigV2:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.price_information_struct import PriceInformationStruct
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         product_id = d.pop("productId")
 
         name = d.pop("name")

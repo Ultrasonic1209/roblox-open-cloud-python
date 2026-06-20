@@ -93,7 +93,7 @@ class RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequest:
             RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestAdditionalInfoPayload,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _ctype = d.pop("ctype", UNSET)
         ctype: RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestCtype | Unset
         if isinstance(_ctype, Unset):

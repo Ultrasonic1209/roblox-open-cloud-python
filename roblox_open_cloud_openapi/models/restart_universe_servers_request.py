@@ -63,7 +63,7 @@ class RestartUniverseServersRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         place_ids = cast(list[int], d.pop("placeIds", UNSET))
 
         close_all_versions = d.pop("closeAllVersions", UNSET)

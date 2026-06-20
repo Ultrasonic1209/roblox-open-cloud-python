@@ -31,7 +31,7 @@ class ConditionalRulesChangesPayloadRulesType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.rule_delta_payload import RuleDeltaPayload
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         conditional_rules_changes_payload_rules_type_0 = cls()
 
         additional_properties = {}

@@ -39,7 +39,7 @@ class RobloxGroupsApiGroupPayoutRestrictionResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         can_use_recurring_payout = d.pop("canUseRecurringPayout", UNSET)
 
         can_use_one_time_payout = d.pop("canUseOneTimePayout", UNSET)

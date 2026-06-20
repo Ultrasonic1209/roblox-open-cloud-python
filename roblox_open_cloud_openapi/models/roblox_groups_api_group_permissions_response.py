@@ -57,7 +57,7 @@ class RobloxGroupsApiGroupPermissionsResponse:
         from ..models.roblox_groups_api_group_permissions_model import RobloxGroupsApiGroupPermissionsModel
         from ..models.roblox_groups_api_group_role_response import RobloxGroupsApiGroupRoleResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         group_id = d.pop("groupId", UNSET)
 
         _role = d.pop("role", UNSET)

@@ -36,7 +36,7 @@ class TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         data = cast(list[str], d.pop("data", UNSET))
 
         translation_roles_api_roblox_web_web_api_models_api_array_response_system_string = cls(

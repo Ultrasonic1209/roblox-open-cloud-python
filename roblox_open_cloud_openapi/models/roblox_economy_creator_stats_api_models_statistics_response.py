@@ -57,7 +57,7 @@ class RobloxEconomyCreatorStatsApiModelsStatisticsResponse:
             RobloxEconomyCreatorStatsApiModelsStatisticsResponseData,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data_granularity = d.pop("dataGranularity", UNSET)
         data_granularity: RobloxEconomyCreatorStatsApiModelsStatisticsResponseDataGranularity | Unset
         if isinstance(_data_granularity, Unset):

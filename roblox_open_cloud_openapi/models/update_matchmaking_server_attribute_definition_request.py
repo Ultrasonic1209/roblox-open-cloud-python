@@ -52,7 +52,7 @@ class UpdateMatchmakingServerAttributeDefinitionRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.matchmaking_server_attribute_default_value import MatchmakingServerAttributeDefaultValue
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_attribute_id(data: object) -> None | str | Unset:
             if data is None:

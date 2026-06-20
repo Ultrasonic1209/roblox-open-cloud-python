@@ -126,7 +126,7 @@ class PlaceSummaryForGameRestart:
             PlaceSummaryForGameRestartPlayersPerVersionType0,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         players_impacted = d.pop("playersImpacted", UNSET)
 
         total_players = d.pop("totalPlayers", UNSET)

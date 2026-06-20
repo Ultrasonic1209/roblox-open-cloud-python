@@ -55,7 +55,7 @@ class RobloxGamesApiModelsResponseGameRecommendationsResponse:
             RobloxGamesApiModelsResponseGameResponseModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _games = d.pop("games", UNSET)
         games: list[RobloxGamesApiModelsResponseGameResponseModel] | Unset = UNSET
         if _games is not UNSET:

@@ -51,7 +51,7 @@ class RobloxAdConfigurationApiModelsGetEligibleCampaignTargetsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _campaign_target_types = d.pop("campaignTargetTypes", UNSET)
         campaign_target_types: (
             list[RobloxAdConfigurationApiModelsGetEligibleCampaignTargetsRequestCampaignTargetTypesItem] | Unset

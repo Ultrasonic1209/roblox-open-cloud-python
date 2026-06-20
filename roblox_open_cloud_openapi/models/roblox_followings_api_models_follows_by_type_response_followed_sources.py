@@ -26,7 +26,7 @@ class RobloxFollowingsApiModelsFollowsByTypeResponseFollowedSources:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         roblox_followings_api_models_follows_by_type_response_followed_sources = cls()
 
         additional_properties = {}

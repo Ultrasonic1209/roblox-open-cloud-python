@@ -32,7 +32,7 @@ class RobloxGameInternationalizationApiModelsResponseGetPlayerChoiceUniverseSett
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_player_choice_enabled = d.pop("IsPlayerChoiceEnabled", UNSET)
 
         roblox_game_internationalization_api_models_response_get_player_choice_universe_settings_response = cls(

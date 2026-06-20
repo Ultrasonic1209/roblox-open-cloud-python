@@ -93,7 +93,7 @@ class RobloxApiAvatarModelsAssetModelV2:
         from ..models.roblox_api_avatar_models_asset_meta_model_v1 import RobloxApiAvatarModelsAssetMetaModelV1
         from ..models.roblox_api_avatar_models_asset_type_model import RobloxApiAvatarModelsAssetTypeModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)

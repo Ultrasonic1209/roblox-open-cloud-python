@@ -55,7 +55,7 @@ class RobloxItemConfigurationApiPriceConfigurationModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         price_in_robux = d.pop("priceInRobux", UNSET)
 
         premium_discount_percentage = d.pop("premiumDiscountPercentage", UNSET)

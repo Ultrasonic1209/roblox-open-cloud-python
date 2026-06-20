@@ -158,7 +158,7 @@ class DeveloperProductsCreateDeveloperProductV2Body:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         name = d.pop("name")
 
         def _parse_description(data: object) -> None | str | Unset:

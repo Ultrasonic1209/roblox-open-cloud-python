@@ -95,7 +95,7 @@ class RobloxAuthenticationApiModelsRequestExternalSignupRequest:
             RobloxAuthenticationApiModelsRequestExternalSignupRequestAdditionalInfoPayload,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         username = d.pop("username", UNSET)
 
         password = d.pop("password", UNSET)

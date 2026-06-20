@@ -34,7 +34,7 @@ class RobloxPrivateMessagesApiModelsBatchMessagesRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         message_ids = cast(list[int], d.pop("messageIds", UNSET))
 
         roblox_private_messages_api_models_batch_messages_request = cls(

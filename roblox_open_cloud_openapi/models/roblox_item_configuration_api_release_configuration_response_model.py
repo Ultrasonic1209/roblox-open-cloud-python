@@ -45,7 +45,7 @@ class RobloxItemConfigurationApiReleaseConfigurationResponseModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _sale_availability_locations = d.pop("saleAvailabilityLocations", UNSET)
         sale_availability_locations: (
             list[RobloxItemConfigurationApiReleaseConfigurationResponseModelSaleAvailabilityLocationsItem] | Unset

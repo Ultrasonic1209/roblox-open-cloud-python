@@ -28,7 +28,7 @@ class IncrementDataStoreEntryRequestAttributes:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         increment_data_store_entry_request_attributes = cls()
 
         increment_data_store_entry_request_attributes.additional_properties = d

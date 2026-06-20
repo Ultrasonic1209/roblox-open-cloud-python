@@ -65,7 +65,7 @@ class RobloxInventoryApiModelsAssetsExplorerCategoryModel:
             RobloxInventoryApiModelsAssetsExplorerCategoryItemModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         name = d.pop("name", UNSET)
 
         display_name = d.pop("displayName", UNSET)

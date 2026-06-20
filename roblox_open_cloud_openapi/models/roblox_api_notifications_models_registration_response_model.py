@@ -50,7 +50,7 @@ class RobloxApiNotificationsModelsRegistrationResponseModel:
             RobloxApiNotificationsModelsPushNotificationRegistration,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _registration = d.pop("registration", UNSET)
         registration: RobloxApiNotificationsModelsPushNotificationRegistration | Unset
         if isinstance(_registration, Unset):

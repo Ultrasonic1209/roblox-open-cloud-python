@@ -74,7 +74,7 @@ class ConfigRepositoryDraft:
         from ..models.conditional_rules_payload import ConditionalRulesPayload
         from ..models.config_repository_draft_entries_type_0 import ConfigRepositoryDraftEntriesType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_draft_hash(data: object) -> None | str | Unset:
             if data is None:

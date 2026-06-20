@@ -130,7 +130,7 @@ class PlaceSummaryForGameUpdate:
             PlaceSummaryForGameUpdateVersionToPlayerCountsType0,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         place_id = d.pop("placeId", UNSET)
 
         players_to_be_kicked = d.pop("playersToBeKicked", UNSET)

@@ -53,7 +53,7 @@ class ListDataStoreEntryRevisionsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.data_store_entry import DataStoreEntry
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data_store_entries = d.pop("dataStoreEntries", UNSET)
         data_store_entries: list[DataStoreEntry] | Unset = UNSET
         if _data_store_entries is not UNSET:

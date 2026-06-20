@@ -80,7 +80,7 @@ class RobloxGroupsApiGroupMembershipResponse:
             RobloxWebResponsesGroupsGroupRoleBasicResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _group = d.pop("group", UNSET)
         group: RobloxWebResponsesGroupsGroupBasicResponse | Unset
         if isinstance(_group, Unset):

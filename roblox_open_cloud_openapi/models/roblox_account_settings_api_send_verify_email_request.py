@@ -40,7 +40,7 @@ class RobloxAccountSettingsApiSendVerifyEmailRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         free_item = d.pop("freeItem", UNSET)
 
         is_ads_account = d.pop("isAdsAccount", UNSET)

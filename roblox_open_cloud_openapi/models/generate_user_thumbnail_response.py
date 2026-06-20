@@ -35,7 +35,7 @@ class GenerateUserThumbnailResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         image_uri = d.pop("imageUri", UNSET)
 
         generate_user_thumbnail_response = cls(

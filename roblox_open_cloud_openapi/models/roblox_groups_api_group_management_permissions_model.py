@@ -57,7 +57,7 @@ class RobloxGroupsApiGroupManagementPermissionsModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         manage_relationships = d.pop("manageRelationships", UNSET)
 
         manage_clan = d.pop("manageClan", UNSET)

@@ -67,7 +67,7 @@ class AssetVersion:
         from ..models.creation_context import CreationContext
         from ..models.moderation_result import ModerationResult
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _creation_context = d.pop("creationContext", UNSET)
         creation_context: CreationContext | Unset
         if isinstance(_creation_context, Unset):

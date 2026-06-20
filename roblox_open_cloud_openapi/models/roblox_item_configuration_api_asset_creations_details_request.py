@@ -34,7 +34,7 @@ class RobloxItemConfigurationApiAssetCreationsDetailsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         asset_ids = cast(list[int], d.pop("AssetIds", UNSET))
 
         roblox_item_configuration_api_asset_creations_details_request = cls(

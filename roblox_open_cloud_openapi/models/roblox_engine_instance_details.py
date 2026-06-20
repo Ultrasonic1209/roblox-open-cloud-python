@@ -77,7 +77,7 @@ class RobloxEngineInstanceDetails:
         from ..models.roblox_engine_module_script import RobloxEngineModuleScript
         from ..models.roblox_engine_script import RobloxEngineScript
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _folder = d.pop("Folder", UNSET)
         folder: RobloxEngineFolder | Unset
         if isinstance(_folder, Unset):

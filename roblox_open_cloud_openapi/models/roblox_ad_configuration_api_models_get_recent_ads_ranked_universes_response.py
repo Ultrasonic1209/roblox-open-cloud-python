@@ -47,7 +47,7 @@ class RobloxAdConfigurationApiModelsGetRecentAdsRankedUniversesResponse:
             RobloxAdConfigurationApiModelsUniverseModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _universes = d.pop("universes", UNSET)
         universes: list[RobloxAdConfigurationApiModelsUniverseModel] | Unset = UNSET
         if _universes is not UNSET:

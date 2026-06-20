@@ -53,7 +53,7 @@ class RobloxGameInternationalizationApiGetGameThumbnailsResponse:
             RobloxGameInternationalizationApiMediaAssetResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         language_code = d.pop("languageCode", UNSET)
 
         _media_assets = d.pop("mediaAssets", UNSET)

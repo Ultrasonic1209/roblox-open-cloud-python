@@ -24,7 +24,7 @@ class RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestAdditionalI
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         roblox_authentication_api_models_request_external_login_and_link_request_additional_info_payload = cls()
 
         roblox_authentication_api_models_request_external_login_and_link_request_additional_info_payload.additional_properties = d

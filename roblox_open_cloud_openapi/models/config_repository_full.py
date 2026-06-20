@@ -79,7 +79,7 @@ class ConfigRepositoryFull:
         from ..models.config_repository_full_entries_type_0 import ConfigRepositoryFullEntriesType0
         from ..models.config_repository_metadata import ConfigRepositoryMetadata
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_entries(data: object) -> ConfigRepositoryFullEntriesType0 | None | Unset:
             if data is None:

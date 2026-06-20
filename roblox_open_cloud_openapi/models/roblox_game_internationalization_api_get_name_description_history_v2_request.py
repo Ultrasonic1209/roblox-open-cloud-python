@@ -79,7 +79,7 @@ class RobloxGameInternationalizationApiGetNameDescriptionHistoryV2Request:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         content_id = d.pop("contentId", UNSET)
 
         _content_type = d.pop("contentType", UNSET)

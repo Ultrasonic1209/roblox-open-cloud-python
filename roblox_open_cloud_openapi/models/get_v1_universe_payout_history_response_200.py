@@ -37,7 +37,7 @@ class GetV1UniversePayoutHistoryResponse200:
             RobloxEngagementPayoutsApiPayoutResponseModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         get_v1_universe_payout_history_response_200 = cls()
 
         additional_properties = {}

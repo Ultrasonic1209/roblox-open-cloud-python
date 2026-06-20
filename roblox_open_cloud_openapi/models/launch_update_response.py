@@ -50,7 +50,7 @@ class LaunchUpdateResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _update_id = d.pop("updateId", UNSET)
         update_id: UUID | Unset
         if isinstance(_update_id, Unset):

@@ -82,7 +82,7 @@ class DatastoresListDatastoresAsyncResponse200:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.ocv1_data_stores_data_store import OCV1DataStoresDataStore
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[OCV1DataStoresDataStore] | Unset = UNSET
         if _data is not UNSET:

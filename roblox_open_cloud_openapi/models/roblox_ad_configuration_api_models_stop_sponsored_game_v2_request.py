@@ -33,7 +33,7 @@ class RobloxAdConfigurationApiModelsStopSponsoredGameV2Request:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         ad_set_id = d.pop("adSetId", UNSET)
 
         roblox_ad_configuration_api_models_stop_sponsored_game_v2_request = cls(

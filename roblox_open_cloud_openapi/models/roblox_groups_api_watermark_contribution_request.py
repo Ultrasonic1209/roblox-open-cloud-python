@@ -43,7 +43,7 @@ class RobloxGroupsApiWatermarkContributionRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _balance_key = d.pop("balanceKey", UNSET)
         balance_key: RobloxGroupsApiWatermarkContributionRequestBalanceKey | Unset
         if isinstance(_balance_key, Unset):

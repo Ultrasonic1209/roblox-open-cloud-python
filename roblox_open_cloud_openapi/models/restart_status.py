@@ -75,7 +75,7 @@ class RestartStatus:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.restart_status_place_restart_statuses_type_0 import RestartStatusPlaceRestartStatusesType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_universe_id(data: object) -> None | str | Unset:
             if data is None:

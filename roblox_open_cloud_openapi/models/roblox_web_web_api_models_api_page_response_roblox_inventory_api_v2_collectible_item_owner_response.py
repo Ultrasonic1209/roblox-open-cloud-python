@@ -59,7 +59,7 @@ class RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiV2CollectibleItemOwn
             RobloxInventoryApiV2CollectibleItemOwnerResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         previous_page_cursor = d.pop("previousPageCursor", UNSET)
 
         next_page_cursor = d.pop("nextPageCursor", UNSET)

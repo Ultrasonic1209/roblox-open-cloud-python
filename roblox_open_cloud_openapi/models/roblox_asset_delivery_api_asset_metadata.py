@@ -45,7 +45,7 @@ class RobloxAssetDeliveryApiAssetMetadata:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _metadata_type = d.pop("metadataType", UNSET)
         metadata_type: RobloxAssetDeliveryApiAssetMetadataMetadataType | Unset
         if isinstance(_metadata_type, Unset):

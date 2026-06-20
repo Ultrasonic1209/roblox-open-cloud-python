@@ -59,7 +59,7 @@ class RobloxCatalogApiOwnedBundleModel:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_catalog_api_bundle_creator_model import RobloxCatalogApiBundleCreatorModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)

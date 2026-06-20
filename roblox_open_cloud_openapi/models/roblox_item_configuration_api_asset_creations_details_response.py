@@ -157,7 +157,7 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
             RobloxItemConfigurationApiReleaseConfigurationResponseModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         asset_id = d.pop("assetId", UNSET)
 
         name = d.pop("name", UNSET)

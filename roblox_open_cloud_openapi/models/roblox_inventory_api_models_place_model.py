@@ -64,7 +64,7 @@ class RobloxInventoryApiModelsPlaceModel:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_inventory_api_models_creator_model import RobloxInventoryApiModelsCreatorModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         universe_id = d.pop("universeId", UNSET)
 
         place_id = d.pop("placeId", UNSET)

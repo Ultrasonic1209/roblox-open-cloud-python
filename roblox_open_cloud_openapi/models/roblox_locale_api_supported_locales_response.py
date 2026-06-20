@@ -45,7 +45,7 @@ class RobloxLocaleApiSupportedLocalesResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_locale_api_supported_locale import RobloxLocaleApiSupportedLocale
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _supported_locales = d.pop("supportedLocales", UNSET)
         supported_locales: list[RobloxLocaleApiSupportedLocale] | Unset = UNSET
         if _supported_locales is not UNSET:

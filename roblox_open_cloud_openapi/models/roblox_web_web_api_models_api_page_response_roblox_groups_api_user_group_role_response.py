@@ -55,7 +55,7 @@ class RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiUserGroupRoleResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_user_group_role_response import RobloxGroupsApiUserGroupRoleResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         previous_page_cursor = d.pop("previousPageCursor", UNSET)
 
         next_page_cursor = d.pop("nextPageCursor", UNSET)

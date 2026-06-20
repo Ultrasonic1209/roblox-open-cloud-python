@@ -44,7 +44,7 @@ class GamePassesPriceInformationStruct:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_default_price_in_robux(data: object) -> int | None:
             if data is None:

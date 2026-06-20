@@ -127,7 +127,7 @@ class InventoryItemAssetDetails:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.inventory_item_collectible_details import InventoryItemCollectibleDetails
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         asset_id = d.pop("assetId", UNSET)
 
         _inventory_item_asset_type = d.pop("inventoryItemAssetType", UNSET)

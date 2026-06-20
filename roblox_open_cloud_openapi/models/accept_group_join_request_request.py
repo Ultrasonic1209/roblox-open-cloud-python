@@ -24,7 +24,7 @@ class AcceptGroupJoinRequestRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         accept_group_join_request_request = cls()
 
         accept_group_join_request_request.additional_properties = d

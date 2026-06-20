@@ -108,7 +108,7 @@ class RobloxAuthenticationApiModelsLoginResponse:
         )
         from ..models.roblox_web_responses_users_skinny_user_response import RobloxWebResponsesUsersSkinnyUserResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _user = d.pop("user", UNSET)
         user: RobloxWebResponsesUsersSkinnyUserResponse | Unset
         if isinstance(_user, Unset):

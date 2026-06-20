@@ -58,7 +58,7 @@ class RobloxLocalizationTablesApiIngestAutoScrapedContentForGameRequest:
             RobloxLocalizationTablesApiIngestContentMetadata,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _entries = d.pop("entries", UNSET)
         entries: list[RobloxLocalizationTablesApiAutoScrapeEntry] | Unset = UNSET
         if _entries is not UNSET:

@@ -38,7 +38,7 @@ class RobloxPrivateMessagesApiModelsFailedMessageResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         message_id = d.pop("messageId", UNSET)
 
         error_message = d.pop("errorMessage", UNSET)

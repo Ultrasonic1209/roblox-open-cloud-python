@@ -56,7 +56,7 @@ class RobloxTradesApiModelsV2GetUserTradableItemsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_trades_api_models_v2_tradable_item import RobloxTradesApiModelsV2TradableItem
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         user_id = d.pop("userId", UNSET)
 
         _items = d.pop("items", UNSET)

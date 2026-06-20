@@ -33,7 +33,7 @@ class RobloxBadgesApiIconUploadResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         target_id = d.pop("targetId", UNSET)
 
         roblox_badges_api_icon_upload_response = cls(

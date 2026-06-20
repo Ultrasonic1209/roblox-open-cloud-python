@@ -133,7 +133,7 @@ class PrivateServerResponse:
         from ..models.private_server_subscription_response import PrivateServerSubscriptionResponse
         from ..models.private_server_voice_settings_response import PrivateServerVoiceSettingsResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:

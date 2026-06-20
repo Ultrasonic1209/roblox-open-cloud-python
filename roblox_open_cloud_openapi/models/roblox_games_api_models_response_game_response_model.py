@@ -175,7 +175,7 @@ class RobloxGamesApiModelsResponseGameResponseModel:
             RobloxGamesApiModelsResponseGameContentMetadataResponseModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         creator_id = d.pop("creatorId", UNSET)
 
         creator_name = d.pop("creatorName", UNSET)

@@ -106,7 +106,7 @@ class LaunchUpdateRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.launch_update_request_place_id_to_versions_type_0 import LaunchUpdateRequestPlaceIdToVersionsType0
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         universe_id = d.pop("universeId", UNSET)
 
         def _parse_place_ids(data: object) -> list[int] | None | Unset:

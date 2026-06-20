@@ -35,7 +35,7 @@ class RobloxUsersApiUserRolesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         roles = cast(list[str], d.pop("roles", UNSET))
 
         roblox_users_api_user_roles_response = cls(

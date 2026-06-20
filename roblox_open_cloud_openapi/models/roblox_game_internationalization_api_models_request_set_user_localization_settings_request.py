@@ -44,7 +44,7 @@ class RobloxGameInternationalizationApiModelsRequestSetUserLocalizationSettingsR
             RobloxGameLocalizationClientUserUniverseLocalizationSettingValue,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _setting_value = d.pop("settingValue", UNSET)
         setting_value: RobloxGameLocalizationClientUserUniverseLocalizationSettingValue | Unset
         if isinstance(_setting_value, Unset):

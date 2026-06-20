@@ -43,7 +43,7 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupRoleDetailRespons
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_group_role_detail_response import RobloxGroupsApiGroupRoleDetailResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
         data: list[RobloxGroupsApiGroupRoleDetailResponse] | Unset = UNSET
         if _data is not UNSET:

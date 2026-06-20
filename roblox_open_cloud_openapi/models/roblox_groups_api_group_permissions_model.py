@@ -125,7 +125,7 @@ class RobloxGroupsApiGroupPermissionsModel:
         )
         from ..models.roblox_groups_api_group_posts_permissions_model import RobloxGroupsApiGroupPostsPermissionsModel
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _group_posts_permissions = d.pop("groupPostsPermissions", UNSET)
         group_posts_permissions: RobloxGroupsApiGroupPostsPermissionsModel | Unset
         if isinstance(_group_posts_permissions, Unset):

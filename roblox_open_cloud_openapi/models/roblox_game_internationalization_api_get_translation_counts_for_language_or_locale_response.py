@@ -71,7 +71,7 @@ class RobloxGameInternationalizationApiGetTranslationCountsForLanguageOrLocaleRe
             RobloxGameInternationalizationApiTranslationCountGameInfoResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         language_or_locale_code = d.pop("languageOrLocaleCode", UNSET)
 
         _language_or_locale_type = d.pop("languageOrLocaleType", UNSET)

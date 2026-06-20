@@ -116,7 +116,7 @@ class RobloxAuthenticationApiModelsPasswordResetModel:
             RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _target_type = d.pop("targetType", UNSET)
         target_type: RobloxAuthenticationApiModelsPasswordResetModelTargetType | Unset
         if isinstance(_target_type, Unset):

@@ -29,7 +29,7 @@ class RobloxEconomyCreatorStatsApiModelsStatisticsResponseData:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         roblox_economy_creator_stats_api_models_statistics_response_data = cls()
 
         additional_properties = {}

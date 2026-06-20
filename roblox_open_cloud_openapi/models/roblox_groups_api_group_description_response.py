@@ -32,7 +32,7 @@ class RobloxGroupsApiGroupDescriptionResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         new_description = d.pop("newDescription", UNSET)
 
         roblox_groups_api_group_description_response = cls(

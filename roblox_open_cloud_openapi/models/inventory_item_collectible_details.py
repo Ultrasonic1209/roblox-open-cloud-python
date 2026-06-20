@@ -70,7 +70,7 @@ class InventoryItemCollectibleDetails:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         item_id = d.pop("itemId", UNSET)
 
         instance_id = d.pop("instanceId", UNSET)

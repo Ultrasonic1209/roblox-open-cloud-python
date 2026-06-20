@@ -70,7 +70,7 @@ class PrivateServerPermissionsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.skinny_user_response import SkinnyUserResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         clan_allowed = d.pop("clanAllowed", UNSET)
 
         def _parse_enemy_clan_id(data: object) -> int | None | Unset:

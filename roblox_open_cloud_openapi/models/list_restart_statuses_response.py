@@ -54,7 +54,7 @@ class ListRestartStatusesResponse:
             ListRestartStatusesResponseRestartStatusesType0,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
         def _parse_restart_statuses(data: object) -> ListRestartStatusesResponseRestartStatusesType0 | None | Unset:
             if data is None:

@@ -47,7 +47,7 @@ class RobloxAuthenticationApiModelsPasswordResetVerificationResponse:
             RobloxAuthenticationApiModelsForgotPasswordUserResponse,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _user_tickets = d.pop("userTickets", UNSET)
         user_tickets: list[RobloxAuthenticationApiModelsForgotPasswordUserResponse] | Unset = UNSET
         if _user_tickets is not UNSET:

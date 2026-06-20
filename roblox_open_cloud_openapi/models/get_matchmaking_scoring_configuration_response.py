@@ -42,7 +42,7 @@ class GetMatchmakingScoringConfigurationResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.matchmaking_scoring_configuration import MatchmakingScoringConfiguration
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _scoring_configuration = d.pop("scoringConfiguration", UNSET)
         scoring_configuration: MatchmakingScoringConfiguration | Unset
         if isinstance(_scoring_configuration, Unset):

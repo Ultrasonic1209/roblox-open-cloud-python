@@ -33,7 +33,7 @@ class RobloxAccountSettingsApiTradeValueResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         trade_value = d.pop("tradeValue", UNSET)
 
         roblox_account_settings_api_trade_value_response = cls(

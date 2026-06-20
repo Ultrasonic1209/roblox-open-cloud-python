@@ -83,7 +83,7 @@ class PlayerNumericalSignalConfiguration:
         from ..models.matchmaking_attribute_aggregation import MatchmakingAttributeAggregation
         from ..models.matchmaking_attribute_reference import MatchmakingAttributeReference
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _player_attribute = d.pop("playerAttribute", UNSET)
         player_attribute: MatchmakingAttributeReference | Unset
         if isinstance(_player_attribute, Unset):

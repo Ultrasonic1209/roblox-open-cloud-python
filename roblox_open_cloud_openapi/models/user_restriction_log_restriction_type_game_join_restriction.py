@@ -24,7 +24,7 @@ class UserRestrictionLogRestrictionTypeGameJoinRestriction:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         user_restriction_log_restriction_type_game_join_restriction = cls()
 
         user_restriction_log_restriction_type_game_join_restriction.additional_properties = d

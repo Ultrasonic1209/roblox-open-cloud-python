@@ -32,7 +32,7 @@ class RobloxAuthenticationApiModelsAuthMethodsMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_eligible_for_al_signup = d.pop("isEligibleForALSignup", UNSET)
 
         roblox_authentication_api_models_auth_methods_metadata_response = cls(

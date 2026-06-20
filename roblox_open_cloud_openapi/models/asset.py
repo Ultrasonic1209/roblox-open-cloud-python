@@ -146,7 +146,7 @@ class Asset:
         from ..models.preview import Preview
         from ..models.social_link import SocialLink
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         asset_type = d.pop("assetType", UNSET)
 
         asset_id = d.pop("assetId", UNSET)

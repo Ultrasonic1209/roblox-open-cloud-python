@@ -86,7 +86,7 @@ class RobloxTradesApiModelsV2TradableItem:
             RobloxTradesApiModelsV2TradableItemInstance,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         collectible_item_id = d.pop("collectibleItemId", UNSET)
 
         _item_target = d.pop("itemTarget", UNSET)

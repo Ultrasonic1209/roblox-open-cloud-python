@@ -47,7 +47,7 @@ class RobloxAuthenticationApiModelsResponseInitializeLoginResponse:
             RobloxAuthenticationApiModelsLoginMethodModel,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _login_methods = d.pop("loginMethods", UNSET)
         login_methods: list[RobloxAuthenticationApiModelsLoginMethodModel] | Unset = UNSET
         if _login_methods is not UNSET:

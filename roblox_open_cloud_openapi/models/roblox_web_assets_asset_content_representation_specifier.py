@@ -50,7 +50,7 @@ class RobloxWebAssetsAssetContentRepresentationSpecifier:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         format_ = d.pop("format", UNSET)
 
         major_version = d.pop("majorVersion", UNSET)

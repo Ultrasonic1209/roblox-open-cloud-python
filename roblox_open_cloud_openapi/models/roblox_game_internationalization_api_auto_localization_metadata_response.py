@@ -58,7 +58,7 @@ class RobloxGameInternationalizationApiAutoLocalizationMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_react_version_enabled_for_auto_localization_settings = d.pop(
             "isReactVersionEnabledForAutoLocalizationSettings", UNSET
         )

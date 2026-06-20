@@ -65,7 +65,7 @@ class RobloxLocaleApiSupportedLocale:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_locale_api_language import RobloxLocaleApiLanguage
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         locale = d.pop("locale", UNSET)

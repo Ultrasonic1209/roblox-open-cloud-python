@@ -51,7 +51,7 @@ class RobloxGamesApiModelsResponseRefundPolicy:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         policy_text = d.pop("policyText", UNSET)
 
         learn_more_base_url = d.pop("learnMoreBaseUrl", UNSET)

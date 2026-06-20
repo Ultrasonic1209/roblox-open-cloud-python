@@ -108,7 +108,7 @@ class RobloxWebResponsesGamesGameFavoriteResponseModel:
             RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
         )
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         price = d.pop("price", UNSET)
 
         id = d.pop("id", UNSET)

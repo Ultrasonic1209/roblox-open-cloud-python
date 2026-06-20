@@ -43,7 +43,7 @@ class RobloxGroupsApiGroupPoliciesResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_group_policy_response import RobloxGroupsApiGroupPolicyResponse
 
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _groups = d.pop("groups", UNSET)
         groups: list[RobloxGroupsApiGroupPolicyResponse] | Unset = UNSET
         if _groups is not UNSET:

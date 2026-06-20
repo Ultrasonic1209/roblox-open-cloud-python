@@ -37,7 +37,7 @@ class RobloxTwoStepVerificationApiEnableVerifyAuthenticatorResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         recovery_codes = cast(list[str], d.pop("recoveryCodes", UNSET))
 
         roblox_two_step_verification_api_enable_verify_authenticator_response = cls(
