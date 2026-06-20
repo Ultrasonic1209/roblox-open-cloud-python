@@ -34,21 +34,23 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-scopes": [{"name": "group:read"}],
-            "x-roblox-docs": {
-                "category": "Users and groups",
-                "methodProperties": {"scopes": ["group:read"]},
-                "resource": {"$ref": "#/components/schemas/GroupJoinRequest", "name": "GroupJoinRequest"},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-scopes": [{"name": "group:read"}],
+                "x-roblox-docs": {
+                    "category": "Users and groups",
+                    "methodProperties": {"scopes": ["group:read"]},
+                    "resource": {"$ref": "#/components/schemas/GroupJoinRequest", "name": "GroupJoinRequest"},
+                },
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 300},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 90},
+                },
             },
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 300},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 90},
-            },
+            "openapi-id": "Cloud_ListGroupJoinRequests",
         },
-        "openapi-id": "Cloud_ListGroupJoinRequests",
     }
 
     return _kwargs

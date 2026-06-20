@@ -32,21 +32,23 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-scopes": [{"name": "universe.place:write"}],
-            "x-roblox-docs": {
-                "category": "Universes and places",
-                "methodProperties": {"scopes": ["universe.place:write"]},
-                "resource": {"$ref": "#/components/schemas/Place", "name": "Place"},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-scopes": [{"name": "universe.place:write"}],
+                "x-roblox-docs": {
+                    "category": "Universes and places",
+                    "methodProperties": {"scopes": ["universe.place:write"]},
+                    "resource": {"$ref": "#/components/schemas/Place", "name": "Place"},
+                },
+                "x-roblox-stability": "STABLE",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+                },
             },
-            "x-roblox-stability": "STABLE",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-            },
+            "openapi-id": "Cloud_UpdatePlace",
         },
-        "openapi-id": "Cloud_UpdatePlace",
     }
 
     _kwargs["json"] = body.to_dict()

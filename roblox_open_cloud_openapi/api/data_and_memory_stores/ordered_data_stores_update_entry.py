@@ -44,30 +44,32 @@ def _get_kwargs(
             entry=quote(str(entry), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-cloud-api-operation-name": "Update",
-            "x-roblox-stability": "BETA",
-            "x-roblox-scopes": [{"name": "universe.ordered-data-store.scope.entry:write"}],
-            "x-roblox-cloud-api-operation-code-samples": [
-                {
-                    "language": "curl",
-                    "script": "curl --location --request PATCH 'https://apis.roblox.com/ordered-data-stores/v1/universes/<universeId>/orderedDataStores/<orderedDataStore>/scopes/<scope>/entries/<entry>' \\\n--header 'x-api-key: <insert-api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{ \n    \"value\": <long> \n}'\n",
-                }
-            ],
-            "x-roblox-rate-limits": {
-                "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-cloud-api-operation-name": "Update",
+                "x-roblox-stability": "BETA",
+                "x-roblox-scopes": [{"name": "universe.ordered-data-store.scope.entry:write"}],
+                "x-roblox-cloud-api-operation-code-samples": [
+                    {
+                        "language": "curl",
+                        "script": "curl --location --request PATCH 'https://apis.roblox.com/ordered-data-stores/v1/universes/<universeId>/orderedDataStores/<orderedDataStore>/scopes/<scope>/entries/<entry>' \\\n--header 'x-api-key: <insert-api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{ \n    \"value\": <long> \n}'\n",
+                    }
+                ],
+                "x-roblox-rate-limits": {
+                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
+                },
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/ordered-data-stores/{ordered_data_store_id}/scopes/{scope_id}/entries/{entry_id}",
+                        "httpMethod": "PATCH",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_UpdateOrderedDataStoreEntry",
+                    }
+                ],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/ordered-data-stores/{ordered_data_store_id}/scopes/{scope_id}/entries/{entry_id}",
-                    "httpMethod": "PATCH",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_UpdateOrderedDataStoreEntry",
-                }
-            ],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "openapi-id": "OrderedDataStores_UpdateEntry",
         },
-        "openapi-id": "OrderedDataStores_UpdateEntry",
     }
 
     _kwargs["json"] = body.to_dict()

@@ -22,8 +22,10 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             time_frame=quote(str(time_frame), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "RevenueSummary_GetGroupRevenueSummary",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "RevenueSummary_GetGroupRevenueSummary",
+        },
     }
 
     return _kwargs

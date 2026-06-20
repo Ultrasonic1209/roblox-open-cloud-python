@@ -40,17 +40,19 @@ def _get_kwargs(
             game_id=quote(str(game_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-icon/games/{gameId}",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#get_legacy_game_internationalization_v1_game_icon_games__gameId_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-icon/games/{gameId}",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#get_legacy_game_internationalization_v1_game_icon_games__gameId_",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_game-icon_games_gameId",
         },
-        "openapi-id": "get_v1_game-icon_games_gameId",
     }
 
     return _kwargs

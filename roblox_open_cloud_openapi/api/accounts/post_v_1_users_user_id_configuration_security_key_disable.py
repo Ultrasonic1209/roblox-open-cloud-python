@@ -27,8 +27,10 @@ def _get_kwargs(
         "url": "https://twostepverification.roblox.com/v1/users/{user_id}/configuration/security-key/disable".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_users_userId_configuration_security-key_disable",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_users_userId_configuration_security-key_disable",
+        },
     }
 
     if isinstance(body, RobloxTwoStepVerificationApiDisableSecurityKeyRequest):

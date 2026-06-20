@@ -29,8 +29,10 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/user-localization-settings/universe/{universe_id}".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_user-localization-settings_universe_universeId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_user-localization-settings_universe_universeId",
+        },
     }
 
     if isinstance(body, RobloxGameInternationalizationApiModelsRequestSetUserLocalizationSettingsRequest):

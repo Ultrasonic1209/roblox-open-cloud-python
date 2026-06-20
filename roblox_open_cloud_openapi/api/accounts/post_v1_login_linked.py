@@ -26,17 +26,19 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v1/login/linked",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://auth.roblox.com/v2/login/linked",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_post_v2_login_linked",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://auth.roblox.com/v2/login/linked",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_post_v2_login_linked",
+                    }
+                ],
+            },
+            "openapi-id": "post_v1_login_linked",
         },
-        "openapi-id": "post_v1_login_linked",
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsLoginRequest):

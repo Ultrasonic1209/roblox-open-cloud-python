@@ -27,8 +27,10 @@ def _get_kwargs(
         "method": "patch",
         "url": "https://groups.roblox.com/v1/groups/icon",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "patch_v1_groups_icon",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "patch_v1_groups_icon",
+        },
     }
 
     if not isinstance(body, Unset):

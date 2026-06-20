@@ -30,8 +30,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://engagementpayouts.roblox.com/v1/universe-payout-history",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_universe-payout-history",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_universe-payout-history",
+        },
     }
 
     return _kwargs

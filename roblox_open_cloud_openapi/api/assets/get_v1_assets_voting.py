@@ -35,17 +35,19 @@ def _get_kwargs(
         "method": "get",
         "url": "https://develop.roblox.com/v1/assets/voting",
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/toolbox-service/v2/assets/{id}",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#Toolbox_GetAssetDetails",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/toolbox-service/v2/assets/{id}",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#Toolbox_GetAssetDetails",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_assets_voting",
         },
-        "openapi-id": "get_v1_assets_voting",
     }
 
     return _kwargs

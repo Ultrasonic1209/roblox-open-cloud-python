@@ -26,8 +26,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://catalog.roblox.com/v1/bundles/details",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_bundles_details",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_bundles_details",
+        },
     }
 
     return _kwargs

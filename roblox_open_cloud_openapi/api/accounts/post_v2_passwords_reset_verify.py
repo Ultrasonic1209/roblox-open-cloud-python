@@ -25,8 +25,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v2/passwords/reset/verify",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v2_passwords_reset_verify",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v2_passwords_reset_verify",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsPasswordResetVerificationRequest):

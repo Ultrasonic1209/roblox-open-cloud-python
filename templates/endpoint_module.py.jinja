@@ -54,10 +54,12 @@ def _get_kwargs(
         {% if endpoint.cookie_parameters %}
         "cookies": cookies,
         {% endif %}
-        {% if extensions %}
-        "openapi-extensions": {{ extensions }},
-        {% endif %}
-        "openapi-id": "{{ endpoint.name }}",
+        "extensions": {
+            {% if extensions %}
+            "openapi-extensions": {{ extensions }},
+            {% endif %}
+            "openapi-id": "{{ endpoint.name }}",
+        }
     }
 
 {% if endpoint.bodies | length > 1 %}

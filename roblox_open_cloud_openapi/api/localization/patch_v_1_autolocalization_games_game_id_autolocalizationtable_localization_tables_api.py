@@ -27,8 +27,10 @@ def _get_kwargs(
         "url": "https://localizationtables.roblox.com/v1/autolocalization/games/{game_id}/autolocalizationtable#LocalizationTablesApi".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "patch_v1_autolocalization_games_gameId_autolocalizationtable#LocalizationTablesApi",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "patch_v1_autolocalization_games_gameId_autolocalizationtable#LocalizationTablesApi",
+        },
     }
 
     if isinstance(body, RobloxLocalizationTablesApiSetAutolocalizationTableForGameRequest):

@@ -22,8 +22,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://avatar.roblox.com/v3/outfits/create",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v3_outfits_create",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v3_outfits_create",
+        },
     }
 
     if isinstance(body, RobloxApiAvatarModelsOutfitUpdateModelV3):

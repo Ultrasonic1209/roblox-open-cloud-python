@@ -23,8 +23,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v1/username",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_username",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_username",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsUsernameChangeRequest):

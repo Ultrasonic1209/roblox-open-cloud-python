@@ -19,20 +19,22 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-docs": {
-                "category": "Universes and places",
-                "methodProperties": {"scopes": []},
-                "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-docs": {
+                    "category": "Universes and places",
+                    "methodProperties": {"scopes": []},
+                    "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
+                },
+                "x-roblox-stability": "STABLE",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+                },
             },
-            "x-roblox-stability": "STABLE",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-            },
+            "openapi-id": "Cloud_GetUniverse",
         },
-        "openapi-id": "Cloud_GetUniverse",
     }
 
     return _kwargs

@@ -39,8 +39,10 @@ def _get_kwargs(
             role=quote(str(role), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_game-localization-roles_roles_role_current-user",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_game-localization-roles_roles_role_current-user",
+        },
     }
 
     return _kwargs

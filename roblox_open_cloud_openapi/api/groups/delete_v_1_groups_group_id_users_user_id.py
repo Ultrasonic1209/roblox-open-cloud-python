@@ -21,8 +21,10 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "delete_v1_groups_groupId_users_userId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "delete_v1_groups_groupId_users_userId",
+        },
     }
 
     return _kwargs

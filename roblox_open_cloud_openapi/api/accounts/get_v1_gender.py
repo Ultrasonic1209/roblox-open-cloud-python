@@ -23,17 +23,19 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://accountinformation.roblox.com/v1/gender",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://users.roblox.com/v1/gender",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#users_get_v1_gender",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://users.roblox.com/v1/gender",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#users_get_v1_gender",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_gender",
         },
-        "openapi-id": "get_v1_gender",
     }
 
     return _kwargs

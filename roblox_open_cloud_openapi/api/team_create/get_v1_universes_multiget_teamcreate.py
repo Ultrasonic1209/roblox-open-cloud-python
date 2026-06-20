@@ -35,17 +35,19 @@ def _get_kwargs(
         "method": "get",
         "url": "https://develop.roblox.com/v1/universes/multiget/teamcreate",
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-develop/v1/universes/multiget/teamcreate",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/team-create#get_legacy_develop_v1_universes_multiget_teamcreate",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-develop/v1/universes/multiget/teamcreate",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/team-create#get_legacy_develop_v1_universes_multiget_teamcreate",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_universes_multiget_teamcreate",
         },
-        "openapi-id": "get_v1_universes_multiget_teamcreate",
     }
 
     return _kwargs

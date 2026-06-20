@@ -26,8 +26,10 @@ def _get_kwargs(
             consumer_type=quote(str(consumer_type), safe=""),
             consumer_id=quote(str(consumer_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_themes_consumerType_consumerId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_themes_consumerType_consumerId",
+        },
     }
 
     return _kwargs

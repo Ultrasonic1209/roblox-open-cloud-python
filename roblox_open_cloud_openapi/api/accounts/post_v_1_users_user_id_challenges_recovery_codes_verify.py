@@ -25,8 +25,10 @@ def _get_kwargs(
         "url": "https://twostepverification.roblox.com/v1/users/{user_id}/challenges/recovery-codes/verify".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_users_userId_challenges_recovery-codes_verify",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_users_userId_challenges_recovery-codes_verify",
+        },
     }
 
     if isinstance(body, RobloxTwoStepVerificationApiVerifyCodeRequest):

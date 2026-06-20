@@ -29,8 +29,10 @@ def _get_kwargs(
         "url": "https://localizationtables.roblox.com/v1/auto-localization-table/games/{game_id}/ingestion".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "patch_v1_auto-localization-table_games_gameId_ingestion",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "patch_v1_auto-localization-table_games_gameId_ingestion",
+        },
     }
 
     if isinstance(body, RobloxLocalizationTablesApiIngestAutoScrapedContentForGameRequest):

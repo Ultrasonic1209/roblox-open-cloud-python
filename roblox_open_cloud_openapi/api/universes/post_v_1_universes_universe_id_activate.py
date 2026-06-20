@@ -26,17 +26,19 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/universes/{universe_id}/activate".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-develop/v1/universes/{universeId}/activate",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/universes#post_legacy_develop_v1_universes__universeId__activate",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-develop/v1/universes/{universeId}/activate",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/universes#post_legacy_develop_v1_universes__universeId__activate",
+                    }
+                ],
+            },
+            "openapi-id": "post_v1_universes_universeId_activate",
         },
-        "openapi-id": "post_v1_universes_universeId_activate",
     }
 
     return _kwargs

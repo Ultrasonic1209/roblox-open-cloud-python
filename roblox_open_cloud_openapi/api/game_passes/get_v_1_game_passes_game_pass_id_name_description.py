@@ -28,17 +28,19 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/game-passes/{game_pass_id}/name-description".format(
             game_pass_id=quote(str(game_pass_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-passes/{gamePassId}/name-description",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/game-passes#get_legacy_game_internationalization_v1_game_passes__gamePassId__name_description",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-passes/{gamePassId}/name-description",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/game-passes#get_legacy_game_internationalization_v1_game_passes__gamePassId__name_description",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_game-passes_gamePassId_name-description",
         },
-        "openapi-id": "get_v1_game-passes_gamePassId_name-description",
     }
 
     return _kwargs

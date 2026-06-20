@@ -40,17 +40,19 @@ def _get_kwargs(
             badge_id=quote(str(badge_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/badges/{badgeId}/icons",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#get_legacy_game_internationalization_v1_badges__badgeId__icons",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-game-internationalization/v1/badges/{badgeId}/icons",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#get_legacy_game_internationalization_v1_badges__badgeId__icons",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_badges_badgeId_icons",
         },
-        "openapi-id": "get_v1_badges_badgeId_icons",
     }
 
     return _kwargs

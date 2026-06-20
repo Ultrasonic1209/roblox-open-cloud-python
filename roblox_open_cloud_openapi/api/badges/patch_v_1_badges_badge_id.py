@@ -30,17 +30,19 @@ def _get_kwargs(
         "url": "https://badges.roblox.com/v1/badges/{badge_id}".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-badges/v1/badges/{badgeId}",
-                    "httpMethod": "PATCH",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#patch_legacy_badges_v1_badges__badgeId_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-badges/v1/badges/{badgeId}",
+                        "httpMethod": "PATCH",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#patch_legacy_badges_v1_badges__badgeId_",
+                    }
+                ],
+            },
+            "openapi-id": "patch_v1_badges_badgeId",
         },
-        "openapi-id": "patch_v1_badges_badgeId",
     }
 
     if isinstance(body, RobloxBadgesApiUpdateBadgeRequest):

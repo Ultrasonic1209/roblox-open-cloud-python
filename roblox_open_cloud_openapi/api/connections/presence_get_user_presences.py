@@ -20,8 +20,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://presence.roblox.com/v1/presence/users",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "Presence_GetUserPresences",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "Presence_GetUserPresences",
+        },
     }
 
     if not isinstance(body, Unset):

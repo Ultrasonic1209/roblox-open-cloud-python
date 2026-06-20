@@ -18,8 +18,10 @@ def _get_kwargs(
         "url": "https://auth.roblox.com/v1/external/{identity_provider_id}/sso/oauth/init".format(
             identity_provider_id=quote(str(identity_provider_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_external_identityProviderId_sso_oauth_init",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_external_identityProviderId_sso_oauth_init",
+        },
     }
 
     return _kwargs

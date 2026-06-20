@@ -34,21 +34,23 @@ def _get_kwargs(
             item_id=quote(str(item_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-scopes": [{"name": "memory-store.sorted-map:write"}],
-            "x-roblox-docs": {
-                "category": "Data and memory stores",
-                "methodProperties": {"scopes": ["memory-store.sorted-map:write"]},
-                "resource": {
-                    "$ref": "#/components/schemas/MemoryStoreSortedMapItem",
-                    "name": "MemoryStoreSortedMapItem",
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-scopes": [{"name": "memory-store.sorted-map:write"}],
+                "x-roblox-docs": {
+                    "category": "Data and memory stores",
+                    "methodProperties": {"scopes": ["memory-store.sorted-map:write"]},
+                    "resource": {
+                        "$ref": "#/components/schemas/MemoryStoreSortedMapItem",
+                        "name": "MemoryStoreSortedMapItem",
+                    },
                 },
+                "x-roblox-stability": "STABLE",
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
             },
-            "x-roblox-stability": "STABLE",
-            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
+            "openapi-id": "Cloud_UpdateMemoryStoreSortedMapItem",
         },
-        "openapi-id": "Cloud_UpdateMemoryStoreSortedMapItem",
     }
 
     _kwargs["json"] = body.to_dict()

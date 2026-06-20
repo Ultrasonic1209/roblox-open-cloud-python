@@ -75,8 +75,10 @@ def _get_kwargs(
             version_number=quote(str(version_number), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_assetId_assetId_version_versionNumber",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_assetId_assetId_version_versionNumber",
+        },
     }
 
     _kwargs["headers"] = headers

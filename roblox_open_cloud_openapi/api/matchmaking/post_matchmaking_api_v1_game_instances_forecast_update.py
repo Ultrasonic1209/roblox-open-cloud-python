@@ -19,11 +19,13 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/matchmaking-api/v1/game-instances/forecast-update",
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "post_matchmaking-api_v1_game-instances_forecast-update",
         },
-        "openapi-id": "post_matchmaking-api_v1_game-instances_forecast-update",
     }
 
     if isinstance(body, ForecastUpdateRequest):

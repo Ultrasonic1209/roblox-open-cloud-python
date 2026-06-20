@@ -14,11 +14,13 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/matchmaking-api/v1/matchmaking/scoring-configuration/default-weights",
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "get_matchmaking-api_v1_matchmaking_scoring-configuration_default-weights",
         },
-        "openapi-id": "get_matchmaking-api_v1_matchmaking_scoring-configuration_default-weights",
     }
 
     return _kwargs

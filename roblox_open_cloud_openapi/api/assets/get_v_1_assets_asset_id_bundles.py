@@ -46,8 +46,10 @@ def _get_kwargs(
             asset_id=quote(str(asset_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_assets_assetId_bundles",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_assets_assetId_bundles",
+        },
     }
 
     return _kwargs

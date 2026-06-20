@@ -28,17 +28,19 @@ def _get_kwargs(
         "url": "https://localizationtables.roblox.com/v1/localization-table/tables/{table_id}".format(
             table_id=quote(str(table_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-localization-tables/v1/localization-table/tables/{tableId}",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#get_legacy_localization_tables_v1_localization_table_tables__tableId_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-localization-tables/v1/localization-table/tables/{tableId}",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#get_legacy_localization_tables_v1_localization_table_tables__tableId_",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_localization-table_tables_tableId",
         },
-        "openapi-id": "get_v1_localization-table_tables_tableId",
     }
 
     return _kwargs

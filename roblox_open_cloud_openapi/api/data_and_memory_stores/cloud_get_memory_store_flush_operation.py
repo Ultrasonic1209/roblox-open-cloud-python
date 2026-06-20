@@ -35,12 +35,14 @@ def _get_kwargs(
             operation_id=quote(str(operation_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            },
+            "openapi-id": "Cloud_GetMemoryStoreFlushOperation",
         },
-        "openapi-id": "Cloud_GetMemoryStoreFlushOperation",
     }
 
     return _kwargs

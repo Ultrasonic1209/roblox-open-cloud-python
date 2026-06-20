@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://inventory.roblox.com/v1/users/{user_id}/categories".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_users_userId_categories",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_users_userId_categories",
+        },
     }
 
     return _kwargs

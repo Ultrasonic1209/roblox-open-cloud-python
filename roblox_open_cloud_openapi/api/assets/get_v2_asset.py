@@ -99,8 +99,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://assetdelivery.roblox.com/v2/asset",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_asset",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_asset",
+        },
     }
 
     _kwargs["headers"] = headers

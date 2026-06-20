@@ -25,8 +25,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v1/validators/recommendedUsernameFromDisplayName",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_validators_recommendedUsernameFromDisplayName",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_validators_recommendedUsernameFromDisplayName",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsRecommendedUsernameFromDisplayNameRequest):

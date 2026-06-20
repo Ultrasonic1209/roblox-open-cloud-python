@@ -35,16 +35,18 @@ def _get_kwargs(
         "method": "delete",
         "url": "/toolbox-service/v1/saves",
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 200},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 200},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 200},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 200},
+                },
+                "x-roblox-scopes": [{"name": "creator-store-save:write", "targetResourceSpecifier": ""}],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "x-roblox-scopes": [{"name": "creator-store-save:write", "targetResourceSpecifier": ""}],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "openapi-id": "Saves_DeleteSave",
         },
-        "openapi-id": "Saves_DeleteSave",
     }
 
     return _kwargs

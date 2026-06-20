@@ -36,8 +36,10 @@ def _get_kwargs(
             subtype_id=quote(str(subtype_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_favorites_users_userId_favorites_subtypeId_bundles",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_favorites_users_userId_favorites_subtypeId_bundles",
+        },
     }
 
     return _kwargs

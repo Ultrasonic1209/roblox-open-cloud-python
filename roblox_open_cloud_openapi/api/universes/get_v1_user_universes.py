@@ -45,8 +45,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://develop.roblox.com/v1/user/universes",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_user_universes",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_user_universes",
+        },
     }
 
     return _kwargs

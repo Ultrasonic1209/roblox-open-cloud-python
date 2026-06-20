@@ -22,21 +22,23 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}/luau-execution-session-task-binary-inputs".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [{"name": "universe.place.luau-execution-session:write"}],
-            "x-roblox-docs": {
-                "category": "Luau execution",
-                "methodProperties": {"scopes": ["universe.place.luau-execution-session:write"]},
-                "resource": {
-                    "$ref": "#/components/schemas/LuauExecutionSessionTaskBinaryInput",
-                    "name": "LuauExecutionSessionTaskBinaryInput",
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [{"name": "universe.place.luau-execution-session:write"}],
+                "x-roblox-docs": {
+                    "category": "Luau execution",
+                    "methodProperties": {"scopes": ["universe.place.luau-execution-session:write"]},
+                    "resource": {
+                        "$ref": "#/components/schemas/LuauExecutionSessionTaskBinaryInput",
+                        "name": "LuauExecutionSessionTaskBinaryInput",
+                    },
                 },
+                "x-roblox-stability": "STABLE",
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5}},
             },
-            "x-roblox-stability": "STABLE",
-            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5}},
+            "openapi-id": "Cloud_CreateLuauExecutionSessionTaskBinaryInput",
         },
-        "openapi-id": "Cloud_CreateLuauExecutionSessionTaskBinaryInput",
     }
 
     _kwargs["json"] = body.to_dict()

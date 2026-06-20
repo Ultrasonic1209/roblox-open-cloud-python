@@ -20,25 +20,27 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/assets/v1/assets",
-        "openapi-extensions": {
-            "x-roblox-cloud-api-operation": True,
-            "x-roblox-cloud-api-operation-name": "Create Asset",
-            "x-roblox-stability": "BETA",
-            "x-roblox-scopes": [{"name": "asset:read"}, {"name": "asset:write"}],
-            "x-roblox-cloud-api-operation-code-samples": [
-                {
-                    "language": "Create Asset",
-                    "script": 'curl --location --request POST \'https://apis.roblox.com/assets/v1/assets\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{ \n  \\"assetType\\": \\"Model\\",  \n  \\"displayName\\": \\"Name\\", \n  \\"description\\": \\"This is a description\\", \n  \\"creationContext\\": { \n    \\"creator\\": { \n      \\"userId\\": \\"${userId}\\" \n    } \n  } \n}"\' \\\n--form \'fileContent=@"/filepath/model.fbx";type=model/fbx\' \n',
-                }
-            ],
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-cloud-api-operation": True,
+                "x-roblox-cloud-api-operation-name": "Create Asset",
+                "x-roblox-stability": "BETA",
+                "x-roblox-scopes": [{"name": "asset:read"}, {"name": "asset:write"}],
+                "x-roblox-cloud-api-operation-code-samples": [
+                    {
+                        "language": "Create Asset",
+                        "script": 'curl --location --request POST \'https://apis.roblox.com/assets/v1/assets\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{ \n  \\"assetType\\": \\"Model\\",  \n  \\"displayName\\": \\"Name\\", \n  \\"description\\": \\"This is a description\\", \n  \\"creationContext\\": { \n    \\"creator\\": { \n      \\"userId\\": \\"${userId}\\" \n    } \n  } \n}"\' \\\n--form \'fileContent=@"/filepath/model.fbx";type=model/fbx\' \n',
+                    }
+                ],
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
+                },
+                "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 120}},
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 120}},
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "openapi-id": "Assets_CreateAsset",
         },
-        "openapi-id": "Assets_CreateAsset",
     }
 
     if not isinstance(body, Unset):

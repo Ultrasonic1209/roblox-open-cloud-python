@@ -26,17 +26,19 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://groups.roblox.com/v1/groups/policies",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-groups/v1/groups/policies",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#post_legacy_groups_v1_groups_policies",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-groups/v1/groups/policies",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#post_legacy_groups_v1_groups_policies",
+                    }
+                ],
+            },
+            "openapi-id": "post_v1_groups_policies",
         },
-        "openapi-id": "post_v1_groups_policies",
     }
 
     if isinstance(body, RobloxGroupsApiGroupPolicyRequest):

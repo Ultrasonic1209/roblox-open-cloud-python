@@ -28,29 +28,31 @@ def _get_kwargs(
             asset_id=quote(str(asset_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-cloud-api-operation": True,
-            "x-roblox-cloud-api-operation-name": "Get Asset",
-            "x-roblox-stability": "BETA",
-            "x-roblox-scopes": [{"name": "asset:read"}],
-            "x-roblox-cloud-api-operation-code-samples": [
-                {
-                    "language": "Get Asset without readMask",
-                    "script": "curl --location --request GET 'https://apis.roblox.com/assets/v1/assets/{assetId}' \\\n--header 'x-api-key: {apiKey}'",
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-cloud-api-operation": True,
+                "x-roblox-cloud-api-operation-name": "Get Asset",
+                "x-roblox-stability": "BETA",
+                "x-roblox-scopes": [{"name": "asset:read"}],
+                "x-roblox-cloud-api-operation-code-samples": [
+                    {
+                        "language": "Get Asset without readMask",
+                        "script": "curl --location --request GET 'https://apis.roblox.com/assets/v1/assets/{assetId}' \\\n--header 'x-api-key: {apiKey}'",
+                    },
+                    {
+                        "language": "Get Asset with readMask",
+                        "script": "curl --location --request GET 'https://apis.roblox.com/assets/v1/assets/{assetId}?readMask={read_mask}' \\\n--header 'x-api-key: {apiKey}'",
+                    },
+                ],
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
                 },
-                {
-                    "language": "Get Asset with readMask",
-                    "script": "curl --location --request GET 'https://apis.roblox.com/assets/v1/assets/{assetId}?readMask={read_mask}' \\\n--header 'x-api-key: {apiKey}'",
-                },
-            ],
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
+                "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 120}},
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
-            "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 120}},
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "openapi-id": "Assets_GetAsset",
         },
-        "openapi-id": "Assets_GetAsset",
     }
 
     return _kwargs

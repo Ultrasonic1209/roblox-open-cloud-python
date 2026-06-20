@@ -38,8 +38,10 @@ def _get_kwargs(
             table_id=quote(str(table_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_localization-table_tables_tableId_entries_translation-feedback",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_localization-table_tables_tableId_entries_translation-feedback",
+        },
     }
 
     if isinstance(body, RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackRequest):

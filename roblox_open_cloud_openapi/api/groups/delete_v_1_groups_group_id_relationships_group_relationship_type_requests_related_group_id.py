@@ -23,8 +23,10 @@ def _get_kwargs(
             group_relationship_type=quote(str(group_relationship_type), safe=""),
             related_group_id=quote(str(related_group_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "delete_v1_groups_groupId_relationships_groupRelationshipType_requests_relatedGroupId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "delete_v1_groups_groupId_relationships_groupRelationshipType_requests_relatedGroupId",
+        },
     }
 
     return _kwargs

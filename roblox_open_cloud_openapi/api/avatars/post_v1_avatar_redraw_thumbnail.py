@@ -20,8 +20,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://avatar.roblox.com/v1/avatar/redraw-thumbnail",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_avatar_redraw-thumbnail",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_avatar_redraw-thumbnail",
+        },
     }
 
     _kwargs["headers"] = headers

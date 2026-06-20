@@ -38,17 +38,19 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-develop/v2/teamtest/{placeId}",
-                    "httpMethod": "DELETE",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/places#delete_legacy_develop_v2_teamtest__placeId_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-develop/v2/teamtest/{placeId}",
+                        "httpMethod": "DELETE",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/places#delete_legacy_develop_v2_teamtest__placeId_",
+                    }
+                ],
+            },
+            "openapi-id": "delete_v2_teamtest_placeId",
         },
-        "openapi-id": "delete_v2_teamtest_placeId",
     }
 
     return _kwargs

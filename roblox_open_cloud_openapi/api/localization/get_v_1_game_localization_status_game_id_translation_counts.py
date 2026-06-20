@@ -21,8 +21,10 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/game-localization-status/{game_id}/translation-counts".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_game-localization-status_gameId_translation-counts",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_game-localization-status_gameId_translation-counts",
+        },
     }
 
     return _kwargs

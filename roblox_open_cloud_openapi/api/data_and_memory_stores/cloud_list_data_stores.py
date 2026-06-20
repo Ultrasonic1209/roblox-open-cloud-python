@@ -37,21 +37,23 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-rate-limits": {
-                "description": "Data stores requests are subject to additional throttling limits described in the [Open Cloud guide for data stores](https://create.roblox.com/docs/cloud/guides/data-stores/throttling).",
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100000},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-rate-limits": {
+                    "description": "Data stores requests are subject to additional throttling limits described in the [Open Cloud guide for data stores](https://create.roblox.com/docs/cloud/guides/data-stores/throttling).",
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100000},
+                },
+                "x-roblox-scopes": [{"name": "universe-datastores.control:list"}],
+                "x-roblox-docs": {
+                    "category": "Data and memory stores",
+                    "methodProperties": {"scopes": ["universe-datastores.control:list"]},
+                    "resource": {"$ref": "#/components/schemas/DataStore", "name": "DataStore"},
+                },
+                "x-roblox-stability": "STABLE",
             },
-            "x-roblox-scopes": [{"name": "universe-datastores.control:list"}],
-            "x-roblox-docs": {
-                "category": "Data and memory stores",
-                "methodProperties": {"scopes": ["universe-datastores.control:list"]},
-                "resource": {"$ref": "#/components/schemas/DataStore", "name": "DataStore"},
-            },
-            "x-roblox-stability": "STABLE",
+            "openapi-id": "Cloud_ListDataStores",
         },
-        "openapi-id": "Cloud_ListDataStores",
     }
 
     return _kwargs

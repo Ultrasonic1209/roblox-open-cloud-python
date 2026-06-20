@@ -25,16 +25,18 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             product_id=quote(str(product_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 3},
-                "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 3},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 3},
+                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 3},
+                },
+                "x-roblox-scopes": [{"name": "developer-product:write", "targetResourceSpecifier": "universes"}],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
-            "x-roblox-scopes": [{"name": "developer-product:write", "targetResourceSpecifier": "universes"}],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "openapi-id": "DeveloperProducts_UpdateDeveloperProductV2",
         },
-        "openapi-id": "DeveloperProducts_UpdateDeveloperProductV2",
     }
 
     if not isinstance(body, Unset):

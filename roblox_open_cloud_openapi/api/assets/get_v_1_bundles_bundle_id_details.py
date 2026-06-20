@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://catalog.roblox.com/v1/bundles/{bundle_id}/details".format(
             bundle_id=quote(str(bundle_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_bundles_bundleId_details",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_bundles_bundleId_details",
+        },
     }
 
     return _kwargs

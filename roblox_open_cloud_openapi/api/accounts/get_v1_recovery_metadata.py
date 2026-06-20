@@ -23,17 +23,19 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://auth.roblox.com/v1/recovery/metadata",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://auth.roblox.com/v2/recovery/metadata",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_get_v2_recovery_metadata",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://auth.roblox.com/v2/recovery/metadata",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_get_v2_recovery_metadata",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_recovery_metadata",
         },
-        "openapi-id": "get_v1_recovery_metadata",
     }
 
     return _kwargs

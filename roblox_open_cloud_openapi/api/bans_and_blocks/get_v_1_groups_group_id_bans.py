@@ -46,8 +46,10 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_groups_groupId_bans",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_groups_groupId_bans",
+        },
     }
 
     return _kwargs

@@ -79,15 +79,17 @@ def _get_kwargs(
             asset_id=quote(str(asset_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [{"name": "legacy-asset:manage"}],
             },
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [{"name": "legacy-asset:manage"}],
+            "openapi-id": "get_asset-delivery-api_v1_assetId_assetId",
         },
-        "openapi-id": "get_asset-delivery-api_v1_assetId_assetId",
     }
 
     _kwargs["headers"] = headers

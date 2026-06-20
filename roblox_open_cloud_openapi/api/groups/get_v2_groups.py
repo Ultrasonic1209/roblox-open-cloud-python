@@ -28,8 +28,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://groups.roblox.com/v2/groups",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_groups",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_groups",
+        },
     }
 
     return _kwargs

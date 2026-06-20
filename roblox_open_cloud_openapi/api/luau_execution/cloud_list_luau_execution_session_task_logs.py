@@ -47,29 +47,31 @@ def _get_kwargs(
             task_id=quote(str(task_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-scopes": [
-                {"name": "universe.place.luau-execution-session:read"},
-                {"name": "universe.place.luau-execution-session:write"},
-            ],
-            "x-roblox-docs": {
-                "category": "Luau execution",
-                "methodProperties": {
-                    "scopes": [
-                        "universe.place.luau-execution-session:read",
-                        "universe.place.luau-execution-session:write",
-                    ]
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-scopes": [
+                    {"name": "universe.place.luau-execution-session:read"},
+                    {"name": "universe.place.luau-execution-session:write"},
+                ],
+                "x-roblox-docs": {
+                    "category": "Luau execution",
+                    "methodProperties": {
+                        "scopes": [
+                            "universe.place.luau-execution-session:read",
+                            "universe.place.luau-execution-session:write",
+                        ]
+                    },
+                    "resource": {
+                        "$ref": "#/components/schemas/LuauExecutionSessionTaskLog",
+                        "name": "LuauExecutionSessionTaskLog",
+                    },
                 },
-                "resource": {
-                    "$ref": "#/components/schemas/LuauExecutionSessionTaskLog",
-                    "name": "LuauExecutionSessionTaskLog",
-                },
+                "x-roblox-stability": "STABLE",
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 45}},
             },
-            "x-roblox-stability": "STABLE",
-            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 45}},
+            "openapi-id": "Cloud_ListLuauExecutionSessionTaskLogs",
         },
-        "openapi-id": "Cloud_ListLuauExecutionSessionTaskLogs",
     }
 
     return _kwargs

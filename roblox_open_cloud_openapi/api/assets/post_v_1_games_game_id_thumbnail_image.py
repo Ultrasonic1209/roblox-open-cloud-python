@@ -23,8 +23,10 @@ def _get_kwargs(
         "url": "https://publish.roblox.com/v1/games/{game_id}/thumbnail/image".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_games_gameId_thumbnail_image",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_games_gameId_thumbnail_image",
+        },
     }
 
     if not isinstance(body, Unset):

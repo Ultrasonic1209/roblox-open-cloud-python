@@ -52,8 +52,10 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "TransactionRecords_GetUserRevenueSummary",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "TransactionRecords_GetUserRevenueSummary",
+        },
     }
 
     return _kwargs

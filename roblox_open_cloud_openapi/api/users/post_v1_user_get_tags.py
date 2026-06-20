@@ -25,8 +25,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://contacts.roblox.com/v1/user/get-tags",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_user_get-tags",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_user_get-tags",
+        },
     }
 
     if isinstance(body, RobloxContactsApiRequestGetUserTagsRequestModel):

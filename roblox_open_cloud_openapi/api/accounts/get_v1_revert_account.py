@@ -33,17 +33,19 @@ def _get_kwargs(
         "method": "get",
         "url": "https://auth.roblox.com/v1/revert/account",
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://auth.roblox.com/v2/revert/account",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_get_v2_revert_account",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://auth.roblox.com/v2/revert/account",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_get_v2_revert_account",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_revert_account",
         },
-        "openapi-id": "get_v1_revert_account",
     }
 
     return _kwargs

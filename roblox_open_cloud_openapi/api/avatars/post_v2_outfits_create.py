@@ -29,17 +29,19 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://avatar.roblox.com/v2/outfits/create",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://avatar.roblox.com/v3/outfits/create",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v3_outfits_create",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://avatar.roblox.com/v3/outfits/create",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v3_outfits_create",
+                    }
+                ],
+            },
+            "openapi-id": "post_v2_outfits_create",
         },
-        "openapi-id": "post_v2_outfits_create",
     }
 
     if isinstance(body, RobloxApiAvatarModelsOutfitUpdateModelV2):

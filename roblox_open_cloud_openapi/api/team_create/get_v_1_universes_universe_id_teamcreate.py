@@ -28,17 +28,19 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/universes/{universe_id}/teamcreate".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-develop/v1/universes/{universeId}/teamcreate",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/team-create#get_legacy_develop_v1_universes__universeId__teamcreate",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-develop/v1/universes/{universeId}/teamcreate",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/team-create#get_legacy_develop_v1_universes__universeId__teamcreate",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_universes_universeId_teamcreate",
         },
-        "openapi-id": "get_v1_universes_universeId_teamcreate",
     }
 
     return _kwargs

@@ -22,11 +22,13 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/matchmaking-api/v1/client-status",
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "post_matchmaking-api_v1_client-status",
         },
-        "openapi-id": "post_matchmaking-api_v1_client-status",
     }
 
     if isinstance(body, ClientStatusSetRequest):

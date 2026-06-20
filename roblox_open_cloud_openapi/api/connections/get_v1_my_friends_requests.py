@@ -41,8 +41,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://friends.roblox.com/v1/my/friends/requests",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_my_friends_requests",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_my_friends_requests",
+        },
     }
 
     return _kwargs

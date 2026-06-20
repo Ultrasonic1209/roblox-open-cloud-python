@@ -34,21 +34,23 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [{"name": "group-forum:read"}],
-            "x-roblox-docs": {
-                "category": "Users and groups",
-                "methodProperties": {"scopes": ["group-forum:read"]},
-                "resource": {"$ref": "#/components/schemas/GroupForumCategory", "name": "GroupForumCategory"},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [{"name": "group-forum:read"}],
+                "x-roblox-docs": {
+                    "category": "Users and groups",
+                    "methodProperties": {"scopes": ["group-forum:read"]},
+                    "resource": {"$ref": "#/components/schemas/GroupForumCategory", "name": "GroupForumCategory"},
+                },
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 150},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
+                },
             },
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 150},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
-            },
+            "openapi-id": "Cloud_ListGroupForumCategories",
         },
-        "openapi-id": "Cloud_ListGroupForumCategories",
     }
 
     return _kwargs

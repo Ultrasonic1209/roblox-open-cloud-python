@@ -44,8 +44,10 @@ def _get_kwargs(
             collectible_item_id=quote(str(collectible_item_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_collectible-items_collectibleItemId_owners",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_collectible-items_collectibleItemId_owners",
+        },
     }
 
     return _kwargs

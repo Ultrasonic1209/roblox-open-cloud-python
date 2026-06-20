@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://friends.roblox.com/v1/users/{target_user_id}/followings/count".format(
             target_user_id=quote(str(target_user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_users_targetUserId_followings_count",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_users_targetUserId_followings_count",
+        },
     }
 
     return _kwargs

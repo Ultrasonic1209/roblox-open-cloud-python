@@ -28,16 +28,18 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/toolbox-service/v1/saves:bulkDelete",
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 200},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 200},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 200},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 200},
+                },
+                "x-roblox-scopes": [{"name": "creator-store-save:write", "targetResourceSpecifier": ""}],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "x-roblox-scopes": [{"name": "creator-store-save:write", "targetResourceSpecifier": ""}],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "openapi-id": "Saves_BulkDeleteSaves",
         },
-        "openapi-id": "Saves_BulkDeleteSaves",
     }
 
     if isinstance(body, BulkDeleteSavesRequestType0 | None):

@@ -70,37 +70,39 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-cloud-api-operation-name": "List Entries",
-            "x-roblox-stability": "BETA",
-            "x-roblox-scopes": [{"name": "universe-datastores.objects:list"}],
-            "x-roblox-cloud-api-operation": True,
-            "x-roblox-lua-equivalent": "DataStore:ListKeysAsync",
-            "x-roblox-cloud-api-operation-code-samples": [
-                {
-                    "language": "curl",
-                    "script": 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "prefix=" \\\n-d "limit=5"',
-                }
-            ],
-            "x-roblox-rate-limits": {
-                "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-cloud-api-operation-name": "List Entries",
+                "x-roblox-stability": "BETA",
+                "x-roblox-scopes": [{"name": "universe-datastores.objects:list"}],
+                "x-roblox-cloud-api-operation": True,
+                "x-roblox-lua-equivalent": "DataStore:ListKeysAsync",
+                "x-roblox-cloud-api-operation-code-samples": [
+                    {
+                        "language": "curl",
+                        "script": 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "prefix=" \\\n-d "limit=5"',
+                    }
+                ],
+                "x-roblox-rate-limits": {
+                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
+                },
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStoreEntries__Using_Universes",
+                    },
+                    {
+                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStoreEntries__Using_Universes_DataStores",
+                    },
+                ],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStoreEntries__Using_Universes",
-                },
-                {
-                    "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStoreEntries__Using_Universes_DataStores",
-                },
-            ],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "openapi-id": "Entries_ListKeysAsync",
         },
-        "openapi-id": "Entries_ListKeysAsync",
     }
 
     return _kwargs

@@ -19,11 +19,13 @@ def _get_kwargs(
         "url": "/matchmaking-api/v1/matchmaking/scoring-configuration/{scoring_configuration_id}".format(
             scoring_configuration_id=quote(str(scoring_configuration_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "get_matchmaking-api_v1_matchmaking_scoring-configuration_scoringConfigurationId",
         },
-        "openapi-id": "get_matchmaking-api_v1_matchmaking_scoring-configuration_scoringConfigurationId",
     }
 
     return _kwargs

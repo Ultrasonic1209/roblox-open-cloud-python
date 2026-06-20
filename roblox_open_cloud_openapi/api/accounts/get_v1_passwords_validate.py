@@ -36,17 +36,19 @@ def _get_kwargs(
         "method": "get",
         "url": "https://auth.roblox.com/v1/passwords/validate",
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://auth.roblox.com/v2/passwords/validate",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_get_v2_passwords_validate",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://auth.roblox.com/v2/passwords/validate",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_get_v2_passwords_validate",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_passwords_validate",
         },
-        "openapi-id": "get_v1_passwords_validate",
     }
 
     return _kwargs

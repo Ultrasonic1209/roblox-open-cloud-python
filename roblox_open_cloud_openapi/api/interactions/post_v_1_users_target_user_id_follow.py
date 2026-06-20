@@ -27,8 +27,10 @@ def _get_kwargs(
         "url": "https://friends.roblox.com/v1/users/{target_user_id}/follow".format(
             target_user_id=quote(str(target_user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_users_targetUserId_follow",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_users_targetUserId_follow",
+        },
     }
 
     if isinstance(body, RobloxWebCaptchaModelsRequestCaptchaTokenRequest):

@@ -37,8 +37,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://twostepverification.roblox.com/v1/metadata#TwoStepVerificationApi",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_metadata#TwoStepVerificationApi",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_metadata#TwoStepVerificationApi",
+        },
     }
 
     return _kwargs

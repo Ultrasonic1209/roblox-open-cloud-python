@@ -29,8 +29,10 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v2/universes/{universe_id}/configuration".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "patch_v2_universes_universeId_configuration",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "patch_v2_universes_universeId_configuration",
+        },
     }
 
     if isinstance(body, RobloxApiDevelopModelsUniverseSettingsRequestV2):

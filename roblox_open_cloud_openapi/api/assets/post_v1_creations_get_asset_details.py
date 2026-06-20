@@ -25,8 +25,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://itemconfiguration.roblox.com/v1/creations/get-asset-details",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_creations_get-asset-details",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_creations_get-asset-details",
+        },
     }
 
     if isinstance(body, RobloxItemConfigurationApiAssetCreationsDetailsRequest):

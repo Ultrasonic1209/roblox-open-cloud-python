@@ -23,17 +23,19 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://develop.roblox.com/v1/user/groups/canmanage",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-develop/v1/user/groups/canmanage",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_develop_v1_user_groups_canmanage",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-develop/v1/user/groups/canmanage",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_develop_v1_user_groups_canmanage",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_user_groups_canmanage",
         },
-        "openapi-id": "get_v1_user_groups_canmanage",
     }
 
     return _kwargs

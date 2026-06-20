@@ -24,8 +24,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://locale.roblox.com/v1/country-regions",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_country-regions",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_country-regions",
+        },
     }
 
     return _kwargs

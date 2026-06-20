@@ -26,17 +26,19 @@ def _get_kwargs(
         "url": "https://groups.roblox.com/v1/groups/{group_id}/settings".format(
             group_id=quote(str(group_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-groups/v1/groups/{groupId}/settings",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_groups__groupId__settings",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-groups/v1/groups/{groupId}/settings",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_groups__groupId__settings",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_groups_groupId_settings",
         },
-        "openapi-id": "get_v1_groups_groupId_settings",
     }
 
     return _kwargs

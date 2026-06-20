@@ -23,8 +23,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v2/identity-verification/login",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v2_identity-verification_login",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v2_identity-verification_login",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsRequestIdentityVerificationLoginRequest):

@@ -23,25 +23,27 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}:generateSpeechAsset".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-long-running-operation-parameters": {
-                "metadata": {"$ref": "#/components/schemas/GenerateSpeechAssetMetadata"},
-                "response": {"$ref": "#/components/schemas/GenerateSpeechAssetResponse"},
+        "extensions": {
+            "openapi-extensions": {
+                "x-long-running-operation-parameters": {
+                    "metadata": {"$ref": "#/components/schemas/GenerateSpeechAssetMetadata"},
+                    "response": {"$ref": "#/components/schemas/GenerateSpeechAssetResponse"},
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [{"name": "universe:write"}, {"name": "asset:read"}, {"name": "asset:write"}],
+                "x-roblox-docs": {
+                    "category": "Universes and places",
+                    "methodProperties": {"scopes": ["universe:write", "asset:read", "asset:write"]},
+                    "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
+                },
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 4},
+                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 4},
+                },
             },
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [{"name": "universe:write"}, {"name": "asset:read"}, {"name": "asset:write"}],
-            "x-roblox-docs": {
-                "category": "Universes and places",
-                "methodProperties": {"scopes": ["universe:write", "asset:read", "asset:write"]},
-                "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
-            },
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 4},
-                "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 4},
-            },
+            "openapi-id": "Cloud_GenerateSpeechAsset",
         },
-        "openapi-id": "Cloud_GenerateSpeechAsset",
     }
 
     _kwargs["json"] = body.to_dict()

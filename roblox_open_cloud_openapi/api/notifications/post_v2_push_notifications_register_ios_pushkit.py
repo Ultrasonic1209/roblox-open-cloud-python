@@ -25,8 +25,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://notifications.roblox.com/v2/push-notifications/register-ios-pushkit",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v2_push-notifications_register-ios-pushkit",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v2_push-notifications_register-ios-pushkit",
+        },
     }
 
     if isinstance(body, RobloxApiNotificationsModelsRegisterIOSPushKitRequestModel):

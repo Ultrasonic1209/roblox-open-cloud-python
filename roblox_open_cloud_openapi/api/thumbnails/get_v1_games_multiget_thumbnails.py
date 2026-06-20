@@ -53,11 +53,13 @@ def _get_kwargs(
         "method": "get",
         "url": "https://thumbnails.roblox.com/v1/games/multiget/thumbnails",
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-stability": "STABLE",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "STABLE",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "get_v1_games_multiget_thumbnails",
         },
-        "openapi-id": "get_v1_games_multiget_thumbnails",
     }
 
     return _kwargs

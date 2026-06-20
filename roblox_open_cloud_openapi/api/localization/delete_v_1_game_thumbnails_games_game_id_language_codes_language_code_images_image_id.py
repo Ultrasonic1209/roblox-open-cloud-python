@@ -30,17 +30,19 @@ def _get_kwargs(
             language_code=quote(str(language_code), safe=""),
             image_id=quote(str(image_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-thumbnails/games/{gameId}/language-codes/{languageCode}/images/{imageId}",
-                    "httpMethod": "DELETE",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#delete_legacy_game_internationalization_v1_game_thumbnails_games__gameId__language_codes__languageCode__images__imageId_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-game-internationalization/v1/game-thumbnails/games/{gameId}/language-codes/{languageCode}/images/{imageId}",
+                        "httpMethod": "DELETE",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#delete_legacy_game_internationalization_v1_game_thumbnails_games__gameId__language_codes__languageCode__images__imageId_",
+                    }
+                ],
+            },
+            "openapi-id": "delete_v1_game-thumbnails_games_gameId_language-codes_languageCode_images_imageId",
         },
-        "openapi-id": "delete_v1_game-thumbnails_games_gameId_language-codes_languageCode_images_imageId",
     }
 
     return _kwargs

@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/private-servers/enabled-in-universe/{universe_id}".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "PrivateServers_PrivateServersEnabledInUniverse",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "PrivateServers_PrivateServersEnabledInUniverse",
+        },
     }
 
     return _kwargs

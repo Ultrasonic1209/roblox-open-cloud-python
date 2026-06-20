@@ -24,21 +24,23 @@ def _get_kwargs(
             scope_id=quote(str(scope_id), safe=""),
             entry_id=quote(str(entry_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-rate-limits": {
-                "description": "Ordered data stores requests are subject to additional throttling limits described in the [Open Cloud guide for data stores](https://create.roblox.com/docs/cloud/guides/data-stores/throttling).",
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100000},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-rate-limits": {
+                    "description": "Ordered data stores requests are subject to additional throttling limits described in the [Open Cloud guide for data stores](https://create.roblox.com/docs/cloud/guides/data-stores/throttling).",
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100000},
+                },
+                "x-roblox-scopes": [{"name": "universe.ordered-data-store.scope.entry:write"}],
+                "x-roblox-docs": {
+                    "category": "Data and memory stores",
+                    "methodProperties": {"scopes": ["universe.ordered-data-store.scope.entry:write"]},
+                    "resource": {"$ref": "#/components/schemas/OrderedDataStoreEntry", "name": "OrderedDataStoreEntry"},
+                },
+                "x-roblox-stability": "STABLE",
             },
-            "x-roblox-scopes": [{"name": "universe.ordered-data-store.scope.entry:write"}],
-            "x-roblox-docs": {
-                "category": "Data and memory stores",
-                "methodProperties": {"scopes": ["universe.ordered-data-store.scope.entry:write"]},
-                "resource": {"$ref": "#/components/schemas/OrderedDataStoreEntry", "name": "OrderedDataStoreEntry"},
-            },
-            "x-roblox-stability": "STABLE",
+            "openapi-id": "Cloud_DeleteOrderedDataStoreEntry",
         },
-        "openapi-id": "Cloud_DeleteOrderedDataStoreEntry",
     }
 
     return _kwargs

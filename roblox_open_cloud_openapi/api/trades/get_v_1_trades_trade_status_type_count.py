@@ -22,8 +22,10 @@ def _get_kwargs(
         "url": "https://trades.roblox.com/v1/trades/{trade_status_type}/count".format(
             trade_status_type=quote(str(trade_status_type), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_trades_tradeStatusType_count",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_trades_tradeStatusType_count",
+        },
     }
 
     return _kwargs

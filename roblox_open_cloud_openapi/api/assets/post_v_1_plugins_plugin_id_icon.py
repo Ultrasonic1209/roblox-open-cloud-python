@@ -23,8 +23,10 @@ def _get_kwargs(
         "url": "https://publish.roblox.com/v1/plugins/{plugin_id}/icon".format(
             plugin_id=quote(str(plugin_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_plugins_pluginId_icon",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_plugins_pluginId_icon",
+        },
     }
 
     if not isinstance(body, Unset):

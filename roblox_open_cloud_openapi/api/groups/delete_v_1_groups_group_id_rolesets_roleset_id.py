@@ -21,8 +21,10 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             roleset_id=quote(str(roleset_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "delete_v1_groups_groupId_rolesets_rolesetId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "delete_v1_groups_groupId_rolesets_rolesetId",
+        },
     }
 
     return _kwargs

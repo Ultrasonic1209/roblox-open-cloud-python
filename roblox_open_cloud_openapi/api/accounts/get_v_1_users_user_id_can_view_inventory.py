@@ -28,18 +28,20 @@ def _get_kwargs(
         "url": "https://inventory.roblox.com/v1/users/{user_id}/can-view-inventory".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items",
-                    "httpMethod": "GET",
-                    "description": "Use the response code to determine whether you have permissions.",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items",
+                        "httpMethod": "GET",
+                        "description": "Use the response code to determine whether you have permissions.",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_users_userId_can-view-inventory",
         },
-        "openapi-id": "get_v1_users_userId_can-view-inventory",
     }
 
     return _kwargs

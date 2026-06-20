@@ -18,8 +18,10 @@ def _get_kwargs(
         "url": "https://clientsettings.roblox.com/v2/compression-dictionaries/{dictionary_sha_256}".format(
             dictionary_sha_256=quote(str(dictionary_sha_256), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_compression-dictionaries_dictionarySha256",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_compression-dictionaries_dictionarySha256",
+        },
     }
 
     return _kwargs

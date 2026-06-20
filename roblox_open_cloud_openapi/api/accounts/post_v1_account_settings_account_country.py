@@ -25,8 +25,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://accountsettings.roblox.com/v1/account/settings/account-country",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_account_settings_account-country",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_account_settings_account-country",
+        },
     }
 
     if isinstance(body, RobloxAccountSettingsApiUpdateAccountCountryRequest):

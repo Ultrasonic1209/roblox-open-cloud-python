@@ -30,17 +30,19 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v1/logoutfromallsessionsandreauthenticate",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://auth.roblox.com/v2/logoutfromallsessionsandreauthenticate",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_post_v2_logoutfromallsessionsandreauthenticate",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://auth.roblox.com/v2/logoutfromallsessionsandreauthenticate",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#auth_post_v2_logoutfromallsessionsandreauthenticate",
+                    }
+                ],
+            },
+            "openapi-id": "post_v1_logoutfromallsessionsandreauthenticate",
         },
-        "openapi-id": "post_v1_logoutfromallsessionsandreauthenticate",
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsRequestLogoutFromAllSessionsAndReauthenticateRequest):

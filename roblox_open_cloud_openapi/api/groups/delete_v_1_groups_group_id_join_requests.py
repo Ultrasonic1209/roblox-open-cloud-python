@@ -30,16 +30,18 @@ def _get_kwargs(
         "url": "https://groups.roblox.com/v1/groups/{group_id}/join-requests".format(
             group_id=quote(str(group_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}/join-requests/{join_request_id}:decline",
-                    "httpMethod": "DELETE",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/cloud/v2/groups/{group_id}/join-requests/{join_request_id}:decline",
+                        "httpMethod": "DELETE",
+                    }
+                ],
+            },
+            "openapi-id": "delete_v1_groups_groupId_join-requests",
         },
-        "openapi-id": "delete_v1_groups_groupId_join-requests",
     }
 
     if isinstance(body, RobloxGroupsApiMembersRequest):

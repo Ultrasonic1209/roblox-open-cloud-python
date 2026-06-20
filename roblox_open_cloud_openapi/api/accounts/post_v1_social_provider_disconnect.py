@@ -27,8 +27,10 @@ def _get_kwargs(
         "url": "https://auth.roblox.com/v1/social/{provider}/disconnect".format(
             provider=quote(str(provider), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_social_provider_disconnect",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_social_provider_disconnect",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsSocialAuthenticationDisconnectRequest):

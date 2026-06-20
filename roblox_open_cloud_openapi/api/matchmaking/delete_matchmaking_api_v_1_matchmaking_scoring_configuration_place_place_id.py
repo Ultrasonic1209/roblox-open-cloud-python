@@ -21,11 +21,13 @@ def _get_kwargs(
         "url": "/matchmaking-api/v1/matchmaking/scoring-configuration/place/{place_id}".format(
             place_id=quote(str(place_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "delete_matchmaking-api_v1_matchmaking_scoring-configuration_place_placeId",
         },
-        "openapi-id": "delete_matchmaking-api_v1_matchmaking_scoring-configuration_place_placeId",
     }
 
     return _kwargs

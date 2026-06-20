@@ -38,17 +38,19 @@ def _get_kwargs(
             developer_product_id=quote(str(developer_product_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/name/language-codes/{languageCode}",
-                    "httpMethod": "PATCH",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/developer-products#patch_legacy_game_internationalization_v1_developer_products__developerProductId__name_language_codes__languageCode_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/name/language-codes/{languageCode}",
+                        "httpMethod": "PATCH",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/developer-products#patch_legacy_game_internationalization_v1_developer_products__developerProductId__name_language_codes__languageCode_",
+                    }
+                ],
+            },
+            "openapi-id": "patch_v1_developer-products_developerProductId_name_language-codes_languageCode",
         },
-        "openapi-id": "patch_v1_developer-products_developerProductId_name_language-codes_languageCode",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiUpdateDeveloperProductNameRequest):

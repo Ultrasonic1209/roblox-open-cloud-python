@@ -21,20 +21,22 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             place_id=quote(str(place_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-docs": {
-                "category": "Universes and places",
-                "methodProperties": {"scopes": []},
-                "resource": {"$ref": "#/components/schemas/Place", "name": "Place"},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-docs": {
+                    "category": "Universes and places",
+                    "methodProperties": {"scopes": []},
+                    "resource": {"$ref": "#/components/schemas/Place", "name": "Place"},
+                },
+                "x-roblox-stability": "STABLE",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+                },
             },
-            "x-roblox-stability": "STABLE",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-            },
+            "openapi-id": "Cloud_GetPlace",
         },
-        "openapi-id": "Cloud_GetPlace",
     }
 
     return _kwargs

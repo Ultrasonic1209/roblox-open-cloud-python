@@ -16,8 +16,10 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://auth.roblox.com/v1/xbox/get-login-consecutive-days",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_xbox_get-login-consecutive-days",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_xbox_get-login-consecutive-days",
+        },
     }
 
     return _kwargs

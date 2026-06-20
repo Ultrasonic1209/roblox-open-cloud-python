@@ -22,8 +22,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://adconfiguration.roblox.com/v2/sponsored-campaigns/stop",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v2_sponsored-campaigns_stop",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v2_sponsored-campaigns_stop",
+        },
     }
 
     if isinstance(body, RobloxAdConfigurationApiModelsStopSponsoredCampaignRequest):

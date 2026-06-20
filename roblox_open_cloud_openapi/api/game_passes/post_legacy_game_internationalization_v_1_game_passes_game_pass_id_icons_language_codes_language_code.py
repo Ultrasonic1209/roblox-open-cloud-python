@@ -27,15 +27,17 @@ def _get_kwargs(
             game_pass_id=quote(str(game_pass_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [{"name": "legacy-game-pass:manage"}],
             },
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [{"name": "legacy-game-pass:manage"}],
+            "openapi-id": "post_legacy-game-internationalization_v1_game-passes_gamePassId_icons_language-codes_languageCode",
         },
-        "openapi-id": "post_legacy-game-internationalization_v1_game-passes_gamePassId_icons_language-codes_languageCode",
     }
 
     if not isinstance(body, Unset):

@@ -24,8 +24,10 @@ def _get_kwargs(
         "url": "https://avatar.roblox.com/v1/outfits/{user_outfit_id}/delete".format(
             user_outfit_id=quote(str(user_outfit_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_outfits_userOutfitId_delete",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_outfits_userOutfitId_delete",
+        },
     }
 
     _kwargs["headers"] = headers

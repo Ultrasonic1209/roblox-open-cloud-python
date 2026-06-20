@@ -18,8 +18,10 @@ def _get_kwargs(
         "url": "https://friends.roblox.com/v1/my/friends/{user_id}/check-qr-session".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_my_friends_userId_check-qr-session",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_my_friends_userId_check-qr-session",
+        },
     }
 
     return _kwargs

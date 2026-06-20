@@ -30,8 +30,10 @@ def _get_kwargs(
             identity_provider_id=quote(str(identity_provider_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_external_identityProviderId_sso_oauth_callback",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_external_identityProviderId_sso_oauth_callback",
+        },
     }
 
     return _kwargs

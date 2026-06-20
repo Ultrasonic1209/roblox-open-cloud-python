@@ -39,8 +39,10 @@ def _get_kwargs(
             binary_type=quote(str(binary_type), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_ota-version_binaryType",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_ota-version_binaryType",
+        },
     }
 
     return _kwargs

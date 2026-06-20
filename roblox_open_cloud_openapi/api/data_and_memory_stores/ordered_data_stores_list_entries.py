@@ -48,30 +48,32 @@ def _get_kwargs(
             scope=quote(str(scope), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-cloud-api-operation-name": "List",
-            "x-roblox-stability": "BETA",
-            "x-roblox-scopes": [{"name": "universe.ordered-data-store.scope.entry:read"}],
-            "x-roblox-cloud-api-operation-code-samples": [
-                {
-                    "language": "curl",
-                    "script": "curl --location 'https://apis.roblox.com/ordered-data-stores/v1/universes/<universeId>/orderedDataStores/<orderedDataStore>/scopes/<scope>/entries' \\\n --header 'x-api-key: <insert-api-key>' \n",
-                }
-            ],
-            "x-roblox-rate-limits": {
-                "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-cloud-api-operation-name": "List",
+                "x-roblox-stability": "BETA",
+                "x-roblox-scopes": [{"name": "universe.ordered-data-store.scope.entry:read"}],
+                "x-roblox-cloud-api-operation-code-samples": [
+                    {
+                        "language": "curl",
+                        "script": "curl --location 'https://apis.roblox.com/ordered-data-stores/v1/universes/<universeId>/orderedDataStores/<orderedDataStore>/scopes/<scope>/entries' \\\n --header 'x-api-key: <insert-api-key>' \n",
+                    }
+                ],
+                "x-roblox-rate-limits": {
+                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
+                },
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/ordered-data-stores/{ordered_data_store_id}/scopes/{scope_id}/entries",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListOrderedDataStoreEntries",
+                    }
+                ],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/ordered-data-stores/{ordered_data_store_id}/scopes/{scope_id}/entries",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListOrderedDataStoreEntries",
-                }
-            ],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "openapi-id": "OrderedDataStores_ListEntries",
         },
-        "openapi-id": "OrderedDataStores_ListEntries",
     }
 
     return _kwargs

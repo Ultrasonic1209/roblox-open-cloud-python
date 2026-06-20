@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://groups.roblox.com/v1/users/{user_id}/groups/primary/role".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_users_userId_groups_primary_role",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_users_userId_groups_primary_role",
+        },
     }
 
     return _kwargs

@@ -26,8 +26,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://clientsettings.roblox.com/v2/user-channel",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_user-channel",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_user-channel",
+        },
     }
 
     return _kwargs

@@ -30,8 +30,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://publish.roblox.com/v1/asset-quotas",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_asset-quotas",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_asset-quotas",
+        },
     }
 
     return _kwargs

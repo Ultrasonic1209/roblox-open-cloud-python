@@ -28,8 +28,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://games.roblox.com/v1/games/votes",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "Voting_MultiGetGameVoteStatus",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "Voting_MultiGetGameVoteStatus",
+        },
     }
 
     return _kwargs

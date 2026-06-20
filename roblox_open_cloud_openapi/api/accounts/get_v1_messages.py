@@ -37,8 +37,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://privatemessages.roblox.com/v1/messages",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_messages",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_messages",
+        },
     }
 
     return _kwargs

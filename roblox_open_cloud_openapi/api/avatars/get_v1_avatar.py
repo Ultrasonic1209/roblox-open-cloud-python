@@ -27,17 +27,19 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://avatar.roblox.com/v1/avatar",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://avatar.roblox.com/v2/avatar/avatar",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v2_avatar_avatar",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://avatar.roblox.com/v2/avatar/avatar",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v2_avatar_avatar",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_avatar",
         },
-        "openapi-id": "get_v1_avatar",
     }
 
     _kwargs["headers"] = headers

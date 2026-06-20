@@ -19,8 +19,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://groups.roblox.com/v1/user/groups/primary",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_user_groups_primary",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_user_groups_primary",
+        },
     }
 
     if isinstance(body, RobloxGroupsApiPrimaryGroupRequest):

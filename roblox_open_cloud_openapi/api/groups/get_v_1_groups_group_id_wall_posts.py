@@ -53,17 +53,19 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://groups.roblox.com/v2/groups/{groupId}/wall/posts",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#groups_get_v2_groups__groupId__wall_posts",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://groups.roblox.com/v2/groups/{groupId}/wall/posts",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#groups_get_v2_groups__groupId__wall_posts",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_groups_groupId_wall_posts",
         },
-        "openapi-id": "get_v1_groups_groupId_wall_posts",
     }
 
     return _kwargs

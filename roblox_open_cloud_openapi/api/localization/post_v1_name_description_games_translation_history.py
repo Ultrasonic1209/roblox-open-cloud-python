@@ -32,17 +32,19 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://gameinternationalization.roblox.com/v1/name-description/games/translation-history",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-game-internationalization/v1/name-description/games/translation-history",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#post_legacy_game_internationalization_v1_name_description_games_translation_history",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-game-internationalization/v1/name-description/games/translation-history",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#post_legacy_game_internationalization_v1_name_description_games_translation_history",
+                    }
+                ],
+            },
+            "openapi-id": "post_v1_name-description_games_translation-history",
         },
-        "openapi-id": "post_v1_name-description_games_translation-history",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiGetNameDescriptionHistoryV2Request):

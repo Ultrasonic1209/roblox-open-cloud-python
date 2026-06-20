@@ -21,8 +21,10 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/automatic-translation/games/{game_id}/feature-status".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_automatic-translation_games_gameId_feature-status",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_automatic-translation_games_gameId_feature-status",
+        },
     }
 
     return _kwargs

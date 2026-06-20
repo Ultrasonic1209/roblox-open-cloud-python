@@ -28,17 +28,19 @@ def _get_kwargs(
         "url": "https://localizationtables.roblox.com/v1/autolocalization/games/{game_id}/autolocalizationtable#LocalizationTablesApi".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-localization-tables/v1/autolocalization/games/{gameId}/autolocalizationtable",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#post_legacy_localization_tables_v1_autolocalization_games__gameId__autolocalizationtable",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-localization-tables/v1/autolocalization/games/{gameId}/autolocalizationtable",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#post_legacy_localization_tables_v1_autolocalization_games__gameId__autolocalizationtable",
+                    }
+                ],
+            },
+            "openapi-id": "post_v1_autolocalization_games_gameId_autolocalizationtable#LocalizationTablesApi",
         },
-        "openapi-id": "post_v1_autolocalization_games_gameId_autolocalizationtable#LocalizationTablesApi",
     }
 
     return _kwargs

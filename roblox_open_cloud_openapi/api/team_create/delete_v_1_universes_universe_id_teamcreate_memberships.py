@@ -34,17 +34,19 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/universes/{universe_id}/teamcreate/memberships".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-develop/v1/universes/{universeId}/teamcreate/memberships",
-                    "httpMethod": "DELETE",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/team-create#delete_legacy_develop_v1_universes__universeId__teamcreate_memberships",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-develop/v1/universes/{universeId}/teamcreate/memberships",
+                        "httpMethod": "DELETE",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/team-create#delete_legacy_develop_v1_universes__universeId__teamcreate_memberships",
+                    }
+                ],
+            },
+            "openapi-id": "delete_v1_universes_universeId_teamcreate_memberships",
         },
-        "openapi-id": "delete_v1_universes_universeId_teamcreate_memberships",
     }
 
     if isinstance(body, RobloxApiDevelopModelsTeamCreateMembershipRequest):

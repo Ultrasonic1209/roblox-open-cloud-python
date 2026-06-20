@@ -23,8 +23,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://locale.roblox.com/v1/locales/set-show-roblox-translations",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_locales_set-show-roblox-translations",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_locales_set-show-roblox-translations",
+        },
     }
 
     if isinstance(body, RobloxLocaleApiSetShowRobloxTranslationsRequest):

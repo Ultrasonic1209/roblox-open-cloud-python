@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/source-language/games/{game_id}".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_source-language_games_gameId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_source-language_games_gameId",
+        },
     }
 
     return _kwargs

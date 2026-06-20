@@ -23,8 +23,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://adconfiguration.roblox.com/v2/sponsored-games/create",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v2_sponsored-games_create",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v2_sponsored-games_create",
+        },
     }
 
     if isinstance(body, RobloxAdConfigurationApiCreateSponsoredGameV2Request):

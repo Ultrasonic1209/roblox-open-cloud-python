@@ -29,8 +29,10 @@ def _get_kwargs(
         "url": "https://twostepverification.roblox.com/v1/users/{user_id}/challenges/cross-device/retry".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_users_userId_challenges_cross-device_retry",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_users_userId_challenges_cross-device_retry",
+        },
     }
 
     if isinstance(body, RobloxTwoStepVerificationApiRetryApprovalRequest):

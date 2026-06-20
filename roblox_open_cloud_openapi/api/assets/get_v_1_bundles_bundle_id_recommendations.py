@@ -30,8 +30,10 @@ def _get_kwargs(
             bundle_id=quote(str(bundle_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_bundles_bundleId_recommendations",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_bundles_bundleId_recommendations",
+        },
     }
 
     return _kwargs

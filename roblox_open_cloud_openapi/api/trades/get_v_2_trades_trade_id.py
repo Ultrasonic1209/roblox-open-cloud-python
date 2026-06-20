@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://trades.roblox.com/v2/trades/{trade_id}".format(
             trade_id=quote(str(trade_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_trades_tradeId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_trades_tradeId",
+        },
     }
 
     return _kwargs

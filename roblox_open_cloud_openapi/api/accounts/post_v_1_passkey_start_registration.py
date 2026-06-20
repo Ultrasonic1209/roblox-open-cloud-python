@@ -33,8 +33,10 @@ def _get_kwargs(
         "method": "post",
         "url": "https://auth.roblox.com/v1/passkey/StartRegistration",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_passkey_StartRegistration",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_passkey_StartRegistration",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsRequestStartPasskeyRegistrationRequest):

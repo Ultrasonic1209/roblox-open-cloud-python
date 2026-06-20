@@ -23,17 +23,19 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://accountinformation.roblox.com/v1/birthdate",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://users.roblox.com/v1/birthdate",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#users_get_v1_birthdate",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://users.roblox.com/v1/birthdate",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/accounts#users_get_v1_birthdate",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_birthdate",
         },
-        "openapi-id": "get_v1_birthdate",
     }
 
     return _kwargs

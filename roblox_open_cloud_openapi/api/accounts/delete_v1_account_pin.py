@@ -23,8 +23,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "https://auth.roblox.com/v1/account/pin",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "delete_v1_account_pin",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "delete_v1_account_pin",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsAccountPinRequest):

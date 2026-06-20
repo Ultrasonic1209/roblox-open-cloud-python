@@ -31,11 +31,13 @@ def _get_kwargs(
         "url": "/matchmaking-api/v1/matchmaking/player-attribute/{attribute_id}".format(
             attribute_id=quote(str(attribute_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "patch_matchmaking-api_v1_matchmaking_player-attribute_attributeId",
         },
-        "openapi-id": "patch_matchmaking-api_v1_matchmaking_player-attribute_attributeId",
     }
 
     if isinstance(body, UpdateMatchmakingPlayerAttributeDefinitionRequest):

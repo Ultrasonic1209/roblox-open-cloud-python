@@ -28,8 +28,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://avatar.roblox.com/v2/avatar/avatar",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_avatar_avatar",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_avatar_avatar",
+        },
     }
 
     _kwargs["headers"] = headers

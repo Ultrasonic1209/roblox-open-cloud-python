@@ -21,8 +21,10 @@ def _get_kwargs(
         "url": "https://friends.roblox.com/v1/users/{user_id}/friends/inactive".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_users_userId_friends_inactive",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_users_userId_friends_inactive",
+        },
     }
 
     return _kwargs

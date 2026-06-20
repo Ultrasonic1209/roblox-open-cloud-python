@@ -32,8 +32,10 @@ def _get_kwargs(
             user_outfit_id=quote(str(user_outfit_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v3_outfits_userOutfitId_details",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v3_outfits_userOutfitId_details",
+        },
     }
 
     _kwargs["headers"] = headers

@@ -34,17 +34,19 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/autolocalization/games/{game_id}/autolocalizationtable".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://localizationtables.roblox.com/v1/autolocalization/games/{gameId}/autolocalizationtable",
-                    "httpMethod": "PATCH",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#localizationtables_patch_v1_autolocalization_games__gameId__autolocalizationtable",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://localizationtables.roblox.com/v1/autolocalization/games/{gameId}/autolocalizationtable",
+                        "httpMethod": "PATCH",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#localizationtables_patch_v1_autolocalization_games__gameId__autolocalizationtable",
+                    }
+                ],
+            },
+            "openapi-id": "patch_v1_autolocalization_games_gameId_autolocalizationtable",
         },
-        "openapi-id": "patch_v1_autolocalization_games_gameId_autolocalizationtable",
     }
 
     if isinstance(body, RobloxGameInternationalizationApiSetAutolocalizationTableForGameRequest):

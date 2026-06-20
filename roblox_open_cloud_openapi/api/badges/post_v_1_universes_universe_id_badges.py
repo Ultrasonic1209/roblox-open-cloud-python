@@ -30,17 +30,19 @@ def _get_kwargs(
         "url": "https://badges.roblox.com/v1/universes/{universe_id}/badges".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-badges/v1/universes/{universeId}/badges",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#post_legacy_badges_v1_universes__universeId__badges",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-badges/v1/universes/{universeId}/badges",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#post_legacy_badges_v1_universes__universeId__badges",
+                    }
+                ],
+            },
+            "openapi-id": "post_v1_universes_universeId_badges",
         },
-        "openapi-id": "post_v1_universes_universeId_badges",
     }
 
     if not isinstance(body, Unset):

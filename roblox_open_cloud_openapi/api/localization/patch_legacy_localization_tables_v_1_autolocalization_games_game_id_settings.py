@@ -27,15 +27,17 @@ def _get_kwargs(
         "url": "/legacy-localization-tables/v1/autolocalization/games/{game_id}/settings".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [{"name": "legacy-universe:manage"}],
             },
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [{"name": "legacy-universe:manage"}],
+            "openapi-id": "patch_legacy-localization-tables_v1_autolocalization_games_gameId_settings",
         },
-        "openapi-id": "patch_legacy-localization-tables_v1_autolocalization_games_gameId_settings",
     }
 
     if isinstance(body, RobloxLocalizationTablesApiSetAutolocalizationSettingsForGameRequest):

@@ -97,37 +97,39 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-cloud-api-operation-name": "List Entry Versions",
-            "x-roblox-stability": "BETA",
-            "x-roblox-scopes": [{"name": "universe-datastores.versions:list"}],
-            "x-roblox-cloud-api-operation": True,
-            "x-roblox-lua-equivalent": "DataStore:ListVersionsAsync",
-            "x-roblox-cloud-api-operation-code-samples": [
-                {
-                    "language": "curl",
-                    "script": 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries/entry/versions" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "entryKey=269323" \\\n-d "limit=5"',
-                }
-            ],
-            "x-roblox-rate-limits": {
-                "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-cloud-api-operation-name": "List Entry Versions",
+                "x-roblox-stability": "BETA",
+                "x-roblox-scopes": [{"name": "universe-datastores.versions:list"}],
+                "x-roblox-cloud-api-operation": True,
+                "x-roblox-lua-equivalent": "DataStore:ListVersionsAsync",
+                "x-roblox-cloud-api-operation-code-samples": [
+                    {
+                        "language": "curl",
+                        "script": 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries/entry/versions" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "entryKey=269323" \\\n-d "limit=5"',
+                    }
+                ],
+                "x-roblox-rate-limits": {
+                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
+                },
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}:listRevisions",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStoreEntryRevisions__Using_Universes_DataStores",
+                    },
+                    {
+                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries/{entry_id}:listRevisions",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStoreEntryRevisions__Using_Universes_DataStores_Scopes",
+                    },
+                ],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}:listRevisions",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStoreEntryRevisions__Using_Universes_DataStores",
-                },
-                {
-                    "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries/{entry_id}:listRevisions",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStoreEntryRevisions__Using_Universes_DataStores_Scopes",
-                },
-            ],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "openapi-id": "Entries_ListEntryVersionsAsync",
         },
-        "openapi-id": "Entries_ListEntryVersionsAsync",
     }
 
     return _kwargs

@@ -38,8 +38,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://groups.roblox.com/v1/groups/search",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_groups_search",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_groups_search",
+        },
     }
 
     return _kwargs

@@ -32,17 +32,19 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/universes/{universe_id}/configuration".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://develop.roblox.com/v2/universes/{universeId}/configuration",
-                    "httpMethod": "PATCH",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/universes#develop_patch_v2_universes__universeId__configuration",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://develop.roblox.com/v2/universes/{universeId}/configuration",
+                        "httpMethod": "PATCH",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/universes#develop_patch_v2_universes__universeId__configuration",
+                    }
+                ],
+            },
+            "openapi-id": "patch_v1_universes_universeId_configuration",
         },
-        "openapi-id": "patch_v1_universes_universeId_configuration",
     }
 
     if isinstance(body, RobloxApiDevelopModelsUniverseSettingsRequest):

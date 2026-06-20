@@ -34,17 +34,19 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://assetdelivery.roblox.com/v1/assets/batch",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://assetdelivery.roblox.com/v2/assets/batch",
-                    "httpMethod": "POST",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_post_v2_assets_batch",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://assetdelivery.roblox.com/v2/assets/batch",
+                        "httpMethod": "POST",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_post_v2_assets_batch",
+                    }
+                ],
+            },
+            "openapi-id": "post_v1_assets_batch",
         },
-        "openapi-id": "post_v1_assets_batch",
     }
 
     if isinstance(body, list[RobloxWebAssetsBatchAssetRequestItem]):

@@ -47,8 +47,10 @@ def _get_kwargs(
             trade_status_type=quote(str(trade_status_type), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_trades_tradeStatusType",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_trades_tradeStatusType",
+        },
     }
 
     return _kwargs

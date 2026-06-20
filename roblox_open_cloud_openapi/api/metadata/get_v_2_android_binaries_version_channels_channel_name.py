@@ -23,8 +23,10 @@ def _get_kwargs(
             version=quote(str(version), safe=""),
             channel_name=quote(str(channel_name), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_android-binaries_version_channels_channelName",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_android-binaries_version_channels_channelName",
+        },
     }
 
     return _kwargs

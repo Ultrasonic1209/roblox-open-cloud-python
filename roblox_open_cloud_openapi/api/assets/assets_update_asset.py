@@ -32,37 +32,39 @@ def _get_kwargs(
             asset_id=quote(str(asset_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-cloud-api-operation": True,
-            "x-roblox-cloud-api-operation-name": "Update Asset",
-            "x-roblox-stability": "BETA",
-            "x-roblox-scopes": [{"name": "asset:read"}, {"name": "asset:write"}],
-            "x-roblox-cloud-api-operation-code-samples": [
-                {
-                    "language": "Update Content Only and Create a New Version",
-                    "script": "curl --location --request PATCH 'https://apis.roblox.com/assets/v1/assets/{assetId}' \\\n--header 'x-api-key: {apiKey}' \\\n--form 'request=\"{\\\"assetId\\\": {assetId} }\"' \\\n--form 'fileContent=\"@\\\"{file-path}\\\"\"'",
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-cloud-api-operation": True,
+                "x-roblox-cloud-api-operation-name": "Update Asset",
+                "x-roblox-stability": "BETA",
+                "x-roblox-scopes": [{"name": "asset:read"}, {"name": "asset:write"}],
+                "x-roblox-cloud-api-operation-code-samples": [
+                    {
+                        "language": "Update Content Only and Create a New Version",
+                        "script": "curl --location --request PATCH 'https://apis.roblox.com/assets/v1/assets/{assetId}' \\\n--header 'x-api-key: {apiKey}' \\\n--form 'request=\"{\\\"assetId\\\": {assetId} }\"' \\\n--form 'fileContent=\"@\\\"{file-path}\\\"\"'",
+                    },
+                    {
+                        "language": "Update Content and Metadata",
+                        "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=description%2CdisplayName\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\n    \\"assetType\\": \\"{assetType}\\",\n    \\"assetId\\": {assetId},\n    \\"displayName\\": \\"{new display name}\\",\n    \\"description\\": \\"{new description}\\",    \n    \\"creationContext\\": { \n        \\"creator\\": {\n            \\"userId\\": {userId}\n        },\n        \\"expectedPrice\\":{expectedPrice}\n    },\n}"\' \\\n--form \'fileContent=@\\"{file-path}\\"\'',
+                    },
+                    {
+                        "language": "Update a List of Previews",
+                        "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=previews\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"previews\\": [{\\"asset\\": \\"assets/123\\", \\"altText\\": \\"Your alt text.\\"}]}"\'',
+                    },
+                    {
+                        "language": "Update Social Links",
+                        "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=twitchSocialLink%2CgithubSocialLink\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"twitchSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://twitch.tv/your-channel\\"}, \\"githubSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://github.com/your-repo\\"}}"\'',
+                    },
+                ],
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
                 },
-                {
-                    "language": "Update Content and Metadata",
-                    "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=description%2CdisplayName\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\n    \\"assetType\\": \\"{assetType}\\",\n    \\"assetId\\": {assetId},\n    \\"displayName\\": \\"{new display name}\\",\n    \\"description\\": \\"{new description}\\",    \n    \\"creationContext\\": { \n        \\"creator\\": {\n            \\"userId\\": {userId}\n        },\n        \\"expectedPrice\\":{expectedPrice}\n    },\n}"\' \\\n--form \'fileContent=@\\"{file-path}\\"\'',
-                },
-                {
-                    "language": "Update a List of Previews",
-                    "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=previews\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"previews\\": [{\\"asset\\": \\"assets/123\\", \\"altText\\": \\"Your alt text.\\"}]}"\'',
-                },
-                {
-                    "language": "Update Social Links",
-                    "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=twitchSocialLink%2CgithubSocialLink\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"twitchSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://twitch.tv/your-channel\\"}, \\"githubSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://github.com/your-repo\\"}}"\'',
-                },
-            ],
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
+                "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 120}},
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
-            "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 120}},
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "openapi-id": "Assets_UpdateAsset",
         },
-        "openapi-id": "Assets_UpdateAsset",
     }
 
     if not isinstance(body, Unset):

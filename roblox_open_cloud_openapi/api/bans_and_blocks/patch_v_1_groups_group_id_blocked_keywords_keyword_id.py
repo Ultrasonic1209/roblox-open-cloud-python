@@ -25,8 +25,10 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             keyword_id=quote(str(keyword_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "patch_v1_groups_groupId_blocked-keywords_keywordId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "patch_v1_groups_groupId_blocked-keywords_keywordId",
+        },
     }
 
     if isinstance(body, RobloxGroupsApiUpdateBlockedKeywordRequest):

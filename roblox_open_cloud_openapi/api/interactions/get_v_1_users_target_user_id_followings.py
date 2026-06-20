@@ -46,8 +46,10 @@ def _get_kwargs(
             target_user_id=quote(str(target_user_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_users_targetUserId_followings",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_users_targetUserId_followings",
+        },
     }
 
     return _kwargs

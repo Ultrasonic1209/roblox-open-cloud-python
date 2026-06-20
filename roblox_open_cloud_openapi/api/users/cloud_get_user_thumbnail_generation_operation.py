@@ -21,15 +21,17 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
             operation_id=quote(str(operation_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "openapi-id": "Cloud_GetUserThumbnailGenerationOperation",
         },
-        "openapi-id": "Cloud_GetUserThumbnailGenerationOperation",
     }
 
     return _kwargs

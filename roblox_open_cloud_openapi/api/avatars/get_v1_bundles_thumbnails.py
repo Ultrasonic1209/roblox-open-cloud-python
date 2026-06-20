@@ -47,11 +47,13 @@ def _get_kwargs(
         "method": "get",
         "url": "https://thumbnails.roblox.com/v1/bundles/thumbnails",
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-stability": "STABLE",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "STABLE",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "get_v1_bundles_thumbnails",
         },
-        "openapi-id": "get_v1_bundles_thumbnails",
     }
 
     return _kwargs

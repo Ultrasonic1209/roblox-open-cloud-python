@@ -23,8 +23,10 @@ def _get_kwargs(
         "url": "https://trades.roblox.com/v2/trades/{trade_id}/counter".format(
             trade_id=quote(str(trade_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v2_trades_tradeId_counter",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v2_trades_tradeId_counter",
+        },
     }
 
     if isinstance(body, RobloxTradesApiModelsV2TradeRequest):

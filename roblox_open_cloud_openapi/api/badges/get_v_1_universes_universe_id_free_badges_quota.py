@@ -18,8 +18,10 @@ def _get_kwargs(
         "url": "https://badges.roblox.com/v1/universes/{universe_id}/free-badges-quota".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_universes_universeId_free-badges-quota",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_universes_universeId_free-badges-quota",
+        },
     }
 
     return _kwargs

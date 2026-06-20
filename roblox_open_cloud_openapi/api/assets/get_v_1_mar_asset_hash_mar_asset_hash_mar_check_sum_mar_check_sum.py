@@ -70,17 +70,19 @@ def _get_kwargs(
             mar_check_sum=quote(str(mar_check_sum), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://assetdelivery.roblox.com/v2/marAssetHash/{marAssetHash}/marCheckSum/{marCheckSum}",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_marAssetHash__marAssetHash__marCheckSum__marCheckSum_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://assetdelivery.roblox.com/v2/marAssetHash/{marAssetHash}/marCheckSum/{marCheckSum}",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_marAssetHash__marAssetHash__marCheckSum__marCheckSum_",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_marAssetHash_marAssetHash_marCheckSum_marCheckSum",
         },
-        "openapi-id": "get_v1_marAssetHash_marAssetHash_marCheckSum_marCheckSum",
     }
 
     _kwargs["headers"] = headers

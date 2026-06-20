@@ -46,17 +46,19 @@ def _get_kwargs(
             table_id=quote(str(table_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-localization-tables/v1/localization-table/tables/{tableId}",
-                    "httpMethod": "PATCH",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#patch_legacy_localization_tables_v1_localization_table_tables__tableId_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-localization-tables/v1/localization-table/tables/{tableId}",
+                        "httpMethod": "PATCH",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#patch_legacy_localization_tables_v1_localization_table_tables__tableId_",
+                    }
+                ],
+            },
+            "openapi-id": "patch_v1_localization-table_tables_tableId",
         },
-        "openapi-id": "patch_v1_localization-table_tables_tableId",
     }
 
     if isinstance(body, RobloxLocalizationTablesApiUpdateTableContentsRequest):

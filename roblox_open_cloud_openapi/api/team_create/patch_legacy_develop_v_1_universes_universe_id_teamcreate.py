@@ -27,15 +27,17 @@ def _get_kwargs(
         "url": "/legacy-develop/v1/universes/{universe_id}/teamcreate".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [{"name": "legacy-team-collaboration:manage"}],
             },
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [{"name": "legacy-team-collaboration:manage"}],
+            "openapi-id": "patch_legacy-develop_v1_universes_universeId_teamcreate",
         },
-        "openapi-id": "patch_legacy-develop_v1_universes_universeId_teamcreate",
     }
 
     if isinstance(body, RobloxApiDevelopModelsUpdateTeamCreateSettingsRequest):

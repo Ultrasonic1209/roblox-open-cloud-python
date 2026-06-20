@@ -29,8 +29,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://users.roblox.com/v1/display-names/validate",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_display-names_validate",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_display-names_validate",
+        },
     }
 
     return _kwargs

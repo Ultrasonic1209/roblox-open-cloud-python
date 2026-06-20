@@ -23,8 +23,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://economy.roblox.com/v2/sales/sales-report-download",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "SalesReportDownload_PublishSalesReportDownloadMessage",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "SalesReportDownload_PublishSalesReportDownloadMessage",
+        },
     }
 
     if isinstance(body, SalesReportDownloadRequest):

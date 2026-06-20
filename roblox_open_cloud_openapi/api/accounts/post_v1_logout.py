@@ -21,11 +21,15 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v1/logout",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [{"url": "https://auth.roblox.com/v3/logout", "httpMethod": "POST"}],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {"url": "https://auth.roblox.com/v3/logout", "httpMethod": "POST"}
+                ],
+            },
+            "openapi-id": "post_v1_logout",
         },
-        "openapi-id": "post_v1_logout",
     }
 
     return _kwargs

@@ -23,17 +23,19 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://groups.roblox.com/v1/user/groups/pending",
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://apis.roblox.com/legacy-groups/v1/user/groups/pending",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_user_groups_pending",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://apis.roblox.com/legacy-groups/v1/user/groups/pending",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_user_groups_pending",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_user_groups_pending",
         },
-        "openapi-id": "get_v1_user_groups_pending",
     }
 
     return _kwargs

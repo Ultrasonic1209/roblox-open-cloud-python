@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://inventory.roblox.com/v2/inventory/asset/{asset_id}".format(
             asset_id=quote(str(asset_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "delete_v2_inventory_asset_assetId",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "delete_v2_inventory_asset_assetId",
+        },
     }
 
     return _kwargs

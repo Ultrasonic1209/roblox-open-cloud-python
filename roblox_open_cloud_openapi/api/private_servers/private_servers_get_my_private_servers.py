@@ -35,8 +35,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://games.roblox.com/v1/vip-servers/my-private-servers",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "PrivateServers_GetMyPrivateServers",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "PrivateServers_GetMyPrivateServers",
+        },
     }
 
     return _kwargs

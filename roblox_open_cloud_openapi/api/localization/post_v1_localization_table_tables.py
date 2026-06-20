@@ -21,8 +21,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://localizationtables.roblox.com/v1/localization-table/tables",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_localization-table_tables",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_localization-table_tables",
+        },
     }
 
     if isinstance(body, RobloxLocalizationTablesApiCreateTableRequest):

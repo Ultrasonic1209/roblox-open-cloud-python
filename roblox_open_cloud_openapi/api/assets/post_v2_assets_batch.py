@@ -27,8 +27,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://assetdelivery.roblox.com/v2/assets/batch",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v2_assets_batch",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v2_assets_batch",
+        },
     }
 
     if isinstance(body, list[RobloxWebAssetsBatchAssetRequestItem]):

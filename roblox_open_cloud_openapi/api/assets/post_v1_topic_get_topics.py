@@ -19,8 +19,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://catalog.roblox.com/v1/topic/get-topics",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_topic_get-topics",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_topic_get-topics",
+        },
     }
 
     if isinstance(body, RobloxCatalogApiTopicRequestModel):

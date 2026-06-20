@@ -23,8 +23,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v2/logoutfromallsessionsandreauthenticate",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v2_logoutfromallsessionsandreauthenticate",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v2_logoutfromallsessionsandreauthenticate",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsRequestLogoutFromAllSessionsAndReauthenticateRequest):

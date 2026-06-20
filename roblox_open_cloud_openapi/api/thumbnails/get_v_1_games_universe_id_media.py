@@ -28,17 +28,19 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/games/{universe_id}/media".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://games.roblox.com/v2/games/{universeId}/media",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/thumbnails#games_get_v2_games__universeId__media",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://games.roblox.com/v2/games/{universeId}/media",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/thumbnails#games_get_v2_games__universeId__media",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_games_universeId_media",
         },
-        "openapi-id": "get_v1_games_universeId_media",
     }
 
     return _kwargs

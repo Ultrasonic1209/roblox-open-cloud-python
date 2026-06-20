@@ -19,30 +19,32 @@ def _get_kwargs(
         "url": "/cloud/v2/users/{user_id}".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-scopes": [
-                {
-                    "description": "Grants access to read a user&#x27;s verification status.",
-                    "name": "user.advanced:read",
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-scopes": [
+                    {
+                        "description": "Grants access to read a user&#x27;s verification status.",
+                        "name": "user.advanced:read",
+                    },
+                    {
+                        "description": "Grants access to read a user&#x27;s social account information.",
+                        "name": "user.social:read",
+                    },
+                ],
+                "x-roblox-docs": {
+                    "category": "Users and groups",
+                    "methodProperties": {"scopes": []},
+                    "resource": {"$ref": "#/components/schemas/User", "name": "User"},
                 },
-                {
-                    "description": "Grants access to read a user&#x27;s social account information.",
-                    "name": "user.social:read",
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
                 },
-            ],
-            "x-roblox-docs": {
-                "category": "Users and groups",
-                "methodProperties": {"scopes": []},
-                "resource": {"$ref": "#/components/schemas/User", "name": "User"},
             },
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
-            },
+            "openapi-id": "Cloud_GetUser",
         },
-        "openapi-id": "Cloud_GetUser",
     }
 
     return _kwargs

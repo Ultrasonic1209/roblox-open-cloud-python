@@ -31,8 +31,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://games.roblox.com/v1/games",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_games",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_games",
+        },
     }
 
     return _kwargs

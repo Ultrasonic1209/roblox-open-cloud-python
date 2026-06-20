@@ -19,8 +19,10 @@ def _get_kwargs(
         "url": "https://trades.roblox.com/v2/users/{user_id}/can-trade-with".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_users_userId_can-trade-with",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_users_userId_can-trade-with",
+        },
     }
 
     return _kwargs

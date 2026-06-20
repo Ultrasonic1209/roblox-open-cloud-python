@@ -23,15 +23,17 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [{"name": "legacy-universe.following:read"}],
             },
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [{"name": "legacy-universe.following:read"}],
+            "openapi-id": "get_legacy-followings_v1_users_userId_universes_universeId_status",
         },
-        "openapi-id": "get_legacy-followings_v1_users_userId_universes_universeId_status",
     }
 
     return _kwargs

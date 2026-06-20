@@ -26,17 +26,19 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/games/{universe_id}/votes".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://games.roblox.com/v1/games/votes",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/interactions#Voting_MultiGetGameVoteStatus",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://games.roblox.com/v1/games/votes",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/interactions#Voting_MultiGetGameVoteStatus",
+                    }
+                ],
+            },
+            "openapi-id": "Voting_GetGameVoteStatus",
         },
-        "openapi-id": "Voting_GetGameVoteStatus",
     }
 
     return _kwargs

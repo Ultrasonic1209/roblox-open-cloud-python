@@ -36,8 +36,10 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "PrivateServers_GetPrivateServerList",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "PrivateServers_GetPrivateServerList",
+        },
     }
 
     return _kwargs

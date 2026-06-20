@@ -21,11 +21,13 @@ def _get_kwargs(
         "url": "/matchmaking-api/v1/matchmaking/player-attributes/{universe_id}".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "get_matchmaking-api_v1_matchmaking_player-attributes_universeId",
         },
-        "openapi-id": "get_matchmaking-api_v1_matchmaking_player-attributes_universeId",
     }
 
     return _kwargs

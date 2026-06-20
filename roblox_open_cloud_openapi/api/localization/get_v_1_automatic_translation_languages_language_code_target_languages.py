@@ -37,8 +37,10 @@ def _get_kwargs(
             language_code=quote(str(language_code), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_automatic-translation_languages_languageCode_target-languages",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_automatic-translation_languages_languageCode_target-languages",
+        },
     }
 
     return _kwargs

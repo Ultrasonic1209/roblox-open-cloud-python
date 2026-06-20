@@ -31,8 +31,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://auth.roblox.com/v1/validators/username",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_validators_username",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_validators_username",
+        },
     }
 
     return _kwargs

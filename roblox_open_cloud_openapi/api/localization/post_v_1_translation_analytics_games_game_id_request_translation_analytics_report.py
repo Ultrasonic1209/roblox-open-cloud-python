@@ -29,8 +29,10 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/translation-analytics/games/{game_id}/request-translation-analytics-report".format(
             game_id=quote(str(game_id), safe=""),
         ),
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_translation-analytics_games_gameId_request-translation-analytics-report",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_translation-analytics_games_gameId_request-translation-analytics-report",
+        },
     }
 
     if isinstance(body, RobloxGameInternationalizationApiRequestTranslationAnalyticsReportRequest):

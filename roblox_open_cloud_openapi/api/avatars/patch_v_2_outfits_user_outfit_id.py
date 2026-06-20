@@ -33,17 +33,19 @@ def _get_kwargs(
         "url": "https://avatar.roblox.com/v2/outfits/{user_outfit_id}".format(
             user_outfit_id=quote(str(user_outfit_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://avatar.roblox.com/v3/outfits/{userOutfitId}",
-                    "httpMethod": "PATCH",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_patch_v3_outfits__userOutfitId_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://avatar.roblox.com/v3/outfits/{userOutfitId}",
+                        "httpMethod": "PATCH",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_patch_v3_outfits__userOutfitId_",
+                    }
+                ],
+            },
+            "openapi-id": "patch_v2_outfits_userOutfitId",
         },
-        "openapi-id": "patch_v2_outfits_userOutfitId",
     }
 
     if isinstance(body, RobloxApiAvatarModelsOutfitUpdateModelV2):

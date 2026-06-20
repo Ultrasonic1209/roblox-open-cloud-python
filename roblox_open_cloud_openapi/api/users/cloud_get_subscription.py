@@ -37,24 +37,28 @@ def _get_kwargs(
             subscription_id=quote(str(subscription_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-scopes": [
-                {"name": "universe:write"},
-                {"name": "universe.subscription-product.subscription:read"},
-            ],
-            "x-roblox-docs": {
-                "category": "Monetization",
-                "methodProperties": {"scopes": ["universe:write", "universe.subscription-product.subscription:read"]},
-                "resource": {"$ref": "#/components/schemas/Subscription", "name": "Subscription"},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-scopes": [
+                    {"name": "universe:write"},
+                    {"name": "universe.subscription-product.subscription:read"},
+                ],
+                "x-roblox-docs": {
+                    "category": "Monetization",
+                    "methodProperties": {
+                        "scopes": ["universe:write", "universe.subscription-product.subscription:read"]
+                    },
+                    "resource": {"$ref": "#/components/schemas/Subscription", "name": "Subscription"},
+                },
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
+                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 3},
+                },
             },
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
-                "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 3},
-            },
+            "openapi-id": "Cloud_GetSubscription",
         },
-        "openapi-id": "Cloud_GetSubscription",
     }
 
     return _kwargs

@@ -27,16 +27,18 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             repository=quote(str(repository), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 10},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 10},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
+                },
+                "x-roblox-scopes": [{"name": "universe:write", "targetResourceSpecifier": "universes"}],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
-            "x-roblox-scopes": [{"name": "universe:write", "targetResourceSpecifier": "universes"}],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "openapi-id": "CreatorConfigsPublicApi_PublishDraft",
         },
-        "openapi-id": "CreatorConfigsPublicApi_PublishDraft",
     }
 
     if isinstance(body, PublishDraftRequest):

@@ -80,17 +80,19 @@ def _get_kwargs(
             asset_id=quote(str(asset_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            "x-roblox-recommended-alternatives": [
-                {
-                    "url": "https://assetdelivery.roblox.com/v2/assetId/{assetId}",
-                    "httpMethod": "GET",
-                    "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_assetId__assetId_",
-                }
-            ],
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+                "x-roblox-recommended-alternatives": [
+                    {
+                        "url": "https://assetdelivery.roblox.com/v2/assetId/{assetId}",
+                        "httpMethod": "GET",
+                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_assetId__assetId_",
+                    }
+                ],
+            },
+            "openapi-id": "get_v1_assetId_assetId",
         },
-        "openapi-id": "get_v1_assetId_assetId",
     }
 
     _kwargs["headers"] = headers

@@ -26,16 +26,18 @@ def _get_kwargs(
         "method": "get",
         "url": "https://thumbnails.roblox.com/v1/users/avatar-3d",
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
-                "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 500},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 500},
+                },
+                "x-roblox-scopes": [{"name": "thumbnail:read", "targetResourceSpecifier": ""}],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "x-roblox-scopes": [{"name": "thumbnail:read", "targetResourceSpecifier": ""}],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            "openapi-id": "get_v1_users_avatar-3d",
         },
-        "openapi-id": "get_v1_users_avatar-3d",
     }
 
     return _kwargs

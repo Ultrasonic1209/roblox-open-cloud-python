@@ -24,8 +24,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://auth.roblox.com/v1/usernames",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_usernames",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_usernames",
+        },
     }
 
     return _kwargs

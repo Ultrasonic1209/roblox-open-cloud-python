@@ -51,11 +51,13 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {
-            "x-roblox-stability": "STABLE",
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "STABLE",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "get_v1_games_universeId_thumbnails",
         },
-        "openapi-id": "get_v1_games_universeId_thumbnails",
     }
 
     return _kwargs

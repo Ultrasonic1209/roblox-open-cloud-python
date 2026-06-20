@@ -26,8 +26,10 @@ def _get_kwargs(
         "method": "get",
         "url": "https://auth.roblox.com/v2/revert/account",
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v2_revert_account",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v2_revert_account",
+        },
     }
 
     return _kwargs

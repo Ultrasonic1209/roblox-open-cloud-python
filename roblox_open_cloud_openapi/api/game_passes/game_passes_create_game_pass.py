@@ -24,16 +24,18 @@ def _get_kwargs(
         "url": "/game-passes/v1/universes/{universe_id}/game-passes".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-stability": "BETA",
-            "x-roblox-rate-limits": {
-                "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 5},
-                "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 5},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 5},
+                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 5},
+                },
+                "x-roblox-scopes": [{"name": "game-pass:write", "targetResourceSpecifier": "universes"}],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
-            "x-roblox-scopes": [{"name": "game-pass:write", "targetResourceSpecifier": "universes"}],
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+            "openapi-id": "GamePasses_CreateGamePass",
         },
-        "openapi-id": "GamePasses_CreateGamePass",
     }
 
     if not isinstance(body, Unset):

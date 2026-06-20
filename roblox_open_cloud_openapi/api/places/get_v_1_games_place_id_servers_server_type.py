@@ -53,8 +53,10 @@ def _get_kwargs(
             server_type=quote(str(server_type), safe=""),
         ),
         "params": params,
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "get_v1_games_placeId_servers_serverType",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_games_placeId_servers_serverType",
+        },
     }
 
     return _kwargs

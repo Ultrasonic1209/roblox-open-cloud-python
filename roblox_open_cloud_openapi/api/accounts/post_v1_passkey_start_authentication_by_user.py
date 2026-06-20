@@ -25,8 +25,10 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://auth.roblox.com/v1/passkey/start-authentication-by-user",
-        "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-        "openapi-id": "post_v1_passkey_start-authentication-by-user",
+        "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "post_v1_passkey_start-authentication-by-user",
+        },
     }
 
     if isinstance(body, RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequest):

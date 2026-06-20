@@ -24,18 +24,20 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             queue_id=quote(str(queue_id), safe=""),
         ),
-        "openapi-extensions": {
-            "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            "x-roblox-scopes": [{"name": "memory-store.queue:add"}],
-            "x-roblox-docs": {
-                "category": "Data and memory stores",
-                "methodProperties": {"scopes": ["memory-store.queue:add"]},
-                "resource": {"$ref": "#/components/schemas/MemoryStoreQueueItem", "name": "MemoryStoreQueueItem"},
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
+                "x-roblox-scopes": [{"name": "memory-store.queue:add"}],
+                "x-roblox-docs": {
+                    "category": "Data and memory stores",
+                    "methodProperties": {"scopes": ["memory-store.queue:add"]},
+                    "resource": {"$ref": "#/components/schemas/MemoryStoreQueueItem", "name": "MemoryStoreQueueItem"},
+                },
+                "x-roblox-stability": "STABLE",
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
             },
-            "x-roblox-stability": "STABLE",
-            "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
+            "openapi-id": "Cloud_CreateMemoryStoreQueueItem",
         },
-        "openapi-id": "Cloud_CreateMemoryStoreQueueItem",
     }
 
     _kwargs["json"] = body.to_dict()
