@@ -4,19 +4,17 @@ from collections.abc import Callable, Coroutine
 from http import HTTPStatus
 from typing import Any, Literal, TypedDict, cast
 
+sys.modules["httpx"] = sys.modules["httpx2"]
+for name, module in list(sys.modules.items()):
+    if name.startswith("httpx2.") and module is not None:
+        sys.modules.setdefault("httpx." + name.removeprefix("httpx2."), module)
+
+
 import httpx2
 from attrs import define, evolve, field
 from httpx_limiter import AbstractRateLimiterRepository, AsyncMultiRateLimitedTransport, Rate
 from httpx_limiter.pyrate import PyrateAsyncLimiter
 from httpx_retries import Retry, RetryTransport
-
-assert not "httpx" in sys.modules, "httpx is not supported"
-assert "httpx2" in sys.modules, "httpx2 is required"
-
-sys.modules["httpx"] = sys.modules["httpx2"]
-for name, module in list(sys.modules.items()):
-    if name.startswith("httpx2.") and module is not None:
-        sys.modules.setdefault("httpx." + name.removeprefix("httpx2."), module)
 
 
 class RobloxRateLimit(TypedDict):
