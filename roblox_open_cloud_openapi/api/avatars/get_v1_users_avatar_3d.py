@@ -1,13 +1,10 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 
 import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.thumbnails_api_roblox_web_responses_thumbnails_thumbnail_response import (
-    ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse,
-)
 from ...types import UNSET, Response
 
 
@@ -43,17 +40,12 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
     if response.status_code == 200:
-        response_200 = ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse.from_dict(response.json())
-
-        return response_200
+        return None
 
     if response.status_code == 400:
-        response_400 = cast(Any, None)
-        return response_400
+        return None
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -61,9 +53,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     user_id: int,
-) -> Response[Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]:
+) -> Response[Any]:
     """Get Avatar 3d object for a user
 
     Args:
@@ -87,7 +77,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -101,35 +91,11 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    *,
-    client: AuthenticatedClient,
-    user_id: int,
-) -> Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse | None:
-    """Get Avatar 3d object for a user
-
-    Args:
-        user_id (int):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse
-    """
-
-    return sync_detailed(
-        client=client,
-        user_id=user_id,
-    ).parsed
-
-
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     user_id: int,
-) -> Response[Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]:
+) -> Response[Any]:
     """Get Avatar 3d object for a user
 
     Args:
@@ -140,7 +106,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -150,29 +116,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-    user_id: int,
-) -> Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse | None:
-    """Get Avatar 3d object for a user
-
-    Args:
-        user_id (int):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Any | ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-            user_id=user_id,
-        )
-    ).parsed

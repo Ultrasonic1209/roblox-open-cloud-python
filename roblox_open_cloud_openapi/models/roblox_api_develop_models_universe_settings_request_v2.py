@@ -99,6 +99,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
         audiences (list[RobloxApiDevelopModelsUniverseSettingsRequestV2AudiencesItem] | Unset): The audiences this
             universe should be visible to (e.g. Editors, PlayTesters, Friends, Public).
             When provided, replaces the universe's existing audience set with the supplied values.
+        demo_mode_enabled (bool | Unset): Whether demo mode is enabled for this paid access game.
     """
 
     allow_private_servers: bool | Unset = UNSET
@@ -132,6 +133,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
     fiat_base_price_id: str | Unset = UNSET
     fiat_product_change_type: RobloxApiDevelopModelsUniverseSettingsRequestV2FiatProductChangeType | Unset = UNSET
     audiences: list[RobloxApiDevelopModelsUniverseSettingsRequestV2AudiencesItem] | Unset = UNSET
+    demo_mode_enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         allow_private_servers = self.allow_private_servers
@@ -231,6 +233,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
                 audiences_item = audiences_item_data.value
                 audiences.append(audiences_item)
 
+        demo_mode_enabled = self.demo_mode_enabled
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -288,6 +292,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
             field_dict["fiatProductChangeType"] = fiat_product_change_type
         if audiences is not UNSET:
             field_dict["audiences"] = audiences
+        if demo_mode_enabled is not UNSET:
+            field_dict["demoModeEnabled"] = demo_mode_enabled
 
         return field_dict
 
@@ -462,6 +468,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
 
                 audiences.append(audiences_item)
 
+        demo_mode_enabled = d.pop("demoModeEnabled", UNSET)
+
         roblox_api_develop_models_universe_settings_request_v2 = cls(
             allow_private_servers=allow_private_servers,
             private_server_price=private_server_price,
@@ -490,6 +498,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
             fiat_base_price_id=fiat_base_price_id,
             fiat_product_change_type=fiat_product_change_type,
             audiences=audiences,
+            demo_mode_enabled=demo_mode_enabled,
         )
 
         return roblox_api_develop_models_universe_settings_request_v2

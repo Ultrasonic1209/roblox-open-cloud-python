@@ -27,7 +27,7 @@ from ...models.sort_direction import SortDirection
 
 def _get_kwargs(
     *,
-    search_category_type: SearchCategoryType,
+    search_category_type: None | SearchCategoryType | Unset = UNSET,
     query: str | Unset = UNSET,
     model_sub_types: list[ModelSubType] | None | Unset = UNSET,
     excluded_model_sub_types: list[ModelSubType] | None | Unset = UNSET,
@@ -43,21 +43,28 @@ def _get_kwargs(
     audio_max_duration_seconds: int | None | Unset = UNSET,
     audio_artist: str | Unset = UNSET,
     audio_album: str | Unset = UNSET,
-    include_top_charts: bool | None | Unset = False,
     audio_types: list[SearchAudioTypeModel] | None | Unset = UNSET,
     included_instance_types: list[ModelInstanceType] | None | Unset = UNSET,
     include_only_verified_creators: bool | Unset = True,
     min_price_cents: int | None | Unset = UNSET,
     max_price_cents: int | None | Unset = UNSET,
     facets: list[str] | None | Unset = UNSET,
+    tags: list[str] | None | Unset = UNSET,
     category_path: str | Unset = UNSET,
     search_view: SearchView | Unset = SearchView.CORE,
     music_chart_type: MusicChartType | Unset = MusicChartType.NONE,
+    swimlane: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    json_search_category_type = search_category_type.value
+    json_search_category_type: None | str | Unset
+    if isinstance(search_category_type, Unset):
+        json_search_category_type = UNSET
+    elif isinstance(search_category_type, SearchCategoryType):
+        json_search_category_type = search_category_type.value
+    else:
+        json_search_category_type = search_category_type
     params["searchCategoryType"] = json_search_category_type
 
     params["query"] = query
@@ -140,13 +147,6 @@ def _get_kwargs(
 
     params["audioAlbum"] = audio_album
 
-    json_include_top_charts: bool | None | Unset
-    if isinstance(include_top_charts, Unset):
-        json_include_top_charts = UNSET
-    else:
-        json_include_top_charts = include_top_charts
-    params["includeTopCharts"] = json_include_top_charts
-
     json_audio_types: list[str] | None | Unset
     if isinstance(audio_types, Unset):
         json_audio_types = UNSET
@@ -199,6 +199,16 @@ def _get_kwargs(
         json_facets = facets
     params["facets"] = json_facets
 
+    json_tags: list[str] | None | Unset
+    if isinstance(tags, Unset):
+        json_tags = UNSET
+    elif isinstance(tags, list):
+        json_tags = tags
+
+    else:
+        json_tags = tags
+    params["tags"] = json_tags
+
     params["categoryPath"] = category_path
 
     json_search_view: str | Unset = UNSET
@@ -212,6 +222,8 @@ def _get_kwargs(
         json_music_chart_type = music_chart_type.value
 
     params["musicChartType"] = json_music_chart_type
+
+    params["swimlane"] = swimlane
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -332,7 +344,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    search_category_type: SearchCategoryType,
+    search_category_type: None | SearchCategoryType | Unset = UNSET,
     query: str | Unset = UNSET,
     model_sub_types: list[ModelSubType] | None | Unset = UNSET,
     excluded_model_sub_types: list[ModelSubType] | None | Unset = UNSET,
@@ -348,25 +360,24 @@ def sync_detailed(
     audio_max_duration_seconds: int | None | Unset = UNSET,
     audio_artist: str | Unset = UNSET,
     audio_album: str | Unset = UNSET,
-    include_top_charts: bool | None | Unset = False,
     audio_types: list[SearchAudioTypeModel] | None | Unset = UNSET,
     included_instance_types: list[ModelInstanceType] | None | Unset = UNSET,
     include_only_verified_creators: bool | Unset = True,
     min_price_cents: int | None | Unset = UNSET,
     max_price_cents: int | None | Unset = UNSET,
     facets: list[str] | None | Unset = UNSET,
+    tags: list[str] | None | Unset = UNSET,
     category_path: str | Unset = UNSET,
     search_view: SearchView | Unset = SearchView.CORE,
     music_chart_type: MusicChartType | Unset = MusicChartType.NONE,
+    swimlane: str | Unset = UNSET,
 ) -> Response[Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0]:
     """Search Creator Store Assets
 
      Search Creator Store for assets.
 
     Args:
-        search_category_type (SearchCategoryType): This represents a "subset" of
-            Toolbox.Service.CategoryType options and represent the full set
-            of "categories" (or asset types) that can be searched upon from the toolbox search API.
+        search_category_type (None | SearchCategoryType | Unset):
         query (str | Unset):
         model_sub_types (list[ModelSubType] | None | Unset):
         excluded_model_sub_types (list[ModelSubType] | None | Unset):
@@ -384,13 +395,13 @@ def sync_detailed(
         audio_max_duration_seconds (int | None | Unset):
         audio_artist (str | Unset):
         audio_album (str | Unset):
-        include_top_charts (bool | None | Unset):  Default: False.
         audio_types (list[SearchAudioTypeModel] | None | Unset):
         included_instance_types (list[ModelInstanceType] | None | Unset):
         include_only_verified_creators (bool | Unset):  Default: True.
         min_price_cents (int | None | Unset):
         max_price_cents (int | None | Unset):
         facets (list[str] | None | Unset):
+        tags (list[str] | None | Unset):
         category_path (str | Unset):
         search_view (SearchView | Unset): This view controls which fields are populated in the
             search response. A lighter
@@ -398,6 +409,7 @@ def sync_detailed(
             SearchView.CORE.
         music_chart_type (MusicChartType | Unset): Represents which music chart to pull entries
             from, if any Default: MusicChartType.NONE.
+        swimlane (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -424,16 +436,17 @@ def sync_detailed(
         audio_max_duration_seconds=audio_max_duration_seconds,
         audio_artist=audio_artist,
         audio_album=audio_album,
-        include_top_charts=include_top_charts,
         audio_types=audio_types,
         included_instance_types=included_instance_types,
         include_only_verified_creators=include_only_verified_creators,
         min_price_cents=min_price_cents,
         max_price_cents=max_price_cents,
         facets=facets,
+        tags=tags,
         category_path=category_path,
         search_view=search_view,
         music_chart_type=music_chart_type,
+        swimlane=swimlane,
     )
 
     response = client.get_httpx2_client().request(
@@ -449,7 +462,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    search_category_type: SearchCategoryType,
+    search_category_type: None | SearchCategoryType | Unset = UNSET,
     query: str | Unset = UNSET,
     model_sub_types: list[ModelSubType] | None | Unset = UNSET,
     excluded_model_sub_types: list[ModelSubType] | None | Unset = UNSET,
@@ -465,25 +478,24 @@ def sync(
     audio_max_duration_seconds: int | None | Unset = UNSET,
     audio_artist: str | Unset = UNSET,
     audio_album: str | Unset = UNSET,
-    include_top_charts: bool | None | Unset = False,
     audio_types: list[SearchAudioTypeModel] | None | Unset = UNSET,
     included_instance_types: list[ModelInstanceType] | None | Unset = UNSET,
     include_only_verified_creators: bool | Unset = True,
     min_price_cents: int | None | Unset = UNSET,
     max_price_cents: int | None | Unset = UNSET,
     facets: list[str] | None | Unset = UNSET,
+    tags: list[str] | None | Unset = UNSET,
     category_path: str | Unset = UNSET,
     search_view: SearchView | Unset = SearchView.CORE,
     music_chart_type: MusicChartType | Unset = MusicChartType.NONE,
+    swimlane: str | Unset = UNSET,
 ) -> Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0 | None:
     """Search Creator Store Assets
 
      Search Creator Store for assets.
 
     Args:
-        search_category_type (SearchCategoryType): This represents a "subset" of
-            Toolbox.Service.CategoryType options and represent the full set
-            of "categories" (or asset types) that can be searched upon from the toolbox search API.
+        search_category_type (None | SearchCategoryType | Unset):
         query (str | Unset):
         model_sub_types (list[ModelSubType] | None | Unset):
         excluded_model_sub_types (list[ModelSubType] | None | Unset):
@@ -501,13 +513,13 @@ def sync(
         audio_max_duration_seconds (int | None | Unset):
         audio_artist (str | Unset):
         audio_album (str | Unset):
-        include_top_charts (bool | None | Unset):  Default: False.
         audio_types (list[SearchAudioTypeModel] | None | Unset):
         included_instance_types (list[ModelInstanceType] | None | Unset):
         include_only_verified_creators (bool | Unset):  Default: True.
         min_price_cents (int | None | Unset):
         max_price_cents (int | None | Unset):
         facets (list[str] | None | Unset):
+        tags (list[str] | None | Unset):
         category_path (str | Unset):
         search_view (SearchView | Unset): This view controls which fields are populated in the
             search response. A lighter
@@ -515,6 +527,7 @@ def sync(
             SearchView.CORE.
         music_chart_type (MusicChartType | Unset): Represents which music chart to pull entries
             from, if any Default: MusicChartType.NONE.
+        swimlane (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -542,16 +555,17 @@ def sync(
         audio_max_duration_seconds=audio_max_duration_seconds,
         audio_artist=audio_artist,
         audio_album=audio_album,
-        include_top_charts=include_top_charts,
         audio_types=audio_types,
         included_instance_types=included_instance_types,
         include_only_verified_creators=include_only_verified_creators,
         min_price_cents=min_price_cents,
         max_price_cents=max_price_cents,
         facets=facets,
+        tags=tags,
         category_path=category_path,
         search_view=search_view,
         music_chart_type=music_chart_type,
+        swimlane=swimlane,
     ).parsed
 
 
@@ -561,7 +575,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    search_category_type: SearchCategoryType,
+    search_category_type: None | SearchCategoryType | Unset = UNSET,
     query: str | Unset = UNSET,
     model_sub_types: list[ModelSubType] | None | Unset = UNSET,
     excluded_model_sub_types: list[ModelSubType] | None | Unset = UNSET,
@@ -577,25 +591,24 @@ async def asyncio_detailed(
     audio_max_duration_seconds: int | None | Unset = UNSET,
     audio_artist: str | Unset = UNSET,
     audio_album: str | Unset = UNSET,
-    include_top_charts: bool | None | Unset = False,
     audio_types: list[SearchAudioTypeModel] | None | Unset = UNSET,
     included_instance_types: list[ModelInstanceType] | None | Unset = UNSET,
     include_only_verified_creators: bool | Unset = True,
     min_price_cents: int | None | Unset = UNSET,
     max_price_cents: int | None | Unset = UNSET,
     facets: list[str] | None | Unset = UNSET,
+    tags: list[str] | None | Unset = UNSET,
     category_path: str | Unset = UNSET,
     search_view: SearchView | Unset = SearchView.CORE,
     music_chart_type: MusicChartType | Unset = MusicChartType.NONE,
+    swimlane: str | Unset = UNSET,
 ) -> Response[Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0]:
     """Search Creator Store Assets
 
      Search Creator Store for assets.
 
     Args:
-        search_category_type (SearchCategoryType): This represents a "subset" of
-            Toolbox.Service.CategoryType options and represent the full set
-            of "categories" (or asset types) that can be searched upon from the toolbox search API.
+        search_category_type (None | SearchCategoryType | Unset):
         query (str | Unset):
         model_sub_types (list[ModelSubType] | None | Unset):
         excluded_model_sub_types (list[ModelSubType] | None | Unset):
@@ -613,13 +626,13 @@ async def asyncio_detailed(
         audio_max_duration_seconds (int | None | Unset):
         audio_artist (str | Unset):
         audio_album (str | Unset):
-        include_top_charts (bool | None | Unset):  Default: False.
         audio_types (list[SearchAudioTypeModel] | None | Unset):
         included_instance_types (list[ModelInstanceType] | None | Unset):
         include_only_verified_creators (bool | Unset):  Default: True.
         min_price_cents (int | None | Unset):
         max_price_cents (int | None | Unset):
         facets (list[str] | None | Unset):
+        tags (list[str] | None | Unset):
         category_path (str | Unset):
         search_view (SearchView | Unset): This view controls which fields are populated in the
             search response. A lighter
@@ -627,6 +640,7 @@ async def asyncio_detailed(
             SearchView.CORE.
         music_chart_type (MusicChartType | Unset): Represents which music chart to pull entries
             from, if any Default: MusicChartType.NONE.
+        swimlane (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -653,16 +667,17 @@ async def asyncio_detailed(
         audio_max_duration_seconds=audio_max_duration_seconds,
         audio_artist=audio_artist,
         audio_album=audio_album,
-        include_top_charts=include_top_charts,
         audio_types=audio_types,
         included_instance_types=included_instance_types,
         include_only_verified_creators=include_only_verified_creators,
         min_price_cents=min_price_cents,
         max_price_cents=max_price_cents,
         facets=facets,
+        tags=tags,
         category_path=category_path,
         search_view=search_view,
         music_chart_type=music_chart_type,
+        swimlane=swimlane,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)
@@ -676,7 +691,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    search_category_type: SearchCategoryType,
+    search_category_type: None | SearchCategoryType | Unset = UNSET,
     query: str | Unset = UNSET,
     model_sub_types: list[ModelSubType] | None | Unset = UNSET,
     excluded_model_sub_types: list[ModelSubType] | None | Unset = UNSET,
@@ -692,25 +707,24 @@ async def asyncio(
     audio_max_duration_seconds: int | None | Unset = UNSET,
     audio_artist: str | Unset = UNSET,
     audio_album: str | Unset = UNSET,
-    include_top_charts: bool | None | Unset = False,
     audio_types: list[SearchAudioTypeModel] | None | Unset = UNSET,
     included_instance_types: list[ModelInstanceType] | None | Unset = UNSET,
     include_only_verified_creators: bool | Unset = True,
     min_price_cents: int | None | Unset = UNSET,
     max_price_cents: int | None | Unset = UNSET,
     facets: list[str] | None | Unset = UNSET,
+    tags: list[str] | None | Unset = UNSET,
     category_path: str | Unset = UNSET,
     search_view: SearchView | Unset = SearchView.CORE,
     music_chart_type: MusicChartType | Unset = MusicChartType.NONE,
+    swimlane: str | Unset = UNSET,
 ) -> Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0 | None:
     """Search Creator Store Assets
 
      Search Creator Store for assets.
 
     Args:
-        search_category_type (SearchCategoryType): This represents a "subset" of
-            Toolbox.Service.CategoryType options and represent the full set
-            of "categories" (or asset types) that can be searched upon from the toolbox search API.
+        search_category_type (None | SearchCategoryType | Unset):
         query (str | Unset):
         model_sub_types (list[ModelSubType] | None | Unset):
         excluded_model_sub_types (list[ModelSubType] | None | Unset):
@@ -728,13 +742,13 @@ async def asyncio(
         audio_max_duration_seconds (int | None | Unset):
         audio_artist (str | Unset):
         audio_album (str | Unset):
-        include_top_charts (bool | None | Unset):  Default: False.
         audio_types (list[SearchAudioTypeModel] | None | Unset):
         included_instance_types (list[ModelInstanceType] | None | Unset):
         include_only_verified_creators (bool | Unset):  Default: True.
         min_price_cents (int | None | Unset):
         max_price_cents (int | None | Unset):
         facets (list[str] | None | Unset):
+        tags (list[str] | None | Unset):
         category_path (str | Unset):
         search_view (SearchView | Unset): This view controls which fields are populated in the
             search response. A lighter
@@ -742,6 +756,7 @@ async def asyncio(
             SearchView.CORE.
         music_chart_type (MusicChartType | Unset): Represents which music chart to pull entries
             from, if any Default: MusicChartType.NONE.
+        swimlane (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -770,15 +785,16 @@ async def asyncio(
             audio_max_duration_seconds=audio_max_duration_seconds,
             audio_artist=audio_artist,
             audio_album=audio_album,
-            include_top_charts=include_top_charts,
             audio_types=audio_types,
             included_instance_types=included_instance_types,
             include_only_verified_creators=include_only_verified_creators,
             min_price_cents=min_price_cents,
             max_price_cents=max_price_cents,
             facets=facets,
+            tags=tags,
             category_path=category_path,
             search_view=search_view,
             music_chart_type=music_chart_type,
+            swimlane=swimlane,
         )
     ).parsed

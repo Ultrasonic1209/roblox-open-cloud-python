@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -84,6 +85,9 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
         audiences (list[RobloxApiDevelopModelsUniverseSettingsResponseAudiencesItem] | Unset): The audiences this
             universe is visible to (e.g. Editors, PlayTesters, Friends, Public).
             Always non-null; may be empty when audience visibility has not been configured.
+        demo_mode_enabled (bool | Unset): Whether demo mode is enabled.
+        demo_mode_last_changed_time (datetime.datetime | Unset): When demo mode was last toggled. For client-side
+            throttle UX.
     """
 
     allow_private_servers: bool | Unset = UNSET
@@ -112,6 +116,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
     fiat_base_price_id: str | Unset = UNSET
     fiat_moderation_status: RobloxApiDevelopModelsUniverseSettingsResponseFiatModerationStatus | Unset = UNSET
     audiences: list[RobloxApiDevelopModelsUniverseSettingsResponseAudiencesItem] | Unset = UNSET
+    demo_mode_enabled: bool | Unset = UNSET
+    demo_mode_last_changed_time: datetime.datetime | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         allow_private_servers = self.allow_private_servers
@@ -188,6 +194,12 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
                 audiences_item = audiences_item_data.value
                 audiences.append(audiences_item)
 
+        demo_mode_enabled = self.demo_mode_enabled
+
+        demo_mode_last_changed_time: str | Unset = UNSET
+        if not isinstance(self.demo_mode_last_changed_time, Unset):
+            demo_mode_last_changed_time = self.demo_mode_last_changed_time.isoformat()
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -239,6 +251,10 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
             field_dict["fiatModerationStatus"] = fiat_moderation_status
         if audiences is not UNSET:
             field_dict["audiences"] = audiences
+        if demo_mode_enabled is not UNSET:
+            field_dict["demoModeEnabled"] = demo_mode_enabled
+        if demo_mode_last_changed_time is not UNSET:
+            field_dict["demoModeLastChangedTime"] = demo_mode_last_changed_time
 
         return field_dict
 
@@ -363,6 +379,15 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
 
                 audiences.append(audiences_item)
 
+        demo_mode_enabled = d.pop("demoModeEnabled", UNSET)
+
+        _demo_mode_last_changed_time = d.pop("demoModeLastChangedTime", UNSET)
+        demo_mode_last_changed_time: datetime.datetime | Unset
+        if isinstance(_demo_mode_last_changed_time, Unset):
+            demo_mode_last_changed_time = UNSET
+        else:
+            demo_mode_last_changed_time = datetime.datetime.fromisoformat(_demo_mode_last_changed_time)
+
         roblox_api_develop_models_universe_settings_response = cls(
             allow_private_servers=allow_private_servers,
             private_server_price=private_server_price,
@@ -388,6 +413,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
             fiat_base_price_id=fiat_base_price_id,
             fiat_moderation_status=fiat_moderation_status,
             audiences=audiences,
+            demo_mode_enabled=demo_mode_enabled,
+            demo_mode_last_changed_time=demo_mode_last_changed_time,
         )
 
         return roblox_api_develop_models_universe_settings_response

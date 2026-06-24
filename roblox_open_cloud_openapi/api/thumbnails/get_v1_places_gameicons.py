@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 
 import httpx2
 
@@ -8,9 +8,6 @@ from ...client import AuthenticatedClient, Client
 from ...models.get_v1_places_gameicons_format import GetV1PlacesGameiconsFormat
 from ...models.get_v1_places_gameicons_return_policy import GetV1PlacesGameiconsReturnPolicy
 from ...models.get_v1_places_gameicons_size import GetV1PlacesGameiconsSize
-from ...models.roblox_web_web_api_models_api_array_response_roblox_web_responses_thumbnails_thumbnail_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse,
-)
 from ...types import UNSET, Response, Unset
 
 
@@ -67,23 +64,15 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
     if response.status_code == 200:
-        response_200 = RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse.from_dict(
-            response.json()
-        )
-
-        return response_200
+        return None
 
     if response.status_code == 400:
-        response_400 = cast(Any, None)
-        return response_400
+        return None
 
     if response.status_code == 403:
-        response_403 = cast(Any, None)
-        return response_403
+        return None
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -91,9 +80,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -110,7 +97,7 @@ def sync_detailed(
     size: GetV1PlacesGameiconsSize | Unset = GetV1PlacesGameiconsSize.VALUE_0,
     format_: GetV1PlacesGameiconsFormat | Unset = GetV1PlacesGameiconsFormat.PNG,
     is_circular: bool | Unset = False,
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]:
+) -> Response[Any]:
     """Fetches game icon URLs for a list of places. Ids that do not correspond to a valid place will be
     filtered out.
 
@@ -127,7 +114,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -145,44 +132,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    *,
-    client: AuthenticatedClient,
-    place_ids: list[int],
-    return_policy: GetV1PlacesGameiconsReturnPolicy | Unset = GetV1PlacesGameiconsReturnPolicy.PLACEHOLDER,
-    size: GetV1PlacesGameiconsSize | Unset = GetV1PlacesGameiconsSize.VALUE_0,
-    format_: GetV1PlacesGameiconsFormat | Unset = GetV1PlacesGameiconsFormat.PNG,
-    is_circular: bool | Unset = False,
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse | None:
-    """Fetches game icon URLs for a list of places. Ids that do not correspond to a valid place will be
-    filtered out.
-
-    Args:
-        place_ids (list[int]):
-        return_policy (GetV1PlacesGameiconsReturnPolicy | Unset):  Default:
-            GetV1PlacesGameiconsReturnPolicy.PLACEHOLDER.
-        size (GetV1PlacesGameiconsSize | Unset):  Default: GetV1PlacesGameiconsSize.VALUE_0.
-        format_ (GetV1PlacesGameiconsFormat | Unset):  Default: GetV1PlacesGameiconsFormat.PNG.
-        is_circular (bool | Unset):  Default: False.
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse
-    """
-
-    return sync_detailed(
-        client=client,
-        place_ids=place_ids,
-        return_policy=return_policy,
-        size=size,
-        format_=format_,
-        is_circular=is_circular,
-    ).parsed
-
-
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -191,7 +140,7 @@ async def asyncio_detailed(
     size: GetV1PlacesGameiconsSize | Unset = GetV1PlacesGameiconsSize.VALUE_0,
     format_: GetV1PlacesGameiconsFormat | Unset = GetV1PlacesGameiconsFormat.PNG,
     is_circular: bool | Unset = False,
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]:
+) -> Response[Any]:
     """Fetches game icon URLs for a list of places. Ids that do not correspond to a valid place will be
     filtered out.
 
@@ -208,7 +157,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -222,43 +171,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-    place_ids: list[int],
-    return_policy: GetV1PlacesGameiconsReturnPolicy | Unset = GetV1PlacesGameiconsReturnPolicy.PLACEHOLDER,
-    size: GetV1PlacesGameiconsSize | Unset = GetV1PlacesGameiconsSize.VALUE_0,
-    format_: GetV1PlacesGameiconsFormat | Unset = GetV1PlacesGameiconsFormat.PNG,
-    is_circular: bool | Unset = False,
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse | None:
-    """Fetches game icon URLs for a list of places. Ids that do not correspond to a valid place will be
-    filtered out.
-
-    Args:
-        place_ids (list[int]):
-        return_policy (GetV1PlacesGameiconsReturnPolicy | Unset):  Default:
-            GetV1PlacesGameiconsReturnPolicy.PLACEHOLDER.
-        size (GetV1PlacesGameiconsSize | Unset):  Default: GetV1PlacesGameiconsSize.VALUE_0.
-        format_ (GetV1PlacesGameiconsFormat | Unset):  Default: GetV1PlacesGameiconsFormat.PNG.
-        is_circular (bool | Unset):  Default: False.
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-            place_ids=place_ids,
-            return_policy=return_policy,
-            size=size,
-            format_=format_,
-            is_circular=is_circular,
-        )
-    ).parsed

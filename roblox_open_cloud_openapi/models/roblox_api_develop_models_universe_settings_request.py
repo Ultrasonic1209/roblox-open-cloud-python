@@ -70,6 +70,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequest:
         fiat_product_change_type (RobloxApiDevelopModelsUniverseSettingsRequestFiatProductChangeType | Unset):
             Determines the change type of the Fiat Product Change request.
             Can either Activate the product, Update the price, or Deactivate the product.
+        demo_mode_enabled (bool | Unset): Whether demo mode is enabled for this paid access game.
     """
 
     name: str | Unset = UNSET
@@ -91,6 +92,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequest:
     is_rewarded_on_demand_ads_allowed: bool | Unset = UNSET
     fiat_base_price_id: str | Unset = UNSET
     fiat_product_change_type: RobloxApiDevelopModelsUniverseSettingsRequestFiatProductChangeType | Unset = UNSET
+    demo_mode_enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -148,6 +150,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequest:
         if not isinstance(self.fiat_product_change_type, Unset):
             fiat_product_change_type = self.fiat_product_change_type.value
 
+        demo_mode_enabled = self.demo_mode_enabled
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -185,6 +189,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequest:
             field_dict["fiatBasePriceId"] = fiat_base_price_id
         if fiat_product_change_type is not UNSET:
             field_dict["fiatProductChangeType"] = fiat_product_change_type
+        if demo_mode_enabled is not UNSET:
+            field_dict["demoModeEnabled"] = demo_mode_enabled
 
         return field_dict
 
@@ -286,6 +292,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequest:
                 _fiat_product_change_type
             )
 
+        demo_mode_enabled = d.pop("demoModeEnabled", UNSET)
+
         roblox_api_develop_models_universe_settings_request = cls(
             name=name,
             universe_avatar_type=universe_avatar_type,
@@ -304,6 +312,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequest:
             is_rewarded_on_demand_ads_allowed=is_rewarded_on_demand_ads_allowed,
             fiat_base_price_id=fiat_base_price_id,
             fiat_product_change_type=fiat_product_change_type,
+            demo_mode_enabled=demo_mode_enabled,
         )
 
         return roblox_api_develop_models_universe_settings_request

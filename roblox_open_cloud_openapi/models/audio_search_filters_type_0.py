@@ -24,7 +24,6 @@ class AudioSearchFiltersType0:
             greater than or equal to 1.
         artist (None | str | Unset): The name of the artist to filter by.
         album (None | str | Unset): The name of the album to filter by.
-        include_top_charts (bool | None | Unset): Whether to include top charts in the results.
         music_chart_type (MusicChartType | Unset): Represents which music chart to pull entries from, if any
     """
 
@@ -33,7 +32,6 @@ class AudioSearchFiltersType0:
     max_duration_seconds: int | None | Unset = UNSET
     artist: None | str | Unset = UNSET
     album: None | str | Unset = UNSET
-    include_top_charts: bool | None | Unset = UNSET
     music_chart_type: MusicChartType | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -69,12 +67,6 @@ class AudioSearchFiltersType0:
         else:
             album = self.album
 
-        include_top_charts: bool | None | Unset
-        if isinstance(self.include_top_charts, Unset):
-            include_top_charts = UNSET
-        else:
-            include_top_charts = self.include_top_charts
-
         music_chart_type: str | Unset = UNSET
         if not isinstance(self.music_chart_type, Unset):
             music_chart_type = self.music_chart_type.value
@@ -92,8 +84,6 @@ class AudioSearchFiltersType0:
             field_dict["artist"] = artist
         if album is not UNSET:
             field_dict["album"] = album
-        if include_top_charts is not UNSET:
-            field_dict["includeTopCharts"] = include_top_charts
         if music_chart_type is not UNSET:
             field_dict["musicChartType"] = music_chart_type
 
@@ -154,15 +144,6 @@ class AudioSearchFiltersType0:
 
         album = _parse_album(d.pop("album", UNSET))
 
-        def _parse_include_top_charts(data: object) -> bool | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(bool | None | Unset, data)
-
-        include_top_charts = _parse_include_top_charts(d.pop("includeTopCharts", UNSET))
-
         _music_chart_type = d.pop("musicChartType", UNSET)
         music_chart_type: MusicChartType | Unset
         if isinstance(_music_chart_type, Unset):
@@ -176,7 +157,6 @@ class AudioSearchFiltersType0:
             max_duration_seconds=max_duration_seconds,
             artist=artist,
             album=album,
-            include_top_charts=include_top_charts,
             music_chart_type=music_chart_type,
         )
 

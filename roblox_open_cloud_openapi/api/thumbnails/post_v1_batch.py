@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 
 import httpx2
 
@@ -7,9 +7,6 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.roblox_thumbnails_apis_models_thumbnail_batch_request import (
     RobloxThumbnailsApisModelsThumbnailBatchRequest,
-)
-from ...models.roblox_web_web_api_models_api_array_response_roblox_web_responses_thumbnails_thumbnail_batch_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse,
 )
 from ...types import UNSET, Response, Unset
 
@@ -56,25 +53,15 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
     if response.status_code == 200:
-        response_200 = (
-            RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse.from_dict(
-                response.json()
-            )
-        )
-
-        return response_200
+        return None
 
     if response.status_code == 400:
-        response_400 = cast(Any, None)
-        return response_400
+        return None
 
     if response.status_code == 403:
-        response_403 = cast(Any, None)
-        return response_403
+        return None
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -82,9 +69,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -100,7 +85,7 @@ def sync_detailed(
     | list[RobloxThumbnailsApisModelsThumbnailBatchRequest]
     | Unset = UNSET,
     roblox_place_id: int | Unset = UNSET,
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse]:
+) -> Response[Any]:
     """Returns a list of thumbnails with varying types and sizes
 
     Args:
@@ -113,7 +98,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -128,36 +113,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    *,
-    client: AuthenticatedClient,
-    body: list[RobloxThumbnailsApisModelsThumbnailBatchRequest]
-    | list[RobloxThumbnailsApisModelsThumbnailBatchRequest]
-    | Unset = UNSET,
-    roblox_place_id: int | Unset = UNSET,
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse | None:
-    """Returns a list of thumbnails with varying types and sizes
-
-    Args:
-        roblox_place_id (int | Unset):
-        body (list[RobloxThumbnailsApisModelsThumbnailBatchRequest]):
-        body (list[RobloxThumbnailsApisModelsThumbnailBatchRequest]):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse
-    """
-
-    return sync_detailed(
-        client=client,
-        body=body,
-        roblox_place_id=roblox_place_id,
-    ).parsed
-
-
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -165,7 +120,7 @@ async def asyncio_detailed(
     | list[RobloxThumbnailsApisModelsThumbnailBatchRequest]
     | Unset = UNSET,
     roblox_place_id: int | Unset = UNSET,
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse]:
+) -> Response[Any]:
     """Returns a list of thumbnails with varying types and sizes
 
     Args:
@@ -178,7 +133,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -189,35 +144,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-    body: list[RobloxThumbnailsApisModelsThumbnailBatchRequest]
-    | list[RobloxThumbnailsApisModelsThumbnailBatchRequest]
-    | Unset = UNSET,
-    roblox_place_id: int | Unset = UNSET,
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse | None:
-    """Returns a list of thumbnails with varying types and sizes
-
-    Args:
-        roblox_place_id (int | Unset):
-        body (list[RobloxThumbnailsApisModelsThumbnailBatchRequest]):
-        body (list[RobloxThumbnailsApisModelsThumbnailBatchRequest]):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailBatchResponse
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-            body=body,
-            roblox_place_id=roblox_place_id,
-        )
-    ).parsed

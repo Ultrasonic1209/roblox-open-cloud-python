@@ -52,9 +52,6 @@ class SearchCreatorStoreAssetsRequestType0:
         tags (list[str] | None | Unset): The tags to filter by.
         category_path (None | str | Unset): The category path to filter by.
         swimlane (None | str | Unset): Optional swimlane identifier (e.g. "trending", "essential", "priced").
-            Resolves through Toolbox.Service.Interfaces.Swimlanes.ISwimlaneRegistry to a provider whose
-            default sort intent and search-builder configuration are applied to the
-            query. Unknown, disabled, or category-ineligible values yield 400.
         search_view (SearchView | Unset): This view controls which fields are populated in the search response. A
             lighter
             view will result in faster response times and higher reliability.

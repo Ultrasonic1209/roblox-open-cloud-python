@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 
 import httpx2
 
@@ -7,9 +7,6 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.get_v1_badges_icons_format import GetV1BadgesIconsFormat
 from ...models.get_v1_badges_icons_size import GetV1BadgesIconsSize
-from ...models.roblox_web_web_api_models_api_array_response_roblox_web_responses_thumbnails_thumbnail_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse,
-)
 from ...types import UNSET, Response, Unset
 
 
@@ -59,19 +56,12 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
     if response.status_code == 200:
-        response_200 = RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse.from_dict(
-            response.json()
-        )
-
-        return response_200
+        return None
 
     if response.status_code == 400:
-        response_400 = cast(Any, None)
-        return response_400
+        return None
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -79,9 +69,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -97,7 +85,7 @@ def sync_detailed(
     size: GetV1BadgesIconsSize | Unset = GetV1BadgesIconsSize.VALUE_0,
     format_: GetV1BadgesIconsFormat | Unset = GetV1BadgesIconsFormat.PNG,
     is_circular: bool | Unset = False,
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]:
+) -> Response[Any]:
     """Thumbnails badge icons.
 
     Args:
@@ -111,7 +99,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -128,39 +116,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    *,
-    client: AuthenticatedClient,
-    badge_ids: list[int],
-    size: GetV1BadgesIconsSize | Unset = GetV1BadgesIconsSize.VALUE_0,
-    format_: GetV1BadgesIconsFormat | Unset = GetV1BadgesIconsFormat.PNG,
-    is_circular: bool | Unset = False,
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse | None:
-    """Thumbnails badge icons.
-
-    Args:
-        badge_ids (list[int]):
-        size (GetV1BadgesIconsSize | Unset):  Default: GetV1BadgesIconsSize.VALUE_0.
-        format_ (GetV1BadgesIconsFormat | Unset):  Default: GetV1BadgesIconsFormat.PNG.
-        is_circular (bool | Unset):  Default: False.
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse
-    """
-
-    return sync_detailed(
-        client=client,
-        badge_ids=badge_ids,
-        size=size,
-        format_=format_,
-        is_circular=is_circular,
-    ).parsed
-
-
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -168,7 +123,7 @@ async def asyncio_detailed(
     size: GetV1BadgesIconsSize | Unset = GetV1BadgesIconsSize.VALUE_0,
     format_: GetV1BadgesIconsFormat | Unset = GetV1BadgesIconsFormat.PNG,
     is_circular: bool | Unset = False,
-) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]:
+) -> Response[Any]:
     """Thumbnails badge icons.
 
     Args:
@@ -182,7 +137,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -195,38 +150,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-    badge_ids: list[int],
-    size: GetV1BadgesIconsSize | Unset = GetV1BadgesIconsSize.VALUE_0,
-    format_: GetV1BadgesIconsFormat | Unset = GetV1BadgesIconsFormat.PNG,
-    is_circular: bool | Unset = False,
-) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse | None:
-    """Thumbnails badge icons.
-
-    Args:
-        badge_ids (list[int]):
-        size (GetV1BadgesIconsSize | Unset):  Default: GetV1BadgesIconsSize.VALUE_0.
-        format_ (GetV1BadgesIconsFormat | Unset):  Default: GetV1BadgesIconsFormat.PNG.
-        is_circular (bool | Unset):  Default: False.
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Any | RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesThumbnailsThumbnailResponse
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-            badge_ids=badge_ids,
-            size=size,
-            format_=format_,
-            is_circular=is_circular,
-        )
-    ).parsed

@@ -5,9 +5,6 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.thumbnails_api_roblox_web_responses_thumbnails_thumbnail_response import (
-    ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse,
-)
 from ...types import UNSET, Response
 
 
@@ -43,13 +40,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
     if response.status_code == 200:
-        response_200 = ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse.from_dict(response.json())
-
-        return response_200
+        return None
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -57,9 +50,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,7 +63,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     outfit_id: int,
-) -> Response[ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]:
+) -> Response[Any]:
     """Get 3d object for an outfit
 
     Args:
@@ -83,7 +74,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -97,35 +88,11 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    *,
-    client: AuthenticatedClient,
-    outfit_id: int,
-) -> ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse | None:
-    """Get 3d object for an outfit
-
-    Args:
-        outfit_id (int):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse
-    """
-
-    return sync_detailed(
-        client=client,
-        outfit_id=outfit_id,
-    ).parsed
-
-
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     outfit_id: int,
-) -> Response[ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]:
+) -> Response[Any]:
     """Get 3d object for an outfit
 
     Args:
@@ -136,7 +103,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -146,29 +113,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-    outfit_id: int,
-) -> ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse | None:
-    """Get 3d object for an outfit
-
-    Args:
-        outfit_id (int):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ThumbnailsApiRobloxWebResponsesThumbnailsThumbnailResponse
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-            outfit_id=outfit_id,
-        )
-    ).parsed
