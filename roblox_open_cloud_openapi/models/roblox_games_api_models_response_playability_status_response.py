@@ -49,6 +49,8 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             currently playable but will be restricted under upcoming Roblox-Core content rules.
             Mirrors the existing Roblox.Games.Api.Models.Response.PlayableUxTreatment contract intentionally so client
             rendering can be unified.
+        demo_mode_available (bool | Unset): Whether the game supports demo play for users who have not purchased it.
+            Only set when PlayabilityStatus is PurchaseRequired or FiatPurchaseRequired.
     """
 
     playability_status: RobloxGamesApiModelsResponsePlayabilityStatusResponsePlayabilityStatus | Unset = UNSET
@@ -57,6 +59,7 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
     unplayable_display_text: str | Unset = UNSET
     playable_ux_treatment: RobloxGamesApiModelsResponsePlayableUxTreatment | Unset = UNSET
     upsell_ux_treatment: RobloxGamesApiModelsResponseUpsellUxTreatment | Unset = UNSET
+    demo_mode_available: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         playability_status: int | Unset = UNSET
@@ -77,6 +80,8 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
         if not isinstance(self.upsell_ux_treatment, Unset):
             upsell_ux_treatment = self.upsell_ux_treatment.to_dict()
 
+        demo_mode_available = self.demo_mode_available
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -92,6 +97,8 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             field_dict["playableUxTreatment"] = playable_ux_treatment
         if upsell_ux_treatment is not UNSET:
             field_dict["upsellUxTreatment"] = upsell_ux_treatment
+        if demo_mode_available is not UNSET:
+            field_dict["demoModeAvailable"] = demo_mode_available
 
         return field_dict
 
@@ -134,6 +141,8 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
         else:
             upsell_ux_treatment = RobloxGamesApiModelsResponseUpsellUxTreatment.from_dict(_upsell_ux_treatment)
 
+        demo_mode_available = d.pop("demoModeAvailable", UNSET)
+
         roblox_games_api_models_response_playability_status_response = cls(
             playability_status=playability_status,
             is_playable=is_playable,
@@ -141,6 +150,7 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             unplayable_display_text=unplayable_display_text,
             playable_ux_treatment=playable_ux_treatment,
             upsell_ux_treatment=upsell_ux_treatment,
+            demo_mode_available=demo_mode_available,
         )
 
         return roblox_games_api_models_response_playability_status_response

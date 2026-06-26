@@ -34,6 +34,7 @@ class RobloxThumbnailsApisModelsThumbnailBatchRequest:
             types)
         head_shape (str | Unset): Head shape for dynamic head thumbnails (only relevant for Asset thumbnail types with
             dynamic head)
+        include_background (bool | Unset): Whether to include a background in avatar thumbnails (defaults to false)
     """
 
     request_id: str | Unset = UNSET
@@ -46,6 +47,7 @@ class RobloxThumbnailsApisModelsThumbnailBatchRequest:
     is_circular: bool | Unset = UNSET
     access_context: str | Unset = UNSET
     head_shape: str | Unset = UNSET
+    include_background: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         request_id = self.request_id
@@ -70,6 +72,8 @@ class RobloxThumbnailsApisModelsThumbnailBatchRequest:
 
         head_shape = self.head_shape
 
+        include_background = self.include_background
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -93,6 +97,8 @@ class RobloxThumbnailsApisModelsThumbnailBatchRequest:
             field_dict["accessContext"] = access_context
         if head_shape is not UNSET:
             field_dict["headShape"] = head_shape
+        if include_background is not UNSET:
+            field_dict["includeBackground"] = include_background
 
         return field_dict
 
@@ -124,6 +130,8 @@ class RobloxThumbnailsApisModelsThumbnailBatchRequest:
 
         head_shape = d.pop("headShape", UNSET)
 
+        include_background = d.pop("includeBackground", UNSET)
+
         roblox_thumbnails_apis_models_thumbnail_batch_request = cls(
             request_id=request_id,
             target_id=target_id,
@@ -135,6 +143,7 @@ class RobloxThumbnailsApisModelsThumbnailBatchRequest:
             is_circular=is_circular,
             access_context=access_context,
             head_shape=head_shape,
+            include_background=include_background,
         )
 
         return roblox_thumbnails_apis_models_thumbnail_batch_request

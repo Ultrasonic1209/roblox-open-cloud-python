@@ -60,6 +60,11 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
         refund_policy (RobloxGamesApiModelsResponseRefundPolicy | Unset):
         canonical_url_path (str | Unset): Canonical URL path for the game page, e.g. /games/{placeId}/{canonical-slug}.
             It must be the same as the canonical URL (rel-canonical meta tag) on the game's EDP.
+        is_content_restricted (bool | Unset): Indicates whether this experience is content-restricted and has had its
+            details wiped.
+            When true, the content fields (name, description, creator, etc.) contain placeholder or
+            empty values rather than the real data. Consumers should branch on this flag instead of
+            inferring restriction from placeholder text.
     """
 
     id: int | Unset = UNSET
@@ -94,6 +99,7 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
     localized_fiat_price: str | Unset = UNSET
     refund_policy: RobloxGamesApiModelsResponseRefundPolicy | Unset = UNSET
     canonical_url_path: str | Unset = UNSET
+    is_content_restricted: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
@@ -174,6 +180,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
 
         canonical_url_path = self.canonical_url_path
 
+        is_content_restricted = self.is_content_restricted
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -241,6 +249,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
             field_dict["refundPolicy"] = refund_policy
         if canonical_url_path is not UNSET:
             field_dict["canonicalUrlPath"] = canonical_url_path
+        if is_content_restricted is not UNSET:
+            field_dict["isContentRestricted"] = is_content_restricted
 
         return field_dict
 
@@ -341,6 +351,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
 
         canonical_url_path = d.pop("canonicalUrlPath", UNSET)
 
+        is_content_restricted = d.pop("isContentRestricted", UNSET)
+
         roblox_games_api_models_response_game_detail_response = cls(
             id=id,
             root_place_id=root_place_id,
@@ -374,6 +386,7 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
             localized_fiat_price=localized_fiat_price,
             refund_policy=refund_policy,
             canonical_url_path=canonical_url_path,
+            is_content_restricted=is_content_restricted,
         )
 
         return roblox_games_api_models_response_game_detail_response

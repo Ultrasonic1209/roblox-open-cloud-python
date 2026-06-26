@@ -135,6 +135,7 @@ from .game_passes_price_information_struct import GamePassesPriceInformationStru
 from .game_passes_pricing_feature import GamePassesPricingFeature
 from .game_passes_update_game_pass_body import GamePassesUpdateGamePassBody
 from .game_response import GameResponse
+from .game_server_log import GameServerLog
 from .game_server_response import GameServerResponse
 from .game_update_status import GameUpdateStatus
 from .game_update_status_place_update_statuses_type_0 import GameUpdateStatusPlaceUpdateStatusesType0
@@ -203,9 +204,6 @@ from .get_v1_games_icons_return_policy import GetV1GamesIconsReturnPolicy
 from .get_v1_games_icons_size import GetV1GamesIconsSize
 from .get_v1_games_multiget_thumbnails_format import GetV1GamesMultigetThumbnailsFormat
 from .get_v1_games_multiget_thumbnails_size import GetV1GamesMultigetThumbnailsSize
-from .get_v1_games_place_id_servers_server_type_limit import GetV1GamesPlaceIdServersServerTypeLimit
-from .get_v1_games_place_id_servers_server_type_server_type import GetV1GamesPlaceIdServersServerTypeServerType
-from .get_v1_games_place_id_servers_server_type_sort_order import GetV1GamesPlaceIdServersServerTypeSortOrder
 from .get_v1_games_universe_id_thumbnails_format import GetV1GamesUniverseIdThumbnailsFormat
 from .get_v1_games_universe_id_thumbnails_size import GetV1GamesUniverseIdThumbnailsSize
 from .get_v1_groups_group_id_audit_log_action_type import GetV1GroupsGroupIdAuditLogActionType
@@ -391,6 +389,7 @@ from .list_data_stores_response import ListDataStoresResponse
 from .list_developer_product_configs_v2_response import ListDeveloperProductConfigsV2Response
 from .list_entries_response import ListEntriesResponse
 from .list_game_pass_configs_by_universe_response import ListGamePassConfigsByUniverseResponse
+from .list_game_server_logs_response import ListGameServerLogsResponse
 from .list_group_forum_categories_response import ListGroupForumCategoriesResponse
 from .list_group_forum_comments_response import ListGroupForumCommentsResponse
 from .list_group_forum_posts_response import ListGroupForumPostsResponse
@@ -416,6 +415,7 @@ from .list_revisions_response import ListRevisionsResponse
 from .list_user_restriction_logs_response import ListUserRestrictionLogsResponse
 from .list_user_restrictions_response import ListUserRestrictionsResponse
 from .literal_value_dto import LiteralValueDto
+from .log_severity import LogSeverity
 from .luau_execution_session_task import LuauExecutionSessionTask
 from .luau_execution_session_task_binary_input import LuauExecutionSessionTaskBinaryInput
 from .luau_execution_session_task_error import LuauExecutionSessionTaskError
@@ -1557,7 +1557,6 @@ from .roblox_game_localization_client_user_universe_localization_setting_value i
 from .roblox_game_localization_client_user_universe_localization_setting_value_setting_type import (
     RobloxGameLocalizationClientUserUniverseLocalizationSettingValueSettingType,
 )
-from .roblox_games_api_game_server_player_response import RobloxGamesApiGameServerPlayerResponse
 from .roblox_games_api_models_request_game_favorites_request import RobloxGamesApiModelsRequestGameFavoritesRequest
 from .roblox_games_api_models_response_game_content_metadata_response_model import (
     RobloxGamesApiModelsResponseGameContentMetadataResponseModel,
@@ -1592,9 +1591,6 @@ from .roblox_games_api_models_response_purchase_data import RobloxGamesApiModels
 from .roblox_games_api_models_response_refund_policy import RobloxGamesApiModelsResponseRefundPolicy
 from .roblox_games_api_models_response_upsell_ux_treatment import RobloxGamesApiModelsResponseUpsellUxTreatment
 from .roblox_games_api_models_response_upsell_ux_treatment_data import RobloxGamesApiModelsResponseUpsellUxTreatmentData
-from .roblox_games_api_models_response_verified_badge_user_response import (
-    RobloxGamesApiModelsResponseVerifiedBadgeUserResponse,
-)
 from .roblox_groups_api_blocked_keyword_page_response_roblox_groups_client_blocked_keyword_model import (
     RobloxGroupsApiBlockedKeywordPageResponseRobloxGroupsClientBlockedKeywordModel,
 )
@@ -2175,7 +2171,6 @@ from .roblox_web_responses_economy_currency_response import RobloxWebResponsesEc
 from .roblox_web_responses_games_game_favorite_response_model import RobloxWebResponsesGamesGameFavoriteResponseModel
 from .roblox_web_responses_games_game_media_item_response_v2 import RobloxWebResponsesGamesGameMediaItemResponseV2
 from .roblox_web_responses_games_game_response_v2 import RobloxWebResponsesGamesGameResponseV2
-from .roblox_web_responses_games_game_server_response import RobloxWebResponsesGamesGameServerResponse
 from .roblox_web_responses_groups_group_basic_response import RobloxWebResponsesGroupsGroupBasicResponse
 from .roblox_web_responses_groups_group_response_v2 import RobloxWebResponsesGroupsGroupResponseV2
 from .roblox_web_responses_groups_group_role_basic_response import RobloxWebResponsesGroupsGroupRoleBasicResponse
@@ -2428,9 +2423,6 @@ from .roblox_web_web_api_models_api_page_response_roblox_web_responses_games_gam
 from .roblox_web_web_api_models_api_page_response_roblox_web_responses_games_game_response_v2 import (
     RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameResponseV2,
 )
-from .roblox_web_web_api_models_api_page_response_roblox_web_responses_games_game_server_response import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameServerResponse,
-)
 from .robux_rate_breakdown import RobuxRateBreakdown
 from .rpn_operand_dto import RpnOperandDto
 from .rpn_token_dto import RpnTokenDto
@@ -2682,6 +2674,7 @@ __all__ = (
     "GamePassesPricingFeature",
     "GamePassesUpdateGamePassBody",
     "GameResponse",
+    "GameServerLog",
     "GameServerResponse",
     "GameUpdateStatus",
     "GameUpdateStatusPlaceUpdateStatusesType0",
@@ -2734,9 +2727,6 @@ __all__ = (
     "GetV1GamesIconsSize",
     "GetV1GamesMultigetThumbnailsFormat",
     "GetV1GamesMultigetThumbnailsSize",
-    "GetV1GamesPlaceIdServersServerTypeLimit",
-    "GetV1GamesPlaceIdServersServerTypeServerType",
-    "GetV1GamesPlaceIdServersServerTypeSortOrder",
     "GetV1GamesUniverseIdThumbnailsFormat",
     "GetV1GamesUniverseIdThumbnailsSize",
     "GetV1GroupsGroupIdAuditLogActionType",
@@ -2904,6 +2894,7 @@ __all__ = (
     "ListDeveloperProductConfigsV2Response",
     "ListEntriesResponse",
     "ListGamePassConfigsByUniverseResponse",
+    "ListGameServerLogsResponse",
     "ListGroupForumCategoriesResponse",
     "ListGroupForumCommentsResponse",
     "ListGroupForumPostsResponse",
@@ -2927,6 +2918,7 @@ __all__ = (
     "ListUserRestrictionLogsResponse",
     "ListUserRestrictionsResponse",
     "LiteralValueDto",
+    "LogSeverity",
     "LuauExecutionSessionTask",
     "LuauExecutionSessionTaskBinaryInput",
     "LuauExecutionSessionTaskError",
@@ -3488,7 +3480,6 @@ __all__ = (
     "RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssignment",
     "RobloxGameLocalizationClientUserUniverseLocalizationSettingValue",
     "RobloxGameLocalizationClientUserUniverseLocalizationSettingValueSettingType",
-    "RobloxGamesApiGameServerPlayerResponse",
     "RobloxGamesApiModelsRequestGameFavoritesRequest",
     "RobloxGamesApiModelsResponseGameContentMetadataResponseModel",
     "RobloxGamesApiModelsResponseGameCreator",
@@ -3509,7 +3500,6 @@ __all__ = (
     "RobloxGamesApiModelsResponseRefundPolicy",
     "RobloxGamesApiModelsResponseUpsellUxTreatment",
     "RobloxGamesApiModelsResponseUpsellUxTreatmentData",
-    "RobloxGamesApiModelsResponseVerifiedBadgeUserResponse",
     "RobloxGroupsApiBlockedKeywordPageResponseRobloxGroupsClientBlockedKeywordModel",
     "RobloxGroupsApiChangeOwnerRequest",
     "RobloxGroupsApiCommunityFeatureFreezeStatus",
@@ -3852,7 +3842,6 @@ __all__ = (
     "RobloxWebResponsesGamesGameFavoriteResponseModel",
     "RobloxWebResponsesGamesGameMediaItemResponseV2",
     "RobloxWebResponsesGamesGameResponseV2",
-    "RobloxWebResponsesGamesGameServerResponse",
     "RobloxWebResponsesGroupsGroupBasicResponse",
     "RobloxWebResponsesGroupsGroupResponseV2",
     "RobloxWebResponsesGroupsGroupRoleBasicResponse",
@@ -3941,7 +3930,6 @@ __all__ = (
     "RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiUsernameHistoryResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameFavoriteResponseModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameResponseV2",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameServerResponse",
     "RobuxRateBreakdown",
     "RpnOperandDto",
     "RpnTokenDto",

@@ -13,6 +13,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     user_outfit_ids: list[int],
+    include_background: bool | Unset = False,
     size: GetV1UsersOutfitsSize | Unset = GetV1UsersOutfitsSize.VALUE_0,
     format_: GetV1UsersOutfitsFormat | Unset = GetV1UsersOutfitsFormat.PNG,
     is_circular: bool | Unset = False,
@@ -23,6 +24,8 @@ def _get_kwargs(
     json_user_outfit_ids = user_outfit_ids
 
     params["userOutfitIds"] = json_user_outfit_ids
+
+    params["includeBackground"] = include_background
 
     json_size: str | Unset = UNSET
     if not isinstance(size, Unset):
@@ -82,6 +85,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     user_outfit_ids: list[int],
+    include_background: bool | Unset = False,
     size: GetV1UsersOutfitsSize | Unset = GetV1UsersOutfitsSize.VALUE_0,
     format_: GetV1UsersOutfitsFormat | Unset = GetV1UsersOutfitsFormat.PNG,
     is_circular: bool | Unset = False,
@@ -90,6 +94,7 @@ def sync_detailed(
 
     Args:
         user_outfit_ids (list[int]):
+        include_background (bool | Unset):  Default: False.
         size (GetV1UsersOutfitsSize | Unset):  Default: GetV1UsersOutfitsSize.VALUE_0.
         format_ (GetV1UsersOutfitsFormat | Unset):  Default: GetV1UsersOutfitsFormat.PNG.
         is_circular (bool | Unset):  Default: False.
@@ -104,6 +109,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         user_outfit_ids=user_outfit_ids,
+        include_background=include_background,
         size=size,
         format_=format_,
         is_circular=is_circular,
@@ -120,6 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     user_outfit_ids: list[int],
+    include_background: bool | Unset = False,
     size: GetV1UsersOutfitsSize | Unset = GetV1UsersOutfitsSize.VALUE_0,
     format_: GetV1UsersOutfitsFormat | Unset = GetV1UsersOutfitsFormat.PNG,
     is_circular: bool | Unset = False,
@@ -128,6 +135,7 @@ async def asyncio_detailed(
 
     Args:
         user_outfit_ids (list[int]):
+        include_background (bool | Unset):  Default: False.
         size (GetV1UsersOutfitsSize | Unset):  Default: GetV1UsersOutfitsSize.VALUE_0.
         format_ (GetV1UsersOutfitsFormat | Unset):  Default: GetV1UsersOutfitsFormat.PNG.
         is_circular (bool | Unset):  Default: False.
@@ -142,6 +150,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         user_outfit_ids=user_outfit_ids,
+        include_background=include_background,
         size=size,
         format_=format_,
         is_circular=is_circular,
