@@ -165,6 +165,8 @@ from .get_matchmaking_scoring_default_weights_response import GetMatchmakingScor
 from .get_matchmaking_scoring_default_weights_response_weights_type_0 import (
     GetMatchmakingScoringDefaultWeightsResponseWeightsType0,
 )
+from .get_place_contributors_response import GetPlaceContributorsResponse
+from .get_place_version_history_response import GetPlaceVersionHistoryResponse
 from .get_private_server_list_response import GetPrivateServerListResponse
 from .get_saves_response_type_0 import GetSavesResponseType0
 from .get_update_status_response import GetUpdateStatusResponse
@@ -466,6 +468,7 @@ from .ocv1_assets_status import OCV1AssetsStatus
 from .ocv1_data_stores_data_store import OCV1DataStoresDataStore
 from .ocv2_operations_operation import OCV2OperationsOperation
 from .operation import Operation
+from .operation_error_response import OperationErrorResponse
 from .ordered_data_store_entry import OrderedDataStoreEntry
 from .patch_legacy_groups_v1_groups_group_id_notification_preference_response_200 import (
     PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200,
@@ -495,6 +498,7 @@ from .place_summary_for_game_update_version_to_player_counts_type_0 import (
     PlaceSummaryForGameUpdateVersionToPlayerCountsType0,
 )
 from .place_update_status import PlaceUpdateStatus
+from .place_version import PlaceVersion
 from .player_categorical_signal_configuration import PlayerCategoricalSignalConfiguration
 from .player_numerical_signal_configuration import PlayerNumericalSignalConfiguration
 from .post_legacy_badges_v1_universes_universe_id_badges_body import PostLegacyBadgesV1UniversesUniverseIdBadgesBody
@@ -572,6 +576,7 @@ from .problem_details_type_0 import ProblemDetailsType0
 from .publish_draft_request import PublishDraftRequest
 from .publish_draft_response import PublishDraftResponse
 from .publish_request import PublishRequest
+from .publish_status import PublishStatus
 from .publish_universe_message_request import PublishUniverseMessageRequest
 from .query_correction_type_0 import QueryCorrectionType0
 from .query_facets_type_0 import QueryFacetsType0
@@ -2429,6 +2434,7 @@ from .rpn_token_dto import RpnTokenDto
 from .rule_delta_payload import RuleDeltaPayload
 from .rules_order_delta_payload import RulesOrderDeltaPayload
 from .sales_report_download_request import SalesReportDownloadRequest
+from .save_type import SaveType
 from .saves_sort_category import SavesSortCategory
 from .search_audio_type_model import SearchAudioTypeModel
 from .search_category_type import SearchCategoryType
@@ -2516,6 +2522,8 @@ from .update_matchmaking_scoring_configuration_request_matchmaking_signal_weight
 from .update_matchmaking_scoring_configuration_response import UpdateMatchmakingScoringConfigurationResponse
 from .update_matchmaking_server_attribute_definition_request import UpdateMatchmakingServerAttributeDefinitionRequest
 from .update_matchmaking_server_attribute_definition_response import UpdateMatchmakingServerAttributeDefinitionResponse
+from .update_place_version_notes_request import UpdatePlaceVersionNotesRequest
+from .update_place_version_notes_response import UpdatePlaceVersionNotesResponse
 from .user import User
 from .user_game_vote_request import UserGameVoteRequest
 from .user_game_vote_response import UserGameVoteResponse
@@ -2698,6 +2706,8 @@ __all__ = (
     "GetMatchmakingScoringConfigurationResponse",
     "GetMatchmakingScoringDefaultWeightsResponse",
     "GetMatchmakingScoringDefaultWeightsResponseWeightsType0",
+    "GetPlaceContributorsResponse",
+    "GetPlaceVersionHistoryResponse",
     "GetPrivateServerListResponse",
     "GetSavesResponseType0",
     "GetUpdateStatusResponse",
@@ -2969,6 +2979,7 @@ __all__ = (
     "OCV1DataStoresDataStore",
     "OCV2OperationsOperation",
     "Operation",
+    "OperationErrorResponse",
     "OrderedDataStoreEntry",
     "PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200",
     "PatchV1AutoLocalizationTableGamesGameIdIngestionResponse200",
@@ -2986,6 +2997,7 @@ __all__ = (
     "PlaceSummaryForGameUpdateVersionToInstanceCountsType0",
     "PlaceSummaryForGameUpdateVersionToPlayerCountsType0",
     "PlaceUpdateStatus",
+    "PlaceVersion",
     "PlayerCategoricalSignalConfiguration",
     "PlayerNumericalSignalConfiguration",
     "PostLegacyBadgesV1UniversesUniverseIdBadgesBody",
@@ -3035,6 +3047,7 @@ __all__ = (
     "PublishDraftRequest",
     "PublishDraftResponse",
     "PublishRequest",
+    "PublishStatus",
     "PublishUniverseMessageRequest",
     "QueryCorrectionType0",
     "QueryFacetsType0",
@@ -3937,6 +3950,7 @@ __all__ = (
     "RulesOrderDeltaPayload",
     "SalesReportDownloadRequest",
     "SavesSortCategory",
+    "SaveType",
     "SearchAudioTypeModel",
     "SearchCategoryType",
     "SearchCreatorStoreAssetsRequestType0",
@@ -4015,6 +4029,8 @@ __all__ = (
     "UpdateMatchmakingScoringConfigurationResponse",
     "UpdateMatchmakingServerAttributeDefinitionRequest",
     "UpdateMatchmakingServerAttributeDefinitionResponse",
+    "UpdatePlaceVersionNotesRequest",
+    "UpdatePlaceVersionNotesResponse",
     "User",
     "UserGameVoteRequest",
     "UserGameVoteResponse",
