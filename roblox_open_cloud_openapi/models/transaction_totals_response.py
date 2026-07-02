@@ -45,6 +45,7 @@ class TransactionTotalsResponse:
         outgoing_robux_transfer_total (int | Unset):
         roblox_select_incoming_total (int | Unset):
         roblox_select_outgoing_total (int | Unset):
+        private_server_engagement_payouts_total (int | Unset):
     """
 
     sales_total: int | Unset = UNSET
@@ -78,6 +79,7 @@ class TransactionTotalsResponse:
     outgoing_robux_transfer_total: int | Unset = UNSET
     roblox_select_incoming_total: int | Unset = UNSET
     roblox_select_outgoing_total: int | Unset = UNSET
+    private_server_engagement_payouts_total: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         sales_total = self.sales_total
@@ -141,6 +143,8 @@ class TransactionTotalsResponse:
         roblox_select_incoming_total = self.roblox_select_incoming_total
 
         roblox_select_outgoing_total = self.roblox_select_outgoing_total
+
+        private_server_engagement_payouts_total = self.private_server_engagement_payouts_total
 
         field_dict: dict[str, Any] = {}
 
@@ -207,6 +211,8 @@ class TransactionTotalsResponse:
             field_dict["robloxSelectIncomingTotal"] = roblox_select_incoming_total
         if roblox_select_outgoing_total is not UNSET:
             field_dict["robloxSelectOutgoingTotal"] = roblox_select_outgoing_total
+        if private_server_engagement_payouts_total is not UNSET:
+            field_dict["privateServerEngagementPayoutsTotal"] = private_server_engagement_payouts_total
 
         return field_dict
 
@@ -275,6 +281,8 @@ class TransactionTotalsResponse:
 
         roblox_select_outgoing_total = d.pop("robloxSelectOutgoingTotal", UNSET)
 
+        private_server_engagement_payouts_total = d.pop("privateServerEngagementPayoutsTotal", UNSET)
+
         transaction_totals_response = cls(
             sales_total=sales_total,
             purchases_total=purchases_total,
@@ -307,6 +315,7 @@ class TransactionTotalsResponse:
             outgoing_robux_transfer_total=outgoing_robux_transfer_total,
             roblox_select_incoming_total=roblox_select_incoming_total,
             roblox_select_outgoing_total=roblox_select_outgoing_total,
+            private_server_engagement_payouts_total=private_server_engagement_payouts_total,
         )
 
         return transaction_totals_response

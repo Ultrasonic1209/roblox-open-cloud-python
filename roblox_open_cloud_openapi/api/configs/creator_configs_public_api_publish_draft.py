@@ -136,6 +136,8 @@ def sync_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
@@ -192,6 +194,8 @@ def sync(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
@@ -243,6 +247,8 @@ async def asyncio_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
@@ -297,6 +303,8 @@ async def asyncio(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.

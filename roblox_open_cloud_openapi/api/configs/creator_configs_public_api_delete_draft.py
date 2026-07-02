@@ -136,6 +136,8 @@ def sync_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
@@ -192,6 +194,8 @@ def sync(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
@@ -243,6 +247,8 @@ async def asyncio_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
@@ -297,6 +303,8 @@ async def asyncio(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.

@@ -51,7 +51,7 @@ def _get_kwargs(
         "params": params,
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "TransactionRecords_GetUserTransactions",
+            "openapi-id": "TransactionRecordsApi.TransactionRecords_GetUserTransactions",
         },
     }
 

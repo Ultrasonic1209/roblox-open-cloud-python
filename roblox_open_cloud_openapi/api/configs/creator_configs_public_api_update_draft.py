@@ -144,6 +144,8 @@ def sync_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -216,6 +218,8 @@ def sync(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -283,6 +287,8 @@ async def asyncio_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -353,6 +359,8 @@ async def asyncio(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.

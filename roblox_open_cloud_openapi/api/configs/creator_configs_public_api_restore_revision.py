@@ -113,6 +113,8 @@ def sync_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         revision_id (str):
 
     Raises:
@@ -167,6 +169,8 @@ def sync(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         revision_id (str):
 
     Raises:
@@ -216,6 +220,8 @@ async def asyncio_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         revision_id (str):
 
     Raises:
@@ -268,6 +274,8 @@ async def asyncio(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         revision_id (str):
 
     Raises:

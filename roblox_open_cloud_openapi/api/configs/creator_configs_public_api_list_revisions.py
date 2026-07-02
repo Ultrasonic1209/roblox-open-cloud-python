@@ -143,6 +143,8 @@ def sync_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         start_time (str | Unset):
         end_time (str | Unset):
         max_page_size (str | Unset):
@@ -214,6 +216,8 @@ def sync(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         start_time (str | Unset):
         end_time (str | Unset):
         max_page_size (str | Unset):
@@ -280,6 +284,8 @@ async def asyncio_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         start_time (str | Unset):
         end_time (str | Unset):
         max_page_size (str | Unset):
@@ -349,6 +355,8 @@ async def asyncio(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
         start_time (str | Unset):
         end_time (str | Unset):
         max_page_size (str | Unset):

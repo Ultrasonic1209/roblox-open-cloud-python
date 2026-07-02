@@ -9,6 +9,9 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.roblox_games_api_models_response_game_content_metadata_response_model import (
+        RobloxGamesApiModelsResponseGameContentMetadataResponseModel,
+    )
     from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
         RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
     )
@@ -28,6 +31,8 @@ class RobloxWebResponsesGamesGameFavoriteResponseModel:
         price (int | Unset): The game paid access price in robux.
             Given that there is no actual owner for this product surface,
             we will keep existing behavior where we display offsale for games priced in fiat currency.
+        content_metadata (RobloxGamesApiModelsResponseGameContentMetadataResponseModel | Unset): Response model for
+            game-level content metadata.
         id (int | Unset): The game (universe) Id.
         name (str | Unset): The game name.
         description (str | Unset): The game description.
@@ -39,6 +44,7 @@ class RobloxWebResponsesGamesGameFavoriteResponseModel:
     """
 
     price: int | Unset = UNSET
+    content_metadata: RobloxGamesApiModelsResponseGameContentMetadataResponseModel | Unset = UNSET
     id: int | Unset = UNSET
     name: str | Unset = UNSET
     description: str | Unset = UNSET
@@ -50,6 +56,10 @@ class RobloxWebResponsesGamesGameFavoriteResponseModel:
 
     def to_dict(self) -> dict[str, Any]:
         price = self.price
+
+        content_metadata: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.content_metadata, Unset):
+            content_metadata = self.content_metadata.to_dict()
 
         id = self.id
 
@@ -80,6 +90,8 @@ class RobloxWebResponsesGamesGameFavoriteResponseModel:
         field_dict.update({})
         if price is not UNSET:
             field_dict["price"] = price
+        if content_metadata is not UNSET:
+            field_dict["contentMetadata"] = content_metadata
         if id is not UNSET:
             field_dict["id"] = id
         if name is not UNSET:
@@ -101,6 +113,9 @@ class RobloxWebResponsesGamesGameFavoriteResponseModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.roblox_games_api_models_response_game_content_metadata_response_model import (
+            RobloxGamesApiModelsResponseGameContentMetadataResponseModel,
+        )
         from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
             RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
         )
@@ -110,6 +125,13 @@ class RobloxWebResponsesGamesGameFavoriteResponseModel:
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         price = d.pop("price", UNSET)
+
+        _content_metadata = d.pop("contentMetadata", UNSET)
+        content_metadata: RobloxGamesApiModelsResponseGameContentMetadataResponseModel | Unset
+        if isinstance(_content_metadata, Unset):
+            content_metadata = UNSET
+        else:
+            content_metadata = RobloxGamesApiModelsResponseGameContentMetadataResponseModel.from_dict(_content_metadata)
 
         id = d.pop("id", UNSET)
 
@@ -149,6 +171,7 @@ class RobloxWebResponsesGamesGameFavoriteResponseModel:
 
         roblox_web_responses_games_game_favorite_response_model = cls(
             price=price,
+            content_metadata=content_metadata,
             id=id,
             name=name,
             description=description,

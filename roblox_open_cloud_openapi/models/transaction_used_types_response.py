@@ -37,6 +37,7 @@ class TransactionUsedTypesResponse:
         has_licensing_payment (bool | Unset):
         has_transfer (bool | Unset):
         has_roblox_select_transfer (bool | Unset):
+        has_private_server_engagement_payout (bool | Unset):
     """
 
     has_purchase: bool | Unset = UNSET
@@ -62,6 +63,7 @@ class TransactionUsedTypesResponse:
     has_licensing_payment: bool | Unset = UNSET
     has_transfer: bool | Unset = UNSET
     has_roblox_select_transfer: bool | Unset = UNSET
+    has_private_server_engagement_payout: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         has_purchase = self.has_purchase
@@ -109,6 +111,8 @@ class TransactionUsedTypesResponse:
         has_transfer = self.has_transfer
 
         has_roblox_select_transfer = self.has_roblox_select_transfer
+
+        has_private_server_engagement_payout = self.has_private_server_engagement_payout
 
         field_dict: dict[str, Any] = {}
 
@@ -159,6 +163,8 @@ class TransactionUsedTypesResponse:
             field_dict["HasTransfer"] = has_transfer
         if has_roblox_select_transfer is not UNSET:
             field_dict["HasRobloxSelectTransfer"] = has_roblox_select_transfer
+        if has_private_server_engagement_payout is not UNSET:
+            field_dict["HasPrivateServerEngagementPayout"] = has_private_server_engagement_payout
 
         return field_dict
 
@@ -211,6 +217,8 @@ class TransactionUsedTypesResponse:
 
         has_roblox_select_transfer = d.pop("HasRobloxSelectTransfer", UNSET)
 
+        has_private_server_engagement_payout = d.pop("HasPrivateServerEngagementPayout", UNSET)
+
         transaction_used_types_response = cls(
             has_purchase=has_purchase,
             has_sale=has_sale,
@@ -235,6 +243,7 @@ class TransactionUsedTypesResponse:
             has_licensing_payment=has_licensing_payment,
             has_transfer=has_transfer,
             has_roblox_select_transfer=has_roblox_select_transfer,
+            has_private_server_engagement_payout=has_private_server_engagement_payout,
         )
 
         return transaction_used_types_response

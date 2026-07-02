@@ -6,6 +6,7 @@ class Repository(str, Enum):
     EXPERIENCE_USER_CONFIG = "ExperienceUserConfig"
     EXTENDED_SERVICES_CONFIG = "ExtendedServicesConfig"
     IN_EXPERIENCE_CONFIG = "InExperienceConfig"
+    JOURNEYS_CONFIG = "JourneysConfig"
     LEADERBOARDS_CONFIG = "LeaderboardsConfig"
     RECOMMENDATION_SERVICES_CONFIG = "RecommendationServicesConfig"
 
