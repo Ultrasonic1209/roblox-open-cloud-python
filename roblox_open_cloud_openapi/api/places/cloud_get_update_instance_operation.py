@@ -74,7 +74,7 @@ def sync_detailed(
     """Get Update Instance Operation
 
      Retrieves the status of the operation to [update an
-    instance](https://create.roblox.com/docs/cloud/reference/features/instances#Cloud_UpdateInstance).
+    instance](https://create.roblox.com/docs/cloud/reference/features/universes#Cloud_UpdateInstance).
 
     Args:
         universe_id (str):
@@ -115,7 +115,7 @@ def sync(
     """Get Update Instance Operation
 
      Retrieves the status of the operation to [update an
-    instance](https://create.roblox.com/docs/cloud/reference/features/instances#Cloud_UpdateInstance).
+    instance](https://create.roblox.com/docs/cloud/reference/features/universes#Cloud_UpdateInstance).
 
     Args:
         universe_id (str):
@@ -151,7 +151,7 @@ async def asyncio_detailed(
     """Get Update Instance Operation
 
      Retrieves the status of the operation to [update an
-    instance](https://create.roblox.com/docs/cloud/reference/features/instances#Cloud_UpdateInstance).
+    instance](https://create.roblox.com/docs/cloud/reference/features/universes#Cloud_UpdateInstance).
 
     Args:
         universe_id (str):
@@ -190,7 +190,7 @@ async def asyncio(
     """Get Update Instance Operation
 
      Retrieves the status of the operation to [update an
-    instance](https://create.roblox.com/docs/cloud/reference/features/instances#Cloud_UpdateInstance).
+    instance](https://create.roblox.com/docs/cloud/reference/features/universes#Cloud_UpdateInstance).
 
     Args:
         universe_id (str):

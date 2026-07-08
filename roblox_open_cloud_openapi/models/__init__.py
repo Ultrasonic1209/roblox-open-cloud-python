@@ -25,6 +25,7 @@ from .attribute_aggregation_function import AttributeAggregationFunction
 from .audio_search_filters_type_0 import AudioSearchFiltersType0
 from .batch_grant_permissions_request import BatchGrantPermissionsRequest
 from .batch_grant_permissions_response import BatchGrantPermissionsResponse
+from .breakdown_value import BreakdownValue
 from .bulk_delete_saves_request_type_0 import BulkDeleteSavesRequestType0
 from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
 from .can_invite_user_response import CanInviteUserResponse
@@ -83,6 +84,8 @@ from .currency_holder_type import CurrencyHolderType
 from .cursor_paging_direction import CursorPagingDirection
 from .custom_signal_configuration import CustomSignalConfiguration
 from .custom_signal_type import CustomSignalType
+from .data_point import DataPoint
+from .data_status import DataStatus
 from .data_store import DataStore
 from .data_store_entry import DataStoreEntry
 from .data_store_entry_attributes import DataStoreEntryAttributes
@@ -105,6 +108,11 @@ from .deployment_strategy import DeploymentStrategy
 from .developer_product_config_v2 import DeveloperProductConfigV2
 from .developer_products_create_developer_product_v2_body import DeveloperProductsCreateDeveloperProductV2Body
 from .developer_products_update_developer_product_v2_body import DeveloperProductsUpdateDeveloperProductV2Body
+from .dimension_value import DimensionValue
+from .dimension_values import DimensionValues
+from .dimension_values_operation_result import DimensionValuesOperationResult
+from .dimension_values_request import DimensionValuesRequest
+from .dimension_values_response import DimensionValuesResponse
 from .discard_memory_store_queue_items_request import DiscardMemoryStoreQueueItemsRequest
 from .draft_hash_response import DraftHashResponse
 from .entries_get_entry_async_response_200 import EntriesGetEntryAsyncResponse200
@@ -118,6 +126,7 @@ from .error_code import ErrorCode
 from .error_response import ErrorResponse
 from .filter_field import FilterField
 from .filter_field_info import FilterFieldInfo
+from .filter_operation import FilterOperation
 from .filter_options_response import FilterOptionsResponse
 from .filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0
 from .filter_type import FilterType
@@ -452,6 +461,8 @@ from .memory_store import MemoryStore
 from .memory_store_queue_item import MemoryStoreQueueItem
 from .memory_store_sorted_map_item import MemoryStoreSortedMapItem
 from .message_reaction import MessageReaction
+from .metric_granularity import MetricGranularity
+from .metric_value import MetricValue
 from .mock_server_signal_values import MockServerSignalValues
 from .model_instance_type import ModelInstanceType
 from .model_search_filters_type_0 import ModelSearchFiltersType0
@@ -468,7 +479,10 @@ from .ocv1_assets_status import OCV1AssetsStatus
 from .ocv1_data_stores_data_store import OCV1DataStoresDataStore
 from .ocv2_operations_operation import OCV2OperationsOperation
 from .operation import Operation
+from .operation_error import OperationError
 from .operation_error_response import OperationErrorResponse
+from .operation_metadata import OperationMetadata
+from .operation_pending import OperationPending
 from .ordered_data_store_entry import OrderedDataStoreEntry
 from .patch_legacy_groups_v1_groups_group_id_notification_preference_response_200 import (
     PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200,
@@ -579,7 +593,12 @@ from .publish_request import PublishRequest
 from .publish_status import PublishStatus
 from .publish_universe_message_request import PublishUniverseMessageRequest
 from .query_correction_type_0 import QueryCorrectionType0
+from .query_error import QueryError
 from .query_facets_type_0 import QueryFacetsType0
+from .query_filter import QueryFilter
+from .query_operation_result import QueryOperationResult
+from .query_request import QueryRequest
+from .query_response import QueryResponse
 from .read_memory_store_queue_items_response import ReadMemoryStoreQueueItemsResponse
 from .remove_place_matchmaking_scoring_configuration_response import RemovePlaceMatchmakingScoringConfigurationResponse
 from .repository import Repository
@@ -2578,6 +2597,7 @@ __all__ = (
     "AudioSearchFiltersType0",
     "BatchGrantPermissionsRequest",
     "BatchGrantPermissionsResponse",
+    "BreakdownValue",
     "BulkDeleteSavesRequestType0",
     "BulkDeleteSavesResponseType0",
     "CanInviteUserResponse",
@@ -2632,6 +2652,8 @@ __all__ = (
     "CursorPagingDirection",
     "CustomSignalConfiguration",
     "CustomSignalType",
+    "DataPoint",
+    "DataStatus",
     "DataStore",
     "DataStoreEntry",
     "DataStoreEntryAttributes",
@@ -2652,6 +2674,11 @@ __all__ = (
     "DeveloperProductConfigV2",
     "DeveloperProductsCreateDeveloperProductV2Body",
     "DeveloperProductsUpdateDeveloperProductV2Body",
+    "DimensionValue",
+    "DimensionValues",
+    "DimensionValuesOperationResult",
+    "DimensionValuesRequest",
+    "DimensionValuesResponse",
     "DiscardMemoryStoreQueueItemsRequest",
     "DraftHashResponse",
     "EntriesGetEntryAsyncResponse200",
@@ -2665,6 +2692,7 @@ __all__ = (
     "ErrorResponse",
     "FilterField",
     "FilterFieldInfo",
+    "FilterOperation",
     "FilterOptionsResponse",
     "FilterOptionsResponseFiltersType0",
     "FilterType",
@@ -2963,6 +2991,8 @@ __all__ = (
     "MemoryStoreQueueItem",
     "MemoryStoreSortedMapItem",
     "MessageReaction",
+    "MetricGranularity",
+    "MetricValue",
     "MockServerSignalValues",
     "ModelInstanceType",
     "ModelSearchFiltersType0",
@@ -2979,7 +3009,10 @@ __all__ = (
     "OCV1DataStoresDataStore",
     "OCV2OperationsOperation",
     "Operation",
+    "OperationError",
     "OperationErrorResponse",
+    "OperationMetadata",
+    "OperationPending",
     "OrderedDataStoreEntry",
     "PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200",
     "PatchV1AutoLocalizationTableGamesGameIdIngestionResponse200",
@@ -3050,7 +3083,12 @@ __all__ = (
     "PublishStatus",
     "PublishUniverseMessageRequest",
     "QueryCorrectionType0",
+    "QueryError",
     "QueryFacetsType0",
+    "QueryFilter",
+    "QueryOperationResult",
+    "QueryRequest",
+    "QueryResponse",
     "ReadMemoryStoreQueueItemsResponse",
     "RemovePlaceMatchmakingScoringConfigurationResponse",
     "Repository",
