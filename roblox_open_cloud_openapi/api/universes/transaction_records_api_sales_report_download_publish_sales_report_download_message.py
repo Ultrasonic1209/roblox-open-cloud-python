@@ -25,7 +25,7 @@ def _get_kwargs(
         "url": "https://economy.roblox.com/v2/sales/sales-report-download",
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "SalesReportDownload_PublishSalesReportDownloadMessage",
+            "openapi-id": "TransactionRecordsApi.SalesReportDownload_PublishSalesReportDownloadMessage",
         },
     }
 
