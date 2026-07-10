@@ -15,14 +15,11 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
     """The permission-value pairs to be updated.
 
     Attributes:
-        delete_from_wall (bool | Unset):
-        post_to_wall (bool | Unset):
         invite_members (bool | Unset):
         post_to_status (bool | Unset):
         remove_members (bool | Unset):
         ban_members (bool | Unset):
         view_status (bool | Unset):
-        view_wall (bool | Unset):
         change_rank (bool | Unset):
         advertise_group (bool | Unset):
         manage_relationships (bool | Unset):
@@ -50,14 +47,11 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
         view_community_analytics (bool | Unset):
     """
 
-    delete_from_wall: bool | Unset = UNSET
-    post_to_wall: bool | Unset = UNSET
     invite_members: bool | Unset = UNSET
     post_to_status: bool | Unset = UNSET
     remove_members: bool | Unset = UNSET
     ban_members: bool | Unset = UNSET
     view_status: bool | Unset = UNSET
-    view_wall: bool | Unset = UNSET
     change_rank: bool | Unset = UNSET
     advertise_group: bool | Unset = UNSET
     manage_relationships: bool | Unset = UNSET
@@ -85,10 +79,6 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
     view_community_analytics: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        delete_from_wall = self.delete_from_wall
-
-        post_to_wall = self.post_to_wall
-
         invite_members = self.invite_members
 
         post_to_status = self.post_to_status
@@ -98,8 +88,6 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
         ban_members = self.ban_members
 
         view_status = self.view_status
-
-        view_wall = self.view_wall
 
         change_rank = self.change_rank
 
@@ -154,10 +142,6 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
-        if delete_from_wall is not UNSET:
-            field_dict["DeleteFromWall"] = delete_from_wall
-        if post_to_wall is not UNSET:
-            field_dict["PostToWall"] = post_to_wall
         if invite_members is not UNSET:
             field_dict["InviteMembers"] = invite_members
         if post_to_status is not UNSET:
@@ -168,8 +152,6 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
             field_dict["BanMembers"] = ban_members
         if view_status is not UNSET:
             field_dict["ViewStatus"] = view_status
-        if view_wall is not UNSET:
-            field_dict["ViewWall"] = view_wall
         if change_rank is not UNSET:
             field_dict["ChangeRank"] = change_rank
         if advertise_group is not UNSET:
@@ -226,10 +208,6 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        delete_from_wall = d.pop("DeleteFromWall", UNSET)
-
-        post_to_wall = d.pop("PostToWall", UNSET)
-
         invite_members = d.pop("InviteMembers", UNSET)
 
         post_to_status = d.pop("PostToStatus", UNSET)
@@ -239,8 +217,6 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
         ban_members = d.pop("BanMembers", UNSET)
 
         view_status = d.pop("ViewStatus", UNSET)
-
-        view_wall = d.pop("ViewWall", UNSET)
 
         change_rank = d.pop("ChangeRank", UNSET)
 
@@ -293,14 +269,11 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
         view_community_analytics = d.pop("ViewCommunityAnalytics", UNSET)
 
         roblox_groups_api_update_permissions_request_permissions = cls(
-            delete_from_wall=delete_from_wall,
-            post_to_wall=post_to_wall,
             invite_members=invite_members,
             post_to_status=post_to_status,
             remove_members=remove_members,
             ban_members=ban_members,
             view_status=view_status,
-            view_wall=view_wall,
             change_rank=change_rank,
             advertise_group=advertise_group,
             manage_relationships=manage_relationships,

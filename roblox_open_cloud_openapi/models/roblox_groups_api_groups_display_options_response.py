@@ -18,11 +18,6 @@ class RobloxGroupsApiGroupsDisplayOptionsResponse:
         group_limit (int | Unset): The user's builders club membership group limit
         current_group_count (int | Unset): The user's current group membership count
         group_status_max_length (int | Unset): The maximum length of a group status
-        group_post_max_length (int | Unset): The maximum length of a group wall post
-        is_group_wall_notifications_enabled (bool | Unset): If set to true, group details will subscribe and respond to
-            wall notifications.
-        group_wall_notifications_subscribe_interval_in_milliseconds (int | Unset): Time in milliseconds between calls to
-            subscribe to group wall notifications.
         are_profile_groups_hidden (bool | Unset): If set to true, groups showcase will not show on users profiles.
 
             If set to false, group showcase will display on users profiles.
@@ -38,9 +33,6 @@ class RobloxGroupsApiGroupsDisplayOptionsResponse:
     group_limit: int | Unset = UNSET
     current_group_count: int | Unset = UNSET
     group_status_max_length: int | Unset = UNSET
-    group_post_max_length: int | Unset = UNSET
-    is_group_wall_notifications_enabled: bool | Unset = UNSET
-    group_wall_notifications_subscribe_interval_in_milliseconds: int | Unset = UNSET
     are_profile_groups_hidden: bool | Unset = UNSET
     is_group_details_policy_enabled: bool | Unset = UNSET
     show_previous_group_names: bool | Unset = UNSET
@@ -53,14 +45,6 @@ class RobloxGroupsApiGroupsDisplayOptionsResponse:
         current_group_count = self.current_group_count
 
         group_status_max_length = self.group_status_max_length
-
-        group_post_max_length = self.group_post_max_length
-
-        is_group_wall_notifications_enabled = self.is_group_wall_notifications_enabled
-
-        group_wall_notifications_subscribe_interval_in_milliseconds = (
-            self.group_wall_notifications_subscribe_interval_in_milliseconds
-        )
 
         are_profile_groups_hidden = self.are_profile_groups_hidden
 
@@ -81,14 +65,6 @@ class RobloxGroupsApiGroupsDisplayOptionsResponse:
             field_dict["currentGroupCount"] = current_group_count
         if group_status_max_length is not UNSET:
             field_dict["groupStatusMaxLength"] = group_status_max_length
-        if group_post_max_length is not UNSET:
-            field_dict["groupPostMaxLength"] = group_post_max_length
-        if is_group_wall_notifications_enabled is not UNSET:
-            field_dict["isGroupWallNotificationsEnabled"] = is_group_wall_notifications_enabled
-        if group_wall_notifications_subscribe_interval_in_milliseconds is not UNSET:
-            field_dict["groupWallNotificationsSubscribeIntervalInMilliseconds"] = (
-                group_wall_notifications_subscribe_interval_in_milliseconds
-            )
         if are_profile_groups_hidden is not UNSET:
             field_dict["areProfileGroupsHidden"] = are_profile_groups_hidden
         if is_group_details_policy_enabled is not UNSET:
@@ -111,14 +87,6 @@ class RobloxGroupsApiGroupsDisplayOptionsResponse:
 
         group_status_max_length = d.pop("groupStatusMaxLength", UNSET)
 
-        group_post_max_length = d.pop("groupPostMaxLength", UNSET)
-
-        is_group_wall_notifications_enabled = d.pop("isGroupWallNotificationsEnabled", UNSET)
-
-        group_wall_notifications_subscribe_interval_in_milliseconds = d.pop(
-            "groupWallNotificationsSubscribeIntervalInMilliseconds", UNSET
-        )
-
         are_profile_groups_hidden = d.pop("areProfileGroupsHidden", UNSET)
 
         is_group_details_policy_enabled = d.pop("isGroupDetailsPolicyEnabled", UNSET)
@@ -133,9 +101,6 @@ class RobloxGroupsApiGroupsDisplayOptionsResponse:
             group_limit=group_limit,
             current_group_count=current_group_count,
             group_status_max_length=group_status_max_length,
-            group_post_max_length=group_post_max_length,
-            is_group_wall_notifications_enabled=is_group_wall_notifications_enabled,
-            group_wall_notifications_subscribe_interval_in_milliseconds=group_wall_notifications_subscribe_interval_in_milliseconds,
             are_profile_groups_hidden=are_profile_groups_hidden,
             is_group_details_policy_enabled=is_group_details_policy_enabled,
             show_previous_group_names=show_previous_group_names,

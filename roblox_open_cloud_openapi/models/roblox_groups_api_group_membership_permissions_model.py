@@ -15,8 +15,8 @@ class RobloxGroupsApiGroupMembershipPermissionsModel:
     """A model representing data about an Roblox.Platform.Membership.IUser
 
     Attributes:
-        change_rank (bool | Unset): View wall permission
-        invite_members (bool | Unset): Post to wall permission
+        change_rank (bool | Unset): Update a member's role
+        invite_members (bool | Unset): Invite members to the group
         remove_members (bool | Unset): Remove from group permission
         ban_members (bool | Unset): Ban from group permission
     """

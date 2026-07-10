@@ -87,6 +87,7 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemAssetType(IntEnum):
     VALUE_90 = 90
     VALUE_91 = 91
     VALUE_92 = 92
+    VALUE_93 = 93
 
     def __str__(self) -> str:
         return str(self.value)
