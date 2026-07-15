@@ -6,7 +6,6 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_web_assets_asset_response_item_v2 import RobloxWebAssetsAssetResponseItemV2
 from ...types import UNSET, Response, Unset
 
 
@@ -83,13 +82,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> RobloxWebAssetsAssetResponseItemV2 | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
     if response.status_code == 200:
-        response_200 = RobloxWebAssetsAssetResponseItemV2.from_dict(response.json())
-
-        return response_200
+        return None
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -97,9 +92,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[RobloxWebAssetsAssetResponseItemV2]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -128,7 +121,7 @@ def sync_detailed(
     accept: str,
     asset_format: str,
     roblox_asset_format: str,
-) -> Response[RobloxWebAssetsAssetResponseItemV2]:
+) -> Response[Any]:
     """
     Args:
         asset_id (int):
@@ -154,7 +147,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RobloxWebAssetsAssetResponseItemV2]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -184,77 +177,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    asset_id: int,
-    *,
-    client: AuthenticatedClient,
-    skip_signing_scripts: bool | Unset = False,
-    client_insert: int | Unset = UNSET,
-    scriptinsert: int | Unset = UNSET,
-    module_place_id: int | Unset = UNSET,
-    serverplaceid: int | Unset = UNSET,
-    expected_asset_type: str | Unset = "",
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
-    access_context: str | Unset = UNSET,
-    usage_context: int | Unset = UNSET,
-    accept_encoding: str,
-    roblox_place_id: int,
-    asset_type: str,
-    accept: str,
-    asset_format: str,
-    roblox_asset_format: str,
-) -> RobloxWebAssetsAssetResponseItemV2 | None:
-    """
-    Args:
-        asset_id (int):
-        skip_signing_scripts (bool | Unset):  Default: False.
-        client_insert (int | Unset):
-        scriptinsert (int | Unset):
-        module_place_id (int | Unset):
-        serverplaceid (int | Unset):
-        expected_asset_type (str | Unset):  Default: ''.
-        do_not_fallback_to_baseline_representation (bool | Unset):  Default: False.
-        content_representation_priority_list (str | Unset):  Default: ''.
-        access_context (str | Unset):
-        usage_context (int | Unset):
-        accept_encoding (str):
-        roblox_place_id (int):
-        asset_type (str):
-        accept (str):
-        asset_format (str):
-        roblox_asset_format (str):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        RobloxWebAssetsAssetResponseItemV2
-    """
-
-    return sync_detailed(
-        asset_id=asset_id,
-        client=client,
-        skip_signing_scripts=skip_signing_scripts,
-        client_insert=client_insert,
-        scriptinsert=scriptinsert,
-        module_place_id=module_place_id,
-        serverplaceid=serverplaceid,
-        expected_asset_type=expected_asset_type,
-        do_not_fallback_to_baseline_representation=do_not_fallback_to_baseline_representation,
-        content_representation_priority_list=content_representation_priority_list,
-        access_context=access_context,
-        usage_context=usage_context,
-        accept_encoding=accept_encoding,
-        roblox_place_id=roblox_place_id,
-        asset_type=asset_type,
-        accept=accept,
-        asset_format=asset_format,
-        roblox_asset_format=roblox_asset_format,
-    ).parsed
-
-
 async def asyncio_detailed(
     asset_id: int,
     *,
@@ -275,7 +197,7 @@ async def asyncio_detailed(
     accept: str,
     asset_format: str,
     roblox_asset_format: str,
-) -> Response[RobloxWebAssetsAssetResponseItemV2]:
+) -> Response[Any]:
     """
     Args:
         asset_id (int):
@@ -301,7 +223,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RobloxWebAssetsAssetResponseItemV2]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -327,76 +249,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    asset_id: int,
-    *,
-    client: AuthenticatedClient,
-    skip_signing_scripts: bool | Unset = False,
-    client_insert: int | Unset = UNSET,
-    scriptinsert: int | Unset = UNSET,
-    module_place_id: int | Unset = UNSET,
-    serverplaceid: int | Unset = UNSET,
-    expected_asset_type: str | Unset = "",
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
-    access_context: str | Unset = UNSET,
-    usage_context: int | Unset = UNSET,
-    accept_encoding: str,
-    roblox_place_id: int,
-    asset_type: str,
-    accept: str,
-    asset_format: str,
-    roblox_asset_format: str,
-) -> RobloxWebAssetsAssetResponseItemV2 | None:
-    """
-    Args:
-        asset_id (int):
-        skip_signing_scripts (bool | Unset):  Default: False.
-        client_insert (int | Unset):
-        scriptinsert (int | Unset):
-        module_place_id (int | Unset):
-        serverplaceid (int | Unset):
-        expected_asset_type (str | Unset):  Default: ''.
-        do_not_fallback_to_baseline_representation (bool | Unset):  Default: False.
-        content_representation_priority_list (str | Unset):  Default: ''.
-        access_context (str | Unset):
-        usage_context (int | Unset):
-        accept_encoding (str):
-        roblox_place_id (int):
-        asset_type (str):
-        accept (str):
-        asset_format (str):
-        roblox_asset_format (str):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        RobloxWebAssetsAssetResponseItemV2
-    """
-
-    return (
-        await asyncio_detailed(
-            asset_id=asset_id,
-            client=client,
-            skip_signing_scripts=skip_signing_scripts,
-            client_insert=client_insert,
-            scriptinsert=scriptinsert,
-            module_place_id=module_place_id,
-            serverplaceid=serverplaceid,
-            expected_asset_type=expected_asset_type,
-            do_not_fallback_to_baseline_representation=do_not_fallback_to_baseline_representation,
-            content_representation_priority_list=content_representation_priority_list,
-            access_context=access_context,
-            usage_context=usage_context,
-            accept_encoding=accept_encoding,
-            roblox_place_id=roblox_place_id,
-            asset_type=asset_type,
-            accept=accept,
-            asset_format=asset_format,
-            roblox_asset_format=roblox_asset_format,
-        )
-    ).parsed

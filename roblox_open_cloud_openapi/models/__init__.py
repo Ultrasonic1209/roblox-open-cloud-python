@@ -358,6 +358,12 @@ from .group_join_request import GroupJoinRequest
 from .group_membership import GroupMembership
 from .group_role import GroupRole
 from .group_role_role_permissions import GroupRoleRolePermissions
+from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
+    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
+)
+from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type_type import (
+    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType,
+)
 from .http_content import HttpContent
 from .http_method import HttpMethod
 from .http_request_message import HttpRequestMessage
@@ -1823,13 +1829,6 @@ from .roblox_item_configuration_api_asset_creations_details_response_status impo
     RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus,
 )
 from .roblox_item_configuration_api_asset_creations_response import RobloxItemConfigurationApiAssetCreationsResponse
-from .roblox_item_configuration_api_price_configuration_model import RobloxItemConfigurationApiPriceConfigurationModel
-from .roblox_item_configuration_api_release_configuration_response_model import (
-    RobloxItemConfigurationApiReleaseConfigurationResponseModel,
-)
-from .roblox_item_configuration_api_release_configuration_response_model_sale_availability_locations_item import (
-    RobloxItemConfigurationApiReleaseConfigurationResponseModelSaleAvailabilityLocationsItem,
-)
 from .roblox_locale_api_country_region import RobloxLocaleApiCountryRegion
 from .roblox_locale_api_country_region_list_response import RobloxLocaleApiCountryRegionListResponse
 from .roblox_locale_api_language import RobloxLocaleApiLanguage
@@ -2174,9 +2173,7 @@ from .roblox_users_api_user_country_code_response import RobloxUsersApiUserCount
 from .roblox_users_api_user_roles_response import RobloxUsersApiUserRolesResponse
 from .roblox_users_api_username_history_response import RobloxUsersApiUsernameHistoryResponse
 from .roblox_web_assets_asset_content_representation_specifier import RobloxWebAssetsAssetContentRepresentationSpecifier
-from .roblox_web_assets_asset_format_location import RobloxWebAssetsAssetFormatLocation
 from .roblox_web_assets_asset_response_item_v1 import RobloxWebAssetsAssetResponseItemV1
-from .roblox_web_assets_asset_response_item_v2 import RobloxWebAssetsAssetResponseItemV2
 from .roblox_web_assets_batch_asset_request_item import RobloxWebAssetsBatchAssetRequestItem
 from .roblox_web_assets_i_asset_item_error import RobloxWebAssetsIAssetItemError
 from .roblox_web_assets_i_asset_item_error_custom_error_code import RobloxWebAssetsIAssetItemErrorCustomErrorCode
@@ -2882,6 +2879,8 @@ __all__ = (
     "GroupMembership",
     "GroupRole",
     "GroupRoleRolePermissions",
+    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
+    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
     "HttpContent",
     "HttpMethod",
     "HttpRequestMessage",
@@ -3677,9 +3676,6 @@ __all__ = (
     "RobloxItemConfigurationApiAssetCreationsDetailsResponseCreatorType",
     "RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus",
     "RobloxItemConfigurationApiAssetCreationsResponse",
-    "RobloxItemConfigurationApiPriceConfigurationModel",
-    "RobloxItemConfigurationApiReleaseConfigurationResponseModel",
-    "RobloxItemConfigurationApiReleaseConfigurationResponseModelSaleAvailabilityLocationsItem",
     "RobloxLocaleApiCountryRegion",
     "RobloxLocaleApiCountryRegionListResponse",
     "RobloxLocaleApiLanguage",
@@ -3866,9 +3862,7 @@ __all__ = (
     "RobloxUsersApiUsernameHistoryResponse",
     "RobloxUsersApiUserRolesResponse",
     "RobloxWebAssetsAssetContentRepresentationSpecifier",
-    "RobloxWebAssetsAssetFormatLocation",
     "RobloxWebAssetsAssetResponseItemV1",
-    "RobloxWebAssetsAssetResponseItemV2",
     "RobloxWebAssetsBatchAssetRequestItem",
     "RobloxWebAssetsIAssetItemError",
     "RobloxWebAssetsIAssetItemErrorCustomErrorCode",

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -13,15 +13,6 @@ from ..models.roblox_item_configuration_api_asset_creations_details_response_sta
     RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus,
 )
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.roblox_item_configuration_api_price_configuration_model import (
-        RobloxItemConfigurationApiPriceConfigurationModel,
-    )
-    from ..models.roblox_item_configuration_api_release_configuration_response_model import (
-        RobloxItemConfigurationApiReleaseConfigurationResponseModel,
-    )
-
 
 T = TypeVar("T", bound="RobloxItemConfigurationApiAssetCreationsDetailsResponse")
 
@@ -39,14 +30,8 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
         creator_type (RobloxItemConfigurationApiAssetCreationsDetailsResponseCreatorType | Unset): The creator type.
             ['Unknown' = 0, 'User' = 1, 'Group' = 2]
         creator_target_id (int | Unset): The creator target Id.
-        price (int | Unset): The Price for onSale asset
-            Note: This is now considered deprecated in favor of PriceConfiguration.
-        price_configuration (RobloxItemConfigurationApiPriceConfigurationModel | Unset): Defines the configuration
-            options for an items price.
         is_archived (bool | Unset): Is the asset archived.
         asset_type (str | Unset): Type of the asset.
-        release_configuration (RobloxItemConfigurationApiReleaseConfigurationResponseModel | Unset): Defines the
-            configuration options associated with releasing an item.
         created (datetime.datetime | Unset): Date asset was created.
         updated (datetime.datetime | Unset): Date asset was created.
         is_delisted (bool | Unset): If the asset is delisted.
@@ -59,11 +44,8 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
     description: str | Unset = UNSET
     creator_type: RobloxItemConfigurationApiAssetCreationsDetailsResponseCreatorType | Unset = UNSET
     creator_target_id: int | Unset = UNSET
-    price: int | Unset = UNSET
-    price_configuration: RobloxItemConfigurationApiPriceConfigurationModel | Unset = UNSET
     is_archived: bool | Unset = UNSET
     asset_type: str | Unset = UNSET
-    release_configuration: RobloxItemConfigurationApiReleaseConfigurationResponseModel | Unset = UNSET
     created: datetime.datetime | Unset = UNSET
     updated: datetime.datetime | Unset = UNSET
     is_delisted: bool | Unset = UNSET
@@ -86,19 +68,9 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
 
         creator_target_id = self.creator_target_id
 
-        price = self.price
-
-        price_configuration: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.price_configuration, Unset):
-            price_configuration = self.price_configuration.to_dict()
-
         is_archived = self.is_archived
 
         asset_type = self.asset_type
-
-        release_configuration: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.release_configuration, Unset):
-            release_configuration = self.release_configuration.to_dict()
 
         created: str | Unset = UNSET
         if not isinstance(self.created, Unset):
@@ -127,16 +99,10 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
             field_dict["creatorType"] = creator_type
         if creator_target_id is not UNSET:
             field_dict["creatorTargetId"] = creator_target_id
-        if price is not UNSET:
-            field_dict["price"] = price
-        if price_configuration is not UNSET:
-            field_dict["priceConfiguration"] = price_configuration
         if is_archived is not UNSET:
             field_dict["isArchived"] = is_archived
         if asset_type is not UNSET:
             field_dict["assetType"] = asset_type
-        if release_configuration is not UNSET:
-            field_dict["releaseConfiguration"] = release_configuration
         if created is not UNSET:
             field_dict["created"] = created
         if updated is not UNSET:
@@ -150,13 +116,6 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_item_configuration_api_price_configuration_model import (
-            RobloxItemConfigurationApiPriceConfigurationModel,
-        )
-        from ..models.roblox_item_configuration_api_release_configuration_response_model import (
-            RobloxItemConfigurationApiReleaseConfigurationResponseModel,
-        )
-
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         asset_id = d.pop("assetId", UNSET)
 
@@ -180,27 +139,9 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
 
         creator_target_id = d.pop("creatorTargetId", UNSET)
 
-        price = d.pop("price", UNSET)
-
-        _price_configuration = d.pop("priceConfiguration", UNSET)
-        price_configuration: RobloxItemConfigurationApiPriceConfigurationModel | Unset
-        if isinstance(_price_configuration, Unset):
-            price_configuration = UNSET
-        else:
-            price_configuration = RobloxItemConfigurationApiPriceConfigurationModel.from_dict(_price_configuration)
-
         is_archived = d.pop("isArchived", UNSET)
 
         asset_type = d.pop("assetType", UNSET)
-
-        _release_configuration = d.pop("releaseConfiguration", UNSET)
-        release_configuration: RobloxItemConfigurationApiReleaseConfigurationResponseModel | Unset
-        if isinstance(_release_configuration, Unset):
-            release_configuration = UNSET
-        else:
-            release_configuration = RobloxItemConfigurationApiReleaseConfigurationResponseModel.from_dict(
-                _release_configuration
-            )
 
         _created = d.pop("created", UNSET)
         created: datetime.datetime | Unset
@@ -227,11 +168,8 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
             description=description,
             creator_type=creator_type,
             creator_target_id=creator_target_id,
-            price=price,
-            price_configuration=price_configuration,
             is_archived=is_archived,
             asset_type=asset_type,
-            release_configuration=release_configuration,
             created=created,
             updated=updated,
             is_delisted=is_delisted,
