@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      UV_LOCKED: 1
+    #env:
+    #  UV_LOCKED: 1
     steps:
       - uses: actions/checkout@v6
 
