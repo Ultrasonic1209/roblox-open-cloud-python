@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -13,6 +13,10 @@ from ..models.roblox_groups_api_group_settings_response_verification_level impor
     RobloxGroupsApiGroupSettingsResponseVerificationLevel,
 )
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.roblox_groups_client_community_tier_info_response import RobloxGroupsClientCommunityTierInfoResponse
+
 
 T = TypeVar("T", bound="RobloxGroupsApiGroupSettingsResponse")
 
@@ -41,6 +45,7 @@ class RobloxGroupsApiGroupSettingsResponse:
             For non-legacy groups (created after the multi-role cutoff), this is always true.
             For legacy groups, reflects the persisted GroupFeatureSettings value.
             Null when the value could not be determined.
+        community_tier (RobloxGroupsClientCommunityTierInfoResponse | Unset):
     """
 
     is_approval_required: bool | Unset = UNSET
@@ -54,6 +59,7 @@ class RobloxGroupsApiGroupSettingsResponse:
     slowmode: RobloxGroupsApiGroupSettingsResponseSlowmode | Unset = UNSET
     is_member_list_visible_to_public: bool | Unset = UNSET
     is_auto_assign_role_disabled: bool | Unset = UNSET
+    community_tier: RobloxGroupsClientCommunityTierInfoResponse | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         is_approval_required = self.is_approval_required
@@ -84,6 +90,10 @@ class RobloxGroupsApiGroupSettingsResponse:
 
         is_auto_assign_role_disabled = self.is_auto_assign_role_disabled
 
+        community_tier: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.community_tier, Unset):
+            community_tier = self.community_tier.to_dict()
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -109,11 +119,17 @@ class RobloxGroupsApiGroupSettingsResponse:
             field_dict["isMemberListVisibleToPublic"] = is_member_list_visible_to_public
         if is_auto_assign_role_disabled is not UNSET:
             field_dict["isAutoAssignRoleDisabled"] = is_auto_assign_role_disabled
+        if community_tier is not UNSET:
+            field_dict["communityTier"] = community_tier
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.roblox_groups_client_community_tier_info_response import (
+            RobloxGroupsClientCommunityTierInfoResponse,
+        )
+
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_approval_required = d.pop("isApprovalRequired", UNSET)
 
@@ -154,6 +170,13 @@ class RobloxGroupsApiGroupSettingsResponse:
 
         is_auto_assign_role_disabled = d.pop("isAutoAssignRoleDisabled", UNSET)
 
+        _community_tier = d.pop("communityTier", UNSET)
+        community_tier: RobloxGroupsClientCommunityTierInfoResponse | Unset
+        if isinstance(_community_tier, Unset):
+            community_tier = UNSET
+        else:
+            community_tier = RobloxGroupsClientCommunityTierInfoResponse.from_dict(_community_tier)
+
         roblox_groups_api_group_settings_response = cls(
             is_approval_required=is_approval_required,
             is_builders_club_required=is_builders_club_required,
@@ -166,6 +189,7 @@ class RobloxGroupsApiGroupSettingsResponse:
             slowmode=slowmode,
             is_member_list_visible_to_public=is_member_list_visible_to_public,
             is_auto_assign_role_disabled=is_auto_assign_role_disabled,
+            community_tier=community_tier,
         )
 
         return roblox_groups_api_group_settings_response

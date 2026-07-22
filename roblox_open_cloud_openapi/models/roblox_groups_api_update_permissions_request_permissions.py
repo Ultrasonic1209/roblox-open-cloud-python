@@ -45,6 +45,7 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
         view_keyword_block_list (bool | Unset):
         bypass_slowmode (bool | Unset):
         view_community_analytics (bool | Unset):
+        create_bug_reports (bool | Unset):
     """
 
     invite_members: bool | Unset = UNSET
@@ -77,6 +78,7 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
     view_keyword_block_list: bool | Unset = UNSET
     bypass_slowmode: bool | Unset = UNSET
     view_community_analytics: bool | Unset = UNSET
+    create_bug_reports: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         invite_members = self.invite_members
@@ -138,6 +140,8 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
         bypass_slowmode = self.bypass_slowmode
 
         view_community_analytics = self.view_community_analytics
+
+        create_bug_reports = self.create_bug_reports
 
         field_dict: dict[str, Any] = {}
 
@@ -202,6 +206,8 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
             field_dict["BypassSlowmode"] = bypass_slowmode
         if view_community_analytics is not UNSET:
             field_dict["ViewCommunityAnalytics"] = view_community_analytics
+        if create_bug_reports is not UNSET:
+            field_dict["CreateBugReports"] = create_bug_reports
 
         return field_dict
 
@@ -268,6 +274,8 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
 
         view_community_analytics = d.pop("ViewCommunityAnalytics", UNSET)
 
+        create_bug_reports = d.pop("CreateBugReports", UNSET)
+
         roblox_groups_api_update_permissions_request_permissions = cls(
             invite_members=invite_members,
             post_to_status=post_to_status,
@@ -299,6 +307,7 @@ class RobloxGroupsApiUpdatePermissionsRequestPermissions:
             view_keyword_block_list=view_keyword_block_list,
             bypass_slowmode=bypass_slowmode,
             view_community_analytics=view_community_analytics,
+            create_bug_reports=create_bug_reports,
         )
 
         return roblox_groups_api_update_permissions_request_permissions

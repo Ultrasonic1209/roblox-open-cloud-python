@@ -34,8 +34,6 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
         asset_type (str | Unset): Type of the asset.
         created (datetime.datetime | Unset): Date asset was created.
         updated (datetime.datetime | Unset): Date asset was created.
-        is_delisted (bool | Unset): If the asset is delisted.
-        is_created_for_bundle (bool | Unset): If the asset is part of a bundle.
     """
 
     asset_id: int | Unset = UNSET
@@ -48,8 +46,6 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
     asset_type: str | Unset = UNSET
     created: datetime.datetime | Unset = UNSET
     updated: datetime.datetime | Unset = UNSET
-    is_delisted: bool | Unset = UNSET
-    is_created_for_bundle: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         asset_id = self.asset_id
@@ -80,10 +76,6 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
         if not isinstance(self.updated, Unset):
             updated = self.updated.isoformat()
 
-        is_delisted = self.is_delisted
-
-        is_created_for_bundle = self.is_created_for_bundle
-
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -107,10 +99,6 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
             field_dict["created"] = created
         if updated is not UNSET:
             field_dict["updated"] = updated
-        if is_delisted is not UNSET:
-            field_dict["isDelisted"] = is_delisted
-        if is_created_for_bundle is not UNSET:
-            field_dict["isCreatedForBundle"] = is_created_for_bundle
 
         return field_dict
 
@@ -157,10 +145,6 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
         else:
             updated = datetime.datetime.fromisoformat(_updated)
 
-        is_delisted = d.pop("isDelisted", UNSET)
-
-        is_created_for_bundle = d.pop("isCreatedForBundle", UNSET)
-
         roblox_item_configuration_api_asset_creations_details_response = cls(
             asset_id=asset_id,
             name=name,
@@ -172,8 +156,6 @@ class RobloxItemConfigurationApiAssetCreationsDetailsResponse:
             asset_type=asset_type,
             created=created,
             updated=updated,
-            is_delisted=is_delisted,
-            is_created_for_bundle=is_created_for_bundle,
         )
 
         return roblox_item_configuration_api_asset_creations_details_response

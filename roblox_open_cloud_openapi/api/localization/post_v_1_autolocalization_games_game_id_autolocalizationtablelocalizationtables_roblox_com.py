@@ -25,7 +25,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "https://localizationtables.roblox.com/v1/autolocalization/games/{game_id}/autolocalizationtable#LocalizationTablesApi".format(
+        "url": "https://localizationtables.roblox.com/v1/autolocalization/games/{game_id}/autolocalizationtable#localizationtables.roblox.com".format(
             game_id=quote(str(game_id), safe=""),
         ),
         "extensions": {
@@ -39,7 +39,7 @@ def _get_kwargs(
                     }
                 ],
             },
-            "openapi-id": "post_v1_autolocalization_games_gameId_autolocalizationtable#LocalizationTablesApi",
+            "openapi-id": "post_v1_autolocalization_games_gameId_autolocalizationtable#localizationtables.roblox.com",
         },
     }
 

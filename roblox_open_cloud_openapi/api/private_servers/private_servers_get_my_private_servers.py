@@ -33,7 +33,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "https://games.roblox.com/v1/vip-servers/my-private-servers",
+        "url": "https://games.roblox.com/v1/private-servers/my-private-servers",
         "params": params,
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},

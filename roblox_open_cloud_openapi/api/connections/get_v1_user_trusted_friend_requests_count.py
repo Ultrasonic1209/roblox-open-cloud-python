@@ -5,7 +5,9 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_users_api_gender_response import RobloxUsersApiGenderResponse
+from ...models.roblox_friends_api_pending_friend_request_count_model import (
+    RobloxFriendsApiPendingFriendRequestCountModel,
+)
 from ...types import Response
 
 
@@ -13,10 +15,10 @@ def _get_kwargs() -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "https://users.roblox.com/v1/gender#UsersApi",
+        "url": "https://friends.roblox.com/v1/user/trusted-friend-requests/count",
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_gender#UsersApi",
+            "openapi-id": "get_v1_user_trusted-friend-requests_count",
         },
     }
 
@@ -25,15 +27,11 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | RobloxUsersApiGenderResponse | None:
+) -> Any | RobloxFriendsApiPendingFriendRequestCountModel | None:
     if response.status_code == 200:
-        response_200 = RobloxUsersApiGenderResponse.from_dict(response.json())
+        response_200 = RobloxFriendsApiPendingFriendRequestCountModel.from_dict(response.json())
 
         return response_200
-
-    if response.status_code == 400:
-        response_400 = cast(Any, None)
-        return response_400
 
     if response.status_code == 401:
         response_401 = cast(Any, None)
@@ -47,7 +45,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | RobloxUsersApiGenderResponse]:
+) -> Response[Any | RobloxFriendsApiPendingFriendRequestCountModel]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,15 +57,15 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[Any | RobloxUsersApiGenderResponse]:
-    """Get the user's gender
+) -> Response[Any | RobloxFriendsApiPendingFriendRequestCountModel]:
+    """Return the number of pending trusted friend requests.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxUsersApiGenderResponse]
+        Response[Any | RobloxFriendsApiPendingFriendRequestCountModel]
     """
 
     kwargs = _get_kwargs()
@@ -82,15 +80,15 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> Any | RobloxUsersApiGenderResponse | None:
-    """Get the user's gender
+) -> Any | RobloxFriendsApiPendingFriendRequestCountModel | None:
+    """Return the number of pending trusted friend requests.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | RobloxUsersApiGenderResponse
+        Any | RobloxFriendsApiPendingFriendRequestCountModel
     """
 
     return sync_detailed(
@@ -101,15 +99,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[Any | RobloxUsersApiGenderResponse]:
-    """Get the user's gender
+) -> Response[Any | RobloxFriendsApiPendingFriendRequestCountModel]:
+    """Return the number of pending trusted friend requests.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxUsersApiGenderResponse]
+        Response[Any | RobloxFriendsApiPendingFriendRequestCountModel]
     """
 
     kwargs = _get_kwargs()
@@ -122,15 +120,15 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> Any | RobloxUsersApiGenderResponse | None:
-    """Get the user's gender
+) -> Any | RobloxFriendsApiPendingFriendRequestCountModel | None:
+    """Return the number of pending trusted friend requests.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | RobloxUsersApiGenderResponse
+        Any | RobloxFriendsApiPendingFriendRequestCountModel
     """
 
     return (

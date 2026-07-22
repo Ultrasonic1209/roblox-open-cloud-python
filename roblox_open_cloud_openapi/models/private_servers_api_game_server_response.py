@@ -13,11 +13,11 @@ if TYPE_CHECKING:
     from ..models.verified_badge_user_response import VerifiedBadgeUserResponse
 
 
-T = TypeVar("T", bound="GameServerResponse")
+T = TypeVar("T", bound="PrivateServersApiGameServerResponse")
 
 
 @_attrs_define
-class GameServerResponse:
+class PrivateServersApiGameServerResponse:
     """
     Attributes:
         id (None | Unset | UUID):
@@ -264,7 +264,7 @@ class GameServerResponse:
 
         owner = _parse_owner(d.pop("owner", UNSET))
 
-        game_server_response = cls(
+        private_servers_api_game_server_response = cls(
             id=id,
             max_players=max_players,
             playing=playing,
@@ -278,4 +278,4 @@ class GameServerResponse:
             owner=owner,
         )
 
-        return game_server_response
+        return private_servers_api_game_server_response

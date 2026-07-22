@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class GetV1AssetsThumbnailsApiFormat(str, Enum):
+class GetV1AssetsthumbnailsRobloxComFormat(str, Enum):
     JPEG = "Jpeg"
     PNG = "Png"
     WEBP = "Webp"

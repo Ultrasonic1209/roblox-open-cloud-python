@@ -5,25 +5,26 @@ from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
-from ..models.roblox_web_responses_related_entity_type_response_roblox_agents_agent_type_type import (
-    RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentTypeType,
+from ..models.roblox_web_responses_related_entity_type_response_roblox_users_client_associated_entity_type_type import (
+    RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType,
 )
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentType")
+T = TypeVar("T", bound="RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityType")
 
 
 @_attrs_define
-class RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentType:
+class RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityType:
     """
     Attributes:
         id (int | Unset):
-        type_ (RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentTypeType | Unset):  ['User' = 1, 'Group' = 2]
+        type_ (RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType | Unset):  ['User' =
+            1, 'Group' = 2]
         name (str | Unset):
     """
 
     id: int | Unset = UNSET
-    type_: RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentTypeType | Unset = UNSET
+    type_: RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType | Unset = UNSET
     name: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,18 +54,18 @@ class RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentType:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentTypeType | Unset
+        type_: RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
-            type_ = RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentTypeType(_type_)
+            type_ = RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType(_type_)
 
         name = d.pop("name", UNSET)
 
-        roblox_web_responses_related_entity_type_response_roblox_agents_agent_type = cls(
+        roblox_web_responses_related_entity_type_response_roblox_users_client_associated_entity_type = cls(
             id=id,
             type_=type_,
             name=name,
         )
 
-        return roblox_web_responses_related_entity_type_response_roblox_agents_agent_type
+        return roblox_web_responses_related_entity_type_response_roblox_users_client_associated_entity_type

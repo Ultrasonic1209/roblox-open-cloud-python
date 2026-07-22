@@ -6,8 +6,8 @@ from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
+from ..models.server_status import ServerStatus
 from ..models.server_type import ServerType
-from ..models.shutdown_reason import ShutdownReason
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ServerManagementServiceGameServer")
@@ -31,7 +31,10 @@ class ServerManagementServiceGameServer:
         type_ (ServerType | Unset): Defines the different types of servers
         full (bool | Unset): Whether the server is at max occupancy.
         shut_down (bool | Unset): Whether the server has been shutdown.
-        reason_for_shutdown (ShutdownReason | Unset): Defines the reason a server was shut down
+        status (ServerStatus | Unset): Server status that is visible to creators.
+            This is derived from the shutdown reason for shutdown rows; it is always "Active" for currently live servers.
+        termination_time (datetime.datetime | None | Unset): The time the server terminated. Null while
+            ServerManagementService.V2.Models.GameServer.ShutDown is false.
         player_ids (list[int] | None | Unset): The list of PlayerIds in the server
     """
 
@@ -48,7 +51,8 @@ class ServerManagementServiceGameServer:
     type_: ServerType | Unset = UNSET
     full: bool | Unset = UNSET
     shut_down: bool | Unset = UNSET
-    reason_for_shutdown: ShutdownReason | Unset = UNSET
+    status: ServerStatus | Unset = UNSET
+    termination_time: datetime.datetime | None | Unset = UNSET
     player_ids: list[int] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -102,9 +106,17 @@ class ServerManagementServiceGameServer:
 
         shut_down = self.shut_down
 
-        reason_for_shutdown: int | Unset = UNSET
-        if not isinstance(self.reason_for_shutdown, Unset):
-            reason_for_shutdown = self.reason_for_shutdown.value
+        status: str | Unset = UNSET
+        if not isinstance(self.status, Unset):
+            status = self.status.value
+
+        termination_time: None | str | Unset
+        if isinstance(self.termination_time, Unset):
+            termination_time = UNSET
+        elif isinstance(self.termination_time, datetime.datetime):
+            termination_time = self.termination_time.isoformat()
+        else:
+            termination_time = self.termination_time
 
         player_ids: list[int] | None | Unset
         if isinstance(self.player_ids, Unset):
@@ -144,8 +156,10 @@ class ServerManagementServiceGameServer:
             field_dict["full"] = full
         if shut_down is not UNSET:
             field_dict["shutDown"] = shut_down
-        if reason_for_shutdown is not UNSET:
-            field_dict["reasonForShutdown"] = reason_for_shutdown
+        if status is not UNSET:
+            field_dict["status"] = status
+        if termination_time is not UNSET:
+            field_dict["terminationTime"] = termination_time
         if player_ids is not UNSET:
             field_dict["playerIds"] = player_ids
 
@@ -226,12 +240,29 @@ class ServerManagementServiceGameServer:
 
         shut_down = d.pop("shutDown", UNSET)
 
-        _reason_for_shutdown = d.pop("reasonForShutdown", UNSET)
-        reason_for_shutdown: ShutdownReason | Unset
-        if isinstance(_reason_for_shutdown, Unset):
-            reason_for_shutdown = UNSET
+        _status = d.pop("status", UNSET)
+        status: ServerStatus | Unset
+        if isinstance(_status, Unset):
+            status = UNSET
         else:
-            reason_for_shutdown = ShutdownReason(_reason_for_shutdown)
+            status = ServerStatus(_status)
+
+        def _parse_termination_time(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                termination_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return termination_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        termination_time = _parse_termination_time(d.pop("terminationTime", UNSET))
 
         def _parse_player_ids(data: object) -> list[int] | None | Unset:
             if data is None:
@@ -264,7 +295,8 @@ class ServerManagementServiceGameServer:
             type_=type_,
             full=full,
             shut_down=shut_down,
-            reason_for_shutdown=reason_for_shutdown,
+            status=status,
+            termination_time=termination_time,
             player_ids=player_ids,
         )
 

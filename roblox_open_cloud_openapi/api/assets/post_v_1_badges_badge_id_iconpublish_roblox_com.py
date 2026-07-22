@@ -14,20 +14,20 @@ if sys.version_info >= (3, 13):
 else:
     from typing_extensions import deprecated
 
-from ...models.post_v1_badges_badge_id_icon_publish_api_body import PostV1BadgesBadgeIdIconPublishApiBody
+from ...models.post_v1_badges_badge_id_iconpublish_roblox_com_body import PostV1BadgesBadgeIdIconpublishRobloxComBody
 from ...models.roblox_publish_api_upload_response import RobloxPublishApiUploadResponse
 
 
 def _get_kwargs(
     badge_id: int,
     *,
-    body: PostV1BadgesBadgeIdIconPublishApiBody | Unset = UNSET,
+    body: PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "https://publish.roblox.com/v1/badges/{badge_id}/icon#PublishApi".format(
+        "url": "https://publish.roblox.com/v1/badges/{badge_id}/icon#publish.roblox.com".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
         "extensions": {
@@ -41,7 +41,7 @@ def _get_kwargs(
                     }
                 ],
             },
-            "openapi-id": "post_v1_badges_badgeId_icon#PublishApi",
+            "openapi-id": "post_v1_badges_badgeId_icon#publish.roblox.com",
         },
     }
 
@@ -106,13 +106,13 @@ def sync_detailed(
     badge_id: int,
     *,
     client: AuthenticatedClient,
-    body: PostV1BadgesBadgeIdIconPublishApiBody | Unset = UNSET,
+    body: PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset = UNSET,
 ) -> Response[Any | RobloxPublishApiUploadResponse]:
     """Overwrites a badge icon with a new one.
 
     Args:
         badge_id (int):
-        body (PostV1BadgesBadgeIdIconPublishApiBody | Unset):
+        body (PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,13 +141,13 @@ def sync(
     badge_id: int,
     *,
     client: AuthenticatedClient,
-    body: PostV1BadgesBadgeIdIconPublishApiBody | Unset = UNSET,
+    body: PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset = UNSET,
 ) -> Any | RobloxPublishApiUploadResponse | None:
     """Overwrites a badge icon with a new one.
 
     Args:
         badge_id (int):
-        body (PostV1BadgesBadgeIdIconPublishApiBody | Unset):
+        body (PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -171,13 +171,13 @@ async def asyncio_detailed(
     badge_id: int,
     *,
     client: AuthenticatedClient,
-    body: PostV1BadgesBadgeIdIconPublishApiBody | Unset = UNSET,
+    body: PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset = UNSET,
 ) -> Response[Any | RobloxPublishApiUploadResponse]:
     """Overwrites a badge icon with a new one.
 
     Args:
         badge_id (int):
-        body (PostV1BadgesBadgeIdIconPublishApiBody | Unset):
+        body (PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -204,13 +204,13 @@ async def asyncio(
     badge_id: int,
     *,
     client: AuthenticatedClient,
-    body: PostV1BadgesBadgeIdIconPublishApiBody | Unset = UNSET,
+    body: PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset = UNSET,
 ) -> Any | RobloxPublishApiUploadResponse | None:
     """Overwrites a badge icon with a new one.
 
     Args:
         badge_id (int):
-        body (PostV1BadgesBadgeIdIconPublishApiBody | Unset):
+        body (PostV1BadgesBadgeIdIconpublishRobloxComBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

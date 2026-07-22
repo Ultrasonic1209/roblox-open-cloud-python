@@ -26,14 +26,23 @@ class ServerManagementServiceListGameServersResponse:
         previous_page_token (None | str | Unset): A token that you can send as a `pageToken` parameter to retrieve the
             previous
             page (reverse cursor). If this field is omitted, there are no prior pages.
-        total_count (int | None | Unset): Total number of game servers that match the filter (across all pages).
-            Omitted if the backend does not provide a total count.
+        total_count (int | None | Unset): Total matching rows across all pages. Combined active+shutdown queries return
+            the sum of
+            each source total when both are known; omitted when a source failed or omitted its total.
+        shutdown_servers_fetch_error (bool | None | Unset): True when this page includes active rows but shutdown rows
+            could not be fetched.
+            Results may be a partial slice of the globally ordered combined stream.
+        active_servers_fetch_error (bool | None | Unset): True when this page includes shutdown rows but active rows
+            could not be fetched.
+            Results may be a partial slice of the globally ordered combined stream.
     """
 
     game_servers: list[ServerManagementServiceGameServer] | None | Unset = UNSET
     next_page_token: None | str | Unset = UNSET
     previous_page_token: None | str | Unset = UNSET
     total_count: int | None | Unset = UNSET
+    shutdown_servers_fetch_error: bool | None | Unset = UNSET
+    active_servers_fetch_error: bool | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         game_servers: list[dict[str, Any]] | None | Unset
@@ -66,6 +75,18 @@ class ServerManagementServiceListGameServersResponse:
         else:
             total_count = self.total_count
 
+        shutdown_servers_fetch_error: bool | None | Unset
+        if isinstance(self.shutdown_servers_fetch_error, Unset):
+            shutdown_servers_fetch_error = UNSET
+        else:
+            shutdown_servers_fetch_error = self.shutdown_servers_fetch_error
+
+        active_servers_fetch_error: bool | None | Unset
+        if isinstance(self.active_servers_fetch_error, Unset):
+            active_servers_fetch_error = UNSET
+        else:
+            active_servers_fetch_error = self.active_servers_fetch_error
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -77,6 +98,10 @@ class ServerManagementServiceListGameServersResponse:
             field_dict["previousPageToken"] = previous_page_token
         if total_count is not UNSET:
             field_dict["totalCount"] = total_count
+        if shutdown_servers_fetch_error is not UNSET:
+            field_dict["shutdownServersFetchError"] = shutdown_servers_fetch_error
+        if active_servers_fetch_error is not UNSET:
+            field_dict["activeServersFetchError"] = active_servers_fetch_error
 
         return field_dict
 
@@ -137,11 +162,31 @@ class ServerManagementServiceListGameServersResponse:
 
         total_count = _parse_total_count(d.pop("totalCount", UNSET))
 
+        def _parse_shutdown_servers_fetch_error(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        shutdown_servers_fetch_error = _parse_shutdown_servers_fetch_error(d.pop("shutdownServersFetchError", UNSET))
+
+        def _parse_active_servers_fetch_error(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        active_servers_fetch_error = _parse_active_servers_fetch_error(d.pop("activeServersFetchError", UNSET))
+
         server_management_service_list_game_servers_response = cls(
             game_servers=game_servers,
             next_page_token=next_page_token,
             previous_page_token=previous_page_token,
             total_count=total_count,
+            shutdown_servers_fetch_error=shutdown_servers_fetch_error,
+            active_servers_fetch_error=active_servers_fetch_error,
         )
 
         return server_management_service_list_game_servers_response

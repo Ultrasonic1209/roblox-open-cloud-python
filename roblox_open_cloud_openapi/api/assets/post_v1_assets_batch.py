@@ -13,7 +13,6 @@ if sys.version_info >= (3, 13):
 else:
     from typing_extensions import deprecated
 
-from ...models.roblox_web_assets_asset_response_item_v1 import RobloxWebAssetsAssetResponseItemV1
 from ...models.roblox_web_assets_batch_asset_request_item import RobloxWebAssetsBatchAssetRequestItem
 
 
@@ -68,18 +67,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> list[RobloxWebAssetsAssetResponseItemV1] | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = RobloxWebAssetsAssetResponseItemV1.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
-
-        return response_200
+        return None
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -87,9 +77,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[list[RobloxWebAssetsAssetResponseItemV1]]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -108,7 +96,7 @@ def sync_detailed(
     roblox_place_id: int,
     accept: str,
     roblox_browser_asset_request: str,
-) -> Response[list[RobloxWebAssetsAssetResponseItemV1]]:
+) -> Response[Any]:
     """
     Args:
         roblox_place_id (int):
@@ -122,7 +110,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[RobloxWebAssetsAssetResponseItemV1]]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -142,42 +130,6 @@ def sync_detailed(
 @deprecated(
     "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_post_v1_assets_batch"
 )
-def sync(
-    *,
-    client: AuthenticatedClient,
-    body: list[RobloxWebAssetsBatchAssetRequestItem] | list[RobloxWebAssetsBatchAssetRequestItem] | Unset = UNSET,
-    roblox_place_id: int,
-    accept: str,
-    roblox_browser_asset_request: str,
-) -> list[RobloxWebAssetsAssetResponseItemV1] | None:
-    """
-    Args:
-        roblox_place_id (int):
-        accept (str):
-        roblox_browser_asset_request (str):
-        body (list[RobloxWebAssetsBatchAssetRequestItem]):
-        body (list[RobloxWebAssetsBatchAssetRequestItem]):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        list[RobloxWebAssetsAssetResponseItemV1]
-    """
-
-    return sync_detailed(
-        client=client,
-        body=body,
-        roblox_place_id=roblox_place_id,
-        accept=accept,
-        roblox_browser_asset_request=roblox_browser_asset_request,
-    ).parsed
-
-
-@deprecated(
-    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_post_v1_assets_batch"
-)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -185,7 +137,7 @@ async def asyncio_detailed(
     roblox_place_id: int,
     accept: str,
     roblox_browser_asset_request: str,
-) -> Response[list[RobloxWebAssetsAssetResponseItemV1]]:
+) -> Response[Any]:
     """
     Args:
         roblox_place_id (int):
@@ -199,7 +151,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[RobloxWebAssetsAssetResponseItemV1]]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -212,41 +164,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx2_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-@deprecated(
-    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_post_v1_assets_batch"
-)
-async def asyncio(
-    *,
-    client: AuthenticatedClient,
-    body: list[RobloxWebAssetsBatchAssetRequestItem] | list[RobloxWebAssetsBatchAssetRequestItem] | Unset = UNSET,
-    roblox_place_id: int,
-    accept: str,
-    roblox_browser_asset_request: str,
-) -> list[RobloxWebAssetsAssetResponseItemV1] | None:
-    """
-    Args:
-        roblox_place_id (int):
-        accept (str):
-        roblox_browser_asset_request (str):
-        body (list[RobloxWebAssetsBatchAssetRequestItem]):
-        body (list[RobloxWebAssetsBatchAssetRequestItem]):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        list[RobloxWebAssetsAssetResponseItemV1]
-    """
-
-    return (
-        await asyncio_detailed(
-            client=client,
-            body=body,
-            roblox_place_id=roblox_place_id,
-            accept=accept,
-            roblox_browser_asset_request=roblox_browser_asset_request,
-        )
-    ).parsed

@@ -5,18 +5,19 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_v1_assets_thumbnails_api_format import GetV1AssetsThumbnailsApiFormat
-from ...models.get_v1_assets_thumbnails_api_return_policy import GetV1AssetsThumbnailsApiReturnPolicy
-from ...models.get_v1_assets_thumbnails_api_size import GetV1AssetsThumbnailsApiSize
+from ...models.get_v1_assetsthumbnails_roblox_com_format import GetV1AssetsthumbnailsRobloxComFormat
+from ...models.get_v1_assetsthumbnails_roblox_com_return_policy import GetV1AssetsthumbnailsRobloxComReturnPolicy
+from ...models.get_v1_assetsthumbnails_roblox_com_size import GetV1AssetsthumbnailsRobloxComSize
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     asset_ids: list[int],
-    return_policy: GetV1AssetsThumbnailsApiReturnPolicy | Unset = GetV1AssetsThumbnailsApiReturnPolicy.PLACEHOLDER,
-    size: GetV1AssetsThumbnailsApiSize | Unset = GetV1AssetsThumbnailsApiSize.VALUE_0,
-    format_: GetV1AssetsThumbnailsApiFormat | Unset = GetV1AssetsThumbnailsApiFormat.PNG,
+    return_policy: GetV1AssetsthumbnailsRobloxComReturnPolicy
+    | Unset = GetV1AssetsthumbnailsRobloxComReturnPolicy.PLACEHOLDER,
+    size: GetV1AssetsthumbnailsRobloxComSize | Unset = GetV1AssetsthumbnailsRobloxComSize.VALUE_0,
+    format_: GetV1AssetsthumbnailsRobloxComFormat | Unset = GetV1AssetsthumbnailsRobloxComFormat.PNG,
     is_circular: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -54,14 +55,14 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "https://thumbnails.roblox.com/v1/assets#ThumbnailsApi",
+        "url": "https://thumbnails.roblox.com/v1/assets#thumbnails.roblox.com",
         "params": params,
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-stability": "STABLE",
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "openapi-id": "get_v1_assets#ThumbnailsApi",
+            "openapi-id": "get_v1_assets#thumbnails.roblox.com",
         },
     }
 
@@ -98,9 +99,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     asset_ids: list[int],
-    return_policy: GetV1AssetsThumbnailsApiReturnPolicy | Unset = GetV1AssetsThumbnailsApiReturnPolicy.PLACEHOLDER,
-    size: GetV1AssetsThumbnailsApiSize | Unset = GetV1AssetsThumbnailsApiSize.VALUE_0,
-    format_: GetV1AssetsThumbnailsApiFormat | Unset = GetV1AssetsThumbnailsApiFormat.PNG,
+    return_policy: GetV1AssetsthumbnailsRobloxComReturnPolicy
+    | Unset = GetV1AssetsthumbnailsRobloxComReturnPolicy.PLACEHOLDER,
+    size: GetV1AssetsthumbnailsRobloxComSize | Unset = GetV1AssetsthumbnailsRobloxComSize.VALUE_0,
+    format_: GetV1AssetsthumbnailsRobloxComFormat | Unset = GetV1AssetsthumbnailsRobloxComFormat.PNG,
     is_circular: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any]:
@@ -108,12 +110,12 @@ def sync_detailed(
 
     Args:
         asset_ids (list[int]):
-        return_policy (GetV1AssetsThumbnailsApiReturnPolicy | Unset):  Default:
-            GetV1AssetsThumbnailsApiReturnPolicy.PLACEHOLDER.
-        size (GetV1AssetsThumbnailsApiSize | Unset):  Default:
-            GetV1AssetsThumbnailsApiSize.VALUE_0.
-        format_ (GetV1AssetsThumbnailsApiFormat | Unset):  Default:
-            GetV1AssetsThumbnailsApiFormat.PNG.
+        return_policy (GetV1AssetsthumbnailsRobloxComReturnPolicy | Unset):  Default:
+            GetV1AssetsthumbnailsRobloxComReturnPolicy.PLACEHOLDER.
+        size (GetV1AssetsthumbnailsRobloxComSize | Unset):  Default:
+            GetV1AssetsthumbnailsRobloxComSize.VALUE_0.
+        format_ (GetV1AssetsthumbnailsRobloxComFormat | Unset):  Default:
+            GetV1AssetsthumbnailsRobloxComFormat.PNG.
         is_circular (bool | Unset):  Default: False.
         roblox_place_id (int | Unset):
 
@@ -145,9 +147,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     asset_ids: list[int],
-    return_policy: GetV1AssetsThumbnailsApiReturnPolicy | Unset = GetV1AssetsThumbnailsApiReturnPolicy.PLACEHOLDER,
-    size: GetV1AssetsThumbnailsApiSize | Unset = GetV1AssetsThumbnailsApiSize.VALUE_0,
-    format_: GetV1AssetsThumbnailsApiFormat | Unset = GetV1AssetsThumbnailsApiFormat.PNG,
+    return_policy: GetV1AssetsthumbnailsRobloxComReturnPolicy
+    | Unset = GetV1AssetsthumbnailsRobloxComReturnPolicy.PLACEHOLDER,
+    size: GetV1AssetsthumbnailsRobloxComSize | Unset = GetV1AssetsthumbnailsRobloxComSize.VALUE_0,
+    format_: GetV1AssetsthumbnailsRobloxComFormat | Unset = GetV1AssetsthumbnailsRobloxComFormat.PNG,
     is_circular: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any]:
@@ -155,12 +158,12 @@ async def asyncio_detailed(
 
     Args:
         asset_ids (list[int]):
-        return_policy (GetV1AssetsThumbnailsApiReturnPolicy | Unset):  Default:
-            GetV1AssetsThumbnailsApiReturnPolicy.PLACEHOLDER.
-        size (GetV1AssetsThumbnailsApiSize | Unset):  Default:
-            GetV1AssetsThumbnailsApiSize.VALUE_0.
-        format_ (GetV1AssetsThumbnailsApiFormat | Unset):  Default:
-            GetV1AssetsThumbnailsApiFormat.PNG.
+        return_policy (GetV1AssetsthumbnailsRobloxComReturnPolicy | Unset):  Default:
+            GetV1AssetsthumbnailsRobloxComReturnPolicy.PLACEHOLDER.
+        size (GetV1AssetsthumbnailsRobloxComSize | Unset):  Default:
+            GetV1AssetsthumbnailsRobloxComSize.VALUE_0.
+        format_ (GetV1AssetsthumbnailsRobloxComFormat | Unset):  Default:
+            GetV1AssetsthumbnailsRobloxComFormat.PNG.
         is_circular (bool | Unset):  Default: False.
         roblox_place_id (int | Unset):
 

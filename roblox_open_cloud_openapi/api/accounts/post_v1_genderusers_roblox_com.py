@@ -18,10 +18,10 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "https://users.roblox.com/v1/gender#UsersApi",
+        "url": "https://users.roblox.com/v1/gender#users.roblox.com",
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "post_v1_gender#UsersApi",
+            "openapi-id": "post_v1_gender#users.roblox.com",
         },
     }
 

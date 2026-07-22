@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class GetV1AssetsThumbnailsApiSize(str, Enum):
+class GetV1AssetsthumbnailsRobloxComSize(str, Enum):
     VALUE_0 = "30x30"
     VALUE_1 = "42x42"
     VALUE_10 = "250x250"

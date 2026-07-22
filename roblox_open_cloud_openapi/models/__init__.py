@@ -145,7 +145,6 @@ from .game_passes_pricing_feature import GamePassesPricingFeature
 from .game_passes_update_game_pass_body import GamePassesUpdateGamePassBody
 from .game_response import GameResponse
 from .game_server_log import GameServerLog
-from .game_server_response import GameServerResponse
 from .game_update_status import GameUpdateStatus
 from .game_update_status_place_update_statuses_type_0 import GameUpdateStatusPlaceUpdateStatusesType0
 from .game_vote_response import GameVoteResponse
@@ -183,9 +182,9 @@ from .get_v1_asset_to_category_response_200 import GetV1AssetToCategoryResponse2
 from .get_v1_asset_to_subcategory_response_200 import GetV1AssetToSubcategoryResponse200
 from .get_v1_assets_asset_id_bundles_limit import GetV1AssetsAssetIdBundlesLimit
 from .get_v1_assets_asset_id_bundles_sort_order import GetV1AssetsAssetIdBundlesSortOrder
-from .get_v1_assets_thumbnails_api_format import GetV1AssetsThumbnailsApiFormat
-from .get_v1_assets_thumbnails_api_return_policy import GetV1AssetsThumbnailsApiReturnPolicy
-from .get_v1_assets_thumbnails_api_size import GetV1AssetsThumbnailsApiSize
+from .get_v1_assetsthumbnails_roblox_com_format import GetV1AssetsthumbnailsRobloxComFormat
+from .get_v1_assetsthumbnails_roblox_com_return_policy import GetV1AssetsthumbnailsRobloxComReturnPolicy
+from .get_v1_assetsthumbnails_roblox_com_size import GetV1AssetsthumbnailsRobloxComSize
 from .get_v1_badges_icons_format import GetV1BadgesIconsFormat
 from .get_v1_badges_icons_size import GetV1BadgesIconsSize
 from .get_v1_bundles_thumbnails_format import GetV1BundlesThumbnailsFormat
@@ -241,8 +240,11 @@ from .get_v1_localization_table_tables_table_id_entries_entry_format import (
     GetV1LocalizationTableTablesTableIdEntriesEntryFormat,
 )
 from .get_v1_messages_message_tab import GetV1MessagesMessageTab
-from .get_v1_metadata_two_step_verification_api_action_type import GetV1MetadataTwoStepVerificationApiActionType
+from .get_v1_metadatatwostepverification_roblox_com_action_type import (
+    GetV1MetadatatwostepverificationRobloxComActionType,
+)
 from .get_v1_my_friends_requests_friend_request_sort import GetV1MyFriendsRequestsFriendRequestSort
+from .get_v1_my_trusted_friends_requests_sort_order import GetV1MyTrustedFriendsRequestsSortOrder
 from .get_v1_places_gameicons_format import GetV1PlacesGameiconsFormat
 from .get_v1_places_gameicons_return_policy import GetV1PlacesGameiconsReturnPolicy
 from .get_v1_places_gameicons_size import GetV1PlacesGameiconsSize
@@ -542,7 +544,7 @@ from .post_v1_auto_localization_table_games_game_id_auto_scrape_cleanup_request_
     PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200,
 )
 from .post_v1_badges_badge_id_icon_body import PostV1BadgesBadgeIdIconBody
-from .post_v1_badges_badge_id_icon_publish_api_body import PostV1BadgesBadgeIdIconPublishApiBody
+from .post_v1_badges_badge_id_iconpublish_roblox_com_body import PostV1BadgesBadgeIdIconpublishRobloxComBody
 from .post_v1_badges_badge_id_icons_language_codes_language_code_body import (
     PostV1BadgesBadgeIdIconsLanguageCodesLanguageCodeBody,
 )
@@ -585,6 +587,7 @@ from .private_server_update_permissions_request import PrivateServerUpdatePermis
 from .private_server_update_request import PrivateServerUpdateRequest
 from .private_server_update_subscription_request import PrivateServerUpdateSubscriptionRequest
 from .private_server_voice_settings_response import PrivateServerVoiceSettingsResponse
+from .private_servers_api_game_server_response import PrivateServersApiGameServerResponse
 from .private_servers_api_sort_order import PrivateServersApiSortOrder
 from .private_servers_enabled_in_universe_response import PrivateServersEnabledInUniverseResponse
 from .private_servers_tab import PrivateServersTab
@@ -1083,8 +1086,6 @@ from .roblox_api_notifications_models_user_push_destination import RobloxApiNoti
 from .roblox_api_notifications_models_user_push_destination_platform import (
     RobloxApiNotificationsModelsUserPushDestinationPlatform,
 )
-from .roblox_asset_delivery_api_asset_metadata import RobloxAssetDeliveryApiAssetMetadata
-from .roblox_asset_delivery_api_asset_metadata_metadata_type import RobloxAssetDeliveryApiAssetMetadataMetadataType
 from .roblox_badges_api_badge_award_response import RobloxBadgesApiBadgeAwardResponse
 from .roblox_badges_api_badge_creator_response import RobloxBadgesApiBadgeCreatorResponse
 from .roblox_badges_api_badge_metadata_response import RobloxBadgesApiBadgeMetadataResponse
@@ -1285,6 +1286,9 @@ from .roblox_friends_api_models_response_new_friend_requests_count_response impo
 )
 from .roblox_friends_api_models_response_refresh_qr_session_response import (
     RobloxFriendsApiModelsResponseRefreshQrSessionResponse,
+)
+from .roblox_friends_api_models_response_trusted_friend_request_response import (
+    RobloxFriendsApiModelsResponseTrustedFriendRequestResponse,
 )
 from .roblox_friends_api_models_response_user_presence_response import (
     RobloxFriendsApiModelsResponseUserPresenceResponse,
@@ -1722,7 +1726,6 @@ from .roblox_groups_api_primary_group_request import RobloxGroupsApiPrimaryGroup
 from .roblox_groups_api_recurring_payouts_configuration_response import (
     RobloxGroupsApiRecurringPayoutsConfigurationResponse,
 )
-from .roblox_groups_api_relationships_request import RobloxGroupsApiRelationshipsRequest
 from .roblox_groups_api_role_configuration_response import RobloxGroupsApiRoleConfigurationResponse
 from .roblox_groups_api_set_features_request_model import RobloxGroupsApiSetFeaturesRequestModel
 from .roblox_groups_api_set_features_request_model_features import RobloxGroupsApiSetFeaturesRequestModelFeatures
@@ -1778,6 +1781,7 @@ from .roblox_groups_api_watermark_contribution_request_balance_key import (
     RobloxGroupsApiWatermarkContributionRequestBalanceKey,
 )
 from .roblox_groups_client_blocked_keyword_model import RobloxGroupsClientBlockedKeywordModel
+from .roblox_groups_client_community_tier_info_response import RobloxGroupsClientCommunityTierInfoResponse
 from .roblox_groups_client_create_blocked_keywords_response import RobloxGroupsClientCreateBlockedKeywordsResponse
 from .roblox_groups_client_emote_model import RobloxGroupsClientEmoteModel
 from .roblox_groups_client_emote_set_model import RobloxGroupsClientEmoteSetModel
@@ -2172,11 +2176,7 @@ from .roblox_users_api_user_age_bracket_response import RobloxUsersApiUserAgeBra
 from .roblox_users_api_user_country_code_response import RobloxUsersApiUserCountryCodeResponse
 from .roblox_users_api_user_roles_response import RobloxUsersApiUserRolesResponse
 from .roblox_users_api_username_history_response import RobloxUsersApiUsernameHistoryResponse
-from .roblox_web_assets_asset_content_representation_specifier import RobloxWebAssetsAssetContentRepresentationSpecifier
-from .roblox_web_assets_asset_response_item_v1 import RobloxWebAssetsAssetResponseItemV1
 from .roblox_web_assets_batch_asset_request_item import RobloxWebAssetsBatchAssetRequestItem
-from .roblox_web_assets_i_asset_item_error import RobloxWebAssetsIAssetItemError
-from .roblox_web_assets_i_asset_item_error_custom_error_code import RobloxWebAssetsIAssetItemErrorCustomErrorCode
 from .roblox_web_captcha_models_request_captcha_token_request import RobloxWebCaptchaModelsRequestCaptchaTokenRequest
 from .roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
 from .roblox_web_responses_badges_badge_award_statistics_response import (
@@ -2191,12 +2191,6 @@ from .roblox_web_responses_groups_group_basic_response import RobloxWebResponses
 from .roblox_web_responses_groups_group_response_v2 import RobloxWebResponsesGroupsGroupResponseV2
 from .roblox_web_responses_groups_group_role_basic_response import RobloxWebResponsesGroupsGroupRoleBasicResponse
 from .roblox_web_responses_plugins_plugin_response import RobloxWebResponsesPluginsPluginResponse
-from .roblox_web_responses_related_entity_type_response_roblox_agents_agent_type import (
-    RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentType,
-)
-from .roblox_web_responses_related_entity_type_response_roblox_agents_agent_type_type import (
-    RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentTypeType,
-)
 from .roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
     RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
 )
@@ -2214,6 +2208,12 @@ from .roblox_web_responses_related_entity_type_response_roblox_platform_core_cre
 )
 from .roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type_type import (
     RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType,
+)
+from .roblox_web_responses_related_entity_type_response_roblox_users_client_associated_entity_type import (
+    RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityType,
+)
+from .roblox_web_responses_related_entity_type_response_roblox_users_client_associated_entity_type_type import (
+    RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType,
 )
 from .roblox_web_responses_related_entity_type_response_roblox_web_responses_groups_group_owner_type import (
     RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerType,
@@ -2376,6 +2376,9 @@ from .roblox_web_web_api_models_api_page_response_roblox_catalog_api_owned_bundl
 from .roblox_web_web_api_models_api_page_response_roblox_friends_api_friend_request_response import (
     RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse,
 )
+from .roblox_web_web_api_models_api_page_response_roblox_friends_api_models_response_trusted_friend_request_response import (
+    RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiModelsResponseTrustedFriendRequestResponse,
+)
 from .roblox_web_web_api_models_api_page_response_roblox_friends_api_models_response_user_response import (
     RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiModelsResponseUserResponse,
 )
@@ -2457,13 +2460,13 @@ from .server_management_service_game_server import ServerManagementServiceGameSe
 from .server_management_service_list_game_servers_response import ServerManagementServiceListGameServersResponse
 from .server_management_service_problem_details import ServerManagementServiceProblemDetails
 from .server_numerical_signal_configuration import ServerNumericalSignalConfiguration
+from .server_status import ServerStatus
 from .server_type import ServerType
 from .set_matchmaking_scoring_configuration_response import SetMatchmakingScoringConfigurationResponse
 from .set_place_matchmaking_scoring_configuration_request import SetPlaceMatchmakingScoringConfigurationRequest
 from .shutdown_all_game_instances_response import ShutdownAllGameInstancesResponse
 from .shutdown_game_instances_request import ShutdownGameInstancesRequest
 from .shutdown_game_instances_response import ShutdownGameInstancesResponse
-from .shutdown_reason import ShutdownReason
 from .skinny_user_response import SkinnyUserResponse
 from .snapshot_data_stores_request import SnapshotDataStoresRequest
 from .snapshot_data_stores_response import SnapshotDataStoresResponse
@@ -2700,7 +2703,6 @@ __all__ = (
     "GamePassesUpdateGamePassBody",
     "GameResponse",
     "GameServerLog",
-    "GameServerResponse",
     "GameUpdateStatus",
     "GameUpdateStatusPlaceUpdateStatusesType0",
     "GameVoteResponse",
@@ -2730,9 +2732,9 @@ __all__ = (
     "GetUpdateStatusResponse",
     "GetV1AssetsAssetIdBundlesLimit",
     "GetV1AssetsAssetIdBundlesSortOrder",
-    "GetV1AssetsThumbnailsApiFormat",
-    "GetV1AssetsThumbnailsApiReturnPolicy",
-    "GetV1AssetsThumbnailsApiSize",
+    "GetV1AssetsthumbnailsRobloxComFormat",
+    "GetV1AssetsthumbnailsRobloxComReturnPolicy",
+    "GetV1AssetsthumbnailsRobloxComSize",
     "GetV1AssetToCategoryResponse200",
     "GetV1AssetToSubcategoryResponse200",
     "GetV1BadgesIconsFormat",
@@ -2778,8 +2780,9 @@ __all__ = (
     "GetV1GroupsSearchLimit",
     "GetV1LocalizationTableTablesTableIdEntriesEntryFormat",
     "GetV1MessagesMessageTab",
-    "GetV1MetadataTwoStepVerificationApiActionType",
+    "GetV1MetadatatwostepverificationRobloxComActionType",
     "GetV1MyFriendsRequestsFriendRequestSort",
+    "GetV1MyTrustedFriendsRequestsSortOrder",
     "GetV1PlacesGameiconsFormat",
     "GetV1PlacesGameiconsReturnPolicy",
     "GetV1PlacesGameiconsSize",
@@ -3031,7 +3034,7 @@ __all__ = (
     "PostMatchmakingApiV1GameInstancesShutdownAllBody",
     "PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200",
     "PostV1BadgesBadgeIdIconBody",
-    "PostV1BadgesBadgeIdIconPublishApiBody",
+    "PostV1BadgesBadgeIdIconpublishRobloxComBody",
     "PostV1BadgesBadgeIdIconsLanguageCodesLanguageCodeBody",
     "PostV1CollectionsItemsItemTypeItemTargetIdItemType",
     "PostV1DeveloperProductsDeveloperProductIdIconsLanguageCodesLanguageCodeBody",
@@ -3053,6 +3056,7 @@ __all__ = (
     "PrivateServerPermissionsResponse",
     "PrivateServerPlayerResponse",
     "PrivateServerResponse",
+    "PrivateServersApiGameServerResponse",
     "PrivateServersApiSortOrder",
     "PrivateServersEnabledInUniverseResponse",
     "PrivateServersTab",
@@ -3300,8 +3304,6 @@ __all__ = (
     "RobloxApiNotificationsModelsUnreadStreamNotificationsModel",
     "RobloxApiNotificationsModelsUserPushDestination",
     "RobloxApiNotificationsModelsUserPushDestinationPlatform",
-    "RobloxAssetDeliveryApiAssetMetadata",
-    "RobloxAssetDeliveryApiAssetMetadataMetadataType",
     "RobloxBadgesApiBadgeAwardResponse",
     "RobloxBadgesApiBadgeCreatorResponse",
     "RobloxBadgesApiBadgeMetadataResponse",
@@ -3411,6 +3413,7 @@ __all__ = (
     "RobloxFriendsApiModelsResponseFriendsPageMetadataResponse",
     "RobloxFriendsApiModelsResponseNewFriendRequestsCountResponse",
     "RobloxFriendsApiModelsResponseRefreshQrSessionResponse",
+    "RobloxFriendsApiModelsResponseTrustedFriendRequestResponse",
     "RobloxFriendsApiModelsResponseUserPresenceResponse",
     "RobloxFriendsApiModelsResponseUserPresenceResponseModel",
     "RobloxFriendsApiModelsResponseUserResponse",
@@ -3611,7 +3614,6 @@ __all__ = (
     "RobloxGroupsApiPostGroupStatusRequest",
     "RobloxGroupsApiPrimaryGroupRequest",
     "RobloxGroupsApiRecurringPayoutsConfigurationResponse",
-    "RobloxGroupsApiRelationshipsRequest",
     "RobloxGroupsApiRoleConfigurationResponse",
     "RobloxGroupsApiSetFeaturesRequestModel",
     "RobloxGroupsApiSetFeaturesRequestModelFeatures",
@@ -3645,6 +3647,7 @@ __all__ = (
     "RobloxGroupsApiWatermarkContributionRequest",
     "RobloxGroupsApiWatermarkContributionRequestBalanceKey",
     "RobloxGroupsClientBlockedKeywordModel",
+    "RobloxGroupsClientCommunityTierInfoResponse",
     "RobloxGroupsClientCreateBlockedKeywordsResponse",
     "RobloxGroupsClientEmoteModel",
     "RobloxGroupsClientEmoteSetModel",
@@ -3861,11 +3864,7 @@ __all__ = (
     "RobloxUsersApiUserCountryCodeResponse",
     "RobloxUsersApiUsernameHistoryResponse",
     "RobloxUsersApiUserRolesResponse",
-    "RobloxWebAssetsAssetContentRepresentationSpecifier",
-    "RobloxWebAssetsAssetResponseItemV1",
     "RobloxWebAssetsBatchAssetRequestItem",
-    "RobloxWebAssetsIAssetItemError",
-    "RobloxWebAssetsIAssetItemErrorCustomErrorCode",
     "RobloxWebCaptchaModelsRequestCaptchaTokenRequest",
     "RobloxWebResponsesAvatarScaleModel",
     "RobloxWebResponsesBadgesBadgeAwardStatisticsResponse",
@@ -3878,14 +3877,14 @@ __all__ = (
     "RobloxWebResponsesGroupsGroupResponseV2",
     "RobloxWebResponsesGroupsGroupRoleBasicResponse",
     "RobloxWebResponsesPluginsPluginResponse",
-    "RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentType",
-    "RobloxWebResponsesRelatedEntityTypeResponseRobloxAgentsAgentTypeType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformBadgesBadgeAwarderType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformBadgesBadgeAwarderTypeType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType",
+    "RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityType",
+    "RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerTypeType",
     "RobloxWebResponsesUsersSkinnyUserResponse",
@@ -3941,6 +3940,7 @@ __all__ = (
     "RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItem",
     "RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiOwnedBundleModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse",
+    "RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiModelsResponseTrustedFriendRequestResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiModelsResponseUserResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiGroupBanMemberResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiGroupJoinRequestResponse",
@@ -3982,13 +3982,13 @@ __all__ = (
     "ServerManagementServiceListGameServersResponse",
     "ServerManagementServiceProblemDetails",
     "ServerNumericalSignalConfiguration",
+    "ServerStatus",
     "ServerType",
     "SetMatchmakingScoringConfigurationResponse",
     "SetPlaceMatchmakingScoringConfigurationRequest",
     "ShutdownAllGameInstancesResponse",
     "ShutdownGameInstancesRequest",
     "ShutdownGameInstancesResponse",
-    "ShutdownReason",
     "SkinnyUserResponse",
     "SnapshotDataStoresRequest",
     "SnapshotDataStoresResponse",

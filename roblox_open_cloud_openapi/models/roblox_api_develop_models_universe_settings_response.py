@@ -86,8 +86,9 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
             universe is visible to (e.g. Editors, PlayTesters, Friends, Public).
             Always non-null; may be empty when audience visibility has not been configured.
         demo_mode_enabled (bool | Unset): Whether demo mode is enabled.
-        demo_mode_last_changed_time (datetime.datetime | Unset): When demo mode was last toggled. For client-side
-            throttle UX.
+        demo_mode_changeable_after (datetime.datetime | Unset): The earliest time at which demo mode can be toggled
+            again (ISO 8601).
+            Null when no cooldown is active (i.e. demo mode can be changed immediately).
     """
 
     allow_private_servers: bool | Unset = UNSET
@@ -117,7 +118,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
     fiat_moderation_status: RobloxApiDevelopModelsUniverseSettingsResponseFiatModerationStatus | Unset = UNSET
     audiences: list[RobloxApiDevelopModelsUniverseSettingsResponseAudiencesItem] | Unset = UNSET
     demo_mode_enabled: bool | Unset = UNSET
-    demo_mode_last_changed_time: datetime.datetime | Unset = UNSET
+    demo_mode_changeable_after: datetime.datetime | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         allow_private_servers = self.allow_private_servers
@@ -196,9 +197,9 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
 
         demo_mode_enabled = self.demo_mode_enabled
 
-        demo_mode_last_changed_time: str | Unset = UNSET
-        if not isinstance(self.demo_mode_last_changed_time, Unset):
-            demo_mode_last_changed_time = self.demo_mode_last_changed_time.isoformat()
+        demo_mode_changeable_after: str | Unset = UNSET
+        if not isinstance(self.demo_mode_changeable_after, Unset):
+            demo_mode_changeable_after = self.demo_mode_changeable_after.isoformat()
 
         field_dict: dict[str, Any] = {}
 
@@ -253,8 +254,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
             field_dict["audiences"] = audiences
         if demo_mode_enabled is not UNSET:
             field_dict["demoModeEnabled"] = demo_mode_enabled
-        if demo_mode_last_changed_time is not UNSET:
-            field_dict["demoModeLastChangedTime"] = demo_mode_last_changed_time
+        if demo_mode_changeable_after is not UNSET:
+            field_dict["demoModeChangeableAfter"] = demo_mode_changeable_after
 
         return field_dict
 
@@ -381,12 +382,12 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
 
         demo_mode_enabled = d.pop("demoModeEnabled", UNSET)
 
-        _demo_mode_last_changed_time = d.pop("demoModeLastChangedTime", UNSET)
-        demo_mode_last_changed_time: datetime.datetime | Unset
-        if isinstance(_demo_mode_last_changed_time, Unset):
-            demo_mode_last_changed_time = UNSET
+        _demo_mode_changeable_after = d.pop("demoModeChangeableAfter", UNSET)
+        demo_mode_changeable_after: datetime.datetime | Unset
+        if isinstance(_demo_mode_changeable_after, Unset):
+            demo_mode_changeable_after = UNSET
         else:
-            demo_mode_last_changed_time = datetime.datetime.fromisoformat(_demo_mode_last_changed_time)
+            demo_mode_changeable_after = datetime.datetime.fromisoformat(_demo_mode_changeable_after)
 
         roblox_api_develop_models_universe_settings_response = cls(
             allow_private_servers=allow_private_servers,
@@ -414,7 +415,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
             fiat_moderation_status=fiat_moderation_status,
             audiences=audiences,
             demo_mode_enabled=demo_mode_enabled,
-            demo_mode_last_changed_time=demo_mode_last_changed_time,
+            demo_mode_changeable_after=demo_mode_changeable_after,
         )
 
         return roblox_api_develop_models_universe_settings_response

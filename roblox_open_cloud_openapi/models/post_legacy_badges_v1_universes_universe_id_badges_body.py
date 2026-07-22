@@ -24,7 +24,9 @@ class PostLegacyBadgesV1UniversesUniverseIdBadgesBody:
         description (str | Unset): The badge description.
         payment_source_type (PostLegacyBadgesV1UniversesUniverseIdBadgesBodyPaymentSourceType | Unset): Whether or not
             to pay for the badge with user funds, or group funds. ['User' = 1, 'Group' = 2]
-        files (File | Unset): The badge icon.
+        files (File | Unset): The badge icon. Optional: when omitted and a curated default badge icon is configured on
+            the service, the badge is created with that default icon. When provided, exactly one file
+            must be supplied.
         expected_cost (int | Unset): User expected cost of a badge.
         is_active (bool | Unset): Whether or not the badge should be created in the active state.
     """

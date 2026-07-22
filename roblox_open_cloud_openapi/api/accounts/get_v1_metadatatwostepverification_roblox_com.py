@@ -5,8 +5,8 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_v1_metadata_two_step_verification_api_action_type import (
-    GetV1MetadataTwoStepVerificationApiActionType,
+from ...models.get_v1_metadatatwostepverification_roblox_com_action_type import (
+    GetV1MetadatatwostepverificationRobloxComActionType,
 )
 from ...models.roblox_two_step_verification_api_metadata_response import RobloxTwoStepVerificationApiMetadataResponse
 from ...types import UNSET, Response, Unset
@@ -16,7 +16,7 @@ def _get_kwargs(
     *,
     user_id: int | Unset = UNSET,
     challenge_id: str | Unset = UNSET,
-    action_type: GetV1MetadataTwoStepVerificationApiActionType | Unset = UNSET,
+    action_type: GetV1MetadatatwostepverificationRobloxComActionType | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -35,11 +35,11 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "https://twostepverification.roblox.com/v1/metadata#TwoStepVerificationApi",
+        "url": "https://twostepverification.roblox.com/v1/metadata#twostepverification.roblox.com",
         "params": params,
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_metadata#TwoStepVerificationApi",
+            "openapi-id": "get_v1_metadata#twostepverification.roblox.com",
         },
     }
 
@@ -76,7 +76,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     user_id: int | Unset = UNSET,
     challenge_id: str | Unset = UNSET,
-    action_type: GetV1MetadataTwoStepVerificationApiActionType | Unset = UNSET,
+    action_type: GetV1MetadatatwostepverificationRobloxComActionType | Unset = UNSET,
 ) -> Response[RobloxTwoStepVerificationApiMetadataResponse]:
     """Gets two step verification system metadata.
 
@@ -88,7 +88,7 @@ def sync_detailed(
     Args:
         user_id (int | Unset):
         challenge_id (str | Unset):
-        action_type (GetV1MetadataTwoStepVerificationApiActionType | Unset):
+        action_type (GetV1MetadatatwostepverificationRobloxComActionType | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -116,7 +116,7 @@ def sync(
     client: AuthenticatedClient,
     user_id: int | Unset = UNSET,
     challenge_id: str | Unset = UNSET,
-    action_type: GetV1MetadataTwoStepVerificationApiActionType | Unset = UNSET,
+    action_type: GetV1MetadatatwostepverificationRobloxComActionType | Unset = UNSET,
 ) -> RobloxTwoStepVerificationApiMetadataResponse | None:
     """Gets two step verification system metadata.
 
@@ -128,7 +128,7 @@ def sync(
     Args:
         user_id (int | Unset):
         challenge_id (str | Unset):
-        action_type (GetV1MetadataTwoStepVerificationApiActionType | Unset):
+        action_type (GetV1MetadatatwostepverificationRobloxComActionType | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -151,7 +151,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     user_id: int | Unset = UNSET,
     challenge_id: str | Unset = UNSET,
-    action_type: GetV1MetadataTwoStepVerificationApiActionType | Unset = UNSET,
+    action_type: GetV1MetadatatwostepverificationRobloxComActionType | Unset = UNSET,
 ) -> Response[RobloxTwoStepVerificationApiMetadataResponse]:
     """Gets two step verification system metadata.
 
@@ -163,7 +163,7 @@ async def asyncio_detailed(
     Args:
         user_id (int | Unset):
         challenge_id (str | Unset):
-        action_type (GetV1MetadataTwoStepVerificationApiActionType | Unset):
+        action_type (GetV1MetadatatwostepverificationRobloxComActionType | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -189,7 +189,7 @@ async def asyncio(
     client: AuthenticatedClient,
     user_id: int | Unset = UNSET,
     challenge_id: str | Unset = UNSET,
-    action_type: GetV1MetadataTwoStepVerificationApiActionType | Unset = UNSET,
+    action_type: GetV1MetadatatwostepverificationRobloxComActionType | Unset = UNSET,
 ) -> RobloxTwoStepVerificationApiMetadataResponse | None:
     """Gets two step verification system metadata.
 
@@ -201,7 +201,7 @@ async def asyncio(
     Args:
         user_id (int | Unset):
         challenge_id (str | Unset):
-        action_type (GetV1MetadataTwoStepVerificationApiActionType | Unset):
+        action_type (GetV1MetadatatwostepverificationRobloxComActionType | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

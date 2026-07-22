@@ -8,7 +8,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.game_server_response import GameServerResponse
+    from ..models.private_servers_api_game_server_response import PrivateServersApiGameServerResponse
 
 
 T = TypeVar("T", bound="GetPrivateServerListResponse")
@@ -18,13 +18,13 @@ T = TypeVar("T", bound="GetPrivateServerListResponse")
 class GetPrivateServerListResponse:
     """
     Attributes:
-        data (list[GameServerResponse] | None | Unset):
+        data (list[PrivateServersApiGameServerResponse] | None | Unset):
         previous_page_cursor (None | str | Unset):
         next_page_cursor (None | str | Unset):
         game_join_restricted (bool | Unset):
     """
 
-    data: list[GameServerResponse] | None | Unset = UNSET
+    data: list[PrivateServersApiGameServerResponse] | None | Unset = UNSET
     previous_page_cursor: None | str | Unset = UNSET
     next_page_cursor: None | str | Unset = UNSET
     game_join_restricted: bool | Unset = UNSET
@@ -72,11 +72,11 @@ class GetPrivateServerListResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.game_server_response import GameServerResponse
+        from ..models.private_servers_api_game_server_response import PrivateServersApiGameServerResponse
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
-        def _parse_data(data: object) -> list[GameServerResponse] | None | Unset:
+        def _parse_data(data: object) -> list[PrivateServersApiGameServerResponse] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -87,14 +87,14 @@ class GetPrivateServerListResponse:
                 data_type_0 = []
                 _data_type_0 = data
                 for data_type_0_item_data in _data_type_0:
-                    data_type_0_item = GameServerResponse.from_dict(data_type_0_item_data)
+                    data_type_0_item = PrivateServersApiGameServerResponse.from_dict(data_type_0_item_data)
 
                     data_type_0.append(data_type_0_item)
 
                 return data_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(list[GameServerResponse] | None | Unset, data)
+            return cast(list[PrivateServersApiGameServerResponse] | None | Unset, data)
 
         data = _parse_data(d.pop("data", UNSET))
 

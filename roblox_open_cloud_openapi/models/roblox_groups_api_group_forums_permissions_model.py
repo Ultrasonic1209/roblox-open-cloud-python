@@ -23,6 +23,9 @@ class RobloxGroupsApiGroupForumsPermissionsModel:
         pin_posts (bool | Unset): Pin posts permission
         create_comments (bool | Unset): Create comments permission
         remove_comments (bool | Unset): Remove comments permission
+        create_bug_reports (bool | Unset): Create bug reports (support ticket) permission. Only emitted when the
+            permission is exposed
+            (Roblox.Groups.Api.Properties.IGroupsApiSettings.ExposeCreateBugReportsPermission).
     """
 
     view_forums: bool | Unset = UNSET
@@ -33,6 +36,7 @@ class RobloxGroupsApiGroupForumsPermissionsModel:
     pin_posts: bool | Unset = UNSET
     create_comments: bool | Unset = UNSET
     remove_comments: bool | Unset = UNSET
+    create_bug_reports: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         view_forums = self.view_forums
@@ -50,6 +54,8 @@ class RobloxGroupsApiGroupForumsPermissionsModel:
         create_comments = self.create_comments
 
         remove_comments = self.remove_comments
+
+        create_bug_reports = self.create_bug_reports
 
         field_dict: dict[str, Any] = {}
 
@@ -70,6 +76,8 @@ class RobloxGroupsApiGroupForumsPermissionsModel:
             field_dict["createComments"] = create_comments
         if remove_comments is not UNSET:
             field_dict["removeComments"] = remove_comments
+        if create_bug_reports is not UNSET:
+            field_dict["createBugReports"] = create_bug_reports
 
         return field_dict
 
@@ -92,6 +100,8 @@ class RobloxGroupsApiGroupForumsPermissionsModel:
 
         remove_comments = d.pop("removeComments", UNSET)
 
+        create_bug_reports = d.pop("createBugReports", UNSET)
+
         roblox_groups_api_group_forums_permissions_model = cls(
             view_forums=view_forums,
             manage_categories=manage_categories,
@@ -101,6 +111,7 @@ class RobloxGroupsApiGroupForumsPermissionsModel:
             pin_posts=pin_posts,
             create_comments=create_comments,
             remove_comments=remove_comments,
+            create_bug_reports=create_bug_reports,
         )
 
         return roblox_groups_api_group_forums_permissions_model

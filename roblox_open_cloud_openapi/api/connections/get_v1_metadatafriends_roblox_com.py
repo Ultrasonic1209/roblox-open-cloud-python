@@ -24,11 +24,11 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "https://friends.roblox.com/v1/metadata#FriendsApi",
+        "url": "https://friends.roblox.com/v1/metadata#friends.roblox.com",
         "params": params,
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_metadata#FriendsApi",
+            "openapi-id": "get_v1_metadata#friends.roblox.com",
         },
     }
 

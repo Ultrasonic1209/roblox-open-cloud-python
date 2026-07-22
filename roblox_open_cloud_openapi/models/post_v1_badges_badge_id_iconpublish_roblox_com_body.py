@@ -10,11 +10,11 @@ from attrs import field as _attrs_field
 from .. import types
 from ..types import UNSET, File, FileTypes, Unset
 
-T = TypeVar("T", bound="PostV1BadgesBadgeIdIconPublishApiBody")
+T = TypeVar("T", bound="PostV1BadgesBadgeIdIconpublishRobloxComBody")
 
 
 @_attrs_define
-class PostV1BadgesBadgeIdIconPublishApiBody:
+class PostV1BadgesBadgeIdIconpublishRobloxComBody:
     """
     Attributes:
         files (File | Unset):
@@ -57,12 +57,12 @@ class PostV1BadgesBadgeIdIconPublishApiBody:
         else:
             files = File(payload=BytesIO(_files))
 
-        post_v1_badges_badge_id_icon_publish_api_body = cls(
+        post_v1_badges_badge_id_iconpublish_roblox_com_body = cls(
             files=files,
         )
 
-        post_v1_badges_badge_id_icon_publish_api_body.additional_properties = d
-        return post_v1_badges_badge_id_icon_publish_api_body
+        post_v1_badges_badge_id_iconpublish_roblox_com_body.additional_properties = d
+        return post_v1_badges_badge_id_iconpublish_roblox_com_body
 
     @property
     def additional_keys(self) -> list[str]:

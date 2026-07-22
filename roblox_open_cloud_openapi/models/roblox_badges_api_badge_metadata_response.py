@@ -18,11 +18,15 @@ class RobloxBadgesApiBadgeMetadataResponse:
         badge_creation_price (int | Unset): The cost in Robux for creating a new badge.
         max_badge_name_length (int | Unset): The max length for a badge name.
         max_badge_description_length (int | Unset): The max length for a badge description.
+        default_badge_icon_image_id (int | Unset): The asset ID of the curated default badge icon used when a badge is
+            created without an
+            uploaded icon file, or `0` when the default badge icon feature is disabled.
     """
 
     badge_creation_price: int | Unset = UNSET
     max_badge_name_length: int | Unset = UNSET
     max_badge_description_length: int | Unset = UNSET
+    default_badge_icon_image_id: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         badge_creation_price = self.badge_creation_price
@@ -30,6 +34,8 @@ class RobloxBadgesApiBadgeMetadataResponse:
         max_badge_name_length = self.max_badge_name_length
 
         max_badge_description_length = self.max_badge_description_length
+
+        default_badge_icon_image_id = self.default_badge_icon_image_id
 
         field_dict: dict[str, Any] = {}
 
@@ -40,6 +46,8 @@ class RobloxBadgesApiBadgeMetadataResponse:
             field_dict["maxBadgeNameLength"] = max_badge_name_length
         if max_badge_description_length is not UNSET:
             field_dict["maxBadgeDescriptionLength"] = max_badge_description_length
+        if default_badge_icon_image_id is not UNSET:
+            field_dict["defaultBadgeIconImageId"] = default_badge_icon_image_id
 
         return field_dict
 
@@ -52,10 +60,13 @@ class RobloxBadgesApiBadgeMetadataResponse:
 
         max_badge_description_length = d.pop("maxBadgeDescriptionLength", UNSET)
 
+        default_badge_icon_image_id = d.pop("defaultBadgeIconImageId", UNSET)
+
         roblox_badges_api_badge_metadata_response = cls(
             badge_creation_price=badge_creation_price,
             max_badge_name_length=max_badge_name_length,
             max_badge_description_length=max_badge_description_length,
+            default_badge_icon_image_id=default_badge_icon_image_id,
         )
 
         return roblox_badges_api_badge_metadata_response
