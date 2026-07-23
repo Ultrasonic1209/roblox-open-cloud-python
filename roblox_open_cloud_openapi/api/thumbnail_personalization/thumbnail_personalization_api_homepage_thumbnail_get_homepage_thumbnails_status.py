@@ -6,40 +6,44 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_place_contributors_response import GetPlaceContributorsResponse
-from ...models.operation_error_response import OperationErrorResponse
+from ...models.action_result import ActionResult
+from ...models.upload_thumbnails_status_response import UploadThumbnailsStatusResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    place_id: int,
+    universe_id: int,
     *,
-    cursor: str | Unset = UNSET,
-    page_size: int | Unset = UNSET,
+    operation_ids: list[str] | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    params["cursor"] = cursor
+    json_operation_ids: list[str] | Unset = UNSET
+    if not isinstance(operation_ids, Unset):
+        json_operation_ids = operation_ids
 
-    params["pageSize"] = page_size
+    params["operationIds"] = json_operation_ids
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/place-version-history-api/v1/{place_id}/contributors".format(
-            place_id=quote(str(place_id), safe=""),
+        "url": "/thumbnail-personalization-api/v1/universes/{universe_id}/thumbnails/uploads/status".format(
+            universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-stability": "EXPERIMENTAL",
-                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000}},
-                "x-roblox-scopes": [{"name": "universe.place:read", "targetResourceSpecifier": ""}],
+                "x-roblox-rate-limits": {
+                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
+                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
+                },
+                "x-roblox-scopes": [{"name": "universe.thumbnail:read", "targetResourceSpecifier": "universes"}],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
-            "openapi-id": "PlaceVersion_GetPlaceContributors",
+            "openapi-id": "ThumbnailPersonalizationApi.HomepageThumbnail_GetHomepageThumbnailsStatus",
         },
     }
 
@@ -48,29 +52,29 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> GetPlaceContributorsResponse | OperationErrorResponse | None:
+) -> ActionResult | UploadThumbnailsStatusResponse | None:
     if response.status_code == 200:
-        response_200 = GetPlaceContributorsResponse.from_dict(response.json())
+        response_200 = UploadThumbnailsStatusResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = OperationErrorResponse.from_dict(response.json())
+        response_400 = ActionResult.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 401:
-        response_401 = OperationErrorResponse.from_dict(response.json())
+        response_401 = ActionResult.from_dict(response.json())
 
         return response_401
 
     if response.status_code == 403:
-        response_403 = OperationErrorResponse.from_dict(response.json())
+        response_403 = ActionResult.from_dict(response.json())
 
         return response_403
 
     if response.status_code == 500:
-        response_500 = OperationErrorResponse.from_dict(response.json())
+        response_500 = ActionResult.from_dict(response.json())
 
         return response_500
 
@@ -82,7 +86,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[GetPlaceContributorsResponse | OperationErrorResponse]:
+) -> Response[ActionResult | UploadThumbnailsStatusResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,31 +96,27 @@ def _build_response(
 
 
 def sync_detailed(
-    place_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-    cursor: str | Unset = UNSET,
-    page_size: int | Unset = UNSET,
-) -> Response[GetPlaceContributorsResponse | OperationErrorResponse]:
-    """Endpoint used to fetch all previous contributors of a place.
-
+    operation_ids: list[str] | Unset = UNSET,
+) -> Response[ActionResult | UploadThumbnailsStatusResponse]:
+    """
     Args:
-        place_id (int):
-        cursor (str | Unset):
-        page_size (int | Unset):
+        universe_id (int):
+        operation_ids (list[str] | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetPlaceContributorsResponse | OperationErrorResponse]
+        Response[ActionResult | UploadThumbnailsStatusResponse]
     """
 
     kwargs = _get_kwargs(
-        place_id=place_id,
-        cursor=cursor,
-        page_size=page_size,
+        universe_id=universe_id,
+        operation_ids=operation_ids,
     )
 
     response = client.get_httpx2_client().request(
@@ -127,61 +127,53 @@ def sync_detailed(
 
 
 def sync(
-    place_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-    cursor: str | Unset = UNSET,
-    page_size: int | Unset = UNSET,
-) -> GetPlaceContributorsResponse | OperationErrorResponse | None:
-    """Endpoint used to fetch all previous contributors of a place.
-
+    operation_ids: list[str] | Unset = UNSET,
+) -> ActionResult | UploadThumbnailsStatusResponse | None:
+    """
     Args:
-        place_id (int):
-        cursor (str | Unset):
-        page_size (int | Unset):
+        universe_id (int):
+        operation_ids (list[str] | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetPlaceContributorsResponse | OperationErrorResponse
+        ActionResult | UploadThumbnailsStatusResponse
     """
 
     return sync_detailed(
-        place_id=place_id,
+        universe_id=universe_id,
         client=client,
-        cursor=cursor,
-        page_size=page_size,
+        operation_ids=operation_ids,
     ).parsed
 
 
 async def asyncio_detailed(
-    place_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-    cursor: str | Unset = UNSET,
-    page_size: int | Unset = UNSET,
-) -> Response[GetPlaceContributorsResponse | OperationErrorResponse]:
-    """Endpoint used to fetch all previous contributors of a place.
-
+    operation_ids: list[str] | Unset = UNSET,
+) -> Response[ActionResult | UploadThumbnailsStatusResponse]:
+    """
     Args:
-        place_id (int):
-        cursor (str | Unset):
-        page_size (int | Unset):
+        universe_id (int):
+        operation_ids (list[str] | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetPlaceContributorsResponse | OperationErrorResponse]
+        Response[ActionResult | UploadThumbnailsStatusResponse]
     """
 
     kwargs = _get_kwargs(
-        place_id=place_id,
-        cursor=cursor,
-        page_size=page_size,
+        universe_id=universe_id,
+        operation_ids=operation_ids,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)
@@ -190,32 +182,28 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    place_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-    cursor: str | Unset = UNSET,
-    page_size: int | Unset = UNSET,
-) -> GetPlaceContributorsResponse | OperationErrorResponse | None:
-    """Endpoint used to fetch all previous contributors of a place.
-
+    operation_ids: list[str] | Unset = UNSET,
+) -> ActionResult | UploadThumbnailsStatusResponse | None:
+    """
     Args:
-        place_id (int):
-        cursor (str | Unset):
-        page_size (int | Unset):
+        universe_id (int):
+        operation_ids (list[str] | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetPlaceContributorsResponse | OperationErrorResponse
+        ActionResult | UploadThumbnailsStatusResponse
     """
 
     return (
         await asyncio_detailed(
-            place_id=place_id,
+            universe_id=universe_id,
             client=client,
-            cursor=cursor,
-            page_size=page_size,
+            operation_ids=operation_ids,
         )
     ).parsed

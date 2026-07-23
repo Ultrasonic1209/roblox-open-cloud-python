@@ -73,6 +73,7 @@ from .create_matchmaking_server_attribute_definition_request import CreateMatchm
 from .create_matchmaking_server_attribute_definition_response import CreateMatchmakingServerAttributeDefinitionResponse
 from .create_private_server_request import CreatePrivateServerRequest
 from .create_save_request_type_0 import CreateSaveRequestType0
+from .create_thumbnail_personalization_request import CreateThumbnailPersonalizationRequest
 from .creation_context import CreationContext
 from .creator import Creator
 from .creator_model_v2_type_0 import CreatorModelV2Type0
@@ -130,6 +131,7 @@ from .filter_operation import FilterOperation
 from .filter_options_response import FilterOptionsResponse
 from .filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0
 from .filter_type import FilterType
+from .find_thumbnails_response import FindThumbnailsResponse
 from .flush_memory_store_metadata import FlushMemoryStoreMetadata
 from .flush_memory_store_response import FlushMemoryStoreResponse
 from .forecast_restart_response import ForecastRestartResponse
@@ -360,12 +362,8 @@ from .group_join_request import GroupJoinRequest
 from .group_membership import GroupMembership
 from .group_role import GroupRole
 from .group_role_role_permissions import GroupRoleRolePermissions
-from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
-    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
-)
-from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type_type import (
-    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType,
-)
+from .homepage_thumbnail import HomepageThumbnail
+from .homepage_thumbnail_status import HomepageThumbnailStatus
 from .http_content import HttpContent
 from .http_method import HttpMethod
 from .http_request_message import HttpRequestMessage
@@ -499,6 +497,7 @@ from .patch_v1_groups_group_id_notification_preference_response_200 import (
 )
 from .patch_v1_groups_icon_body import PatchV1GroupsIconBody
 from .patch_v1_themes_consumer_type_consumer_id_consumer_type import PatchV1ThemesConsumerTypeConsumerIdConsumerType
+from .personalized_config_status import PersonalizedConfigStatus
 from .place import Place
 from .place_filter import PlaceFilter
 from .place_response import PlaceResponse
@@ -2485,6 +2484,10 @@ from .subscription_expiration_details_reason import SubscriptionExpirationDetail
 from .subscription_payment_provider import SubscriptionPaymentProvider
 from .subscription_purchase_platform import SubscriptionPurchasePlatform
 from .subscription_state import SubscriptionState
+from .thumbnail_personalization_api_homepage_thumbnail_upload_homepage_thumbnails_body import (
+    ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
+)
+from .thumbnail_personalization_api_moderation_status import ThumbnailPersonalizationApiModerationStatus
 from .toolbox_service_asset_type_0 import ToolboxServiceAssetType0
 from .toolbox_service_creator_store_product_type_0 import ToolboxServiceCreatorStoreProductType0
 from .toolbox_service_decimal_type_0 import ToolboxServiceDecimalType0
@@ -2535,6 +2538,15 @@ from .update_matchmaking_server_attribute_definition_request import UpdateMatchm
 from .update_matchmaking_server_attribute_definition_response import UpdateMatchmakingServerAttributeDefinitionResponse
 from .update_place_version_notes_request import UpdatePlaceVersionNotesRequest
 from .update_place_version_notes_response import UpdatePlaceVersionNotesResponse
+from .update_thumbnail_personalization_request import UpdateThumbnailPersonalizationRequest
+from .upload_status import UploadStatus
+from .upload_thumbnail_status import UploadThumbnailStatus
+from .upload_thumbnails_response import UploadThumbnailsResponse
+from .upload_thumbnails_response_file_to_operation_id_dict import UploadThumbnailsResponseFileToOperationIdDict
+from .upload_thumbnails_status_response import UploadThumbnailsStatusResponse
+from .upload_thumbnails_status_response_upload_thumbnail_status_dict import (
+    UploadThumbnailsStatusResponseUploadThumbnailStatusDict,
+)
 from .user import User
 from .user_game_vote_request import UserGameVoteRequest
 from .user_game_vote_response import UserGameVoteResponse
@@ -2633,6 +2645,7 @@ __all__ = (
     "CreateMatchmakingServerAttributeDefinitionResponse",
     "CreatePrivateServerRequest",
     "CreateSaveRequestType0",
+    "CreateThumbnailPersonalizationRequest",
     "CreationContext",
     "Creator",
     "CreatorModelV2Type0",
@@ -2688,6 +2701,7 @@ __all__ = (
     "FilterOptionsResponse",
     "FilterOptionsResponseFiltersType0",
     "FilterType",
+    "FindThumbnailsResponse",
     "FlushMemoryStoreMetadata",
     "FlushMemoryStoreResponse",
     "ForecastRestartResponse",
@@ -2882,8 +2896,8 @@ __all__ = (
     "GroupMembership",
     "GroupRole",
     "GroupRoleRolePermissions",
-    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
-    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
+    "HomepageThumbnail",
+    "HomepageThumbnailStatus",
     "HttpContent",
     "HttpMethod",
     "HttpRequestMessage",
@@ -3009,6 +3023,7 @@ __all__ = (
     "PatchV1GroupsGroupIdNotificationPreferenceResponse200",
     "PatchV1GroupsIconBody",
     "PatchV1ThemesConsumerTypeConsumerIdConsumerType",
+    "PersonalizedConfigStatus",
     "Place",
     "PlaceFilter",
     "PlaceResponse",
@@ -4007,6 +4022,8 @@ __all__ = (
     "SubscriptionPaymentProvider",
     "SubscriptionPurchasePlatform",
     "SubscriptionState",
+    "ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody",
+    "ThumbnailPersonalizationApiModerationStatus",
     "ToolboxServiceAssetType0",
     "ToolboxServiceCreatorStoreProductType0",
     "ToolboxServiceDecimalType0",
@@ -4049,6 +4066,13 @@ __all__ = (
     "UpdateMatchmakingServerAttributeDefinitionResponse",
     "UpdatePlaceVersionNotesRequest",
     "UpdatePlaceVersionNotesResponse",
+    "UpdateThumbnailPersonalizationRequest",
+    "UploadStatus",
+    "UploadThumbnailsResponse",
+    "UploadThumbnailsResponseFileToOperationIdDict",
+    "UploadThumbnailsStatusResponse",
+    "UploadThumbnailsStatusResponseUploadThumbnailStatusDict",
+    "UploadThumbnailStatus",
     "User",
     "UserGameVoteRequest",
     "UserGameVoteResponse",

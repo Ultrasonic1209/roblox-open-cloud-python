@@ -63,10 +63,7 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-stability": "EXPERIMENTAL",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
-                },
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000}},
                 "x-roblox-scopes": [{"name": "universe.place:read", "targetResourceSpecifier": ""}],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
