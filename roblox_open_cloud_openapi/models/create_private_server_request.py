@@ -17,11 +17,13 @@ class CreatePrivateServerRequest:
         name (None | str | Unset):
         expected_price (int | Unset):
         is_purchase_confirmed (bool | None | Unset):
+        idempotency_key (None | str | Unset):
     """
 
     name: None | str | Unset = UNSET
     expected_price: int | Unset = UNSET
     is_purchase_confirmed: bool | None | Unset = UNSET
+    idempotency_key: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name: None | str | Unset
@@ -38,6 +40,12 @@ class CreatePrivateServerRequest:
         else:
             is_purchase_confirmed = self.is_purchase_confirmed
 
+        idempotency_key: None | str | Unset
+        if isinstance(self.idempotency_key, Unset):
+            idempotency_key = UNSET
+        else:
+            idempotency_key = self.idempotency_key
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -47,6 +55,8 @@ class CreatePrivateServerRequest:
             field_dict["expectedPrice"] = expected_price
         if is_purchase_confirmed is not UNSET:
             field_dict["isPurchaseConfirmed"] = is_purchase_confirmed
+        if idempotency_key is not UNSET:
+            field_dict["idempotencyKey"] = idempotency_key
 
         return field_dict
 
@@ -74,10 +84,20 @@ class CreatePrivateServerRequest:
 
         is_purchase_confirmed = _parse_is_purchase_confirmed(d.pop("isPurchaseConfirmed", UNSET))
 
+        def _parse_idempotency_key(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        idempotency_key = _parse_idempotency_key(d.pop("idempotencyKey", UNSET))
+
         create_private_server_request = cls(
             name=name,
             expected_price=expected_price,
             is_purchase_confirmed=is_purchase_confirmed,
+            idempotency_key=idempotency_key,
         )
 
         return create_private_server_request

@@ -379,6 +379,63 @@ from .increment_ordered_data_store_entry_request import IncrementOrderedDataStor
 from .instance import Instance
 from .instance_counts_type_0 import InstanceCountsType0
 from .int_64_exclusive_start_key_cursor import Int64ExclusiveStartKeyCursor
+from .internal_public_v1_ad_format import InternalPublicV1AdFormat
+from .internal_public_v1_advertisable_universe import InternalPublicV1AdvertisableUniverse
+from .internal_public_v1_batch_get_performance_request import InternalPublicV1BatchGetPerformanceRequest
+from .internal_public_v1_batch_get_performance_request_period import InternalPublicV1BatchGetPerformanceRequestPeriod
+from .internal_public_v1_batch_get_performance_response import InternalPublicV1BatchGetPerformanceResponse
+from .internal_public_v1_batch_get_performance_response_period import InternalPublicV1BatchGetPerformanceResponsePeriod
+from .internal_public_v1_batch_get_status_request import InternalPublicV1BatchGetStatusRequest
+from .internal_public_v1_batch_get_status_response import InternalPublicV1BatchGetStatusResponse
+from .internal_public_v1_bid import InternalPublicV1Bid
+from .internal_public_v1_bid_strategy import InternalPublicV1BidStrategy
+from .internal_public_v1_billing_account import InternalPublicV1BillingAccount
+from .internal_public_v1_billing_account_status import InternalPublicV1BillingAccountStatus
+from .internal_public_v1_billing_account_type import InternalPublicV1BillingAccountType
+from .internal_public_v1_budget import InternalPublicV1Budget
+from .internal_public_v1_budget_type import InternalPublicV1BudgetType
+from .internal_public_v1_campaign_id_failure import InternalPublicV1CampaignIDFailure
+from .internal_public_v1_campaign_id_failure_reason import InternalPublicV1CampaignIDFailureReason
+from .internal_public_v1_campaign_options_response import InternalPublicV1CampaignOptionsResponse
+from .internal_public_v1_campaign_options_response_objectives_item import (
+    InternalPublicV1CampaignOptionsResponseObjectivesItem,
+)
+from .internal_public_v1_campaign_options_response_payment_types_item import (
+    InternalPublicV1CampaignOptionsResponsePaymentTypesItem,
+)
+from .internal_public_v1_campaign_performance import InternalPublicV1CampaignPerformance
+from .internal_public_v1_campaign_status import InternalPublicV1CampaignStatus
+from .internal_public_v1_campaign_status_delivery_status import InternalPublicV1CampaignStatusDeliveryStatus
+from .internal_public_v1_campaign_status_delivery_status_reasons_item import (
+    InternalPublicV1CampaignStatusDeliveryStatusReasonsItem,
+)
+from .internal_public_v1_campaign_status_status import InternalPublicV1CampaignStatusStatus
+from .internal_public_v1_create_campaign_request import InternalPublicV1CreateCampaignRequest
+from .internal_public_v1_create_campaign_request_objective import InternalPublicV1CreateCampaignRequestObjective
+from .internal_public_v1_create_campaign_request_payment_type import InternalPublicV1CreateCampaignRequestPaymentType
+from .internal_public_v1_creative import InternalPublicV1Creative
+from .internal_public_v1_creative_asset_type import InternalPublicV1CreativeAssetType
+from .internal_public_v1_creative_moderation_status import InternalPublicV1CreativeModerationStatus
+from .internal_public_v1_creative_source import InternalPublicV1CreativeSource
+from .internal_public_v1_error_envelope import InternalPublicV1ErrorEnvelope
+from .internal_public_v1_list_advertisable_universes_response import InternalPublicV1ListAdvertisableUniversesResponse
+from .internal_public_v1_list_billing_accounts_response import InternalPublicV1ListBillingAccountsResponse
+from .internal_public_v1_list_creatives_response import InternalPublicV1ListCreativesResponse
+from .internal_public_v1_performance_response import InternalPublicV1PerformanceResponse
+from .internal_public_v1_performance_response_period import InternalPublicV1PerformanceResponsePeriod
+from .internal_public_v1_performance_totals import InternalPublicV1PerformanceTotals
+from .internal_public_v1_public_error import InternalPublicV1PublicError
+from .internal_public_v1_schedule import InternalPublicV1Schedule
+from .internal_public_v1_targeting import InternalPublicV1Targeting
+from .internal_public_v1_targeting_age_groups_item import InternalPublicV1TargetingAgeGroupsItem
+from .internal_public_v1_targeting_devices_item import InternalPublicV1TargetingDevicesItem
+from .internal_public_v1_targeting_dimensions import InternalPublicV1TargetingDimensions
+from .internal_public_v1_targeting_dimensions_age_groups_item import InternalPublicV1TargetingDimensionsAgeGroupsItem
+from .internal_public_v1_targeting_dimensions_devices_item import InternalPublicV1TargetingDimensionsDevicesItem
+from .internal_public_v1_universe_eligibility import InternalPublicV1UniverseEligibility
+from .internal_public_v1_universe_eligibility_reasons_item import InternalPublicV1UniverseEligibilityReasonsItem
+from .internal_public_v1_update_campaign_request import InternalPublicV1UpdateCampaignRequest
+from .internal_public_v1_update_campaign_request_status import InternalPublicV1UpdateCampaignRequestStatus
 from .inventory_item import InventoryItem
 from .inventory_item_asset_details import InventoryItemAssetDetails
 from .inventory_item_asset_details_inventory_item_asset_type import InventoryItemAssetDetailsInventoryItemAssetType
@@ -872,6 +929,33 @@ from .roblox_api_develop_models_activation_eligibility_response_allowed_audience
 from .roblox_api_develop_models_activation_eligibility_response_creator_tier import (
     RobloxApiDevelopModelsActivationEligibilityResponseCreatorTier,
 )
+from .roblox_api_develop_models_build_generated_rating_preview_response import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponse,
+)
+from .roblox_api_develop_models_build_generated_rating_preview_response_age_range_model import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseAgeRangeModel,
+)
+from .roblox_api_develop_models_build_generated_rating_preview_response_age_recommendation_details_model import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseAgeRecommendationDetailsModel,
+)
+from .roblox_api_develop_models_build_generated_rating_preview_response_age_recommendation_model import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseAgeRecommendationModel,
+)
+from .roblox_api_develop_models_build_generated_rating_preview_response_age_recommendation_summary_model import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseAgeRecommendationSummaryModel,
+)
+from .roblox_api_develop_models_build_generated_rating_preview_response_experience_descriptor_dimension_usage_model import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseExperienceDescriptorDimensionUsageModel,
+)
+from .roblox_api_develop_models_build_generated_rating_preview_response_experience_descriptor_model import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseExperienceDescriptorModel,
+)
+from .roblox_api_develop_models_build_generated_rating_preview_response_experience_descriptor_usage_model import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseExperienceDescriptorUsageModel,
+)
+from .roblox_api_develop_models_build_generated_rating_preview_response_restricted_country_model import (
+    RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseRestrictedCountryModel,
+)
 from .roblox_api_develop_models_game_template_model import RobloxApiDevelopModelsGameTemplateModel
 from .roblox_api_develop_models_group_model import RobloxApiDevelopModelsGroupModel
 from .roblox_api_develop_models_i_place_model import RobloxApiDevelopModelsIPlaceModel
@@ -882,6 +966,8 @@ from .roblox_api_develop_models_place_model_v2 import RobloxApiDevelopModelsPlac
 from .roblox_api_develop_models_place_model_v2_allowed_gear_types_item import (
     RobloxApiDevelopModelsPlaceModelV2AllowedGearTypesItem,
 )
+from .roblox_api_develop_models_playtesters_request import RobloxApiDevelopModelsPlaytestersRequest
+from .roblox_api_develop_models_playtesters_response import RobloxApiDevelopModelsPlaytestersResponse
 from .roblox_api_develop_models_private_server_details_response import (
     RobloxApiDevelopModelsPrivateServerDetailsResponse,
 )
@@ -2913,6 +2999,57 @@ __all__ = (
     "Instance",
     "InstanceCountsType0",
     "Int64ExclusiveStartKeyCursor",
+    "InternalPublicV1AdFormat",
+    "InternalPublicV1AdvertisableUniverse",
+    "InternalPublicV1BatchGetPerformanceRequest",
+    "InternalPublicV1BatchGetPerformanceRequestPeriod",
+    "InternalPublicV1BatchGetPerformanceResponse",
+    "InternalPublicV1BatchGetPerformanceResponsePeriod",
+    "InternalPublicV1BatchGetStatusRequest",
+    "InternalPublicV1BatchGetStatusResponse",
+    "InternalPublicV1Bid",
+    "InternalPublicV1BidStrategy",
+    "InternalPublicV1BillingAccount",
+    "InternalPublicV1BillingAccountStatus",
+    "InternalPublicV1BillingAccountType",
+    "InternalPublicV1Budget",
+    "InternalPublicV1BudgetType",
+    "InternalPublicV1CampaignIDFailure",
+    "InternalPublicV1CampaignIDFailureReason",
+    "InternalPublicV1CampaignOptionsResponse",
+    "InternalPublicV1CampaignOptionsResponseObjectivesItem",
+    "InternalPublicV1CampaignOptionsResponsePaymentTypesItem",
+    "InternalPublicV1CampaignPerformance",
+    "InternalPublicV1CampaignStatus",
+    "InternalPublicV1CampaignStatusDeliveryStatus",
+    "InternalPublicV1CampaignStatusDeliveryStatusReasonsItem",
+    "InternalPublicV1CampaignStatusStatus",
+    "InternalPublicV1CreateCampaignRequest",
+    "InternalPublicV1CreateCampaignRequestObjective",
+    "InternalPublicV1CreateCampaignRequestPaymentType",
+    "InternalPublicV1Creative",
+    "InternalPublicV1CreativeAssetType",
+    "InternalPublicV1CreativeModerationStatus",
+    "InternalPublicV1CreativeSource",
+    "InternalPublicV1ErrorEnvelope",
+    "InternalPublicV1ListAdvertisableUniversesResponse",
+    "InternalPublicV1ListBillingAccountsResponse",
+    "InternalPublicV1ListCreativesResponse",
+    "InternalPublicV1PerformanceResponse",
+    "InternalPublicV1PerformanceResponsePeriod",
+    "InternalPublicV1PerformanceTotals",
+    "InternalPublicV1PublicError",
+    "InternalPublicV1Schedule",
+    "InternalPublicV1Targeting",
+    "InternalPublicV1TargetingAgeGroupsItem",
+    "InternalPublicV1TargetingDevicesItem",
+    "InternalPublicV1TargetingDimensions",
+    "InternalPublicV1TargetingDimensionsAgeGroupsItem",
+    "InternalPublicV1TargetingDimensionsDevicesItem",
+    "InternalPublicV1UniverseEligibility",
+    "InternalPublicV1UniverseEligibilityReasonsItem",
+    "InternalPublicV1UpdateCampaignRequest",
+    "InternalPublicV1UpdateCampaignRequestStatus",
     "InventoryItem",
     "InventoryItemAssetDetails",
     "InventoryItemAssetDetailsInventoryItemAssetType",
@@ -3234,6 +3371,15 @@ __all__ = (
     "RobloxApiDevelopModelsActivationEligibilityResponse",
     "RobloxApiDevelopModelsActivationEligibilityResponseAllowedAudiencesItem",
     "RobloxApiDevelopModelsActivationEligibilityResponseCreatorTier",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponse",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseAgeRangeModel",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseAgeRecommendationDetailsModel",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseAgeRecommendationModel",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseAgeRecommendationSummaryModel",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseExperienceDescriptorDimensionUsageModel",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseExperienceDescriptorModel",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseExperienceDescriptorUsageModel",
+    "RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponseRestrictedCountryModel",
     "RobloxApiDevelopModelsGameTemplateModel",
     "RobloxApiDevelopModelsGroupModel",
     "RobloxApiDevelopModelsIPlaceModel",
@@ -3242,6 +3388,8 @@ __all__ = (
     "RobloxApiDevelopModelsPlaceModel",
     "RobloxApiDevelopModelsPlaceModelV2",
     "RobloxApiDevelopModelsPlaceModelV2AllowedGearTypesItem",
+    "RobloxApiDevelopModelsPlaytestersRequest",
+    "RobloxApiDevelopModelsPlaytestersResponse",
     "RobloxApiDevelopModelsPrivateServerDetailsResponse",
     "RobloxApiDevelopModelsResponseAssetVotingModel",
     "RobloxApiDevelopModelsResponseTeamCreateSettingsResponse",

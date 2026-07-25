@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -13,6 +13,12 @@ from ..models.roblox_api_develop_models_activation_eligibility_response_creator_
 )
 from ..types import UNSET, Unset
 
+if TYPE_CHECKING:
+    from ..models.roblox_api_develop_models_build_generated_rating_preview_response import (
+        RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponse,
+    )
+
+
 T = TypeVar("T", bound="RobloxApiDevelopModelsActivationEligibilityResponse")
 
 
@@ -21,7 +27,8 @@ class RobloxApiDevelopModelsActivationEligibilityResponse:
     """The result of various checks for a user's eligibility to activate a given universe from private to public.
 
     Attributes:
-        is_eligible (bool | Unset):
+        is_eligible (bool | Unset): The overall result of activation eligibility. This requires the user publish gate
+            and either a maturity rating or an intact Build seal.
         maturity_rated (bool | Unset): Whether the place has an active content maturity rating or not.
         is_user_eligible_for_public_publish (bool | Unset): isUserEligibleForPublicPublish
         remaining_public_publish_count (int | Unset): How many public publishes are remaining for the given user /
@@ -34,6 +41,11 @@ class RobloxApiDevelopModelsActivationEligibilityResponse:
             universe owner. ['Invalid' = 0, 'Blocked' = 1, 'Private' = 2, 'Trusted' = 3, 'Everyone' = 4]
         allowed_audiences (list[RobloxApiDevelopModelsActivationEligibilityResponseAllowedAudiencesItem] | Unset):
             Audiences the universe is allowed to be published to.
+        provisional_rating_allowed (bool | Unset): Whether the universe has a provisional rating via a Build seal in
+            Content Catalog.
+            When true, the universe is eligible for activation even without a full maturity questionnaire.
+        provisional_rating (RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponse | Unset): The complete build-
+            generated rating preview returned by Experience Guidelines.
     """
 
     is_eligible: bool | Unset = UNSET
@@ -45,6 +57,8 @@ class RobloxApiDevelopModelsActivationEligibilityResponse:
     is_universe_select: bool | Unset = UNSET
     creator_tier: RobloxApiDevelopModelsActivationEligibilityResponseCreatorTier | Unset = UNSET
     allowed_audiences: list[RobloxApiDevelopModelsActivationEligibilityResponseAllowedAudiencesItem] | Unset = UNSET
+    provisional_rating_allowed: bool | Unset = UNSET
+    provisional_rating: RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponse | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         is_eligible = self.is_eligible
@@ -72,6 +86,12 @@ class RobloxApiDevelopModelsActivationEligibilityResponse:
                 allowed_audiences_item = allowed_audiences_item_data.value
                 allowed_audiences.append(allowed_audiences_item)
 
+        provisional_rating_allowed = self.provisional_rating_allowed
+
+        provisional_rating: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.provisional_rating, Unset):
+            provisional_rating = self.provisional_rating.to_dict()
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -93,11 +113,19 @@ class RobloxApiDevelopModelsActivationEligibilityResponse:
             field_dict["creatorTier"] = creator_tier
         if allowed_audiences is not UNSET:
             field_dict["allowedAudiences"] = allowed_audiences
+        if provisional_rating_allowed is not UNSET:
+            field_dict["provisionalRatingAllowed"] = provisional_rating_allowed
+        if provisional_rating is not UNSET:
+            field_dict["provisionalRating"] = provisional_rating
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.roblox_api_develop_models_build_generated_rating_preview_response import (
+            RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponse,
+        )
+
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         is_eligible = d.pop("isEligible", UNSET)
 
@@ -131,6 +159,17 @@ class RobloxApiDevelopModelsActivationEligibilityResponse:
 
                 allowed_audiences.append(allowed_audiences_item)
 
+        provisional_rating_allowed = d.pop("provisionalRatingAllowed", UNSET)
+
+        _provisional_rating = d.pop("provisionalRating", UNSET)
+        provisional_rating: RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponse | Unset
+        if isinstance(_provisional_rating, Unset):
+            provisional_rating = UNSET
+        else:
+            provisional_rating = RobloxApiDevelopModelsBuildGeneratedRatingPreviewResponse.from_dict(
+                _provisional_rating
+            )
+
         roblox_api_develop_models_activation_eligibility_response = cls(
             is_eligible=is_eligible,
             maturity_rated=maturity_rated,
@@ -141,6 +180,8 @@ class RobloxApiDevelopModelsActivationEligibilityResponse:
             is_universe_select=is_universe_select,
             creator_tier=creator_tier,
             allowed_audiences=allowed_audiences,
+            provisional_rating_allowed=provisional_rating_allowed,
+            provisional_rating=provisional_rating,
         )
 
         return roblox_api_develop_models_activation_eligibility_response
