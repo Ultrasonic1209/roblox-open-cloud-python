@@ -11,9 +11,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.internal_public_v1_bid import InternalPublicV1Bid
-    from ..models.internal_public_v1_budget import InternalPublicV1Budget
     from ..models.internal_public_v1_schedule import InternalPublicV1Schedule
     from ..models.internal_public_v1_targeting import InternalPublicV1Targeting
+    from ..models.internal_public_v1_update_budget import InternalPublicV1UpdateBudget
 
 
 T = TypeVar("T", bound="InternalPublicV1UpdateCampaignRequest")
@@ -24,7 +24,7 @@ class InternalPublicV1UpdateCampaignRequest:
     """
     Attributes:
         bid (InternalPublicV1Bid | Unset):
-        budget (InternalPublicV1Budget | Unset):
+        budget (InternalPublicV1UpdateBudget | Unset):
         creative_asset_ids (list[str] | Unset): Immutable in v1; including it returns 400.
         name (str | Unset): A new display name for the campaign.
         schedule (InternalPublicV1Schedule | Unset):
@@ -35,7 +35,7 @@ class InternalPublicV1UpdateCampaignRequest:
     """
 
     bid: InternalPublicV1Bid | Unset = UNSET
-    budget: InternalPublicV1Budget | Unset = UNSET
+    budget: InternalPublicV1UpdateBudget | Unset = UNSET
     creative_asset_ids: list[str] | Unset = UNSET
     name: str | Unset = UNSET
     schedule: InternalPublicV1Schedule | Unset = UNSET
@@ -93,9 +93,9 @@ class InternalPublicV1UpdateCampaignRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.internal_public_v1_bid import InternalPublicV1Bid
-        from ..models.internal_public_v1_budget import InternalPublicV1Budget
         from ..models.internal_public_v1_schedule import InternalPublicV1Schedule
         from ..models.internal_public_v1_targeting import InternalPublicV1Targeting
+        from ..models.internal_public_v1_update_budget import InternalPublicV1UpdateBudget
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _bid = d.pop("bid", UNSET)
@@ -106,11 +106,11 @@ class InternalPublicV1UpdateCampaignRequest:
             bid = InternalPublicV1Bid.from_dict(_bid)
 
         _budget = d.pop("budget", UNSET)
-        budget: InternalPublicV1Budget | Unset
+        budget: InternalPublicV1UpdateBudget | Unset
         if isinstance(_budget, Unset):
             budget = UNSET
         else:
-            budget = InternalPublicV1Budget.from_dict(_budget)
+            budget = InternalPublicV1UpdateBudget.from_dict(_budget)
 
         creative_asset_ids = cast(list[str], d.pop("creativeAssetIds", UNSET))
 

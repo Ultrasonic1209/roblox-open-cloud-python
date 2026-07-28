@@ -159,6 +159,7 @@ from .generate_speech_asset_response import GenerateSpeechAssetResponse
 from .generate_user_thumbnail_metadata import GenerateUserThumbnailMetadata
 from .generate_user_thumbnail_response import GenerateUserThumbnailResponse
 from .generic_currency_response import GenericCurrencyResponse
+from .get_ads_management_v1_campaign_options_objective import GetAdsManagementV1CampaignOptionsObjective
 from .get_instance_metadata import GetInstanceMetadata
 from .get_legacy_develop_v1_places_place_id_teamcreate_active_session_members_limit import (
     GetLegacyDevelopV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit,
@@ -381,10 +382,6 @@ from .instance_counts_type_0 import InstanceCountsType0
 from .int_64_exclusive_start_key_cursor import Int64ExclusiveStartKeyCursor
 from .internal_public_v1_ad_format import InternalPublicV1AdFormat
 from .internal_public_v1_advertisable_universe import InternalPublicV1AdvertisableUniverse
-from .internal_public_v1_batch_get_performance_request import InternalPublicV1BatchGetPerformanceRequest
-from .internal_public_v1_batch_get_performance_request_period import InternalPublicV1BatchGetPerformanceRequestPeriod
-from .internal_public_v1_batch_get_performance_response import InternalPublicV1BatchGetPerformanceResponse
-from .internal_public_v1_batch_get_performance_response_period import InternalPublicV1BatchGetPerformanceResponsePeriod
 from .internal_public_v1_batch_get_status_request import InternalPublicV1BatchGetStatusRequest
 from .internal_public_v1_batch_get_status_response import InternalPublicV1BatchGetStatusResponse
 from .internal_public_v1_bid import InternalPublicV1Bid
@@ -403,7 +400,6 @@ from .internal_public_v1_campaign_options_response_objectives_item import (
 from .internal_public_v1_campaign_options_response_payment_types_item import (
     InternalPublicV1CampaignOptionsResponsePaymentTypesItem,
 )
-from .internal_public_v1_campaign_performance import InternalPublicV1CampaignPerformance
 from .internal_public_v1_campaign_status import InternalPublicV1CampaignStatus
 from .internal_public_v1_campaign_status_delivery_status import InternalPublicV1CampaignStatusDeliveryStatus
 from .internal_public_v1_campaign_status_delivery_status_reasons_item import (
@@ -421,9 +417,6 @@ from .internal_public_v1_error_envelope import InternalPublicV1ErrorEnvelope
 from .internal_public_v1_list_advertisable_universes_response import InternalPublicV1ListAdvertisableUniversesResponse
 from .internal_public_v1_list_billing_accounts_response import InternalPublicV1ListBillingAccountsResponse
 from .internal_public_v1_list_creatives_response import InternalPublicV1ListCreativesResponse
-from .internal_public_v1_performance_response import InternalPublicV1PerformanceResponse
-from .internal_public_v1_performance_response_period import InternalPublicV1PerformanceResponsePeriod
-from .internal_public_v1_performance_totals import InternalPublicV1PerformanceTotals
 from .internal_public_v1_public_error import InternalPublicV1PublicError
 from .internal_public_v1_schedule import InternalPublicV1Schedule
 from .internal_public_v1_targeting import InternalPublicV1Targeting
@@ -434,6 +427,7 @@ from .internal_public_v1_targeting_dimensions_age_groups_item import InternalPub
 from .internal_public_v1_targeting_dimensions_devices_item import InternalPublicV1TargetingDimensionsDevicesItem
 from .internal_public_v1_universe_eligibility import InternalPublicV1UniverseEligibility
 from .internal_public_v1_universe_eligibility_reasons_item import InternalPublicV1UniverseEligibilityReasonsItem
+from .internal_public_v1_update_budget import InternalPublicV1UpdateBudget
 from .internal_public_v1_update_campaign_request import InternalPublicV1UpdateCampaignRequest
 from .internal_public_v1_update_campaign_request_status import InternalPublicV1UpdateCampaignRequestStatus
 from .inventory_item import InventoryItem
@@ -2815,6 +2809,7 @@ __all__ = (
     "GenerateUserThumbnailMetadata",
     "GenerateUserThumbnailResponse",
     "GenericCurrencyResponse",
+    "GetAdsManagementV1CampaignOptionsObjective",
     "GetInstanceMetadata",
     "GetLegacyDevelopV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit",
     "GetLegacyGroupsV1GroupsGroupIdAuditLogActionType",
@@ -3001,10 +2996,6 @@ __all__ = (
     "Int64ExclusiveStartKeyCursor",
     "InternalPublicV1AdFormat",
     "InternalPublicV1AdvertisableUniverse",
-    "InternalPublicV1BatchGetPerformanceRequest",
-    "InternalPublicV1BatchGetPerformanceRequestPeriod",
-    "InternalPublicV1BatchGetPerformanceResponse",
-    "InternalPublicV1BatchGetPerformanceResponsePeriod",
     "InternalPublicV1BatchGetStatusRequest",
     "InternalPublicV1BatchGetStatusResponse",
     "InternalPublicV1Bid",
@@ -3019,7 +3010,6 @@ __all__ = (
     "InternalPublicV1CampaignOptionsResponse",
     "InternalPublicV1CampaignOptionsResponseObjectivesItem",
     "InternalPublicV1CampaignOptionsResponsePaymentTypesItem",
-    "InternalPublicV1CampaignPerformance",
     "InternalPublicV1CampaignStatus",
     "InternalPublicV1CampaignStatusDeliveryStatus",
     "InternalPublicV1CampaignStatusDeliveryStatusReasonsItem",
@@ -3035,9 +3025,6 @@ __all__ = (
     "InternalPublicV1ListAdvertisableUniversesResponse",
     "InternalPublicV1ListBillingAccountsResponse",
     "InternalPublicV1ListCreativesResponse",
-    "InternalPublicV1PerformanceResponse",
-    "InternalPublicV1PerformanceResponsePeriod",
-    "InternalPublicV1PerformanceTotals",
     "InternalPublicV1PublicError",
     "InternalPublicV1Schedule",
     "InternalPublicV1Targeting",
@@ -3048,6 +3035,7 @@ __all__ = (
     "InternalPublicV1TargetingDimensionsDevicesItem",
     "InternalPublicV1UniverseEligibility",
     "InternalPublicV1UniverseEligibilityReasonsItem",
+    "InternalPublicV1UpdateBudget",
     "InternalPublicV1UpdateCampaignRequest",
     "InternalPublicV1UpdateCampaignRequestStatus",
     "InventoryItem",

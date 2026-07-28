@@ -5,6 +5,7 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.get_ads_management_v1_campaign_options_objective import GetAdsManagementV1CampaignOptionsObjective
 from ...models.internal_public_v1_campaign_options_response import InternalPublicV1CampaignOptionsResponse
 from ...models.internal_public_v1_error_envelope import InternalPublicV1ErrorEnvelope
 from ...types import UNSET, Response, Unset
@@ -13,14 +14,18 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     universe_id: str | Unset = UNSET,
-    objective: str | Unset = UNSET,
+    objective: GetAdsManagementV1CampaignOptionsObjective | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
     params["universeId"] = universe_id
 
-    params["objective"] = objective
+    json_objective: str | Unset = UNSET
+    if not isinstance(objective, Unset):
+        json_objective = objective.value
+
+    params["objective"] = json_objective
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -94,7 +99,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     universe_id: str | Unset = UNSET,
-    objective: str | Unset = UNSET,
+    objective: GetAdsManagementV1CampaignOptionsObjective | Unset = UNSET,
 ) -> Response[InternalPublicV1CampaignOptionsResponse | InternalPublicV1ErrorEnvelope]:
     """Get campaign options
 
@@ -105,7 +110,7 @@ def sync_detailed(
 
     Args:
         universe_id (str | Unset):
-        objective (str | Unset):
+        objective (GetAdsManagementV1CampaignOptionsObjective | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -131,7 +136,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     universe_id: str | Unset = UNSET,
-    objective: str | Unset = UNSET,
+    objective: GetAdsManagementV1CampaignOptionsObjective | Unset = UNSET,
 ) -> InternalPublicV1CampaignOptionsResponse | InternalPublicV1ErrorEnvelope | None:
     """Get campaign options
 
@@ -142,7 +147,7 @@ def sync(
 
     Args:
         universe_id (str | Unset):
-        objective (str | Unset):
+        objective (GetAdsManagementV1CampaignOptionsObjective | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -163,7 +168,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     universe_id: str | Unset = UNSET,
-    objective: str | Unset = UNSET,
+    objective: GetAdsManagementV1CampaignOptionsObjective | Unset = UNSET,
 ) -> Response[InternalPublicV1CampaignOptionsResponse | InternalPublicV1ErrorEnvelope]:
     """Get campaign options
 
@@ -174,7 +179,7 @@ async def asyncio_detailed(
 
     Args:
         universe_id (str | Unset):
-        objective (str | Unset):
+        objective (GetAdsManagementV1CampaignOptionsObjective | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -198,7 +203,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     universe_id: str | Unset = UNSET,
-    objective: str | Unset = UNSET,
+    objective: GetAdsManagementV1CampaignOptionsObjective | Unset = UNSET,
 ) -> InternalPublicV1CampaignOptionsResponse | InternalPublicV1ErrorEnvelope | None:
     """Get campaign options
 
@@ -209,7 +214,7 @@ async def asyncio(
 
     Args:
         universe_id (str | Unset):
-        objective (str | Unset):
+        objective (GetAdsManagementV1CampaignOptionsObjective | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
