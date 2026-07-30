@@ -90,7 +90,9 @@ def sync_detailed(
 ) -> Response[Place]:
     """Update Place
 
-     Updates the specified place.
+     Updates the specified place. To avoid overwriting changes, this endpoint
+    responds with an HTTP 409 Conflict error if the place is open in an
+    active Team Create session.
 
     Args:
         universe_id (str):
@@ -130,7 +132,9 @@ def sync(
 ) -> Place | None:
     """Update Place
 
-     Updates the specified place.
+     Updates the specified place. To avoid overwriting changes, this endpoint
+    responds with an HTTP 409 Conflict error if the place is open in an
+    active Team Create session.
 
     Args:
         universe_id (str):
@@ -165,7 +169,9 @@ async def asyncio_detailed(
 ) -> Response[Place]:
     """Update Place
 
-     Updates the specified place.
+     Updates the specified place. To avoid overwriting changes, this endpoint
+    responds with an HTTP 409 Conflict error if the place is open in an
+    active Team Create session.
 
     Args:
         universe_id (str):
@@ -203,7 +209,9 @@ async def asyncio(
 ) -> Place | None:
     """Update Place
 
-     Updates the specified place.
+     Updates the specified place. To avoid overwriting changes, this endpoint
+    responds with an HTTP 409 Conflict error if the place is open in an
+    active Team Create session.
 
     Args:
         universe_id (str):

@@ -74,7 +74,9 @@ class GetLegacyGroupsV1GroupsGroupIdAuditLogActionType(str, Enum):
     UPDATEGROUPASSET = "UpdateGroupAsset"
     UPDATEGROUPCOVERPHOTO = "UpdateGroupCoverPhoto"
     UPDATEGROUPICON = "UpdateGroupIcon"
+    UPDATEGROUPSECURITYSETTINGS = "UpdateGroupSecuritySettings"
     UPDATEROLESETDATA = "UpdateRolesetData"
+    UPDATEROLESETPERMISSIONS = "UpdateRoleSetPermissions"
     UPDATEROLESETRANK = "UpdateRolesetRank"
 
     def __str__(self) -> str:
