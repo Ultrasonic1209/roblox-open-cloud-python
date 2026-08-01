@@ -29,6 +29,7 @@ from .breakdown_value import BreakdownValue
 from .bulk_delete_saves_request_type_0 import BulkDeleteSavesRequestType0
 from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
 from .can_invite_user_response import CanInviteUserResponse
+from .category_response import CategoryResponse
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
 from .cloud_flush_memory_store_scope import CloudFlushMemoryStoreScope
@@ -52,6 +53,7 @@ from .config_repository_full_entries_type_0 import ConfigRepositoryFullEntriesTy
 from .config_repository_metadata import ConfigRepositoryMetadata
 from .config_repository_values import ConfigRepositoryValues
 from .config_repository_values_entries_type_0 import ConfigRepositoryValuesEntriesType0
+from .config_response import ConfigResponse
 from .config_value_full import ConfigValueFull
 from .config_variant_dto import ConfigVariantDto
 from .config_variant_type import ConfigVariantType
@@ -59,6 +61,8 @@ from .content_message import ContentMessage
 from .create_custom_matchmaking_signal_request import CreateCustomMatchmakingSignalRequest
 from .create_custom_matchmaking_signal_response import CreateCustomMatchmakingSignalResponse
 from .create_entry_request import CreateEntryRequest
+from .create_game_event_config_request import CreateGameEventConfigRequest
+from .create_game_event_request import CreateGameEventRequest
 from .create_matchmaking_player_attribute_definition_request import CreateMatchmakingPlayerAttributeDefinitionRequest
 from .create_matchmaking_player_attribute_definition_response import CreateMatchmakingPlayerAttributeDefinitionResponse
 from .create_matchmaking_scoring_configuration_request import CreateMatchmakingScoringConfigurationRequest
@@ -125,6 +129,12 @@ from .entry_version import EntryVersion
 from .error import Error
 from .error_code import ErrorCode
 from .error_response import ErrorResponse
+from .event_category import EventCategory
+from .event_media import EventMedia
+from .event_notification_audience import EventNotificationAudience
+from .event_ranked_category import EventRankedCategory
+from .event_visibility import EventVisibility
+from .featuring_status import FeaturingStatus
 from .filter_field import FilterField
 from .filter_field_info import FilterFieldInfo
 from .filter_operation import FilterOperation
@@ -138,6 +148,7 @@ from .forecast_restart_response import ForecastRestartResponse
 from .forecast_restart_response_place_forecasts_type_0 import ForecastRestartResponsePlaceForecastsType0
 from .forecast_update_request import ForecastUpdateRequest
 from .forecast_update_response import ForecastUpdateResponse
+from .game_event_response import GameEventResponse
 from .game_pass_config_v2 import GamePassConfigV2
 from .game_passes_create_game_pass_body import GamePassesCreateGamePassBody
 from .game_passes_error_code import GamePassesErrorCode
@@ -365,6 +376,8 @@ from .group_role import GroupRole
 from .group_role_role_permissions import GroupRoleRolePermissions
 from .homepage_thumbnail import HomepageThumbnail
 from .homepage_thumbnail_status import HomepageThumbnailStatus
+from .host_response import HostResponse
+from .host_type import HostType
 from .http_content import HttpContent
 from .http_method import HttpMethod
 from .http_request_message import HttpRequestMessage
@@ -537,6 +550,7 @@ from .operation_error_response import OperationErrorResponse
 from .operation_metadata import OperationMetadata
 from .operation_pending import OperationPending
 from .ordered_data_store_entry import OrderedDataStoreEntry
+from .paginated_game_events_response import PaginatedGameEventsResponse
 from .patch_legacy_groups_v1_groups_group_id_notification_preference_response_200 import (
     PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200,
 )
@@ -1866,6 +1880,7 @@ from .roblox_groups_client_emote_model import RobloxGroupsClientEmoteModel
 from .roblox_groups_client_emote_set_model import RobloxGroupsClientEmoteSetModel
 from .roblox_groups_client_get_group_emote_sets_response import RobloxGroupsClientGetGroupEmoteSetsResponse
 from .roblox_groups_client_group_featured_content_response import RobloxGroupsClientGroupFeaturedContentResponse
+from .roblox_groups_client_tier_evaluation_result_response import RobloxGroupsClientTierEvaluationResultResponse
 from .roblox_in_game_content_tables_client_game_location import RobloxInGameContentTablesClientGameLocation
 from .roblox_inventory_api_models_asset_id_list_model import RobloxInventoryApiModelsAssetIdListModel
 from .roblox_inventory_api_models_assets_explorer_category_item_model import (
@@ -2521,6 +2536,7 @@ from .roblox_web_web_api_models_api_page_response_roblox_web_responses_games_gam
 from .robux_rate_breakdown import RobuxRateBreakdown
 from .rpn_operand_dto import RpnOperandDto
 from .rpn_token_dto import RpnTokenDto
+from .rsvp_status import RsvpStatus
 from .rule_delta_payload import RuleDeltaPayload
 from .rules_order_delta_payload import RulesOrderDeltaPayload
 from .sales_report_download_request import SalesReportDownloadRequest
@@ -2568,6 +2584,7 @@ from .thumbnail_personalization_api_homepage_thumbnail_upload_homepage_thumbnail
     ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
 )
 from .thumbnail_personalization_api_moderation_status import ThumbnailPersonalizationApiModerationStatus
+from .thumbnail_response import ThumbnailResponse
 from .toolbox_service_asset_type_0 import ToolboxServiceAssetType0
 from .toolbox_service_creator_store_product_type_0 import ToolboxServiceCreatorStoreProductType0
 from .toolbox_service_decimal_type_0 import ToolboxServiceDecimalType0
@@ -2603,6 +2620,8 @@ from .update_custom_matchmaking_signal_response import UpdateCustomMatchmakingSi
 from .update_draft_request import UpdateDraftRequest
 from .update_draft_request_entries_type_0 import UpdateDraftRequestEntriesType0
 from .update_entry_request import UpdateEntryRequest
+from .update_game_event_config_request import UpdateGameEventConfigRequest
+from .update_game_event_request import UpdateGameEventRequest
 from .update_instance_metadata import UpdateInstanceMetadata
 from .update_matchmaking_player_attribute_definition_request import UpdateMatchmakingPlayerAttributeDefinitionRequest
 from .update_matchmaking_player_attribute_definition_response import UpdateMatchmakingPlayerAttributeDefinitionResponse
@@ -2653,6 +2672,7 @@ from .user_restriction_log_restriction_type_game_join_restriction import (
 from .user_social_network_profiles import UserSocialNetworkProfiles
 from .user_social_network_profiles_visibility import UserSocialNetworkProfilesVisibility
 from .verified_badge_user_response import VerifiedBadgeUserResponse
+from .virtual_events_api_problem_details import VirtualEventsApiProblemDetails
 from .voting_model_type_0 import VotingModelType0
 
 __all__ = (
@@ -2685,6 +2705,7 @@ __all__ = (
     "BulkDeleteSavesRequestType0",
     "BulkDeleteSavesResponseType0",
     "CanInviteUserResponse",
+    "CategoryResponse",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
     "CloudFlushMemoryStoreScope",
@@ -2708,6 +2729,7 @@ __all__ = (
     "ConfigRepositoryMetadata",
     "ConfigRepositoryValues",
     "ConfigRepositoryValuesEntriesType0",
+    "ConfigResponse",
     "ConfigValueFull",
     "ConfigVariantDto",
     "ConfigVariantType",
@@ -2715,6 +2737,8 @@ __all__ = (
     "CreateCustomMatchmakingSignalRequest",
     "CreateCustomMatchmakingSignalResponse",
     "CreateEntryRequest",
+    "CreateGameEventConfigRequest",
+    "CreateGameEventRequest",
     "CreateMatchmakingPlayerAttributeDefinitionRequest",
     "CreateMatchmakingPlayerAttributeDefinitionResponse",
     "CreateMatchmakingScoringConfigurationRequest",
@@ -2775,6 +2799,12 @@ __all__ = (
     "Error",
     "ErrorCode",
     "ErrorResponse",
+    "EventCategory",
+    "EventMedia",
+    "EventNotificationAudience",
+    "EventRankedCategory",
+    "EventVisibility",
+    "FeaturingStatus",
     "FilterField",
     "FilterFieldInfo",
     "FilterOperation",
@@ -2788,6 +2818,7 @@ __all__ = (
     "ForecastRestartResponsePlaceForecastsType0",
     "ForecastUpdateRequest",
     "ForecastUpdateResponse",
+    "GameEventResponse",
     "GamePassConfigV2",
     "GamePassesCreateGamePassBody",
     "GamePassesErrorCode",
@@ -2979,6 +3010,8 @@ __all__ = (
     "GroupRoleRolePermissions",
     "HomepageThumbnail",
     "HomepageThumbnailStatus",
+    "HostResponse",
+    "HostType",
     "HttpContent",
     "HttpMethod",
     "HttpRequestMessage",
@@ -3143,6 +3176,7 @@ __all__ = (
     "OperationMetadata",
     "OperationPending",
     "OrderedDataStoreEntry",
+    "PaginatedGameEventsResponse",
     "PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200",
     "PatchV1AutoLocalizationTableGamesGameIdIngestionResponse200",
     "PatchV1GroupsGroupIdNotificationPreferenceResponse200",
@@ -3804,6 +3838,7 @@ __all__ = (
     "RobloxGroupsClientEmoteSetModel",
     "RobloxGroupsClientGetGroupEmoteSetsResponse",
     "RobloxGroupsClientGroupFeaturedContentResponse",
+    "RobloxGroupsClientTierEvaluationResultResponse",
     "RobloxInGameContentTablesClientGameLocation",
     "RobloxInventoryApiModelsAssetIdListModel",
     "RobloxInventoryApiModelsAssetsExplorerCategoryItemModel",
@@ -4115,6 +4150,7 @@ __all__ = (
     "RobuxRateBreakdown",
     "RpnOperandDto",
     "RpnTokenDto",
+    "RsvpStatus",
     "RuleDeltaPayload",
     "RulesOrderDeltaPayload",
     "SalesReportDownloadRequest",
@@ -4160,6 +4196,7 @@ __all__ = (
     "SubscriptionState",
     "ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody",
     "ThumbnailPersonalizationApiModerationStatus",
+    "ThumbnailResponse",
     "ToolboxServiceAssetType0",
     "ToolboxServiceCreatorStoreProductType0",
     "ToolboxServiceDecimalType0",
@@ -4191,6 +4228,8 @@ __all__ = (
     "UpdateDraftRequest",
     "UpdateDraftRequestEntriesType0",
     "UpdateEntryRequest",
+    "UpdateGameEventConfigRequest",
+    "UpdateGameEventRequest",
     "UpdateInstanceMetadata",
     "UpdateMatchmakingPlayerAttributeDefinitionRequest",
     "UpdateMatchmakingPlayerAttributeDefinitionResponse",
@@ -4233,5 +4272,6 @@ __all__ = (
     "UserSocialNetworkProfiles",
     "UserSocialNetworkProfilesVisibility",
     "VerifiedBadgeUserResponse",
+    "VirtualEventsApiProblemDetails",
     "VotingModelType0",
 )
