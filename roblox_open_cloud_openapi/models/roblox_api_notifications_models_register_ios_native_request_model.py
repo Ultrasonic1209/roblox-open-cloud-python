@@ -19,6 +19,8 @@ class RobloxApiNotificationsModelsRegisterIOSNativeRequestModel:
         authorize_for_user (bool | Unset): Is call authorized for user
         old_notification_token (str | Unset): Old notification token
         device_name (str | Unset): Name of the requesting device
+        is_provisional (bool | Unset): True when the client granted iOS provisional authorization (silent, quiet-only)
+            rather than full authorization. Absent/null is treated as not provisional.
     """
 
     notification_token: str | Unset = UNSET
@@ -26,6 +28,7 @@ class RobloxApiNotificationsModelsRegisterIOSNativeRequestModel:
     authorize_for_user: bool | Unset = UNSET
     old_notification_token: str | Unset = UNSET
     device_name: str | Unset = UNSET
+    is_provisional: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         notification_token = self.notification_token
@@ -37,6 +40,8 @@ class RobloxApiNotificationsModelsRegisterIOSNativeRequestModel:
         old_notification_token = self.old_notification_token
 
         device_name = self.device_name
+
+        is_provisional = self.is_provisional
 
         field_dict: dict[str, Any] = {}
 
@@ -51,6 +56,8 @@ class RobloxApiNotificationsModelsRegisterIOSNativeRequestModel:
             field_dict["oldNotificationToken"] = old_notification_token
         if device_name is not UNSET:
             field_dict["deviceName"] = device_name
+        if is_provisional is not UNSET:
+            field_dict["isProvisional"] = is_provisional
 
         return field_dict
 
@@ -67,12 +74,15 @@ class RobloxApiNotificationsModelsRegisterIOSNativeRequestModel:
 
         device_name = d.pop("deviceName", UNSET)
 
+        is_provisional = d.pop("isProvisional", UNSET)
+
         roblox_api_notifications_models_register_ios_native_request_model = cls(
             notification_token=notification_token,
             destination_identifier=destination_identifier,
             authorize_for_user=authorize_for_user,
             old_notification_token=old_notification_token,
             device_name=device_name,
+            is_provisional=is_provisional,
         )
 
         return roblox_api_notifications_models_register_ios_native_request_model

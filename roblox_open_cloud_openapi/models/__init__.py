@@ -374,6 +374,10 @@ from .group_join_request import GroupJoinRequest
 from .group_membership import GroupMembership
 from .group_role import GroupRole
 from .group_role_role_permissions import GroupRoleRolePermissions
+from .groups_api_roblox_groups_api_group_detail_response import GroupsApiRobloxGroupsApiGroupDetailResponse
+from .groups_api_roblox_groups_client_community_tier_info_response import (
+    GroupsApiRobloxGroupsClientCommunityTierInfoResponse,
+)
 from .homepage_thumbnail import HomepageThumbnail
 from .homepage_thumbnail_status import HomepageThumbnailStatus
 from .host_response import HostResponse
@@ -1741,7 +1745,6 @@ from .roblox_groups_api_group_content_moderation_permissions_model import (
     RobloxGroupsApiGroupContentModerationPermissionsModel,
 )
 from .roblox_groups_api_group_description_response import RobloxGroupsApiGroupDescriptionResponse
-from .roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
 from .roblox_groups_api_group_economy_permissions_model import RobloxGroupsApiGroupEconomyPermissionsModel
 from .roblox_groups_api_group_feature_response import RobloxGroupsApiGroupFeatureResponse
 from .roblox_groups_api_group_feature_response_feature import RobloxGroupsApiGroupFeatureResponseFeature
@@ -1874,7 +1877,6 @@ from .roblox_groups_api_watermark_contribution_request_balance_key import (
     RobloxGroupsApiWatermarkContributionRequestBalanceKey,
 )
 from .roblox_groups_client_blocked_keyword_model import RobloxGroupsClientBlockedKeywordModel
-from .roblox_groups_client_community_tier_info_response import RobloxGroupsClientCommunityTierInfoResponse
 from .roblox_groups_client_create_blocked_keywords_response import RobloxGroupsClientCreateBlockedKeywordsResponse
 from .roblox_groups_client_emote_model import RobloxGroupsClientEmoteModel
 from .roblox_groups_client_emote_set_model import RobloxGroupsClientEmoteSetModel
@@ -3008,6 +3010,8 @@ __all__ = (
     "GroupMembership",
     "GroupRole",
     "GroupRoleRolePermissions",
+    "GroupsApiRobloxGroupsApiGroupDetailResponse",
+    "GroupsApiRobloxGroupsClientCommunityTierInfoResponse",
     "HomepageThumbnail",
     "HomepageThumbnailStatus",
     "HostResponse",
@@ -3743,7 +3747,6 @@ __all__ = (
     "RobloxGroupsApiGroupConfigurationResponse",
     "RobloxGroupsApiGroupContentModerationPermissionsModel",
     "RobloxGroupsApiGroupDescriptionResponse",
-    "RobloxGroupsApiGroupDetailResponse",
     "RobloxGroupsApiGroupEconomyPermissionsModel",
     "RobloxGroupsApiGroupFeatureResponse",
     "RobloxGroupsApiGroupFeatureResponseFeature",
@@ -3832,7 +3835,6 @@ __all__ = (
     "RobloxGroupsApiWatermarkContributionRequest",
     "RobloxGroupsApiWatermarkContributionRequestBalanceKey",
     "RobloxGroupsClientBlockedKeywordModel",
-    "RobloxGroupsClientCommunityTierInfoResponse",
     "RobloxGroupsClientCreateBlockedKeywordsResponse",
     "RobloxGroupsClientEmoteModel",
     "RobloxGroupsClientEmoteSetModel",

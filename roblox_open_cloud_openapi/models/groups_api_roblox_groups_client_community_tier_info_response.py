@@ -8,11 +8,11 @@ from attrs import define as _attrs_define
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RobloxGroupsClientCommunityTierInfoResponse")
+T = TypeVar("T", bound="GroupsApiRobloxGroupsClientCommunityTierInfoResponse")
 
 
 @_attrs_define
-class RobloxGroupsClientCommunityTierInfoResponse:
+class GroupsApiRobloxGroupsClientCommunityTierInfoResponse:
     """
     Attributes:
         group_id (int | Unset):
@@ -82,7 +82,7 @@ class RobloxGroupsClientCommunityTierInfoResponse:
         else:
             last_evaluated_time = datetime.datetime.fromisoformat(_last_evaluated_time)
 
-        roblox_groups_client_community_tier_info_response = cls(
+        groups_api_roblox_groups_client_community_tier_info_response = cls(
             group_id=group_id,
             current_tier=current_tier,
             previous_tier=previous_tier,
@@ -90,4 +90,4 @@ class RobloxGroupsClientCommunityTierInfoResponse:
             last_evaluated_time=last_evaluated_time,
         )
 
-        return roblox_groups_client_community_tier_info_response
+        return groups_api_roblox_groups_client_community_tier_info_response

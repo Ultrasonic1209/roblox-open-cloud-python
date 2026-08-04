@@ -8,7 +8,9 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.roblox_groups_client_community_tier_info_response import RobloxGroupsClientCommunityTierInfoResponse
+    from ..models.groups_api_roblox_groups_client_community_tier_info_response import (
+        GroupsApiRobloxGroupsClientCommunityTierInfoResponse,
+    )
 
 
 T = TypeVar("T", bound="RobloxGroupsClientTierEvaluationResultResponse")
@@ -18,11 +20,11 @@ T = TypeVar("T", bound="RobloxGroupsClientTierEvaluationResultResponse")
 class RobloxGroupsClientTierEvaluationResultResponse:
     """
     Attributes:
-        tier_info (RobloxGroupsClientCommunityTierInfoResponse | Unset):
+        tier_info (GroupsApiRobloxGroupsClientCommunityTierInfoResponse | Unset):
         passed_signals (list[str] | Unset):
     """
 
-    tier_info: RobloxGroupsClientCommunityTierInfoResponse | Unset = UNSET
+    tier_info: GroupsApiRobloxGroupsClientCommunityTierInfoResponse | Unset = UNSET
     passed_signals: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,17 +48,17 @@ class RobloxGroupsClientTierEvaluationResultResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_client_community_tier_info_response import (
-            RobloxGroupsClientCommunityTierInfoResponse,
+        from ..models.groups_api_roblox_groups_client_community_tier_info_response import (
+            GroupsApiRobloxGroupsClientCommunityTierInfoResponse,
         )
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _tier_info = d.pop("tierInfo", UNSET)
-        tier_info: RobloxGroupsClientCommunityTierInfoResponse | Unset
+        tier_info: GroupsApiRobloxGroupsClientCommunityTierInfoResponse | Unset
         if isinstance(_tier_info, Unset):
             tier_info = UNSET
         else:
-            tier_info = RobloxGroupsClientCommunityTierInfoResponse.from_dict(_tier_info)
+            tier_info = GroupsApiRobloxGroupsClientCommunityTierInfoResponse.from_dict(_tier_info)
 
         passed_signals = cast(list[str], d.pop("passedSignals", UNSET))
 
