@@ -61,6 +61,9 @@ class DataStoreEntry:
             This matches the last segment of the resource path, and is provided
             only for convenience.
         users (list[str] | Unset): Users associated with the entry.
+
+            Each value must be a user resource path in the format `users/{user_id}`,
+            not a bare user ID. Example: users/123.
         attributes (DataStoreEntryAttributes | Unset): An arbitrary set of attributes associated with the entry.
     """
 

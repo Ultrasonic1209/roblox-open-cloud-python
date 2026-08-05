@@ -8,7 +8,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.groups_api_roblox_groups_api_group_detail_response import GroupsApiRobloxGroupsApiGroupDetailResponse
+    from ..models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
 
 
 T = TypeVar("T", bound="RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse")
@@ -18,10 +18,10 @@ T = TypeVar("T", bound="RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGrou
 class RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse:
     """
     Attributes:
-        data (list[GroupsApiRobloxGroupsApiGroupDetailResponse] | Unset):
+        data (list[RobloxGroupsApiGroupDetailResponse] | Unset):
     """
 
-    data: list[GroupsApiRobloxGroupsApiGroupDetailResponse] | Unset = UNSET
+    data: list[RobloxGroupsApiGroupDetailResponse] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         data: list[dict[str, Any]] | Unset = UNSET
@@ -41,17 +41,15 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.groups_api_roblox_groups_api_group_detail_response import (
-            GroupsApiRobloxGroupsApiGroupDetailResponse,
-        )
+        from ..models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _data = d.pop("data", UNSET)
-        data: list[GroupsApiRobloxGroupsApiGroupDetailResponse] | Unset = UNSET
+        data: list[RobloxGroupsApiGroupDetailResponse] | Unset = UNSET
         if _data is not UNSET:
             data = []
             for data_item_data in _data:
-                data_item = GroupsApiRobloxGroupsApiGroupDetailResponse.from_dict(data_item_data)
+                data_item = RobloxGroupsApiGroupDetailResponse.from_dict(data_item_data)
 
                 data.append(data_item)
 

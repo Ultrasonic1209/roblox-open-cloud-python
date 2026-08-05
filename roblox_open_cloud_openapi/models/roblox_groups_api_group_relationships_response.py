@@ -11,7 +11,7 @@ from ..models.roblox_groups_api_group_relationships_response_relationship_type i
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.groups_api_roblox_groups_api_group_detail_response import GroupsApiRobloxGroupsApiGroupDetailResponse
+    from ..models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
 
 
 T = TypeVar("T", bound="RobloxGroupsApiGroupRelationshipsResponse")
@@ -26,14 +26,14 @@ class RobloxGroupsApiGroupRelationshipsResponse:
         relationship_type (RobloxGroupsApiGroupRelationshipsResponseRelationshipType | Unset): The group relationship
             type ['Allies' = 1, 'Enemies' = 2]
         total_group_count (int | Unset): The total number of groups for this relationship type
-        related_groups (list[GroupsApiRobloxGroupsApiGroupDetailResponse] | Unset): The related or requested groups
+        related_groups (list[RobloxGroupsApiGroupDetailResponse] | Unset): The related or requested groups
         next_row_index (int | Unset): The index for the next page of related groups
     """
 
     group_id: int | Unset = UNSET
     relationship_type: RobloxGroupsApiGroupRelationshipsResponseRelationshipType | Unset = UNSET
     total_group_count: int | Unset = UNSET
-    related_groups: list[GroupsApiRobloxGroupsApiGroupDetailResponse] | Unset = UNSET
+    related_groups: list[RobloxGroupsApiGroupDetailResponse] | Unset = UNSET
     next_row_index: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -72,9 +72,7 @@ class RobloxGroupsApiGroupRelationshipsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.groups_api_roblox_groups_api_group_detail_response import (
-            GroupsApiRobloxGroupsApiGroupDetailResponse,
-        )
+        from ..models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         group_id = d.pop("groupId", UNSET)
@@ -89,11 +87,11 @@ class RobloxGroupsApiGroupRelationshipsResponse:
         total_group_count = d.pop("totalGroupCount", UNSET)
 
         _related_groups = d.pop("relatedGroups", UNSET)
-        related_groups: list[GroupsApiRobloxGroupsApiGroupDetailResponse] | Unset = UNSET
+        related_groups: list[RobloxGroupsApiGroupDetailResponse] | Unset = UNSET
         if _related_groups is not UNSET:
             related_groups = []
             for related_groups_item_data in _related_groups:
-                related_groups_item = GroupsApiRobloxGroupsApiGroupDetailResponse.from_dict(related_groups_item_data)
+                related_groups_item = RobloxGroupsApiGroupDetailResponse.from_dict(related_groups_item_data)
 
                 related_groups.append(related_groups_item)
 

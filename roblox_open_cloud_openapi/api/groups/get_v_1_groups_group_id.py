@@ -14,7 +14,7 @@ if sys.version_info >= (3, 13):
 else:
     from typing_extensions import deprecated
 
-from ...models.groups_api_roblox_groups_api_group_detail_response import GroupsApiRobloxGroupsApiGroupDetailResponse
+from ...models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
 
 
 def _get_kwargs(
@@ -52,9 +52,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | GroupsApiRobloxGroupsApiGroupDetailResponse | None:
+) -> Any | RobloxGroupsApiGroupDetailResponse | None:
     if response.status_code == 200:
-        response_200 = GroupsApiRobloxGroupsApiGroupDetailResponse.from_dict(response.json())
+        response_200 = RobloxGroupsApiGroupDetailResponse.from_dict(response.json())
 
         return response_200
 
@@ -70,7 +70,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | GroupsApiRobloxGroupsApiGroupDetailResponse]:
+) -> Response[Any | RobloxGroupsApiGroupDetailResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,7 +86,7 @@ def sync_detailed(
     group_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | GroupsApiRobloxGroupsApiGroupDetailResponse]:
+) -> Response[Any | RobloxGroupsApiGroupDetailResponse]:
     """Gets group information
 
     Args:
@@ -97,7 +97,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | GroupsApiRobloxGroupsApiGroupDetailResponse]
+        Response[Any | RobloxGroupsApiGroupDetailResponse]
     """
 
     kwargs = _get_kwargs(
@@ -118,7 +118,7 @@ def sync(
     group_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | GroupsApiRobloxGroupsApiGroupDetailResponse | None:
+) -> Any | RobloxGroupsApiGroupDetailResponse | None:
     """Gets group information
 
     Args:
@@ -129,7 +129,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | GroupsApiRobloxGroupsApiGroupDetailResponse
+        Any | RobloxGroupsApiGroupDetailResponse
     """
 
     return sync_detailed(
@@ -145,7 +145,7 @@ async def asyncio_detailed(
     group_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | GroupsApiRobloxGroupsApiGroupDetailResponse]:
+) -> Response[Any | RobloxGroupsApiGroupDetailResponse]:
     """Gets group information
 
     Args:
@@ -156,7 +156,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | GroupsApiRobloxGroupsApiGroupDetailResponse]
+        Response[Any | RobloxGroupsApiGroupDetailResponse]
     """
 
     kwargs = _get_kwargs(
@@ -175,7 +175,7 @@ async def asyncio(
     group_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | GroupsApiRobloxGroupsApiGroupDetailResponse | None:
+) -> Any | RobloxGroupsApiGroupDetailResponse | None:
     """Gets group information
 
     Args:
@@ -186,7 +186,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | GroupsApiRobloxGroupsApiGroupDetailResponse
+        Any | RobloxGroupsApiGroupDetailResponse
     """
 
     return (

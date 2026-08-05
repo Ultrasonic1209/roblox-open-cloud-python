@@ -8,18 +8,16 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.groups_api_roblox_groups_client_community_tier_info_response import (
-        GroupsApiRobloxGroupsClientCommunityTierInfoResponse,
-    )
     from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel
     from ..models.roblox_groups_api_shout_response import RobloxGroupsApiShoutResponse
+    from ..models.roblox_groups_client_community_tier_info_response import RobloxGroupsClientCommunityTierInfoResponse
 
 
-T = TypeVar("T", bound="GroupsApiRobloxGroupsApiGroupDetailResponse")
+T = TypeVar("T", bound="RobloxGroupsApiGroupDetailResponse")
 
 
 @_attrs_define
-class GroupsApiRobloxGroupsApiGroupDetailResponse:
+class RobloxGroupsApiGroupDetailResponse:
     """A detailed group response model
 
     Attributes:
@@ -36,7 +34,7 @@ class GroupsApiRobloxGroupsApiGroupDetailResponse:
         has_verified_badge (bool | Unset): Whether the group has a verified badge.
         has_social_modules (bool | Unset): Whether the group has social modules enabled (e.g. Forums)
             (determines if "Followers" vs "Members" should be shown).
-        community_tier (GroupsApiRobloxGroupsClientCommunityTierInfoResponse | Unset):
+        community_tier (RobloxGroupsClientCommunityTierInfoResponse | Unset):
     """
 
     id: int | Unset = UNSET
@@ -50,7 +48,7 @@ class GroupsApiRobloxGroupsApiGroupDetailResponse:
     is_locked: bool | Unset = UNSET
     has_verified_badge: bool | Unset = UNSET
     has_social_modules: bool | Unset = UNSET
-    community_tier: GroupsApiRobloxGroupsClientCommunityTierInfoResponse | Unset = UNSET
+    community_tier: RobloxGroupsClientCommunityTierInfoResponse | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
@@ -115,11 +113,11 @@ class GroupsApiRobloxGroupsApiGroupDetailResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.groups_api_roblox_groups_client_community_tier_info_response import (
-            GroupsApiRobloxGroupsClientCommunityTierInfoResponse,
-        )
         from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel
         from ..models.roblox_groups_api_shout_response import RobloxGroupsApiShoutResponse
+        from ..models.roblox_groups_client_community_tier_info_response import (
+            RobloxGroupsClientCommunityTierInfoResponse,
+        )
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
@@ -155,13 +153,13 @@ class GroupsApiRobloxGroupsApiGroupDetailResponse:
         has_social_modules = d.pop("hasSocialModules", UNSET)
 
         _community_tier = d.pop("communityTier", UNSET)
-        community_tier: GroupsApiRobloxGroupsClientCommunityTierInfoResponse | Unset
+        community_tier: RobloxGroupsClientCommunityTierInfoResponse | Unset
         if isinstance(_community_tier, Unset):
             community_tier = UNSET
         else:
-            community_tier = GroupsApiRobloxGroupsClientCommunityTierInfoResponse.from_dict(_community_tier)
+            community_tier = RobloxGroupsClientCommunityTierInfoResponse.from_dict(_community_tier)
 
-        groups_api_roblox_groups_api_group_detail_response = cls(
+        roblox_groups_api_group_detail_response = cls(
             id=id,
             name=name,
             description=description,
@@ -176,4 +174,4 @@ class GroupsApiRobloxGroupsApiGroupDetailResponse:
             community_tier=community_tier,
         )
 
-        return groups_api_roblox_groups_api_group_detail_response
+        return roblox_groups_api_group_detail_response

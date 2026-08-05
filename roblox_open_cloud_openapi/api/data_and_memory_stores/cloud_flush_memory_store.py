@@ -87,6 +87,10 @@ def sync_detailed(
 
      Asynchronously flush all data structures in the universe.
 
+    Unlike some other endpoints, the flush response `path` already
+    includes the `cloud/v2` prefix. Poll the operation at
+    `https://apis.roblox.com/{path}` without adding another prefix.
+
     Args:
         universe_id (str):
         scope (CloudFlushMemoryStoreScope | Unset):  Example: LIVE.
@@ -121,6 +125,10 @@ def sync(
 
      Asynchronously flush all data structures in the universe.
 
+    Unlike some other endpoints, the flush response `path` already
+    includes the `cloud/v2` prefix. Poll the operation at
+    `https://apis.roblox.com/{path}` without adding another prefix.
+
     Args:
         universe_id (str):
         scope (CloudFlushMemoryStoreScope | Unset):  Example: LIVE.
@@ -149,6 +157,10 @@ async def asyncio_detailed(
     """Flush Memory Store
 
      Asynchronously flush all data structures in the universe.
+
+    Unlike some other endpoints, the flush response `path` already
+    includes the `cloud/v2` prefix. Poll the operation at
+    `https://apis.roblox.com/{path}` without adding another prefix.
 
     Args:
         universe_id (str):
@@ -181,6 +193,10 @@ async def asyncio(
     """Flush Memory Store
 
      Asynchronously flush all data structures in the universe.
+
+    Unlike some other endpoints, the flush response `path` already
+    includes the `cloud/v2` prefix. Poll the operation at
+    `https://apis.roblox.com/{path}` without adding another prefix.
 
     Args:
         universe_id (str):

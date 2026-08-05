@@ -19,8 +19,8 @@ def _get_kwargs(
     module_place_id: int | Unset = UNSET,
     serverplaceid: int | Unset = UNSET,
     expected_asset_type: str | Unset = "",
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
     usage_context: int | Unset = UNSET,
     accept_encoding: str,
@@ -114,8 +114,8 @@ def sync_detailed(
     module_place_id: int | Unset = UNSET,
     serverplaceid: int | Unset = UNSET,
     expected_asset_type: str | Unset = "",
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
     usage_context: int | Unset = UNSET,
     accept_encoding: str,
@@ -135,8 +135,8 @@ def sync_detailed(
         module_place_id (int | Unset):
         serverplaceid (int | Unset):
         expected_asset_type (str | Unset):  Default: ''.
-        do_not_fallback_to_baseline_representation (bool | Unset):  Default: False.
-        content_representation_priority_list (str | Unset):  Default: ''.
+        do_not_fallback_to_baseline_representation (bool | Unset):
+        content_representation_priority_list (str | Unset):
         access_context (str | Unset):
         usage_context (int | Unset):
         accept_encoding (str):
@@ -193,8 +193,8 @@ async def asyncio_detailed(
     module_place_id: int | Unset = UNSET,
     serverplaceid: int | Unset = UNSET,
     expected_asset_type: str | Unset = "",
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
     usage_context: int | Unset = UNSET,
     accept_encoding: str,
@@ -214,8 +214,8 @@ async def asyncio_detailed(
         module_place_id (int | Unset):
         serverplaceid (int | Unset):
         expected_asset_type (str | Unset):  Default: ''.
-        do_not_fallback_to_baseline_representation (bool | Unset):  Default: False.
-        content_representation_priority_list (str | Unset):  Default: ''.
+        do_not_fallback_to_baseline_representation (bool | Unset):
+        content_representation_priority_list (str | Unset):
         access_context (str | Unset):
         usage_context (int | Unset):
         accept_encoding (str):

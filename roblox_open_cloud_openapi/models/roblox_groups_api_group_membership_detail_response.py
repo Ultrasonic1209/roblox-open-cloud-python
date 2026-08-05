@@ -8,7 +8,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.groups_api_roblox_groups_api_group_detail_response import GroupsApiRobloxGroupsApiGroupDetailResponse
+    from ..models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
     from ..models.roblox_groups_api_group_notification_preference_data import (
         RobloxGroupsApiGroupNotificationPreferenceData,
     )
@@ -23,14 +23,14 @@ class RobloxGroupsApiGroupMembershipDetailResponse:
     """A group membership response model
 
     Attributes:
-        group (GroupsApiRobloxGroupsApiGroupDetailResponse | Unset): A detailed group response model
+        group (RobloxGroupsApiGroupDetailResponse | Unset): A detailed group response model
         role (RobloxGroupsApiGroupRoleResponse | Unset): A group role response model
         is_primary_group (bool | Unset): Whether the group is the user's Primary Group
         is_notifications_enabled (bool | Unset): Whether the group notification preferences are enabled for the user
         notification_preferences (list[RobloxGroupsApiGroupNotificationPreferenceData] | Unset):
     """
 
-    group: GroupsApiRobloxGroupsApiGroupDetailResponse | Unset = UNSET
+    group: RobloxGroupsApiGroupDetailResponse | Unset = UNSET
     role: RobloxGroupsApiGroupRoleResponse | Unset = UNSET
     is_primary_group: bool | Unset = UNSET
     is_notifications_enabled: bool | Unset = UNSET
@@ -74,9 +74,7 @@ class RobloxGroupsApiGroupMembershipDetailResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.groups_api_roblox_groups_api_group_detail_response import (
-            GroupsApiRobloxGroupsApiGroupDetailResponse,
-        )
+        from ..models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
         from ..models.roblox_groups_api_group_notification_preference_data import (
             RobloxGroupsApiGroupNotificationPreferenceData,
         )
@@ -84,11 +82,11 @@ class RobloxGroupsApiGroupMembershipDetailResponse:
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _group = d.pop("group", UNSET)
-        group: GroupsApiRobloxGroupsApiGroupDetailResponse | Unset
+        group: RobloxGroupsApiGroupDetailResponse | Unset
         if isinstance(_group, Unset):
             group = UNSET
         else:
-            group = GroupsApiRobloxGroupsApiGroupDetailResponse.from_dict(_group)
+            group = RobloxGroupsApiGroupDetailResponse.from_dict(_group)
 
         _role = d.pop("role", UNSET)
         role: RobloxGroupsApiGroupRoleResponse | Unset

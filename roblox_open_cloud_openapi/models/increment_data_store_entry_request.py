@@ -26,7 +26,10 @@ class IncrementDataStoreEntryRequest:
                 and the increment amount must be integers.
             users (list[str] | Unset): Users associated with the entry.
 
-                If this is not provided, existing user IDs are cleared.
+                Each value must be a user resource path in the format `users/{user_id}`,
+                not a bare user ID.
+
+                If this is not provided, existing user IDs are cleared. Example: users/123.
             attributes (IncrementDataStoreEntryRequestAttributes | Unset): An arbitrary set of attributes associated with
                 the entry.
 

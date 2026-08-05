@@ -32,8 +32,8 @@ def _get_kwargs(
     expected_asset_type: str | Unset = "",
     skip_signing_scripts: bool | Unset = False,
     permission_context: str | Unset = UNSET,
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     asset_resolution_mode: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
     usage_context: int | Unset = UNSET,
@@ -167,8 +167,8 @@ def sync_detailed(
     expected_asset_type: str | Unset = "",
     skip_signing_scripts: bool | Unset = False,
     permission_context: str | Unset = UNSET,
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     asset_resolution_mode: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
     usage_context: int | Unset = UNSET,
@@ -197,8 +197,8 @@ def sync_detailed(
         expected_asset_type (str | Unset):  Default: ''.
         skip_signing_scripts (bool | Unset):  Default: False.
         permission_context (str | Unset):
-        do_not_fallback_to_baseline_representation (bool | Unset):  Default: False.
-        content_representation_priority_list (str | Unset):  Default: ''.
+        do_not_fallback_to_baseline_representation (bool | Unset):
+        content_representation_priority_list (str | Unset):
         asset_resolution_mode (str | Unset):
         access_context (str | Unset):
         usage_context (int | Unset):
@@ -276,8 +276,8 @@ async def asyncio_detailed(
     expected_asset_type: str | Unset = "",
     skip_signing_scripts: bool | Unset = False,
     permission_context: str | Unset = UNSET,
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     asset_resolution_mode: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
     usage_context: int | Unset = UNSET,
@@ -306,8 +306,8 @@ async def asyncio_detailed(
         expected_asset_type (str | Unset):  Default: ''.
         skip_signing_scripts (bool | Unset):  Default: False.
         permission_context (str | Unset):
-        do_not_fallback_to_baseline_representation (bool | Unset):  Default: False.
-        content_representation_priority_list (str | Unset):  Default: ''.
+        do_not_fallback_to_baseline_representation (bool | Unset):
+        content_representation_priority_list (str | Unset):
         asset_resolution_mode (str | Unset):
         access_context (str | Unset):
         usage_context (int | Unset):

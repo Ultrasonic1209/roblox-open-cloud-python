@@ -20,31 +20,31 @@ class ListMemoryStoreSortedMapItemsResponse:
     """A list of MemoryStoreSortedMapItems in the parent collection.
 
     Attributes:
-        memory_store_sorted_map_items (list[MemoryStoreSortedMapItem] | Unset): The MemoryStoreSortedMapItems from the
-            specified MemoryStoreSortedMap.
+        items (list[MemoryStoreSortedMapItem] | Unset): The MemoryStoreSortedMapItems from the specified
+            MemoryStoreSortedMap.
         next_page_token (str | Unset): A token that you can send as a `pageToken` parameter to retrieve the next
             page. If this field is omitted, there are no subsequent pages.
     """
 
-    memory_store_sorted_map_items: list[MemoryStoreSortedMapItem] | Unset = UNSET
+    items: list[MemoryStoreSortedMapItem] | Unset = UNSET
     next_page_token: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        memory_store_sorted_map_items: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.memory_store_sorted_map_items, Unset):
-            memory_store_sorted_map_items = []
-            for memory_store_sorted_map_items_item_data in self.memory_store_sorted_map_items:
-                memory_store_sorted_map_items_item = memory_store_sorted_map_items_item_data.to_dict()
-                memory_store_sorted_map_items.append(memory_store_sorted_map_items_item)
+        items: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.items, Unset):
+            items = []
+            for items_item_data in self.items:
+                items_item = items_item_data.to_dict()
+                items.append(items_item)
 
         next_page_token = self.next_page_token
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if memory_store_sorted_map_items is not UNSET:
-            field_dict["memoryStoreSortedMapItems"] = memory_store_sorted_map_items
+        if items is not UNSET:
+            field_dict["items"] = items
         if next_page_token is not UNSET:
             field_dict["nextPageToken"] = next_page_token
 
@@ -55,21 +55,19 @@ class ListMemoryStoreSortedMapItemsResponse:
         from ..models.memory_store_sorted_map_item import MemoryStoreSortedMapItem
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        _memory_store_sorted_map_items = d.pop("memoryStoreSortedMapItems", UNSET)
-        memory_store_sorted_map_items: list[MemoryStoreSortedMapItem] | Unset = UNSET
-        if _memory_store_sorted_map_items is not UNSET:
-            memory_store_sorted_map_items = []
-            for memory_store_sorted_map_items_item_data in _memory_store_sorted_map_items:
-                memory_store_sorted_map_items_item = MemoryStoreSortedMapItem.from_dict(
-                    memory_store_sorted_map_items_item_data
-                )
+        _items = d.pop("items", UNSET)
+        items: list[MemoryStoreSortedMapItem] | Unset = UNSET
+        if _items is not UNSET:
+            items = []
+            for items_item_data in _items:
+                items_item = MemoryStoreSortedMapItem.from_dict(items_item_data)
 
-                memory_store_sorted_map_items.append(memory_store_sorted_map_items_item)
+                items.append(items_item)
 
         next_page_token = d.pop("nextPageToken", UNSET)
 
         list_memory_store_sorted_map_items_response = cls(
-            memory_store_sorted_map_items=memory_store_sorted_map_items,
+            items=items,
             next_page_token=next_page_token,
         )
 
