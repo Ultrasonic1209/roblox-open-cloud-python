@@ -364,6 +364,9 @@ from .get_v2_users_user_id_inventory_sort_order import GetV2UsersUserIdInventory
 from .get_v2_users_user_id_tradable_items_item_target_types_item import GetV2UsersUserIdTradableItemsItemTargetTypesItem
 from .get_v2_users_user_id_tradable_items_sort_by import GetV2UsersUserIdTradableItemsSortBy
 from .get_v2_users_user_id_tradable_items_sort_order import GetV2UsersUserIdTradableItemsSortOrder
+from .get_v4_avatar_selection_types_item import GetV4AvatarSelectionTypesItem
+from .get_v4_avatar_users_user_id_selection_types_item import GetV4AvatarUsersUserIdSelectionTypesItem
+from .get_v4_outfits_outfit_id_details_selection_types_item import GetV4OutfitsOutfitIdDetailsSelectionTypesItem
 from .google_protobuf_any import GoogleProtobufAny
 from .grant_permission_error import GrantPermissionError
 from .group import Group
@@ -900,9 +903,19 @@ from .roblox_api_avatar_models_avatar_rules_model_player_avatar_types_item impor
     RobloxApiAvatarModelsAvatarRulesModelPlayerAvatarTypesItem,
 )
 from .roblox_api_avatar_models_avatar_rules_model_scales import RobloxApiAvatarModelsAvatarRulesModelScales
+from .roblox_api_avatar_models_avatar_thumbnail_customization_camera_model import (
+    RobloxApiAvatarModelsAvatarThumbnailCustomizationCameraModel,
+)
+from .roblox_api_avatar_models_avatar_thumbnail_customization_model import (
+    RobloxApiAvatarModelsAvatarThumbnailCustomizationModel,
+)
+from .roblox_api_avatar_models_avatar_thumbnail_customization_model_thumbnail_type import (
+    RobloxApiAvatarModelsAvatarThumbnailCustomizationModelThumbnailType,
+)
 from .roblox_api_avatar_models_body_color_model import RobloxApiAvatarModelsBodyColorModel
 from .roblox_api_avatar_models_body_colors_3_model import RobloxApiAvatarModelsBodyColors3Model
 from .roblox_api_avatar_models_body_colors_model import RobloxApiAvatarModelsBodyColorsModel
+from .roblox_api_avatar_models_body_colors_model_v4 import RobloxApiAvatarModelsBodyColorsModelV4
 from .roblox_api_avatar_models_default_clothing_assets import RobloxApiAvatarModelsDefaultClothingAssets
 from .roblox_api_avatar_models_emote_response_model import RobloxApiAvatarModelsEmoteResponseModel
 from .roblox_api_avatar_models_game_start_info_response import RobloxApiAvatarModelsGameStartInfoResponse
@@ -924,6 +937,21 @@ from .roblox_api_avatar_models_player_avatar_type_model_player_avatar_type impor
 from .roblox_api_avatar_models_scale_rules_model import RobloxApiAvatarModelsScaleRulesModel
 from .roblox_api_avatar_models_universe_avatar_asset_override_response_model import (
     RobloxApiAvatarModelsUniverseAvatarAssetOverrideResponseModel,
+)
+from .roblox_api_avatar_models_v4_avatar_background_model import RobloxApiAvatarModelsV4AvatarBackgroundModel
+from .roblox_api_avatar_models_v4_avatar_configurations import RobloxApiAvatarModelsV4AvatarConfigurations
+from .roblox_api_avatar_models_v4_avatar_definition import RobloxApiAvatarModelsV4AvatarDefinition
+from .roblox_api_avatar_models_v4_avatar_model_v4 import RobloxApiAvatarModelsV4AvatarModelV4
+from .roblox_api_avatar_models_v4_avatar_model_v4_player_avatar_type import (
+    RobloxApiAvatarModelsV4AvatarModelV4PlayerAvatarType,
+)
+from .roblox_api_avatar_models_v4_avatar_profile_frame_model import RobloxApiAvatarModelsV4AvatarProfileFrameModel
+from .roblox_api_avatar_models_v4_outfit_configurations import RobloxApiAvatarModelsV4OutfitConfigurations
+from .roblox_api_avatar_models_v4_outfit_definition import RobloxApiAvatarModelsV4OutfitDefinition
+from .roblox_api_avatar_models_v4_outfit_model_v4 import RobloxApiAvatarModelsV4OutfitModelV4
+from .roblox_api_avatar_models_v4_outfit_model_v4_outfit_type import RobloxApiAvatarModelsV4OutfitModelV4OutfitType
+from .roblox_api_avatar_models_v4_outfit_model_v4_player_avatar_type import (
+    RobloxApiAvatarModelsV4OutfitModelV4PlayerAvatarType,
 )
 from .roblox_api_avatar_models_wear_request_model import RobloxApiAvatarModelsWearRequestModel
 from .roblox_api_avatar_models_wear_response_model import RobloxApiAvatarModelsWearResponseModel
@@ -3000,6 +3028,9 @@ __all__ = (
     "GetV2UsersUserIdTradableItemsItemTargetTypesItem",
     "GetV2UsersUserIdTradableItemsSortBy",
     "GetV2UsersUserIdTradableItemsSortOrder",
+    "GetV4AvatarSelectionTypesItem",
+    "GetV4AvatarUsersUserIdSelectionTypesItem",
+    "GetV4OutfitsOutfitIdDetailsSelectionTypesItem",
     "GoogleProtobufAny",
     "GrantPermissionError",
     "Group",
@@ -3372,9 +3403,13 @@ __all__ = (
     "RobloxApiAvatarModelsAvatarRulesModelAccessoryRefinementUpperBounds",
     "RobloxApiAvatarModelsAvatarRulesModelPlayerAvatarTypesItem",
     "RobloxApiAvatarModelsAvatarRulesModelScales",
+    "RobloxApiAvatarModelsAvatarThumbnailCustomizationCameraModel",
+    "RobloxApiAvatarModelsAvatarThumbnailCustomizationModel",
+    "RobloxApiAvatarModelsAvatarThumbnailCustomizationModelThumbnailType",
     "RobloxApiAvatarModelsBodyColorModel",
     "RobloxApiAvatarModelsBodyColors3Model",
     "RobloxApiAvatarModelsBodyColorsModel",
+    "RobloxApiAvatarModelsBodyColorsModelV4",
     "RobloxApiAvatarModelsDefaultClothingAssets",
     "RobloxApiAvatarModelsEmoteResponseModel",
     "RobloxApiAvatarModelsGameStartInfoResponse",
@@ -3389,6 +3424,17 @@ __all__ = (
     "RobloxApiAvatarModelsPlayerAvatarTypeModelPlayerAvatarType",
     "RobloxApiAvatarModelsScaleRulesModel",
     "RobloxApiAvatarModelsUniverseAvatarAssetOverrideResponseModel",
+    "RobloxApiAvatarModelsV4AvatarBackgroundModel",
+    "RobloxApiAvatarModelsV4AvatarConfigurations",
+    "RobloxApiAvatarModelsV4AvatarDefinition",
+    "RobloxApiAvatarModelsV4AvatarModelV4",
+    "RobloxApiAvatarModelsV4AvatarModelV4PlayerAvatarType",
+    "RobloxApiAvatarModelsV4AvatarProfileFrameModel",
+    "RobloxApiAvatarModelsV4OutfitConfigurations",
+    "RobloxApiAvatarModelsV4OutfitDefinition",
+    "RobloxApiAvatarModelsV4OutfitModelV4",
+    "RobloxApiAvatarModelsV4OutfitModelV4OutfitType",
+    "RobloxApiAvatarModelsV4OutfitModelV4PlayerAvatarType",
     "RobloxApiAvatarModelsWearRequestModel",
     "RobloxApiAvatarModelsWearResponseModel",
     "RobloxApiDevelopAssetVersion",
