@@ -1,3 +1,4 @@
+import sys
 from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
@@ -6,8 +7,14 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_users_api_get_user_response import RobloxUsersApiGetUserResponse
 from ...types import Response
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
+from ...models.roblox_users_api_get_user_response import RobloxUsersApiGetUserResponse
 
 
 def _get_kwargs(
@@ -20,7 +27,12 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-recommended-alternatives": [
+                    {"url": "https://apis.roblox.com/cloud/v2/users/{user_id}", "httpMethod": "GET"}
+                ],
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_users_userId",
         },
     }
@@ -57,6 +69,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/user-profiles#users_get_v1_users__userId_"
+)
 def sync_detailed(
     user_id: int,
     *,
@@ -86,6 +101,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/user-profiles#users_get_v1_users__userId_"
+)
 def sync(
     user_id: int,
     *,
@@ -110,6 +128,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/user-profiles#users_get_v1_users__userId_"
+)
 async def asyncio_detailed(
     user_id: int,
     *,
@@ -137,6 +158,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/user-profiles#users_get_v1_users__userId_"
+)
 async def asyncio(
     user_id: int,
     *,

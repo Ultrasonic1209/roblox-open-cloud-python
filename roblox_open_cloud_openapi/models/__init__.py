@@ -441,8 +441,6 @@ from .internal_public_v1_targeting_devices_item import InternalPublicV1Targeting
 from .internal_public_v1_targeting_dimensions import InternalPublicV1TargetingDimensions
 from .internal_public_v1_targeting_dimensions_age_groups_item import InternalPublicV1TargetingDimensionsAgeGroupsItem
 from .internal_public_v1_targeting_dimensions_devices_item import InternalPublicV1TargetingDimensionsDevicesItem
-from .internal_public_v1_universe_eligibility import InternalPublicV1UniverseEligibility
-from .internal_public_v1_universe_eligibility_reasons_item import InternalPublicV1UniverseEligibilityReasonsItem
 from .internal_public_v1_update_budget import InternalPublicV1UpdateBudget
 from .internal_public_v1_update_campaign_request import InternalPublicV1UpdateCampaignRequest
 from .internal_public_v1_update_campaign_request_status import InternalPublicV1UpdateCampaignRequestStatus
@@ -2643,6 +2641,7 @@ from .unassign_role_group_membership_request import UnassignRoleGroupMembershipR
 from .undelete_data_store_request import UndeleteDataStoreRequest
 from .universe import Universe
 from .universe_age_rating import UniverseAgeRating
+from .universe_eligibility import UniverseEligibility
 from .universe_social_link import UniverseSocialLink
 from .universe_visibility import UniverseVisibility
 from .update_custom_matchmaking_signal_request import UpdateCustomMatchmakingSignalRequest
@@ -3099,8 +3098,6 @@ __all__ = (
     "InternalPublicV1TargetingDimensions",
     "InternalPublicV1TargetingDimensionsAgeGroupsItem",
     "InternalPublicV1TargetingDimensionsDevicesItem",
-    "InternalPublicV1UniverseEligibility",
-    "InternalPublicV1UniverseEligibilityReasonsItem",
     "InternalPublicV1UpdateBudget",
     "InternalPublicV1UpdateCampaignRequest",
     "InternalPublicV1UpdateCampaignRequestStatus",
@@ -4271,6 +4268,7 @@ __all__ = (
     "UndeleteDataStoreRequest",
     "Universe",
     "UniverseAgeRating",
+    "UniverseEligibility",
     "UniverseSocialLink",
     "UniverseVisibility",
     "UpdateCustomMatchmakingSignalRequest",

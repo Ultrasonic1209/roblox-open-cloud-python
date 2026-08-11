@@ -17,7 +17,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.internal_public_v1_ad_format import InternalPublicV1AdFormat
     from ..models.internal_public_v1_targeting_dimensions import InternalPublicV1TargetingDimensions
-    from ..models.internal_public_v1_universe_eligibility import InternalPublicV1UniverseEligibility
+    from ..models.universe_eligibility import UniverseEligibility
 
 
 T = TypeVar("T", bound="InternalPublicV1CampaignOptionsResponse")
@@ -28,7 +28,7 @@ class InternalPublicV1CampaignOptionsResponse:
     """
     Attributes:
         ad_formats (list[InternalPublicV1AdFormat] | Unset): The supported creative formats and their pixel dimensions.
-        eligibility (InternalPublicV1UniverseEligibility | Unset):
+        eligibility (UniverseEligibility | Unset):
         objectives (list[InternalPublicV1CampaignOptionsResponseObjectivesItem] | Unset): The campaign objectives you
             can create. Only `ENGAGEMENT` is supported in v1.
         payment_types (list[InternalPublicV1CampaignOptionsResponsePaymentTypesItem] | Unset): The payment types
@@ -38,7 +38,7 @@ class InternalPublicV1CampaignOptionsResponse:
     """
 
     ad_formats: list[InternalPublicV1AdFormat] | Unset = UNSET
-    eligibility: InternalPublicV1UniverseEligibility | Unset = UNSET
+    eligibility: UniverseEligibility | Unset = UNSET
     objectives: list[InternalPublicV1CampaignOptionsResponseObjectivesItem] | Unset = UNSET
     payment_types: list[InternalPublicV1CampaignOptionsResponsePaymentTypesItem] | Unset = UNSET
     targeting_dimensions: InternalPublicV1TargetingDimensions | Unset = UNSET
@@ -94,7 +94,7 @@ class InternalPublicV1CampaignOptionsResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.internal_public_v1_ad_format import InternalPublicV1AdFormat
         from ..models.internal_public_v1_targeting_dimensions import InternalPublicV1TargetingDimensions
-        from ..models.internal_public_v1_universe_eligibility import InternalPublicV1UniverseEligibility
+        from ..models.universe_eligibility import UniverseEligibility
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _ad_formats = d.pop("adFormats", UNSET)
@@ -107,11 +107,11 @@ class InternalPublicV1CampaignOptionsResponse:
                 ad_formats.append(ad_formats_item)
 
         _eligibility = d.pop("eligibility", UNSET)
-        eligibility: InternalPublicV1UniverseEligibility | Unset
+        eligibility: UniverseEligibility | Unset
         if isinstance(_eligibility, Unset):
             eligibility = UNSET
         else:
-            eligibility = InternalPublicV1UniverseEligibility.from_dict(_eligibility)
+            eligibility = UniverseEligibility.from_dict(_eligibility)
 
         _objectives = d.pop("objectives", UNSET)
         objectives: list[InternalPublicV1CampaignOptionsResponseObjectivesItem] | Unset = UNSET
