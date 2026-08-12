@@ -6,27 +6,27 @@ from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..models.data_status import DataStatus
+from ..models.analytics_query_public_api_data_status import AnalyticsQueryPublicApiDataStatus
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="DataPoint")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiDataPoint")
 
 
 @_attrs_define
-class DataPoint:
+class AnalyticsQueryPublicApiDataPoint:
     """A single data point in a metric query result.
 
     Attributes:
         time (datetime.datetime): The timestamp of the data point in UTC.
         value (float): The numeric value of the data point.
         string_values (list[str] | None | Unset): String values associated with the data point, when applicable.
-        status (DataStatus | Unset): The status of a data point in a query result.
+        status (AnalyticsQueryPublicApiDataStatus | Unset): The status of a data point in a query result.
     """
 
     time: datetime.datetime
     value: float
     string_values: list[str] | None | Unset = UNSET
-    status: DataStatus | Unset = UNSET
+    status: AnalyticsQueryPublicApiDataStatus | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         time = self.time.isoformat()
@@ -86,17 +86,17 @@ class DataPoint:
         string_values = _parse_string_values(d.pop("stringValues", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: DataStatus | Unset
+        status: AnalyticsQueryPublicApiDataStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
-            status = DataStatus(_status)
+            status = AnalyticsQueryPublicApiDataStatus(_status)
 
-        data_point = cls(
+        analytics_query_public_api_data_point = cls(
             time=time,
             value=value,
             string_values=string_values,
             status=status,
         )
 
-        return data_point
+        return analytics_query_public_api_data_point

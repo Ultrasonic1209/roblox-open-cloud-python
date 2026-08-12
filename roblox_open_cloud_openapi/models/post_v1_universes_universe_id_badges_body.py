@@ -23,7 +23,7 @@ class PostV1UniversesUniverseIdBadgesBody:
         name (str | Unset): The badge name.
         description (str | Unset): The badge description.
         payment_source_type (PostV1UniversesUniverseIdBadgesBodyPaymentSourceType | Unset): Whether or not to pay for
-            the badge with user funds, or group funds. ['User' = 1, 'Group' = 2]
+            the badge with user funds, or group funds.
         files (File | Unset): The badge icon. Optional: when omitted and a curated default badge icon is configured on
             the service, the badge is created with that default icon. When provided, exactly one file
             must be supplied.

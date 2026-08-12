@@ -27,6 +27,7 @@ def _get_kwargs(
         ),
         "extensions": {
             "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
@@ -100,6 +101,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxWebResponsesBadgesBadgeResponseV2]:
     """Creates a new badge.
 
+     Charges the selected payment source and creates the badge under the universe's root place.
+
     Args:
         universe_id (int):
         body (PostLegacyBadgesV1UniversesUniverseIdBadgesBody | Unset):
@@ -132,6 +135,8 @@ def sync(
 ) -> Any | RobloxWebResponsesBadgesBadgeResponseV2 | None:
     """Creates a new badge.
 
+     Charges the selected payment source and creates the badge under the universe's root place.
+
     Args:
         universe_id (int):
         body (PostLegacyBadgesV1UniversesUniverseIdBadgesBody | Unset):
@@ -158,6 +163,8 @@ async def asyncio_detailed(
     body: PostLegacyBadgesV1UniversesUniverseIdBadgesBody | Unset = UNSET,
 ) -> Response[Any | RobloxWebResponsesBadgesBadgeResponseV2]:
     """Creates a new badge.
+
+     Charges the selected payment source and creates the badge under the universe's root place.
 
     Args:
         universe_id (int):
@@ -188,6 +195,8 @@ async def asyncio(
     body: PostLegacyBadgesV1UniversesUniverseIdBadgesBody | Unset = UNSET,
 ) -> Any | RobloxWebResponsesBadgesBadgeResponseV2 | None:
     """Creates a new badge.
+
+     Charges the selected payment source and creates the badge under the universe's root place.
 
     Args:
         universe_id (int):

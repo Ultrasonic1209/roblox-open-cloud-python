@@ -55,7 +55,10 @@ def _get_kwargs(
         ),
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_universes_universeId_badges",
         },
     }
@@ -107,6 +110,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiBadgeResponse]:
     """Gets badges by their awarding game.
 
+     Lists badges created under the universe's root place, with paging and optional sort.
+
     Args:
         universe_id (int):
         sort_by (GetV1UniversesUniverseIdBadgesSortBy | Unset):
@@ -150,6 +155,8 @@ def sync(
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiBadgeResponse | None:
     """Gets badges by their awarding game.
 
+     Lists badges created under the universe's root place, with paging and optional sort.
+
     Args:
         universe_id (int):
         sort_by (GetV1UniversesUniverseIdBadgesSortBy | Unset):
@@ -187,6 +194,8 @@ async def asyncio_detailed(
     sort_order: GetV1UniversesUniverseIdBadgesSortOrder | Unset = GetV1UniversesUniverseIdBadgesSortOrder.ASC,
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiBadgeResponse]:
     """Gets badges by their awarding game.
+
+     Lists badges created under the universe's root place, with paging and optional sort.
 
     Args:
         universe_id (int):
@@ -228,6 +237,8 @@ async def asyncio(
     sort_order: GetV1UniversesUniverseIdBadgesSortOrder | Unset = GetV1UniversesUniverseIdBadgesSortOrder.ASC,
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiBadgeResponse | None:
     """Gets badges by their awarding game.
+
+     Lists badges created under the universe's root place, with paging and optional sort.
 
     Args:
         universe_id (int):

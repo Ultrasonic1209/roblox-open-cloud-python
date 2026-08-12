@@ -4,6 +4,20 @@ from .accept_group_join_request_request import AcceptGroupJoinRequestRequest
 from .action_result import ActionResult
 from .agent_response import AgentResponse
 from .agent_type import AgentType
+from .analytics_query_public_api_breakdown_value import AnalyticsQueryPublicApiBreakdownValue
+from .analytics_query_public_api_data_point import AnalyticsQueryPublicApiDataPoint
+from .analytics_query_public_api_data_status import AnalyticsQueryPublicApiDataStatus
+from .analytics_query_public_api_dimension_values import AnalyticsQueryPublicApiDimensionValues
+from .analytics_query_public_api_dimension_values_request import AnalyticsQueryPublicApiDimensionValuesRequest
+from .analytics_query_public_api_dimension_values_response import AnalyticsQueryPublicApiDimensionValuesResponse
+from .analytics_query_public_api_filter_operation import AnalyticsQueryPublicApiFilterOperation
+from .analytics_query_public_api_metric_granularity import AnalyticsQueryPublicApiMetricGranularity
+from .analytics_query_public_api_metric_value import AnalyticsQueryPublicApiMetricValue
+from .analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata
+from .analytics_query_public_api_query_error import AnalyticsQueryPublicApiQueryError
+from .analytics_query_public_api_query_filter import AnalyticsQueryPublicApiQueryFilter
+from .analytics_query_public_api_query_request import AnalyticsQueryPublicApiQueryRequest
+from .analytics_query_public_api_query_response import AnalyticsQueryPublicApiQueryResponse
 from .api_empty_response_model import ApiEmptyResponseModel
 from .asset import Asset
 from .asset_action import AssetAction
@@ -25,7 +39,6 @@ from .attribute_aggregation_function import AttributeAggregationFunction
 from .audio_search_filters_type_0 import AudioSearchFiltersType0
 from .batch_grant_permissions_request import BatchGrantPermissionsRequest
 from .batch_grant_permissions_response import BatchGrantPermissionsResponse
-from .breakdown_value import BreakdownValue
 from .bulk_delete_saves_request_type_0 import BulkDeleteSavesRequestType0
 from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
 from .can_invite_user_response import CanInviteUserResponse
@@ -89,8 +102,6 @@ from .currency_holder_type import CurrencyHolderType
 from .cursor_paging_direction import CursorPagingDirection
 from .custom_signal_configuration import CustomSignalConfiguration
 from .custom_signal_type import CustomSignalType
-from .data_point import DataPoint
-from .data_status import DataStatus
 from .data_store import DataStore
 from .data_store_entry import DataStoreEntry
 from .data_store_entry_attributes import DataStoreEntryAttributes
@@ -114,10 +125,7 @@ from .developer_product_config_v2 import DeveloperProductConfigV2
 from .developer_products_create_developer_product_v2_body import DeveloperProductsCreateDeveloperProductV2Body
 from .developer_products_update_developer_product_v2_body import DeveloperProductsUpdateDeveloperProductV2Body
 from .dimension_value import DimensionValue
-from .dimension_values import DimensionValues
 from .dimension_values_operation_result import DimensionValuesOperationResult
-from .dimension_values_request import DimensionValuesRequest
-from .dimension_values_response import DimensionValuesResponse
 from .discard_memory_store_queue_items_request import DiscardMemoryStoreQueueItemsRequest
 from .draft_hash_response import DraftHashResponse
 from .entries_get_entry_async_response_200 import EntriesGetEntryAsyncResponse200
@@ -137,7 +145,6 @@ from .event_visibility import EventVisibility
 from .featuring_status import FeaturingStatus
 from .filter_field import FilterField
 from .filter_field_info import FilterFieldInfo
-from .filter_operation import FilterOperation
 from .filter_options_response import FilterOptionsResponse
 from .filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0
 from .filter_type import FilterType
@@ -302,8 +309,6 @@ from .get_v1_users_target_user_id_followings_sort_order import GetV1UsersTargetU
 from .get_v1_users_user_id_assets_collectibles_asset_type import GetV1UsersUserIdAssetsCollectiblesAssetType
 from .get_v1_users_user_id_assets_collectibles_limit import GetV1UsersUserIdAssetsCollectiblesLimit
 from .get_v1_users_user_id_assets_collectibles_sort_order import GetV1UsersUserIdAssetsCollectiblesSortOrder
-from .get_v1_users_user_id_badges_limit import GetV1UsersUserIdBadgesLimit
-from .get_v1_users_user_id_badges_sort_order import GetV1UsersUserIdBadgesSortOrder
 from .get_v1_users_user_id_bundles_bundle_type_bundle_type import GetV1UsersUserIdBundlesBundleTypeBundleType
 from .get_v1_users_user_id_bundles_bundle_type_sort_order import GetV1UsersUserIdBundlesBundleTypeSortOrder
 from .get_v1_users_user_id_bundles_sort_order import GetV1UsersUserIdBundlesSortOrder
@@ -528,8 +533,6 @@ from .memory_store import MemoryStore
 from .memory_store_queue_item import MemoryStoreQueueItem
 from .memory_store_sorted_map_item import MemoryStoreSortedMapItem
 from .message_reaction import MessageReaction
-from .metric_granularity import MetricGranularity
-from .metric_value import MetricValue
 from .mock_server_signal_values import MockServerSignalValues
 from .model_instance_type import ModelInstanceType
 from .model_search_filters_type_0 import ModelSearchFiltersType0
@@ -548,7 +551,6 @@ from .ocv2_operations_operation import OCV2OperationsOperation
 from .operation import Operation
 from .operation_error import OperationError
 from .operation_error_response import OperationErrorResponse
-from .operation_metadata import OperationMetadata
 from .operation_pending import OperationPending
 from .ordered_data_store_entry import OrderedDataStoreEntry
 from .paginated_game_events_response import PaginatedGameEventsResponse
@@ -608,7 +610,6 @@ from .post_matchmaking_api_v1_game_instances_shutdown_all_body import PostMatchm
 from .post_v1_auto_localization_table_games_game_id_auto_scrape_cleanup_request_response_200 import (
     PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200,
 )
-from .post_v1_badges_badge_id_icon_body import PostV1BadgesBadgeIdIconBody
 from .post_v1_badges_badge_id_iconpublish_roblox_com_body import PostV1BadgesBadgeIdIconpublishRobloxComBody
 from .post_v1_badges_badge_id_icons_language_codes_language_code_body import (
     PostV1BadgesBadgeIdIconsLanguageCodesLanguageCodeBody,
@@ -663,12 +664,8 @@ from .publish_request import PublishRequest
 from .publish_status import PublishStatus
 from .publish_universe_message_request import PublishUniverseMessageRequest
 from .query_correction_type_0 import QueryCorrectionType0
-from .query_error import QueryError
 from .query_facets_type_0 import QueryFacetsType0
-from .query_filter import QueryFilter
 from .query_operation_result import QueryOperationResult
-from .query_request import QueryRequest
-from .query_response import QueryResponse
 from .read_memory_store_queue_items_response import ReadMemoryStoreQueueItemsResponse
 from .remove_place_matchmaking_scoring_configuration_response import RemovePlaceMatchmakingScoringConfigurationResponse
 from .repository import Repository
@@ -1205,12 +1202,8 @@ from .roblox_api_notifications_models_user_push_destination import RobloxApiNoti
 from .roblox_api_notifications_models_user_push_destination_platform import (
     RobloxApiNotificationsModelsUserPushDestinationPlatform,
 )
-from .roblox_badges_api_badge_award_response import RobloxBadgesApiBadgeAwardResponse
-from .roblox_badges_api_badge_creator_response import RobloxBadgesApiBadgeCreatorResponse
 from .roblox_badges_api_badge_metadata_response import RobloxBadgesApiBadgeMetadataResponse
 from .roblox_badges_api_badge_response import RobloxBadgesApiBadgeResponse
-from .roblox_badges_api_get_badges_by_user_response import RobloxBadgesApiGetBadgesByUserResponse
-from .roblox_badges_api_icon_upload_response import RobloxBadgesApiIconUploadResponse
 from .roblox_badges_api_universe_response import RobloxBadgesApiUniverseResponse
 from .roblox_badges_api_update_badge_request import RobloxBadgesApiUpdateBadgeRequest
 from .roblox_catalog_api_asset_favorite_model import RobloxCatalogApiAssetFavoriteModel
@@ -2363,9 +2356,6 @@ from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_uni
 from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_universe_team_create_settings_model import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseTeamCreateSettingsModel,
 )
-from .roblox_web_web_api_models_api_array_response_roblox_badges_api_badge_award_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse,
-)
 from .roblox_web_web_api_models_api_array_response_roblox_catalog_api_bundle_details_model import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxCatalogApiBundleDetailsModel,
 )
@@ -2482,9 +2472,6 @@ from .roblox_web_web_api_models_api_page_response_roblox_api_develop_models_univ
 )
 from .roblox_web_web_api_models_api_page_response_roblox_badges_api_badge_response import (
     RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiBadgeResponse,
-)
-from .roblox_web_web_api_models_api_page_response_roblox_badges_api_get_badges_by_user_response import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiGetBadgesByUserResponse,
 )
 from .roblox_web_web_api_models_api_page_response_roblox_catalog_api_bundle_details_model import (
     RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiBundleDetailsModel,
@@ -2709,6 +2696,20 @@ __all__ = (
     "ActionResult",
     "AgentResponse",
     "AgentType",
+    "AnalyticsQueryPublicApiBreakdownValue",
+    "AnalyticsQueryPublicApiDataPoint",
+    "AnalyticsQueryPublicApiDataStatus",
+    "AnalyticsQueryPublicApiDimensionValues",
+    "AnalyticsQueryPublicApiDimensionValuesRequest",
+    "AnalyticsQueryPublicApiDimensionValuesResponse",
+    "AnalyticsQueryPublicApiFilterOperation",
+    "AnalyticsQueryPublicApiMetricGranularity",
+    "AnalyticsQueryPublicApiMetricValue",
+    "AnalyticsQueryPublicApiOperationMetadata",
+    "AnalyticsQueryPublicApiQueryError",
+    "AnalyticsQueryPublicApiQueryFilter",
+    "AnalyticsQueryPublicApiQueryRequest",
+    "AnalyticsQueryPublicApiQueryResponse",
     "ApiEmptyResponseModel",
     "Asset",
     "AssetAction",
@@ -2730,7 +2731,6 @@ __all__ = (
     "AudioSearchFiltersType0",
     "BatchGrantPermissionsRequest",
     "BatchGrantPermissionsResponse",
-    "BreakdownValue",
     "BulkDeleteSavesRequestType0",
     "BulkDeleteSavesResponseType0",
     "CanInviteUserResponse",
@@ -2790,8 +2790,6 @@ __all__ = (
     "CursorPagingDirection",
     "CustomSignalConfiguration",
     "CustomSignalType",
-    "DataPoint",
-    "DataStatus",
     "DataStore",
     "DataStoreEntry",
     "DataStoreEntryAttributes",
@@ -2813,10 +2811,7 @@ __all__ = (
     "DeveloperProductsCreateDeveloperProductV2Body",
     "DeveloperProductsUpdateDeveloperProductV2Body",
     "DimensionValue",
-    "DimensionValues",
     "DimensionValuesOperationResult",
-    "DimensionValuesRequest",
-    "DimensionValuesResponse",
     "DiscardMemoryStoreQueueItemsRequest",
     "DraftHashResponse",
     "EntriesGetEntryAsyncResponse200",
@@ -2836,7 +2831,6 @@ __all__ = (
     "FeaturingStatus",
     "FilterField",
     "FilterFieldInfo",
-    "FilterOperation",
     "FilterOptionsResponse",
     "FilterOptionsResponseFiltersType0",
     "FilterType",
@@ -2973,8 +2967,6 @@ __all__ = (
     "GetV1UsersUserIdAssetsCollectiblesAssetType",
     "GetV1UsersUserIdAssetsCollectiblesLimit",
     "GetV1UsersUserIdAssetsCollectiblesSortOrder",
-    "GetV1UsersUserIdBadgesLimit",
-    "GetV1UsersUserIdBadgesSortOrder",
     "GetV1UsersUserIdBundlesBundleTypeBundleType",
     "GetV1UsersUserIdBundlesBundleTypeSortOrder",
     "GetV1UsersUserIdBundlesSortOrder",
@@ -3183,8 +3175,6 @@ __all__ = (
     "MemoryStoreQueueItem",
     "MemoryStoreSortedMapItem",
     "MessageReaction",
-    "MetricGranularity",
-    "MetricValue",
     "MockServerSignalValues",
     "ModelInstanceType",
     "ModelSearchFiltersType0",
@@ -3203,7 +3193,6 @@ __all__ = (
     "Operation",
     "OperationError",
     "OperationErrorResponse",
-    "OperationMetadata",
     "OperationPending",
     "OrderedDataStoreEntry",
     "PaginatedGameEventsResponse",
@@ -3237,7 +3226,6 @@ __all__ = (
     "PostLegacyPublishV1BadgesBadgeIdIconBody",
     "PostMatchmakingApiV1GameInstancesShutdownAllBody",
     "PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200",
-    "PostV1BadgesBadgeIdIconBody",
     "PostV1BadgesBadgeIdIconpublishRobloxComBody",
     "PostV1BadgesBadgeIdIconsLanguageCodesLanguageCodeBody",
     "PostV1CollectionsItemsItemTypeItemTargetIdItemType",
@@ -3278,12 +3266,8 @@ __all__ = (
     "PublishStatus",
     "PublishUniverseMessageRequest",
     "QueryCorrectionType0",
-    "QueryError",
     "QueryFacetsType0",
-    "QueryFilter",
     "QueryOperationResult",
-    "QueryRequest",
-    "QueryResponse",
     "ReadMemoryStoreQueueItemsResponse",
     "RemovePlaceMatchmakingScoringConfigurationResponse",
     "Repository",
@@ -3534,12 +3518,8 @@ __all__ = (
     "RobloxApiNotificationsModelsUnreadStreamNotificationsModel",
     "RobloxApiNotificationsModelsUserPushDestination",
     "RobloxApiNotificationsModelsUserPushDestinationPlatform",
-    "RobloxBadgesApiBadgeAwardResponse",
-    "RobloxBadgesApiBadgeCreatorResponse",
     "RobloxBadgesApiBadgeMetadataResponse",
     "RobloxBadgesApiBadgeResponse",
-    "RobloxBadgesApiGetBadgesByUserResponse",
-    "RobloxBadgesApiIconUploadResponse",
     "RobloxBadgesApiUniverseResponse",
     "RobloxBadgesApiUpdateBadgeRequest",
     "RobloxCatalogApiAssetFavoriteModel",
@@ -4128,7 +4108,6 @@ __all__ = (
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseIdPermissionsModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseTeamCreateSettingsModel",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxCatalogApiBundleDetailsModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxCatalogApiCatalogSearchDetailedResponseItemV2",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxFriendsApiFriendStatusResponse",
@@ -4168,7 +4147,6 @@ __all__ = (
     "RobloxWebWebAPIModelsApiPageResponseRobloxApiDevelopModelsIPlaceModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxApiDevelopModelsUniverseModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiBadgeResponse",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiGetBadgesByUserResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiBundleDetailsModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItem",
     "RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiOwnedBundleModel",

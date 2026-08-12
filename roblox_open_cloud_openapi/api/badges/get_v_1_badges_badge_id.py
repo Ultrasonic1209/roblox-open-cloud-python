@@ -20,7 +20,10 @@ def _get_kwargs(
             badge_id=quote(str(badge_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_badges_badgeId",
         },
     }
@@ -64,6 +67,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxBadgesApiBadgeResponse]:
     """Gets badge information by the badge Id.
 
+     Returns display fields, award statistics, and owning universe for a single badge.
+
     Args:
         badge_id (int):
 
@@ -93,6 +98,8 @@ def sync(
 ) -> Any | RobloxBadgesApiBadgeResponse | None:
     """Gets badge information by the badge Id.
 
+     Returns display fields, award statistics, and owning universe for a single badge.
+
     Args:
         badge_id (int):
 
@@ -116,6 +123,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[Any | RobloxBadgesApiBadgeResponse]:
     """Gets badge information by the badge Id.
+
+     Returns display fields, award statistics, and owning universe for a single badge.
 
     Args:
         badge_id (int):
@@ -143,6 +152,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> Any | RobloxBadgesApiBadgeResponse | None:
     """Gets badge information by the badge Id.
+
+     Returns display fields, award statistics, and owning universe for a single badge.
 
     Args:
         badge_id (int):

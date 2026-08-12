@@ -6,8 +6,8 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.analytics_query_public_api_dimension_values_request import AnalyticsQueryPublicApiDimensionValuesRequest
 from ...models.dimension_values_operation_result import DimensionValuesOperationResult
-from ...models.dimension_values_request import DimensionValuesRequest
 from ...models.operation_error import OperationError
 from ...models.operation_pending import OperationPending
 from ...types import UNSET, Response, Unset
@@ -16,7 +16,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     universe_id: int,
     *,
-    body: DimensionValuesRequest | DimensionValuesRequest | DimensionValuesRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,15 +39,15 @@ def _get_kwargs(
         },
     }
 
-    if isinstance(body, DimensionValuesRequest):
+    if isinstance(body, AnalyticsQueryPublicApiDimensionValuesRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/json"
-    if isinstance(body, DimensionValuesRequest):
+    if isinstance(body, AnalyticsQueryPublicApiDimensionValuesRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "text/json"
-    if isinstance(body, DimensionValuesRequest):
+    if isinstance(body, AnalyticsQueryPublicApiDimensionValuesRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/*+json"
@@ -117,7 +120,10 @@ def sync_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: DimensionValuesRequest | DimensionValuesRequest | DimensionValuesRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | Unset = UNSET,
 ) -> Response[DimensionValuesOperationResult | OperationError | OperationPending]:
     r"""Queries dimension values for a universe.
 
@@ -126,9 +132,9 @@ def sync_detailed(
 
     Args:
         universe_id (int):
-        body (DimensionValuesRequest): A request to query dimension values.
-        body (DimensionValuesRequest): A request to query dimension values.
-        body (DimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,7 +160,10 @@ def sync(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: DimensionValuesRequest | DimensionValuesRequest | DimensionValuesRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | Unset = UNSET,
 ) -> DimensionValuesOperationResult | OperationError | OperationPending | None:
     r"""Queries dimension values for a universe.
 
@@ -163,9 +172,9 @@ def sync(
 
     Args:
         universe_id (int):
-        body (DimensionValuesRequest): A request to query dimension values.
-        body (DimensionValuesRequest): A request to query dimension values.
-        body (DimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,7 +195,10 @@ async def asyncio_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: DimensionValuesRequest | DimensionValuesRequest | DimensionValuesRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | Unset = UNSET,
 ) -> Response[DimensionValuesOperationResult | OperationError | OperationPending]:
     r"""Queries dimension values for a universe.
 
@@ -195,9 +207,9 @@ async def asyncio_detailed(
 
     Args:
         universe_id (int):
-        body (DimensionValuesRequest): A request to query dimension values.
-        body (DimensionValuesRequest): A request to query dimension values.
-        body (DimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -221,7 +233,10 @@ async def asyncio(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: DimensionValuesRequest | DimensionValuesRequest | DimensionValuesRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | AnalyticsQueryPublicApiDimensionValuesRequest
+    | Unset = UNSET,
 ) -> DimensionValuesOperationResult | OperationError | OperationPending | None:
     r"""Queries dimension values for a universe.
 
@@ -230,9 +245,9 @@ async def asyncio(
 
     Args:
         universe_id (int):
-        body (DimensionValuesRequest): A request to query dimension values.
-        body (DimensionValuesRequest): A request to query dimension values.
-        body (DimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
+        body (AnalyticsQueryPublicApiDimensionValuesRequest): A request to query dimension values.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

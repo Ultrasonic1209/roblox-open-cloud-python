@@ -5,24 +5,24 @@ from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..models.filter_operation import FilterOperation
+from ..models.analytics_query_public_api_filter_operation import AnalyticsQueryPublicApiFilterOperation
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="QueryFilter")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiQueryFilter")
 
 
 @_attrs_define
-class QueryFilter:
+class AnalyticsQueryPublicApiQueryFilter:
     """A filter applied to a query dimension.
 
     Attributes:
         dimension (str): The dimension name to filter on.
-        operation (FilterOperation): The operation to apply to a query filter.
+        operation (AnalyticsQueryPublicApiFilterOperation): The operation to apply to a query filter.
         values (list[str] | Unset): The values to filter by.
     """
 
     dimension: str
-    operation: FilterOperation
+    operation: AnalyticsQueryPublicApiFilterOperation
     values: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,14 +52,14 @@ class QueryFilter:
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         dimension = d.pop("dimension")
 
-        operation = FilterOperation(d.pop("operation"))
+        operation = AnalyticsQueryPublicApiFilterOperation(d.pop("operation"))
 
         values = cast(list[str], d.pop("values", UNSET))
 
-        query_filter = cls(
+        analytics_query_public_api_query_filter = cls(
             dimension=dimension,
             operation=operation,
             values=values,
         )
 
-        return query_filter
+        return analytics_query_public_api_query_filter

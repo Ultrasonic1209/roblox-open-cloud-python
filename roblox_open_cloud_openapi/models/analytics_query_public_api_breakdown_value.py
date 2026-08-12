@@ -7,11 +7,11 @@ from attrs import define as _attrs_define
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="BreakdownValue")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiBreakdownValue")
 
 
 @_attrs_define
-class BreakdownValue:
+class AnalyticsQueryPublicApiBreakdownValue:
     """A breakdown dimension value in a query result.
 
     Attributes:
@@ -64,10 +64,10 @@ class BreakdownValue:
 
         display_value = _parse_display_value(d.pop("displayValue", UNSET))
 
-        breakdown_value = cls(
+        analytics_query_public_api_breakdown_value = cls(
             dimension=dimension,
             value=value,
             display_value=display_value,
         )
 
-        return breakdown_value
+        return analytics_query_public_api_breakdown_value

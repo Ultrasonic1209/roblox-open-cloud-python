@@ -8,8 +8,8 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.operation_metadata import OperationMetadata
-    from ..models.query_response import QueryResponse
+    from ..models.analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata
+    from ..models.analytics_query_public_api_query_response import AnalyticsQueryPublicApiQueryResponse
 
 
 T = TypeVar("T", bound="QueryOperationResult")
@@ -22,14 +22,15 @@ class QueryOperationResult:
     Attributes:
         path (None | str | Unset): The server-assigned resource path.
         done (bool | Unset): If false, the operation is still in progress. If true, the operation is completed.
-        response (QueryResponse | Unset): The response for a metric query.
-        metadata (OperationMetadata | Unset): The metadata associated with a long-running operation.
+        response (AnalyticsQueryPublicApiQueryResponse | Unset): The response for a metric query.
+        metadata (AnalyticsQueryPublicApiOperationMetadata | Unset): The metadata associated with a long-running
+            operation.
     """
 
     path: None | str | Unset = UNSET
     done: bool | Unset = UNSET
-    response: QueryResponse | Unset = UNSET
-    metadata: OperationMetadata | Unset = UNSET
+    response: AnalyticsQueryPublicApiQueryResponse | Unset = UNSET
+    metadata: AnalyticsQueryPublicApiOperationMetadata | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         path: None | str | Unset
@@ -64,8 +65,8 @@ class QueryOperationResult:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.operation_metadata import OperationMetadata
-        from ..models.query_response import QueryResponse
+        from ..models.analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata
+        from ..models.analytics_query_public_api_query_response import AnalyticsQueryPublicApiQueryResponse
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
@@ -81,18 +82,18 @@ class QueryOperationResult:
         done = d.pop("done", UNSET)
 
         _response = d.pop("response", UNSET)
-        response: QueryResponse | Unset
+        response: AnalyticsQueryPublicApiQueryResponse | Unset
         if isinstance(_response, Unset):
             response = UNSET
         else:
-            response = QueryResponse.from_dict(_response)
+            response = AnalyticsQueryPublicApiQueryResponse.from_dict(_response)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: OperationMetadata | Unset
+        metadata: AnalyticsQueryPublicApiOperationMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
-            metadata = OperationMetadata.from_dict(_metadata)
+            metadata = AnalyticsQueryPublicApiOperationMetadata.from_dict(_metadata)
 
         query_operation_result = cls(
             path=path,

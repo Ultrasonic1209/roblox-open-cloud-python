@@ -8,21 +8,21 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.dimension_values import DimensionValues
+    from ..models.analytics_query_public_api_metric_value import AnalyticsQueryPublicApiMetricValue
 
 
-T = TypeVar("T", bound="DimensionValuesResponse")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiQueryResponse")
 
 
 @_attrs_define
-class DimensionValuesResponse:
-    """The response for a dimension values query.
+class AnalyticsQueryPublicApiQueryResponse:
+    """The response for a metric query.
 
     Attributes:
-        values (list[DimensionValues] | Unset): The dimension values returned by the query.
+        values (list[AnalyticsQueryPublicApiMetricValue] | Unset): The metric values returned by the query.
     """
 
-    values: list[DimensionValues] | Unset = UNSET
+    values: list[AnalyticsQueryPublicApiMetricValue] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         values: list[dict[str, Any]] | Unset = UNSET
@@ -42,20 +42,20 @@ class DimensionValuesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.dimension_values import DimensionValues
+        from ..models.analytics_query_public_api_metric_value import AnalyticsQueryPublicApiMetricValue
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _values = d.pop("values", UNSET)
-        values: list[DimensionValues] | Unset = UNSET
+        values: list[AnalyticsQueryPublicApiMetricValue] | Unset = UNSET
         if _values is not UNSET:
             values = []
             for values_item_data in _values:
-                values_item = DimensionValues.from_dict(values_item_data)
+                values_item = AnalyticsQueryPublicApiMetricValue.from_dict(values_item_data)
 
                 values.append(values_item)
 
-        dimension_values_response = cls(
+        analytics_query_public_api_query_response = cls(
             values=values,
         )
 
-        return dimension_values_response
+        return analytics_query_public_api_query_response

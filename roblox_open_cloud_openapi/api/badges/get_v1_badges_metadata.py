@@ -15,7 +15,10 @@ def _get_kwargs() -> dict[str, Any]:
         "method": "get",
         "url": "https://badges.roblox.com/v1/badges/metadata",
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_badges_metadata",
         },
     }
@@ -54,6 +57,8 @@ def sync_detailed(
 ) -> Response[RobloxBadgesApiBadgeMetadataResponse]:
     """Gets metadata about the badges system.
 
+     Returns creation price and field length limits. Callers use this before creating or editing badges.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -77,6 +82,8 @@ def sync(
 ) -> RobloxBadgesApiBadgeMetadataResponse | None:
     """Gets metadata about the badges system.
 
+     Returns creation price and field length limits. Callers use this before creating or editing badges.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -95,6 +102,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[RobloxBadgesApiBadgeMetadataResponse]:
     """Gets metadata about the badges system.
+
+     Returns creation price and field length limits. Callers use this before creating or editing badges.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -116,6 +125,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> RobloxBadgesApiBadgeMetadataResponse | None:
     """Gets metadata about the badges system.
+
+     Returns creation price and field length limits. Callers use this before creating or editing badges.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

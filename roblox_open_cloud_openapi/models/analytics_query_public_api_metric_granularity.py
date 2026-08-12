@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class MetricGranularity(str, Enum):
+class AnalyticsQueryPublicApiMetricGranularity(str, Enum):
     HALFHOUR = "HalfHour"
     NONE = "None"
     ONEDAY = "OneDay"

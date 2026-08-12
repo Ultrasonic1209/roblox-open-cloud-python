@@ -11,11 +11,11 @@ if TYPE_CHECKING:
     from ..models.dimension_value import DimensionValue
 
 
-T = TypeVar("T", bound="DimensionValues")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiDimensionValues")
 
 
 @_attrs_define
-class DimensionValues:
+class AnalyticsQueryPublicApiDimensionValues:
     """The values for a single dimension returned by a dimension values query.
 
     Attributes:
@@ -64,9 +64,9 @@ class DimensionValues:
 
                 values.append(values_item)
 
-        dimension_values = cls(
+        analytics_query_public_api_dimension_values = cls(
             dimension=dimension,
             values=values,
         )
 
-        return dimension_values
+        return analytics_query_public_api_dimension_values

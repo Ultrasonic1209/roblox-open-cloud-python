@@ -7,11 +7,11 @@ from attrs import define as _attrs_define
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="QueryError")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiQueryError")
 
 
 @_attrs_define
-class QueryError:
+class AnalyticsQueryPublicApiQueryError:
     """The error returned from a query request.
 
     Attributes:
@@ -46,9 +46,9 @@ class QueryError:
 
         code = d.pop("code", UNSET)
 
-        query_error = cls(
+        analytics_query_public_api_query_error = cls(
             message=message,
             code=code,
         )
 
-        return query_error
+        return analytics_query_public_api_query_error

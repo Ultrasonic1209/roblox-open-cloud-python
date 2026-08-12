@@ -19,7 +19,10 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_universes_universeId_free-badges-quota",
         },
     }
@@ -58,6 +61,8 @@ def sync_detailed(
 ) -> Response[Any | int]:
     """Gets the number of free badges left for the current UTC day by their awarding game.
 
+     Reflects daily free-creation allowance for the universe when the feature is enabled.
+
     Args:
         universe_id (int):
 
@@ -87,6 +92,8 @@ def sync(
 ) -> Any | int | None:
     """Gets the number of free badges left for the current UTC day by their awarding game.
 
+     Reflects daily free-creation allowance for the universe when the feature is enabled.
+
     Args:
         universe_id (int):
 
@@ -110,6 +117,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[Any | int]:
     """Gets the number of free badges left for the current UTC day by their awarding game.
+
+     Reflects daily free-creation allowance for the universe when the feature is enabled.
 
     Args:
         universe_id (int):
@@ -137,6 +146,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> Any | int | None:
     """Gets the number of free badges left for the current UTC day by their awarding game.
+
+     Reflects daily free-creation allowance for the universe when the feature is enabled.
 
     Args:
         universe_id (int):

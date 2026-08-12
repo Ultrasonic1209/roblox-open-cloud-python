@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class DataStatus(str, Enum):
+class AnalyticsQueryPublicApiDataStatus(str, Enum):
     NOTSTATISTICALLYSIGNIFICANT = "NotStatisticallySignificant"
     PROJECTED = "Projected"
     VALID = "Valid"

@@ -6,38 +6,38 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..models.metric_granularity import MetricGranularity
+from ..models.analytics_query_public_api_metric_granularity import AnalyticsQueryPublicApiMetricGranularity
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.query_filter import QueryFilter
+    from ..models.analytics_query_public_api_query_filter import AnalyticsQueryPublicApiQueryFilter
 
 
-T = TypeVar("T", bound="QueryRequest")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiQueryRequest")
 
 
 @_attrs_define
-class QueryRequest:
+class AnalyticsQueryPublicApiQueryRequest:
     """A request to query time series metric data.
 
     Attributes:
         metric (str): The metric to query.
-        granularity (MetricGranularity): The time granularity of metric data points in a query.
+        granularity (AnalyticsQueryPublicApiMetricGranularity): The time granularity of metric data points in a query.
         start_time (datetime.datetime): The inclusive start of the query time range. Any UTC offset is accepted; results
             are always bucketed in UTC.
         end_time (datetime.datetime): The exclusive end of the query time range. Any UTC offset is accepted; results are
             always bucketed in UTC.
         breakdown (list[str] | Unset): The dimensions to group results by. Each entry is a single dimension name.
-        filter_ (list[QueryFilter] | Unset): Filters to apply to the query.
+        filter_ (list[AnalyticsQueryPublicApiQueryFilter] | Unset): Filters to apply to the query.
         limit (int | Unset): The maximum number of breakdown series to return.
     """
 
     metric: str
-    granularity: MetricGranularity
+    granularity: AnalyticsQueryPublicApiMetricGranularity
     start_time: datetime.datetime
     end_time: datetime.datetime
     breakdown: list[str] | Unset = UNSET
-    filter_: list[QueryFilter] | Unset = UNSET
+    filter_: list[AnalyticsQueryPublicApiQueryFilter] | Unset = UNSET
     limit: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -83,12 +83,12 @@ class QueryRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.query_filter import QueryFilter
+        from ..models.analytics_query_public_api_query_filter import AnalyticsQueryPublicApiQueryFilter
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         metric = d.pop("metric")
 
-        granularity = MetricGranularity(d.pop("granularity"))
+        granularity = AnalyticsQueryPublicApiMetricGranularity(d.pop("granularity"))
 
         start_time = datetime.datetime.fromisoformat(d.pop("startTime"))
 
@@ -97,17 +97,17 @@ class QueryRequest:
         breakdown = cast(list[str], d.pop("breakdown", UNSET))
 
         _filter_ = d.pop("filter", UNSET)
-        filter_: list[QueryFilter] | Unset = UNSET
+        filter_: list[AnalyticsQueryPublicApiQueryFilter] | Unset = UNSET
         if _filter_ is not UNSET:
             filter_ = []
             for filter_item_data in _filter_:
-                filter_item = QueryFilter.from_dict(filter_item_data)
+                filter_item = AnalyticsQueryPublicApiQueryFilter.from_dict(filter_item_data)
 
                 filter_.append(filter_item)
 
         limit = d.pop("limit", UNSET)
 
-        query_request = cls(
+        analytics_query_public_api_query_request = cls(
             metric=metric,
             granularity=granularity,
             start_time=start_time,
@@ -117,4 +117,4 @@ class QueryRequest:
             limit=limit,
         )
 
-        return query_request
+        return analytics_query_public_api_query_request

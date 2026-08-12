@@ -8,8 +8,8 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.operation_metadata import OperationMetadata
-    from ..models.query_error import QueryError
+    from ..models.analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata
+    from ..models.analytics_query_public_api_query_error import AnalyticsQueryPublicApiQueryError
 
 
 T = TypeVar("T", bound="OperationError")
@@ -22,14 +22,15 @@ class OperationError:
     Attributes:
         path (None | str | Unset): The server-assigned resource path.
         done (bool | Unset): If false, the operation is still in progress. If true, the operation is completed.
-        error (QueryError | Unset): The error returned from a query request.
-        metadata (OperationMetadata | Unset): The metadata associated with a long-running operation.
+        error (AnalyticsQueryPublicApiQueryError | Unset): The error returned from a query request.
+        metadata (AnalyticsQueryPublicApiOperationMetadata | Unset): The metadata associated with a long-running
+            operation.
     """
 
     path: None | str | Unset = UNSET
     done: bool | Unset = UNSET
-    error: QueryError | Unset = UNSET
-    metadata: OperationMetadata | Unset = UNSET
+    error: AnalyticsQueryPublicApiQueryError | Unset = UNSET
+    metadata: AnalyticsQueryPublicApiOperationMetadata | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         path: None | str | Unset
@@ -64,8 +65,8 @@ class OperationError:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.operation_metadata import OperationMetadata
-        from ..models.query_error import QueryError
+        from ..models.analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata
+        from ..models.analytics_query_public_api_query_error import AnalyticsQueryPublicApiQueryError
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
@@ -81,18 +82,18 @@ class OperationError:
         done = d.pop("done", UNSET)
 
         _error = d.pop("error", UNSET)
-        error: QueryError | Unset
+        error: AnalyticsQueryPublicApiQueryError | Unset
         if isinstance(_error, Unset):
             error = UNSET
         else:
-            error = QueryError.from_dict(_error)
+            error = AnalyticsQueryPublicApiQueryError.from_dict(_error)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: OperationMetadata | Unset
+        metadata: AnalyticsQueryPublicApiOperationMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
-            metadata = OperationMetadata.from_dict(_metadata)
+            metadata = AnalyticsQueryPublicApiOperationMetadata.from_dict(_metadata)
 
         operation_error = cls(
             path=path,

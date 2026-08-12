@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class FilterOperation(str, Enum):
+class AnalyticsQueryPublicApiFilterOperation(str, Enum):
     GREATERTHAN = "GreaterThan"
     GREATERTHANOREQUAL = "GreaterThanOrEqual"
     IN = "In"

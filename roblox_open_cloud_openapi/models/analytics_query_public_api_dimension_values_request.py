@@ -6,18 +6,18 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..models.metric_granularity import MetricGranularity
+from ..models.analytics_query_public_api_metric_granularity import AnalyticsQueryPublicApiMetricGranularity
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.query_filter import QueryFilter
+    from ..models.analytics_query_public_api_query_filter import AnalyticsQueryPublicApiQueryFilter
 
 
-T = TypeVar("T", bound="DimensionValuesRequest")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiDimensionValuesRequest")
 
 
 @_attrs_define
-class DimensionValuesRequest:
+class AnalyticsQueryPublicApiDimensionValuesRequest:
     """A request to query dimension values.
 
     Attributes:
@@ -27,8 +27,9 @@ class DimensionValuesRequest:
         end_time (datetime.datetime): The exclusive end of the query time range. Any UTC offset is accepted; results are
             always bucketed in UTC.
         dimensions (list[str] | Unset): The dimensions to retrieve values for. Each entry is a single dimension name.
-        filter_ (list[QueryFilter] | Unset): Filters to apply to the query.
-        granularity (MetricGranularity | Unset): The time granularity of metric data points in a query.
+        filter_ (list[AnalyticsQueryPublicApiQueryFilter] | Unset): Filters to apply to the query.
+        granularity (AnalyticsQueryPublicApiMetricGranularity | Unset): The time granularity of metric data points in a
+            query.
         limit (int | Unset): The maximum number of values to return per dimension.
     """
 
@@ -36,8 +37,8 @@ class DimensionValuesRequest:
     start_time: datetime.datetime
     end_time: datetime.datetime
     dimensions: list[str] | Unset = UNSET
-    filter_: list[QueryFilter] | Unset = UNSET
-    granularity: MetricGranularity | Unset = UNSET
+    filter_: list[AnalyticsQueryPublicApiQueryFilter] | Unset = UNSET
+    granularity: AnalyticsQueryPublicApiMetricGranularity | Unset = UNSET
     limit: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -86,7 +87,7 @@ class DimensionValuesRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.query_filter import QueryFilter
+        from ..models.analytics_query_public_api_query_filter import AnalyticsQueryPublicApiQueryFilter
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         metric = d.pop("metric")
@@ -98,24 +99,24 @@ class DimensionValuesRequest:
         dimensions = cast(list[str], d.pop("dimensions", UNSET))
 
         _filter_ = d.pop("filter", UNSET)
-        filter_: list[QueryFilter] | Unset = UNSET
+        filter_: list[AnalyticsQueryPublicApiQueryFilter] | Unset = UNSET
         if _filter_ is not UNSET:
             filter_ = []
             for filter_item_data in _filter_:
-                filter_item = QueryFilter.from_dict(filter_item_data)
+                filter_item = AnalyticsQueryPublicApiQueryFilter.from_dict(filter_item_data)
 
                 filter_.append(filter_item)
 
         _granularity = d.pop("granularity", UNSET)
-        granularity: MetricGranularity | Unset
+        granularity: AnalyticsQueryPublicApiMetricGranularity | Unset
         if isinstance(_granularity, Unset):
             granularity = UNSET
         else:
-            granularity = MetricGranularity(_granularity)
+            granularity = AnalyticsQueryPublicApiMetricGranularity(_granularity)
 
         limit = d.pop("limit", UNSET)
 
-        dimension_values_request = cls(
+        analytics_query_public_api_dimension_values_request = cls(
             metric=metric,
             start_time=start_time,
             end_time=end_time,
@@ -125,4 +126,4 @@ class DimensionValuesRequest:
             limit=limit,
         )
 
-        return dimension_values_request
+        return analytics_query_public_api_dimension_values_request

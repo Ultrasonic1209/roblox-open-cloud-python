@@ -25,6 +25,7 @@ def _get_kwargs(
         ),
         "extensions": {
             "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
@@ -98,6 +99,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxWebWebAPIApiEmptyResponseModel]:
     """Updates badge configuration.
 
+     Managers may change enabled state, name, and description when authorized for the badge.
+
     Args:
         badge_id (int):
         body (RobloxBadgesApiUpdateBadgeRequest): A request model used for updating badge
@@ -133,6 +136,8 @@ def sync(
 ) -> Any | RobloxWebWebAPIApiEmptyResponseModel | None:
     """Updates badge configuration.
 
+     Managers may change enabled state, name, and description when authorized for the badge.
+
     Args:
         badge_id (int):
         body (RobloxBadgesApiUpdateBadgeRequest): A request model used for updating badge
@@ -162,6 +167,8 @@ async def asyncio_detailed(
     body: RobloxBadgesApiUpdateBadgeRequest | RobloxBadgesApiUpdateBadgeRequest | Unset = UNSET,
 ) -> Response[Any | RobloxWebWebAPIApiEmptyResponseModel]:
     """Updates badge configuration.
+
+     Managers may change enabled state, name, and description when authorized for the badge.
 
     Args:
         badge_id (int):
@@ -195,6 +202,8 @@ async def asyncio(
     body: RobloxBadgesApiUpdateBadgeRequest | RobloxBadgesApiUpdateBadgeRequest | Unset = UNSET,
 ) -> Any | RobloxWebWebAPIApiEmptyResponseModel | None:
     """Updates badge configuration.
+
+     Managers may change enabled state, name, and description when authorized for the badge.
 
     Args:
         badge_id (int):

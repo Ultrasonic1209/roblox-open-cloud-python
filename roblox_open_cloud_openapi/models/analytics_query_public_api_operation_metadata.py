@@ -8,11 +8,11 @@ from attrs import define as _attrs_define
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OperationMetadata")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiOperationMetadata")
 
 
 @_attrs_define
-class OperationMetadata:
+class AnalyticsQueryPublicApiOperationMetadata:
     """The metadata associated with a long-running operation.
 
     Attributes:
@@ -59,8 +59,8 @@ class OperationMetadata:
 
         created_time = _parse_created_time(d.pop("createdTime", UNSET))
 
-        operation_metadata = cls(
+        analytics_query_public_api_operation_metadata = cls(
             created_time=created_time,
         )
 
-        return operation_metadata
+        return analytics_query_public_api_operation_metadata

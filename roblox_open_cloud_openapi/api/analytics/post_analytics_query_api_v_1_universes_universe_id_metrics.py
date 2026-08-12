@@ -6,17 +6,20 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.analytics_query_public_api_query_request import AnalyticsQueryPublicApiQueryRequest
 from ...models.operation_error import OperationError
 from ...models.operation_pending import OperationPending
 from ...models.query_operation_result import QueryOperationResult
-from ...models.query_request import QueryRequest
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     universe_id: int,
     *,
-    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,15 +39,15 @@ def _get_kwargs(
         },
     }
 
-    if isinstance(body, QueryRequest):
+    if isinstance(body, AnalyticsQueryPublicApiQueryRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/json"
-    if isinstance(body, QueryRequest):
+    if isinstance(body, AnalyticsQueryPublicApiQueryRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "text/json"
-    if isinstance(body, QueryRequest):
+    if isinstance(body, AnalyticsQueryPublicApiQueryRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/*+json"
@@ -117,7 +120,10 @@ def sync_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | Unset = UNSET,
 ) -> Response[OperationError | OperationPending | QueryOperationResult]:
     r"""Queries time series metric data for a universe.
 
@@ -126,9 +132,9 @@ def sync_detailed(
 
     Args:
         universe_id (int):
-        body (QueryRequest): A request to query time series metric data.
-        body (QueryRequest): A request to query time series metric data.
-        body (QueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,7 +160,10 @@ def sync(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | Unset = UNSET,
 ) -> OperationError | OperationPending | QueryOperationResult | None:
     r"""Queries time series metric data for a universe.
 
@@ -163,9 +172,9 @@ def sync(
 
     Args:
         universe_id (int):
-        body (QueryRequest): A request to query time series metric data.
-        body (QueryRequest): A request to query time series metric data.
-        body (QueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,7 +195,10 @@ async def asyncio_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | Unset = UNSET,
 ) -> Response[OperationError | OperationPending | QueryOperationResult]:
     r"""Queries time series metric data for a universe.
 
@@ -195,9 +207,9 @@ async def asyncio_detailed(
 
     Args:
         universe_id (int):
-        body (QueryRequest): A request to query time series metric data.
-        body (QueryRequest): A request to query time series metric data.
-        body (QueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -221,7 +233,10 @@ async def asyncio(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+    body: AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | AnalyticsQueryPublicApiQueryRequest
+    | Unset = UNSET,
 ) -> OperationError | OperationPending | QueryOperationResult | None:
     r"""Queries time series metric data for a universe.
 
@@ -230,9 +245,9 @@ async def asyncio(
 
     Args:
         universe_id (int):
-        body (QueryRequest): A request to query time series metric data.
-        body (QueryRequest): A request to query time series metric data.
-        body (QueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

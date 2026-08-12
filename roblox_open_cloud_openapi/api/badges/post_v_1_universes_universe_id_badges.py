@@ -32,6 +32,7 @@ def _get_kwargs(
         ),
         "extensions": {
             "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
                 "x-roblox-recommended-alternatives": [
                     {
@@ -110,6 +111,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxWebResponsesBadgesBadgeResponseV2]:
     """Creates a new badge.
 
+     Charges the selected payment source and creates the badge under the universe's root place.
+
     Args:
         universe_id (int):
         body (PostV1UniversesUniverseIdBadgesBody | Unset):
@@ -145,6 +148,8 @@ def sync(
 ) -> Any | RobloxWebResponsesBadgesBadgeResponseV2 | None:
     """Creates a new badge.
 
+     Charges the selected payment source and creates the badge under the universe's root place.
+
     Args:
         universe_id (int):
         body (PostV1UniversesUniverseIdBadgesBody | Unset):
@@ -174,6 +179,8 @@ async def asyncio_detailed(
     body: PostV1UniversesUniverseIdBadgesBody | Unset = UNSET,
 ) -> Response[Any | RobloxWebResponsesBadgesBadgeResponseV2]:
     """Creates a new badge.
+
+     Charges the selected payment source and creates the badge under the universe's root place.
 
     Args:
         universe_id (int):
@@ -207,6 +214,8 @@ async def asyncio(
     body: PostV1UniversesUniverseIdBadgesBody | Unset = UNSET,
 ) -> Any | RobloxWebResponsesBadgesBadgeResponseV2 | None:
     """Creates a new badge.
+
+     Charges the selected payment source and creates the badge under the universe's root place.
 
     Args:
         universe_id (int):
