@@ -19,6 +19,7 @@ def _get_kwargs(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -34,6 +35,8 @@ def _get_kwargs(
         json_friend_request_sort = friend_request_sort.value
 
     params["friendRequestSort"] = json_friend_request_sort
+
+    params["uprankUnseen"] = uprank_unseen
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -101,6 +104,7 @@ def sync_detailed(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse]:
     """Get all users that friend requests with targetUserId using exclusive start paging
 
@@ -110,6 +114,7 @@ def sync_detailed(
         session_id (str | Unset):
         friend_request_sort (GetV1MyFriendsRequestsFriendRequestSort | Unset):  Default:
             GetV1MyFriendsRequestsFriendRequestSort.VALUE_1.
+        uprank_unseen (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -124,6 +129,7 @@ def sync_detailed(
         cursor=cursor,
         session_id=session_id,
         friend_request_sort=friend_request_sort,
+        uprank_unseen=uprank_unseen,
     )
 
     response = client.get_httpx2_client().request(
@@ -141,6 +147,7 @@ def sync(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse | None:
     """Get all users that friend requests with targetUserId using exclusive start paging
 
@@ -150,6 +157,7 @@ def sync(
         session_id (str | Unset):
         friend_request_sort (GetV1MyFriendsRequestsFriendRequestSort | Unset):  Default:
             GetV1MyFriendsRequestsFriendRequestSort.VALUE_1.
+        uprank_unseen (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -165,6 +173,7 @@ def sync(
         cursor=cursor,
         session_id=session_id,
         friend_request_sort=friend_request_sort,
+        uprank_unseen=uprank_unseen,
     ).parsed
 
 
@@ -176,6 +185,7 @@ async def asyncio_detailed(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse]:
     """Get all users that friend requests with targetUserId using exclusive start paging
 
@@ -185,6 +195,7 @@ async def asyncio_detailed(
         session_id (str | Unset):
         friend_request_sort (GetV1MyFriendsRequestsFriendRequestSort | Unset):  Default:
             GetV1MyFriendsRequestsFriendRequestSort.VALUE_1.
+        uprank_unseen (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -199,6 +210,7 @@ async def asyncio_detailed(
         cursor=cursor,
         session_id=session_id,
         friend_request_sort=friend_request_sort,
+        uprank_unseen=uprank_unseen,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)
@@ -214,6 +226,7 @@ async def asyncio(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse | None:
     """Get all users that friend requests with targetUserId using exclusive start paging
 
@@ -223,6 +236,7 @@ async def asyncio(
         session_id (str | Unset):
         friend_request_sort (GetV1MyFriendsRequestsFriendRequestSort | Unset):  Default:
             GetV1MyFriendsRequestsFriendRequestSort.VALUE_1.
+        uprank_unseen (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -239,5 +253,6 @@ async def asyncio(
             cursor=cursor,
             session_id=session_id,
             friend_request_sort=friend_request_sort,
+            uprank_unseen=uprank_unseen,
         )
     ).parsed
