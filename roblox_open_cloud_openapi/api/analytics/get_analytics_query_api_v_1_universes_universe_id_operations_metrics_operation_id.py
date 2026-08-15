@@ -6,7 +6,7 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.operation_error import OperationError
+from ...models.analytics_query_public_api_operation_error import AnalyticsQueryPublicApiOperationError
 from ...models.operation_pending import OperationPending
 from ...models.query_operation_result import QueryOperationResult
 from ...types import Response
@@ -39,7 +39,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> OperationError | OperationPending | QueryOperationResult | None:
+) -> AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult | None:
     if response.status_code == 200:
         response_200 = QueryOperationResult.from_dict(response.json())
 
@@ -51,32 +51,32 @@ def _parse_response(
         return response_202
 
     if response.status_code == 400:
-        response_400 = OperationError.from_dict(response.json())
+        response_400 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 404:
-        response_404 = OperationError.from_dict(response.json())
+        response_404 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
 
         return response_404
 
     if response.status_code == 429:
-        response_429 = OperationError.from_dict(response.json())
+        response_429 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
 
         return response_429
 
     if response.status_code == 500:
-        response_500 = OperationError.from_dict(response.json())
+        response_500 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
 
         return response_500
 
     if response.status_code == 503:
-        response_503 = OperationError.from_dict(response.json())
+        response_503 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
 
         return response_503
 
     if response.status_code == 504:
-        response_504 = OperationError.from_dict(response.json())
+        response_504 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
 
         return response_504
 
@@ -88,7 +88,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[OperationError | OperationPending | QueryOperationResult]:
+) -> Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -102,7 +102,7 @@ def sync_detailed(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[OperationError | OperationPending | QueryOperationResult]:
+) -> Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]:
     r"""Retrieves the result of a long-running metrics query operation.
 
      See the <a href=\"https://create.roblox.com/docs/cloud/guides/analytics\">Analytics guide</a> for
@@ -117,7 +117,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OperationError | OperationPending | QueryOperationResult]
+        Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]
     """
 
     kwargs = _get_kwargs(
@@ -137,7 +137,7 @@ def sync(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> OperationError | OperationPending | QueryOperationResult | None:
+) -> AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult | None:
     r"""Retrieves the result of a long-running metrics query operation.
 
      See the <a href=\"https://create.roblox.com/docs/cloud/guides/analytics\">Analytics guide</a> for
@@ -152,7 +152,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OperationError | OperationPending | QueryOperationResult
+        AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult
     """
 
     return sync_detailed(
@@ -167,7 +167,7 @@ async def asyncio_detailed(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[OperationError | OperationPending | QueryOperationResult]:
+) -> Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]:
     r"""Retrieves the result of a long-running metrics query operation.
 
      See the <a href=\"https://create.roblox.com/docs/cloud/guides/analytics\">Analytics guide</a> for
@@ -182,7 +182,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OperationError | OperationPending | QueryOperationResult]
+        Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]
     """
 
     kwargs = _get_kwargs(
@@ -200,7 +200,7 @@ async def asyncio(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> OperationError | OperationPending | QueryOperationResult | None:
+) -> AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult | None:
     r"""Retrieves the result of a long-running metrics query operation.
 
      See the <a href=\"https://create.roblox.com/docs/cloud/guides/analytics\">Analytics guide</a> for
@@ -215,7 +215,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OperationError | OperationPending | QueryOperationResult
+        AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult
     """
 
     return (

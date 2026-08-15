@@ -145,6 +145,8 @@ def sync_detailed(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         start_time (str | Unset):
         end_time (str | Unset):
         max_page_size (str | Unset):
@@ -218,6 +220,8 @@ def sync(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         start_time (str | Unset):
         end_time (str | Unset):
         max_page_size (str | Unset):
@@ -286,6 +290,8 @@ async def asyncio_detailed(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         start_time (str | Unset):
         end_time (str | Unset):
         max_page_size (str | Unset):
@@ -357,6 +363,8 @@ async def asyncio(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         start_time (str | Unset):
         end_time (str | Unset):
         max_page_size (str | Unset):

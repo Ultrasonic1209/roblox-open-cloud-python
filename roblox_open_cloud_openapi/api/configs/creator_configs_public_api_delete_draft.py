@@ -138,6 +138,8 @@ def sync_detailed(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
@@ -196,6 +198,8 @@ def sync(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
@@ -249,6 +253,8 @@ async def asyncio_detailed(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
@@ -305,6 +311,8 @@ async def asyncio(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.
         body (DeleteDraftRequest | Unset): Request model for deleting/resetting a draft.

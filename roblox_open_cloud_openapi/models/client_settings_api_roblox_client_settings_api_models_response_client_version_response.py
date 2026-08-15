@@ -7,11 +7,11 @@ from attrs import define as _attrs_define
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RobloxClientSettingsApiModelsResponseClientVersionResponse")
+T = TypeVar("T", bound="ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse")
 
 
 @_attrs_define
-class RobloxClientSettingsApiModelsResponseClientVersionResponse:
+class ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse:
     """
     Attributes:
         version (str | Unset):
@@ -19,7 +19,6 @@ class RobloxClientSettingsApiModelsResponseClientVersionResponse:
         bootstrapper_version (str | Unset):
         next_client_version_upload (str | Unset):
         next_client_version (str | Unset):
-        force_install (bool | Unset):
     """
 
     version: str | Unset = UNSET
@@ -27,7 +26,6 @@ class RobloxClientSettingsApiModelsResponseClientVersionResponse:
     bootstrapper_version: str | Unset = UNSET
     next_client_version_upload: str | Unset = UNSET
     next_client_version: str | Unset = UNSET
-    force_install: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         version = self.version
@@ -39,8 +37,6 @@ class RobloxClientSettingsApiModelsResponseClientVersionResponse:
         next_client_version_upload = self.next_client_version_upload
 
         next_client_version = self.next_client_version
-
-        force_install = self.force_install
 
         field_dict: dict[str, Any] = {}
 
@@ -55,8 +51,6 @@ class RobloxClientSettingsApiModelsResponseClientVersionResponse:
             field_dict["nextClientVersionUpload"] = next_client_version_upload
         if next_client_version is not UNSET:
             field_dict["nextClientVersion"] = next_client_version
-        if force_install is not UNSET:
-            field_dict["forceInstall"] = force_install
 
         return field_dict
 
@@ -73,15 +67,12 @@ class RobloxClientSettingsApiModelsResponseClientVersionResponse:
 
         next_client_version = d.pop("nextClientVersion", UNSET)
 
-        force_install = d.pop("forceInstall", UNSET)
-
-        roblox_client_settings_api_models_response_client_version_response = cls(
+        client_settings_api_roblox_client_settings_api_models_response_client_version_response = cls(
             version=version,
             client_version_upload=client_version_upload,
             bootstrapper_version=bootstrapper_version,
             next_client_version_upload=next_client_version_upload,
             next_client_version=next_client_version,
-            force_install=force_install,
         )
 
-        return roblox_client_settings_api_models_response_client_version_response
+        return client_settings_api_roblox_client_settings_api_models_response_client_version_response

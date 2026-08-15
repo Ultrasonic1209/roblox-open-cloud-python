@@ -12,11 +12,11 @@ if TYPE_CHECKING:
     from ..models.analytics_query_public_api_query_error import AnalyticsQueryPublicApiQueryError
 
 
-T = TypeVar("T", bound="OperationError")
+T = TypeVar("T", bound="AnalyticsQueryPublicApiOperationError")
 
 
 @_attrs_define
-class OperationError:
+class AnalyticsQueryPublicApiOperationError:
     """A completed long-running operation that failed with an error.
 
     Attributes:
@@ -95,11 +95,11 @@ class OperationError:
         else:
             metadata = AnalyticsQueryPublicApiOperationMetadata.from_dict(_metadata)
 
-        operation_error = cls(
+        analytics_query_public_api_operation_error = cls(
             path=path,
             done=done,
             error=error,
             metadata=metadata,
         )
 
-        return operation_error
+        return analytics_query_public_api_operation_error

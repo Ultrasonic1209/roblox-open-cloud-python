@@ -13,6 +13,7 @@ from .analytics_query_public_api_dimension_values_response import AnalyticsQuery
 from .analytics_query_public_api_filter_operation import AnalyticsQueryPublicApiFilterOperation
 from .analytics_query_public_api_metric_granularity import AnalyticsQueryPublicApiMetricGranularity
 from .analytics_query_public_api_metric_value import AnalyticsQueryPublicApiMetricValue
+from .analytics_query_public_api_operation_error import AnalyticsQueryPublicApiOperationError
 from .analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata
 from .analytics_query_public_api_query_error import AnalyticsQueryPublicApiQueryError
 from .analytics_query_public_api_query_filter import AnalyticsQueryPublicApiQueryFilter
@@ -43,6 +44,9 @@ from .bulk_delete_saves_request_type_0 import BulkDeleteSavesRequestType0
 from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
 from .can_invite_user_response import CanInviteUserResponse
 from .category_response import CategoryResponse
+from .client_settings_api_roblox_client_settings_api_models_response_client_version_response import (
+    ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse,
+)
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
 from .cloud_flush_memory_store_scope import CloudFlushMemoryStoreScope
@@ -549,7 +553,6 @@ from .ocv1_assets_status import OCV1AssetsStatus
 from .ocv1_data_stores_data_store import OCV1DataStoresDataStore
 from .ocv2_operations_operation import OCV2OperationsOperation
 from .operation import Operation
-from .operation_error import OperationError
 from .operation_error_response import OperationErrorResponse
 from .operation_pending import OperationPending
 from .ordered_data_store_entry import OrderedDataStoreEntry
@@ -2705,6 +2708,7 @@ __all__ = (
     "AnalyticsQueryPublicApiFilterOperation",
     "AnalyticsQueryPublicApiMetricGranularity",
     "AnalyticsQueryPublicApiMetricValue",
+    "AnalyticsQueryPublicApiOperationError",
     "AnalyticsQueryPublicApiOperationMetadata",
     "AnalyticsQueryPublicApiQueryError",
     "AnalyticsQueryPublicApiQueryFilter",
@@ -2735,6 +2739,7 @@ __all__ = (
     "BulkDeleteSavesResponseType0",
     "CanInviteUserResponse",
     "CategoryResponse",
+    "ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
     "CloudFlushMemoryStoreScope",
@@ -3191,7 +3196,6 @@ __all__ = (
     "OCV1DataStoresDataStore",
     "OCV2OperationsOperation",
     "Operation",
-    "OperationError",
     "OperationErrorResponse",
     "OperationPending",
     "OrderedDataStoreEntry",

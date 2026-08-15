@@ -115,6 +115,8 @@ def sync_detailed(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         revision_id (str):
 
     Raises:
@@ -171,6 +173,8 @@ def sync(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         revision_id (str):
 
     Raises:
@@ -222,6 +226,8 @@ async def asyncio_detailed(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         revision_id (str):
 
     Raises:
@@ -276,6 +282,8 @@ async def asyncio(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
         revision_id (str):
 
     Raises:

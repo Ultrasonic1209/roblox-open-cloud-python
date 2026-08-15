@@ -111,6 +111,8 @@ def sync_detailed(
 
             JourneysConfig
 
+            AntiCheatConfig
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -162,6 +164,8 @@ def sync(
 
             JourneysConfig
 
+            AntiCheatConfig
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -207,6 +211,8 @@ async def asyncio_detailed(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -256,6 +262,8 @@ async def asyncio(
             ExperienceUserConfig
 
             JourneysConfig
+
+            AntiCheatConfig
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

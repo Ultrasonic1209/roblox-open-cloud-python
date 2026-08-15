@@ -45,10 +45,7 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
         unplayable_display_text (str | Unset): Localized display text explaining why unplayable
         playable_ux_treatment (RobloxGamesApiModelsResponsePlayableUxTreatment | Unset):
         upsell_ux_treatment (RobloxGamesApiModelsResponseUpsellUxTreatment | Unset): Upsell UX treatment metadata
-            appended to a playability response when an experience is
-            currently playable but will be restricted under upcoming Roblox-Core content rules.
-            Mirrors the existing Roblox.Games.Api.Models.Response.PlayableUxTreatment contract intentionally so client
-            rendering can be unified.
+            appended to a playability response.
         demo_mode_available (bool | Unset): Whether the game supports demo play for users who have not purchased it.
             Only set when PlayabilityStatus is PurchaseRequired or FiatPurchaseRequired.
     """

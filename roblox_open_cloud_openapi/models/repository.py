@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class Repository(str, Enum):
+    ANTI_CHEAT_CONFIG = "AntiCheatConfig"
     DATA_STORES_CONFIG = "DataStoresConfig"
     EXPERIENCE_USER_CONFIG = "ExperienceUserConfig"
     EXTENDED_SERVICES_CONFIG = "ExtendedServicesConfig"
