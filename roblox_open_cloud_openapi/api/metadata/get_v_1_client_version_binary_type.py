@@ -14,8 +14,8 @@ if sys.version_info >= (3, 13):
 else:
     from typing_extensions import deprecated
 
-from ...models.client_settings_api_roblox_client_settings_api_models_response_client_version_response import (
-    ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse,
+from ...models.roblox_client_settings_api_models_response_client_version_response import (
+    RobloxClientSettingsApiModelsResponseClientVersionResponse,
 )
 
 
@@ -48,11 +48,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse | None:
+) -> RobloxClientSettingsApiModelsResponseClientVersionResponse | None:
     if response.status_code == 200:
-        response_200 = ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse.from_dict(
-            response.json()
-        )
+        response_200 = RobloxClientSettingsApiModelsResponseClientVersionResponse.from_dict(response.json())
 
         return response_200
 
@@ -64,7 +62,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse]:
+) -> Response[RobloxClientSettingsApiModelsResponseClientVersionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,7 +78,7 @@ def sync_detailed(
     binary_type: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse]:
+) -> Response[RobloxClientSettingsApiModelsResponseClientVersionResponse]:
     """Get client version information for specific binary type
 
     Args:
@@ -91,7 +89,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse]
+        Response[RobloxClientSettingsApiModelsResponseClientVersionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -112,7 +110,7 @@ def sync(
     binary_type: str,
     *,
     client: AuthenticatedClient,
-) -> ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse | None:
+) -> RobloxClientSettingsApiModelsResponseClientVersionResponse | None:
     """Get client version information for specific binary type
 
     Args:
@@ -123,7 +121,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse
+        RobloxClientSettingsApiModelsResponseClientVersionResponse
     """
 
     return sync_detailed(
@@ -139,7 +137,7 @@ async def asyncio_detailed(
     binary_type: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse]:
+) -> Response[RobloxClientSettingsApiModelsResponseClientVersionResponse]:
     """Get client version information for specific binary type
 
     Args:
@@ -150,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse]
+        Response[RobloxClientSettingsApiModelsResponseClientVersionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -169,7 +167,7 @@ async def asyncio(
     binary_type: str,
     *,
     client: AuthenticatedClient,
-) -> ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse | None:
+) -> RobloxClientSettingsApiModelsResponseClientVersionResponse | None:
     """Get client version information for specific binary type
 
     Args:
@@ -180,7 +178,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse
+        RobloxClientSettingsApiModelsResponseClientVersionResponse
     """
 
     return (
