@@ -1,3 +1,4 @@
+import sys
 from http import HTTPStatus
 from typing import Any, cast
 
@@ -5,9 +6,15 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response, Unset
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
 from ...models.roblox_api_avatar_models_avatar_api_success_response import RobloxApiAvatarModelsAvatarApiSuccessResponse
 from ...models.roblox_platform_avatar_body_colors_model_v2 import RobloxPlatformAvatarBodyColorsModelV2
-from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -74,6 +81,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v2_avatar_set_body_colors"
+)
 def sync_detailed(
     *,
     client: AuthenticatedClient,
@@ -81,6 +91,8 @@ def sync_detailed(
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any | RobloxApiAvatarModelsAvatarApiSuccessResponse]:
     """Sets the authenticated user's body colors.
+
+     Please use PATCH v4/avatar
 
     Args:
         roblox_place_id (int | Unset):
@@ -107,6 +119,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v2_avatar_set_body_colors"
+)
 def sync(
     *,
     client: AuthenticatedClient,
@@ -114,6 +129,8 @@ def sync(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsAvatarApiSuccessResponse | None:
     """Sets the authenticated user's body colors.
+
+     Please use PATCH v4/avatar
 
     Args:
         roblox_place_id (int | Unset):
@@ -135,6 +152,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v2_avatar_set_body_colors"
+)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -142,6 +162,8 @@ async def asyncio_detailed(
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any | RobloxApiAvatarModelsAvatarApiSuccessResponse]:
     """Sets the authenticated user's body colors.
+
+     Please use PATCH v4/avatar
 
     Args:
         roblox_place_id (int | Unset):
@@ -166,6 +188,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v2_avatar_set_body_colors"
+)
 async def asyncio(
     *,
     client: AuthenticatedClient,
@@ -173,6 +198,8 @@ async def asyncio(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsAvatarApiSuccessResponse | None:
     """Sets the authenticated user's body colors.
+
+     Please use PATCH v4/avatar
 
     Args:
         roblox_place_id (int | Unset):

@@ -16,11 +16,10 @@ T = TypeVar("T", bound="ConditionalRuleDefinition")
 
 @_attrs_define
 class ConditionalRuleDefinition:
-    """JSON shape of an RPN conditional rule in public API requests, aligned with
-    `roblox.creatorexperienceconfig.conditionrules.v1.RpnRule`.
+    """JSON shape of an RPN conditional rule in public API requests.
 
-        Attributes:
-            tokens (list[RpnTokenDto] | None | Unset): Postfix RPN token sequence.
+    Attributes:
+        tokens (list[RpnTokenDto] | None | Unset): Postfix RPN token sequence.
     """
 
     tokens: list[RpnTokenDto] | None | Unset = UNSET

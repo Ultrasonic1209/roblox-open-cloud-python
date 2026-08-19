@@ -113,7 +113,7 @@ def sync_detailed(
     The name property of the request is optional as one will be auto-generated when the request has a
     null name.
 
-    please use v3/outfits/create
+    Please use POST v4/outfits/create
 
     Args:
         roblox_place_id (int | Unset):
@@ -157,7 +157,7 @@ def sync(
     The name property of the request is optional as one will be auto-generated when the request has a
     null name.
 
-    please use v3/outfits/create
+    Please use POST v4/outfits/create
 
     Args:
         roblox_place_id (int | Unset):
@@ -196,7 +196,7 @@ async def asyncio_detailed(
     The name property of the request is optional as one will be auto-generated when the request has a
     null name.
 
-    please use v3/outfits/create
+    Please use POST v4/outfits/create
 
     Args:
         roblox_place_id (int | Unset):
@@ -238,7 +238,7 @@ async def asyncio(
     The name property of the request is optional as one will be auto-generated when the request has a
     null name.
 
-    please use v3/outfits/create
+    Please use POST v4/outfits/create
 
     Args:
         roblox_place_id (int | Unset):

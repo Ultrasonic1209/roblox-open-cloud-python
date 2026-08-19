@@ -85,6 +85,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxApiAvatarModelsAvatarModelV2]:
     """Returns details about the authenticated user's avatar.
 
+     Please use GET v4/avatar
+
     Args:
         roblox_place_id (int | Unset):
 
@@ -117,6 +119,8 @@ def sync(
 ) -> Any | RobloxApiAvatarModelsAvatarModelV2 | None:
     """Returns details about the authenticated user's avatar.
 
+     Please use GET v4/avatar
+
     Args:
         roblox_place_id (int | Unset):
 
@@ -143,6 +147,8 @@ async def asyncio_detailed(
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any | RobloxApiAvatarModelsAvatarModelV2]:
     """Returns details about the authenticated user's avatar.
+
+     Please use GET v4/avatar
 
     Args:
         roblox_place_id (int | Unset):
@@ -173,6 +179,8 @@ async def asyncio(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsAvatarModelV2 | None:
     """Returns details about the authenticated user's avatar.
+
+     Please use GET v4/avatar
 
     Args:
         roblox_place_id (int | Unset):

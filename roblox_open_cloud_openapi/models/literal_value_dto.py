@@ -12,7 +12,7 @@ T = TypeVar("T", bound="LiteralValueDto")
 
 @_attrs_define
 class LiteralValueDto:
-    """Literal constant for an RPN operand (proto `LiteralValue` oneof as independent fields for JSON).
+    """Literal constant for an RPN operand.
 
     Attributes:
         boolean_value (None | str | Unset):

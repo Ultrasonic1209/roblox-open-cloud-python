@@ -121,7 +121,7 @@ def sync_detailed(
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
 
-    Please use PATCH v3/outfits/{userOutfitId}
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -167,7 +167,7 @@ def sync(
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
 
-    Please use PATCH v3/outfits/{userOutfitId}
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -208,7 +208,7 @@ async def asyncio_detailed(
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
 
-    Please use PATCH v3/outfits/{userOutfitId}
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -252,7 +252,7 @@ async def asyncio(
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
 
-    Please use PATCH v3/outfits/{userOutfitId}
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):

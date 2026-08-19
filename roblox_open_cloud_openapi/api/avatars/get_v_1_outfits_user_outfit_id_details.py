@@ -1,3 +1,4 @@
+import sys
 from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
@@ -6,8 +7,14 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_api_avatar_models_outfit_details_model import RobloxApiAvatarModelsOutfitDetailsModel
 from ...types import UNSET, Response, Unset
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
+from ...models.roblox_api_avatar_models_outfit_details_model import RobloxApiAvatarModelsOutfitDetailsModel
 
 
 def _get_kwargs(
@@ -71,6 +78,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_outfits__userOutfitId__details"
+)
 def sync_detailed(
     user_outfit_id: int,
     *,
@@ -78,6 +88,8 @@ def sync_detailed(
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any | RobloxApiAvatarModelsOutfitDetailsModel]:
     """Gets details about the contents of an outfit.
+
+     Please use GET v4/outfits/{outfitId}/details
 
     Args:
         user_outfit_id (int):
@@ -103,6 +115,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_outfits__userOutfitId__details"
+)
 def sync(
     user_outfit_id: int,
     *,
@@ -110,6 +125,8 @@ def sync(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsOutfitDetailsModel | None:
     """Gets details about the contents of an outfit.
+
+     Please use GET v4/outfits/{outfitId}/details
 
     Args:
         user_outfit_id (int):
@@ -130,6 +147,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_outfits__userOutfitId__details"
+)
 async def asyncio_detailed(
     user_outfit_id: int,
     *,
@@ -137,6 +157,8 @@ async def asyncio_detailed(
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any | RobloxApiAvatarModelsOutfitDetailsModel]:
     """Gets details about the contents of an outfit.
+
+     Please use GET v4/outfits/{outfitId}/details
 
     Args:
         user_outfit_id (int):
@@ -160,6 +182,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_outfits__userOutfitId__details"
+)
 async def asyncio(
     user_outfit_id: int,
     *,
@@ -167,6 +192,8 @@ async def asyncio(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsOutfitDetailsModel | None:
     """Gets details about the contents of an outfit.
+
+     Please use GET v4/outfits/{outfitId}/details
 
     Args:
         user_outfit_id (int):

@@ -14,6 +14,7 @@ class RobloxFriendsApiFriendRequestOriginSourceType(IntEnum):
     VALUE_9 = 9
     VALUE_10 = 10
     VALUE_11 = 11
+    VALUE_12 = 12
 
     def __str__(self) -> str:
         return str(self.value)

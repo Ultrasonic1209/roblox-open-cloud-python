@@ -1,3 +1,4 @@
+import sys
 from http import HTTPStatus
 from typing import Any, cast
 
@@ -5,9 +6,15 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response, Unset
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
 from ...models.roblox_api_avatar_models_outfit_model import RobloxApiAvatarModelsOutfitModel
 from ...models.roblox_api_avatar_models_outfit_update_model_v3 import RobloxApiAvatarModelsOutfitUpdateModelV3
-from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -82,6 +89,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v3_outfits_create"
+)
 def sync_detailed(
     *,
     client: AuthenticatedClient,
@@ -93,6 +103,8 @@ def sync_detailed(
      Fails if any of the assetIds are not owned by the user, or not wearable types.
     The name property of the request is optional as one will be auto-generated when the request has a
     null name.
+
+    Please use POST v4/outfits/create
 
     Args:
         roblox_place_id (int | Unset):
@@ -121,6 +133,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v3_outfits_create"
+)
 def sync(
     *,
     client: AuthenticatedClient,
@@ -132,6 +147,8 @@ def sync(
      Fails if any of the assetIds are not owned by the user, or not wearable types.
     The name property of the request is optional as one will be auto-generated when the request has a
     null name.
+
+    Please use POST v4/outfits/create
 
     Args:
         roblox_place_id (int | Unset):
@@ -155,6 +172,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v3_outfits_create"
+)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -166,6 +186,8 @@ async def asyncio_detailed(
      Fails if any of the assetIds are not owned by the user, or not wearable types.
     The name property of the request is optional as one will be auto-generated when the request has a
     null name.
+
+    Please use POST v4/outfits/create
 
     Args:
         roblox_place_id (int | Unset):
@@ -192,6 +214,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_post_v3_outfits_create"
+)
 async def asyncio(
     *,
     client: AuthenticatedClient,
@@ -203,6 +228,8 @@ async def asyncio(
      Fails if any of the assetIds are not owned by the user, or not wearable types.
     The name property of the request is optional as one will be auto-generated when the request has a
     null name.
+
+    Please use POST v4/outfits/create
 
     Args:
         roblox_place_id (int | Unset):

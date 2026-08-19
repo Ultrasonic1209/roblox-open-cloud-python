@@ -16,13 +16,11 @@ T = TypeVar("T", bound="RpnTokenDto")
 
 @_attrs_define
 class RpnTokenDto:
-    """One RPN token: either a logical/comparison CreatorConfigsPublicApi.Models.ConditionalRuleOperator (proto JSON
-    `OPERATOR_*`) or an operand object.
+    """One RPN token: either a logical/comparison ConditionalRuleOperator or an operand object.
 
-        Attributes:
-            operator (None | str | Unset):
-            operand (None | RpnOperandDto | Unset): RPN operand: attribute reference or literal value (same concepts as the
-                proto `RpnOperand` oneof).
+    Attributes:
+        operator (None | str | Unset):
+        operand (None | RpnOperandDto | Unset): RPN operand: attribute reference or literal value.
     """
 
     operator: None | str | Unset = UNSET

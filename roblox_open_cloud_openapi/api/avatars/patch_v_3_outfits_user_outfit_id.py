@@ -1,3 +1,4 @@
+import sys
 from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
@@ -6,9 +7,15 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response, Unset
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
 from ...models.roblox_api_avatar_models_outfit_model import RobloxApiAvatarModelsOutfitModel
 from ...models.roblox_api_avatar_models_outfit_update_model_v3 import RobloxApiAvatarModelsOutfitUpdateModelV3
-from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -90,6 +97,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_patch_v3_outfits__userOutfitId_"
+)
 def sync_detailed(
     user_outfit_id: int,
     *,
@@ -101,6 +111,8 @@ def sync_detailed(
 
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
+
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -131,6 +143,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_patch_v3_outfits__userOutfitId_"
+)
 def sync(
     user_outfit_id: int,
     *,
@@ -142,6 +157,8 @@ def sync(
 
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
+
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -167,6 +184,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_patch_v3_outfits__userOutfitId_"
+)
 async def asyncio_detailed(
     user_outfit_id: int,
     *,
@@ -178,6 +198,8 @@ async def asyncio_detailed(
 
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
+
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -206,6 +228,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_patch_v3_outfits__userOutfitId_"
+)
 async def asyncio(
     user_outfit_id: int,
     *,
@@ -217,6 +242,8 @@ async def asyncio(
 
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
+
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):

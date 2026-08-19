@@ -16,12 +16,11 @@ T = TypeVar("T", bound="RpnOperandDto")
 
 @_attrs_define
 class RpnOperandDto:
-    """RPN operand: attribute reference or literal value (same concepts as the proto `RpnOperand` oneof).
+    """RPN operand: attribute reference or literal value.
 
     Attributes:
         attribute_reference (None | str | Unset):
-        literal_value (LiteralValueDto | None | Unset): Literal constant for an RPN operand (proto `LiteralValue` oneof
-            as independent fields for JSON).
+        literal_value (LiteralValueDto | None | Unset): Literal constant for an RPN operand.
     """
 
     attribute_reference: None | str | Unset = UNSET

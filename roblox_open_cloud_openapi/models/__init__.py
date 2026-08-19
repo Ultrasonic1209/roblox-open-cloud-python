@@ -42,6 +42,8 @@ from .batch_grant_permissions_request import BatchGrantPermissionsRequest
 from .batch_grant_permissions_response import BatchGrantPermissionsResponse
 from .bulk_delete_saves_request_type_0 import BulkDeleteSavesRequestType0
 from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
+from .calculate_experiment_mde_data import CalculateExperimentMdeData
+from .calculate_experiment_mde_response import CalculateExperimentMdeResponse
 from .can_invite_user_response import CanInviteUserResponse
 from .category_response import CategoryResponse
 from .client_status_get_request import ClientStatusGetRequest
@@ -54,6 +56,8 @@ from .cloud_get_memory_store_flush_operation_scope import CloudGetMemoryStoreFlu
 from .cloud_get_subscription_view import CloudGetSubscriptionView
 from .cloud_list_group_forum_posts_view import CloudListGroupForumPostsView
 from .cloud_list_luau_execution_session_task_logs_view import CloudListLuauExecutionSessionTaskLogsView
+from .complete_experiment_request import CompleteExperimentRequest
+from .complete_experiment_response import CompleteExperimentResponse
 from .conditional_rule_definition import ConditionalRuleDefinition
 from .conditional_rules_changes_payload import ConditionalRulesChangesPayload
 from .conditional_rules_changes_payload_rules_type_0 import ConditionalRulesChangesPayloadRulesType0
@@ -75,6 +79,8 @@ from .content_message import ContentMessage
 from .create_custom_matchmaking_signal_request import CreateCustomMatchmakingSignalRequest
 from .create_custom_matchmaking_signal_response import CreateCustomMatchmakingSignalResponse
 from .create_entry_request import CreateEntryRequest
+from .create_experiment_data import CreateExperimentData
+from .create_experiment_response import CreateExperimentResponse
 from .create_game_event_config_request import CreateGameEventConfigRequest
 from .create_game_event_request import CreateGameEventRequest
 from .create_matchmaking_player_attribute_definition_request import CreateMatchmakingPlayerAttributeDefinitionRequest
@@ -127,6 +133,7 @@ from .developer_products_create_developer_product_v2_body import DeveloperProduc
 from .developer_products_update_developer_product_v2_body import DeveloperProductsUpdateDeveloperProductV2Body
 from .dimension_value import DimensionValue
 from .dimension_values_operation_result import DimensionValuesOperationResult
+from .discard_experiment_response import DiscardExperimentResponse
 from .discard_memory_store_queue_items_request import DiscardMemoryStoreQueueItemsRequest
 from .draft_hash_response import DraftHashResponse
 from .entries_get_entry_async_response_200 import EntriesGetEntryAsyncResponse200
@@ -143,6 +150,17 @@ from .event_media import EventMedia
 from .event_notification_audience import EventNotificationAudience
 from .event_ranked_category import EventRankedCategory
 from .event_visibility import EventVisibility
+from .experiment_api_error import ExperimentApiError
+from .experiment_api_error_error_context_type_0 import ExperimentApiErrorErrorContextType0
+from .experiment_api_error_type import ExperimentApiErrorType
+from .experiment_config_entry import ExperimentConfigEntry
+from .experiment_configuration import ExperimentConfiguration
+from .experiment_operation import ExperimentOperation
+from .experiment_product_type import ExperimentProductType
+from .experiment_state import ExperimentState
+from .experiment_stats import ExperimentStats
+from .experiment_stats_operation import ExperimentStatsOperation
+from .experiment_summary import ExperimentSummary
 from .featuring_status import FeaturingStatus
 from .filter_field import FilterField
 from .filter_field_info import FilterFieldInfo
@@ -179,6 +197,9 @@ from .generate_user_thumbnail_metadata import GenerateUserThumbnailMetadata
 from .generate_user_thumbnail_response import GenerateUserThumbnailResponse
 from .generic_currency_response import GenericCurrencyResponse
 from .get_ads_management_v1_campaign_options_objective import GetAdsManagementV1CampaignOptionsObjective
+from .get_experiment_operation_status_response import GetExperimentOperationStatusResponse
+from .get_experiment_response import GetExperimentResponse
+from .get_experiment_stats_response import GetExperimentStatsResponse
 from .get_instance_metadata import GetInstanceMetadata
 from .get_legacy_develop_v1_places_place_id_teamcreate_active_session_members_limit import (
     GetLegacyDevelopV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit,
@@ -395,6 +416,7 @@ from .http_request_message_properties_type_0 import HttpRequestMessageProperties
 from .http_response_message import HttpResponseMessage
 from .http_version_policy import HttpVersionPolicy
 from .hydrated_save_type_0 import HydratedSaveType0
+from .in_game_config_experiment_configuration import InGameConfigExperimentConfiguration
 from .increment_data_store_entry_request import IncrementDataStoreEntryRequest
 from .increment_data_store_entry_request_attributes import IncrementDataStoreEntryRequestAttributes
 from .increment_entry_request import IncrementEntryRequest
@@ -472,6 +494,7 @@ from .list_data_store_entry_revisions_response import ListDataStoreEntryRevision
 from .list_data_stores_response import ListDataStoresResponse
 from .list_developer_product_configs_v2_response import ListDeveloperProductConfigsV2Response
 from .list_entries_response import ListEntriesResponse
+from .list_experiments_response import ListExperimentsResponse
 from .list_game_pass_configs_by_universe_response import ListGamePassConfigsByUniverseResponse
 from .list_game_server_logs_response import ListGameServerLogsResponse
 from .list_group_forum_categories_response import ListGroupForumCategoriesResponse
@@ -518,6 +541,8 @@ from .matchmaking_attribute_value_location_case import MatchmakingAttributeValue
 from .matchmaking_attribute_value_type import MatchmakingAttributeValueType
 from .matchmaking_categorical_attribute_comparison_type import MatchmakingCategoricalAttributeComparisonType
 from .matchmaking_customization_feature_flags import MatchmakingCustomizationFeatureFlags
+from .matchmaking_experiment_configuration import MatchmakingExperimentConfiguration
+from .matchmaking_experiment_variant import MatchmakingExperimentVariant
 from .matchmaking_numerical_attribute_comparison_type import MatchmakingNumericalAttributeComparisonType
 from .matchmaking_player_attribute_definition import MatchmakingPlayerAttributeDefinition
 from .matchmaking_scoring_configuration import MatchmakingScoringConfiguration
@@ -530,6 +555,8 @@ from .matchmaking_server_attribute_definition import MatchmakingServerAttributeD
 from .matchmaking_signal_curve_type import MatchmakingSignalCurveType
 from .matchmaking_signal_type import MatchmakingSignalType
 from .matchmaking_signal_weight_configuration import MatchmakingSignalWeightConfiguration
+from .mde_operation import MdeOperation
+from .mde_result import MdeResult
 from .memory_store import MemoryStore
 from .memory_store_queue_item import MemoryStoreQueueItem
 from .memory_store_sorted_map_item import MemoryStoreSortedMapItem
@@ -552,6 +579,7 @@ from .ocv2_operations_operation import OCV2OperationsOperation
 from .operation import Operation
 from .operation_error_response import OperationErrorResponse
 from .operation_pending import OperationPending
+from .operational_status import OperationalStatus
 from .ordered_data_store_entry import OrderedDataStoreEntry
 from .paginated_game_events_response import PaginatedGameEventsResponse
 from .patch_legacy_groups_v1_groups_group_id_notification_preference_response_200 import (
@@ -570,6 +598,7 @@ from .place import Place
 from .place_filter import PlaceFilter
 from .place_response import PlaceResponse
 from .place_restart_status import PlaceRestartStatus
+from .place_scoring_config import PlaceScoringConfig
 from .place_summary_for_game_restart import PlaceSummaryForGameRestart
 from .place_summary_for_game_restart_instances_per_version_type_0 import (
     PlaceSummaryForGameRestartInstancesPerVersionType0,
@@ -658,6 +687,7 @@ from .private_servers_api_sort_order import PrivateServersApiSortOrder
 from .private_servers_enabled_in_universe_response import PrivateServersEnabledInUniverseResponse
 from .private_servers_tab import PrivateServersTab
 from .problem_details_type_0 import ProblemDetailsType0
+from .product_experiment import ProductExperiment
 from .publish_draft_request import PublishDraftRequest
 from .publish_draft_response import PublishDraftResponse
 from .publish_request import PublishRequest
@@ -912,8 +942,12 @@ from .roblox_api_avatar_models_body_colors_3_model import RobloxApiAvatarModelsB
 from .roblox_api_avatar_models_body_colors_model import RobloxApiAvatarModelsBodyColorsModel
 from .roblox_api_avatar_models_body_colors_model_v4 import RobloxApiAvatarModelsBodyColorsModelV4
 from .roblox_api_avatar_models_default_clothing_assets import RobloxApiAvatarModelsDefaultClothingAssets
+from .roblox_api_avatar_models_emote_request_model import RobloxApiAvatarModelsEmoteRequestModel
 from .roblox_api_avatar_models_emote_response_model import RobloxApiAvatarModelsEmoteResponseModel
 from .roblox_api_avatar_models_game_start_info_response import RobloxApiAvatarModelsGameStartInfoResponse
+from .roblox_api_avatar_models_invalid_background_response import RobloxApiAvatarModelsInvalidBackgroundResponse
+from .roblox_api_avatar_models_invalid_emote_response_model import RobloxApiAvatarModelsInvalidEmoteResponseModel
+from .roblox_api_avatar_models_invalid_profile_frame_response import RobloxApiAvatarModelsInvalidProfileFrameResponse
 from .roblox_api_avatar_models_outfit_details_model import RobloxApiAvatarModelsOutfitDetailsModel
 from .roblox_api_avatar_models_outfit_details_model_v2 import RobloxApiAvatarModelsOutfitDetailsModelV2
 from .roblox_api_avatar_models_outfit_model import RobloxApiAvatarModelsOutfitModel
@@ -933,7 +967,19 @@ from .roblox_api_avatar_models_scale_rules_model import RobloxApiAvatarModelsSca
 from .roblox_api_avatar_models_universe_avatar_asset_override_response_model import (
     RobloxApiAvatarModelsUniverseAvatarAssetOverrideResponseModel,
 )
+from .roblox_api_avatar_models_update_avatar_data_model import RobloxApiAvatarModelsUpdateAvatarDataModel
+from .roblox_api_avatar_models_update_avatar_data_model_player_avatar_type import (
+    RobloxApiAvatarModelsUpdateAvatarDataModelPlayerAvatarType,
+)
+from .roblox_api_avatar_models_update_avatar_request_model import RobloxApiAvatarModelsUpdateAvatarRequestModel
+from .roblox_api_avatar_models_update_avatar_request_model_update_mask_item import (
+    RobloxApiAvatarModelsUpdateAvatarRequestModelUpdateMaskItem,
+)
+from .roblox_api_avatar_models_update_avatar_response_model import RobloxApiAvatarModelsUpdateAvatarResponseModel
 from .roblox_api_avatar_models_v4_avatar_background_model import RobloxApiAvatarModelsV4AvatarBackgroundModel
+from .roblox_api_avatar_models_v4_avatar_background_request_model import (
+    RobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
+)
 from .roblox_api_avatar_models_v4_avatar_configurations import RobloxApiAvatarModelsV4AvatarConfigurations
 from .roblox_api_avatar_models_v4_avatar_definition import RobloxApiAvatarModelsV4AvatarDefinition
 from .roblox_api_avatar_models_v4_avatar_model_v4 import RobloxApiAvatarModelsV4AvatarModelV4
@@ -941,12 +987,63 @@ from .roblox_api_avatar_models_v4_avatar_model_v4_player_avatar_type import (
     RobloxApiAvatarModelsV4AvatarModelV4PlayerAvatarType,
 )
 from .roblox_api_avatar_models_v4_avatar_profile_frame_model import RobloxApiAvatarModelsV4AvatarProfileFrameModel
+from .roblox_api_avatar_models_v4_avatar_profile_frame_request_model import (
+    RobloxApiAvatarModelsV4AvatarProfileFrameRequestModel,
+)
 from .roblox_api_avatar_models_v4_outfit_configurations import RobloxApiAvatarModelsV4OutfitConfigurations
 from .roblox_api_avatar_models_v4_outfit_definition import RobloxApiAvatarModelsV4OutfitDefinition
 from .roblox_api_avatar_models_v4_outfit_model_v4 import RobloxApiAvatarModelsV4OutfitModelV4
 from .roblox_api_avatar_models_v4_outfit_model_v4_outfit_type import RobloxApiAvatarModelsV4OutfitModelV4OutfitType
 from .roblox_api_avatar_models_v4_outfit_model_v4_player_avatar_type import (
     RobloxApiAvatarModelsV4OutfitModelV4PlayerAvatarType,
+)
+from .roblox_api_avatar_models_v4_request_create_outfit_definition_request_v4 import (
+    RobloxApiAvatarModelsV4RequestCreateOutfitDefinitionRequestV4,
+)
+from .roblox_api_avatar_models_v4_request_update_avatar_definition_request_v4 import (
+    RobloxApiAvatarModelsV4RequestUpdateAvatarDefinitionRequestV4,
+)
+from .roblox_api_avatar_models_v4_request_update_avatar_definition_request_v4_update_types_item import (
+    RobloxApiAvatarModelsV4RequestUpdateAvatarDefinitionRequestV4UpdateTypesItem,
+)
+from .roblox_api_avatar_models_v4_request_update_outfit_definition_request_v4 import (
+    RobloxApiAvatarModelsV4RequestUpdateOutfitDefinitionRequestV4,
+)
+from .roblox_api_avatar_models_v4_request_update_outfit_definition_request_v4_update_types_item import (
+    RobloxApiAvatarModelsV4RequestUpdateOutfitDefinitionRequestV4UpdateTypesItem,
+)
+from .roblox_api_avatar_models_v4_response_avatar_validation_result_v4 import (
+    RobloxApiAvatarModelsV4ResponseAvatarValidationResultV4,
+)
+from .roblox_api_avatar_models_v4_response_create_outfit_definition_response_v4 import (
+    RobloxApiAvatarModelsV4ResponseCreateOutfitDefinitionResponseV4,
+)
+from .roblox_api_avatar_models_v4_response_invalid_thumbnail_customization_response import (
+    RobloxApiAvatarModelsV4ResponseInvalidThumbnailCustomizationResponse,
+)
+from .roblox_api_avatar_models_v4_response_outfit_validation_result_v4 import (
+    RobloxApiAvatarModelsV4ResponseOutfitValidationResultV4,
+)
+from .roblox_api_avatar_models_v4_response_update_avatar_definition_response_v4 import (
+    RobloxApiAvatarModelsV4ResponseUpdateAvatarDefinitionResponseV4,
+)
+from .roblox_api_avatar_models_v4_response_update_outfit_definition_response_v4 import (
+    RobloxApiAvatarModelsV4ResponseUpdateOutfitDefinitionResponseV4,
+)
+from .roblox_api_avatar_models_v4_update_avatar_config import RobloxApiAvatarModelsV4UpdateAvatarConfig
+from .roblox_api_avatar_models_v4_update_avatar_definition import RobloxApiAvatarModelsV4UpdateAvatarDefinition
+from .roblox_api_avatar_models_v4_update_avatar_model_v4 import RobloxApiAvatarModelsV4UpdateAvatarModelV4
+from .roblox_api_avatar_models_v4_update_avatar_model_v4_player_avatar_type import (
+    RobloxApiAvatarModelsV4UpdateAvatarModelV4PlayerAvatarType,
+)
+from .roblox_api_avatar_models_v4_update_outfit_config import RobloxApiAvatarModelsV4UpdateOutfitConfig
+from .roblox_api_avatar_models_v4_update_outfit_definition import RobloxApiAvatarModelsV4UpdateOutfitDefinition
+from .roblox_api_avatar_models_v4_update_outfit_model_v4 import RobloxApiAvatarModelsV4UpdateOutfitModelV4
+from .roblox_api_avatar_models_v4_update_outfit_model_v4_outfit_type import (
+    RobloxApiAvatarModelsV4UpdateOutfitModelV4OutfitType,
+)
+from .roblox_api_avatar_models_v4_update_outfit_model_v4_player_avatar_type import (
+    RobloxApiAvatarModelsV4UpdateOutfitModelV4PlayerAvatarType,
 )
 from .roblox_api_avatar_models_wear_request_model import RobloxApiAvatarModelsWearRequestModel
 from .roblox_api_avatar_models_wear_response_model import RobloxApiAvatarModelsWearResponseModel
@@ -2557,6 +2654,8 @@ from .rules_order_delta_payload import RulesOrderDeltaPayload
 from .sales_report_download_request import SalesReportDownloadRequest
 from .save_type import SaveType
 from .saves_sort_category import SavesSortCategory
+from .schedule_experiment_request import ScheduleExperimentRequest
+from .schedule_experiment_response import ScheduleExperimentResponse
 from .search_audio_type_model import SearchAudioTypeModel
 from .search_category_type import SearchCategoryType
 from .search_creator_store_assets_request_type_0 import SearchCreatorStoreAssetsRequestType0
@@ -2577,6 +2676,7 @@ from .set_place_matchmaking_scoring_configuration_request import SetPlaceMatchma
 from .shutdown_all_game_instances_response import ShutdownAllGameInstancesResponse
 from .shutdown_game_instances_request import ShutdownGameInstancesRequest
 from .shutdown_game_instances_response import ShutdownGameInstancesResponse
+from .single_config_experiment_variant import SingleConfigExperimentVariant
 from .skinny_user_response import SkinnyUserResponse
 from .snapshot_data_stores_request import SnapshotDataStoresRequest
 from .snapshot_data_stores_response import SnapshotDataStoresResponse
@@ -2584,6 +2684,7 @@ from .social_link import SocialLink
 from .social_link_model_type_0 import SocialLinkModelType0
 from .sort_category import SortCategory
 from .sort_direction import SortDirection
+from .start_experiment_response import StartExperimentResponse
 from .state import State
 from .status import Status
 from .string_exclusive_start_key_cursor import StringExclusiveStartKeyCursor
@@ -2595,6 +2696,7 @@ from .subscription_expiration_details_reason import SubscriptionExpirationDetail
 from .subscription_payment_provider import SubscriptionPaymentProvider
 from .subscription_purchase_platform import SubscriptionPurchasePlatform
 from .subscription_state import SubscriptionState
+from .targeting_criteria import TargetingCriteria
 from .thumbnail_personalization_api_homepage_thumbnail_upload_homepage_thumbnails_body import (
     ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
 )
@@ -2629,6 +2731,8 @@ from .undelete_data_store_request import UndeleteDataStoreRequest
 from .universe import Universe
 from .universe_age_rating import UniverseAgeRating
 from .universe_eligibility import UniverseEligibility
+from .universe_experiment_metric import UniverseExperimentMetric
+from .universe_metric_configuration import UniverseMetricConfiguration
 from .universe_social_link import UniverseSocialLink
 from .universe_visibility import UniverseVisibility
 from .update_custom_matchmaking_signal_request import UpdateCustomMatchmakingSignalRequest
@@ -2636,6 +2740,8 @@ from .update_custom_matchmaking_signal_response import UpdateCustomMatchmakingSi
 from .update_draft_request import UpdateDraftRequest
 from .update_draft_request_entries_type_0 import UpdateDraftRequestEntriesType0
 from .update_entry_request import UpdateEntryRequest
+from .update_experiment_data import UpdateExperimentData
+from .update_experiment_response import UpdateExperimentResponse
 from .update_game_event_config_request import UpdateGameEventConfigRequest
 from .update_game_event_request import UpdateGameEventRequest
 from .update_instance_metadata import UpdateInstanceMetadata
@@ -2687,6 +2793,7 @@ from .user_restriction_log_restriction_type_game_join_restriction import (
 )
 from .user_social_network_profiles import UserSocialNetworkProfiles
 from .user_social_network_profiles_visibility import UserSocialNetworkProfilesVisibility
+from .variant_meta import VariantMeta
 from .verified_badge_user_response import VerifiedBadgeUserResponse
 from .virtual_events_api_problem_details import VirtualEventsApiProblemDetails
 from .voting_model_type_0 import VotingModelType0
@@ -2734,6 +2841,8 @@ __all__ = (
     "BatchGrantPermissionsResponse",
     "BulkDeleteSavesRequestType0",
     "BulkDeleteSavesResponseType0",
+    "CalculateExperimentMdeData",
+    "CalculateExperimentMdeResponse",
     "CanInviteUserResponse",
     "CategoryResponse",
     "ClientStatusGetRequest",
@@ -2746,6 +2855,8 @@ __all__ = (
     "CloudGetSubscriptionView",
     "CloudListGroupForumPostsView",
     "CloudListLuauExecutionSessionTaskLogsView",
+    "CompleteExperimentRequest",
+    "CompleteExperimentResponse",
     "ConditionalRuleDefinition",
     "ConditionalRulesChangesPayload",
     "ConditionalRulesChangesPayloadRulesType0",
@@ -2767,6 +2878,8 @@ __all__ = (
     "CreateCustomMatchmakingSignalRequest",
     "CreateCustomMatchmakingSignalResponse",
     "CreateEntryRequest",
+    "CreateExperimentData",
+    "CreateExperimentResponse",
     "CreateGameEventConfigRequest",
     "CreateGameEventRequest",
     "CreateMatchmakingPlayerAttributeDefinitionRequest",
@@ -2813,6 +2926,7 @@ __all__ = (
     "DeveloperProductsUpdateDeveloperProductV2Body",
     "DimensionValue",
     "DimensionValuesOperationResult",
+    "DiscardExperimentResponse",
     "DiscardMemoryStoreQueueItemsRequest",
     "DraftHashResponse",
     "EntriesGetEntryAsyncResponse200",
@@ -2829,6 +2943,17 @@ __all__ = (
     "EventNotificationAudience",
     "EventRankedCategory",
     "EventVisibility",
+    "ExperimentApiError",
+    "ExperimentApiErrorErrorContextType0",
+    "ExperimentApiErrorType",
+    "ExperimentConfigEntry",
+    "ExperimentConfiguration",
+    "ExperimentOperation",
+    "ExperimentProductType",
+    "ExperimentState",
+    "ExperimentStats",
+    "ExperimentStatsOperation",
+    "ExperimentSummary",
     "FeaturingStatus",
     "FilterField",
     "FilterFieldInfo",
@@ -2865,6 +2990,9 @@ __all__ = (
     "GenerateUserThumbnailResponse",
     "GenericCurrencyResponse",
     "GetAdsManagementV1CampaignOptionsObjective",
+    "GetExperimentOperationStatusResponse",
+    "GetExperimentResponse",
+    "GetExperimentStatsResponse",
     "GetInstanceMetadata",
     "GetLegacyDevelopV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit",
     "GetLegacyGroupsV1GroupsGroupIdAuditLogActionType",
@@ -3049,6 +3177,7 @@ __all__ = (
     "IncrementDataStoreEntryRequestAttributes",
     "IncrementEntryRequest",
     "IncrementOrderedDataStoreEntryRequest",
+    "InGameConfigExperimentConfiguration",
     "Instance",
     "InstanceCountsType0",
     "Int64ExclusiveStartKeyCursor",
@@ -3116,6 +3245,7 @@ __all__ = (
     "ListDataStoresResponse",
     "ListDeveloperProductConfigsV2Response",
     "ListEntriesResponse",
+    "ListExperimentsResponse",
     "ListGamePassConfigsByUniverseResponse",
     "ListGameServerLogsResponse",
     "ListGroupForumCategoriesResponse",
@@ -3160,6 +3290,8 @@ __all__ = (
     "MatchmakingAttributeValueType",
     "MatchmakingCategoricalAttributeComparisonType",
     "MatchmakingCustomizationFeatureFlags",
+    "MatchmakingExperimentConfiguration",
+    "MatchmakingExperimentVariant",
     "MatchmakingNumericalAttributeComparisonType",
     "MatchmakingPlayerAttributeDefinition",
     "MatchmakingScoringConfiguration",
@@ -3172,6 +3304,8 @@ __all__ = (
     "MatchmakingSignalCurveType",
     "MatchmakingSignalType",
     "MatchmakingSignalWeightConfiguration",
+    "MdeOperation",
+    "MdeResult",
     "MemoryStore",
     "MemoryStoreQueueItem",
     "MemoryStoreSortedMapItem",
@@ -3192,6 +3326,7 @@ __all__ = (
     "OCV1DataStoresDataStore",
     "OCV2OperationsOperation",
     "Operation",
+    "OperationalStatus",
     "OperationErrorResponse",
     "OperationPending",
     "OrderedDataStoreEntry",
@@ -3206,6 +3341,7 @@ __all__ = (
     "PlaceFilter",
     "PlaceResponse",
     "PlaceRestartStatus",
+    "PlaceScoringConfig",
     "PlaceSummaryForGameRestart",
     "PlaceSummaryForGameRestartInstancesPerVersionType0",
     "PlaceSummaryForGameRestartPlayersPerVersionType0",
@@ -3260,6 +3396,7 @@ __all__ = (
     "PrivateServerUpdateSubscriptionRequest",
     "PrivateServerVoiceSettingsResponse",
     "ProblemDetailsType0",
+    "ProductExperiment",
     "PublishDraftRequest",
     "PublishDraftResponse",
     "PublishRequest",
@@ -3392,8 +3529,12 @@ __all__ = (
     "RobloxApiAvatarModelsBodyColorsModel",
     "RobloxApiAvatarModelsBodyColorsModelV4",
     "RobloxApiAvatarModelsDefaultClothingAssets",
+    "RobloxApiAvatarModelsEmoteRequestModel",
     "RobloxApiAvatarModelsEmoteResponseModel",
     "RobloxApiAvatarModelsGameStartInfoResponse",
+    "RobloxApiAvatarModelsInvalidBackgroundResponse",
+    "RobloxApiAvatarModelsInvalidEmoteResponseModel",
+    "RobloxApiAvatarModelsInvalidProfileFrameResponse",
     "RobloxApiAvatarModelsOutfitDetailsModel",
     "RobloxApiAvatarModelsOutfitDetailsModelV2",
     "RobloxApiAvatarModelsOutfitModel",
@@ -3405,17 +3546,44 @@ __all__ = (
     "RobloxApiAvatarModelsPlayerAvatarTypeModelPlayerAvatarType",
     "RobloxApiAvatarModelsScaleRulesModel",
     "RobloxApiAvatarModelsUniverseAvatarAssetOverrideResponseModel",
+    "RobloxApiAvatarModelsUpdateAvatarDataModel",
+    "RobloxApiAvatarModelsUpdateAvatarDataModelPlayerAvatarType",
+    "RobloxApiAvatarModelsUpdateAvatarRequestModel",
+    "RobloxApiAvatarModelsUpdateAvatarRequestModelUpdateMaskItem",
+    "RobloxApiAvatarModelsUpdateAvatarResponseModel",
     "RobloxApiAvatarModelsV4AvatarBackgroundModel",
+    "RobloxApiAvatarModelsV4AvatarBackgroundRequestModel",
     "RobloxApiAvatarModelsV4AvatarConfigurations",
     "RobloxApiAvatarModelsV4AvatarDefinition",
     "RobloxApiAvatarModelsV4AvatarModelV4",
     "RobloxApiAvatarModelsV4AvatarModelV4PlayerAvatarType",
     "RobloxApiAvatarModelsV4AvatarProfileFrameModel",
+    "RobloxApiAvatarModelsV4AvatarProfileFrameRequestModel",
     "RobloxApiAvatarModelsV4OutfitConfigurations",
     "RobloxApiAvatarModelsV4OutfitDefinition",
     "RobloxApiAvatarModelsV4OutfitModelV4",
     "RobloxApiAvatarModelsV4OutfitModelV4OutfitType",
     "RobloxApiAvatarModelsV4OutfitModelV4PlayerAvatarType",
+    "RobloxApiAvatarModelsV4RequestCreateOutfitDefinitionRequestV4",
+    "RobloxApiAvatarModelsV4RequestUpdateAvatarDefinitionRequestV4",
+    "RobloxApiAvatarModelsV4RequestUpdateAvatarDefinitionRequestV4UpdateTypesItem",
+    "RobloxApiAvatarModelsV4RequestUpdateOutfitDefinitionRequestV4",
+    "RobloxApiAvatarModelsV4RequestUpdateOutfitDefinitionRequestV4UpdateTypesItem",
+    "RobloxApiAvatarModelsV4ResponseAvatarValidationResultV4",
+    "RobloxApiAvatarModelsV4ResponseCreateOutfitDefinitionResponseV4",
+    "RobloxApiAvatarModelsV4ResponseInvalidThumbnailCustomizationResponse",
+    "RobloxApiAvatarModelsV4ResponseOutfitValidationResultV4",
+    "RobloxApiAvatarModelsV4ResponseUpdateAvatarDefinitionResponseV4",
+    "RobloxApiAvatarModelsV4ResponseUpdateOutfitDefinitionResponseV4",
+    "RobloxApiAvatarModelsV4UpdateAvatarConfig",
+    "RobloxApiAvatarModelsV4UpdateAvatarDefinition",
+    "RobloxApiAvatarModelsV4UpdateAvatarModelV4",
+    "RobloxApiAvatarModelsV4UpdateAvatarModelV4PlayerAvatarType",
+    "RobloxApiAvatarModelsV4UpdateOutfitConfig",
+    "RobloxApiAvatarModelsV4UpdateOutfitDefinition",
+    "RobloxApiAvatarModelsV4UpdateOutfitModelV4",
+    "RobloxApiAvatarModelsV4UpdateOutfitModelV4OutfitType",
+    "RobloxApiAvatarModelsV4UpdateOutfitModelV4PlayerAvatarType",
     "RobloxApiAvatarModelsWearRequestModel",
     "RobloxApiAvatarModelsWearResponseModel",
     "RobloxApiDevelopAssetVersion",
@@ -4181,6 +4349,8 @@ __all__ = (
     "SalesReportDownloadRequest",
     "SavesSortCategory",
     "SaveType",
+    "ScheduleExperimentRequest",
+    "ScheduleExperimentResponse",
     "SearchAudioTypeModel",
     "SearchCategoryType",
     "SearchCreatorStoreAssetsRequestType0",
@@ -4201,6 +4371,7 @@ __all__ = (
     "ShutdownAllGameInstancesResponse",
     "ShutdownGameInstancesRequest",
     "ShutdownGameInstancesResponse",
+    "SingleConfigExperimentVariant",
     "SkinnyUserResponse",
     "SnapshotDataStoresRequest",
     "SnapshotDataStoresResponse",
@@ -4208,6 +4379,7 @@ __all__ = (
     "SocialLinkModelType0",
     "SortCategory",
     "SortDirection",
+    "StartExperimentResponse",
     "State",
     "Status",
     "StringExclusiveStartKeyCursor",
@@ -4219,6 +4391,7 @@ __all__ = (
     "SubscriptionPaymentProvider",
     "SubscriptionPurchasePlatform",
     "SubscriptionState",
+    "TargetingCriteria",
     "ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody",
     "ThumbnailPersonalizationApiModerationStatus",
     "ThumbnailResponse",
@@ -4247,6 +4420,8 @@ __all__ = (
     "Universe",
     "UniverseAgeRating",
     "UniverseEligibility",
+    "UniverseExperimentMetric",
+    "UniverseMetricConfiguration",
     "UniverseSocialLink",
     "UniverseVisibility",
     "UpdateCustomMatchmakingSignalRequest",
@@ -4254,6 +4429,8 @@ __all__ = (
     "UpdateDraftRequest",
     "UpdateDraftRequestEntriesType0",
     "UpdateEntryRequest",
+    "UpdateExperimentData",
+    "UpdateExperimentResponse",
     "UpdateGameEventConfigRequest",
     "UpdateGameEventRequest",
     "UpdateInstanceMetadata",
@@ -4297,6 +4474,7 @@ __all__ = (
     "UserRestrictionLogRestrictionTypeGameJoinRestriction",
     "UserSocialNetworkProfiles",
     "UserSocialNetworkProfilesVisibility",
+    "VariantMeta",
     "VerifiedBadgeUserResponse",
     "VirtualEventsApiProblemDetails",
     "VotingModelType0",
