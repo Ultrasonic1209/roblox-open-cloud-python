@@ -17,7 +17,7 @@ class AssetPermissionsErrorCode(str, Enum):
     PERMISSIONLIMITREACHED = "PermissionLimitReached"
     PUBLICASSETCANNOTBEGRANTEDTO = "PublicAssetCannotBeGrantedTo"
     RATELIMITED = "RateLimited"
-    REQUESTERNOTCONNECTED = "RequesterNotConnected"
+    REQUESTERNOTACONNECTION = "RequesterNotAConnection"
     REQUESTNOTFOUND = "RequestNotFound"
     SUBJECTNOTFOUND = "SubjectNotFound"
     UNKNOWNERROR = "UnknownError"

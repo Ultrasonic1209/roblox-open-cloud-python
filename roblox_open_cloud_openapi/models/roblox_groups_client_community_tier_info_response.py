@@ -9,6 +9,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.roblox_groups_client_tier_capabilities import RobloxGroupsClientTierCapabilities
     from ..models.roblox_groups_client_tier_requirement import RobloxGroupsClientTierRequirement
 
 
@@ -25,6 +26,7 @@ class RobloxGroupsClientCommunityTierInfoResponse:
         tier_updated_time (datetime.datetime | Unset):
         last_evaluated_time (datetime.datetime | Unset):
         requirements (list[RobloxGroupsClientTierRequirement] | Unset):
+        capabilities (RobloxGroupsClientTierCapabilities | Unset):
     """
 
     group_id: int | Unset = UNSET
@@ -33,6 +35,7 @@ class RobloxGroupsClientCommunityTierInfoResponse:
     tier_updated_time: datetime.datetime | Unset = UNSET
     last_evaluated_time: datetime.datetime | Unset = UNSET
     requirements: list[RobloxGroupsClientTierRequirement] | Unset = UNSET
+    capabilities: RobloxGroupsClientTierCapabilities | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         group_id = self.group_id
@@ -56,6 +59,10 @@ class RobloxGroupsClientCommunityTierInfoResponse:
                 requirements_item = requirements_item_data.to_dict()
                 requirements.append(requirements_item)
 
+        capabilities: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.capabilities, Unset):
+            capabilities = self.capabilities.to_dict()
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -71,11 +78,14 @@ class RobloxGroupsClientCommunityTierInfoResponse:
             field_dict["lastEvaluatedTime"] = last_evaluated_time
         if requirements is not UNSET:
             field_dict["requirements"] = requirements
+        if capabilities is not UNSET:
+            field_dict["capabilities"] = capabilities
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.roblox_groups_client_tier_capabilities import RobloxGroupsClientTierCapabilities
         from ..models.roblox_groups_client_tier_requirement import RobloxGroupsClientTierRequirement
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
@@ -108,6 +118,13 @@ class RobloxGroupsClientCommunityTierInfoResponse:
 
                 requirements.append(requirements_item)
 
+        _capabilities = d.pop("capabilities", UNSET)
+        capabilities: RobloxGroupsClientTierCapabilities | Unset
+        if isinstance(_capabilities, Unset):
+            capabilities = UNSET
+        else:
+            capabilities = RobloxGroupsClientTierCapabilities.from_dict(_capabilities)
+
         roblox_groups_client_community_tier_info_response = cls(
             group_id=group_id,
             current_tier=current_tier,
@@ -115,6 +132,7 @@ class RobloxGroupsClientCommunityTierInfoResponse:
             tier_updated_time=tier_updated_time,
             last_evaluated_time=last_evaluated_time,
             requirements=requirements,
+            capabilities=capabilities,
         )
 
         return roblox_groups_client_community_tier_info_response

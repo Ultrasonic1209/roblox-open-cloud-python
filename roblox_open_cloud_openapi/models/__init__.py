@@ -46,6 +46,9 @@ from .calculate_experiment_mde_data import CalculateExperimentMdeData
 from .calculate_experiment_mde_response import CalculateExperimentMdeResponse
 from .can_invite_user_response import CanInviteUserResponse
 from .category_response import CategoryResponse
+from .client_settings_api_roblox_client_settings_api_models_response_client_version_response import (
+    ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse,
+)
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
 from .cloud_flush_memory_store_scope import CloudFlushMemoryStoreScope
@@ -1996,6 +1999,7 @@ from .roblox_groups_client_emote_model import RobloxGroupsClientEmoteModel
 from .roblox_groups_client_emote_set_model import RobloxGroupsClientEmoteSetModel
 from .roblox_groups_client_get_group_emote_sets_response import RobloxGroupsClientGetGroupEmoteSetsResponse
 from .roblox_groups_client_group_featured_content_response import RobloxGroupsClientGroupFeaturedContentResponse
+from .roblox_groups_client_tier_capabilities import RobloxGroupsClientTierCapabilities
 from .roblox_groups_client_tier_evaluation_result_response import RobloxGroupsClientTierEvaluationResultResponse
 from .roblox_groups_client_tier_requirement import RobloxGroupsClientTierRequirement
 from .roblox_groups_client_tier_requirement_key import RobloxGroupsClientTierRequirementKey
@@ -2045,6 +2049,33 @@ from .roblox_item_configuration_api_asset_creations_details_response_status impo
     RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus,
 )
 from .roblox_item_configuration_api_asset_creations_response import RobloxItemConfigurationApiAssetCreationsResponse
+from .roblox_item_configuration_api_models_request_publishing_preferences_create_publishing_preferences_request import (
+    RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequest,
+)
+from .roblox_item_configuration_api_models_request_publishing_preferences_create_publishing_preferences_request_publishing_type import (
+    RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequestPublishingType,
+)
+from .roblox_item_configuration_api_models_request_publishing_preferences_create_publishing_preferences_request_sale_location_type import (
+    RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequestSaleLocationType,
+)
+from .roblox_item_configuration_api_models_request_publishing_preferences_update_publishing_preferences_request import (
+    RobloxItemConfigurationApiModelsRequestPublishingPreferencesUpdatePublishingPreferencesRequest,
+)
+from .roblox_item_configuration_api_models_request_publishing_preferences_update_publishing_preferences_request_publishing_type import (
+    RobloxItemConfigurationApiModelsRequestPublishingPreferencesUpdatePublishingPreferencesRequestPublishingType,
+)
+from .roblox_item_configuration_api_models_request_publishing_preferences_update_publishing_preferences_request_sale_location_type import (
+    RobloxItemConfigurationApiModelsRequestPublishingPreferencesUpdatePublishingPreferencesRequestSaleLocationType,
+)
+from .roblox_item_configuration_api_models_response_publishing_preferences_publishing_preferences_response import (
+    RobloxItemConfigurationApiModelsResponsePublishingPreferencesPublishingPreferencesResponse,
+)
+from .roblox_item_configuration_api_models_response_publishing_preferences_publishing_preferences_response_publishing_type import (
+    RobloxItemConfigurationApiModelsResponsePublishingPreferencesPublishingPreferencesResponsePublishingType,
+)
+from .roblox_item_configuration_api_models_response_publishing_preferences_publishing_preferences_response_sale_location_type import (
+    RobloxItemConfigurationApiModelsResponsePublishingPreferencesPublishingPreferencesResponseSaleLocationType,
+)
 from .roblox_locale_api_country_region import RobloxLocaleApiCountryRegion
 from .roblox_locale_api_country_region_list_response import RobloxLocaleApiCountryRegionListResponse
 from .roblox_locale_api_language import RobloxLocaleApiLanguage
@@ -2845,6 +2876,7 @@ __all__ = (
     "CalculateExperimentMdeResponse",
     "CanInviteUserResponse",
     "CategoryResponse",
+    "ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
     "CloudFlushMemoryStoreScope",
@@ -4031,6 +4063,7 @@ __all__ = (
     "RobloxGroupsClientEmoteSetModel",
     "RobloxGroupsClientGetGroupEmoteSetsResponse",
     "RobloxGroupsClientGroupFeaturedContentResponse",
+    "RobloxGroupsClientTierCapabilities",
     "RobloxGroupsClientTierEvaluationResultResponse",
     "RobloxGroupsClientTierRequirement",
     "RobloxGroupsClientTierRequirementKey",
@@ -4060,6 +4093,15 @@ __all__ = (
     "RobloxItemConfigurationApiAssetCreationsDetailsResponseCreatorType",
     "RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus",
     "RobloxItemConfigurationApiAssetCreationsResponse",
+    "RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequest",
+    "RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequestPublishingType",
+    "RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequestSaleLocationType",
+    "RobloxItemConfigurationApiModelsRequestPublishingPreferencesUpdatePublishingPreferencesRequest",
+    "RobloxItemConfigurationApiModelsRequestPublishingPreferencesUpdatePublishingPreferencesRequestPublishingType",
+    "RobloxItemConfigurationApiModelsRequestPublishingPreferencesUpdatePublishingPreferencesRequestSaleLocationType",
+    "RobloxItemConfigurationApiModelsResponsePublishingPreferencesPublishingPreferencesResponse",
+    "RobloxItemConfigurationApiModelsResponsePublishingPreferencesPublishingPreferencesResponsePublishingType",
+    "RobloxItemConfigurationApiModelsResponsePublishingPreferencesPublishingPreferencesResponseSaleLocationType",
     "RobloxLocaleApiCountryRegion",
     "RobloxLocaleApiCountryRegionListResponse",
     "RobloxLocaleApiLanguage",
