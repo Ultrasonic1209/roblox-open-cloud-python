@@ -32,6 +32,7 @@ def _get_kwargs(
         ),
         "extensions": {
             "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
                 "x-roblox-recommended-alternatives": [
                     {

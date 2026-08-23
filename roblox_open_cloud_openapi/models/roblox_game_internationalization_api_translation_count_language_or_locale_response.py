@@ -27,12 +27,12 @@ class RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponse:
     """
     Attributes:
         status (RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponseStatus | Unset): The status of
-            the response for the requested game. ['Success' = 1, 'LanguageOrLocaleNotSupportedForGame' = 2]
+            the response for the requested game.
         categories (list[RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse] | Unset): Categories of
             translation counts.
         name (str | Unset):
         language_code_type (RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponseLanguageCodeType |
-            Unset): An enum to distinguish between locale codes and language codes. ['Language' = 0, 'Locale' = 1]
+            Unset): An enum to distinguish between locale codes and language codes.
         language_code (str | Unset):
     """
 

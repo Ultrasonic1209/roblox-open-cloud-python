@@ -22,7 +22,10 @@ def _get_kwargs(
             game_id=quote(str(game_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_supported-languages_games_gameId_in-experience-language-selection",
         },
     }

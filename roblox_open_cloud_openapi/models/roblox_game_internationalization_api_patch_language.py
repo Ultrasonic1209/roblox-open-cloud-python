@@ -18,7 +18,7 @@ class RobloxGameInternationalizationApiPatchLanguage:
     """
     Attributes:
         language_code_type (RobloxGameInternationalizationApiPatchLanguageLanguageCodeType | Unset): The language code
-            type. ['Language' = 0, 'Locale' = 1]
+            type.
         language_code (str | Unset): The language code for the language to edit.
         delete (bool | Unset): An optional field used to indicate whether a language should be deleted from this game's
             list of supported languages.

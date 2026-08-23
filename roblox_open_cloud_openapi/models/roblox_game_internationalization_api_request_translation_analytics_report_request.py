@@ -21,8 +21,7 @@ class RobloxGameInternationalizationApiRequestTranslationAnalyticsReportRequest:
         start_date_time (datetime.datetime | Unset): The inclusive start dateTime of report in UTC
         end_date_time (datetime.datetime | Unset): The exclusive end dateTime of report in UTC
         report_type (RobloxGameInternationalizationApiRequestTranslationAnalyticsReportRequestReportType | Unset): The
-            report type ['GameTranslationStatus' = 0, 'GameTranslationStatusForTranslator' = 1,
-            'GameTranslationStatusForTranslatorGroup' = 2, 'Test' = 3]
+            report type
         report_subject_target_id (int | Unset): The report subject target id
     """
 

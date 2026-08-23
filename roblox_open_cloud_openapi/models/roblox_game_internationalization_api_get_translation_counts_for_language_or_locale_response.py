@@ -27,8 +27,7 @@ class RobloxGameInternationalizationApiGetTranslationCountsForLanguageOrLocaleRe
         language_or_locale_code (str | Unset): The code of the language or locale.
         language_or_locale_type
             (RobloxGameInternationalizationApiGetTranslationCountsForLanguageOrLocaleResponseLanguageOrLocaleType | Unset):
-            An indicator that says whether the passed in language/locale code represents a language or locale. ['Language' =
-            0, 'Locale' = 1]
+            An indicator that says whether the passed in language/locale code represents a language or locale.
         games (list[RobloxGameInternationalizationApiTranslationCountGameInfoResponse] | Unset): Info for the requested
             games, including their translation counts for the specified language or locale.
     """

@@ -21,7 +21,6 @@ class RobloxGameInternationalizationApiGetDeveloperProductIconResponse:
         image_id (str | Unset):
         image_url (str | Unset):
         state (RobloxGameInternationalizationApiGetDeveloperProductIconResponseState | Unset): Enum for image status.
-            ['Approved' = 0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]
         language_code (str | Unset):
     """
 

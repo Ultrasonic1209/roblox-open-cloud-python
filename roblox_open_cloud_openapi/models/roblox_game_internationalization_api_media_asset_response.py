@@ -19,8 +19,7 @@ class RobloxGameInternationalizationApiMediaAssetResponse:
     Attributes:
         media_asset_id (str | Unset):
         media_asset_alt_text (str | Unset):
-        state (RobloxGameInternationalizationApiMediaAssetResponseState | Unset): Enum for image status. ['Approved' =
-            0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]
+        state (RobloxGameInternationalizationApiMediaAssetResponseState | Unset): Enum for image status.
         media_asset_url (str | Unset):
     """
 

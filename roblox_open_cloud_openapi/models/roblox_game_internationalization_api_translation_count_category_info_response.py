@@ -25,7 +25,7 @@ class RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse:
 
     Attributes:
         category (RobloxGameInternationalizationApiTranslationCountCategoryInfoResponseCategory | Unset): The category
-            of the translation counts. ['InGameContent' = 0]
+            of the translation counts.
         translation_counts (list[RobloxGameInternationalizationApiTranslationCount] | Unset): The translation counts.
         total_translatable_item_count (int | Unset): The total number of translatable items.
             The translation count percentage can be calculated by doing translationCounts / totalTranslatableItemCount.

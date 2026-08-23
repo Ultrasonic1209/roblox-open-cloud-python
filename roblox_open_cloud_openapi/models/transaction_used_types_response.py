@@ -38,6 +38,8 @@ class TransactionUsedTypesResponse:
         has_transfer (bool | Unset):
         has_roblox_select_transfer (bool | Unset):
         has_private_server_engagement_payout (bool | Unset):
+        has_creator_rewards_payout (bool | Unset):
+        has_subscription_referral_payout (bool | Unset):
     """
 
     has_purchase: bool | Unset = UNSET
@@ -64,6 +66,8 @@ class TransactionUsedTypesResponse:
     has_transfer: bool | Unset = UNSET
     has_roblox_select_transfer: bool | Unset = UNSET
     has_private_server_engagement_payout: bool | Unset = UNSET
+    has_creator_rewards_payout: bool | Unset = UNSET
+    has_subscription_referral_payout: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         has_purchase = self.has_purchase
@@ -113,6 +117,10 @@ class TransactionUsedTypesResponse:
         has_roblox_select_transfer = self.has_roblox_select_transfer
 
         has_private_server_engagement_payout = self.has_private_server_engagement_payout
+
+        has_creator_rewards_payout = self.has_creator_rewards_payout
+
+        has_subscription_referral_payout = self.has_subscription_referral_payout
 
         field_dict: dict[str, Any] = {}
 
@@ -165,6 +173,10 @@ class TransactionUsedTypesResponse:
             field_dict["HasRobloxSelectTransfer"] = has_roblox_select_transfer
         if has_private_server_engagement_payout is not UNSET:
             field_dict["HasPrivateServerEngagementPayout"] = has_private_server_engagement_payout
+        if has_creator_rewards_payout is not UNSET:
+            field_dict["HasCreatorRewardsPayout"] = has_creator_rewards_payout
+        if has_subscription_referral_payout is not UNSET:
+            field_dict["HasSubscriptionReferralPayout"] = has_subscription_referral_payout
 
         return field_dict
 
@@ -219,6 +231,10 @@ class TransactionUsedTypesResponse:
 
         has_private_server_engagement_payout = d.pop("HasPrivateServerEngagementPayout", UNSET)
 
+        has_creator_rewards_payout = d.pop("HasCreatorRewardsPayout", UNSET)
+
+        has_subscription_referral_payout = d.pop("HasSubscriptionReferralPayout", UNSET)
+
         transaction_used_types_response = cls(
             has_purchase=has_purchase,
             has_sale=has_sale,
@@ -244,6 +260,8 @@ class TransactionUsedTypesResponse:
             has_transfer=has_transfer,
             has_roblox_select_transfer=has_roblox_select_transfer,
             has_private_server_engagement_payout=has_private_server_engagement_payout,
+            has_creator_rewards_payout=has_creator_rewards_payout,
+            has_subscription_referral_payout=has_subscription_referral_payout,
         )
 
         return transaction_used_types_response

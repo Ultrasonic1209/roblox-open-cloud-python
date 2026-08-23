@@ -31,6 +31,7 @@ class RevenueSummaryResponse:
         commission_robux (int | Unset):
         publishing_advance_rebates (int | Unset):
         group_affiliate_payout_robux (int | Unset):
+        creator_rewards_payout_robux (int | Unset):
     """
 
     recurring_robux_stipend: int | Unset = UNSET
@@ -50,6 +51,7 @@ class RevenueSummaryResponse:
     commission_robux: int | Unset = UNSET
     publishing_advance_rebates: int | Unset = UNSET
     group_affiliate_payout_robux: int | Unset = UNSET
+    creator_rewards_payout_robux: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         recurring_robux_stipend = self.recurring_robux_stipend
@@ -85,6 +87,8 @@ class RevenueSummaryResponse:
         publishing_advance_rebates = self.publishing_advance_rebates
 
         group_affiliate_payout_robux = self.group_affiliate_payout_robux
+
+        creator_rewards_payout_robux = self.creator_rewards_payout_robux
 
         field_dict: dict[str, Any] = {}
 
@@ -125,6 +129,8 @@ class RevenueSummaryResponse:
             field_dict["publishingAdvanceRebates"] = publishing_advance_rebates
         if group_affiliate_payout_robux is not UNSET:
             field_dict["groupAffiliatePayoutRobux"] = group_affiliate_payout_robux
+        if creator_rewards_payout_robux is not UNSET:
+            field_dict["creatorRewardsPayoutRobux"] = creator_rewards_payout_robux
 
         return field_dict
 
@@ -167,6 +173,8 @@ class RevenueSummaryResponse:
 
         group_affiliate_payout_robux = d.pop("groupAffiliatePayoutRobux", UNSET)
 
+        creator_rewards_payout_robux = d.pop("creatorRewardsPayoutRobux", UNSET)
+
         revenue_summary_response = cls(
             recurring_robux_stipend=recurring_robux_stipend,
             item_sale_robux=item_sale_robux,
@@ -185,6 +193,7 @@ class RevenueSummaryResponse:
             commission_robux=commission_robux,
             publishing_advance_rebates=publishing_advance_rebates,
             group_affiliate_payout_robux=group_affiliate_payout_robux,
+            creator_rewards_payout_robux=creator_rewards_payout_robux,
         )
 
         return revenue_summary_response

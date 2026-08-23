@@ -14,6 +14,7 @@ def _get_kwargs(
     *,
     user_ids: list[int],
     include_background: bool | Unset = False,
+    include_profile_frame: bool | Unset = False,
     size: GetV1UsersAvatarHeadshotSize | Unset = GetV1UsersAvatarHeadshotSize.VALUE_0,
     format_: GetV1UsersAvatarHeadshotFormat | Unset = GetV1UsersAvatarHeadshotFormat.PNG,
     is_circular: bool | Unset = False,
@@ -26,6 +27,8 @@ def _get_kwargs(
     params["userIds"] = json_user_ids
 
     params["includeBackground"] = include_background
+
+    params["includeProfileFrame"] = include_profile_frame
 
     json_size: str | Unset = UNSET
     if not isinstance(size, Unset):
@@ -86,6 +89,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     user_ids: list[int],
     include_background: bool | Unset = False,
+    include_profile_frame: bool | Unset = False,
     size: GetV1UsersAvatarHeadshotSize | Unset = GetV1UsersAvatarHeadshotSize.VALUE_0,
     format_: GetV1UsersAvatarHeadshotFormat | Unset = GetV1UsersAvatarHeadshotFormat.PNG,
     is_circular: bool | Unset = False,
@@ -95,6 +99,7 @@ def sync_detailed(
     Args:
         user_ids (list[int]):
         include_background (bool | Unset):  Default: False.
+        include_profile_frame (bool | Unset):  Default: False.
         size (GetV1UsersAvatarHeadshotSize | Unset):  Default:
             GetV1UsersAvatarHeadshotSize.VALUE_0.
         format_ (GetV1UsersAvatarHeadshotFormat | Unset):  Default:
@@ -112,6 +117,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         user_ids=user_ids,
         include_background=include_background,
+        include_profile_frame=include_profile_frame,
         size=size,
         format_=format_,
         is_circular=is_circular,
@@ -129,6 +135,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     user_ids: list[int],
     include_background: bool | Unset = False,
+    include_profile_frame: bool | Unset = False,
     size: GetV1UsersAvatarHeadshotSize | Unset = GetV1UsersAvatarHeadshotSize.VALUE_0,
     format_: GetV1UsersAvatarHeadshotFormat | Unset = GetV1UsersAvatarHeadshotFormat.PNG,
     is_circular: bool | Unset = False,
@@ -138,6 +145,7 @@ async def asyncio_detailed(
     Args:
         user_ids (list[int]):
         include_background (bool | Unset):  Default: False.
+        include_profile_frame (bool | Unset):  Default: False.
         size (GetV1UsersAvatarHeadshotSize | Unset):  Default:
             GetV1UsersAvatarHeadshotSize.VALUE_0.
         format_ (GetV1UsersAvatarHeadshotFormat | Unset):  Default:
@@ -155,6 +163,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         user_ids=user_ids,
         include_background=include_background,
+        include_profile_frame=include_profile_frame,
         size=size,
         format_=format_,
         is_circular=is_circular,

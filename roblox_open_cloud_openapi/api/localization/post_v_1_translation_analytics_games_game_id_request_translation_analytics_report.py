@@ -30,7 +30,10 @@ def _get_kwargs(
             game_id=quote(str(game_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "post_v1_translation-analytics_games_gameId_request-translation-analytics-report",
         },
     }

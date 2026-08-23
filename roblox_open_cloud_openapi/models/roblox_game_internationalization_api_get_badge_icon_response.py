@@ -19,8 +19,7 @@ class RobloxGameInternationalizationApiGetBadgeIconResponse:
     Attributes:
         image_id (str | Unset):
         image_url (str | Unset):
-        state (RobloxGameInternationalizationApiGetBadgeIconResponseState | Unset): Enum for image status. ['Approved' =
-            0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]
+        state (RobloxGameInternationalizationApiGetBadgeIconResponseState | Unset): Enum for image status.
         language_code (str | Unset):
     """
 

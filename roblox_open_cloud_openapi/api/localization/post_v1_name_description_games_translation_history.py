@@ -34,6 +34,7 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/name-description/games/translation-history",
         "extensions": {
             "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
                 "x-roblox-recommended-alternatives": [
                     {

@@ -24,10 +24,7 @@ class RobloxGameInternationalizationApiGetNameDescriptionHistoryV2Request:
         Attributes:
             content_id (int | Unset):
             content_type (RobloxGameInternationalizationApiGetNameDescriptionHistoryV2RequestContentType | Unset): The enum
-                representing the type of request while requesting name/description history ['UniverseDisplayNames' = 0,
-                'UniverseDisplayDescriptions' = 1, 'BadgeDisplayName' = 2, 'BadgeDisplayDescription' = 3,
-                'DeveloperProductDisplayName' = 4, 'DeveloperProductDisplayDescription' = 5, 'GamePassDisplayName' = 6,
-                'GamePassDisplayDescription' = 7]
+                representing the type of request while requesting name/description history
             language_code (str | Unset):
             cursor (str | Unset):
             count (int | Unset):

@@ -19,7 +19,7 @@ class RobloxGameInternationalizationApiLanguageOrLocale:
     Attributes:
         name (str | Unset):
         language_code_type (RobloxGameInternationalizationApiLanguageOrLocaleLanguageCodeType | Unset): An enum to
-            distinguish between locale codes and language codes. ['Language' = 0, 'Locale' = 1]
+            distinguish between locale codes and language codes.
         language_code (str | Unset):
     """
 

@@ -18,7 +18,7 @@ class RobloxGameInternationalizationApiLanguageOrLocaleSettings:
     """
     Attributes:
         language_code_type (RobloxGameInternationalizationApiLanguageOrLocaleSettingsLanguageCodeType | Unset): The
-            language code type. ['Language' = 0, 'Locale' = 1]
+            language code type.
         language_code (str | Unset): The language code.
         is_automatic_translation_enabled (bool | Unset): Indicates whether or not automatic translation is currently
             enabled for the game and language.

@@ -39,7 +39,10 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/game-localization-status/translation-counts-for-language-or-locale",
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_game-localization-status_translation-counts-for-language-or-locale",
         },
     }

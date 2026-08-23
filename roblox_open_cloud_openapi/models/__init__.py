@@ -46,9 +46,6 @@ from .calculate_experiment_mde_data import CalculateExperimentMdeData
 from .calculate_experiment_mde_response import CalculateExperimentMdeResponse
 from .can_invite_user_response import CanInviteUserResponse
 from .category_response import CategoryResponse
-from .client_settings_api_roblox_client_settings_api_models_response_client_version_response import (
-    ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse,
-)
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
 from .cloud_flush_memory_store_scope import CloudFlushMemoryStoreScope
@@ -1515,15 +1512,6 @@ from .roblox_friends_api_models_response_user_response_presence_type import (
 from .roblox_friends_api_multiget_are_friends_request_model import RobloxFriendsApiMultigetAreFriendsRequestModel
 from .roblox_friends_api_multiget_are_friends_response import RobloxFriendsApiMultigetAreFriendsResponse
 from .roblox_friends_api_pending_friend_request_count_model import RobloxFriendsApiPendingFriendRequestCountModel
-from .roblox_game_internationalization_api_associate_localization_tables_to_game_request import (
-    RobloxGameInternationalizationApiAssociateLocalizationTablesToGameRequest,
-)
-from .roblox_game_internationalization_api_associate_localization_tables_to_game_response import (
-    RobloxGameInternationalizationApiAssociateLocalizationTablesToGameResponse,
-)
-from .roblox_game_internationalization_api_auto_localization_metadata_response import (
-    RobloxGameInternationalizationApiAutoLocalizationMetadataResponse,
-)
 from .roblox_game_internationalization_api_automatic_translation_status_target_language import (
     RobloxGameInternationalizationApiAutomaticTranslationStatusTargetLanguage,
 )
@@ -1535,9 +1523,6 @@ from .roblox_game_internationalization_api_edit_image_translation_status_for_gam
 )
 from .roblox_game_internationalization_api_failed_name_description import (
     RobloxGameInternationalizationApiFailedNameDescription,
-)
-from .roblox_game_internationalization_api_game_autolocalization_information_response import (
-    RobloxGameInternationalizationApiGameAutolocalizationInformationResponse,
 )
 from .roblox_game_internationalization_api_get_allowed_automatic_translation_status_for_languages_response import (
     RobloxGameInternationalizationApiGetAllowedAutomaticTranslationStatusForLanguagesResponse,
@@ -1613,9 +1598,6 @@ from .roblox_game_internationalization_api_language_or_locale_settings_language_
 from .roblox_game_internationalization_api_language_with_locales import (
     RobloxGameInternationalizationApiLanguageWithLocales,
 )
-from .roblox_game_internationalization_api_localization_table_game_association import (
-    RobloxGameInternationalizationApiLocalizationTableGameAssociation,
-)
 from .roblox_game_internationalization_api_media_asset_response import (
     RobloxGameInternationalizationApiMediaAssetResponse,
 )
@@ -1661,12 +1643,6 @@ from .roblox_game_internationalization_api_request_translation_analytics_report_
 )
 from .roblox_game_internationalization_api_request_translation_analytics_report_response_report_generation_status import (
     RobloxGameInternationalizationApiRequestTranslationAnalyticsReportResponseReportGenerationStatus,
-)
-from .roblox_game_internationalization_api_set_autolocalization_settings_for_game_request import (
-    RobloxGameInternationalizationApiSetAutolocalizationSettingsForGameRequest,
-)
-from .roblox_game_internationalization_api_set_autolocalization_table_for_game_request import (
-    RobloxGameInternationalizationApiSetAutolocalizationTableForGameRequest,
 )
 from .roblox_game_internationalization_api_sort_image_ids_request import (
     RobloxGameInternationalizationApiSortImageIdsRequest,
@@ -2276,6 +2252,15 @@ from .roblox_trades_api_models_v2_can_trade_with_response import RobloxTradesApi
 from .roblox_trades_api_models_v2_can_trade_with_response_mutual_trade_eligibility import (
     RobloxTradesApiModelsV2CanTradeWithResponseMutualTradeEligibility,
 )
+from .roblox_trades_api_models_v2_currency_transfer_eligibility_response import (
+    RobloxTradesApiModelsV2CurrencyTransferEligibilityResponse,
+)
+from .roblox_trades_api_models_v2_free_trades_allowance_response import (
+    RobloxTradesApiModelsV2FreeTradesAllowanceResponse,
+)
+from .roblox_trades_api_models_v2_free_trades_allowance_response_window import (
+    RobloxTradesApiModelsV2FreeTradesAllowanceResponseWindow,
+)
 from .roblox_trades_api_models_v2_get_user_tradable_items_response import (
     RobloxTradesApiModelsV2GetUserTradableItemsResponse,
 )
@@ -2876,7 +2861,6 @@ __all__ = (
     "CalculateExperimentMdeResponse",
     "CanInviteUserResponse",
     "CategoryResponse",
-    "ClientSettingsApiRobloxClientSettingsApiModelsResponseClientVersionResponse",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
     "CloudFlushMemoryStoreScope",
@@ -3831,14 +3815,10 @@ __all__ = (
     "RobloxFriendsApiMultigetAreFriendsRequestModel",
     "RobloxFriendsApiMultigetAreFriendsResponse",
     "RobloxFriendsApiPendingFriendRequestCountModel",
-    "RobloxGameInternationalizationApiAssociateLocalizationTablesToGameRequest",
-    "RobloxGameInternationalizationApiAssociateLocalizationTablesToGameResponse",
-    "RobloxGameInternationalizationApiAutoLocalizationMetadataResponse",
     "RobloxGameInternationalizationApiAutomaticTranslationStatusTargetLanguage",
     "RobloxGameInternationalizationApiEditAutomaticTranslationStatusForGameAndLanguageResponse",
     "RobloxGameInternationalizationApiEditImageTranslationStatusForGameAndLanguageResponse",
     "RobloxGameInternationalizationApiFailedNameDescription",
-    "RobloxGameInternationalizationApiGameAutolocalizationInformationResponse",
     "RobloxGameInternationalizationApiGetAllowedAutomaticTranslationStatusForLanguagesResponse",
     "RobloxGameInternationalizationApiGetAutomaticTranslationFeatureStatusForGameResponse",
     "RobloxGameInternationalizationApiGetAutomaticTranslationQuotaForGameResponse",
@@ -3865,7 +3845,6 @@ __all__ = (
     "RobloxGameInternationalizationApiLanguageOrLocaleSettings",
     "RobloxGameInternationalizationApiLanguageOrLocaleSettingsLanguageCodeType",
     "RobloxGameInternationalizationApiLanguageWithLocales",
-    "RobloxGameInternationalizationApiLocalizationTableGameAssociation",
     "RobloxGameInternationalizationApiMediaAssetResponse",
     "RobloxGameInternationalizationApiMediaAssetResponseState",
     "RobloxGameInternationalizationApiModelsRequestSetUserLocalizationSettingsRequest",
@@ -3884,8 +3863,6 @@ __all__ = (
     "RobloxGameInternationalizationApiRequestTranslationAnalyticsReportRequestReportType",
     "RobloxGameInternationalizationApiRequestTranslationAnalyticsReportResponse",
     "RobloxGameInternationalizationApiRequestTranslationAnalyticsReportResponseReportGenerationStatus",
-    "RobloxGameInternationalizationApiSetAutolocalizationSettingsForGameRequest",
-    "RobloxGameInternationalizationApiSetAutolocalizationTableForGameRequest",
     "RobloxGameInternationalizationApiSortImageIdsRequest",
     "RobloxGameInternationalizationApiSourceLanguageWithLocales",
     "RobloxGameInternationalizationApiSupportedLanguagesMetadataResponse",
@@ -4202,6 +4179,9 @@ __all__ = (
     "RobloxTradesApiModelsV2CanTradeResponseTradeEligibility",
     "RobloxTradesApiModelsV2CanTradeWithResponse",
     "RobloxTradesApiModelsV2CanTradeWithResponseMutualTradeEligibility",
+    "RobloxTradesApiModelsV2CurrencyTransferEligibilityResponse",
+    "RobloxTradesApiModelsV2FreeTradesAllowanceResponse",
+    "RobloxTradesApiModelsV2FreeTradesAllowanceResponseWindow",
     "RobloxTradesApiModelsV2GetUserTradableItemsResponse",
     "RobloxTradesApiModelsV2ItemTarget",
     "RobloxTradesApiModelsV2ItemTargetItemType",

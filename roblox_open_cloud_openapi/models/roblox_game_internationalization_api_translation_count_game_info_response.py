@@ -26,9 +26,7 @@ class RobloxGameInternationalizationApiTranslationCountGameInfoResponse:
     Attributes:
         game_id (int | Unset): The game id.
         status (RobloxGameInternationalizationApiTranslationCountGameInfoResponseStatus | Unset): The status of the
-            response for the requested game. ['LanguageOrLocaleSupportedForGame' = 0, 'LanguageOrLocaleNotSupportedForGame'
-            = 1, 'LanguageOrLocaleIsSource' = 2, 'InsufficientPermission' = 3, 'GameDoesNotExist' = 4,
-            'GameDoesNotHaveTable' = 5, 'UnknownError' = 6]
+            response for the requested game.
         categories (list[RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse] | Unset): Categories of
             translation counts.
     """

@@ -23,7 +23,7 @@ class RobloxGameInternationalizationApiTranslationCount:
     Attributes:
         count (int | Unset):
         translation_status (RobloxGameInternationalizationApiTranslationCountTranslationStatus | Unset): The enum
-            representing a translation status. ['Approved' = 0]
+            representing a translation status.
         translator_type (RobloxGameInternationalizationApiTranslationCountTranslatorType | Unset): Gets or sets the type
             of the translator associated with the count, or `null` if the count is not associated with a specific type of
             translator.
