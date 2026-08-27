@@ -22,6 +22,8 @@ class RobloxLocalizationTablesApiGameAutolocalizationInformationResponse:
         auto_localization_table_id (UUID | Unset):
         source_language (str | Unset):
         asset_id (int | Unset):
+        should_use_image_localization_table (bool | Unset):
+        is_auto_localization_for_image_enabled (bool | Unset):
     """
 
     is_autolocalization_enabled: bool | Unset = UNSET
@@ -31,6 +33,8 @@ class RobloxLocalizationTablesApiGameAutolocalizationInformationResponse:
     auto_localization_table_id: UUID | Unset = UNSET
     source_language: str | Unset = UNSET
     asset_id: int | Unset = UNSET
+    should_use_image_localization_table: bool | Unset = UNSET
+    is_auto_localization_for_image_enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         is_autolocalization_enabled = self.is_autolocalization_enabled
@@ -49,6 +53,10 @@ class RobloxLocalizationTablesApiGameAutolocalizationInformationResponse:
 
         asset_id = self.asset_id
 
+        should_use_image_localization_table = self.should_use_image_localization_table
+
+        is_auto_localization_for_image_enabled = self.is_auto_localization_for_image_enabled
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -66,6 +74,10 @@ class RobloxLocalizationTablesApiGameAutolocalizationInformationResponse:
             field_dict["sourceLanguage"] = source_language
         if asset_id is not UNSET:
             field_dict["assetId"] = asset_id
+        if should_use_image_localization_table is not UNSET:
+            field_dict["shouldUseImageLocalizationTable"] = should_use_image_localization_table
+        if is_auto_localization_for_image_enabled is not UNSET:
+            field_dict["isAutoLocalizationForImageEnabled"] = is_auto_localization_for_image_enabled
 
         return field_dict
 
@@ -91,6 +103,10 @@ class RobloxLocalizationTablesApiGameAutolocalizationInformationResponse:
 
         asset_id = d.pop("assetId", UNSET)
 
+        should_use_image_localization_table = d.pop("shouldUseImageLocalizationTable", UNSET)
+
+        is_auto_localization_for_image_enabled = d.pop("isAutoLocalizationForImageEnabled", UNSET)
+
         roblox_localization_tables_api_game_autolocalization_information_response = cls(
             is_autolocalization_enabled=is_autolocalization_enabled,
             is_automatic_entries_setting_enabled=is_automatic_entries_setting_enabled,
@@ -99,6 +115,8 @@ class RobloxLocalizationTablesApiGameAutolocalizationInformationResponse:
             auto_localization_table_id=auto_localization_table_id,
             source_language=source_language,
             asset_id=asset_id,
+            should_use_image_localization_table=should_use_image_localization_table,
+            is_auto_localization_for_image_enabled=is_auto_localization_for_image_enabled,
         )
 
         return roblox_localization_tables_api_game_autolocalization_information_response

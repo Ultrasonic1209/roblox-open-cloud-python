@@ -18,12 +18,16 @@ class RobloxLocalizationTablesApiSetAutolocalizationSettingsForGameRequest:
         is_automatic_entries_setting_enabled (bool | Unset):
         is_automatic_entries_deletions_enabled (bool | Unset):
         should_use_localization_table (bool | Unset):
+        should_use_image_localization_table (bool | Unset):
+        is_auto_localization_for_image_enabled (bool | Unset):
     """
 
     is_autolocalization_enabled: bool | Unset = UNSET
     is_automatic_entries_setting_enabled: bool | Unset = UNSET
     is_automatic_entries_deletions_enabled: bool | Unset = UNSET
     should_use_localization_table: bool | Unset = UNSET
+    should_use_image_localization_table: bool | Unset = UNSET
+    is_auto_localization_for_image_enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         is_autolocalization_enabled = self.is_autolocalization_enabled
@@ -33,6 +37,10 @@ class RobloxLocalizationTablesApiSetAutolocalizationSettingsForGameRequest:
         is_automatic_entries_deletions_enabled = self.is_automatic_entries_deletions_enabled
 
         should_use_localization_table = self.should_use_localization_table
+
+        should_use_image_localization_table = self.should_use_image_localization_table
+
+        is_auto_localization_for_image_enabled = self.is_auto_localization_for_image_enabled
 
         field_dict: dict[str, Any] = {}
 
@@ -45,6 +53,10 @@ class RobloxLocalizationTablesApiSetAutolocalizationSettingsForGameRequest:
             field_dict["isAutomaticEntriesDeletionsEnabled"] = is_automatic_entries_deletions_enabled
         if should_use_localization_table is not UNSET:
             field_dict["shouldUseLocalizationTable"] = should_use_localization_table
+        if should_use_image_localization_table is not UNSET:
+            field_dict["shouldUseImageLocalizationTable"] = should_use_image_localization_table
+        if is_auto_localization_for_image_enabled is not UNSET:
+            field_dict["isAutoLocalizationForImageEnabled"] = is_auto_localization_for_image_enabled
 
         return field_dict
 
@@ -59,11 +71,17 @@ class RobloxLocalizationTablesApiSetAutolocalizationSettingsForGameRequest:
 
         should_use_localization_table = d.pop("shouldUseLocalizationTable", UNSET)
 
+        should_use_image_localization_table = d.pop("shouldUseImageLocalizationTable", UNSET)
+
+        is_auto_localization_for_image_enabled = d.pop("isAutoLocalizationForImageEnabled", UNSET)
+
         roblox_localization_tables_api_set_autolocalization_settings_for_game_request = cls(
             is_autolocalization_enabled=is_autolocalization_enabled,
             is_automatic_entries_setting_enabled=is_automatic_entries_setting_enabled,
             is_automatic_entries_deletions_enabled=is_automatic_entries_deletions_enabled,
             should_use_localization_table=should_use_localization_table,
+            should_use_image_localization_table=should_use_image_localization_table,
+            is_auto_localization_for_image_enabled=is_auto_localization_for_image_enabled,
         )
 
         return roblox_localization_tables_api_set_autolocalization_settings_for_game_request

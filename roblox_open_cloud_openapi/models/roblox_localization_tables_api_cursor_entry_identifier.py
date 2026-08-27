@@ -26,7 +26,7 @@ class RobloxLocalizationTablesApiCursorEntryIdentifier:
         identifier (RobloxLocalizationTablesApiEntryIdentifier | Unset):
         count (int | Unset): The translation history count to get.
         sort_order (RobloxLocalizationTablesApiCursorEntryIdentifierSortOrder | Unset): In which order the data is
-            sorted. ['Asc' = 1, 'Desc' = 2]
+            sorted.
     """
 
     cursor: str | Unset = UNSET

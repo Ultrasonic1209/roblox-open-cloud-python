@@ -38,7 +38,7 @@ class RobloxInventoryApiV2UserAssetItemModelV2:
             'DynamicHead' = 79, 'CodeSnippet' = 80, 'AdsVideo' = 81, 'OtaUpdate' = 82, 'Screenshot' = 83,
             'RuntimePropertySet' = 84, 'StorePreviewVideo' = 85, 'GamePreviewVideo' = 86, 'CreatorExperienceConfig' = 87,
             'FaceMakeup' = 88, 'LipMakeup' = 89, 'EyeMakeup' = 90, 'VoxelFragment' = 91, 'AvatarBackground' = 92,
-            'TextDocument' = 93, 'Post' = 94]
+            'TextDocument' = 93, 'Post' = 94, 'AnimatedImage' = 95]
         created (datetime.datetime | Unset): The created date time of the user asset.
     """
 

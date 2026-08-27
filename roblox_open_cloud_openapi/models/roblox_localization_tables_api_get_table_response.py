@@ -20,8 +20,7 @@ class RobloxLocalizationTablesApiGetTableResponse:
     Attributes:
         id (UUID | Unset):
         name (str | Unset):
-        owner_type (RobloxLocalizationTablesApiGetTableResponseOwnerType | Unset): Enum for valid OwnerTypes. ['User' =
-            0, 'Group' = 1]
+        owner_type (RobloxLocalizationTablesApiGetTableResponseOwnerType | Unset): Enum for valid OwnerTypes.
         owner_id (int | Unset):
         asset_id (int | Unset):
     """

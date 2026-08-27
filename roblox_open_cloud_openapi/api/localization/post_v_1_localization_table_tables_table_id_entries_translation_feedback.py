@@ -39,7 +39,10 @@ def _get_kwargs(
         ),
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "post_v1_localization-table_tables_tableId_entries_translation-feedback",
         },
     }

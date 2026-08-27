@@ -22,7 +22,10 @@ def _get_kwargs(
         "method": "post",
         "url": "https://localizationtables.roblox.com/v1/localization-table/tables",
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "post_v1_localization-table_tables",
         },
     }

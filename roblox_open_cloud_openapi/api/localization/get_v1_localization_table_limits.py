@@ -23,6 +23,7 @@ def _get_kwargs() -> dict[str, Any]:
         "url": "https://localizationtables.roblox.com/v1/localization-table/limits",
         "extensions": {
             "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
                 "x-roblox-recommended-alternatives": [
                     {

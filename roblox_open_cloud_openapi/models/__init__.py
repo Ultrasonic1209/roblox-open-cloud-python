@@ -585,9 +585,6 @@ from .paginated_game_events_response import PaginatedGameEventsResponse
 from .patch_legacy_groups_v1_groups_group_id_notification_preference_response_200 import (
     PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200,
 )
-from .patch_v1_auto_localization_table_games_game_id_ingestion_response_200 import (
-    PatchV1AutoLocalizationTableGamesGameIdIngestionResponse200,
-)
 from .patch_v1_groups_group_id_notification_preference_response_200 import (
     PatchV1GroupsGroupIdNotificationPreferenceResponse200,
 )
@@ -2071,10 +2068,6 @@ from .roblox_localization_client_supported_locale_locale import RobloxLocalizati
 from .roblox_localization_tables_api_auto_localization_metadata_response import (
     RobloxLocalizationTablesApiAutoLocalizationMetadataResponse,
 )
-from .roblox_localization_tables_api_auto_scrape_entry import RobloxLocalizationTablesApiAutoScrapeEntry
-from .roblox_localization_tables_api_auto_scrape_entry_metadata import (
-    RobloxLocalizationTablesApiAutoScrapeEntryMetadata,
-)
 from .roblox_localization_tables_api_create_table_request import RobloxLocalizationTablesApiCreateTableRequest
 from .roblox_localization_tables_api_create_table_request_owner_type import (
     RobloxLocalizationTablesApiCreateTableRequestOwnerType,
@@ -2140,17 +2133,9 @@ from .roblox_localization_tables_api_get_table_response import RobloxLocalizatio
 from .roblox_localization_tables_api_get_table_response_owner_type import (
     RobloxLocalizationTablesApiGetTableResponseOwnerType,
 )
-from .roblox_localization_tables_api_ingest_auto_scraped_content_for_game_request import (
-    RobloxLocalizationTablesApiIngestAutoScrapedContentForGameRequest,
-)
-from .roblox_localization_tables_api_ingest_content_metadata import RobloxLocalizationTablesApiIngestContentMetadata
-from .roblox_localization_tables_api_ingest_content_metadata_place_information import (
-    RobloxLocalizationTablesApiIngestContentMetadataPlaceInformation,
-)
 from .roblox_localization_tables_api_localization_tables_metadata_response import (
     RobloxLocalizationTablesApiLocalizationTablesMetadataResponse,
 )
-from .roblox_localization_tables_api_matched_entry import RobloxLocalizationTablesApiMatchedEntry
 from .roblox_localization_tables_api_modified_entry import RobloxLocalizationTablesApiModifiedEntry
 from .roblox_localization_tables_api_patch_entry import RobloxLocalizationTablesApiPatchEntry
 from .roblox_localization_tables_api_patch_translation import RobloxLocalizationTablesApiPatchTranslation
@@ -3348,7 +3333,6 @@ __all__ = (
     "OrderedDataStoreEntry",
     "PaginatedGameEventsResponse",
     "PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200",
-    "PatchV1AutoLocalizationTableGamesGameIdIngestionResponse200",
     "PatchV1GroupsGroupIdNotificationPreferenceResponse200",
     "PatchV1GroupsIconBody",
     "PatchV1ThemesConsumerTypeConsumerIdConsumerType",
@@ -4094,8 +4078,6 @@ __all__ = (
     "RobloxLocalizationClientSupportedLocale",
     "RobloxLocalizationClientSupportedLocaleLocale",
     "RobloxLocalizationTablesApiAutoLocalizationMetadataResponse",
-    "RobloxLocalizationTablesApiAutoScrapeEntry",
-    "RobloxLocalizationTablesApiAutoScrapeEntryMetadata",
     "RobloxLocalizationTablesApiCreateTableRequest",
     "RobloxLocalizationTablesApiCreateTableRequestOwnerType",
     "RobloxLocalizationTablesApiCreateTableResponse",
@@ -4125,11 +4107,7 @@ __all__ = (
     "RobloxLocalizationTablesApiGetTableEntryCountResponse",
     "RobloxLocalizationTablesApiGetTableResponse",
     "RobloxLocalizationTablesApiGetTableResponseOwnerType",
-    "RobloxLocalizationTablesApiIngestAutoScrapedContentForGameRequest",
-    "RobloxLocalizationTablesApiIngestContentMetadata",
-    "RobloxLocalizationTablesApiIngestContentMetadataPlaceInformation",
     "RobloxLocalizationTablesApiLocalizationTablesMetadataResponse",
-    "RobloxLocalizationTablesApiMatchedEntry",
     "RobloxLocalizationTablesApiModifiedEntry",
     "RobloxLocalizationTablesApiPatchEntry",
     "RobloxLocalizationTablesApiPatchTranslation",
