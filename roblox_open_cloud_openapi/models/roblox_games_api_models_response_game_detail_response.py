@@ -65,6 +65,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
             When true, the content fields (name, description, creator, etc.) contain placeholder or
             empty values rather than the real data. Consumers should branch on this flag instead of
             inferring restriction from placeholder text.
+        creation_source (str | Unset): How the experience was created, as reported by hydration (e.g. "build").
+            Omitted when hydration does not return a value.
     """
 
     id: int | Unset = UNSET
@@ -100,6 +102,7 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
     refund_policy: RobloxGamesApiModelsResponseRefundPolicy | Unset = UNSET
     canonical_url_path: str | Unset = UNSET
     is_content_restricted: bool | Unset = UNSET
+    creation_source: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
@@ -182,6 +185,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
 
         is_content_restricted = self.is_content_restricted
 
+        creation_source = self.creation_source
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -251,6 +256,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
             field_dict["canonicalUrlPath"] = canonical_url_path
         if is_content_restricted is not UNSET:
             field_dict["isContentRestricted"] = is_content_restricted
+        if creation_source is not UNSET:
+            field_dict["creationSource"] = creation_source
 
         return field_dict
 
@@ -353,6 +360,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
 
         is_content_restricted = d.pop("isContentRestricted", UNSET)
 
+        creation_source = d.pop("creationSource", UNSET)
+
         roblox_games_api_models_response_game_detail_response = cls(
             id=id,
             root_place_id=root_place_id,
@@ -387,6 +396,7 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
             refund_policy=refund_policy,
             canonical_url_path=canonical_url_path,
             is_content_restricted=is_content_restricted,
+            creation_source=creation_source,
         )
 
         return roblox_games_api_models_response_game_detail_response

@@ -404,6 +404,12 @@ from .group_join_request import GroupJoinRequest
 from .group_membership import GroupMembership
 from .group_role import GroupRole
 from .group_role_role_permissions import GroupRoleRolePermissions
+from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
+    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
+)
+from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type_type import (
+    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType,
+)
 from .homepage_thumbnail import HomepageThumbnail
 from .homepage_thumbnail_status import HomepageThumbnailStatus
 from .host_response import HostResponse
@@ -3162,6 +3168,8 @@ __all__ = (
     "GroupMembership",
     "GroupRole",
     "GroupRoleRolePermissions",
+    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
+    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
     "HomepageThumbnail",
     "HomepageThumbnailStatus",
     "HostResponse",

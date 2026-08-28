@@ -79,6 +79,7 @@ class GetV1GroupsGroupIdAuditLogActionType(str, Enum):
     UPDATEGROUPSECURITYSETTINGS = "UpdateGroupSecuritySettings"
     UPDATEROLESETDATA = "UpdateRolesetData"
     UPDATEROLESETPERMISSIONS = "UpdateRoleSetPermissions"
+    UPDATEROLESETPOSITION = "UpdateRoleSetPosition"
     UPDATEROLESETRANK = "UpdateRolesetRank"
 
     def __str__(self) -> str:

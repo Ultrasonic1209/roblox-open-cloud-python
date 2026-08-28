@@ -25,6 +25,8 @@ class RobloxGroupsApiGroupRoleDetailResponse:
         color (RobloxGroupsApiGroupRoleDetailResponseColor | Unset): The role color. ['Invalid' = 0, 'Blue' = 1, 'Green'
             = 2, 'Purple' = 3, 'Yellow' = 4, 'Orange' = 5, 'Red' = 6, 'Magenta' = 7, 'Teal' = 8, 'Turquoise' = 9, 'Rust' =
             10, 'Pistachio' = 11, 'Midnight' = 12, 'Lavender' = 13, 'Pink' = 14, 'Crimson' = 15, 'Plum' = 16]
+        is_private (bool | Unset): Whether the role is private (only visible to members with permission).
+            Omitted from the response when false.
     """
 
     group_id: int | Unset = UNSET
@@ -35,6 +37,7 @@ class RobloxGroupsApiGroupRoleDetailResponse:
     member_count: int | Unset = UNSET
     is_base: bool | Unset = UNSET
     color: RobloxGroupsApiGroupRoleDetailResponseColor | Unset = UNSET
+    is_private: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         group_id = self.group_id
@@ -55,6 +58,8 @@ class RobloxGroupsApiGroupRoleDetailResponse:
         if not isinstance(self.color, Unset):
             color = self.color.value
 
+        is_private = self.is_private
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -74,6 +79,8 @@ class RobloxGroupsApiGroupRoleDetailResponse:
             field_dict["isBase"] = is_base
         if color is not UNSET:
             field_dict["color"] = color
+        if is_private is not UNSET:
+            field_dict["isPrivate"] = is_private
 
         return field_dict
 
@@ -101,6 +108,8 @@ class RobloxGroupsApiGroupRoleDetailResponse:
         else:
             color = RobloxGroupsApiGroupRoleDetailResponseColor(_color)
 
+        is_private = d.pop("isPrivate", UNSET)
+
         roblox_groups_api_group_role_detail_response = cls(
             group_id=group_id,
             id=id,
@@ -110,6 +119,7 @@ class RobloxGroupsApiGroupRoleDetailResponse:
             member_count=member_count,
             is_base=is_base,
             color=color,
+            is_private=is_private,
         )
 
         return roblox_groups_api_group_role_detail_response

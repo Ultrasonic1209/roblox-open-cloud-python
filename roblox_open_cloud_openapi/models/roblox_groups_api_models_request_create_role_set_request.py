@@ -18,12 +18,16 @@ class RobloxGroupsApiModelsRequestCreateRoleSetRequest:
         description (str | Unset): The description of the roleset.
         rank (int | Unset): The rank/positioning of the roleset.
         using_group_funds (bool | Unset): Setting to use group funds or not.
+        is_private (bool | Unset): Optional. When true the role is only visible to members with permission to see
+            private roles.
+            Defaults to false (public). Only accessible to group owners.
     """
 
     name: str | Unset = UNSET
     description: str | Unset = UNSET
     rank: int | Unset = UNSET
     using_group_funds: bool | Unset = UNSET
+    is_private: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -33,6 +37,8 @@ class RobloxGroupsApiModelsRequestCreateRoleSetRequest:
         rank = self.rank
 
         using_group_funds = self.using_group_funds
+
+        is_private = self.is_private
 
         field_dict: dict[str, Any] = {}
 
@@ -45,6 +51,8 @@ class RobloxGroupsApiModelsRequestCreateRoleSetRequest:
             field_dict["rank"] = rank
         if using_group_funds is not UNSET:
             field_dict["usingGroupFunds"] = using_group_funds
+        if is_private is not UNSET:
+            field_dict["isPrivate"] = is_private
 
         return field_dict
 
@@ -59,11 +67,14 @@ class RobloxGroupsApiModelsRequestCreateRoleSetRequest:
 
         using_group_funds = d.pop("usingGroupFunds", UNSET)
 
+        is_private = d.pop("isPrivate", UNSET)
+
         roblox_groups_api_models_request_create_role_set_request = cls(
             name=name,
             description=description,
             rank=rank,
             using_group_funds=using_group_funds,
+            is_private=is_private,
         )
 
         return roblox_groups_api_models_request_create_role_set_request

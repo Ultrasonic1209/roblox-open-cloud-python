@@ -21,12 +21,16 @@ class RobloxGroupsApiModelsRequestUpdateRoleSetRequest:
             Blue).
             When omitted, only name and description are updated and the existing color is left unchanged.
             When set, name, description, and color are updated via UpdateGroupRoleSetProperties.
+        is_private (bool | Unset): Optional. When set, updates the visibility of the roleset.
+            Only accessible to group owners.
+            The base (guest) role cannot be made private.
     """
 
     name: str | Unset = UNSET
     description: str | Unset = UNSET
     rank: int | Unset = UNSET
     color: int | Unset = UNSET
+    is_private: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -36,6 +40,8 @@ class RobloxGroupsApiModelsRequestUpdateRoleSetRequest:
         rank = self.rank
 
         color = self.color
+
+        is_private = self.is_private
 
         field_dict: dict[str, Any] = {}
 
@@ -48,6 +54,8 @@ class RobloxGroupsApiModelsRequestUpdateRoleSetRequest:
             field_dict["rank"] = rank
         if color is not UNSET:
             field_dict["color"] = color
+        if is_private is not UNSET:
+            field_dict["isPrivate"] = is_private
 
         return field_dict
 
@@ -62,11 +70,14 @@ class RobloxGroupsApiModelsRequestUpdateRoleSetRequest:
 
         color = d.pop("color", UNSET)
 
+        is_private = d.pop("isPrivate", UNSET)
+
         roblox_groups_api_models_request_update_role_set_request = cls(
             name=name,
             description=description,
             rank=rank,
             color=color,
+            is_private=is_private,
         )
 
         return roblox_groups_api_models_request_update_role_set_request

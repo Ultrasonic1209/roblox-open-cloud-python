@@ -14,6 +14,7 @@ from ...types import UNSET, Response
 def _get_kwargs(
     *,
     ids: list[int],
+    include_private: bool,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -21,6 +22,8 @@ def _get_kwargs(
     json_ids = ids
 
     params["ids"] = json_ids
+
+    params["includePrivate"] = include_private
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -72,11 +75,13 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     ids: list[int],
+    include_private: bool,
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupRoleDetailResponse]:
     """Gets the Roles by their ids.
 
     Args:
         ids (list[int]):
+        include_private (bool):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -88,6 +93,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         ids=ids,
+        include_private=include_private,
     )
 
     response = client.get_httpx2_client().request(
@@ -101,11 +107,13 @@ def sync(
     *,
     client: AuthenticatedClient,
     ids: list[int],
+    include_private: bool,
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupRoleDetailResponse | None:
     """Gets the Roles by their ids.
 
     Args:
         ids (list[int]):
+        include_private (bool):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -118,6 +126,7 @@ def sync(
     return sync_detailed(
         client=client,
         ids=ids,
+        include_private=include_private,
     ).parsed
 
 
@@ -125,11 +134,13 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     ids: list[int],
+    include_private: bool,
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupRoleDetailResponse]:
     """Gets the Roles by their ids.
 
     Args:
         ids (list[int]):
+        include_private (bool):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,6 +152,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         ids=ids,
+        include_private=include_private,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)
@@ -152,11 +164,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     ids: list[int],
+    include_private: bool,
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupRoleDetailResponse | None:
     """Gets the Roles by their ids.
 
     Args:
         ids (list[int]):
+        include_private (bool):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -170,5 +184,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             ids=ids,
+            include_private=include_private,
         )
     ).parsed
