@@ -45,6 +45,30 @@ from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
 from .calculate_experiment_mde_data import CalculateExperimentMdeData
 from .calculate_experiment_mde_response import CalculateExperimentMdeResponse
 from .can_invite_user_response import CanInviteUserResponse
+from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
+    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2,
+)
+from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_asset_type import (
+    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2AssetType,
+)
+from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_bundle_type import (
+    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2BundleType,
+)
+from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_creator_type import (
+    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2CreatorType,
+)
+from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_item_restrictions_item import (
+    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemRestrictionsItem,
+)
+from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_item_status_item import (
+    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemStatusItem,
+)
+from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_item_type import (
+    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemType,
+)
+from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_sale_location_type import (
+    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2SaleLocationType,
+)
 from .category_response import CategoryResponse
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
@@ -2851,6 +2875,14 @@ __all__ = (
     "CalculateExperimentMdeData",
     "CalculateExperimentMdeResponse",
     "CanInviteUserResponse",
+    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2",
+    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2AssetType",
+    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2BundleType",
+    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2CreatorType",
+    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemRestrictionsItem",
+    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemStatusItem",
+    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemType",
+    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2SaleLocationType",
     "CategoryResponse",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
