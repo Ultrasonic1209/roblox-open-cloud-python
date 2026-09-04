@@ -16,10 +16,11 @@ T = TypeVar("T", bound="FindThumbnailsResponse")
 
 @_attrs_define
 class FindThumbnailsResponse:
-    """
+    """A page of homepage thumbnails for a universe.
+
     Attributes:
-        homepage_thumbnails (list[HomepageThumbnail]):
-        next_cursor (None | str | Unset):
+        homepage_thumbnails (list[HomepageThumbnail]): The homepage thumbnails in this page.
+        next_cursor (None | str | Unset): The cursor to use for the next page of results.
     """
 
     homepage_thumbnails: list[HomepageThumbnail]

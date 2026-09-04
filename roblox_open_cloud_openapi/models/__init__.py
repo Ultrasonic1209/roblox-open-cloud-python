@@ -45,30 +45,6 @@ from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
 from .calculate_experiment_mde_data import CalculateExperimentMdeData
 from .calculate_experiment_mde_response import CalculateExperimentMdeResponse
 from .can_invite_user_response import CanInviteUserResponse
-from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
-    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2,
-)
-from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_asset_type import (
-    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2AssetType,
-)
-from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_bundle_type import (
-    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2BundleType,
-)
-from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_creator_type import (
-    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2CreatorType,
-)
-from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_item_restrictions_item import (
-    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemRestrictionsItem,
-)
-from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_item_status_item import (
-    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemStatusItem,
-)
-from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_item_type import (
-    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemType,
-)
-from .catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2_sale_location_type import (
-    CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2SaleLocationType,
-)
 from .category_response import CategoryResponse
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
@@ -191,6 +167,7 @@ from .filter_field_info import FilterFieldInfo
 from .filter_options_response import FilterOptionsResponse
 from .filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0
 from .filter_type import FilterType
+from .find_personalized_configs_response import FindPersonalizedConfigsResponse
 from .find_thumbnails_response import FindThumbnailsResponse
 from .flush_memory_store_metadata import FlushMemoryStoreMetadata
 from .flush_memory_store_response import FlushMemoryStoreResponse
@@ -330,7 +307,6 @@ from .get_v1_translation_analytics_games_game_id_download_translation_analytics_
 from .get_v1_translation_analytics_games_game_id_download_translation_analytics_report_response_200 import (
     GetV1TranslationAnalyticsGamesGameIdDownloadTranslationAnalyticsReportResponse200,
 )
-from .get_v1_universe_payout_history_response_200 import GetV1UniversePayoutHistoryResponse200
 from .get_v1_universes_universe_id_badges_limit import GetV1UniversesUniverseIdBadgesLimit
 from .get_v1_universes_universe_id_badges_sort_by import GetV1UniversesUniverseIdBadgesSortBy
 from .get_v1_universes_universe_id_badges_sort_order import GetV1UniversesUniverseIdBadgesSortOrder
@@ -339,6 +315,7 @@ from .get_v1_universes_universe_id_places_sort_order import GetV1UniversesUniver
 from .get_v1_universes_universe_id_stats_type import GetV1UniversesUniverseIdStatsType
 from .get_v1_user_universes_limit import GetV1UserUniversesLimit
 from .get_v1_user_universes_sort_order import GetV1UserUniversesSortOrder
+from .get_v1_usernames_validate_context import GetV1UsernamesValidateContext
 from .get_v1_users_avatar_bust_format import GetV1UsersAvatarBustFormat
 from .get_v1_users_avatar_bust_size import GetV1UsersAvatarBustSize
 from .get_v1_users_avatar_format import GetV1UsersAvatarFormat
@@ -386,6 +363,7 @@ from .get_v2_groups_group_id_games_sort_order import GetV2GroupsGroupIdGamesSort
 from .get_v2_groups_group_id_games_v2_access_filter import GetV2GroupsGroupIdGamesV2AccessFilter
 from .get_v2_groups_group_id_games_v2_limit import GetV2GroupsGroupIdGamesV2Limit
 from .get_v2_groups_group_id_games_v2_sort_order import GetV2GroupsGroupIdGamesV2SortOrder
+from .get_v2_passwords_reset_target_type import GetV2PasswordsResetTargetType
 from .get_v2_search_items_details_category_filter import GetV2SearchItemsDetailsCategoryFilter
 from .get_v2_search_items_details_creator_type import GetV2SearchItemsDetailsCreatorType
 from .get_v2_search_items_details_limit import GetV2SearchItemsDetailsLimit
@@ -400,6 +378,7 @@ from .get_v2_sponsored_campaigns_multi_get_can_user_sponsor_campaign_target_type
 from .get_v2_sponsored_campaigns_multi_get_can_user_sponsor_response_200 import (
     GetV2SponsoredCampaignsMultiGetCanUserSponsorResponse200,
 )
+from .get_v2_usernames_validate_context import GetV2UsernamesValidateContext
 from .get_v2_users_user_id_favorite_games_access_filter import GetV2UsersUserIdFavoriteGamesAccessFilter
 from .get_v2_users_user_id_favorite_games_limit import GetV2UsersUserIdFavoriteGamesLimit
 from .get_v2_users_user_id_favorite_games_sort_order import GetV2UsersUserIdFavoriteGamesSortOrder
@@ -499,6 +478,8 @@ from .internal_public_v1_targeting_devices_item import InternalPublicV1Targeting
 from .internal_public_v1_targeting_dimensions import InternalPublicV1TargetingDimensions
 from .internal_public_v1_targeting_dimensions_age_groups_item import InternalPublicV1TargetingDimensionsAgeGroupsItem
 from .internal_public_v1_targeting_dimensions_devices_item import InternalPublicV1TargetingDimensionsDevicesItem
+from .internal_public_v1_universe_eligibility import InternalPublicV1UniverseEligibility
+from .internal_public_v1_universe_eligibility_reasons_item import InternalPublicV1UniverseEligibilityReasonsItem
 from .internal_public_v1_update_budget import InternalPublicV1UpdateBudget
 from .internal_public_v1_update_campaign_request import InternalPublicV1UpdateCampaignRequest
 from .internal_public_v1_update_campaign_request_status import InternalPublicV1UpdateCampaignRequestStatus
@@ -606,6 +587,11 @@ from .ocv1_assets_operation import OCV1AssetsOperation
 from .ocv1_assets_status import OCV1AssetsStatus
 from .ocv1_data_stores_data_store import OCV1DataStoresDataStore
 from .ocv2_operations_operation import OCV2OperationsOperation
+from .open_cloud_users_operation import OpenCloudUsersOperation
+from .open_cloud_users_status import OpenCloudUsersStatus
+from .open_cloud_users_user import OpenCloudUsersUser
+from .open_cloud_users_user_social_network_profiles import OpenCloudUsersUserSocialNetworkProfiles
+from .open_cloud_users_user_social_network_profiles_visibility import OpenCloudUsersUserSocialNetworkProfilesVisibility
 from .operation import Operation
 from .operation_error_response import OperationErrorResponse
 from .operation_pending import OperationPending
@@ -621,6 +607,8 @@ from .patch_v1_groups_group_id_notification_preference_response_200 import (
 from .patch_v1_groups_icon_body import PatchV1GroupsIconBody
 from .patch_v1_themes_consumer_type_consumer_id_consumer_type import PatchV1ThemesConsumerTypeConsumerIdConsumerType
 from .personalized_config_status import PersonalizedConfigStatus
+from .personalized_thumbnail import PersonalizedThumbnail
+from .personalized_thumbnail_status import PersonalizedThumbnailStatus
 from .place import Place
 from .place_filter import PlaceFilter
 from .place_response import PlaceResponse
@@ -675,6 +663,9 @@ from .post_v1_collections_items_item_type_item_target_id_item_type import (
 )
 from .post_v1_developer_products_developer_product_id_icons_language_codes_language_code_body import (
     PostV1DeveloperProductsDeveloperProductIdIconsLanguageCodesLanguageCodeBody,
+)
+from .post_v1_external_identity_provider_id_sso_saml_assertion_consumer_service_body import (
+    PostV1ExternalIdentityProviderIdSsoSamlAssertionConsumerServiceBody,
 )
 from .post_v1_game_icon_games_game_id_language_codes_language_code_body import (
     PostV1GameIconGamesGameIdLanguageCodesLanguageCodeBody,
@@ -1326,6 +1317,309 @@ from .roblox_api_notifications_models_user_push_destination import RobloxApiNoti
 from .roblox_api_notifications_models_user_push_destination_platform import (
     RobloxApiNotificationsModelsUserPushDestinationPlatform,
 )
+from .roblox_authentication_api_models_account_link_parameters import RobloxAuthenticationApiModelsAccountLinkParameters
+from .roblox_authentication_api_models_account_link_parameters_linking_platform import (
+    RobloxAuthenticationApiModelsAccountLinkParametersLinkingPlatform,
+)
+from .roblox_authentication_api_models_account_pin_request import RobloxAuthenticationApiModelsAccountPinRequest
+from .roblox_authentication_api_models_account_pin_response import RobloxAuthenticationApiModelsAccountPinResponse
+from .roblox_authentication_api_models_account_pin_status_response import (
+    RobloxAuthenticationApiModelsAccountPinStatusResponse,
+)
+from .roblox_authentication_api_models_auth_meta_data_response import RobloxAuthenticationApiModelsAuthMetaDataResponse
+from .roblox_authentication_api_models_auth_methods_metadata_response import (
+    RobloxAuthenticationApiModelsAuthMethodsMetadataResponse,
+)
+from .roblox_authentication_api_models_email_validation_response import (
+    RobloxAuthenticationApiModelsEmailValidationResponse,
+)
+from .roblox_authentication_api_models_forgot_password_user_response import (
+    RobloxAuthenticationApiModelsForgotPasswordUserResponse,
+)
+from .roblox_authentication_api_models_login_method_model import RobloxAuthenticationApiModelsLoginMethodModel
+from .roblox_authentication_api_models_login_method_model_method import (
+    RobloxAuthenticationApiModelsLoginMethodModelMethod,
+)
+from .roblox_authentication_api_models_login_request import RobloxAuthenticationApiModelsLoginRequest
+from .roblox_authentication_api_models_login_request_ctype import RobloxAuthenticationApiModelsLoginRequestCtype
+from .roblox_authentication_api_models_login_response import RobloxAuthenticationApiModelsLoginResponse
+from .roblox_authentication_api_models_metadata_response import RobloxAuthenticationApiModelsMetadataResponse
+from .roblox_authentication_api_models_password_change_model import RobloxAuthenticationApiModelsPasswordChangeModel
+from .roblox_authentication_api_models_password_reset_metadata_response import (
+    RobloxAuthenticationApiModelsPasswordResetMetadataResponse,
+)
+from .roblox_authentication_api_models_password_reset_model import RobloxAuthenticationApiModelsPasswordResetModel
+from .roblox_authentication_api_models_password_reset_model_target_type import (
+    RobloxAuthenticationApiModelsPasswordResetModelTargetType,
+)
+from .roblox_authentication_api_models_password_reset_verification_request import (
+    RobloxAuthenticationApiModelsPasswordResetVerificationRequest,
+)
+from .roblox_authentication_api_models_password_reset_verification_request_target_type import (
+    RobloxAuthenticationApiModelsPasswordResetVerificationRequestTargetType,
+)
+from .roblox_authentication_api_models_password_reset_verification_response import (
+    RobloxAuthenticationApiModelsPasswordResetVerificationResponse,
+)
+from .roblox_authentication_api_models_password_status_response import (
+    RobloxAuthenticationApiModelsPasswordStatusResponse,
+)
+from .roblox_authentication_api_models_password_validation_model import (
+    RobloxAuthenticationApiModelsPasswordValidationModel,
+)
+from .roblox_authentication_api_models_password_validation_response import (
+    RobloxAuthenticationApiModelsPasswordValidationResponse,
+)
+from .roblox_authentication_api_models_password_validation_response_code import (
+    RobloxAuthenticationApiModelsPasswordValidationResponseCode,
+)
+from .roblox_authentication_api_models_provider_info_model import RobloxAuthenticationApiModelsProviderInfoModel
+from .roblox_authentication_api_models_recommended_username_from_display_name_request import (
+    RobloxAuthenticationApiModelsRecommendedUsernameFromDisplayNameRequest,
+)
+from .roblox_authentication_api_models_recommended_username_request import (
+    RobloxAuthenticationApiModelsRecommendedUsernameRequest,
+)
+from .roblox_authentication_api_models_recommended_username_response import (
+    RobloxAuthenticationApiModelsRecommendedUsernameResponse,
+)
+from .roblox_authentication_api_models_recover_username_request import (
+    RobloxAuthenticationApiModelsRecoverUsernameRequest,
+)
+from .roblox_authentication_api_models_recover_username_request_target_type import (
+    RobloxAuthenticationApiModelsRecoverUsernameRequestTargetType,
+)
+from .roblox_authentication_api_models_recover_username_response import (
+    RobloxAuthenticationApiModelsRecoverUsernameResponse,
+)
+from .roblox_authentication_api_models_recover_username_response_transmission_type import (
+    RobloxAuthenticationApiModelsRecoverUsernameResponseTransmissionType,
+)
+from .roblox_authentication_api_models_recovery_metadata_response import (
+    RobloxAuthenticationApiModelsRecoveryMetadataResponse,
+)
+from .roblox_authentication_api_models_referral_data_model import RobloxAuthenticationApiModelsReferralDataModel
+from .roblox_authentication_api_models_request_audit_content_value import (
+    RobloxAuthenticationApiModelsRequestAuditContentValue,
+)
+from .roblox_authentication_api_models_request_audit_content_value_parameters import (
+    RobloxAuthenticationApiModelsRequestAuditContentValueParameters,
+)
+from .roblox_authentication_api_models_request_audit_system_content import (
+    RobloxAuthenticationApiModelsRequestAuditSystemContent,
+)
+from .roblox_authentication_api_models_request_audit_system_content_additional_audit_content import (
+    RobloxAuthenticationApiModelsRequestAuditSystemContentAdditionalAuditContent,
+)
+from .roblox_authentication_api_models_request_audit_system_content_captured_audit_content import (
+    RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent,
+)
+from .roblox_authentication_api_models_request_delete_passkeys_request import (
+    RobloxAuthenticationApiModelsRequestDeletePasskeysRequest,
+)
+from .roblox_authentication_api_models_request_external_access_request import (
+    RobloxAuthenticationApiModelsRequestExternalAccessRequest,
+)
+from .roblox_authentication_api_models_request_external_access_request_additional_info_payload import (
+    RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload,
+)
+from .roblox_authentication_api_models_request_external_access_request_identity_provider_platform_type import (
+    RobloxAuthenticationApiModelsRequestExternalAccessRequestIdentityProviderPlatformType,
+)
+from .roblox_authentication_api_models_request_external_login_and_link_request import (
+    RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequest,
+)
+from .roblox_authentication_api_models_request_external_login_and_link_request_additional_info_payload import (
+    RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestAdditionalInfoPayload,
+)
+from .roblox_authentication_api_models_request_external_login_and_link_request_ctype import (
+    RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestCtype,
+)
+from .roblox_authentication_api_models_request_external_login_and_link_request_identity_provider_platform_type import (
+    RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestIdentityProviderPlatformType,
+)
+from .roblox_authentication_api_models_request_external_login_request import (
+    RobloxAuthenticationApiModelsRequestExternalLoginRequest,
+)
+from .roblox_authentication_api_models_request_external_login_request_additional_data import (
+    RobloxAuthenticationApiModelsRequestExternalLoginRequestAdditionalData,
+)
+from .roblox_authentication_api_models_request_external_login_request_identity_provider import (
+    RobloxAuthenticationApiModelsRequestExternalLoginRequestIdentityProvider,
+)
+from .roblox_authentication_api_models_request_external_signup_request import (
+    RobloxAuthenticationApiModelsRequestExternalSignupRequest,
+)
+from .roblox_authentication_api_models_request_external_signup_request_additional_info_payload import (
+    RobloxAuthenticationApiModelsRequestExternalSignupRequestAdditionalInfoPayload,
+)
+from .roblox_authentication_api_models_request_external_signup_request_identity_provider_platform_type import (
+    RobloxAuthenticationApiModelsRequestExternalSignupRequestIdentityProviderPlatformType,
+)
+from .roblox_authentication_api_models_request_external_unlink_request import (
+    RobloxAuthenticationApiModelsRequestExternalUnlinkRequest,
+)
+from .roblox_authentication_api_models_request_external_unlink_request_additional_info_payload import (
+    RobloxAuthenticationApiModelsRequestExternalUnlinkRequestAdditionalInfoPayload,
+)
+from .roblox_authentication_api_models_request_external_unlink_request_identity_provider_platform_type import (
+    RobloxAuthenticationApiModelsRequestExternalUnlinkRequestIdentityProviderPlatformType,
+)
+from .roblox_authentication_api_models_request_finish_ar_pre_auth_passkey_registration_request import (
+    RobloxAuthenticationApiModelsRequestFinishARPreAuthPasskeyRegistrationRequest,
+)
+from .roblox_authentication_api_models_request_finish_passkey_preauth_registration_request import (
+    RobloxAuthenticationApiModelsRequestFinishPasskeyPreauthRegistrationRequest,
+)
+from .roblox_authentication_api_models_request_finish_passkey_registration_request import (
+    RobloxAuthenticationApiModelsRequestFinishPasskeyRegistrationRequest,
+)
+from .roblox_authentication_api_models_request_identity_verification_login_request import (
+    RobloxAuthenticationApiModelsRequestIdentityVerificationLoginRequest,
+)
+from .roblox_authentication_api_models_request_initialize_login_request import (
+    RobloxAuthenticationApiModelsRequestInitializeLoginRequest,
+)
+from .roblox_authentication_api_models_request_initialize_login_request_ctype import (
+    RobloxAuthenticationApiModelsRequestInitializeLoginRequestCtype,
+)
+from .roblox_authentication_api_models_request_list_passkeys_request import (
+    RobloxAuthenticationApiModelsRequestListPasskeysRequest,
+)
+from .roblox_authentication_api_models_request_logout_from_all_sessions_and_reauthenticate_request import (
+    RobloxAuthenticationApiModelsRequestLogoutFromAllSessionsAndReauthenticateRequest,
+)
+from .roblox_authentication_api_models_request_logout_v3_request import (
+    RobloxAuthenticationApiModelsRequestLogoutV3Request,
+)
+from .roblox_authentication_api_models_request_otp_session_model import (
+    RobloxAuthenticationApiModelsRequestOtpSessionModel,
+)
+from .roblox_authentication_api_models_request_otp_session_model_otp_contact_type import (
+    RobloxAuthenticationApiModelsRequestOtpSessionModelOtpContactType,
+)
+from .roblox_authentication_api_models_request_rename_passkey_request import (
+    RobloxAuthenticationApiModelsRequestRenamePasskeyRequest,
+)
+from .roblox_authentication_api_models_request_secure_authentication_intent_model import (
+    RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel,
+)
+from .roblox_authentication_api_models_request_start_authentication_by_user_request import (
+    RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequest,
+)
+from .roblox_authentication_api_models_request_start_authentication_by_user_request_ctype import (
+    RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequestCtype,
+)
+from .roblox_authentication_api_models_request_start_passkey_preauth_registration_request import (
+    RobloxAuthenticationApiModelsRequestStartPasskeyPreauthRegistrationRequest,
+)
+from .roblox_authentication_api_models_request_start_passkey_registration_request import (
+    RobloxAuthenticationApiModelsRequestStartPasskeyRegistrationRequest,
+)
+from .roblox_authentication_api_models_response_external_identity_gateway_external_identity_access_response import (
+    RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse,
+)
+from .roblox_authentication_api_models_response_external_identity_gateway_external_identity_nonce_response import (
+    RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityNonceResponse,
+)
+from .roblox_authentication_api_models_response_external_identity_gateway_external_login_response import (
+    RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalLoginResponse,
+)
+from .roblox_authentication_api_models_response_get_client_assertion_response import (
+    RobloxAuthenticationApiModelsResponseGetClientAssertionResponse,
+)
+from .roblox_authentication_api_models_response_initialize_login_response import (
+    RobloxAuthenticationApiModelsResponseInitializeLoginResponse,
+)
+from .roblox_authentication_api_models_response_list_passkey_credential_response import (
+    RobloxAuthenticationApiModelsResponseListPasskeyCredentialResponse,
+)
+from .roblox_authentication_api_models_response_passkey_credential import (
+    RobloxAuthenticationApiModelsResponsePasskeyCredential,
+)
+from .roblox_authentication_api_models_response_silent_upgrade_eligibility_response import (
+    RobloxAuthenticationApiModelsResponseSilentUpgradeEligibilityResponse,
+)
+from .roblox_authentication_api_models_response_start_authentication_by_user_response import (
+    RobloxAuthenticationApiModelsResponseStartAuthenticationByUserResponse,
+)
+from .roblox_authentication_api_models_response_start_authentication_response import (
+    RobloxAuthenticationApiModelsResponseStartAuthenticationResponse,
+)
+from .roblox_authentication_api_models_response_start_passkey_preauth_registration_response import (
+    RobloxAuthenticationApiModelsResponseStartPasskeyPreauthRegistrationResponse,
+)
+from .roblox_authentication_api_models_response_start_passkey_registration_response import (
+    RobloxAuthenticationApiModelsResponseStartPasskeyRegistrationResponse,
+)
+from .roblox_authentication_api_models_revert_account_info_response import (
+    RobloxAuthenticationApiModelsRevertAccountInfoResponse,
+)
+from .roblox_authentication_api_models_revert_account_submit_request import (
+    RobloxAuthenticationApiModelsRevertAccountSubmitRequest,
+)
+from .roblox_authentication_api_models_send_reset_password_request import (
+    RobloxAuthenticationApiModelsSendResetPasswordRequest,
+)
+from .roblox_authentication_api_models_send_reset_password_request_target_type import (
+    RobloxAuthenticationApiModelsSendResetPasswordRequestTargetType,
+)
+from .roblox_authentication_api_models_send_reset_password_response import (
+    RobloxAuthenticationApiModelsSendResetPasswordResponse,
+)
+from .roblox_authentication_api_models_send_reset_password_response_transmission_type import (
+    RobloxAuthenticationApiModelsSendResetPasswordResponseTransmissionType,
+)
+from .roblox_authentication_api_models_signup_request import RobloxAuthenticationApiModelsSignupRequest
+from .roblox_authentication_api_models_signup_request_gender import RobloxAuthenticationApiModelsSignupRequestGender
+from .roblox_authentication_api_models_signup_request_signup_type import (
+    RobloxAuthenticationApiModelsSignupRequestSignupType,
+)
+from .roblox_authentication_api_models_signup_response import RobloxAuthenticationApiModelsSignupResponse
+from .roblox_authentication_api_models_social_authentication_disconnect_request import (
+    RobloxAuthenticationApiModelsSocialAuthenticationDisconnectRequest,
+)
+from .roblox_authentication_api_models_social_providers_response import (
+    RobloxAuthenticationApiModelsSocialProvidersResponse,
+)
+from .roblox_authentication_api_models_two_step_verification_sent_response import (
+    RobloxAuthenticationApiModelsTwoStepVerificationSentResponse,
+)
+from .roblox_authentication_api_models_two_step_verification_sent_response_media_type import (
+    RobloxAuthenticationApiModelsTwoStepVerificationSentResponseMediaType,
+)
+from .roblox_authentication_api_models_two_step_verification_v3_login_response import (
+    RobloxAuthenticationApiModelsTwoStepVerificationV3LoginResponse,
+)
+from .roblox_authentication_api_models_username_change_price_response import (
+    RobloxAuthenticationApiModelsUsernameChangePriceResponse,
+)
+from .roblox_authentication_api_models_username_change_request import RobloxAuthenticationApiModelsUsernameChangeRequest
+from .roblox_authentication_api_models_username_validation_request import (
+    RobloxAuthenticationApiModelsUsernameValidationRequest,
+)
+from .roblox_authentication_api_models_username_validation_request_context import (
+    RobloxAuthenticationApiModelsUsernameValidationRequestContext,
+)
+from .roblox_authentication_api_models_username_validation_response import (
+    RobloxAuthenticationApiModelsUsernameValidationResponse,
+)
+from .roblox_authentication_api_models_username_validation_response_code import (
+    RobloxAuthenticationApiModelsUsernameValidationResponseCode,
+)
+from .roblox_authentication_api_models_usernames_response import RobloxAuthenticationApiModelsUsernamesResponse
+from .roblox_authentication_api_models_xbox_collections_of_user_response import (
+    RobloxAuthenticationApiModelsXboxCollectionsOfUserResponse,
+)
+from .roblox_authentication_api_models_xbox_connection_model import RobloxAuthenticationApiModelsXboxConnectionModel
+from .roblox_authentication_api_models_xbox_login_consecutive_days_response import (
+    RobloxAuthenticationApiModelsXboxLoginConsecutiveDaysResponse,
+)
+from .roblox_authentication_api_models_xbox_translate_request import RobloxAuthenticationApiModelsXboxTranslateRequest
+from .roblox_authentication_api_models_xbox_user_model import RobloxAuthenticationApiModelsXboxUserModel
+from .roblox_authentication_api_two_step_verification_login_request import (
+    RobloxAuthenticationApiTwoStepVerificationLoginRequest,
+)
 from .roblox_badges_api_badge_metadata_response import RobloxBadgesApiBadgeMetadataResponse
 from .roblox_badges_api_badge_response import RobloxBadgesApiBadgeResponse
 from .roblox_badges_api_universe_response import RobloxBadgesApiUniverseResponse
@@ -1473,7 +1767,6 @@ from .roblox_economy_creator_stats_api_models_statistics_response_data import (
 from .roblox_economy_creator_stats_api_models_statistics_response_data_granularity import (
     RobloxEconomyCreatorStatsApiModelsStatisticsResponseDataGranularity,
 )
-from .roblox_engagement_payouts_api_payout_response_model import RobloxEngagementPayoutsApiPayoutResponseModel
 from .roblox_engine_folder import RobloxEngineFolder
 from .roblox_engine_instance import RobloxEngineInstance
 from .roblox_engine_instance_details import RobloxEngineInstanceDetails
@@ -2095,6 +2388,7 @@ from .roblox_locale_api_user_localization_locus_locales_response import (
 from .roblox_localization_client_language_family import RobloxLocalizationClientLanguageFamily
 from .roblox_localization_client_supported_locale import RobloxLocalizationClientSupportedLocale
 from .roblox_localization_client_supported_locale_locale import RobloxLocalizationClientSupportedLocaleLocale
+from .roblox_localization_tables_api_asset_entry import RobloxLocalizationTablesApiAssetEntry
 from .roblox_localization_tables_api_auto_localization_metadata_response import (
     RobloxLocalizationTablesApiAutoLocalizationMetadataResponse,
 )
@@ -2141,6 +2435,9 @@ from .roblox_localization_tables_api_game_autolocalization_information_response 
     RobloxLocalizationTablesApiGameAutolocalizationInformationResponse,
 )
 from .roblox_localization_tables_api_get_limits_response import RobloxLocalizationTablesApiGetLimitsResponse
+from .roblox_localization_tables_api_get_table_asset_entries_paged_response import (
+    RobloxLocalizationTablesApiGetTableAssetEntriesPagedResponse,
+)
 from .roblox_localization_tables_api_get_table_entries_paged_response import (
     RobloxLocalizationTablesApiGetTableEntriesPagedResponse,
 )
@@ -2464,6 +2761,7 @@ from .roblox_web_responses_related_entity_type_response_roblox_web_responses_gro
 from .roblox_web_responses_related_entity_type_response_roblox_web_responses_groups_group_owner_type_type import (
     RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerTypeType,
 )
+from .roblox_web_responses_users_legacy_user_response import RobloxWebResponsesUsersLegacyUserResponse
 from .roblox_web_responses_users_skinny_user_response import RobloxWebResponsesUsersSkinnyUserResponse
 from .roblox_web_web_api_api_empty_response_model import RobloxWebWebAPIApiEmptyResponseModel
 from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_game_template_model import (
@@ -2676,6 +2974,7 @@ from .roblox_web_web_api_models_api_page_response_roblox_web_responses_games_gam
 from .roblox_web_web_api_models_api_page_response_roblox_web_responses_games_game_response_v2 import (
     RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameResponseV2,
 )
+from .roblox_web_web_api_models_api_success_response import RobloxWebWebAPIModelsApiSuccessResponse
 from .robux_rate_breakdown import RobuxRateBreakdown
 from .rpn_operand_dto import RpnOperandDto
 from .rpn_token_dto import RpnTokenDto
@@ -2728,10 +3027,14 @@ from .subscription_payment_provider import SubscriptionPaymentProvider
 from .subscription_purchase_platform import SubscriptionPurchasePlatform
 from .subscription_state import SubscriptionState
 from .targeting_criteria import TargetingCriteria
+from .thumbnail_personalization_api_homepage_thumbnail_delete_homepage_thumbnails_response_200 import (
+    ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200,
+)
 from .thumbnail_personalization_api_homepage_thumbnail_upload_homepage_thumbnails_body import (
     ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
 )
 from .thumbnail_personalization_api_moderation_status import ThumbnailPersonalizationApiModerationStatus
+from .thumbnail_personalized_config import ThumbnailPersonalizedConfig
 from .thumbnail_response import ThumbnailResponse
 from .toolbox_service_asset_type_0 import ToolboxServiceAssetType0
 from .toolbox_service_creator_store_product_type_0 import ToolboxServiceCreatorStoreProductType0
@@ -2761,7 +3064,6 @@ from .unassign_role_group_membership_request import UnassignRoleGroupMembershipR
 from .undelete_data_store_request import UndeleteDataStoreRequest
 from .universe import Universe
 from .universe_age_rating import UniverseAgeRating
-from .universe_eligibility import UniverseEligibility
 from .universe_experiment_metric import UniverseExperimentMetric
 from .universe_metric_configuration import UniverseMetricConfiguration
 from .universe_social_link import UniverseSocialLink
@@ -2799,7 +3101,6 @@ from .upload_thumbnails_status_response import UploadThumbnailsStatusResponse
 from .upload_thumbnails_status_response_upload_thumbnail_status_dict import (
     UploadThumbnailsStatusResponseUploadThumbnailStatusDict,
 )
-from .user import User
 from .user_game_vote_request import UserGameVoteRequest
 from .user_game_vote_response import UserGameVoteResponse
 from .user_notification import UserNotification
@@ -2822,8 +3123,6 @@ from .user_restriction_log_restriction_type import UserRestrictionLogRestriction
 from .user_restriction_log_restriction_type_game_join_restriction import (
     UserRestrictionLogRestrictionTypeGameJoinRestriction,
 )
-from .user_social_network_profiles import UserSocialNetworkProfiles
-from .user_social_network_profiles_visibility import UserSocialNetworkProfilesVisibility
 from .variant_meta import VariantMeta
 from .verified_badge_user_response import VerifiedBadgeUserResponse
 from .virtual_events_api_problem_details import VirtualEventsApiProblemDetails
@@ -2875,14 +3174,6 @@ __all__ = (
     "CalculateExperimentMdeData",
     "CalculateExperimentMdeResponse",
     "CanInviteUserResponse",
-    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2",
-    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2AssetType",
-    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2BundleType",
-    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2CreatorType",
-    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemRestrictionsItem",
-    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemStatusItem",
-    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemType",
-    "CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2SaleLocationType",
     "CategoryResponse",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
@@ -2999,6 +3290,7 @@ __all__ = (
     "FilterOptionsResponse",
     "FilterOptionsResponseFiltersType0",
     "FilterType",
+    "FindPersonalizedConfigsResponse",
     "FindThumbnailsResponse",
     "FlushMemoryStoreMetadata",
     "FlushMemoryStoreResponse",
@@ -3112,13 +3404,13 @@ __all__ = (
     "GetV1TradesTradeStatusTypeTradeStatusType",
     "GetV1TranslationAnalyticsGamesGameIdDownloadTranslationAnalyticsReportReportType",
     "GetV1TranslationAnalyticsGamesGameIdDownloadTranslationAnalyticsReportResponse200",
-    "GetV1UniversePayoutHistoryResponse200",
     "GetV1UniversesUniverseIdBadgesLimit",
     "GetV1UniversesUniverseIdBadgesSortBy",
     "GetV1UniversesUniverseIdBadgesSortOrder",
     "GetV1UniversesUniverseIdPlacesLimit",
     "GetV1UniversesUniverseIdPlacesSortOrder",
     "GetV1UniversesUniverseIdStatsType",
+    "GetV1UsernamesValidateContext",
     "GetV1UsersAvatarBustFormat",
     "GetV1UsersAvatarBustSize",
     "GetV1UsersAvatarFormat",
@@ -3162,6 +3454,7 @@ __all__ = (
     "GetV2GroupsGroupIdGamesV2AccessFilter",
     "GetV2GroupsGroupIdGamesV2Limit",
     "GetV2GroupsGroupIdGamesV2SortOrder",
+    "GetV2PasswordsResetTargetType",
     "GetV2SearchItemsDetailsCategoryFilter",
     "GetV2SearchItemsDetailsCreatorType",
     "GetV2SearchItemsDetailsLimit",
@@ -3172,6 +3465,7 @@ __all__ = (
     "GetV2SponsoredCampaignsCampaignTargetType",
     "GetV2SponsoredCampaignsMultiGetCanUserSponsorCampaignTargetType",
     "GetV2SponsoredCampaignsMultiGetCanUserSponsorResponse200",
+    "GetV2UsernamesValidateContext",
     "GetV2UsersUserIdFavoriteGamesAccessFilter",
     "GetV2UsersUserIdFavoriteGamesLimit",
     "GetV2UsersUserIdFavoriteGamesSortOrder",
@@ -3261,6 +3555,8 @@ __all__ = (
     "InternalPublicV1TargetingDimensions",
     "InternalPublicV1TargetingDimensionsAgeGroupsItem",
     "InternalPublicV1TargetingDimensionsDevicesItem",
+    "InternalPublicV1UniverseEligibility",
+    "InternalPublicV1UniverseEligibilityReasonsItem",
     "InternalPublicV1UpdateBudget",
     "InternalPublicV1UpdateCampaignRequest",
     "InternalPublicV1UpdateCampaignRequestStatus",
@@ -3366,6 +3662,11 @@ __all__ = (
     "OCV1AssetsStatus",
     "OCV1DataStoresDataStore",
     "OCV2OperationsOperation",
+    "OpenCloudUsersOperation",
+    "OpenCloudUsersStatus",
+    "OpenCloudUsersUser",
+    "OpenCloudUsersUserSocialNetworkProfiles",
+    "OpenCloudUsersUserSocialNetworkProfilesVisibility",
     "Operation",
     "OperationalStatus",
     "OperationErrorResponse",
@@ -3377,6 +3678,8 @@ __all__ = (
     "PatchV1GroupsIconBody",
     "PatchV1ThemesConsumerTypeConsumerIdConsumerType",
     "PersonalizedConfigStatus",
+    "PersonalizedThumbnail",
+    "PersonalizedThumbnailStatus",
     "Place",
     "PlaceFilter",
     "PlaceResponse",
@@ -3406,6 +3709,7 @@ __all__ = (
     "PostV1BadgesBadgeIdIconsLanguageCodesLanguageCodeBody",
     "PostV1CollectionsItemsItemTypeItemTargetIdItemType",
     "PostV1DeveloperProductsDeveloperProductIdIconsLanguageCodesLanguageCodeBody",
+    "PostV1ExternalIdentityProviderIdSsoSamlAssertionConsumerServiceBody",
     "PostV1GameIconGamesGameIdLanguageCodesLanguageCodeBody",
     "PostV1GamePassesGamePassIdIconsLanguageCodesLanguageCodeBody",
     "PostV1GamesGameIdThumbnailImageBody",
@@ -3726,6 +4030,121 @@ __all__ = (
     "RobloxApiNotificationsModelsUnreadStreamNotificationsModel",
     "RobloxApiNotificationsModelsUserPushDestination",
     "RobloxApiNotificationsModelsUserPushDestinationPlatform",
+    "RobloxAuthenticationApiModelsAccountLinkParameters",
+    "RobloxAuthenticationApiModelsAccountLinkParametersLinkingPlatform",
+    "RobloxAuthenticationApiModelsAccountPinRequest",
+    "RobloxAuthenticationApiModelsAccountPinResponse",
+    "RobloxAuthenticationApiModelsAccountPinStatusResponse",
+    "RobloxAuthenticationApiModelsAuthMetaDataResponse",
+    "RobloxAuthenticationApiModelsAuthMethodsMetadataResponse",
+    "RobloxAuthenticationApiModelsEmailValidationResponse",
+    "RobloxAuthenticationApiModelsForgotPasswordUserResponse",
+    "RobloxAuthenticationApiModelsLoginMethodModel",
+    "RobloxAuthenticationApiModelsLoginMethodModelMethod",
+    "RobloxAuthenticationApiModelsLoginRequest",
+    "RobloxAuthenticationApiModelsLoginRequestCtype",
+    "RobloxAuthenticationApiModelsLoginResponse",
+    "RobloxAuthenticationApiModelsMetadataResponse",
+    "RobloxAuthenticationApiModelsPasswordChangeModel",
+    "RobloxAuthenticationApiModelsPasswordResetMetadataResponse",
+    "RobloxAuthenticationApiModelsPasswordResetModel",
+    "RobloxAuthenticationApiModelsPasswordResetModelTargetType",
+    "RobloxAuthenticationApiModelsPasswordResetVerificationRequest",
+    "RobloxAuthenticationApiModelsPasswordResetVerificationRequestTargetType",
+    "RobloxAuthenticationApiModelsPasswordResetVerificationResponse",
+    "RobloxAuthenticationApiModelsPasswordStatusResponse",
+    "RobloxAuthenticationApiModelsPasswordValidationModel",
+    "RobloxAuthenticationApiModelsPasswordValidationResponse",
+    "RobloxAuthenticationApiModelsPasswordValidationResponseCode",
+    "RobloxAuthenticationApiModelsProviderInfoModel",
+    "RobloxAuthenticationApiModelsRecommendedUsernameFromDisplayNameRequest",
+    "RobloxAuthenticationApiModelsRecommendedUsernameRequest",
+    "RobloxAuthenticationApiModelsRecommendedUsernameResponse",
+    "RobloxAuthenticationApiModelsRecoverUsernameRequest",
+    "RobloxAuthenticationApiModelsRecoverUsernameRequestTargetType",
+    "RobloxAuthenticationApiModelsRecoverUsernameResponse",
+    "RobloxAuthenticationApiModelsRecoverUsernameResponseTransmissionType",
+    "RobloxAuthenticationApiModelsRecoveryMetadataResponse",
+    "RobloxAuthenticationApiModelsReferralDataModel",
+    "RobloxAuthenticationApiModelsRequestAuditContentValue",
+    "RobloxAuthenticationApiModelsRequestAuditContentValueParameters",
+    "RobloxAuthenticationApiModelsRequestAuditSystemContent",
+    "RobloxAuthenticationApiModelsRequestAuditSystemContentAdditionalAuditContent",
+    "RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent",
+    "RobloxAuthenticationApiModelsRequestDeletePasskeysRequest",
+    "RobloxAuthenticationApiModelsRequestExternalAccessRequest",
+    "RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload",
+    "RobloxAuthenticationApiModelsRequestExternalAccessRequestIdentityProviderPlatformType",
+    "RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequest",
+    "RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestAdditionalInfoPayload",
+    "RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestCtype",
+    "RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestIdentityProviderPlatformType",
+    "RobloxAuthenticationApiModelsRequestExternalLoginRequest",
+    "RobloxAuthenticationApiModelsRequestExternalLoginRequestAdditionalData",
+    "RobloxAuthenticationApiModelsRequestExternalLoginRequestIdentityProvider",
+    "RobloxAuthenticationApiModelsRequestExternalSignupRequest",
+    "RobloxAuthenticationApiModelsRequestExternalSignupRequestAdditionalInfoPayload",
+    "RobloxAuthenticationApiModelsRequestExternalSignupRequestIdentityProviderPlatformType",
+    "RobloxAuthenticationApiModelsRequestExternalUnlinkRequest",
+    "RobloxAuthenticationApiModelsRequestExternalUnlinkRequestAdditionalInfoPayload",
+    "RobloxAuthenticationApiModelsRequestExternalUnlinkRequestIdentityProviderPlatformType",
+    "RobloxAuthenticationApiModelsRequestFinishARPreAuthPasskeyRegistrationRequest",
+    "RobloxAuthenticationApiModelsRequestFinishPasskeyPreauthRegistrationRequest",
+    "RobloxAuthenticationApiModelsRequestFinishPasskeyRegistrationRequest",
+    "RobloxAuthenticationApiModelsRequestIdentityVerificationLoginRequest",
+    "RobloxAuthenticationApiModelsRequestInitializeLoginRequest",
+    "RobloxAuthenticationApiModelsRequestInitializeLoginRequestCtype",
+    "RobloxAuthenticationApiModelsRequestListPasskeysRequest",
+    "RobloxAuthenticationApiModelsRequestLogoutFromAllSessionsAndReauthenticateRequest",
+    "RobloxAuthenticationApiModelsRequestLogoutV3Request",
+    "RobloxAuthenticationApiModelsRequestOtpSessionModel",
+    "RobloxAuthenticationApiModelsRequestOtpSessionModelOtpContactType",
+    "RobloxAuthenticationApiModelsRequestRenamePasskeyRequest",
+    "RobloxAuthenticationApiModelsRequestSecureAuthenticationIntentModel",
+    "RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequest",
+    "RobloxAuthenticationApiModelsRequestStartAuthenticationByUserRequestCtype",
+    "RobloxAuthenticationApiModelsRequestStartPasskeyPreauthRegistrationRequest",
+    "RobloxAuthenticationApiModelsRequestStartPasskeyRegistrationRequest",
+    "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse",
+    "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityNonceResponse",
+    "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalLoginResponse",
+    "RobloxAuthenticationApiModelsResponseGetClientAssertionResponse",
+    "RobloxAuthenticationApiModelsResponseInitializeLoginResponse",
+    "RobloxAuthenticationApiModelsResponseListPasskeyCredentialResponse",
+    "RobloxAuthenticationApiModelsResponsePasskeyCredential",
+    "RobloxAuthenticationApiModelsResponseSilentUpgradeEligibilityResponse",
+    "RobloxAuthenticationApiModelsResponseStartAuthenticationByUserResponse",
+    "RobloxAuthenticationApiModelsResponseStartAuthenticationResponse",
+    "RobloxAuthenticationApiModelsResponseStartPasskeyPreauthRegistrationResponse",
+    "RobloxAuthenticationApiModelsResponseStartPasskeyRegistrationResponse",
+    "RobloxAuthenticationApiModelsRevertAccountInfoResponse",
+    "RobloxAuthenticationApiModelsRevertAccountSubmitRequest",
+    "RobloxAuthenticationApiModelsSendResetPasswordRequest",
+    "RobloxAuthenticationApiModelsSendResetPasswordRequestTargetType",
+    "RobloxAuthenticationApiModelsSendResetPasswordResponse",
+    "RobloxAuthenticationApiModelsSendResetPasswordResponseTransmissionType",
+    "RobloxAuthenticationApiModelsSignupRequest",
+    "RobloxAuthenticationApiModelsSignupRequestGender",
+    "RobloxAuthenticationApiModelsSignupRequestSignupType",
+    "RobloxAuthenticationApiModelsSignupResponse",
+    "RobloxAuthenticationApiModelsSocialAuthenticationDisconnectRequest",
+    "RobloxAuthenticationApiModelsSocialProvidersResponse",
+    "RobloxAuthenticationApiModelsTwoStepVerificationSentResponse",
+    "RobloxAuthenticationApiModelsTwoStepVerificationSentResponseMediaType",
+    "RobloxAuthenticationApiModelsTwoStepVerificationV3LoginResponse",
+    "RobloxAuthenticationApiModelsUsernameChangePriceResponse",
+    "RobloxAuthenticationApiModelsUsernameChangeRequest",
+    "RobloxAuthenticationApiModelsUsernamesResponse",
+    "RobloxAuthenticationApiModelsUsernameValidationRequest",
+    "RobloxAuthenticationApiModelsUsernameValidationRequestContext",
+    "RobloxAuthenticationApiModelsUsernameValidationResponse",
+    "RobloxAuthenticationApiModelsUsernameValidationResponseCode",
+    "RobloxAuthenticationApiModelsXboxCollectionsOfUserResponse",
+    "RobloxAuthenticationApiModelsXboxConnectionModel",
+    "RobloxAuthenticationApiModelsXboxLoginConsecutiveDaysResponse",
+    "RobloxAuthenticationApiModelsXboxTranslateRequest",
+    "RobloxAuthenticationApiModelsXboxUserModel",
+    "RobloxAuthenticationApiTwoStepVerificationLoginRequest",
     "RobloxBadgesApiBadgeMetadataResponse",
     "RobloxBadgesApiBadgeResponse",
     "RobloxBadgesApiUniverseResponse",
@@ -3801,7 +4220,6 @@ __all__ = (
     "RobloxEconomyCreatorStatsApiModelsStatisticsResponse",
     "RobloxEconomyCreatorStatsApiModelsStatisticsResponseData",
     "RobloxEconomyCreatorStatsApiModelsStatisticsResponseDataGranularity",
-    "RobloxEngagementPayoutsApiPayoutResponseModel",
     "RobloxEngineFolder",
     "RobloxEngineInstance",
     "RobloxEngineInstanceDetails",
@@ -4117,6 +4535,7 @@ __all__ = (
     "RobloxLocalizationClientLanguageFamily",
     "RobloxLocalizationClientSupportedLocale",
     "RobloxLocalizationClientSupportedLocaleLocale",
+    "RobloxLocalizationTablesApiAssetEntry",
     "RobloxLocalizationTablesApiAutoLocalizationMetadataResponse",
     "RobloxLocalizationTablesApiCreateTableRequest",
     "RobloxLocalizationTablesApiCreateTableRequestOwnerType",
@@ -4139,6 +4558,7 @@ __all__ = (
     "RobloxLocalizationTablesApiFailedEntryTranslationHistoryPaged",
     "RobloxLocalizationTablesApiGameAutolocalizationInformationResponse",
     "RobloxLocalizationTablesApiGetLimitsResponse",
+    "RobloxLocalizationTablesApiGetTableAssetEntriesPagedResponse",
     "RobloxLocalizationTablesApiGetTableEntriesPagedResponse",
     "RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackRequest",
     "RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackResponse",
@@ -4308,6 +4728,7 @@ __all__ = (
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerTypeType",
+    "RobloxWebResponsesUsersLegacyUserResponse",
     "RobloxWebResponsesUsersSkinnyUserResponse",
     "RobloxWebWebAPIApiEmptyResponseModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsGameTemplateModel",
@@ -4380,6 +4801,7 @@ __all__ = (
     "RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiUsernameHistoryResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameFavoriteResponseModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxWebResponsesGamesGameResponseV2",
+    "RobloxWebWebAPIModelsApiSuccessResponse",
     "RobuxRateBreakdown",
     "RpnOperandDto",
     "RpnTokenDto",
@@ -4432,8 +4854,10 @@ __all__ = (
     "SubscriptionPurchasePlatform",
     "SubscriptionState",
     "TargetingCriteria",
+    "ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200",
     "ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody",
     "ThumbnailPersonalizationApiModerationStatus",
+    "ThumbnailPersonalizedConfig",
     "ThumbnailResponse",
     "ToolboxServiceAssetType0",
     "ToolboxServiceCreatorStoreProductType0",
@@ -4459,7 +4883,6 @@ __all__ = (
     "UndeleteDataStoreRequest",
     "Universe",
     "UniverseAgeRating",
-    "UniverseEligibility",
     "UniverseExperimentMetric",
     "UniverseMetricConfiguration",
     "UniverseSocialLink",
@@ -4491,7 +4914,6 @@ __all__ = (
     "UploadThumbnailsStatusResponse",
     "UploadThumbnailsStatusResponseUploadThumbnailStatusDict",
     "UploadThumbnailStatus",
-    "User",
     "UserGameVoteRequest",
     "UserGameVoteResponse",
     "UserNotification",
@@ -4512,8 +4934,6 @@ __all__ = (
     "UserRestrictionLogModeratorGameServerScript",
     "UserRestrictionLogRestrictionType",
     "UserRestrictionLogRestrictionTypeGameJoinRestriction",
-    "UserSocialNetworkProfiles",
-    "UserSocialNetworkProfilesVisibility",
     "VariantMeta",
     "VerifiedBadgeUserResponse",
     "VirtualEventsApiProblemDetails",

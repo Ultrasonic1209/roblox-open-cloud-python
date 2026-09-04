@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -16,18 +15,34 @@ class GenerateUserThumbnailResponse:
     """Returns the URL for the user's avatar thumbnail.
 
     Attributes:
-        image_uri (str | Unset): URI for the generated thumbnail.
+        type_ (None | str | Unset): The fully-qualified type of the packed operation response. Mirrors the
+            `@type` field the legacy transcoder emitted via `Any.Pack`, kept so clients
+            reading `response["@type"]` continue to work. Declared first so it
+            serializes before the payload fields.
+        image_uri (None | str | Unset): URI for the generated thumbnail.
     """
 
-    image_uri: str | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    type_: None | str | Unset = UNSET
+    image_uri: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        image_uri = self.image_uri
+        type_: None | str | Unset
+        if isinstance(self.type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = self.type_
+
+        image_uri: None | str | Unset
+        if isinstance(self.image_uri, Unset):
+            image_uri = UNSET
+        else:
+            image_uri = self.image_uri
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
+        if type_ is not UNSET:
+            field_dict["@type"] = type_
         if image_uri is not UNSET:
             field_dict["imageUri"] = image_uri
 
@@ -36,27 +51,28 @@ class GenerateUserThumbnailResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        image_uri = d.pop("imageUri", UNSET)
+
+        def _parse_type_(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        type_ = _parse_type_(d.pop("@type", UNSET))
+
+        def _parse_image_uri(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        image_uri = _parse_image_uri(d.pop("imageUri", UNSET))
 
         generate_user_thumbnail_response = cls(
+            type_=type_,
             image_uri=image_uri,
         )
 
-        generate_user_thumbnail_response.additional_properties = d
         return generate_user_thumbnail_response
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

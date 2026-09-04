@@ -11,7 +11,7 @@ T = TypeVar("T", bound="UploadThumbnailsResponseFileToOperationIdDict")
 
 @_attrs_define
 class UploadThumbnailsResponseFileToOperationIdDict:
-    """ """
+    """A mapping from each uploaded file name to the operation ID used to track its processing."""
 
     additional_properties: dict[str, None | str] = _attrs_field(init=False, factory=dict)
 

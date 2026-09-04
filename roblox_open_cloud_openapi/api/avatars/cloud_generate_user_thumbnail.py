@@ -8,16 +8,16 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.cloud_generate_user_thumbnail_format import CloudGenerateUserThumbnailFormat
 from ...models.cloud_generate_user_thumbnail_shape import CloudGenerateUserThumbnailShape
-from ...models.operation import Operation
+from ...models.open_cloud_users_operation import OpenCloudUsersOperation
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     user_id: str,
     *,
-    size: int | Unset = UNSET,
-    format_: CloudGenerateUserThumbnailFormat | Unset = UNSET,
-    shape: CloudGenerateUserThumbnailShape | Unset = UNSET,
+    size: int | Unset = 0,
+    format_: CloudGenerateUserThumbnailFormat | Unset = CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED,
+    shape: CloudGenerateUserThumbnailShape | Unset = CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -46,21 +46,12 @@ def _get_kwargs(
         "params": params,
         "extensions": {
             "openapi-extensions": {
-                "x-long-running-operation-parameters": {
-                    "metadata": {"$ref": "#/components/schemas/GenerateUserThumbnailMetadata"},
-                    "response": {"$ref": "#/components/schemas/GenerateUserThumbnailResponse"},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-docs": {
-                    "category": "Users and groups",
-                    "methodProperties": {"scopes": []},
-                    "resource": {"$ref": "#/components/schemas/User", "name": "User"},
-                },
-                "x-roblox-stability": "BETA",
+                "x-roblox-stability": "STABLE",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
                 },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
             "openapi-id": "Cloud_GenerateUserThumbnail",
         },
@@ -69,9 +60,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Operation | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
+) -> OpenCloudUsersOperation | None:
     if response.status_code == 200:
-        response_200 = Operation.from_dict(response.json())
+        response_200 = OpenCloudUsersOperation.from_dict(response.json())
 
         return response_200
 
@@ -81,7 +74,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Operation]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
+) -> Response[OpenCloudUsersOperation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -94,26 +89,34 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    size: int | Unset = UNSET,
-    format_: CloudGenerateUserThumbnailFormat | Unset = UNSET,
-    shape: CloudGenerateUserThumbnailShape | Unset = UNSET,
-) -> Response[Operation]:
+    size: int | Unset = 0,
+    format_: CloudGenerateUserThumbnailFormat | Unset = CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED,
+    shape: CloudGenerateUserThumbnailShape | Unset = CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED,
+) -> Response[OpenCloudUsersOperation]:
     """Generate User Thumbnail
 
      Generates and returns the URL for the user's avatar thumbnail.
 
+    This is a long-running operation: the response is an `Operation` object.
+    Poll the operation using its returned `path` until `done` is `true`, at
+    which point `response.imageUri` contains the thumbnail URL. See
+    [Get User Thumbnail Generation Operation](https://create.roblox.com/docs/cloud/reference/features/us
+    ers#Cloud_GetUserThumbnailGenerationOperation).
+
     Args:
         user_id (str):
-        size (int | Unset):
-        format_ (CloudGenerateUserThumbnailFormat | Unset):  Example: FORMAT_UNSPECIFIED.
-        shape (CloudGenerateUserThumbnailShape | Unset):  Example: SHAPE_UNSPECIFIED.
+        size (int | Unset):  Default: 0.
+        format_ (CloudGenerateUserThumbnailFormat | Unset): Define the format of the thumbnail.
+            Default: CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED.
+        shape (CloudGenerateUserThumbnailShape | Unset): Define the shape of the thumbnail.
+            Default: CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Operation]
+        Response[OpenCloudUsersOperation]
     """
 
     kwargs = _get_kwargs(
@@ -134,26 +137,34 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    size: int | Unset = UNSET,
-    format_: CloudGenerateUserThumbnailFormat | Unset = UNSET,
-    shape: CloudGenerateUserThumbnailShape | Unset = UNSET,
-) -> Operation | None:
+    size: int | Unset = 0,
+    format_: CloudGenerateUserThumbnailFormat | Unset = CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED,
+    shape: CloudGenerateUserThumbnailShape | Unset = CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED,
+) -> OpenCloudUsersOperation | None:
     """Generate User Thumbnail
 
      Generates and returns the URL for the user's avatar thumbnail.
 
+    This is a long-running operation: the response is an `Operation` object.
+    Poll the operation using its returned `path` until `done` is `true`, at
+    which point `response.imageUri` contains the thumbnail URL. See
+    [Get User Thumbnail Generation Operation](https://create.roblox.com/docs/cloud/reference/features/us
+    ers#Cloud_GetUserThumbnailGenerationOperation).
+
     Args:
         user_id (str):
-        size (int | Unset):
-        format_ (CloudGenerateUserThumbnailFormat | Unset):  Example: FORMAT_UNSPECIFIED.
-        shape (CloudGenerateUserThumbnailShape | Unset):  Example: SHAPE_UNSPECIFIED.
+        size (int | Unset):  Default: 0.
+        format_ (CloudGenerateUserThumbnailFormat | Unset): Define the format of the thumbnail.
+            Default: CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED.
+        shape (CloudGenerateUserThumbnailShape | Unset): Define the shape of the thumbnail.
+            Default: CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Operation
+        OpenCloudUsersOperation
     """
 
     return sync_detailed(
@@ -169,26 +180,34 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    size: int | Unset = UNSET,
-    format_: CloudGenerateUserThumbnailFormat | Unset = UNSET,
-    shape: CloudGenerateUserThumbnailShape | Unset = UNSET,
-) -> Response[Operation]:
+    size: int | Unset = 0,
+    format_: CloudGenerateUserThumbnailFormat | Unset = CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED,
+    shape: CloudGenerateUserThumbnailShape | Unset = CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED,
+) -> Response[OpenCloudUsersOperation]:
     """Generate User Thumbnail
 
      Generates and returns the URL for the user's avatar thumbnail.
 
+    This is a long-running operation: the response is an `Operation` object.
+    Poll the operation using its returned `path` until `done` is `true`, at
+    which point `response.imageUri` contains the thumbnail URL. See
+    [Get User Thumbnail Generation Operation](https://create.roblox.com/docs/cloud/reference/features/us
+    ers#Cloud_GetUserThumbnailGenerationOperation).
+
     Args:
         user_id (str):
-        size (int | Unset):
-        format_ (CloudGenerateUserThumbnailFormat | Unset):  Example: FORMAT_UNSPECIFIED.
-        shape (CloudGenerateUserThumbnailShape | Unset):  Example: SHAPE_UNSPECIFIED.
+        size (int | Unset):  Default: 0.
+        format_ (CloudGenerateUserThumbnailFormat | Unset): Define the format of the thumbnail.
+            Default: CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED.
+        shape (CloudGenerateUserThumbnailShape | Unset): Define the shape of the thumbnail.
+            Default: CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Operation]
+        Response[OpenCloudUsersOperation]
     """
 
     kwargs = _get_kwargs(
@@ -207,26 +226,34 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    size: int | Unset = UNSET,
-    format_: CloudGenerateUserThumbnailFormat | Unset = UNSET,
-    shape: CloudGenerateUserThumbnailShape | Unset = UNSET,
-) -> Operation | None:
+    size: int | Unset = 0,
+    format_: CloudGenerateUserThumbnailFormat | Unset = CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED,
+    shape: CloudGenerateUserThumbnailShape | Unset = CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED,
+) -> OpenCloudUsersOperation | None:
     """Generate User Thumbnail
 
      Generates and returns the URL for the user's avatar thumbnail.
 
+    This is a long-running operation: the response is an `Operation` object.
+    Poll the operation using its returned `path` until `done` is `true`, at
+    which point `response.imageUri` contains the thumbnail URL. See
+    [Get User Thumbnail Generation Operation](https://create.roblox.com/docs/cloud/reference/features/us
+    ers#Cloud_GetUserThumbnailGenerationOperation).
+
     Args:
         user_id (str):
-        size (int | Unset):
-        format_ (CloudGenerateUserThumbnailFormat | Unset):  Example: FORMAT_UNSPECIFIED.
-        shape (CloudGenerateUserThumbnailShape | Unset):  Example: SHAPE_UNSPECIFIED.
+        size (int | Unset):  Default: 0.
+        format_ (CloudGenerateUserThumbnailFormat | Unset): Define the format of the thumbnail.
+            Default: CloudGenerateUserThumbnailFormat.FORMAT_UNSPECIFIED.
+        shape (CloudGenerateUserThumbnailShape | Unset): Define the shape of the thumbnail.
+            Default: CloudGenerateUserThumbnailShape.SHAPE_UNSPECIFIED.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Operation
+        OpenCloudUsersOperation
     """
 
     return (

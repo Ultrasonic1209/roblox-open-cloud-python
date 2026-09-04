@@ -8,8 +8,8 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
-        CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2,
+    from ..models.roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
+        RobloxCatalogApiCatalogSearchDetailedResponseItemV2,
     )
     from ..models.roblox_catalog_api_elasticsearch_debug_info import RobloxCatalogApiElasticsearchDebugInfo
 
@@ -26,14 +26,14 @@ class RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDeta
         elasticsearch_debug_info (RobloxCatalogApiElasticsearchDebugInfo | Unset):
         previous_page_cursor (str | Unset):
         next_page_cursor (str | Unset):
-        data (list[CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2] | Unset):
+        data (list[RobloxCatalogApiCatalogSearchDetailedResponseItemV2] | Unset):
     """
 
     keyword: str | Unset = UNSET
     elasticsearch_debug_info: RobloxCatalogApiElasticsearchDebugInfo | Unset = UNSET
     previous_page_cursor: str | Unset = UNSET
     next_page_cursor: str | Unset = UNSET
-    data: list[CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2] | Unset = UNSET
+    data: list[RobloxCatalogApiCatalogSearchDetailedResponseItemV2] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         keyword = self.keyword
@@ -71,8 +71,8 @@ class RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDeta
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.catalog_api_roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
-            CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2,
+        from ..models.roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
+            RobloxCatalogApiCatalogSearchDetailedResponseItemV2,
         )
         from ..models.roblox_catalog_api_elasticsearch_debug_info import RobloxCatalogApiElasticsearchDebugInfo
 
@@ -91,11 +91,11 @@ class RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDeta
         next_page_cursor = d.pop("nextPageCursor", UNSET)
 
         _data = d.pop("data", UNSET)
-        data: list[CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2] | Unset = UNSET
+        data: list[RobloxCatalogApiCatalogSearchDetailedResponseItemV2] | Unset = UNSET
         if _data is not UNSET:
             data = []
             for data_item_data in _data:
-                data_item = CatalogApiRobloxCatalogApiCatalogSearchDetailedResponseItemV2.from_dict(data_item_data)
+                data_item = RobloxCatalogApiCatalogSearchDetailedResponseItemV2.from_dict(data_item_data)
 
                 data.append(data_item)
 

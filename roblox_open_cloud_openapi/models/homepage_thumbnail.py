@@ -14,13 +14,16 @@ T = TypeVar("T", bound="HomepageThumbnail")
 
 @_attrs_define
 class HomepageThumbnail:
-    """
+    """A homepage thumbnail associated with a universe.
+
     Attributes:
-        homepage_thumbnail_id (str):
-        asset_id (int):
-        moderation_status (ThumbnailPersonalizationApiModerationStatus):
-        personalized_config_status (PersonalizedConfigStatus):
-        homepage_thumbnail_status (HomepageThumbnailStatus):
+        homepage_thumbnail_id (str): The unique identifier of the homepage thumbnail.
+        asset_id (int): The identifier of the image asset used by the thumbnail.
+        moderation_status (ThumbnailPersonalizationApiModerationStatus): The moderation status of a homepage thumbnail's
+            image asset.
+        personalized_config_status (PersonalizedConfigStatus): The lifecycle status of a thumbnail personalization
+            configuration.
+        homepage_thumbnail_status (HomepageThumbnailStatus): The availability status of a homepage thumbnail.
     """
 
     homepage_thumbnail_id: str

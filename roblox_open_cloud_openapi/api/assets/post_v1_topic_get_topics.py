@@ -72,7 +72,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RobloxCatalogApiTopicRequestModel | RobloxCatalogApiTopicRequestModel | Unset = UNSET,
 ) -> Response[Any | RobloxCatalogApiTopicResponse]:
-    """Get topic given TopicRequestModel.
+    """Gets topics for a populated request, or trending queries when the request has no topic inputs.
+    Topics and queries are mutually exclusive in the response.
 
     Args:
         body (RobloxCatalogApiTopicRequestModel):
@@ -102,7 +103,8 @@ def sync(
     client: AuthenticatedClient,
     body: RobloxCatalogApiTopicRequestModel | RobloxCatalogApiTopicRequestModel | Unset = UNSET,
 ) -> Any | RobloxCatalogApiTopicResponse | None:
-    """Get topic given TopicRequestModel.
+    """Gets topics for a populated request, or trending queries when the request has no topic inputs.
+    Topics and queries are mutually exclusive in the response.
 
     Args:
         body (RobloxCatalogApiTopicRequestModel):
@@ -127,7 +129,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RobloxCatalogApiTopicRequestModel | RobloxCatalogApiTopicRequestModel | Unset = UNSET,
 ) -> Response[Any | RobloxCatalogApiTopicResponse]:
-    """Get topic given TopicRequestModel.
+    """Gets topics for a populated request, or trending queries when the request has no topic inputs.
+    Topics and queries are mutually exclusive in the response.
 
     Args:
         body (RobloxCatalogApiTopicRequestModel):
@@ -155,7 +158,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RobloxCatalogApiTopicRequestModel | RobloxCatalogApiTopicRequestModel | Unset = UNSET,
 ) -> Any | RobloxCatalogApiTopicResponse | None:
-    """Get topic given TopicRequestModel.
+    """Gets topics for a populated request, or trending queries when the request has no topic inputs.
+    Topics and queries are mutually exclusive in the response.
 
     Args:
         body (RobloxCatalogApiTopicRequestModel):

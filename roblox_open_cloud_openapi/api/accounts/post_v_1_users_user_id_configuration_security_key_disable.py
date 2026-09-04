@@ -100,9 +100,9 @@ def sync_detailed(
     Args:
         user_id (int):
         body (RobloxTwoStepVerificationApiDisableSecurityKeyRequest): Request information needed
-            to disable two step verification.
+            to disable a list of security keys.
         body (RobloxTwoStepVerificationApiDisableSecurityKeyRequest): Request information needed
-            to disable two step verification.
+            to disable a list of security keys.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -137,9 +137,9 @@ def sync(
     Args:
         user_id (int):
         body (RobloxTwoStepVerificationApiDisableSecurityKeyRequest): Request information needed
-            to disable two step verification.
+            to disable a list of security keys.
         body (RobloxTwoStepVerificationApiDisableSecurityKeyRequest): Request information needed
-            to disable two step verification.
+            to disable a list of security keys.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -169,9 +169,9 @@ async def asyncio_detailed(
     Args:
         user_id (int):
         body (RobloxTwoStepVerificationApiDisableSecurityKeyRequest): Request information needed
-            to disable two step verification.
+            to disable a list of security keys.
         body (RobloxTwoStepVerificationApiDisableSecurityKeyRequest): Request information needed
-            to disable two step verification.
+            to disable a list of security keys.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -204,9 +204,9 @@ async def asyncio(
     Args:
         user_id (int):
         body (RobloxTwoStepVerificationApiDisableSecurityKeyRequest): Request information needed
-            to disable two step verification.
+            to disable a list of security keys.
         body (RobloxTwoStepVerificationApiDisableSecurityKeyRequest): Request information needed
-            to disable two step verification.
+            to disable a list of security keys.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

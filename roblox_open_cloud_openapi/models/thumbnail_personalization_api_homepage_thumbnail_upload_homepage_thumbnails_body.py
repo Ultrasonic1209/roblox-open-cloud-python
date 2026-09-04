@@ -8,7 +8,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from .. import types
-from ..types import UNSET, File, FileTypes, Unset
+from ..types import File
 
 T = TypeVar("T", bound="ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody")
 
@@ -17,35 +17,34 @@ T = TypeVar("T", bound="ThumbnailPersonalizationApiHomepageThumbnailUploadHomepa
 class ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody:
     """
     Attributes:
-        files (list[File] | Unset):
+        files (list[File]):
     """
 
-    files: list[File] | Unset = UNSET
+    files: list[File]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        files: list[FileTypes] | Unset = UNSET
-        if not isinstance(self.files, Unset):
-            files = []
-            for files_item_data in self.files:
-                files_item = files_item_data.to_tuple()
+        files = []
+        for files_item_data in self.files:
+            files_item = files_item_data.to_tuple()
 
-                files.append(files_item)
+            files.append(files_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if files is not UNSET:
-            field_dict["files"] = files
+        field_dict.update(
+            {
+                "files": files,
+            }
+        )
 
         return field_dict
 
     def to_multipart(self) -> types.RequestFiles:
         files: types.RequestFiles = []
 
-        if not isinstance(self.files, Unset):
-            for files_item_element in self.files:
-                files.append(("files", files_item_element.to_tuple()))
+        for files_item_element in self.files:
+            files.append(("files", files_item_element.to_tuple()))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -55,14 +54,12 @@ class ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        _files = d.pop("files", UNSET)
-        files: list[File] | Unset = UNSET
-        if _files is not UNSET:
-            files = []
-            for files_item_data in _files:
-                files_item = File(payload=BytesIO(files_item_data))
+        files = []
+        _files = d.pop("files")
+        for files_item_data in _files:
+            files_item = File(payload=BytesIO(files_item_data))
 
-                files.append(files_item)
+            files.append(files_item)
 
         thumbnail_personalization_api_homepage_thumbnail_upload_homepage_thumbnails_body = cls(
             files=files,

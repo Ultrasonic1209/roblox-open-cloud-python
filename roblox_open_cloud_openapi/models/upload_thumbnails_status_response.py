@@ -18,10 +18,12 @@ T = TypeVar("T", bound="UploadThumbnailsStatusResponse")
 
 @_attrs_define
 class UploadThumbnailsStatusResponse:
-    """
+    """The processing status of homepage thumbnail upload operations.
+
     Attributes:
-        upload_status (UploadStatus):
-        upload_thumbnail_status_dict (UploadThumbnailsStatusResponseUploadThumbnailStatusDict):
+        upload_status (UploadStatus): The aggregate processing status of a set of homepage thumbnail uploads.
+        upload_thumbnail_status_dict (UploadThumbnailsStatusResponseUploadThumbnailStatusDict): A mapping from each
+            completed operation ID to its uploaded thumbnail details.
     """
 
     upload_status: UploadStatus

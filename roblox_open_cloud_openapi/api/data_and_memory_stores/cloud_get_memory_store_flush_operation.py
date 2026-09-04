@@ -39,6 +39,7 @@ def _get_kwargs(
             "openapi-extensions": {
                 "x-roblox-stability": "BETA",
                 "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
+                "x-roblox-scopes": [{"name": "memory-store:get", "targetResourceSpecifier": "universes"}],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
             "openapi-id": "Cloud_GetMemoryStoreFlushOperation",

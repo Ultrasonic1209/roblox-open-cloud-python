@@ -27,7 +27,10 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "memory-store.queue:add"}],
+                "x-roblox-scopes": [
+                    {"name": "memory-store.queue:add", "targetResourceSpecifier": "universes"},
+                    {"name": "memory-store.queue:add"},
+                ],
                 "x-roblox-docs": {
                     "category": "Data and memory stores",
                     "methodProperties": {"scopes": ["memory-store.queue:add"]},

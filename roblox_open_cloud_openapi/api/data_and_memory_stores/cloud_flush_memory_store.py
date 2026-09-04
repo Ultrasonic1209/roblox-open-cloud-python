@@ -40,7 +40,10 @@ def _get_kwargs(
                     "response": {"$ref": "#/components/schemas/FlushMemoryStoreResponse"},
                 },
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "memory-store:flush"}],
+                "x-roblox-scopes": [
+                    {"name": "memory-store:flush", "targetResourceSpecifier": "universes"},
+                    {"name": "memory-store:flush"},
+                ],
                 "x-roblox-docs": {
                     "category": "Data and memory stores",
                     "methodProperties": {"scopes": ["memory-store:flush"]},

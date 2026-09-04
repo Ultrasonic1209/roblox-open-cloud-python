@@ -1,26 +1,26 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.action_result import ActionResult
-from ...types import UNSET, Response, Unset
+from ...models.thumbnail_personalization_api_homepage_thumbnail_delete_homepage_thumbnails_response_200 import (
+    ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200,
+)
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     universe_id: int,
     *,
-    homepage_thumbnail_ids: list[str] | Unset = UNSET,
+    homepage_thumbnail_ids: list[str],
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    json_homepage_thumbnail_ids: list[str] | Unset = UNSET
-    if not isinstance(homepage_thumbnail_ids, Unset):
-        json_homepage_thumbnail_ids = homepage_thumbnail_ids
+    json_homepage_thumbnail_ids = homepage_thumbnail_ids
 
     params["homepageThumbnailIds"] = json_homepage_thumbnail_ids
 
@@ -49,30 +49,30 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> ActionResult | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
+) -> Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str | None:
     if response.status_code == 200:
-        response_200 = ActionResult.from_dict(response.json())
+        response_200 = ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200.from_dict(
+            response.json()
+        )
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = ActionResult.from_dict(response.json())
-
+        response_400 = cast(str, response.json())
         return response_400
 
     if response.status_code == 401:
-        response_401 = ActionResult.from_dict(response.json())
-
+        response_401 = cast(str, response.json())
         return response_401
 
     if response.status_code == 403:
-        response_403 = ActionResult.from_dict(response.json())
-
+        response_403 = cast(str, response.json())
         return response_403
 
     if response.status_code == 500:
-        response_500 = ActionResult.from_dict(response.json())
-
+        response_500 = cast(Any, None)
         return response_500
 
     if client.raise_on_unexpected_status:
@@ -81,7 +81,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[ActionResult]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
+) -> Response[Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -94,19 +96,20 @@ def sync_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    homepage_thumbnail_ids: list[str] | Unset = UNSET,
-) -> Response[ActionResult]:
-    """
+    homepage_thumbnail_ids: list[str],
+) -> Response[Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str]:
+    """Deletes homepage thumbnails from a universe.
+
     Args:
         universe_id (int):
-        homepage_thumbnail_ids (list[str] | Unset):
+        homepage_thumbnail_ids (list[str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ActionResult]
+        Response[Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str]
     """
 
     kwargs = _get_kwargs(
@@ -125,19 +128,20 @@ def sync(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    homepage_thumbnail_ids: list[str] | Unset = UNSET,
-) -> ActionResult | None:
-    """
+    homepage_thumbnail_ids: list[str],
+) -> Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str | None:
+    """Deletes homepage thumbnails from a universe.
+
     Args:
         universe_id (int):
-        homepage_thumbnail_ids (list[str] | Unset):
+        homepage_thumbnail_ids (list[str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ActionResult
+        Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str
     """
 
     return sync_detailed(
@@ -151,19 +155,20 @@ async def asyncio_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    homepage_thumbnail_ids: list[str] | Unset = UNSET,
-) -> Response[ActionResult]:
-    """
+    homepage_thumbnail_ids: list[str],
+) -> Response[Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str]:
+    """Deletes homepage thumbnails from a universe.
+
     Args:
         universe_id (int):
-        homepage_thumbnail_ids (list[str] | Unset):
+        homepage_thumbnail_ids (list[str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ActionResult]
+        Response[Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str]
     """
 
     kwargs = _get_kwargs(
@@ -180,19 +185,20 @@ async def asyncio(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    homepage_thumbnail_ids: list[str] | Unset = UNSET,
-) -> ActionResult | None:
-    """
+    homepage_thumbnail_ids: list[str],
+) -> Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str | None:
+    """Deletes homepage thumbnails from a universe.
+
     Args:
         universe_id (int):
-        homepage_thumbnail_ids (list[str] | Unset):
+        homepage_thumbnail_ids (list[str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ActionResult
+        Any | ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200 | str
     """
 
     return (

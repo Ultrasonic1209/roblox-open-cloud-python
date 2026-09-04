@@ -35,7 +35,10 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "memory-store.sorted-map:write"}],
+                "x-roblox-scopes": [
+                    {"name": "memory-store.sorted-map:write", "targetResourceSpecifier": "universes"},
+                    {"name": "memory-store.sorted-map:write"},
+                ],
                 "x-roblox-docs": {
                     "category": "Data and memory stores",
                     "methodProperties": {"scopes": ["memory-store.sorted-map:write"]},

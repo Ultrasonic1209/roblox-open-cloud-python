@@ -10,9 +10,11 @@ T = TypeVar("T", bound="CreateThumbnailPersonalizationRequest")
 
 @_attrs_define
 class CreateThumbnailPersonalizationRequest:
-    """
+    """The request to create a thumbnail personalization configuration.
+
     Attributes:
-        homepage_thumbnail_ids (list[str]):
+        homepage_thumbnail_ids (list[str]): The homepage thumbnail identifiers to include in the configuration. Up to
+            five are supported.
     """
 
     homepage_thumbnail_ids: list[str]

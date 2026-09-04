@@ -6,7 +6,7 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user import User
+from ...models.open_cloud_users_user import OpenCloudUsersUser
 from ...types import Response
 
 
@@ -21,27 +21,22 @@ def _get_kwargs(
         ),
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
                 "x-roblox-scopes": [
                     {
-                        "description": "Grants access to read a user&#x27;s verification status.",
                         "name": "user.advanced:read",
+                        "description": "Optionally included to receive identity verification information about the user in the response.",
                     },
                     {
-                        "description": "Grants access to read a user&#x27;s social account information.",
                         "name": "user.social:read",
+                        "description": "Optionally included to receive social network profile information about the user in the response.",
                     },
                 ],
-                "x-roblox-docs": {
-                    "category": "Users and groups",
-                    "methodProperties": {"scopes": []},
-                    "resource": {"$ref": "#/components/schemas/User", "name": "User"},
-                },
-                "x-roblox-stability": "BETA",
+                "x-roblox-stability": "STABLE",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
                 },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
             "openapi-id": "Cloud_GetUser",
         },
@@ -50,9 +45,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> User | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> OpenCloudUsersUser | None:
     if response.status_code == 200:
-        response_200 = User.from_dict(response.json())
+        response_200 = OpenCloudUsersUser.from_dict(response.json())
 
         return response_200
 
@@ -62,7 +57,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[User]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[OpenCloudUsersUser]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,19 +70,10 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[User]:
+) -> Response[OpenCloudUsersUser]:
     """Get User
 
      Gets a user's basic and advanced information.
-
-    To access a user's public information, no additional scopes are required.
-
-    To access a user's verification status, you need the following scopes:
-    * user.advanced:read
-
-    To access a user's social account information, you need the following
-    scopes:
-    * user.social:read
 
     Args:
         user_id (str):
@@ -97,7 +83,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[User]
+        Response[OpenCloudUsersUser]
     """
 
     kwargs = _get_kwargs(
@@ -115,19 +101,10 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> User | None:
+) -> OpenCloudUsersUser | None:
     """Get User
 
      Gets a user's basic and advanced information.
-
-    To access a user's public information, no additional scopes are required.
-
-    To access a user's verification status, you need the following scopes:
-    * user.advanced:read
-
-    To access a user's social account information, you need the following
-    scopes:
-    * user.social:read
 
     Args:
         user_id (str):
@@ -137,7 +114,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        User
+        OpenCloudUsersUser
     """
 
     return sync_detailed(
@@ -150,19 +127,10 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[User]:
+) -> Response[OpenCloudUsersUser]:
     """Get User
 
      Gets a user's basic and advanced information.
-
-    To access a user's public information, no additional scopes are required.
-
-    To access a user's verification status, you need the following scopes:
-    * user.advanced:read
-
-    To access a user's social account information, you need the following
-    scopes:
-    * user.social:read
 
     Args:
         user_id (str):
@@ -172,7 +140,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[User]
+        Response[OpenCloudUsersUser]
     """
 
     kwargs = _get_kwargs(
@@ -188,19 +156,10 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> User | None:
+) -> OpenCloudUsersUser | None:
     """Get User
 
      Gets a user's basic and advanced information.
-
-    To access a user's public information, no additional scopes are required.
-
-    To access a user's verification status, you need the following scopes:
-    * user.advanced:read
-
-    To access a user's social account information, you need the following
-    scopes:
-    * user.social:read
 
     Args:
         user_id (str):
@@ -210,7 +169,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        User
+        OpenCloudUsersUser
     """
 
     return (

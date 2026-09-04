@@ -6,7 +6,7 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.ocv2_operations_operation import OCV2OperationsOperation
+from ...models.open_cloud_users_operation import OpenCloudUsersOperation
 from ...types import Response
 
 
@@ -23,7 +23,7 @@ def _get_kwargs(
         ),
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-stability": "BETA",
+                "x-roblox-stability": "STABLE",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 10},
@@ -39,9 +39,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> OCV2OperationsOperation | None:
+) -> OpenCloudUsersOperation | None:
     if response.status_code == 200:
-        response_200 = OCV2OperationsOperation.from_dict(response.json())
+        response_200 = OpenCloudUsersOperation.from_dict(response.json())
 
         return response_200
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[OCV2OperationsOperation]:
+) -> Response[OpenCloudUsersOperation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,11 +67,17 @@ def sync_detailed(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[OCV2OperationsOperation]:
+) -> Response[OpenCloudUsersOperation]:
     """Get User Thumbnail Generation Operation
 
-     Retrieves the status of the operation to [generate a user thumbnail](https://create.roblox.com/docs/
-    cloud/reference/features/users#Cloud_GenerateUserThumbnail).
+     Gets the status and result of a
+    [Generate User Thumbnail](https://create.roblox.com/docs/cloud/reference/features/users#Cloud_Genera
+    teUserThumbnail)
+    long-running operation.
+
+    Call this with the operation `path` returned by Generate User Thumbnail,
+    polling until `done` is `true`. Once complete, `response.imageUri` contains
+    the generated thumbnail URL.
 
     Args:
         user_id (str):
@@ -82,7 +88,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OCV2OperationsOperation]
+        Response[OpenCloudUsersOperation]
     """
 
     kwargs = _get_kwargs(
@@ -102,11 +108,17 @@ def sync(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> OCV2OperationsOperation | None:
+) -> OpenCloudUsersOperation | None:
     """Get User Thumbnail Generation Operation
 
-     Retrieves the status of the operation to [generate a user thumbnail](https://create.roblox.com/docs/
-    cloud/reference/features/users#Cloud_GenerateUserThumbnail).
+     Gets the status and result of a
+    [Generate User Thumbnail](https://create.roblox.com/docs/cloud/reference/features/users#Cloud_Genera
+    teUserThumbnail)
+    long-running operation.
+
+    Call this with the operation `path` returned by Generate User Thumbnail,
+    polling until `done` is `true`. Once complete, `response.imageUri` contains
+    the generated thumbnail URL.
 
     Args:
         user_id (str):
@@ -117,7 +129,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OCV2OperationsOperation
+        OpenCloudUsersOperation
     """
 
     return sync_detailed(
@@ -132,11 +144,17 @@ async def asyncio_detailed(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[OCV2OperationsOperation]:
+) -> Response[OpenCloudUsersOperation]:
     """Get User Thumbnail Generation Operation
 
-     Retrieves the status of the operation to [generate a user thumbnail](https://create.roblox.com/docs/
-    cloud/reference/features/users#Cloud_GenerateUserThumbnail).
+     Gets the status and result of a
+    [Generate User Thumbnail](https://create.roblox.com/docs/cloud/reference/features/users#Cloud_Genera
+    teUserThumbnail)
+    long-running operation.
+
+    Call this with the operation `path` returned by Generate User Thumbnail,
+    polling until `done` is `true`. Once complete, `response.imageUri` contains
+    the generated thumbnail URL.
 
     Args:
         user_id (str):
@@ -147,7 +165,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OCV2OperationsOperation]
+        Response[OpenCloudUsersOperation]
     """
 
     kwargs = _get_kwargs(
@@ -165,11 +183,17 @@ async def asyncio(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> OCV2OperationsOperation | None:
+) -> OpenCloudUsersOperation | None:
     """Get User Thumbnail Generation Operation
 
-     Retrieves the status of the operation to [generate a user thumbnail](https://create.roblox.com/docs/
-    cloud/reference/features/users#Cloud_GenerateUserThumbnail).
+     Gets the status and result of a
+    [Generate User Thumbnail](https://create.roblox.com/docs/cloud/reference/features/users#Cloud_Genera
+    teUserThumbnail)
+    long-running operation.
+
+    Call this with the operation `path` returned by Generate User Thumbnail,
+    polling until `done` is `true`. Once complete, `response.imageUri` contains
+    the generated thumbnail URL.
 
     Args:
         user_id (str):
@@ -180,7 +204,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OCV2OperationsOperation
+        OpenCloudUsersOperation
     """
 
     return (

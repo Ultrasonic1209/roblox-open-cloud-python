@@ -1,23 +1,22 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.action_result import ActionResult
 from ...models.thumbnail_personalization_api_homepage_thumbnail_upload_homepage_thumbnails_body import (
     ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
 )
 from ...models.upload_thumbnails_response import UploadThumbnailsResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     universe_id: int,
     *,
-    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset = UNSET,
+    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -40,8 +39,7 @@ def _get_kwargs(
         },
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["files"] = body.to_multipart()
+    _kwargs["files"] = body.to_multipart()
 
     headers["Content-Type"] = "multipart/form-data; boundary=+++"
 
@@ -51,30 +49,26 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> ActionResult | UploadThumbnailsResponse | None:
+) -> Any | UploadThumbnailsResponse | str | None:
     if response.status_code == 200:
         response_200 = UploadThumbnailsResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = ActionResult.from_dict(response.json())
-
+        response_400 = cast(str, response.json())
         return response_400
 
     if response.status_code == 401:
-        response_401 = ActionResult.from_dict(response.json())
-
+        response_401 = cast(str, response.json())
         return response_401
 
     if response.status_code == 403:
-        response_403 = ActionResult.from_dict(response.json())
-
+        response_403 = cast(str, response.json())
         return response_403
 
     if response.status_code == 500:
-        response_500 = ActionResult.from_dict(response.json())
-
+        response_500 = cast(Any, None)
         return response_500
 
     if client.raise_on_unexpected_status:
@@ -85,7 +79,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[ActionResult | UploadThumbnailsResponse]:
+) -> Response[Any | UploadThumbnailsResponse | str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -98,19 +92,20 @@ def sync_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset = UNSET,
-) -> Response[ActionResult | UploadThumbnailsResponse]:
-    """
+    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
+) -> Response[Any | UploadThumbnailsResponse | str]:
+    """Uploads one or more images to create homepage thumbnails for a universe.
+
     Args:
         universe_id (int):
-        body (ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset):
+        body (ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ActionResult | UploadThumbnailsResponse]
+        Response[Any | UploadThumbnailsResponse | str]
     """
 
     kwargs = _get_kwargs(
@@ -129,19 +124,20 @@ def sync(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset = UNSET,
-) -> ActionResult | UploadThumbnailsResponse | None:
-    """
+    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
+) -> Any | UploadThumbnailsResponse | str | None:
+    """Uploads one or more images to create homepage thumbnails for a universe.
+
     Args:
         universe_id (int):
-        body (ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset):
+        body (ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ActionResult | UploadThumbnailsResponse
+        Any | UploadThumbnailsResponse | str
     """
 
     return sync_detailed(
@@ -155,19 +151,20 @@ async def asyncio_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset = UNSET,
-) -> Response[ActionResult | UploadThumbnailsResponse]:
-    """
+    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
+) -> Response[Any | UploadThumbnailsResponse | str]:
+    """Uploads one or more images to create homepage thumbnails for a universe.
+
     Args:
         universe_id (int):
-        body (ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset):
+        body (ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ActionResult | UploadThumbnailsResponse]
+        Response[Any | UploadThumbnailsResponse | str]
     """
 
     kwargs = _get_kwargs(
@@ -184,19 +181,20 @@ async def asyncio(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset = UNSET,
-) -> ActionResult | UploadThumbnailsResponse | None:
-    """
+    body: ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody,
+) -> Any | UploadThumbnailsResponse | str | None:
+    """Uploads one or more images to create homepage thumbnails for a universe.
+
     Args:
         universe_id (int):
-        body (ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody | Unset):
+        body (ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ActionResult | UploadThumbnailsResponse
+        Any | UploadThumbnailsResponse | str
     """
 
     return (

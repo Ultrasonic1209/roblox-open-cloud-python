@@ -16,9 +16,11 @@ T = TypeVar("T", bound="UploadThumbnailsResponse")
 
 @_attrs_define
 class UploadThumbnailsResponse:
-    """
+    """The operations created for uploaded homepage thumbnail files.
+
     Attributes:
-        file_to_operation_id_dict (UploadThumbnailsResponseFileToOperationIdDict):
+        file_to_operation_id_dict (UploadThumbnailsResponseFileToOperationIdDict): A mapping from each uploaded file
+            name to the operation ID used to track its processing.
     """
 
     file_to_operation_id_dict: UploadThumbnailsResponseFileToOperationIdDict

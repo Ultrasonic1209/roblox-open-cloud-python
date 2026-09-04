@@ -13,11 +13,13 @@ T = TypeVar("T", bound="UploadThumbnailStatus")
 
 @_attrs_define
 class UploadThumbnailStatus:
-    """
+    """The result of a completed homepage thumbnail upload operation.
+
     Attributes:
-        homepage_thumbnail_id (None | str | Unset):
-        asset_id (int | Unset):
-        moderation_status (ThumbnailPersonalizationApiModerationStatus | Unset):
+        homepage_thumbnail_id (None | str | Unset): The unique identifier of the created homepage thumbnail.
+        asset_id (int | Unset): The identifier of the uploaded image asset.
+        moderation_status (ThumbnailPersonalizationApiModerationStatus | Unset): The moderation status of a homepage
+            thumbnail's image asset.
     """
 
     homepage_thumbnail_id: None | str | Unset = UNSET

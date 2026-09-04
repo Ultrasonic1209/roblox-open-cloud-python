@@ -1,27 +1,24 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.action_result import ActionResult
 from ...models.upload_thumbnails_status_response import UploadThumbnailsStatusResponse
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     universe_id: int,
     *,
-    operation_ids: list[str] | Unset = UNSET,
+    operation_ids: list[str],
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    json_operation_ids: list[str] | Unset = UNSET
-    if not isinstance(operation_ids, Unset):
-        json_operation_ids = operation_ids
+    json_operation_ids = operation_ids
 
     params["operationIds"] = json_operation_ids
 
@@ -52,30 +49,26 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> ActionResult | UploadThumbnailsStatusResponse | None:
+) -> Any | UploadThumbnailsStatusResponse | str | None:
     if response.status_code == 200:
         response_200 = UploadThumbnailsStatusResponse.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = ActionResult.from_dict(response.json())
-
+        response_400 = cast(str, response.json())
         return response_400
 
     if response.status_code == 401:
-        response_401 = ActionResult.from_dict(response.json())
-
+        response_401 = cast(str, response.json())
         return response_401
 
     if response.status_code == 403:
-        response_403 = ActionResult.from_dict(response.json())
-
+        response_403 = cast(str, response.json())
         return response_403
 
     if response.status_code == 500:
-        response_500 = ActionResult.from_dict(response.json())
-
+        response_500 = cast(Any, None)
         return response_500
 
     if client.raise_on_unexpected_status:
@@ -86,7 +79,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[ActionResult | UploadThumbnailsStatusResponse]:
+) -> Response[Any | UploadThumbnailsStatusResponse | str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -99,19 +92,20 @@ def sync_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    operation_ids: list[str] | Unset = UNSET,
-) -> Response[ActionResult | UploadThumbnailsStatusResponse]:
-    """
+    operation_ids: list[str],
+) -> Response[Any | UploadThumbnailsStatusResponse | str]:
+    """Gets the processing status of homepage thumbnail upload operations.
+
     Args:
         universe_id (int):
-        operation_ids (list[str] | Unset):
+        operation_ids (list[str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ActionResult | UploadThumbnailsStatusResponse]
+        Response[Any | UploadThumbnailsStatusResponse | str]
     """
 
     kwargs = _get_kwargs(
@@ -130,19 +124,20 @@ def sync(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    operation_ids: list[str] | Unset = UNSET,
-) -> ActionResult | UploadThumbnailsStatusResponse | None:
-    """
+    operation_ids: list[str],
+) -> Any | UploadThumbnailsStatusResponse | str | None:
+    """Gets the processing status of homepage thumbnail upload operations.
+
     Args:
         universe_id (int):
-        operation_ids (list[str] | Unset):
+        operation_ids (list[str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ActionResult | UploadThumbnailsStatusResponse
+        Any | UploadThumbnailsStatusResponse | str
     """
 
     return sync_detailed(
@@ -156,19 +151,20 @@ async def asyncio_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    operation_ids: list[str] | Unset = UNSET,
-) -> Response[ActionResult | UploadThumbnailsStatusResponse]:
-    """
+    operation_ids: list[str],
+) -> Response[Any | UploadThumbnailsStatusResponse | str]:
+    """Gets the processing status of homepage thumbnail upload operations.
+
     Args:
         universe_id (int):
-        operation_ids (list[str] | Unset):
+        operation_ids (list[str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ActionResult | UploadThumbnailsStatusResponse]
+        Response[Any | UploadThumbnailsStatusResponse | str]
     """
 
     kwargs = _get_kwargs(
@@ -185,19 +181,20 @@ async def asyncio(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    operation_ids: list[str] | Unset = UNSET,
-) -> ActionResult | UploadThumbnailsStatusResponse | None:
-    """
+    operation_ids: list[str],
+) -> Any | UploadThumbnailsStatusResponse | str | None:
+    """Gets the processing status of homepage thumbnail upload operations.
+
     Args:
         universe_id (int):
-        operation_ids (list[str] | Unset):
+        operation_ids (list[str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ActionResult | UploadThumbnailsStatusResponse
+        Any | UploadThumbnailsStatusResponse | str
     """
 
     return (

@@ -1,12 +1,11 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.action_result import ActionResult
 from ...models.update_thumbnail_personalization_request import UpdateThumbnailPersonalizationRequest
 from ...types import UNSET, Response, Unset
 
@@ -42,23 +41,19 @@ def _get_kwargs(
     }
 
     if isinstance(body, UpdateThumbnailPersonalizationRequest):
-        if not isinstance(body, Unset):
-            _kwargs["json"] = body.to_dict()
+        _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/json-patch+json"
     if isinstance(body, UpdateThumbnailPersonalizationRequest):
-        if not isinstance(body, Unset):
-            _kwargs["json"] = body.to_dict()
+        _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/json"
     if isinstance(body, UpdateThumbnailPersonalizationRequest):
-        if not isinstance(body, Unset):
-            _kwargs["json"] = body.to_dict()
+        _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "text/json"
     if isinstance(body, UpdateThumbnailPersonalizationRequest):
-        if not isinstance(body, Unset):
-            _kwargs["json"] = body.to_dict()
+        _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/*+json"
 
@@ -66,30 +61,29 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> ActionResult | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | str | None:
     if response.status_code == 200:
-        response_200 = ActionResult.from_dict(response.json())
-
+        response_200 = cast(str, response.json())
         return response_200
 
     if response.status_code == 400:
-        response_400 = ActionResult.from_dict(response.json())
-
+        response_400 = cast(str, response.json())
         return response_400
 
     if response.status_code == 401:
-        response_401 = ActionResult.from_dict(response.json())
-
+        response_401 = cast(str, response.json())
         return response_401
 
     if response.status_code == 403:
-        response_403 = ActionResult.from_dict(response.json())
-
+        response_403 = cast(str, response.json())
         return response_403
 
-    if response.status_code == 500:
-        response_500 = ActionResult.from_dict(response.json())
+    if response.status_code == 404:
+        response_404 = cast(Any, None)
+        return response_404
 
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
         return response_500
 
     if client.raise_on_unexpected_status:
@@ -98,7 +92,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[ActionResult]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -116,21 +110,28 @@ def sync_detailed(
     | UpdateThumbnailPersonalizationRequest
     | UpdateThumbnailPersonalizationRequest
     | Unset = UNSET,
-) -> Response[ActionResult]:
-    """
+) -> Response[Any | str]:
+    """Replaces the homepage thumbnails in an active personalization configuration without changing its
+    identifier
+    or existing statistics.
+
     Args:
         universe_id (int):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ActionResult]
+        Response[Any | str]
     """
 
     kwargs = _get_kwargs(
@@ -154,21 +155,28 @@ def sync(
     | UpdateThumbnailPersonalizationRequest
     | UpdateThumbnailPersonalizationRequest
     | Unset = UNSET,
-) -> ActionResult | None:
-    """
+) -> Any | str | None:
+    """Replaces the homepage thumbnails in an active personalization configuration without changing its
+    identifier
+    or existing statistics.
+
     Args:
         universe_id (int):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ActionResult
+        Any | str
     """
 
     return sync_detailed(
@@ -187,21 +195,28 @@ async def asyncio_detailed(
     | UpdateThumbnailPersonalizationRequest
     | UpdateThumbnailPersonalizationRequest
     | Unset = UNSET,
-) -> Response[ActionResult]:
-    """
+) -> Response[Any | str]:
+    """Replaces the homepage thumbnails in an active personalization configuration without changing its
+    identifier
+    or existing statistics.
+
     Args:
         universe_id (int):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ActionResult]
+        Response[Any | str]
     """
 
     kwargs = _get_kwargs(
@@ -223,21 +238,28 @@ async def asyncio(
     | UpdateThumbnailPersonalizationRequest
     | UpdateThumbnailPersonalizationRequest
     | Unset = UNSET,
-) -> ActionResult | None:
-    """
+) -> Any | str | None:
+    """Replaces the homepage thumbnails in an active personalization configuration without changing its
+    identifier
+    or existing statistics.
+
     Args:
         universe_id (int):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
-        body (UpdateThumbnailPersonalizationRequest | Unset):
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
+        body (UpdateThumbnailPersonalizationRequest): The request to update a thumbnail
+            personalization configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ActionResult
+        Any | str
     """
 
     return (

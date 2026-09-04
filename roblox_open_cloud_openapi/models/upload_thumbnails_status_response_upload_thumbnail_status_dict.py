@@ -15,7 +15,7 @@ T = TypeVar("T", bound="UploadThumbnailsStatusResponseUploadThumbnailStatusDict"
 
 @_attrs_define
 class UploadThumbnailsStatusResponseUploadThumbnailStatusDict:
-    """ """
+    """A mapping from each completed operation ID to its uploaded thumbnail details."""
 
     additional_properties: dict[str, UploadThumbnailStatus] = _attrs_field(init=False, factory=dict)
 
