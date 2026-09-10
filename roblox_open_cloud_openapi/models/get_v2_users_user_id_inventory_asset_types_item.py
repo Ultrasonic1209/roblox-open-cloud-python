@@ -90,6 +90,7 @@ class GetV2UsersUserIdInventoryAssetTypesItem(IntEnum):
     VALUE_93 = 93
     VALUE_94 = 94
     VALUE_95 = 95
+    VALUE_96 = 96
 
     def __str__(self) -> str:
         return str(self.value)

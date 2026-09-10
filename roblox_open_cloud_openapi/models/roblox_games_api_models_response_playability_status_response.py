@@ -14,6 +14,9 @@ if TYPE_CHECKING:
     from ..models.roblox_games_api_models_response_playable_ux_treatment import (
         RobloxGamesApiModelsResponsePlayableUxTreatment,
     )
+    from ..models.roblox_games_api_models_response_private_playtest_info_response import (
+        RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse,
+    )
     from ..models.roblox_games_api_models_response_upsell_ux_treatment import (
         RobloxGamesApiModelsResponseUpsellUxTreatment,
     )
@@ -39,7 +42,7 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             'FiatPurchaseDeviceRestricted' = 22, 'ContextualPlayabilityUnrated' = 23,
             'ContextualPlayabilityAgeGatedByDescriptor' = 24, 'ContextualPlayabilityGeneral' = 25,
             'ContextualPlayabilityAgeCheckRequired' = 26, 'ContextualPlayabilityRequireParentApproval' = 27,
-            'ContextualPlayabilityCoreGated' = 28]
+            'ContextualPlayabilityCoreGated' = 28, 'ContextualPlayabilityTrustedFriendRequired' = 29]
         is_playable (bool | Unset): Whether or not the universe is playable for the user
         universe_id (int | Unset): The universeId of the requested universe to help with batching requests
         unplayable_display_text (str | Unset): Localized display text explaining why unplayable
@@ -48,6 +51,8 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             appended to a playability response.
         demo_mode_available (bool | Unset): Whether the game supports demo play for users who have not purchased it.
             Only set when PlayabilityStatus is PurchaseRequired or FiatPurchaseRequired.
+        private_playtest_info (RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse | Unset): Private playtest
+            eligibility for the authenticated user.
     """
 
     playability_status: RobloxGamesApiModelsResponsePlayabilityStatusResponsePlayabilityStatus | Unset = UNSET
@@ -57,6 +62,7 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
     playable_ux_treatment: RobloxGamesApiModelsResponsePlayableUxTreatment | Unset = UNSET
     upsell_ux_treatment: RobloxGamesApiModelsResponseUpsellUxTreatment | Unset = UNSET
     demo_mode_available: bool | Unset = UNSET
+    private_playtest_info: RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         playability_status: int | Unset = UNSET
@@ -79,6 +85,10 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
 
         demo_mode_available = self.demo_mode_available
 
+        private_playtest_info: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.private_playtest_info, Unset):
+            private_playtest_info = self.private_playtest_info.to_dict()
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -96,6 +106,8 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             field_dict["upsellUxTreatment"] = upsell_ux_treatment
         if demo_mode_available is not UNSET:
             field_dict["demoModeAvailable"] = demo_mode_available
+        if private_playtest_info is not UNSET:
+            field_dict["privatePlaytestInfo"] = private_playtest_info
 
         return field_dict
 
@@ -103,6 +115,9 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_games_api_models_response_playable_ux_treatment import (
             RobloxGamesApiModelsResponsePlayableUxTreatment,
+        )
+        from ..models.roblox_games_api_models_response_private_playtest_info_response import (
+            RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse,
         )
         from ..models.roblox_games_api_models_response_upsell_ux_treatment import (
             RobloxGamesApiModelsResponseUpsellUxTreatment,
@@ -140,6 +155,15 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
 
         demo_mode_available = d.pop("demoModeAvailable", UNSET)
 
+        _private_playtest_info = d.pop("privatePlaytestInfo", UNSET)
+        private_playtest_info: RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse | Unset
+        if isinstance(_private_playtest_info, Unset):
+            private_playtest_info = UNSET
+        else:
+            private_playtest_info = RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse.from_dict(
+                _private_playtest_info
+            )
+
         roblox_games_api_models_response_playability_status_response = cls(
             playability_status=playability_status,
             is_playable=is_playable,
@@ -148,6 +172,7 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             playable_ux_treatment=playable_ux_treatment,
             upsell_ux_treatment=upsell_ux_treatment,
             demo_mode_available=demo_mode_available,
+            private_playtest_info=private_playtest_info,
         )
 
         return roblox_games_api_models_response_playability_status_response

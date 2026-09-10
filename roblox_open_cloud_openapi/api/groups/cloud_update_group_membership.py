@@ -83,9 +83,8 @@ def sync_detailed(
 
      **Deprecated.** Use AssignGroupRole and UnassignGroupRole instead.
     Updates the group membership for a particular group member. This action
-    requires the requester to be able to manage lower ranked members. Guest or
-    Owner ranks cannot be assigned, and a requester cannot change their own
-    rank.
+    requires the requester to be able to assign or remove roles below their
+    highest role. The requester cannot change their own roles.
 
     Args:
         group_id (str):
@@ -125,9 +124,8 @@ def sync(
 
      **Deprecated.** Use AssignGroupRole and UnassignGroupRole instead.
     Updates the group membership for a particular group member. This action
-    requires the requester to be able to manage lower ranked members. Guest or
-    Owner ranks cannot be assigned, and a requester cannot change their own
-    rank.
+    requires the requester to be able to assign or remove roles below their
+    highest role. The requester cannot change their own roles.
 
     Args:
         group_id (str):
@@ -162,9 +160,8 @@ async def asyncio_detailed(
 
      **Deprecated.** Use AssignGroupRole and UnassignGroupRole instead.
     Updates the group membership for a particular group member. This action
-    requires the requester to be able to manage lower ranked members. Guest or
-    Owner ranks cannot be assigned, and a requester cannot change their own
-    rank.
+    requires the requester to be able to assign or remove roles below their
+    highest role. The requester cannot change their own roles.
 
     Args:
         group_id (str):
@@ -202,9 +199,8 @@ async def asyncio(
 
      **Deprecated.** Use AssignGroupRole and UnassignGroupRole instead.
     Updates the group membership for a particular group member. This action
-    requires the requester to be able to manage lower ranked members. Guest or
-    Owner ranks cannot be assigned, and a requester cannot change their own
-    rank.
+    requires the requester to be able to assign or remove roles below their
+    highest role. The requester cannot change their own roles.
 
     Args:
         group_id (str):

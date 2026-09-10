@@ -3,6 +3,7 @@ from enum import Enum
 
 class RobloxTradesApiModelsV2CanTradeResponseTradeEligibility(str, Enum):
     ELIGIBLE = "Eligible"
+    INELIGIBLEAGECHECKREQUIRED = "IneligibleAgeCheckRequired"
     INELIGIBLECANNOTTRADEWITHROBLOX = "IneligibleCannotTradeWithRoblox"
     INELIGIBLEFREETRADESLIMITREACHED = "IneligibleFreeTradesLimitReached"
     INELIGIBLELEGALORREGULATORYRESTRICTIONS = "IneligibleLegalOrRegulatoryRestrictions"

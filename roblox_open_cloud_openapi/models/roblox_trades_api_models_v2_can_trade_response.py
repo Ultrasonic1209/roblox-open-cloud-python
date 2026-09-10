@@ -32,7 +32,8 @@ class RobloxTradesApiModelsV2CanTradeResponse:
         trade_eligibility (RobloxTradesApiModelsV2CanTradeResponseTradeEligibility | Unset): The trade eligibility
             status of the user. ['Unknown' = 0, 'Eligible' = 1, 'IneligibleTradeSystemDisabled' = 2,
             'IneligibleCannotTradeWithRoblox' = 3, 'IneligibleUserNotFound' = 4, 'IneligibleMissingPremiumMembership' = 5,
-            'IneligibleLegalOrRegulatoryRestrictions' = 6, 'IneligibleFreeTradesLimitReached' = 7]
+            'IneligibleLegalOrRegulatoryRestrictions' = 6, 'IneligibleFreeTradesLimitReached' = 7,
+            'IneligibleAgeCheckRequired' = 8]
         free_trades_allowance (RobloxTradesApiModelsV2FreeTradesAllowanceResponse | Unset):
         currency_transfer_eligibility (RobloxTradesApiModelsV2CurrencyTransferEligibilityResponse | Unset):
     """

@@ -91,6 +91,10 @@ def sync_detailed(
 
      List roles in a group.
 
+    Roles can be public or private. The response includes private roles and
+    their fields only when the acting user is permitted to view them. The
+    endpoint does not provide a public-roles-only view.
+
     The permissions field for roles is viewable based on the requester's access
     and scopes.
 
@@ -139,6 +143,10 @@ def sync(
 
      List roles in a group.
 
+    Roles can be public or private. The response includes private roles and
+    their fields only when the acting user is permitted to view them. The
+    endpoint does not provide a public-roles-only view.
+
     The permissions field for roles is viewable based on the requester's access
     and scopes.
 
@@ -181,6 +189,10 @@ async def asyncio_detailed(
     """List Group Roles
 
      List roles in a group.
+
+    Roles can be public or private. The response includes private roles and
+    their fields only when the acting user is permitted to view them. The
+    endpoint does not provide a public-roles-only view.
 
     The permissions field for roles is viewable based on the requester's access
     and scopes.
@@ -227,6 +239,10 @@ async def asyncio(
     """List Group Roles
 
      List roles in a group.
+
+    Roles can be public or private. The response includes private roles and
+    their fields only when the acting user is permitted to view them. The
+    endpoint does not provide a public-roles-only view.
 
     The permissions field for roles is viewable based on the requester's access
     and scopes.

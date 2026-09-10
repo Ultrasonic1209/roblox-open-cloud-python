@@ -2125,6 +2125,12 @@ from .roblox_games_api_models_response_playable_ux_treatment import RobloxGamesA
 from .roblox_games_api_models_response_playable_ux_treatment_data import (
     RobloxGamesApiModelsResponsePlayableUxTreatmentData,
 )
+from .roblox_games_api_models_response_private_playtest_info_response import (
+    RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse,
+)
+from .roblox_games_api_models_response_private_playtest_info_response_playability_status import (
+    RobloxGamesApiModelsResponsePrivatePlaytestInfoResponsePlayabilityStatus,
+)
 from .roblox_games_api_models_response_purchase_data import RobloxGamesApiModelsResponsePurchaseData
 from .roblox_games_api_models_response_refund_policy import RobloxGamesApiModelsResponseRefundPolicy
 from .roblox_games_api_models_response_upsell_ux_treatment import RobloxGamesApiModelsResponseUpsellUxTreatment
@@ -2449,6 +2455,9 @@ from .roblox_localization_tables_api_get_table_entries_translation_feedback_resp
 )
 from .roblox_localization_tables_api_get_table_entries_translation_history_request import (
     RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryRequest,
+)
+from .roblox_localization_tables_api_get_table_entries_translation_history_request_source_type import (
+    RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryRequestSourceType,
 )
 from .roblox_localization_tables_api_get_table_entries_translation_history_response import (
     RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryResponse,
@@ -4366,6 +4375,8 @@ __all__ = (
     "RobloxGamesApiModelsResponsePlayabilityStatusResponsePlayabilityStatus",
     "RobloxGamesApiModelsResponsePlayableUxTreatment",
     "RobloxGamesApiModelsResponsePlayableUxTreatmentData",
+    "RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse",
+    "RobloxGamesApiModelsResponsePrivatePlaytestInfoResponsePlayabilityStatus",
     "RobloxGamesApiModelsResponsePurchaseData",
     "RobloxGamesApiModelsResponseRefundPolicy",
     "RobloxGamesApiModelsResponseUpsellUxTreatment",
@@ -4563,6 +4574,7 @@ __all__ = (
     "RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackRequest",
     "RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackResponse",
     "RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryRequest",
+    "RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryRequestSourceType",
     "RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryResponse",
     "RobloxLocalizationTablesApiGetTableEntryCountResponse",
     "RobloxLocalizationTablesApiGetTableResponse",
