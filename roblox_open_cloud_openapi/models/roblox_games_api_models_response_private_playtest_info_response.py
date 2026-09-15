@@ -31,7 +31,8 @@ class RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse:
             'FiatPurchaseDeviceRestricted' = 22, 'ContextualPlayabilityUnrated' = 23,
             'ContextualPlayabilityAgeGatedByDescriptor' = 24, 'ContextualPlayabilityGeneral' = 25,
             'ContextualPlayabilityAgeCheckRequired' = 26, 'ContextualPlayabilityRequireParentApproval' = 27,
-            'ContextualPlayabilityCoreGated' = 28, 'ContextualPlayabilityTrustedFriendRequired' = 29]
+            'ContextualPlayabilityCoreGated' = 28, 'ContextualPlayabilityTrustedFriendRequired' = 29,
+            'PlusSubscriptionRequired' = 30, 'ContextualPlayabilityPlaytestDisabled' = 31]
     """
 
     is_playable: bool | Unset = UNSET

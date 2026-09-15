@@ -13,7 +13,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     user_id: str,
     *,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 0,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -36,23 +36,18 @@ def _get_kwargs(
         "params": params,
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
                 "x-roblox-scopes": [
                     {
-                        "description": "Grants access to read the target user&#x27;s private inventory.",
                         "name": "user.inventory-item:read",
+                        "description": "Required to read the target user's own private inventory; not required for public inventories.",
                     }
                 ],
-                "x-roblox-docs": {
-                    "category": "Users and groups",
-                    "methodProperties": {"scopes": []},
-                    "resource": {"$ref": "#/components/schemas/InventoryItem", "name": "InventoryItem"},
-                },
                 "x-roblox-stability": "BETA",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 20},
                 },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
             },
             "openapi-id": "Cloud_ListInventoryItems",
         },
@@ -90,7 +85,7 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 0,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> Response[ListInventoryItemsResponse]:
@@ -112,7 +107,7 @@ def sync_detailed(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 0.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -142,7 +137,7 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 0,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> ListInventoryItemsResponse | None:
@@ -164,7 +159,7 @@ def sync(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 0.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -189,7 +184,7 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 0,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> Response[ListInventoryItemsResponse]:
@@ -211,7 +206,7 @@ async def asyncio_detailed(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 0.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -239,7 +234,7 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 0,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> ListInventoryItemsResponse | None:
@@ -261,7 +256,7 @@ async def asyncio(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 0.
         page_token (str | Unset):
         filter_ (str | Unset):
 

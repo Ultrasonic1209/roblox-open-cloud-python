@@ -12,8 +12,8 @@ if TYPE_CHECKING:
     from ..models.groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
         GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
     )
-    from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
-        RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
+    from ..models.groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
+        GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
     )
 
 
@@ -28,7 +28,7 @@ class RobloxGroupsApiModelsResponseGroupExperienceResponse:
         id (int | Unset): The game (universe) Id.
         name (str | Unset): The game name.
         description (str | Unset): The game description.
-        creator (RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset):
+        creator (GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset):
         root_place (GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset):
         created (datetime.datetime | Unset): When the game was created.
         updated (datetime.datetime | Unset): When the game was last updated.
@@ -38,7 +38,7 @@ class RobloxGroupsApiModelsResponseGroupExperienceResponse:
     id: int | Unset = UNSET
     name: str | Unset = UNSET
     description: str | Unset = UNSET
-    creator: RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset = UNSET
+    creator: GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset = UNSET
     root_place: GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset = UNSET
     created: datetime.datetime | Unset = UNSET
     updated: datetime.datetime | Unset = UNSET
@@ -96,8 +96,8 @@ class RobloxGroupsApiModelsResponseGroupExperienceResponse:
         from ..models.groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
             GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
         )
-        from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
-            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
+        from ..models.groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
+            GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
         )
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
@@ -108,11 +108,13 @@ class RobloxGroupsApiModelsResponseGroupExperienceResponse:
         description = d.pop("description", UNSET)
 
         _creator = d.pop("creator", UNSET)
-        creator: RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset
+        creator: GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset
         if isinstance(_creator, Unset):
             creator = UNSET
         else:
-            creator = RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType.from_dict(_creator)
+            creator = GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType.from_dict(
+                _creator
+            )
 
         _root_place = d.pop("rootPlace", UNSET)
         root_place: GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset

@@ -53,6 +53,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
         is_rewarded_on_demand_ads_allowed (bool | Unset): Whether rewarded on-demand ads are allowed for this universe.
         id (int | Unset): The universe Id.
         name (str | Unset): The universe name.
+        promotional_text (str | Unset): Promotional Text for the universe.
         universe_avatar_type (RobloxApiDevelopModelsUniverseSettingsResponseUniverseAvatarType | Unset): Which avatar
             types are allowed in the universe. ['MorphToR6' = 1, 'PlayerChoice' = 2, 'MorphToR15' = 3]
         universe_scale_type (RobloxApiDevelopModelsUniverseSettingsResponseUniverseScaleType | Unset): Whether custom
@@ -97,6 +98,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
     is_rewarded_on_demand_ads_allowed: bool | Unset = UNSET
     id: int | Unset = UNSET
     name: str | Unset = UNSET
+    promotional_text: str | Unset = UNSET
     universe_avatar_type: RobloxApiDevelopModelsUniverseSettingsResponseUniverseAvatarType | Unset = UNSET
     universe_scale_type: RobloxApiDevelopModelsUniverseSettingsResponseUniverseScaleType | Unset = UNSET
     universe_animation_type: RobloxApiDevelopModelsUniverseSettingsResponseUniverseAnimationType | Unset = UNSET
@@ -132,6 +134,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
         id = self.id
 
         name = self.name
+
+        promotional_text = self.promotional_text
 
         universe_avatar_type: int | Unset = UNSET
         if not isinstance(self.universe_avatar_type, Unset):
@@ -216,6 +220,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
             field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
+        if promotional_text is not UNSET:
+            field_dict["promotionalText"] = promotional_text
         if universe_avatar_type is not UNSET:
             field_dict["universeAvatarType"] = universe_avatar_type
         if universe_scale_type is not UNSET:
@@ -273,6 +279,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)
+
+        promotional_text = d.pop("promotionalText", UNSET)
 
         _universe_avatar_type = d.pop("universeAvatarType", UNSET)
         universe_avatar_type: RobloxApiDevelopModelsUniverseSettingsResponseUniverseAvatarType | Unset
@@ -396,6 +404,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponse:
             is_rewarded_on_demand_ads_allowed=is_rewarded_on_demand_ads_allowed,
             id=id,
             name=name,
+            promotional_text=promotional_text,
             universe_avatar_type=universe_avatar_type,
             universe_scale_type=universe_scale_type,
             universe_animation_type=universe_animation_type,

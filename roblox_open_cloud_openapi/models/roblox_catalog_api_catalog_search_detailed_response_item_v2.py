@@ -31,6 +31,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.roblox_catalog_api_bundle_item_detail_model_v2 import RobloxCatalogApiBundleItemDetailModelV2
+    from ..models.roblox_catalog_api_collectible_license import RobloxCatalogApiCollectibleLicense
     from ..models.roblox_catalog_api_discount_information import RobloxCatalogApiDiscountInformation
     from ..models.roblox_catalog_api_taxonomy_model import RobloxCatalogApiTaxonomyModel
     from ..models.roblox_catalog_api_timed_option import RobloxCatalogApiTimedOption
@@ -49,6 +50,8 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemV2:
         taxonomy (list[RobloxCatalogApiTaxonomyModel] | Unset): The taxonomy ids and names for this item.
         item_created_utc (datetime.datetime | Unset): The UTC creation date-time of the asset or bundle.
         discount_information (RobloxCatalogApiDiscountInformation | Unset):
+        license_ (RobloxCatalogApiCollectibleLicense | Unset): A model representing the license attached to a
+            collectible, linked via the collectibleItemId.
         id (int | Unset): The Item Id.
         item_type (RobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemType | Unset): The
             Roblox.Catalog.Api.CatalogSearchDetailedResponseItem.ItemType item type. ['Asset' = 1, 'Bundle' = 2]
@@ -97,6 +100,7 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemV2:
     taxonomy: list[RobloxCatalogApiTaxonomyModel] | Unset = UNSET
     item_created_utc: datetime.datetime | Unset = UNSET
     discount_information: RobloxCatalogApiDiscountInformation | Unset = UNSET
+    license_: RobloxCatalogApiCollectibleLicense | Unset = UNSET
     id: int | Unset = UNSET
     item_type: RobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemType | Unset = UNSET
     asset_type: RobloxCatalogApiCatalogSearchDetailedResponseItemV2AssetType | Unset = UNSET
@@ -149,6 +153,10 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemV2:
         discount_information: dict[str, Any] | Unset = UNSET
         if not isinstance(self.discount_information, Unset):
             discount_information = self.discount_information.to_dict()
+
+        license_: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.license_, Unset):
+            license_ = self.license_.to_dict()
 
         id = self.id
 
@@ -246,6 +254,8 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemV2:
             field_dict["itemCreatedUtc"] = item_created_utc
         if discount_information is not UNSET:
             field_dict["discountInformation"] = discount_information
+        if license_ is not UNSET:
+            field_dict["license"] = license_
         if id is not UNSET:
             field_dict["id"] = id
         if item_type is not UNSET:
@@ -310,6 +320,7 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemV2:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_catalog_api_bundle_item_detail_model_v2 import RobloxCatalogApiBundleItemDetailModelV2
+        from ..models.roblox_catalog_api_collectible_license import RobloxCatalogApiCollectibleLicense
         from ..models.roblox_catalog_api_discount_information import RobloxCatalogApiDiscountInformation
         from ..models.roblox_catalog_api_taxonomy_model import RobloxCatalogApiTaxonomyModel
         from ..models.roblox_catalog_api_timed_option import RobloxCatalogApiTimedOption
@@ -346,6 +357,13 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemV2:
             discount_information = UNSET
         else:
             discount_information = RobloxCatalogApiDiscountInformation.from_dict(_discount_information)
+
+        _license_ = d.pop("license", UNSET)
+        license_: RobloxCatalogApiCollectibleLicense | Unset
+        if isinstance(_license_, Unset):
+            license_ = UNSET
+        else:
+            license_ = RobloxCatalogApiCollectibleLicense.from_dict(_license_)
 
         id = d.pop("id", UNSET)
 
@@ -467,6 +485,7 @@ class RobloxCatalogApiCatalogSearchDetailedResponseItemV2:
             taxonomy=taxonomy,
             item_created_utc=item_created_utc,
             discount_information=discount_information,
+            license_=license_,
             id=id,
             item_type=item_type,
             asset_type=asset_type,

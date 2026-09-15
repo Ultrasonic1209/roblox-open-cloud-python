@@ -17,7 +17,10 @@ def _get_kwargs() -> dict[str, Any]:
         "method": "get",
         "url": "https://develop.roblox.com/v1/universes/user-public-publish-eligibility",
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_universes_user-public-publish-eligibility",
         },
     }

@@ -29,7 +29,10 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v1/universes/multiget",
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_universes_multiget",
         },
     }

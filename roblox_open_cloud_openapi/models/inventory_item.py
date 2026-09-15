@@ -2,10 +2,9 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -26,17 +25,17 @@ class InventoryItem:
     Attributes:
         path (str | Unset): The resource path of the inventory item.
 
-            Format: `users/{user_id}/inventory-items/{inventory_item_id}` Example: users/123/inventory-items/some-inventory-
-            item-id.
+            Format: `users/{user_id}/inventory-items/{inventory_item_id}`
         asset_details (InventoryItemAssetDetails | Unset): Specific fields only applicable to assets
         badge_details (InventoryItemBadgeDetails | Unset): Specific fields that are applicable to a badge.
         game_pass_details (InventoryItemGamePassDetails | Unset): Specific fields that are applicable to a game pass.
         private_server_details (InventoryItemPrivateServerDetails | Unset): Specific fields that are applicable to a
             private server.
-        add_time (datetime.datetime | Unset): The time when the item was added to the user's inventory. For example, the
+        add_time (datetime.datetime | None | Unset): The time when the item was added to the user's inventory. For
+            example, the
             time when the user purchased a private server or was awarded a badge.
 
-            This field is currently not populated for passes. Example: 2023-07-05T12:34:56Z.
+            This field is currently not populated for passes.
     """
 
     path: str | Unset = UNSET
@@ -44,8 +43,7 @@ class InventoryItem:
     badge_details: InventoryItemBadgeDetails | Unset = UNSET
     game_pass_details: InventoryItemGamePassDetails | Unset = UNSET
     private_server_details: InventoryItemPrivateServerDetails | Unset = UNSET
-    add_time: datetime.datetime | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    add_time: datetime.datetime | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         path = self.path
@@ -66,12 +64,16 @@ class InventoryItem:
         if not isinstance(self.private_server_details, Unset):
             private_server_details = self.private_server_details.to_dict()
 
-        add_time: str | Unset = UNSET
-        if not isinstance(self.add_time, Unset):
+        add_time: None | str | Unset
+        if isinstance(self.add_time, Unset):
+            add_time = UNSET
+        elif isinstance(self.add_time, datetime.datetime):
             add_time = self.add_time.isoformat()
+        else:
+            add_time = self.add_time
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if path is not UNSET:
             field_dict["path"] = path
@@ -126,12 +128,22 @@ class InventoryItem:
         else:
             private_server_details = InventoryItemPrivateServerDetails.from_dict(_private_server_details)
 
-        _add_time = d.pop("addTime", UNSET)
-        add_time: datetime.datetime | Unset
-        if isinstance(_add_time, Unset):
-            add_time = UNSET
-        else:
-            add_time = datetime.datetime.fromisoformat(_add_time)
+        def _parse_add_time(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                add_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return add_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        add_time = _parse_add_time(d.pop("addTime", UNSET))
 
         inventory_item = cls(
             path=path,
@@ -142,21 +154,4 @@ class InventoryItem:
             add_time=add_time,
         )
 
-        inventory_item.additional_properties = d
         return inventory_item
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

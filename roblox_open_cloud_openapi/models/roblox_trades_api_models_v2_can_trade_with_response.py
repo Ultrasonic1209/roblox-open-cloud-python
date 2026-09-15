@@ -29,7 +29,8 @@ class RobloxTradesApiModelsV2CanTradeWithResponse:
         can_trade (bool | Unset): Whether the user can trade with the target user or not.
         mutual_trade_eligibility (RobloxTradesApiModelsV2CanTradeWithResponseMutualTradeEligibility | Unset): The mutual
             trade eligibility status between the two users. ['Unknown' = 0, 'Eligible' = 1, 'CallingUserIneligible' = 2,
-            'TargetUserIneligible' = 3, 'CannotTradeWithSelf' = 4, 'CallingUserPrivacySettingsRestricted' = 5]
+            'TargetUserIneligible' = 3, 'CannotTradeWithSelf' = 4, 'CallingUserPrivacySettingsRestricted' = 5,
+            'CallingUserAgeCheckRequired' = 6]
         currency_transfer_eligibility (RobloxTradesApiModelsV2CurrencyTransferEligibilityResponse | Unset):
     """
 

@@ -26,7 +26,10 @@ def _get_kwargs(
         "method": "post",
         "url": "https://catalog.roblox.com/v1/catalog/items/details",
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "post_v1_catalog_items_details",
         },
     }

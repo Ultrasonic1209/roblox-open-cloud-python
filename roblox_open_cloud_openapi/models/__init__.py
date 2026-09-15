@@ -44,7 +44,6 @@ from .bulk_delete_saves_request_type_0 import BulkDeleteSavesRequestType0
 from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
 from .calculate_experiment_mde_data import CalculateExperimentMdeData
 from .calculate_experiment_mde_response import CalculateExperimentMdeResponse
-from .can_invite_user_response import CanInviteUserResponse
 from .category_response import CategoryResponse
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
@@ -95,7 +94,6 @@ from .create_matchmaking_scoring_configuration_request_matchmaking_signal_weight
 from .create_matchmaking_scoring_configuration_response import CreateMatchmakingScoringConfigurationResponse
 from .create_matchmaking_server_attribute_definition_request import CreateMatchmakingServerAttributeDefinitionRequest
 from .create_matchmaking_server_attribute_definition_response import CreateMatchmakingServerAttributeDefinitionResponse
-from .create_private_server_request import CreatePrivateServerRequest
 from .create_save_request_type_0 import CreateSaveRequestType0
 from .create_thumbnail_personalization_request import CreateThumbnailPersonalizationRequest
 from .creation_context import CreationContext
@@ -183,7 +181,6 @@ from .game_passes_error_response import GamePassesErrorResponse
 from .game_passes_price_information_struct import GamePassesPriceInformationStruct
 from .game_passes_pricing_feature import GamePassesPricingFeature
 from .game_passes_update_game_pass_body import GamePassesUpdateGamePassBody
-from .game_response import GameResponse
 from .game_server_log import GameServerLog
 from .game_update_status import GameUpdateStatus
 from .game_update_status_place_update_statuses_type_0 import GameUpdateStatusPlaceUpdateStatusesType0
@@ -222,8 +219,6 @@ from .get_place_version_history_response import GetPlaceVersionHistoryResponse
 from .get_private_server_list_response import GetPrivateServerListResponse
 from .get_saves_response_type_0 import GetSavesResponseType0
 from .get_update_status_response import GetUpdateStatusResponse
-from .get_v1_asset_to_category_response_200 import GetV1AssetToCategoryResponse200
-from .get_v1_asset_to_subcategory_response_200 import GetV1AssetToSubcategoryResponse200
 from .get_v1_assets_asset_id_bundles_limit import GetV1AssetsAssetIdBundlesLimit
 from .get_v1_assets_asset_id_bundles_sort_order import GetV1AssetsAssetIdBundlesSortOrder
 from .get_v1_assetsthumbnails_roblox_com_format import GetV1AssetsthumbnailsRobloxComFormat
@@ -233,7 +228,6 @@ from .get_v1_badges_icons_format import GetV1BadgesIconsFormat
 from .get_v1_badges_icons_size import GetV1BadgesIconsSize
 from .get_v1_bundles_thumbnails_format import GetV1BundlesThumbnailsFormat
 from .get_v1_bundles_thumbnails_size import GetV1BundlesThumbnailsSize
-from .get_v1_creations_get_assets_limit import GetV1CreationsGetAssetsLimit
 from .get_v1_developer_products_icons_format import GetV1DeveloperProductsIconsFormat
 from .get_v1_developer_products_icons_size import GetV1DeveloperProductsIconsSize
 from .get_v1_favorites_users_user_id_favorites_asset_type_id_assets_limit import (
@@ -295,7 +289,6 @@ from .get_v1_places_gameicons_size import GetV1PlacesGameiconsSize
 from .get_v1_places_place_id_teamcreate_active_session_members_limit import (
     GetV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit,
 )
-from .get_v1_subcategories_response_200 import GetV1SubcategoriesResponse200
 from .get_v1_themes_consumer_type_consumer_id_consumer_type import GetV1ThemesConsumerTypeConsumerIdConsumerType
 from .get_v1_trades_trade_status_type_count_trade_status_type import GetV1TradesTradeStatusTypeCountTradeStatusType
 from .get_v1_trades_trade_status_type_limit import GetV1TradesTradeStatusTypeLimit
@@ -334,7 +327,6 @@ from .get_v1_users_user_id_assets_collectibles_limit import GetV1UsersUserIdAsse
 from .get_v1_users_user_id_assets_collectibles_sort_order import GetV1UsersUserIdAssetsCollectiblesSortOrder
 from .get_v1_users_user_id_bundles_bundle_type_bundle_type import GetV1UsersUserIdBundlesBundleTypeBundleType
 from .get_v1_users_user_id_bundles_bundle_type_sort_order import GetV1UsersUserIdBundlesBundleTypeSortOrder
-from .get_v1_users_user_id_bundles_sort_order import GetV1UsersUserIdBundlesSortOrder
 from .get_v1_users_user_id_configuration_action_type import GetV1UsersUserIdConfigurationActionType
 from .get_v1_users_user_id_friends_find_find_friends_type import GetV1UsersUserIdFriendsFindFindFriendsType
 from .get_v1_users_user_id_friends_find_user_sort import GetV1UsersUserIdFriendsFindUserSort
@@ -352,8 +344,6 @@ from .get_v1_users_user_id_username_history_limit import GetV1UsersUserIdUsernam
 from .get_v1_users_user_id_username_history_sort_order import GetV1UsersUserIdUsernameHistorySortOrder
 from .get_v2_assets_asset_id_owners_limit import GetV2AssetsAssetIdOwnersLimit
 from .get_v2_assets_asset_id_owners_sort_order import GetV2AssetsAssetIdOwnersSortOrder
-from .get_v2_assets_id_versions_limit import GetV2AssetsIdVersionsLimit
-from .get_v2_assets_id_versions_sort_order import GetV2AssetsIdVersionsSortOrder
 from .get_v2_collectible_items_collectible_item_id_owners_sort_order import (
     GetV2CollectibleItemsCollectibleItemIdOwnersSortOrder,
 )
@@ -412,6 +402,12 @@ from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platfo
 )
 from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type_type import (
     GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType,
+)
+from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
+    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
+)
+from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type_type import (
+    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType,
 )
 from .homepage_thumbnail import HomepageThumbnail
 from .homepage_thumbnail_status import HomepageThumbnailStatus
@@ -579,8 +575,6 @@ from .model_sub_type import ModelSubType
 from .moderation_result import ModerationResult
 from .money import Money
 from .music_chart_type import MusicChartType
-from .my_private_servers_data import MyPrivateServersData
-from .my_private_servers_response import MyPrivateServersResponse
 from .o18_eligibility_tag import O18EligibilityTag
 from .object_mesh_summary_type_0 import ObjectMeshSummaryType0
 from .ocv1_assets_operation import OCV1AssetsOperation
@@ -611,7 +605,6 @@ from .personalized_thumbnail import PersonalizedThumbnail
 from .personalized_thumbnail_status import PersonalizedThumbnailStatus
 from .place import Place
 from .place_filter import PlaceFilter
-from .place_response import PlaceResponse
 from .place_restart_status import PlaceRestartStatus
 from .place_scoring_config import PlaceScoringConfig
 from .place_summary_for_game_restart import PlaceSummaryForGameRestart
@@ -676,9 +669,7 @@ from .post_v1_game_passes_game_pass_id_icons_language_codes_language_code_body i
 from .post_v1_game_thumbnails_games_game_id_language_codes_language_code_image_body import (
     PostV1GameThumbnailsGamesGameIdLanguageCodesLanguageCodeImageBody,
 )
-from .post_v1_games_game_id_thumbnail_image_body import PostV1GamesGameIdThumbnailImageBody
 from .post_v1_groups_create_body import PostV1GroupsCreateBody
-from .post_v1_plugins_plugin_id_icon_body import PostV1PluginsPluginIdIconBody
 from .post_v1_universes_universe_id_badges_body import PostV1UniversesUniverseIdBadgesBody
 from .post_v1_universes_universe_id_badges_body_payment_source_type import (
     PostV1UniversesUniverseIdBadgesBodyPaymentSourceType,
@@ -689,21 +680,9 @@ from .preview import Preview
 from .preview_assets_model_type_0 import PreviewAssetsModelType0
 from .price_information_struct import PriceInformationStruct
 from .pricing_feature import PricingFeature
-from .private_server_invite_response_type import PrivateServerInviteResponseType
-from .private_server_permissions_response import PrivateServerPermissionsResponse
 from .private_server_player_response import PrivateServerPlayerResponse
-from .private_server_response import PrivateServerResponse
-from .private_server_subscription_metadata import PrivateServerSubscriptionMetadata
-from .private_server_subscription_response import PrivateServerSubscriptionResponse
-from .private_server_subscription_tag import PrivateServerSubscriptionTag
-from .private_server_update_permissions_request import PrivateServerUpdatePermissionsRequest
-from .private_server_update_request import PrivateServerUpdateRequest
-from .private_server_update_subscription_request import PrivateServerUpdateSubscriptionRequest
-from .private_server_voice_settings_response import PrivateServerVoiceSettingsResponse
 from .private_servers_api_game_server_response import PrivateServersApiGameServerResponse
 from .private_servers_api_sort_order import PrivateServersApiSortOrder
-from .private_servers_enabled_in_universe_response import PrivateServersEnabledInUniverseResponse
-from .private_servers_tab import PrivateServersTab
 from .problem_details_type_0 import ProblemDetailsType0
 from .product_experiment import ProductExperiment
 from .publish_draft_request import PublishDraftRequest
@@ -1065,7 +1044,6 @@ from .roblox_api_avatar_models_v4_update_outfit_model_v4_player_avatar_type impo
 )
 from .roblox_api_avatar_models_wear_request_model import RobloxApiAvatarModelsWearRequestModel
 from .roblox_api_avatar_models_wear_response_model import RobloxApiAvatarModelsWearResponseModel
-from .roblox_api_develop_asset_version import RobloxApiDevelopAssetVersion
 from .roblox_api_develop_models_activation_eligibility_response import (
     RobloxApiDevelopModelsActivationEligibilityResponse,
 )
@@ -1117,7 +1095,6 @@ from .roblox_api_develop_models_playtesters_response import RobloxApiDevelopMode
 from .roblox_api_develop_models_private_server_details_response import (
     RobloxApiDevelopModelsPrivateServerDetailsResponse,
 )
-from .roblox_api_develop_models_response_asset_voting_model import RobloxApiDevelopModelsResponseAssetVotingModel
 from .roblox_api_develop_models_response_team_create_settings_response import (
     RobloxApiDevelopModelsResponseTeamCreateSettingsResponse,
 )
@@ -1624,13 +1601,11 @@ from .roblox_badges_api_badge_metadata_response import RobloxBadgesApiBadgeMetad
 from .roblox_badges_api_badge_response import RobloxBadgesApiBadgeResponse
 from .roblox_badges_api_universe_response import RobloxBadgesApiUniverseResponse
 from .roblox_badges_api_update_badge_request import RobloxBadgesApiUpdateBadgeRequest
-from .roblox_catalog_api_asset_favorite_model import RobloxCatalogApiAssetFavoriteModel
 from .roblox_catalog_api_bundle_creator_model import RobloxCatalogApiBundleCreatorModel
 from .roblox_catalog_api_bundle_details_model import RobloxCatalogApiBundleDetailsModel
 from .roblox_catalog_api_bundle_details_model_item_restrictions_item import (
     RobloxCatalogApiBundleDetailsModelItemRestrictionsItem,
 )
-from .roblox_catalog_api_bundle_favorite_model import RobloxCatalogApiBundleFavoriteModel
 from .roblox_catalog_api_bundle_item_detail_model import RobloxCatalogApiBundleItemDetailModel
 from .roblox_catalog_api_bundle_item_detail_model_v2 import RobloxCatalogApiBundleItemDetailModelV2
 from .roblox_catalog_api_bundle_product_model import RobloxCatalogApiBundleProductModel
@@ -1683,8 +1658,6 @@ from .roblox_catalog_api_catalog_search_detailed_response_item_v2_sale_location_
 from .roblox_catalog_api_catalog_search_page_response_roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
     RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItemV2,
 )
-from .roblox_catalog_api_category_model import RobloxCatalogApiCategoryModel
-from .roblox_catalog_api_category_model_category import RobloxCatalogApiCategoryModelCategory
 from .roblox_catalog_api_collectible_item_detail import RobloxCatalogApiCollectibleItemDetail
 from .roblox_catalog_api_collectible_item_detail_collectible_item_type import (
     RobloxCatalogApiCollectibleItemDetailCollectibleItemType,
@@ -1693,10 +1666,11 @@ from .roblox_catalog_api_collectible_item_detail_resale_restriction import (
     RobloxCatalogApiCollectibleItemDetailResaleRestriction,
 )
 from .roblox_catalog_api_collectible_item_detail_sale_status import RobloxCatalogApiCollectibleItemDetailSaleStatus
+from .roblox_catalog_api_collectible_license import RobloxCatalogApiCollectibleLicense
+from .roblox_catalog_api_collectible_license_license_type import RobloxCatalogApiCollectibleLicenseLicenseType
 from .roblox_catalog_api_discount import RobloxCatalogApiDiscount
 from .roblox_catalog_api_discount_information import RobloxCatalogApiDiscountInformation
 from .roblox_catalog_api_elasticsearch_debug_info import RobloxCatalogApiElasticsearchDebugInfo
-from .roblox_catalog_api_favorite_bundles_response import RobloxCatalogApiFavoriteBundlesResponse
 from .roblox_catalog_api_multiget_item_details_request_item import RobloxCatalogApiMultigetItemDetailsRequestItem
 from .roblox_catalog_api_multiget_item_details_request_item_item_type import (
     RobloxCatalogApiMultigetItemDetailsRequestItemItemType,
@@ -1706,14 +1680,8 @@ from .roblox_catalog_api_owned_bundle_model import RobloxCatalogApiOwnedBundleMo
 from .roblox_catalog_api_premium_pricing_model import RobloxCatalogApiPremiumPricingModel
 from .roblox_catalog_api_sale_location import RobloxCatalogApiSaleLocation
 from .roblox_catalog_api_sale_location_sale_location_type import RobloxCatalogApiSaleLocationSaleLocationType
-from .roblox_catalog_api_subcategory_model import RobloxCatalogApiSubcategoryModel
-from .roblox_catalog_api_subcategory_model_subcategory import RobloxCatalogApiSubcategoryModelSubcategory
 from .roblox_catalog_api_taxonomy_model import RobloxCatalogApiTaxonomyModel
 from .roblox_catalog_api_timed_option import RobloxCatalogApiTimedOption
-from .roblox_catalog_api_topic_model import RobloxCatalogApiTopicModel
-from .roblox_catalog_api_topic_request_model import RobloxCatalogApiTopicRequestModel
-from .roblox_catalog_api_topic_request_model_gender_type import RobloxCatalogApiTopicRequestModelGenderType
-from .roblox_catalog_api_topic_response import RobloxCatalogApiTopicResponse
 from .roblox_client_settings_api_models_response_android_binary_library_names import (
     RobloxClientSettingsApiModelsResponseAndroidBinaryLibraryNames,
 )
@@ -2338,19 +2306,6 @@ from .roblox_inventory_api_v2_user_asset_item_model_v2 import RobloxInventoryApi
 from .roblox_inventory_api_v2_user_asset_item_model_v2_asset_type import (
     RobloxInventoryApiV2UserAssetItemModelV2AssetType,
 )
-from .roblox_item_configuration_api_asset_creations_details_request import (
-    RobloxItemConfigurationApiAssetCreationsDetailsRequest,
-)
-from .roblox_item_configuration_api_asset_creations_details_response import (
-    RobloxItemConfigurationApiAssetCreationsDetailsResponse,
-)
-from .roblox_item_configuration_api_asset_creations_details_response_creator_type import (
-    RobloxItemConfigurationApiAssetCreationsDetailsResponseCreatorType,
-)
-from .roblox_item_configuration_api_asset_creations_details_response_status import (
-    RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus,
-)
-from .roblox_item_configuration_api_asset_creations_response import RobloxItemConfigurationApiAssetCreationsResponse
 from .roblox_item_configuration_api_models_request_publishing_preferences_create_publishing_preferences_request import (
     RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequest,
 )
@@ -2504,15 +2459,6 @@ from .roblox_localizationtables_localizationtables_v1_change_agent_change_agent_
 from .roblox_localizationtables_localizationtables_v1_change_agent_optional_id_case import (
     RobloxLocalizationtablesLocalizationtablesV1ChangeAgentOptionalIdCase,
 )
-from .roblox_marketplace_topic_discovery_topic_discovery_service_v1_beta_1_avatar_item import (
-    RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItem,
-)
-from .roblox_marketplace_topic_discovery_topic_discovery_service_v1_beta_1_avatar_item_item_type import (
-    RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItemItemType,
-)
-from .roblox_marketplace_topic_discovery_topic_discovery_service_v1_beta_1_error import (
-    RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error,
-)
 from .roblox_paging_cursored_paged_result_roblox_friends_api_models_response_friend_response import (
     RobloxPagingCursoredPagedResultRobloxFriendsApiModelsResponseFriendResponse,
 )
@@ -2551,14 +2497,7 @@ from .roblox_private_messages_api_models_unread_messages_count_response import (
 from .roblox_private_messages_api_models_verified_skinny_user_response import (
     RobloxPrivateMessagesApiModelsVerifiedSkinnyUserResponse,
 )
-from .roblox_publish_api_asset_quota import RobloxPublishApiAssetQuota
-from .roblox_publish_api_asset_quotas_response import RobloxPublishApiAssetQuotasResponse
-from .roblox_publish_api_publish_audio_response import RobloxPublishApiPublishAudioResponse
-from .roblox_publish_api_upload_audio_request import RobloxPublishApiUploadAudioRequest
-from .roblox_publish_api_upload_audio_request_asset_privacy import RobloxPublishApiUploadAudioRequestAssetPrivacy
 from .roblox_publish_api_upload_response import RobloxPublishApiUploadResponse
-from .roblox_publish_api_verify_audio_request import RobloxPublishApiVerifyAudioRequest
-from .roblox_publish_api_verify_audio_response import RobloxPublishApiVerifyAudioResponse
 from .roblox_thumbnails_apis_models_thumbnail_batch_request import RobloxThumbnailsApisModelsThumbnailBatchRequest
 from .roblox_thumbnails_apis_models_thumbnail_batch_request_type import (
     RobloxThumbnailsApisModelsThumbnailBatchRequestType,
@@ -2779,9 +2718,6 @@ from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_gam
 from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_group_model import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsGroupModel,
 )
-from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_response_asset_voting_model import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsResponseAssetVotingModel,
-)
 from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_universe_id_permissions_model import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseIdPermissionsModel,
 )
@@ -2790,9 +2726,6 @@ from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_uni
 )
 from .roblox_web_web_api_models_api_array_response_roblox_api_develop_models_universe_team_create_settings_model import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseTeamCreateSettingsModel,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_catalog_api_bundle_details_model import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxCatalogApiBundleDetailsModel,
 )
 from .roblox_web_web_api_models_api_array_response_roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxCatalogApiCatalogSearchDetailedResponseItemV2,
@@ -2896,9 +2829,6 @@ from .roblox_web_web_api_models_api_array_response_roblox_web_responses_users_sk
 from .roblox_web_web_api_models_api_array_response_system_string import (
     RobloxWebWebAPIModelsApiArrayResponseSystemString,
 )
-from .roblox_web_web_api_models_api_page_response_roblox_api_develop_asset_version import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxApiDevelopAssetVersion,
-)
 from .roblox_web_web_api_models_api_page_response_roblox_api_develop_models_i_place_model import (
     RobloxWebWebAPIModelsApiPageResponseRobloxApiDevelopModelsIPlaceModel,
 )
@@ -2965,9 +2895,6 @@ from .roblox_web_web_api_models_api_page_response_roblox_inventory_api_v2_collec
 from .roblox_web_web_api_models_api_page_response_roblox_inventory_api_v2_user_asset_item_model_v2 import (
     RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiV2UserAssetItemModelV2,
 )
-from .roblox_web_web_api_models_api_page_response_roblox_item_configuration_api_asset_creations_response import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxItemConfigurationApiAssetCreationsResponse,
-)
 from .roblox_web_web_api_models_api_page_response_roblox_trades_api_trade_response import (
     RobloxWebWebAPIModelsApiPageResponseRobloxTradesApiTradeResponse,
 )
@@ -3016,7 +2943,6 @@ from .shutdown_all_game_instances_response import ShutdownAllGameInstancesRespon
 from .shutdown_game_instances_request import ShutdownGameInstancesRequest
 from .shutdown_game_instances_response import ShutdownGameInstancesResponse
 from .single_config_experiment_variant import SingleConfigExperimentVariant
-from .skinny_user_response import SkinnyUserResponse
 from .snapshot_data_stores_request import SnapshotDataStoresRequest
 from .snapshot_data_stores_response import SnapshotDataStoresResponse
 from .social_link import SocialLink
@@ -3028,6 +2954,7 @@ from .state import State
 from .status import Status
 from .string_exclusive_start_key_cursor import StringExclusiveStartKeyCursor
 from .string_string_i_enumerable_key_value_pair import StringStringIEnumerableKeyValuePair
+from .structured_stack_frame import StructuredStackFrame
 from .subject_type import SubjectType
 from .subscription import Subscription
 from .subscription_expiration_details import SubscriptionExpirationDetails
@@ -3182,7 +3109,6 @@ __all__ = (
     "BulkDeleteSavesResponseType0",
     "CalculateExperimentMdeData",
     "CalculateExperimentMdeResponse",
-    "CanInviteUserResponse",
     "CategoryResponse",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
@@ -3229,7 +3155,6 @@ __all__ = (
     "CreateMatchmakingScoringConfigurationResponse",
     "CreateMatchmakingServerAttributeDefinitionRequest",
     "CreateMatchmakingServerAttributeDefinitionResponse",
-    "CreatePrivateServerRequest",
     "CreateSaveRequestType0",
     "CreateThumbnailPersonalizationRequest",
     "CreationContext",
@@ -3315,7 +3240,6 @@ __all__ = (
     "GamePassesPriceInformationStruct",
     "GamePassesPricingFeature",
     "GamePassesUpdateGamePassBody",
-    "GameResponse",
     "GameServerLog",
     "GameUpdateStatus",
     "GameUpdateStatusPlaceUpdateStatusesType0",
@@ -3353,13 +3277,10 @@ __all__ = (
     "GetV1AssetsthumbnailsRobloxComFormat",
     "GetV1AssetsthumbnailsRobloxComReturnPolicy",
     "GetV1AssetsthumbnailsRobloxComSize",
-    "GetV1AssetToCategoryResponse200",
-    "GetV1AssetToSubcategoryResponse200",
     "GetV1BadgesIconsFormat",
     "GetV1BadgesIconsSize",
     "GetV1BundlesThumbnailsFormat",
     "GetV1BundlesThumbnailsSize",
-    "GetV1CreationsGetAssetsLimit",
     "GetV1DeveloperProductsIconsFormat",
     "GetV1DeveloperProductsIconsSize",
     "GetV1FavoritesUsersUserIdFavoritesAssetTypeIdAssetsLimit",
@@ -3405,7 +3326,6 @@ __all__ = (
     "GetV1PlacesGameiconsReturnPolicy",
     "GetV1PlacesGameiconsSize",
     "GetV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit",
-    "GetV1SubcategoriesResponse200",
     "GetV1ThemesConsumerTypeConsumerIdConsumerType",
     "GetV1TradesTradeStatusTypeCountTradeStatusType",
     "GetV1TradesTradeStatusTypeLimit",
@@ -3438,7 +3358,6 @@ __all__ = (
     "GetV1UsersUserIdAssetsCollectiblesSortOrder",
     "GetV1UsersUserIdBundlesBundleTypeBundleType",
     "GetV1UsersUserIdBundlesBundleTypeSortOrder",
-    "GetV1UsersUserIdBundlesSortOrder",
     "GetV1UsersUserIdConfigurationActionType",
     "GetV1UsersUserIdFriendsFindFindFriendsType",
     "GetV1UsersUserIdFriendsFindUserSort",
@@ -3454,8 +3373,6 @@ __all__ = (
     "GetV1UserUniversesSortOrder",
     "GetV2AssetsAssetIdOwnersLimit",
     "GetV2AssetsAssetIdOwnersSortOrder",
-    "GetV2AssetsIdVersionsLimit",
-    "GetV2AssetsIdVersionsSortOrder",
     "GetV2CollectibleItemsCollectibleItemIdOwnersSortOrder",
     "GetV2GroupsGroupIdGamesAccessFilter",
     "GetV2GroupsGroupIdGamesLimit",
@@ -3505,6 +3422,8 @@ __all__ = (
     "GroupRoleRolePermissions",
     "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
     "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
+    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType",
+    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType",
     "HomepageThumbnail",
     "HomepageThumbnailStatus",
     "HostResponse",
@@ -3663,8 +3582,6 @@ __all__ = (
     "ModerationResult",
     "Money",
     "MusicChartType",
-    "MyPrivateServersData",
-    "MyPrivateServersResponse",
     "O18EligibilityTag",
     "ObjectMeshSummaryType0",
     "OCV1AssetsOperation",
@@ -3691,7 +3608,6 @@ __all__ = (
     "PersonalizedThumbnailStatus",
     "Place",
     "PlaceFilter",
-    "PlaceResponse",
     "PlaceRestartStatus",
     "PlaceScoringConfig",
     "PlaceSummaryForGameRestart",
@@ -3721,10 +3637,8 @@ __all__ = (
     "PostV1ExternalIdentityProviderIdSsoSamlAssertionConsumerServiceBody",
     "PostV1GameIconGamesGameIdLanguageCodesLanguageCodeBody",
     "PostV1GamePassesGamePassIdIconsLanguageCodesLanguageCodeBody",
-    "PostV1GamesGameIdThumbnailImageBody",
     "PostV1GameThumbnailsGamesGameIdLanguageCodesLanguageCodeImageBody",
     "PostV1GroupsCreateBody",
-    "PostV1PluginsPluginIdIconBody",
     "PostV1UniversesUniverseIdBadgesBody",
     "PostV1UniversesUniverseIdBadgesBodyPaymentSourceType",
     "PresenceApiErrorResponse",
@@ -3733,21 +3647,9 @@ __all__ = (
     "PreviewAssetsModelType0",
     "PriceInformationStruct",
     "PricingFeature",
-    "PrivateServerInviteResponseType",
-    "PrivateServerPermissionsResponse",
     "PrivateServerPlayerResponse",
-    "PrivateServerResponse",
     "PrivateServersApiGameServerResponse",
     "PrivateServersApiSortOrder",
-    "PrivateServersEnabledInUniverseResponse",
-    "PrivateServersTab",
-    "PrivateServerSubscriptionMetadata",
-    "PrivateServerSubscriptionResponse",
-    "PrivateServerSubscriptionTag",
-    "PrivateServerUpdatePermissionsRequest",
-    "PrivateServerUpdateRequest",
-    "PrivateServerUpdateSubscriptionRequest",
-    "PrivateServerVoiceSettingsResponse",
     "ProblemDetailsType0",
     "ProductExperiment",
     "PublishDraftRequest",
@@ -3939,7 +3841,6 @@ __all__ = (
     "RobloxApiAvatarModelsV4UpdateOutfitModelV4PlayerAvatarType",
     "RobloxApiAvatarModelsWearRequestModel",
     "RobloxApiAvatarModelsWearResponseModel",
-    "RobloxApiDevelopAssetVersion",
     "RobloxApiDevelopModelsActivationEligibilityResponse",
     "RobloxApiDevelopModelsActivationEligibilityResponseAllowedAudiencesItem",
     "RobloxApiDevelopModelsActivationEligibilityResponseCreatorTier",
@@ -3963,7 +3864,6 @@ __all__ = (
     "RobloxApiDevelopModelsPlaytestersRequest",
     "RobloxApiDevelopModelsPlaytestersResponse",
     "RobloxApiDevelopModelsPrivateServerDetailsResponse",
-    "RobloxApiDevelopModelsResponseAssetVotingModel",
     "RobloxApiDevelopModelsResponseTeamCreateSettingsResponse",
     "RobloxApiDevelopModelsTeamCreateMembershipRequest",
     "RobloxApiDevelopModelsUniverseIdPermissionsModel",
@@ -4158,11 +4058,9 @@ __all__ = (
     "RobloxBadgesApiBadgeResponse",
     "RobloxBadgesApiUniverseResponse",
     "RobloxBadgesApiUpdateBadgeRequest",
-    "RobloxCatalogApiAssetFavoriteModel",
     "RobloxCatalogApiBundleCreatorModel",
     "RobloxCatalogApiBundleDetailsModel",
     "RobloxCatalogApiBundleDetailsModelItemRestrictionsItem",
-    "RobloxCatalogApiBundleFavoriteModel",
     "RobloxCatalogApiBundleItemDetailModel",
     "RobloxCatalogApiBundleItemDetailModelV2",
     "RobloxCatalogApiBundleProductModel",
@@ -4183,16 +4081,15 @@ __all__ = (
     "RobloxCatalogApiCatalogSearchDetailedResponseItemV2ItemType",
     "RobloxCatalogApiCatalogSearchDetailedResponseItemV2SaleLocationType",
     "RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItemV2",
-    "RobloxCatalogApiCategoryModel",
-    "RobloxCatalogApiCategoryModelCategory",
     "RobloxCatalogApiCollectibleItemDetail",
     "RobloxCatalogApiCollectibleItemDetailCollectibleItemType",
     "RobloxCatalogApiCollectibleItemDetailResaleRestriction",
     "RobloxCatalogApiCollectibleItemDetailSaleStatus",
+    "RobloxCatalogApiCollectibleLicense",
+    "RobloxCatalogApiCollectibleLicenseLicenseType",
     "RobloxCatalogApiDiscount",
     "RobloxCatalogApiDiscountInformation",
     "RobloxCatalogApiElasticsearchDebugInfo",
-    "RobloxCatalogApiFavoriteBundlesResponse",
     "RobloxCatalogApiMultigetItemDetailsRequestItem",
     "RobloxCatalogApiMultigetItemDetailsRequestItemItemType",
     "RobloxCatalogApiMultigetItemDetailsRequestModel",
@@ -4200,14 +4097,8 @@ __all__ = (
     "RobloxCatalogApiPremiumPricingModel",
     "RobloxCatalogApiSaleLocation",
     "RobloxCatalogApiSaleLocationSaleLocationType",
-    "RobloxCatalogApiSubcategoryModel",
-    "RobloxCatalogApiSubcategoryModelSubcategory",
     "RobloxCatalogApiTaxonomyModel",
     "RobloxCatalogApiTimedOption",
-    "RobloxCatalogApiTopicModel",
-    "RobloxCatalogApiTopicRequestModel",
-    "RobloxCatalogApiTopicRequestModelGenderType",
-    "RobloxCatalogApiTopicResponse",
     "RobloxClientSettingsApiModelsResponseAndroidBinaryLibraryNames",
     "RobloxClientSettingsApiModelsResponseAndroidBinaryResponse",
     "RobloxClientSettingsApiModelsResponseBetaProgramInfo",
@@ -4518,11 +4409,6 @@ __all__ = (
     "RobloxInventoryApiV2CollectibleItemOwnerResponse",
     "RobloxInventoryApiV2UserAssetItemModelV2",
     "RobloxInventoryApiV2UserAssetItemModelV2AssetType",
-    "RobloxItemConfigurationApiAssetCreationsDetailsRequest",
-    "RobloxItemConfigurationApiAssetCreationsDetailsResponse",
-    "RobloxItemConfigurationApiAssetCreationsDetailsResponseCreatorType",
-    "RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus",
-    "RobloxItemConfigurationApiAssetCreationsResponse",
     "RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequest",
     "RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequestPublishingType",
     "RobloxItemConfigurationApiModelsRequestPublishingPreferencesCreatePublishingPreferencesRequestSaleLocationType",
@@ -4596,9 +4482,6 @@ __all__ = (
     "RobloxLocalizationtablesLocalizationtablesV1ChangeAgent",
     "RobloxLocalizationtablesLocalizationtablesV1ChangeAgentChangeAgentType",
     "RobloxLocalizationtablesLocalizationtablesV1ChangeAgentOptionalIdCase",
-    "RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItem",
-    "RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItemItemType",
-    "RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error",
     "RobloxPagingCursoredPagedResultRobloxFriendsApiModelsResponseFriendResponse",
     "RobloxPlatformAvatarBodyColorsModelV2",
     "RobloxPlatformUniverseSettingsUniverseAvatarAssetOverrideResponseModel",
@@ -4613,14 +4496,7 @@ __all__ = (
     "RobloxPrivateMessagesApiModelsMessageDetailsResponse",
     "RobloxPrivateMessagesApiModelsUnreadMessagesCountResponse",
     "RobloxPrivateMessagesApiModelsVerifiedSkinnyUserResponse",
-    "RobloxPublishApiAssetQuota",
-    "RobloxPublishApiAssetQuotasResponse",
-    "RobloxPublishApiPublishAudioResponse",
-    "RobloxPublishApiUploadAudioRequest",
-    "RobloxPublishApiUploadAudioRequestAssetPrivacy",
     "RobloxPublishApiUploadResponse",
-    "RobloxPublishApiVerifyAudioRequest",
-    "RobloxPublishApiVerifyAudioResponse",
     "RobloxThumbnailsApisModelsThumbnailBatchRequest",
     "RobloxThumbnailsApisModelsThumbnailBatchRequestType",
     "RobloxTradesApiCanTradeResponse",
@@ -4745,11 +4621,9 @@ __all__ = (
     "RobloxWebWebAPIApiEmptyResponseModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsGameTemplateModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsGroupModel",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsResponseAssetVotingModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseIdPermissionsModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseTeamCreateSettingsModel",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxCatalogApiBundleDetailsModel",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxCatalogApiCatalogSearchDetailedResponseItemV2",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxFriendsApiFriendStatusResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxFriendsApiModelsResponseUserPresenceResponse",
@@ -4784,7 +4658,6 @@ __all__ = (
     "RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesPluginsPluginResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesUsersSkinnyUserResponse",
     "RobloxWebWebAPIModelsApiArrayResponseSystemString",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxApiDevelopAssetVersion",
     "RobloxWebWebAPIModelsApiPageResponseRobloxApiDevelopModelsIPlaceModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxApiDevelopModelsUniverseModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxBadgesApiBadgeResponse",
@@ -4807,7 +4680,6 @@ __all__ = (
     "RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiV2AssetOwnerResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiV2CollectibleItemOwnerResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiV2UserAssetItemModelV2",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxItemConfigurationApiAssetCreationsResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxTradesApiTradeResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiSearchGetUserResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiUsernameHistoryResponse",
@@ -4846,7 +4718,6 @@ __all__ = (
     "ShutdownGameInstancesRequest",
     "ShutdownGameInstancesResponse",
     "SingleConfigExperimentVariant",
-    "SkinnyUserResponse",
     "SnapshotDataStoresRequest",
     "SnapshotDataStoresResponse",
     "SocialLink",
@@ -4858,6 +4729,7 @@ __all__ = (
     "Status",
     "StringExclusiveStartKeyCursor",
     "StringStringIEnumerableKeyValuePair",
+    "StructuredStackFrame",
     "SubjectType",
     "Subscription",
     "SubscriptionExpirationDetails",

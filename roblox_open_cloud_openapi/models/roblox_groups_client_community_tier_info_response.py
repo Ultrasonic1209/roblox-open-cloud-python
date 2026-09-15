@@ -20,8 +20,8 @@ T = TypeVar("T", bound="RobloxGroupsClientCommunityTierInfoResponse")
 class RobloxGroupsClientCommunityTierInfoResponse:
     """
     Attributes:
-        group_id (int | Unset):
-        current_tier (int | Unset):
+        group_id (int):
+        current_tier (int):
         previous_tier (int | Unset):
         tier_updated_time (datetime.datetime | Unset):
         last_evaluated_time (datetime.datetime | Unset):
@@ -29,8 +29,8 @@ class RobloxGroupsClientCommunityTierInfoResponse:
         capabilities (RobloxGroupsClientTierCapabilities | Unset):
     """
 
-    group_id: int | Unset = UNSET
-    current_tier: int | Unset = UNSET
+    group_id: int
+    current_tier: int
     previous_tier: int | Unset = UNSET
     tier_updated_time: datetime.datetime | Unset = UNSET
     last_evaluated_time: datetime.datetime | Unset = UNSET
@@ -65,11 +65,12 @@ class RobloxGroupsClientCommunityTierInfoResponse:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if group_id is not UNSET:
-            field_dict["groupId"] = group_id
-        if current_tier is not UNSET:
-            field_dict["currentTier"] = current_tier
+        field_dict.update(
+            {
+                "groupId": group_id,
+                "currentTier": current_tier,
+            }
+        )
         if previous_tier is not UNSET:
             field_dict["previousTier"] = previous_tier
         if tier_updated_time is not UNSET:
@@ -89,9 +90,9 @@ class RobloxGroupsClientCommunityTierInfoResponse:
         from ..models.roblox_groups_client_tier_requirement import RobloxGroupsClientTierRequirement
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        group_id = d.pop("groupId", UNSET)
+        group_id = d.pop("groupId")
 
-        current_tier = d.pop("currentTier", UNSET)
+        current_tier = d.pop("currentTier")
 
         previous_tier = d.pop("previousTier", UNSET)
 

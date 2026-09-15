@@ -18,6 +18,7 @@ def _get_kwargs() -> dict[str, Any]:
         "url": "/legacy-develop/v1/user/groups/canmanage",
         "extensions": {
             "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},

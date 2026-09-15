@@ -30,7 +30,10 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "patch_v2_universes_universeId_configuration",
         },
     }
@@ -75,6 +78,10 @@ def _parse_response(
     if response.status_code == 500:
         response_500 = cast(Any, None)
         return response_500
+
+    if response.status_code == 503:
+        response_503 = cast(Any, None)
+        return response_503
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)

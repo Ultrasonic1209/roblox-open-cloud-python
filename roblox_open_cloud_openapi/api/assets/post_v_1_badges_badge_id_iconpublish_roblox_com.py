@@ -32,7 +32,6 @@ def _get_kwargs(
         ),
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
                 "x-roblox-recommended-alternatives": [
                     {
                         "url": "https://apis.roblox.com/legacy-publish/v1/badges/{badgeId}/icon",
@@ -40,6 +39,8 @@ def _get_kwargs(
                         "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#post_legacy_publish_v1_badges__badgeId__icon",
                     }
                 ],
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "post_v1_badges_badgeId_icon#publish.roblox.com",
         },

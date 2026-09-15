@@ -34,7 +34,7 @@ class RobloxWebAssetsBatchAssetRequestItem:
         roblox_asset_format (str | Unset):
         asset_resolution_mode (str | Unset):
         access_context (str | Unset):
-        usage_context (int | Unset):
+        usage_context (str | Unset):
         content_representation_priority_list (str | Unset):
         do_not_fallback_to_baseline_representation (bool | Unset):
         xcachesplit (int | Unset):
@@ -60,7 +60,7 @@ class RobloxWebAssetsBatchAssetRequestItem:
     roblox_asset_format: str | Unset = UNSET
     asset_resolution_mode: str | Unset = UNSET
     access_context: str | Unset = UNSET
-    usage_context: int | Unset = UNSET
+    usage_context: str | Unset = UNSET
     content_representation_priority_list: str | Unset = UNSET
     do_not_fallback_to_baseline_representation: bool | Unset = UNSET
     xcachesplit: int | Unset = UNSET

@@ -28,13 +28,12 @@ def _get_kwargs(
     do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
     content_representation_priority_list: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
-    usage_context: int | Unset = UNSET,
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
     headers["Accept-Encoding"] = accept_encoding
@@ -43,11 +42,12 @@ def _get_kwargs(
 
     headers["AssetType"] = asset_type
 
-    headers["Accept"] = accept
-
     headers["AssetFormat"] = asset_format
 
     headers["Roblox-AssetFormat"] = roblox_asset_format
+
+    if not isinstance(roblox_usage_context, Unset):
+        headers["Roblox-Usage-Context"] = roblox_usage_context
 
     params: dict[str, Any] = {}
 
@@ -68,8 +68,6 @@ def _get_kwargs(
     params["contentRepresentationPriorityList"] = content_representation_priority_list
 
     params["accessContext"] = access_context
-
-    params["usageContext"] = usage_context
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -135,13 +133,12 @@ def sync_detailed(
     do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
     content_representation_priority_list: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
-    usage_context: int | Unset = UNSET,
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> Response[Any]:
     """Retrieves an asset by its ID and version number.
 
@@ -157,13 +154,12 @@ def sync_detailed(
         do_not_fallback_to_baseline_representation (bool | Unset):
         content_representation_priority_list (str | Unset):
         access_context (str | Unset):
-        usage_context (int | Unset):
         accept_encoding (str):
         roblox_place_id (int):
         asset_type (str):
-        accept (str):
         asset_format (str):
         roblox_asset_format (str):
+        roblox_usage_context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -185,13 +181,12 @@ def sync_detailed(
         do_not_fallback_to_baseline_representation=do_not_fallback_to_baseline_representation,
         content_representation_priority_list=content_representation_priority_list,
         access_context=access_context,
-        usage_context=usage_context,
         accept_encoding=accept_encoding,
         roblox_place_id=roblox_place_id,
         asset_type=asset_type,
-        accept=accept,
         asset_format=asset_format,
         roblox_asset_format=roblox_asset_format,
+        roblox_usage_context=roblox_usage_context,
     )
 
     response = client.get_httpx2_client().request(
@@ -218,13 +213,12 @@ async def asyncio_detailed(
     do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
     content_representation_priority_list: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
-    usage_context: int | Unset = UNSET,
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> Response[Any]:
     """Retrieves an asset by its ID and version number.
 
@@ -240,13 +234,12 @@ async def asyncio_detailed(
         do_not_fallback_to_baseline_representation (bool | Unset):
         content_representation_priority_list (str | Unset):
         access_context (str | Unset):
-        usage_context (int | Unset):
         accept_encoding (str):
         roblox_place_id (int):
         asset_type (str):
-        accept (str):
         asset_format (str):
         roblox_asset_format (str):
+        roblox_usage_context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -268,13 +261,12 @@ async def asyncio_detailed(
         do_not_fallback_to_baseline_representation=do_not_fallback_to_baseline_representation,
         content_representation_priority_list=content_representation_priority_list,
         access_context=access_context,
-        usage_context=usage_context,
         accept_encoding=accept_encoding,
         roblox_place_id=roblox_place_id,
         asset_type=asset_type,
-        accept=accept,
         asset_format=asset_format,
         roblox_asset_format=roblox_asset_format,
+        roblox_usage_context=roblox_usage_context,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)

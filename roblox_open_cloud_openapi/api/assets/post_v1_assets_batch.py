@@ -20,13 +20,10 @@ def _get_kwargs(
     *,
     body: list[RobloxWebAssetsBatchAssetRequestItem] | list[RobloxWebAssetsBatchAssetRequestItem] | Unset = UNSET,
     roblox_place_id: int,
-    accept: str,
     roblox_browser_asset_request: str,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
     headers["Roblox-Place-Id"] = str(roblox_place_id)
-
-    headers["Accept"] = accept
 
     headers["Roblox-Browser-Asset-Request"] = roblox_browser_asset_request
 
@@ -94,13 +91,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: list[RobloxWebAssetsBatchAssetRequestItem] | list[RobloxWebAssetsBatchAssetRequestItem] | Unset = UNSET,
     roblox_place_id: int,
-    accept: str,
     roblox_browser_asset_request: str,
 ) -> Response[Any]:
     """
     Args:
         roblox_place_id (int):
-        accept (str):
         roblox_browser_asset_request (str):
         body (list[RobloxWebAssetsBatchAssetRequestItem]):
         body (list[RobloxWebAssetsBatchAssetRequestItem]):
@@ -116,7 +111,6 @@ def sync_detailed(
     kwargs = _get_kwargs(
         body=body,
         roblox_place_id=roblox_place_id,
-        accept=accept,
         roblox_browser_asset_request=roblox_browser_asset_request,
     )
 
@@ -135,13 +129,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: list[RobloxWebAssetsBatchAssetRequestItem] | list[RobloxWebAssetsBatchAssetRequestItem] | Unset = UNSET,
     roblox_place_id: int,
-    accept: str,
     roblox_browser_asset_request: str,
 ) -> Response[Any]:
     """
     Args:
         roblox_place_id (int):
-        accept (str):
         roblox_browser_asset_request (str):
         body (list[RobloxWebAssetsBatchAssetRequestItem]):
         body (list[RobloxWebAssetsBatchAssetRequestItem]):
@@ -157,7 +149,6 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         body=body,
         roblox_place_id=roblox_place_id,
-        accept=accept,
         roblox_browser_asset_request=roblox_browser_asset_request,
     )
 

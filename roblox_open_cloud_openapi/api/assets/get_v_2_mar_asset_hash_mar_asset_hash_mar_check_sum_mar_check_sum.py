@@ -22,7 +22,6 @@ def _get_kwargs(
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
 ) -> dict[str, Any]:
@@ -32,8 +31,6 @@ def _get_kwargs(
     headers["Roblox-Place-Id"] = str(roblox_place_id)
 
     headers["AssetType"] = asset_type
-
-    headers["Accept"] = accept
 
     headers["AssetFormat"] = asset_format
 
@@ -105,7 +102,6 @@ def sync_detailed(
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
 ) -> Response[Any]:
@@ -122,7 +118,6 @@ def sync_detailed(
         accept_encoding (str):
         roblox_place_id (int):
         asset_type (str):
-        accept (str):
         asset_format (str):
         roblox_asset_format (str):
 
@@ -146,7 +141,6 @@ def sync_detailed(
         accept_encoding=accept_encoding,
         roblox_place_id=roblox_place_id,
         asset_type=asset_type,
-        accept=accept,
         asset_format=asset_format,
         roblox_asset_format=roblox_asset_format,
     )
@@ -172,7 +166,6 @@ async def asyncio_detailed(
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
 ) -> Response[Any]:
@@ -189,7 +182,6 @@ async def asyncio_detailed(
         accept_encoding (str):
         roblox_place_id (int):
         asset_type (str):
-        accept (str):
         asset_format (str):
         roblox_asset_format (str):
 
@@ -213,7 +205,6 @@ async def asyncio_detailed(
         accept_encoding=accept_encoding,
         roblox_place_id=roblox_place_id,
         asset_type=asset_type,
-        accept=accept,
         asset_format=asset_format,
         roblox_asset_format=roblox_asset_format,
     )

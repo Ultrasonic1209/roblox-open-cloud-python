@@ -19,7 +19,7 @@ class RobloxTradesApiCanTradeResponse:
         status (RobloxTradesApiCanTradeResponseStatus | Unset): If you can't trade with a user, status explains why you
             can't trade with them. ['Unknown' = 0, 'CanTrade' = 1, 'CannotTradeWithSelf' = 2, 'SenderCannotTrade' = 3,
             'ReceiverCannotTrade' = 4, 'SenderPrivacyTooStrict' = 5, 'UsersCannotTrade' = 6, 'TradeAccepterNeedsFriction' =
-            7]
+            7, 'SenderAgeCheckRequired' = 8]
     """
 
     can_trade: bool | Unset = UNSET

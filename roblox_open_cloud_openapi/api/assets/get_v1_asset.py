@@ -39,10 +39,9 @@ def _get_kwargs(
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
-    usage_context: int | Unset = UNSET,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
     headers["Accept-Encoding"] = accept_encoding
@@ -51,14 +50,12 @@ def _get_kwargs(
 
     headers["AssetType"] = asset_type
 
-    headers["Accept"] = accept
-
     headers["AssetFormat"] = asset_format
 
     headers["Roblox-AssetFormat"] = roblox_asset_format
 
-    if not isinstance(usage_context, Unset):
-        headers["usageContext"] = str(usage_context)
+    if not isinstance(roblox_usage_context, Unset):
+        headers["Roblox-Usage-Context"] = roblox_usage_context
 
     params: dict[str, Any] = {}
 
@@ -175,10 +172,9 @@ def sync_detailed(
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
-    usage_context: int | Unset = UNSET,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> Response[Any]:
     """
     Args:
@@ -205,10 +201,9 @@ def sync_detailed(
         accept_encoding (str):
         roblox_place_id (int):
         asset_type (str):
-        accept (str):
         asset_format (str):
         roblox_asset_format (str):
-        usage_context (int | Unset):
+        roblox_usage_context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -242,10 +237,9 @@ def sync_detailed(
         accept_encoding=accept_encoding,
         roblox_place_id=roblox_place_id,
         asset_type=asset_type,
-        accept=accept,
         asset_format=asset_format,
         roblox_asset_format=roblox_asset_format,
-        usage_context=usage_context,
+        roblox_usage_context=roblox_usage_context,
     )
 
     response = client.get_httpx2_client().request(
@@ -284,10 +278,9 @@ async def asyncio_detailed(
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
-    usage_context: int | Unset = UNSET,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> Response[Any]:
     """
     Args:
@@ -314,10 +307,9 @@ async def asyncio_detailed(
         accept_encoding (str):
         roblox_place_id (int):
         asset_type (str):
-        accept (str):
         asset_format (str):
         roblox_asset_format (str):
-        usage_context (int | Unset):
+        roblox_usage_context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -351,10 +343,9 @@ async def asyncio_detailed(
         accept_encoding=accept_encoding,
         roblox_place_id=roblox_place_id,
         asset_type=asset_type,
-        accept=accept,
         asset_format=asset_format,
         roblox_asset_format=roblox_asset_format,
-        usage_context=usage_context,
+        roblox_usage_context=roblox_usage_context,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)

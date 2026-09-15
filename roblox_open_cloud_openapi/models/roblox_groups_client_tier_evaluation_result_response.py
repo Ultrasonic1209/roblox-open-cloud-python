@@ -19,23 +19,19 @@ T = TypeVar("T", bound="RobloxGroupsClientTierEvaluationResultResponse")
 class RobloxGroupsClientTierEvaluationResultResponse:
     """
     Attributes:
-        tier_info (RobloxGroupsClientCommunityTierInfoResponse | Unset):
-        passed_signals (list[str] | Unset):
+        tier_info (RobloxGroupsClientCommunityTierInfoResponse):
+        passed_signals (list[str]):
         requirements (list[RobloxGroupsClientTierRequirement] | Unset):
     """
 
-    tier_info: RobloxGroupsClientCommunityTierInfoResponse | Unset = UNSET
-    passed_signals: list[str] | Unset = UNSET
+    tier_info: RobloxGroupsClientCommunityTierInfoResponse
+    passed_signals: list[str]
     requirements: list[RobloxGroupsClientTierRequirement] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        tier_info: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.tier_info, Unset):
-            tier_info = self.tier_info.to_dict()
+        tier_info = self.tier_info.to_dict()
 
-        passed_signals: list[str] | Unset = UNSET
-        if not isinstance(self.passed_signals, Unset):
-            passed_signals = self.passed_signals
+        passed_signals = self.passed_signals
 
         requirements: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.requirements, Unset):
@@ -46,11 +42,12 @@ class RobloxGroupsClientTierEvaluationResultResponse:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if tier_info is not UNSET:
-            field_dict["tierInfo"] = tier_info
-        if passed_signals is not UNSET:
-            field_dict["passedSignals"] = passed_signals
+        field_dict.update(
+            {
+                "tierInfo": tier_info,
+                "passedSignals": passed_signals,
+            }
+        )
         if requirements is not UNSET:
             field_dict["requirements"] = requirements
 
@@ -64,14 +61,9 @@ class RobloxGroupsClientTierEvaluationResultResponse:
         from ..models.roblox_groups_client_tier_requirement import RobloxGroupsClientTierRequirement
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        _tier_info = d.pop("tierInfo", UNSET)
-        tier_info: RobloxGroupsClientCommunityTierInfoResponse | Unset
-        if isinstance(_tier_info, Unset):
-            tier_info = UNSET
-        else:
-            tier_info = RobloxGroupsClientCommunityTierInfoResponse.from_dict(_tier_info)
+        tier_info = RobloxGroupsClientCommunityTierInfoResponse.from_dict(d.pop("tierInfo"))
 
-        passed_signals = cast(list[str], d.pop("passedSignals", UNSET))
+        passed_signals = cast(list[str], d.pop("passedSignals"))
 
         _requirements = d.pop("requirements", UNSET)
         requirements: list[RobloxGroupsClientTierRequirement] | Unset = UNSET
