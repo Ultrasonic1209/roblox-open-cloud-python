@@ -73,6 +73,8 @@ class ExperimentApiError:
             EXPERIMENT_API_ERROR_TYPE_MATCHMAKING_VARIANTS_MUST_COVER_SAME_PLACES
 
             EXPERIMENT_API_ERROR_TYPE_MATCHMAKING_VARIANT_HAS_DUPLICATE_PLACES
+
+            EXPERIMENT_API_ERROR_TYPE_CONFIGS_KEY_HAS_RESERVED_PREFIX
         error_code (None | str | Unset): Stable machine-readable error code.
         error_message (None | str | Unset): Human-readable description of the failure.
         error_context (ExperimentApiErrorErrorContextType0 | None | Unset): Optional structured context about the

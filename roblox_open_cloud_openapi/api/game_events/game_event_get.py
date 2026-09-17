@@ -36,7 +36,9 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
                 },
-                "x-roblox-scopes": [{"name": "universe.event:read", "targetResourceSpecifier": ""}],
+                "x-roblox-scopes": [
+                    {"name": "universe.event:read", "targetResourceSpecifier": "", "firstPartyOAuthOnly": True}
+                ],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "GameEvent_Get",

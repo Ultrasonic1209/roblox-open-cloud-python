@@ -34,6 +34,7 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponsePlayabilityStatus(Int
     VALUE_29 = 29
     VALUE_30 = 30
     VALUE_31 = 31
+    VALUE_32 = 32
 
     def __str__(self) -> str:
         return str(self.value)

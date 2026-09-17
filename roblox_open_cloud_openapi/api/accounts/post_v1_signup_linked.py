@@ -78,6 +78,10 @@ def _parse_response(
         response_500 = cast(Any, None)
         return response_500
 
+    if response.status_code == 503:
+        response_503 = cast(Any, None)
+        return response_503
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -103,8 +107,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RobloxAuthenticationApiModelsSignupRequest | RobloxAuthenticationApiModelsSignupRequest | Unset = UNSET,
 ) -> Response[Any | RobloxAuthenticationApiModelsSignupResponse]:
-    """Endpoint for signing up a new user, specifically for linked
-    authentication on PCGDK
+    """Endpoint for signing up a new user through linked authentication.
 
     Args:
         body (RobloxAuthenticationApiModelsSignupRequest):
@@ -137,8 +140,7 @@ def sync(
     client: AuthenticatedClient,
     body: RobloxAuthenticationApiModelsSignupRequest | RobloxAuthenticationApiModelsSignupRequest | Unset = UNSET,
 ) -> Any | RobloxAuthenticationApiModelsSignupResponse | None:
-    """Endpoint for signing up a new user, specifically for linked
-    authentication on PCGDK
+    """Endpoint for signing up a new user through linked authentication.
 
     Args:
         body (RobloxAuthenticationApiModelsSignupRequest):
@@ -166,8 +168,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RobloxAuthenticationApiModelsSignupRequest | RobloxAuthenticationApiModelsSignupRequest | Unset = UNSET,
 ) -> Response[Any | RobloxAuthenticationApiModelsSignupResponse]:
-    """Endpoint for signing up a new user, specifically for linked
-    authentication on PCGDK
+    """Endpoint for signing up a new user through linked authentication.
 
     Args:
         body (RobloxAuthenticationApiModelsSignupRequest):
@@ -198,8 +199,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RobloxAuthenticationApiModelsSignupRequest | RobloxAuthenticationApiModelsSignupRequest | Unset = UNSET,
 ) -> Any | RobloxAuthenticationApiModelsSignupResponse | None:
-    """Endpoint for signing up a new user, specifically for linked
-    authentication on PCGDK
+    """Endpoint for signing up a new user through linked authentication.
 
     Args:
         body (RobloxAuthenticationApiModelsSignupRequest):

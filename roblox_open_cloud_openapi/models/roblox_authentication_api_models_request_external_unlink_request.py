@@ -25,7 +25,7 @@ class RobloxAuthenticationApiModelsRequestExternalUnlinkRequest:
     Attributes:
         identity_provider_platform_type
             (RobloxAuthenticationApiModelsRequestExternalUnlinkRequestIdentityProviderPlatformType | Unset):  ['Undefined' =
-            0, 'Xbox' = 1, 'Playstation' = 2, 'Web' = 3]
+            0, 'Xbox' = 1, 'Playstation' = 2, 'Web' = 3, 'Steam' = 4]
         additional_info_payload (RobloxAuthenticationApiModelsRequestExternalUnlinkRequestAdditionalInfoPayload |
             Unset):
     """

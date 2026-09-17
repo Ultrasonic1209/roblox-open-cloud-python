@@ -110,9 +110,6 @@ def sync_detailed(
 
      Gets information about a task.
 
-    Quotas:
-    * 45 calls per minute per API key owner or IP address
-
     Args:
         universe_id (str):
         place_id (str):
@@ -159,9 +156,6 @@ def sync(
 
      Gets information about a task.
 
-    Quotas:
-    * 45 calls per minute per API key owner or IP address
-
     Args:
         universe_id (str):
         place_id (str):
@@ -202,9 +196,6 @@ async def asyncio_detailed(
     """Get Luau Execution Session Task
 
      Gets information about a task.
-
-    Quotas:
-    * 45 calls per minute per API key owner or IP address
 
     Args:
         universe_id (str):
@@ -249,9 +240,6 @@ async def asyncio(
     """Get Luau Execution Session Task
 
      Gets information about a task.
-
-    Quotas:
-    * 45 calls per minute per API key owner or IP address
 
     Args:
         universe_id (str):

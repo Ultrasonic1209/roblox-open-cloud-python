@@ -32,7 +32,13 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 50},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 50},
                 },
-                "x-roblox-scopes": [{"name": "universe.thumbnail:write", "targetResourceSpecifier": "universes"}],
+                "x-roblox-scopes": [
+                    {
+                        "name": "universe.thumbnail:write",
+                        "targetResourceSpecifier": "universes",
+                        "firstPartyOAuthOnly": True,
+                    }
+                ],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "ThumbnailPersonalizationApi.HomepageThumbnail_UploadHomepageThumbnails",

@@ -67,8 +67,8 @@ def sync_detailed(
     """Reserves a nonce for a native SSO sign-in attempt.
 
      The web flow gets its nonce from M:Roblox.Authentication.Api.Controllers.V1.ExternalIdentitiesGatewa
-    yController.OAuthInit(System.Int64,System.Threading.CancellationToken), which native clients never
-    call
+    yController.OAuthInit(System.Int64,System.String,System.Threading.CancellationToken), which native
+    clients never call
     because they have no authorization redirect. They call this instead, pass the nonce to the
     provider SDK, and post the resulting id_token to /access.
 
@@ -107,8 +107,8 @@ def sync(
     """Reserves a nonce for a native SSO sign-in attempt.
 
      The web flow gets its nonce from M:Roblox.Authentication.Api.Controllers.V1.ExternalIdentitiesGatewa
-    yController.OAuthInit(System.Int64,System.Threading.CancellationToken), which native clients never
-    call
+    yController.OAuthInit(System.Int64,System.String,System.Threading.CancellationToken), which native
+    clients never call
     because they have no authorization redirect. They call this instead, pass the nonce to the
     provider SDK, and post the resulting id_token to /access.
 
@@ -142,8 +142,8 @@ async def asyncio_detailed(
     """Reserves a nonce for a native SSO sign-in attempt.
 
      The web flow gets its nonce from M:Roblox.Authentication.Api.Controllers.V1.ExternalIdentitiesGatewa
-    yController.OAuthInit(System.Int64,System.Threading.CancellationToken), which native clients never
-    call
+    yController.OAuthInit(System.Int64,System.String,System.Threading.CancellationToken), which native
+    clients never call
     because they have no authorization redirect. They call this instead, pass the nonce to the
     provider SDK, and post the resulting id_token to /access.
 
@@ -180,8 +180,8 @@ async def asyncio(
     """Reserves a nonce for a native SSO sign-in attempt.
 
      The web flow gets its nonce from M:Roblox.Authentication.Api.Controllers.V1.ExternalIdentitiesGatewa
-    yController.OAuthInit(System.Int64,System.Threading.CancellationToken), which native clients never
-    call
+    yController.OAuthInit(System.Int64,System.String,System.Threading.CancellationToken), which native
+    clients never call
     because they have no authorization redirect. They call this instead, pass the nonce to the
     provider SDK, and post the resulting id_token to /access.
 

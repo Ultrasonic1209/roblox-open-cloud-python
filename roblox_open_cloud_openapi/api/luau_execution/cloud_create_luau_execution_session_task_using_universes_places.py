@@ -94,10 +94,6 @@ def sync_detailed(
     completed, call the `GetLuauExecutionSessionTask` method and inspect the
     `state` field of the returned resource.
 
-    Quotas:
-    * 5 calls per minute per API key owner
-    * 45 calls per minute per IP address
-
     Args:
         universe_id (str):
         place_id (str):
@@ -179,10 +175,6 @@ def sync(
     completed, call the `GetLuauExecutionSessionTask` method and inspect the
     `state` field of the returned resource.
 
-    Quotas:
-    * 5 calls per minute per API key owner
-    * 45 calls per minute per IP address
-
     Args:
         universe_id (str):
         place_id (str):
@@ -258,10 +250,6 @@ async def asyncio_detailed(
     To check whether a task has
     completed, call the `GetLuauExecutionSessionTask` method and inspect the
     `state` field of the returned resource.
-
-    Quotas:
-    * 5 calls per minute per API key owner
-    * 45 calls per minute per IP address
 
     Args:
         universe_id (str):
@@ -341,10 +329,6 @@ async def asyncio(
     To check whether a task has
     completed, call the `GetLuauExecutionSessionTask` method and inspect the
     `state` field of the returned resource.
-
-    Quotas:
-    * 5 calls per minute per API key owner
-    * 45 calls per minute per IP address
 
     Args:
         universe_id (str):

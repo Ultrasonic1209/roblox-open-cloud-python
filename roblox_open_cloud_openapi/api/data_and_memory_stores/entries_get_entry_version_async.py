@@ -81,7 +81,6 @@ def _get_kwargs(
                     "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
                 },
-                "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 5000}},
                 "x-roblox-recommended-alternatives": [
                     {
                         "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}",

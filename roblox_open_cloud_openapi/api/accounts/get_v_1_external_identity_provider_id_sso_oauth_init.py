@@ -6,18 +6,27 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     identity_provider_id: int,
+    *,
+    post_authentication_intent_id: str,
 ) -> dict[str, Any]:
+
+    params: dict[str, Any] = {}
+
+    params["postAuthenticationIntentId"] = post_authentication_intent_id
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://auth.roblox.com/v1/external/{identity_provider_id}/sso/oauth/init".format(
             identity_provider_id=quote(str(identity_provider_id), safe=""),
         ),
+        "params": params,
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
             "openapi-id": "get_v1_external_identityProviderId_sso_oauth_init",
@@ -50,12 +59,17 @@ def sync_detailed(
     identity_provider_id: int,
     *,
     client: AuthenticatedClient,
+    post_authentication_intent_id: str,
 ) -> Response[Any]:
     """Signs a user up for Roblox and links the account to the authenticated external provider ID via
     OAuth.
 
+     Stored with the PKCE secrets rather than accepted at the callback, where it would let anyone turn a
+    plain web login into a redirect carrying a live session.
+
     Args:
         identity_provider_id (int):
+        post_authentication_intent_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -67,6 +81,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         identity_provider_id=identity_provider_id,
+        post_authentication_intent_id=post_authentication_intent_id,
     )
 
     response = client.get_httpx2_client().request(
@@ -80,12 +95,17 @@ async def asyncio_detailed(
     identity_provider_id: int,
     *,
     client: AuthenticatedClient,
+    post_authentication_intent_id: str,
 ) -> Response[Any]:
     """Signs a user up for Roblox and links the account to the authenticated external provider ID via
     OAuth.
 
+     Stored with the PKCE secrets rather than accepted at the callback, where it would let anyone turn a
+    plain web login into a redirect carrying a live session.
+
     Args:
         identity_provider_id (int):
+        post_authentication_intent_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,6 +117,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         identity_provider_id=identity_provider_id,
+        post_authentication_intent_id=post_authentication_intent_id,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)

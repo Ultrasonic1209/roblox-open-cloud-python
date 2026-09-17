@@ -35,7 +35,13 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 20},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 20},
                 },
-                "x-roblox-scopes": [{"name": "universe.event:write", "targetResourceSpecifier": "universes"}],
+                "x-roblox-scopes": [
+                    {
+                        "name": "universe.event:write",
+                        "targetResourceSpecifier": "universes",
+                        "firstPartyOAuthOnly": True,
+                    }
+                ],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "GameEvents_Create",

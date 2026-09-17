@@ -27,7 +27,9 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
                 },
-                "x-roblox-scopes": [{"name": "ad.campaign:read", "targetResourceSpecifier": ""}],
+                "x-roblox-scopes": [
+                    {"name": "ad.campaign:read", "targetResourceSpecifier": "", "firstPartyOAuthOnly": True}
+                ],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "post_ads-management_v1_campaigns:batchGetStatus",

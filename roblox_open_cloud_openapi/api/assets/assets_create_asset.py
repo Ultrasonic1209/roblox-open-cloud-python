@@ -36,7 +36,6 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
                 },
-                "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 120}},
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "Assets_CreateAsset",

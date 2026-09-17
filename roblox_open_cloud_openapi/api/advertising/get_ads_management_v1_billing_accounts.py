@@ -35,7 +35,9 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 600},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 600},
                 },
-                "x-roblox-scopes": [{"name": "ad.billing:read", "targetResourceSpecifier": ""}],
+                "x-roblox-scopes": [
+                    {"name": "ad.billing:read", "targetResourceSpecifier": "", "firstPartyOAuthOnly": True}
+                ],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "get_ads-management_v1_billing-accounts",

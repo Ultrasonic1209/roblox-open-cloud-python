@@ -40,7 +40,9 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 600},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 600},
                 },
-                "x-roblox-scopes": [{"name": "ad.campaign:read", "targetResourceSpecifier": ""}],
+                "x-roblox-scopes": [
+                    {"name": "ad.campaign:read", "targetResourceSpecifier": "", "firstPartyOAuthOnly": True}
+                ],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "get_ads-management_v1_campaign-options",

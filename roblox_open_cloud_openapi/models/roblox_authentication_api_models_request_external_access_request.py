@@ -26,7 +26,8 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
         authentication_proof (str | Unset):
         identity_provider_platform_type
             (RobloxAuthenticationApiModelsRequestExternalAccessRequestIdentityProviderPlatformType | Unset):  ['Undefined' =
-            0, 'Xbox' = 1, 'Playstation' = 2, 'Web' = 3]
+            0, 'Xbox' = 1, 'Playstation' = 2, 'Web' = 3, 'Steam' = 4]
+        post_authentication_intent_id (str | Unset):
         additional_info_payload (RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload |
             Unset):
     """
@@ -35,6 +36,7 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
     identity_provider_platform_type: (
         RobloxAuthenticationApiModelsRequestExternalAccessRequestIdentityProviderPlatformType | Unset
     ) = UNSET
+    post_authentication_intent_id: str | Unset = UNSET
     additional_info_payload: RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload | Unset = (
         UNSET
     )
@@ -45,6 +47,8 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
         identity_provider_platform_type: int | Unset = UNSET
         if not isinstance(self.identity_provider_platform_type, Unset):
             identity_provider_platform_type = self.identity_provider_platform_type.value
+
+        post_authentication_intent_id = self.post_authentication_intent_id
 
         additional_info_payload: dict[str, Any] | Unset = UNSET
         if not isinstance(self.additional_info_payload, Unset):
@@ -57,6 +61,8 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
             field_dict["authenticationProof"] = authentication_proof
         if identity_provider_platform_type is not UNSET:
             field_dict["identityProviderPlatformType"] = identity_provider_platform_type
+        if post_authentication_intent_id is not UNSET:
+            field_dict["postAuthenticationIntentId"] = post_authentication_intent_id
         if additional_info_payload is not UNSET:
             field_dict["additionalInfoPayload"] = additional_info_payload
 
@@ -84,6 +90,8 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
                 )
             )
 
+        post_authentication_intent_id = d.pop("postAuthenticationIntentId", UNSET)
+
         _additional_info_payload = d.pop("additionalInfoPayload", UNSET)
         additional_info_payload: RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload | Unset
         if isinstance(_additional_info_payload, Unset):
@@ -98,6 +106,7 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
         roblox_authentication_api_models_request_external_access_request = cls(
             authentication_proof=authentication_proof,
             identity_provider_platform_type=identity_provider_platform_type,
+            post_authentication_intent_id=post_authentication_intent_id,
             additional_info_payload=additional_info_payload,
         )
 

@@ -13,7 +13,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     user_id: str,
     *,
-    max_page_size: int | Unset = 0,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -85,7 +85,7 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = 0,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> Response[ListInventoryItemsResponse]:
@@ -107,7 +107,7 @@ def sync_detailed(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):  Default: 0.
+        max_page_size (int | Unset):  Default: 10.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -137,7 +137,7 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = 0,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> ListInventoryItemsResponse | None:
@@ -159,7 +159,7 @@ def sync(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):  Default: 0.
+        max_page_size (int | Unset):  Default: 10.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -184,7 +184,7 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = 0,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> Response[ListInventoryItemsResponse]:
@@ -206,7 +206,7 @@ async def asyncio_detailed(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):  Default: 0.
+        max_page_size (int | Unset):  Default: 10.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -234,7 +234,7 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = 0,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> ListInventoryItemsResponse | None:
@@ -256,7 +256,7 @@ async def asyncio(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):  Default: 0.
+        max_page_size (int | Unset):  Default: 10.
         page_token (str | Unset):
         filter_ (str | Unset):
 

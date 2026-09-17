@@ -6,32 +6,38 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    user_id: int,
+    identity_provider_id: int,
+    *,
+    body: Any | Unset = UNSET,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "https://premiumfeatures.roblox.com/v1/users/{user_id}/validate-membership".format(
-            user_id=quote(str(user_id), safe=""),
+        "method": "post",
+        "url": "https://auth.roblox.com/v1/external/{identity_provider_id}/sso/oauth/callback".format(
+            identity_provider_id=quote(str(identity_provider_id), safe=""),
         ),
         "extensions": {
             "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_users_userId_validate-membership",
+            "openapi-id": "post_v1_external_identityProviderId_sso_oauth_callback",
         },
     }
 
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
-    if response.status_code == 200:
-        return None
-
-    if response.status_code == 401:
+    if response.status_code == 302:
         return None
 
     if client.raise_on_unexpected_status:
@@ -50,14 +56,20 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
 
 
 def sync_detailed(
-    user_id: int,
+    identity_provider_id: int,
     *,
     client: AuthenticatedClient,
+    body: Any | Unset = UNSET,
 ) -> Response[Any]:
-    """Get if a user has a Premium membership
+    """OAuth callback for identity providers that POST the authorization code as form fields (Apple
+    form_post).
+    Apple's first-auth `user` JSON is parsed and carried to identity storage; the form
+    `id_token` is ignored. Web login exchanges code via PKCE and does
+    not treat a form id_token as proof.
 
     Args:
-        user_id (int):
+        identity_provider_id (int):
+        body (Any | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -68,7 +80,8 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        user_id=user_id,
+        identity_provider_id=identity_provider_id,
+        body=body,
     )
 
     response = client.get_httpx2_client().request(
@@ -79,14 +92,20 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
-    user_id: int,
+    identity_provider_id: int,
     *,
     client: AuthenticatedClient,
+    body: Any | Unset = UNSET,
 ) -> Response[Any]:
-    """Get if a user has a Premium membership
+    """OAuth callback for identity providers that POST the authorization code as form fields (Apple
+    form_post).
+    Apple's first-auth `user` JSON is parsed and carried to identity storage; the form
+    `id_token` is ignored. Web login exchanges code via PKCE and does
+    not treat a form id_token as proof.
 
     Args:
-        user_id (int):
+        identity_provider_id (int):
+        body (Any | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,7 +116,8 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        user_id=user_id,
+        identity_provider_id=identity_provider_id,
+        body=body,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)

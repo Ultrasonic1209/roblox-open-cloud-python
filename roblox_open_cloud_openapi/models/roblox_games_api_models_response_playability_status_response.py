@@ -43,7 +43,8 @@ class RobloxGamesApiModelsResponsePlayabilityStatusResponse:
             'ContextualPlayabilityAgeGatedByDescriptor' = 24, 'ContextualPlayabilityGeneral' = 25,
             'ContextualPlayabilityAgeCheckRequired' = 26, 'ContextualPlayabilityRequireParentApproval' = 27,
             'ContextualPlayabilityCoreGated' = 28, 'ContextualPlayabilityTrustedFriendRequired' = 29,
-            'PlusSubscriptionRequired' = 30, 'ContextualPlayabilityPlaytestDisabled' = 31]
+            'PlusSubscriptionRequired' = 30, 'ContextualPlayabilityPlaytestDisabled' = 31,
+            'InsufficientPermissionEditorsOnly' = 32]
         is_playable (bool | Unset): Whether or not the universe is playable for the user
         universe_id (int | Unset): The universeId of the requested universe to help with batching requests
         unplayable_display_text (str | Unset): Localized display text explaining why unplayable

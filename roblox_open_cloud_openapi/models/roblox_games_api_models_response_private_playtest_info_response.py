@@ -32,7 +32,8 @@ class RobloxGamesApiModelsResponsePrivatePlaytestInfoResponse:
             'ContextualPlayabilityAgeGatedByDescriptor' = 24, 'ContextualPlayabilityGeneral' = 25,
             'ContextualPlayabilityAgeCheckRequired' = 26, 'ContextualPlayabilityRequireParentApproval' = 27,
             'ContextualPlayabilityCoreGated' = 28, 'ContextualPlayabilityTrustedFriendRequired' = 29,
-            'PlusSubscriptionRequired' = 30, 'ContextualPlayabilityPlaytestDisabled' = 31]
+            'PlusSubscriptionRequired' = 30, 'ContextualPlayabilityPlaytestDisabled' = 31,
+            'InsufficientPermissionEditorsOnly' = 32]
     """
 
     is_playable: bool | Unset = UNSET

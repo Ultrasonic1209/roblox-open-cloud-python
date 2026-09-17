@@ -26,7 +26,9 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 20},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 20},
                 },
-                "x-roblox-scopes": [{"name": "universe.event:write", "targetResourceSpecifier": ""}],
+                "x-roblox-scopes": [
+                    {"name": "universe.event:write", "targetResourceSpecifier": "", "firstPartyOAuthOnly": True}
+                ],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "GameEvent_Delete",

@@ -37,7 +37,7 @@ def _get_kwargs(
                     },
                 },
                 "x-roblox-stability": "STABLE",
-                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 40}},
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5}},
             },
             "openapi-id": "Cloud_CreateLuauExecutionSessionTask__Using_Universes",
         },
@@ -90,10 +90,6 @@ def sync_detailed(
     To check whether a task has
     completed, call the `GetLuauExecutionSessionTask` method and inspect the
     `state` field of the returned resource.
-
-    Quotas:
-    * 5 calls per minute per API key owner
-    * 45 calls per minute per IP address
 
     Args:
         universe_id (str):
@@ -173,10 +169,6 @@ def sync(
     completed, call the `GetLuauExecutionSessionTask` method and inspect the
     `state` field of the returned resource.
 
-    Quotas:
-    * 5 calls per minute per API key owner
-    * 45 calls per minute per IP address
-
     Args:
         universe_id (str):
         place_id (str):
@@ -249,10 +241,6 @@ async def asyncio_detailed(
     To check whether a task has
     completed, call the `GetLuauExecutionSessionTask` method and inspect the
     `state` field of the returned resource.
-
-    Quotas:
-    * 5 calls per minute per API key owner
-    * 45 calls per minute per IP address
 
     Args:
         universe_id (str):
@@ -329,10 +317,6 @@ async def asyncio(
     To check whether a task has
     completed, call the `GetLuauExecutionSessionTask` method and inspect the
     `state` field of the returned resource.
-
-    Quotas:
-    * 5 calls per minute per API key owner
-    * 45 calls per minute per IP address
 
     Args:
         universe_id (str):
