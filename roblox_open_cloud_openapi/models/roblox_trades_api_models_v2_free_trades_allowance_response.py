@@ -20,12 +20,14 @@ class RobloxTradesApiModelsV2FreeTradesAllowanceResponse:
         limit (int | Unset):
         remaining (int | Unset):
         window (RobloxTradesApiModelsV2FreeTradesAllowanceResponseWindow | Unset):  ['Day' = 1, 'Week' = 2, 'Month' = 3,
-            'Year' = 4, 'Lifetime' = 5]
+            'Year' = 4, 'Lifetime' = 5] Default: RobloxTradesApiModelsV2FreeTradesAllowanceResponseWindow.MONTH.
     """
 
     limit: int | Unset = UNSET
     remaining: int | Unset = UNSET
-    window: RobloxTradesApiModelsV2FreeTradesAllowanceResponseWindow | Unset = UNSET
+    window: RobloxTradesApiModelsV2FreeTradesAllowanceResponseWindow | Unset = (
+        RobloxTradesApiModelsV2FreeTradesAllowanceResponseWindow.MONTH
+    )
 
     def to_dict(self) -> dict[str, Any]:
         limit = self.limit

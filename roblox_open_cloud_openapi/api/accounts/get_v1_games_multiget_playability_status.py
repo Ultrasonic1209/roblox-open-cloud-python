@@ -29,7 +29,10 @@ def _get_kwargs(
         "url": "https://games.roblox.com/v1/games/multiget-playability-status",
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_games_multiget-playability-status",
         },
     }

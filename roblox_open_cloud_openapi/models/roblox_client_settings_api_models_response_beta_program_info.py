@@ -5,8 +5,6 @@ from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
-from ..types import UNSET, Unset
-
 T = TypeVar("T", bound="RobloxClientSettingsApiModelsResponseBetaProgramInfo")
 
 
@@ -15,12 +13,12 @@ class RobloxClientSettingsApiModelsResponseBetaProgramInfo:
     """Beta program information included in the user channel response.
 
     Attributes:
-        name (str | Unset): The display name of the beta program.
-        id (str | Unset): The ID of the beta program.
+        name (str): The display name of the beta program.
+        id (str): The ID of the beta program.
     """
 
-    name: str | Unset = UNSET
-    id: str | Unset = UNSET
+    name: str
+    id: str
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -29,20 +27,21 @@ class RobloxClientSettingsApiModelsResponseBetaProgramInfo:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if id is not UNSET:
-            field_dict["id"] = id
+        field_dict.update(
+            {
+                "name": name,
+                "id": id,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        name = d.pop("name", UNSET)
+        name = d.pop("name")
 
-        id = d.pop("id", UNSET)
+        id = d.pop("id")
 
         roblox_client_settings_api_models_response_beta_program_info = cls(
             name=name,

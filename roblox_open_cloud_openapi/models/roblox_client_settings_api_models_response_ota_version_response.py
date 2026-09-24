@@ -21,9 +21,9 @@ class RobloxClientSettingsApiModelsResponseOtaVersionResponse:
     """Response for endpoints returning ota information.
 
     Attributes:
-        name (str | Unset): Ota library/plugin name
-        version (str | Unset): Version number of asset
-        download_url (str | Unset): URL to download the ota asset
+        name (str): Ota library/plugin name
+        version (str): Version number of asset
+        download_url (str): URL to download the ota asset
         is_standalone (bool | Unset): Refers to whether the plugin is core to Studio functions, and is used to determine
             when it is loaded.
         asset_id (str | Unset): The asset ID of the LuaApp OTA.
@@ -39,9 +39,9 @@ class RobloxClientSettingsApiModelsResponseOtaVersionResponse:
         version_v2 (int | Unset): VersionV2 of the OTA asset.
     """
 
-    name: str | Unset = UNSET
-    version: str | Unset = UNSET
-    download_url: str | Unset = UNSET
+    name: str
+    version: str
+    download_url: str
     is_standalone: bool | Unset = UNSET
     asset_id: str | Unset = UNSET
     asset_version: str | Unset = UNSET
@@ -87,13 +87,13 @@ class RobloxClientSettingsApiModelsResponseOtaVersionResponse:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if version is not UNSET:
-            field_dict["version"] = version
-        if download_url is not UNSET:
-            field_dict["downloadUrl"] = download_url
+        field_dict.update(
+            {
+                "name": name,
+                "version": version,
+                "downloadUrl": download_url,
+            }
+        )
         if is_standalone is not UNSET:
             field_dict["isStandalone"] = is_standalone
         if asset_id is not UNSET:
@@ -126,11 +126,11 @@ class RobloxClientSettingsApiModelsResponseOtaVersionResponse:
         )
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        name = d.pop("name", UNSET)
+        name = d.pop("name")
 
-        version = d.pop("version", UNSET)
+        version = d.pop("version")
 
-        download_url = d.pop("downloadUrl", UNSET)
+        download_url = d.pop("downloadUrl")
 
         is_standalone = d.pop("isStandalone", UNSET)
 

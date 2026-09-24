@@ -1995,7 +1995,6 @@ from .roblox_games_api_models_response_game_favorite_response import RobloxGames
 from .roblox_games_api_models_response_game_favorites_count_response import (
     RobloxGamesApiModelsResponseGameFavoritesCountResponse,
 )
-from .roblox_games_api_models_response_game_media_item import RobloxGamesApiModelsResponseGameMediaItem
 from .roblox_games_api_models_response_game_product_response import RobloxGamesApiModelsResponseGameProductResponse
 from .roblox_games_api_models_response_game_recommendations_response import (
     RobloxGamesApiModelsResponseGameRecommendationsResponse,
@@ -2680,9 +2679,6 @@ from .roblox_web_web_api_models_api_array_response_roblox_game_internationalizat
 )
 from .roblox_web_web_api_models_api_array_response_roblox_games_api_models_response_game_detail_response import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameDetailResponse,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_games_api_models_response_game_media_item import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameMediaItem,
 )
 from .roblox_web_web_api_models_api_array_response_roblox_games_api_models_response_game_product_response import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameProductResponse,
@@ -4115,7 +4111,6 @@ __all__ = (
     "RobloxGamesApiModelsResponseGameDetailResponseUniverseAvatarType",
     "RobloxGamesApiModelsResponseGameFavoriteResponse",
     "RobloxGamesApiModelsResponseGameFavoritesCountResponse",
-    "RobloxGamesApiModelsResponseGameMediaItem",
     "RobloxGamesApiModelsResponseGameProductResponse",
     "RobloxGamesApiModelsResponseGameRecommendationsResponse",
     "RobloxGamesApiModelsResponseGameResponseModel",
@@ -4493,7 +4488,6 @@ __all__ = (
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiNameDescription",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiUniverseDisplayInfoAutomaticTranslationSettings",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameDetailResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameMediaItem",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameProductResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupMembershipDetailResponse",
