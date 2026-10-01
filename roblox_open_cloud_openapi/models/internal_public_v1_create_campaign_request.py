@@ -30,8 +30,9 @@ class InternalPublicV1CreateCampaignRequest:
         creative_asset_ids (list[str]): The Open Cloud image asset IDs to advertise, as decimal strings. Required. The
             assets must already exist and be usable by the caller.
         name (str): The display name of the campaign. Required.
-        objective (InternalPublicV1CreateCampaignRequestObjective): The advertising goal. Required. Only `ENGAGEMENT` is
-            supported in v1.
+        objective (InternalPublicV1CreateCampaignRequestObjective): The advertising goal. Required. Can be `PLAYS` (the
+            deprecated `ENGAGEMENT`
+            is also accepted during the transition; both create the same campaign).
         payment_type (InternalPublicV1CreateCampaignRequestPaymentType): How the campaign is paid for. Required. Can be
             `CREDIT_CARD`, `ADS_CREDIT`, or
             `INVOICE`, subject to what the billing account supports.

@@ -16,37 +16,29 @@ T = TypeVar("T", bound="SalesReportDownloadRequest")
 class SalesReportDownloadRequest:
     """
     Attributes:
-        target_id (int | Unset):
-        target_type (CurrencyHolderType | Unset):
-        start_date (None | str | Unset):
-        end_date (None | str | Unset):
+        target_id (int):
+        target_type (CurrencyHolderType):
+        start_date (None | str):
+        end_date (None | str):
         transaction_type (TransactionType | Unset):
     """
 
-    target_id: int | Unset = UNSET
-    target_type: CurrencyHolderType | Unset = UNSET
-    start_date: None | str | Unset = UNSET
-    end_date: None | str | Unset = UNSET
+    target_id: int
+    target_type: CurrencyHolderType
+    start_date: None | str
+    end_date: None | str
     transaction_type: TransactionType | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         target_id = self.target_id
 
-        target_type: str | Unset = UNSET
-        if not isinstance(self.target_type, Unset):
-            target_type = self.target_type.value
+        target_type = self.target_type.value
 
-        start_date: None | str | Unset
-        if isinstance(self.start_date, Unset):
-            start_date = UNSET
-        else:
-            start_date = self.start_date
+        start_date: None | str
+        start_date = self.start_date
 
-        end_date: None | str | Unset
-        if isinstance(self.end_date, Unset):
-            end_date = UNSET
-        else:
-            end_date = self.end_date
+        end_date: None | str
+        end_date = self.end_date
 
         transaction_type: str | Unset = UNSET
         if not isinstance(self.transaction_type, Unset):
@@ -54,15 +46,14 @@ class SalesReportDownloadRequest:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if target_id is not UNSET:
-            field_dict["targetId"] = target_id
-        if target_type is not UNSET:
-            field_dict["targetType"] = target_type
-        if start_date is not UNSET:
-            field_dict["startDate"] = start_date
-        if end_date is not UNSET:
-            field_dict["endDate"] = end_date
+        field_dict.update(
+            {
+                "targetId": target_id,
+                "targetType": target_type,
+                "startDate": start_date,
+                "endDate": end_date,
+            }
+        )
         if transaction_type is not UNSET:
             field_dict["transactionType"] = transaction_type
 
@@ -71,32 +62,23 @@ class SalesReportDownloadRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
-        target_id = d.pop("targetId", UNSET)
+        target_id = d.pop("targetId")
 
-        _target_type = d.pop("targetType", UNSET)
-        target_type: CurrencyHolderType | Unset
-        if isinstance(_target_type, Unset):
-            target_type = UNSET
-        else:
-            target_type = CurrencyHolderType(_target_type)
+        target_type = CurrencyHolderType(d.pop("targetType"))
 
-        def _parse_start_date(data: object) -> None | str | Unset:
+        def _parse_start_date(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        start_date = _parse_start_date(d.pop("startDate", UNSET))
+        start_date = _parse_start_date(d.pop("startDate"))
 
-        def _parse_end_date(data: object) -> None | str | Unset:
+        def _parse_end_date(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        end_date = _parse_end_date(d.pop("endDate", UNSET))
+        end_date = _parse_end_date(d.pop("endDate"))
 
         _transaction_type = d.pop("transactionType", UNSET)
         transaction_type: TransactionType | Unset

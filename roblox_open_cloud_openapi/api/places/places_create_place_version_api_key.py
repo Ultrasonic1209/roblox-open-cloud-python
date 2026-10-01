@@ -38,7 +38,10 @@ def _get_kwargs(
             "openapi-extensions": {
                 "x-roblox-cloud-api-operation-name": "Publish a Place",
                 "x-roblox-stability": "BETA",
-                "x-roblox-scopes": [{"name": "universe-places:write"}],
+                "x-roblox-scopes": [
+                    {"name": "universe-places:write", "targetResourceSpecifier": "v1"},
+                    {"name": "universe-places:write"},
+                ],
                 "x-roblox-cloud-api-operation": True,
                 "x-roblox-code-samples": [
                     {

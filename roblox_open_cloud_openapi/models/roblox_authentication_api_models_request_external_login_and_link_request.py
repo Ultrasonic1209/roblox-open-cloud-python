@@ -34,7 +34,7 @@ class RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequest:
         authentication_proof (str | Unset):
         identity_provider_platform_type
             (RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestIdentityProviderPlatformType | Unset):
-            ['Undefined' = 0, 'Xbox' = 1, 'Playstation' = 2, 'Web' = 3, 'Steam' = 4]
+            ['Undefined' = 0, 'Xbox' = 1, 'Playstation' = 2, 'Web' = 3, 'Steam' = 4, 'Android' = 5, 'Ios' = 6, 'MacOs' = 7]
         additional_info_payload (RobloxAuthenticationApiModelsRequestExternalLoginAndLinkRequestAdditionalInfoPayload |
             Unset):
     """

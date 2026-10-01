@@ -6,15 +6,12 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     identity_provider_id: int,
-    *,
-    body: Any | Unset = UNSET,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -27,12 +24,6 @@ def _get_kwargs(
         },
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -59,7 +50,6 @@ def sync_detailed(
     identity_provider_id: int,
     *,
     client: AuthenticatedClient,
-    body: Any | Unset = UNSET,
 ) -> Response[Any]:
     """OAuth callback for identity providers that POST the authorization code as form fields (Apple
     form_post).
@@ -69,7 +59,6 @@ def sync_detailed(
 
     Args:
         identity_provider_id (int):
-        body (Any | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -81,7 +70,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         identity_provider_id=identity_provider_id,
-        body=body,
     )
 
     response = client.get_httpx2_client().request(
@@ -95,7 +83,6 @@ async def asyncio_detailed(
     identity_provider_id: int,
     *,
     client: AuthenticatedClient,
-    body: Any | Unset = UNSET,
 ) -> Response[Any]:
     """OAuth callback for identity providers that POST the authorization code as form fields (Apple
     form_post).
@@ -105,7 +92,6 @@ async def asyncio_detailed(
 
     Args:
         identity_provider_id (int):
-        body (Any | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -117,7 +103,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         identity_provider_id=identity_provider_id,
-        body=body,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)

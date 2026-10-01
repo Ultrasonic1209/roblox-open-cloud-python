@@ -16,15 +16,19 @@ class RobloxAuthenticationApiModelsUsernameChangePriceResponse:
     Attributes:
         price_in_robux (int | Unset):
         base_price_in_robux (int | Unset):
+        is_free_username_change (bool | Unset):
     """
 
     price_in_robux: int | Unset = UNSET
     base_price_in_robux: int | Unset = UNSET
+    is_free_username_change: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         price_in_robux = self.price_in_robux
 
         base_price_in_robux = self.base_price_in_robux
+
+        is_free_username_change = self.is_free_username_change
 
         field_dict: dict[str, Any] = {}
 
@@ -33,6 +37,8 @@ class RobloxAuthenticationApiModelsUsernameChangePriceResponse:
             field_dict["priceInRobux"] = price_in_robux
         if base_price_in_robux is not UNSET:
             field_dict["basePriceInRobux"] = base_price_in_robux
+        if is_free_username_change is not UNSET:
+            field_dict["isFreeUsernameChange"] = is_free_username_change
 
         return field_dict
 
@@ -43,9 +49,12 @@ class RobloxAuthenticationApiModelsUsernameChangePriceResponse:
 
         base_price_in_robux = d.pop("basePriceInRobux", UNSET)
 
+        is_free_username_change = d.pop("isFreeUsernameChange", UNSET)
+
         roblox_authentication_api_models_username_change_price_response = cls(
             price_in_robux=price_in_robux,
             base_price_in_robux=base_price_in_robux,
+            is_free_username_change=is_free_username_change,
         )
 
         return roblox_authentication_api_models_username_change_price_response

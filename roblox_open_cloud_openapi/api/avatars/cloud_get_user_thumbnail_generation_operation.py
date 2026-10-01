@@ -76,8 +76,15 @@ def sync_detailed(
     long-running operation.
 
     Call this with the operation `path` returned by Generate User Thumbnail,
-    polling until `done` is `true`. Once complete, `response.imageUri` contains
-    the generated thumbnail URL.
+    polling until `done` is `true`. Once complete, the operation contains
+    either `response` or `error`:
+
+    - If `response` is set, `response.imageUri` contains the generated
+      thumbnail URL.
+    - If `error` is set, the thumbnail couldn't be generated and `response` is
+      not set. `error.code` and `error.message` describe the reason.
+
+    Always check for `error` before reading `response.imageUri`.
 
     Args:
         user_id (str):
@@ -117,8 +124,15 @@ def sync(
     long-running operation.
 
     Call this with the operation `path` returned by Generate User Thumbnail,
-    polling until `done` is `true`. Once complete, `response.imageUri` contains
-    the generated thumbnail URL.
+    polling until `done` is `true`. Once complete, the operation contains
+    either `response` or `error`:
+
+    - If `response` is set, `response.imageUri` contains the generated
+      thumbnail URL.
+    - If `error` is set, the thumbnail couldn't be generated and `response` is
+      not set. `error.code` and `error.message` describe the reason.
+
+    Always check for `error` before reading `response.imageUri`.
 
     Args:
         user_id (str):
@@ -153,8 +167,15 @@ async def asyncio_detailed(
     long-running operation.
 
     Call this with the operation `path` returned by Generate User Thumbnail,
-    polling until `done` is `true`. Once complete, `response.imageUri` contains
-    the generated thumbnail URL.
+    polling until `done` is `true`. Once complete, the operation contains
+    either `response` or `error`:
+
+    - If `response` is set, `response.imageUri` contains the generated
+      thumbnail URL.
+    - If `error` is set, the thumbnail couldn't be generated and `response` is
+      not set. `error.code` and `error.message` describe the reason.
+
+    Always check for `error` before reading `response.imageUri`.
 
     Args:
         user_id (str):
@@ -192,8 +213,15 @@ async def asyncio(
     long-running operation.
 
     Call this with the operation `path` returned by Generate User Thumbnail,
-    polling until `done` is `true`. Once complete, `response.imageUri` contains
-    the generated thumbnail URL.
+    polling until `done` is `true`. Once complete, the operation contains
+    either `response` or `error`:
+
+    - If `response` is set, `response.imageUri` contains the generated
+      thumbnail URL.
+    - If `error` is set, the thumbnail couldn't be generated and `response` is
+      not set. `error.code` and `error.message` describe the reason.
+
+    Always check for `error` before reading `response.imageUri`.
 
     Args:
         user_id (str):

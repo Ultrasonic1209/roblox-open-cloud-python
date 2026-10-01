@@ -98,8 +98,14 @@ def sync_detailed(
      Generates and returns the URL for the user's avatar thumbnail.
 
     This is a long-running operation: the response is an `Operation` object.
-    Poll the operation using its returned `path` until `done` is `true`, at
-    which point `response.imageUri` contains the thumbnail URL. See
+    Poll the operation using its returned `path` until `done` is `true`. A
+    completed operation contains either `response` or `error`:
+
+    - If `response` is set, `response.imageUri` contains the thumbnail URL.
+    - If `error` is set, the thumbnail couldn't be generated and `response` is
+      not set. `error.code` and `error.message` describe the reason.
+
+    Always check for `error` before reading `response.imageUri`. See
     [Get User Thumbnail Generation Operation](https://create.roblox.com/docs/cloud/reference/features/us
     ers#Cloud_GetUserThumbnailGenerationOperation).
 
@@ -146,8 +152,14 @@ def sync(
      Generates and returns the URL for the user's avatar thumbnail.
 
     This is a long-running operation: the response is an `Operation` object.
-    Poll the operation using its returned `path` until `done` is `true`, at
-    which point `response.imageUri` contains the thumbnail URL. See
+    Poll the operation using its returned `path` until `done` is `true`. A
+    completed operation contains either `response` or `error`:
+
+    - If `response` is set, `response.imageUri` contains the thumbnail URL.
+    - If `error` is set, the thumbnail couldn't be generated and `response` is
+      not set. `error.code` and `error.message` describe the reason.
+
+    Always check for `error` before reading `response.imageUri`. See
     [Get User Thumbnail Generation Operation](https://create.roblox.com/docs/cloud/reference/features/us
     ers#Cloud_GetUserThumbnailGenerationOperation).
 
@@ -189,8 +201,14 @@ async def asyncio_detailed(
      Generates and returns the URL for the user's avatar thumbnail.
 
     This is a long-running operation: the response is an `Operation` object.
-    Poll the operation using its returned `path` until `done` is `true`, at
-    which point `response.imageUri` contains the thumbnail URL. See
+    Poll the operation using its returned `path` until `done` is `true`. A
+    completed operation contains either `response` or `error`:
+
+    - If `response` is set, `response.imageUri` contains the thumbnail URL.
+    - If `error` is set, the thumbnail couldn't be generated and `response` is
+      not set. `error.code` and `error.message` describe the reason.
+
+    Always check for `error` before reading `response.imageUri`. See
     [Get User Thumbnail Generation Operation](https://create.roblox.com/docs/cloud/reference/features/us
     ers#Cloud_GetUserThumbnailGenerationOperation).
 
@@ -235,8 +253,14 @@ async def asyncio(
      Generates and returns the URL for the user's avatar thumbnail.
 
     This is a long-running operation: the response is an `Operation` object.
-    Poll the operation using its returned `path` until `done` is `true`, at
-    which point `response.imageUri` contains the thumbnail URL. See
+    Poll the operation using its returned `path` until `done` is `true`. A
+    completed operation contains either `response` or `error`:
+
+    - If `response` is set, `response.imageUri` contains the thumbnail URL.
+    - If `error` is set, the thumbnail couldn't be generated and `response` is
+      not set. `error.code` and `error.message` describe the reason.
+
+    Always check for `error` before reading `response.imageUri`. See
     [Get User Thumbnail Generation Operation](https://create.roblox.com/docs/cloud/reference/features/us
     ers#Cloud_GetUserThumbnailGenerationOperation).
 

@@ -202,9 +202,6 @@ from .get_instance_metadata import GetInstanceMetadata
 from .get_legacy_develop_v1_places_place_id_teamcreate_active_session_members_limit import (
     GetLegacyDevelopV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit,
 )
-from .get_legacy_groups_v1_groups_group_id_audit_log_action_type import GetLegacyGroupsV1GroupsGroupIdAuditLogActionType
-from .get_legacy_groups_v1_groups_group_id_audit_log_limit import GetLegacyGroupsV1GroupsGroupIdAuditLogLimit
-from .get_legacy_groups_v1_groups_group_id_audit_log_sort_order import GetLegacyGroupsV1GroupsGroupIdAuditLogSortOrder
 from .get_legacy_localization_tables_v1_localization_table_tables_table_id_entries_entry_format import (
     GetLegacyLocalizationTablesV1LocalizationTableTablesTableIdEntriesEntryFormat,
 )
@@ -254,26 +251,10 @@ from .get_v1_games_multiget_thumbnails_format import GetV1GamesMultigetThumbnail
 from .get_v1_games_multiget_thumbnails_size import GetV1GamesMultigetThumbnailsSize
 from .get_v1_games_universe_id_thumbnails_format import GetV1GamesUniverseIdThumbnailsFormat
 from .get_v1_games_universe_id_thumbnails_size import GetV1GamesUniverseIdThumbnailsSize
-from .get_v1_groups_group_id_audit_log_action_type import GetV1GroupsGroupIdAuditLogActionType
-from .get_v1_groups_group_id_audit_log_limit import GetV1GroupsGroupIdAuditLogLimit
-from .get_v1_groups_group_id_audit_log_sort_order import GetV1GroupsGroupIdAuditLogSortOrder
-from .get_v1_groups_group_id_bans_limit import GetV1GroupsGroupIdBansLimit
-from .get_v1_groups_group_id_bans_sort_order import GetV1GroupsGroupIdBansSortOrder
-from .get_v1_groups_group_id_blocked_keywords_limit import GetV1GroupsGroupIdBlockedKeywordsLimit
-from .get_v1_groups_group_id_blocked_keywords_sort_order import GetV1GroupsGroupIdBlockedKeywordsSortOrder
-from .get_v1_groups_group_id_join_requests_limit import GetV1GroupsGroupIdJoinRequestsLimit
-from .get_v1_groups_group_id_join_requests_sort_order import GetV1GroupsGroupIdJoinRequestsSortOrder
-from .get_v1_groups_group_id_name_history_limit import GetV1GroupsGroupIdNameHistoryLimit
-from .get_v1_groups_group_id_name_history_sort_order import GetV1GroupsGroupIdNameHistorySortOrder
-from .get_v1_groups_group_id_roles_role_set_id_users_limit import GetV1GroupsGroupIdRolesRoleSetIdUsersLimit
-from .get_v1_groups_group_id_roles_role_set_id_users_sort_order import GetV1GroupsGroupIdRolesRoleSetIdUsersSortOrder
 from .get_v1_groups_group_id_universes_limit import GetV1GroupsGroupIdUniversesLimit
 from .get_v1_groups_group_id_universes_sort_order import GetV1GroupsGroupIdUniversesSortOrder
-from .get_v1_groups_group_id_users_limit import GetV1GroupsGroupIdUsersLimit
-from .get_v1_groups_group_id_users_sort_order import GetV1GroupsGroupIdUsersSortOrder
 from .get_v1_groups_icons_format import GetV1GroupsIconsFormat
 from .get_v1_groups_icons_size import GetV1GroupsIconsSize
-from .get_v1_groups_search_limit import GetV1GroupsSearchLimit
 from .get_v1_localization_table_tables_table_id_entries_entry_format import (
     GetV1LocalizationTableTablesTableIdEntriesEntryFormat,
 )
@@ -323,7 +304,6 @@ from .get_v1_users_user_id_assets_collectibles_sort_order import GetV1UsersUserI
 from .get_v1_users_user_id_bundles_bundle_type_bundle_type import GetV1UsersUserIdBundlesBundleTypeBundleType
 from .get_v1_users_user_id_bundles_bundle_type_sort_order import GetV1UsersUserIdBundlesBundleTypeSortOrder
 from .get_v1_users_user_id_configuration_action_type import GetV1UsersUserIdConfigurationActionType
-from .get_v1_users_user_id_groups_roles_discovery_type import GetV1UsersUserIdGroupsRolesDiscoveryType
 from .get_v1_users_user_id_items_item_type_item_target_id_is_owned_item_type import (
     GetV1UsersUserIdItemsItemTypeItemTargetIdIsOwnedItemType,
 )
@@ -338,12 +318,6 @@ from .get_v2_assets_asset_id_owners_sort_order import GetV2AssetsAssetIdOwnersSo
 from .get_v2_collectible_items_collectible_item_id_owners_sort_order import (
     GetV2CollectibleItemsCollectibleItemIdOwnersSortOrder,
 )
-from .get_v2_groups_group_id_games_access_filter import GetV2GroupsGroupIdGamesAccessFilter
-from .get_v2_groups_group_id_games_limit import GetV2GroupsGroupIdGamesLimit
-from .get_v2_groups_group_id_games_sort_order import GetV2GroupsGroupIdGamesSortOrder
-from .get_v2_groups_group_id_games_v2_access_filter import GetV2GroupsGroupIdGamesV2AccessFilter
-from .get_v2_groups_group_id_games_v2_limit import GetV2GroupsGroupIdGamesV2Limit
-from .get_v2_groups_group_id_games_v2_sort_order import GetV2GroupsGroupIdGamesV2SortOrder
 from .get_v2_passwords_reset_target_type import GetV2PasswordsResetTargetType
 from .get_v2_search_items_details_category_filter import GetV2SearchItemsDetailsCategoryFilter
 from .get_v2_search_items_details_creator_type import GetV2SearchItemsDetailsCreatorType
@@ -366,7 +340,6 @@ from .get_v2_users_user_id_favorite_games_sort_order import GetV2UsersUserIdFavo
 from .get_v2_users_user_id_games_access_filter import GetV2UsersUserIdGamesAccessFilter
 from .get_v2_users_user_id_games_limit import GetV2UsersUserIdGamesLimit
 from .get_v2_users_user_id_games_sort_order import GetV2UsersUserIdGamesSortOrder
-from .get_v2_users_user_id_groups_roles_discovery_type import GetV2UsersUserIdGroupsRolesDiscoveryType
 from .get_v2_users_user_id_inventory_asset_type_id_limit import GetV2UsersUserIdInventoryAssetTypeIdLimit
 from .get_v2_users_user_id_inventory_asset_type_id_sort_order import GetV2UsersUserIdInventoryAssetTypeIdSortOrder
 from .get_v2_users_user_id_inventory_asset_types_item import GetV2UsersUserIdInventoryAssetTypesItem
@@ -388,18 +361,6 @@ from .group_join_request import GroupJoinRequest
 from .group_membership import GroupMembership
 from .group_role import GroupRole
 from .group_role_role_permissions import GroupRoleRolePermissions
-from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
-    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
-)
-from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type_type import (
-    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType,
-)
-from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
-    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
-)
-from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type_type import (
-    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType,
-)
 from .homepage_thumbnail import HomepageThumbnail
 from .homepage_thumbnail_status import HomepageThumbnailStatus
 from .host_response import HostResponse
@@ -583,13 +544,6 @@ from .operation_pending import OperationPending
 from .operational_status import OperationalStatus
 from .ordered_data_store_entry import OrderedDataStoreEntry
 from .paginated_game_events_response import PaginatedGameEventsResponse
-from .patch_legacy_groups_v1_groups_group_id_notification_preference_response_200 import (
-    PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200,
-)
-from .patch_v1_groups_group_id_notification_preference_response_200 import (
-    PatchV1GroupsGroupIdNotificationPreferenceResponse200,
-)
-from .patch_v1_groups_icon_body import PatchV1GroupsIconBody
 from .personalized_config_status import PersonalizedConfigStatus
 from .personalized_thumbnail import PersonalizedThumbnail
 from .personalized_thumbnail_status import PersonalizedThumbnailStatus
@@ -659,7 +613,6 @@ from .post_v1_game_passes_game_pass_id_icons_language_codes_language_code_body i
 from .post_v1_game_thumbnails_games_game_id_language_codes_language_code_image_body import (
     PostV1GameThumbnailsGamesGameIdLanguageCodesLanguageCodeImageBody,
 )
-from .post_v1_groups_create_body import PostV1GroupsCreateBody
 from .post_v1_universes_universe_id_badges_body import PostV1UniversesUniverseIdBadgesBody
 from .post_v1_universes_universe_id_badges_body_payment_source_type import (
     PostV1UniversesUniverseIdBadgesBodyPaymentSourceType,
@@ -1037,6 +990,10 @@ from .roblox_api_develop_models_place_model_v2 import RobloxApiDevelopModelsPlac
 from .roblox_api_develop_models_place_model_v2_allowed_gear_types_item import (
     RobloxApiDevelopModelsPlaceModelV2AllowedGearTypesItem,
 )
+from .roblox_api_develop_models_playtester_eligibility import RobloxApiDevelopModelsPlaytesterEligibility
+from .roblox_api_develop_models_playtester_eligibility_response import (
+    RobloxApiDevelopModelsPlaytesterEligibilityResponse,
+)
 from .roblox_api_develop_models_playtesters_request import RobloxApiDevelopModelsPlaytestersRequest
 from .roblox_api_develop_models_playtesters_response import RobloxApiDevelopModelsPlaytestersResponse
 from .roblox_api_develop_models_private_server_details_response import (
@@ -1249,6 +1206,16 @@ from .roblox_authentication_api_models_account_pin_request import RobloxAuthenti
 from .roblox_authentication_api_models_account_pin_response import RobloxAuthenticationApiModelsAccountPinResponse
 from .roblox_authentication_api_models_account_pin_status_response import (
     RobloxAuthenticationApiModelsAccountPinStatusResponse,
+)
+from .roblox_authentication_api_models_account_upgrade_request import RobloxAuthenticationApiModelsAccountUpgradeRequest
+from .roblox_authentication_api_models_account_upgrade_request_gender import (
+    RobloxAuthenticationApiModelsAccountUpgradeRequestGender,
+)
+from .roblox_authentication_api_models_account_upgrade_request_upgrade_type import (
+    RobloxAuthenticationApiModelsAccountUpgradeRequestUpgradeType,
+)
+from .roblox_authentication_api_models_account_upgrade_response import (
+    RobloxAuthenticationApiModelsAccountUpgradeResponse,
 )
 from .roblox_authentication_api_models_auth_meta_data_response import RobloxAuthenticationApiModelsAuthMetaDataResponse
 from .roblox_authentication_api_models_auth_methods_metadata_response import (
@@ -2021,112 +1988,11 @@ from .roblox_games_api_models_response_purchase_data import RobloxGamesApiModels
 from .roblox_games_api_models_response_refund_policy import RobloxGamesApiModelsResponseRefundPolicy
 from .roblox_games_api_models_response_upsell_ux_treatment import RobloxGamesApiModelsResponseUpsellUxTreatment
 from .roblox_games_api_models_response_upsell_ux_treatment_data import RobloxGamesApiModelsResponseUpsellUxTreatmentData
-from .roblox_groups_api_blocked_keyword_page_response_roblox_groups_client_blocked_keyword_model import (
-    RobloxGroupsApiBlockedKeywordPageResponseRobloxGroupsClientBlockedKeywordModel,
-)
-from .roblox_groups_api_change_owner_request import RobloxGroupsApiChangeOwnerRequest
 from .roblox_groups_api_community_feature_freeze_status import RobloxGroupsApiCommunityFeatureFreezeStatus
-from .roblox_groups_api_create_blocked_keywords_request import RobloxGroupsApiCreateBlockedKeywordsRequest
 from .roblox_groups_api_get_community_feature_freezes_response import RobloxGroupsApiGetCommunityFeatureFreezesResponse
 from .roblox_groups_api_get_group_features_response import RobloxGroupsApiGetGroupFeaturesResponse
-from .roblox_groups_api_get_social_link_response import RobloxGroupsApiGetSocialLinkResponse
-from .roblox_groups_api_get_social_link_response_social_links_verification_status import (
-    RobloxGroupsApiGetSocialLinkResponseSocialLinksVerificationStatus,
-)
-from .roblox_groups_api_group_all_roles_response import RobloxGroupsApiGroupAllRolesResponse
-from .roblox_groups_api_group_audit_log_page_response_roblox_groups_api_models_response_group_audit_log_response_item import (
-    RobloxGroupsApiGroupAuditLogPageResponseRobloxGroupsApiModelsResponseGroupAuditLogResponseItem,
-)
-from .roblox_groups_api_group_ban_member_response import RobloxGroupsApiGroupBanMemberResponse
-from .roblox_groups_api_group_channel_permissions_model import RobloxGroupsApiGroupChannelPermissionsModel
-from .roblox_groups_api_group_configuration_details_response import RobloxGroupsApiGroupConfigurationDetailsResponse
-from .roblox_groups_api_group_configuration_display_options_response import (
-    RobloxGroupsApiGroupConfigurationDisplayOptionsResponse,
-)
-from .roblox_groups_api_group_configuration_response import RobloxGroupsApiGroupConfigurationResponse
-from .roblox_groups_api_group_content_moderation_permissions_model import (
-    RobloxGroupsApiGroupContentModerationPermissionsModel,
-)
-from .roblox_groups_api_group_description_response import RobloxGroupsApiGroupDescriptionResponse
-from .roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
-from .roblox_groups_api_group_economy_permissions_model import RobloxGroupsApiGroupEconomyPermissionsModel
 from .roblox_groups_api_group_feature_response import RobloxGroupsApiGroupFeatureResponse
 from .roblox_groups_api_group_feature_response_feature import RobloxGroupsApiGroupFeatureResponseFeature
-from .roblox_groups_api_group_forums_permissions_model import RobloxGroupsApiGroupForumsPermissionsModel
-from .roblox_groups_api_group_join_request_response import RobloxGroupsApiGroupJoinRequestResponse
-from .roblox_groups_api_group_management_permissions_model import RobloxGroupsApiGroupManagementPermissionsModel
-from .roblox_groups_api_group_membership_detail_response import RobloxGroupsApiGroupMembershipDetailResponse
-from .roblox_groups_api_group_membership_metadata_response import RobloxGroupsApiGroupMembershipMetadataResponse
-from .roblox_groups_api_group_membership_permissions_model import RobloxGroupsApiGroupMembershipPermissionsModel
-from .roblox_groups_api_group_membership_response import RobloxGroupsApiGroupMembershipResponse
-from .roblox_groups_api_group_name_change_configuration_response import (
-    RobloxGroupsApiGroupNameChangeConfigurationResponse,
-)
-from .roblox_groups_api_group_notification_preference_data import RobloxGroupsApiGroupNotificationPreferenceData
-from .roblox_groups_api_group_notification_preference_data_type import (
-    RobloxGroupsApiGroupNotificationPreferenceDataType,
-)
-from .roblox_groups_api_group_open_cloud_permissions_model import RobloxGroupsApiGroupOpenCloudPermissionsModel
-from .roblox_groups_api_group_payout_response import RobloxGroupsApiGroupPayoutResponse
-from .roblox_groups_api_group_payout_restriction_response import RobloxGroupsApiGroupPayoutRestrictionResponse
-from .roblox_groups_api_group_permissions_model import RobloxGroupsApiGroupPermissionsModel
-from .roblox_groups_api_group_permissions_response import RobloxGroupsApiGroupPermissionsResponse
-from .roblox_groups_api_group_policies_response import RobloxGroupsApiGroupPoliciesResponse
-from .roblox_groups_api_group_policy_request import RobloxGroupsApiGroupPolicyRequest
-from .roblox_groups_api_group_policy_response import RobloxGroupsApiGroupPolicyResponse
-from .roblox_groups_api_group_posts_permissions_model import RobloxGroupsApiGroupPostsPermissionsModel
-from .roblox_groups_api_group_relationships_response import RobloxGroupsApiGroupRelationshipsResponse
-from .roblox_groups_api_group_relationships_response_relationship_type import (
-    RobloxGroupsApiGroupRelationshipsResponseRelationshipType,
-)
-from .roblox_groups_api_group_role_detail_response import RobloxGroupsApiGroupRoleDetailResponse
-from .roblox_groups_api_group_role_detail_response_color import RobloxGroupsApiGroupRoleDetailResponseColor
-from .roblox_groups_api_group_role_response import RobloxGroupsApiGroupRoleResponse
-from .roblox_groups_api_group_role_response_color import RobloxGroupsApiGroupRoleResponseColor
-from .roblox_groups_api_group_search_metadata_response import RobloxGroupsApiGroupSearchMetadataResponse
-from .roblox_groups_api_group_search_page_response import RobloxGroupsApiGroupSearchPageResponse
-from .roblox_groups_api_group_search_response_item import RobloxGroupsApiGroupSearchResponseItem
-from .roblox_groups_api_group_settings_response import RobloxGroupsApiGroupSettingsResponse
-from .roblox_groups_api_group_settings_response_account_tenure_requirement import (
-    RobloxGroupsApiGroupSettingsResponseAccountTenureRequirement,
-)
-from .roblox_groups_api_group_settings_response_slowmode import RobloxGroupsApiGroupSettingsResponseSlowmode
-from .roblox_groups_api_group_settings_response_verification_level import (
-    RobloxGroupsApiGroupSettingsResponseVerificationLevel,
-)
-from .roblox_groups_api_groups_display_options_response import RobloxGroupsApiGroupsDisplayOptionsResponse
-from .roblox_groups_api_has_group_features_blocked_response import RobloxGroupsApiHasGroupFeaturesBlockedResponse
-from .roblox_groups_api_join_group_request import RobloxGroupsApiJoinGroupRequest
-from .roblox_groups_api_members_request import RobloxGroupsApiMembersRequest
-from .roblox_groups_api_models_request_create_role_set_request import RobloxGroupsApiModelsRequestCreateRoleSetRequest
-from .roblox_groups_api_models_request_update_role_set_request import RobloxGroupsApiModelsRequestUpdateRoleSetRequest
-from .roblox_groups_api_models_response_group_audit_log_response_item import (
-    RobloxGroupsApiModelsResponseGroupAuditLogResponseItem,
-)
-from .roblox_groups_api_models_response_group_experience_response import (
-    RobloxGroupsApiModelsResponseGroupExperienceResponse,
-)
-from .roblox_groups_api_models_response_group_name_history_response_item import (
-    RobloxGroupsApiModelsResponseGroupNameHistoryResponseItem,
-)
-from .roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel
-from .roblox_groups_api_models_response_user_model_builders_club_membership_type import (
-    RobloxGroupsApiModelsResponseUserModelBuildersClubMembershipType,
-)
-from .roblox_groups_api_one_time_payout_response import RobloxGroupsApiOneTimePayoutResponse
-from .roblox_groups_api_one_time_payout_response_status import RobloxGroupsApiOneTimePayoutResponseStatus
-from .roblox_groups_api_payout_recipient_request import RobloxGroupsApiPayoutRecipientRequest
-from .roblox_groups_api_payout_recipient_request_recipient_type import (
-    RobloxGroupsApiPayoutRecipientRequestRecipientType,
-)
-from .roblox_groups_api_payout_request import RobloxGroupsApiPayoutRequest
-from .roblox_groups_api_payout_request_payout_type import RobloxGroupsApiPayoutRequestPayoutType
-from .roblox_groups_api_post_group_status_request import RobloxGroupsApiPostGroupStatusRequest
-from .roblox_groups_api_primary_group_request import RobloxGroupsApiPrimaryGroupRequest
-from .roblox_groups_api_recurring_payouts_configuration_response import (
-    RobloxGroupsApiRecurringPayoutsConfigurationResponse,
-)
-from .roblox_groups_api_role_configuration_response import RobloxGroupsApiRoleConfigurationResponse
 from .roblox_groups_api_set_features_request_model import RobloxGroupsApiSetFeaturesRequestModel
 from .roblox_groups_api_set_features_request_model_features import RobloxGroupsApiSetFeaturesRequestModelFeatures
 from .roblox_groups_api_set_features_request_model_features_content_upload import (
@@ -2148,45 +2014,7 @@ from .roblox_groups_api_set_features_request_model_features_payouts import (
     RobloxGroupsApiSetFeaturesRequestModelFeaturesPayouts,
 )
 from .roblox_groups_api_set_features_response_model import RobloxGroupsApiSetFeaturesResponseModel
-from .roblox_groups_api_shout_response import RobloxGroupsApiShoutResponse
-from .roblox_groups_api_social_link_request import RobloxGroupsApiSocialLinkRequest
-from .roblox_groups_api_social_link_request_type import RobloxGroupsApiSocialLinkRequestType
-from .roblox_groups_api_social_link_response import RobloxGroupsApiSocialLinkResponse
-from .roblox_groups_api_social_link_response_type import RobloxGroupsApiSocialLinkResponseType
-from .roblox_groups_api_update_blocked_keyword_request import RobloxGroupsApiUpdateBlockedKeywordRequest
-from .roblox_groups_api_update_group_description_request import RobloxGroupsApiUpdateGroupDescriptionRequest
-from .roblox_groups_api_update_group_name_request import RobloxGroupsApiUpdateGroupNameRequest
-from .roblox_groups_api_update_group_name_response import RobloxGroupsApiUpdateGroupNameResponse
-from .roblox_groups_api_update_group_notification_preference_request import (
-    RobloxGroupsApiUpdateGroupNotificationPreferenceRequest,
-)
-from .roblox_groups_api_update_group_notification_preference_request_type import (
-    RobloxGroupsApiUpdateGroupNotificationPreferenceRequestType,
-)
-from .roblox_groups_api_update_group_settings_request import RobloxGroupsApiUpdateGroupSettingsRequest
-from .roblox_groups_api_update_group_settings_request_account_tenure_requirement import (
-    RobloxGroupsApiUpdateGroupSettingsRequestAccountTenureRequirement,
-)
-from .roblox_groups_api_update_group_settings_request_slowmode import RobloxGroupsApiUpdateGroupSettingsRequestSlowmode
-from .roblox_groups_api_update_group_settings_request_verification_level import (
-    RobloxGroupsApiUpdateGroupSettingsRequestVerificationLevel,
-)
-from .roblox_groups_api_update_permissions_request import RobloxGroupsApiUpdatePermissionsRequest
-from .roblox_groups_api_update_permissions_request_permissions import RobloxGroupsApiUpdatePermissionsRequestPermissions
-from .roblox_groups_api_update_user_role_request import RobloxGroupsApiUpdateUserRoleRequest
-from .roblox_groups_api_user_group_membership_response import RobloxGroupsApiUserGroupMembershipResponse
-from .roblox_groups_api_user_group_role_response import RobloxGroupsApiUserGroupRoleResponse
-from .roblox_groups_api_watermark_contribution_request import RobloxGroupsApiWatermarkContributionRequest
-from .roblox_groups_api_watermark_contribution_request_balance_key import (
-    RobloxGroupsApiWatermarkContributionRequestBalanceKey,
-)
-from .roblox_groups_client_blocked_keyword_model import RobloxGroupsClientBlockedKeywordModel
 from .roblox_groups_client_community_tier_info_response import RobloxGroupsClientCommunityTierInfoResponse
-from .roblox_groups_client_create_blocked_keywords_response import RobloxGroupsClientCreateBlockedKeywordsResponse
-from .roblox_groups_client_emote_model import RobloxGroupsClientEmoteModel
-from .roblox_groups_client_emote_set_model import RobloxGroupsClientEmoteSetModel
-from .roblox_groups_client_get_group_emote_sets_response import RobloxGroupsClientGetGroupEmoteSetsResponse
-from .roblox_groups_client_group_featured_content_response import RobloxGroupsClientGroupFeaturedContentResponse
 from .roblox_groups_client_tier_capabilities import RobloxGroupsClientTierCapabilities
 from .roblox_groups_client_tier_evaluation_result_response import RobloxGroupsClientTierEvaluationResultResponse
 from .roblox_groups_client_tier_requirement import RobloxGroupsClientTierRequirement
@@ -2589,9 +2417,6 @@ from .roblox_web_responses_economy_currency_response import RobloxWebResponsesEc
 from .roblox_web_responses_games_game_favorite_response_model import RobloxWebResponsesGamesGameFavoriteResponseModel
 from .roblox_web_responses_games_game_media_item_response_v2 import RobloxWebResponsesGamesGameMediaItemResponseV2
 from .roblox_web_responses_games_game_response_v2 import RobloxWebResponsesGamesGameResponseV2
-from .roblox_web_responses_groups_group_basic_response import RobloxWebResponsesGroupsGroupBasicResponse
-from .roblox_web_responses_groups_group_response_v2 import RobloxWebResponsesGroupsGroupResponseV2
-from .roblox_web_responses_groups_group_role_basic_response import RobloxWebResponsesGroupsGroupRoleBasicResponse
 from .roblox_web_responses_plugins_plugin_response import RobloxWebResponsesPluginsPluginResponse
 from .roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
     RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
@@ -2616,12 +2441,6 @@ from .roblox_web_responses_related_entity_type_response_roblox_users_client_asso
 )
 from .roblox_web_responses_related_entity_type_response_roblox_users_client_associated_entity_type_type import (
     RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType,
-)
-from .roblox_web_responses_related_entity_type_response_roblox_web_responses_groups_group_owner_type import (
-    RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerType,
-)
-from .roblox_web_responses_related_entity_type_response_roblox_web_responses_groups_group_owner_type_type import (
-    RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerTypeType,
 )
 from .roblox_web_responses_users_legacy_user_response import RobloxWebResponsesUsersLegacyUserResponse
 from .roblox_web_responses_users_skinny_user_response import RobloxWebResponsesUsersSkinnyUserResponse
@@ -2683,27 +2502,6 @@ from .roblox_web_web_api_models_api_array_response_roblox_games_api_models_respo
 from .roblox_web_web_api_models_api_array_response_roblox_games_api_models_response_game_product_response import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameProductResponse,
 )
-from .roblox_web_web_api_models_api_array_response_roblox_groups_api_group_detail_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_groups_api_group_membership_detail_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupMembershipDetailResponse,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_groups_api_group_membership_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupMembershipResponse,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_groups_api_group_payout_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupPayoutResponse,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_groups_api_group_permissions_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupPermissionsResponse,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_groups_api_group_role_detail_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupRoleDetailResponse,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_groups_api_user_group_membership_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiUserGroupMembershipResponse,
-)
 from .roblox_web_web_api_models_api_array_response_roblox_locale_api_supported_locale_locus import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxLocaleApiSupportedLocaleLocus,
 )
@@ -2718,12 +2516,6 @@ from .roblox_web_web_api_models_api_array_response_roblox_users_api_multi_get_us
 )
 from .roblox_web_web_api_models_api_array_response_roblox_web_responses_games_game_media_item_response_v2 import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesGamesGameMediaItemResponseV2,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_web_responses_groups_group_basic_response import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesGroupsGroupBasicResponse,
-)
-from .roblox_web_web_api_models_api_array_response_roblox_web_responses_groups_group_response_v2 import (
-    RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesGroupsGroupResponseV2,
 )
 from .roblox_web_web_api_models_api_array_response_roblox_web_responses_plugins_plugin_response import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesPluginsPluginResponse,
@@ -2754,24 +2546,6 @@ from .roblox_web_web_api_models_api_page_response_roblox_friends_api_friend_requ
 )
 from .roblox_web_web_api_models_api_page_response_roblox_friends_api_models_response_trusted_friend_request_response import (
     RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiModelsResponseTrustedFriendRequestResponse,
-)
-from .roblox_web_web_api_models_api_page_response_roblox_groups_api_group_ban_member_response import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiGroupBanMemberResponse,
-)
-from .roblox_web_web_api_models_api_page_response_roblox_groups_api_group_join_request_response import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiGroupJoinRequestResponse,
-)
-from .roblox_web_web_api_models_api_page_response_roblox_groups_api_models_response_group_experience_response import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseGroupExperienceResponse,
-)
-from .roblox_web_web_api_models_api_page_response_roblox_groups_api_models_response_group_name_history_response_item import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseGroupNameHistoryResponseItem,
-)
-from .roblox_web_web_api_models_api_page_response_roblox_groups_api_models_response_user_model import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseUserModel,
-)
-from .roblox_web_web_api_models_api_page_response_roblox_groups_api_user_group_role_response import (
-    RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiUserGroupRoleResponse,
 )
 from .roblox_web_web_api_models_api_page_response_roblox_inventory_api_models_collectible_user_asset_model import (
     RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiModelsCollectibleUserAssetModel,
@@ -3158,9 +2932,6 @@ __all__ = (
     "GetExperimentStatsResponse",
     "GetInstanceMetadata",
     "GetLegacyDevelopV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit",
-    "GetLegacyGroupsV1GroupsGroupIdAuditLogActionType",
-    "GetLegacyGroupsV1GroupsGroupIdAuditLogLimit",
-    "GetLegacyGroupsV1GroupsGroupIdAuditLogSortOrder",
     "GetLegacyLocalizationTablesV1LocalizationTableTablesTableIdEntriesEntryFormat",
     "GetMatchmakingCustomizationFeatureFlagsResponse",
     "GetMatchmakingScoringConfigurationResponse",
@@ -3196,26 +2967,10 @@ __all__ = (
     "GetV1GamesMultigetThumbnailsSize",
     "GetV1GamesUniverseIdThumbnailsFormat",
     "GetV1GamesUniverseIdThumbnailsSize",
-    "GetV1GroupsGroupIdAuditLogActionType",
-    "GetV1GroupsGroupIdAuditLogLimit",
-    "GetV1GroupsGroupIdAuditLogSortOrder",
-    "GetV1GroupsGroupIdBansLimit",
-    "GetV1GroupsGroupIdBansSortOrder",
-    "GetV1GroupsGroupIdBlockedKeywordsLimit",
-    "GetV1GroupsGroupIdBlockedKeywordsSortOrder",
-    "GetV1GroupsGroupIdJoinRequestsLimit",
-    "GetV1GroupsGroupIdJoinRequestsSortOrder",
-    "GetV1GroupsGroupIdNameHistoryLimit",
-    "GetV1GroupsGroupIdNameHistorySortOrder",
-    "GetV1GroupsGroupIdRolesRoleSetIdUsersLimit",
-    "GetV1GroupsGroupIdRolesRoleSetIdUsersSortOrder",
     "GetV1GroupsGroupIdUniversesLimit",
     "GetV1GroupsGroupIdUniversesSortOrder",
-    "GetV1GroupsGroupIdUsersLimit",
-    "GetV1GroupsGroupIdUsersSortOrder",
     "GetV1GroupsIconsFormat",
     "GetV1GroupsIconsSize",
-    "GetV1GroupsSearchLimit",
     "GetV1LocalizationTableTablesTableIdEntriesEntryFormat",
     "GetV1MessagesMessageTab",
     "GetV1MetadatatwostepverificationRobloxComActionType",
@@ -3253,7 +3008,6 @@ __all__ = (
     "GetV1UsersUserIdBundlesBundleTypeBundleType",
     "GetV1UsersUserIdBundlesBundleTypeSortOrder",
     "GetV1UsersUserIdConfigurationActionType",
-    "GetV1UsersUserIdGroupsRolesDiscoveryType",
     "GetV1UsersUserIdItemsItemTypeItemTargetIdIsOwnedItemType",
     "GetV1UsersUserIdItemsItemTypeItemTargetIdItemType",
     "GetV1UsersUserIdPlacesInventoryPlacesTab",
@@ -3264,12 +3018,6 @@ __all__ = (
     "GetV2AssetsAssetIdOwnersLimit",
     "GetV2AssetsAssetIdOwnersSortOrder",
     "GetV2CollectibleItemsCollectibleItemIdOwnersSortOrder",
-    "GetV2GroupsGroupIdGamesAccessFilter",
-    "GetV2GroupsGroupIdGamesLimit",
-    "GetV2GroupsGroupIdGamesSortOrder",
-    "GetV2GroupsGroupIdGamesV2AccessFilter",
-    "GetV2GroupsGroupIdGamesV2Limit",
-    "GetV2GroupsGroupIdGamesV2SortOrder",
     "GetV2PasswordsResetTargetType",
     "GetV2SearchItemsDetailsCategoryFilter",
     "GetV2SearchItemsDetailsCreatorType",
@@ -3288,7 +3036,6 @@ __all__ = (
     "GetV2UsersUserIdGamesAccessFilter",
     "GetV2UsersUserIdGamesLimit",
     "GetV2UsersUserIdGamesSortOrder",
-    "GetV2UsersUserIdGroupsRolesDiscoveryType",
     "GetV2UsersUserIdInventoryAssetTypeIdLimit",
     "GetV2UsersUserIdInventoryAssetTypeIdSortOrder",
     "GetV2UsersUserIdInventoryAssetTypesItem",
@@ -3310,10 +3057,6 @@ __all__ = (
     "GroupMembership",
     "GroupRole",
     "GroupRoleRolePermissions",
-    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
-    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
-    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType",
-    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType",
     "HomepageThumbnail",
     "HomepageThumbnailStatus",
     "HostResponse",
@@ -3489,9 +3232,6 @@ __all__ = (
     "OperationPending",
     "OrderedDataStoreEntry",
     "PaginatedGameEventsResponse",
-    "PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200",
-    "PatchV1GroupsGroupIdNotificationPreferenceResponse200",
-    "PatchV1GroupsIconBody",
     "PersonalizedConfigStatus",
     "PersonalizedThumbnail",
     "PersonalizedThumbnailStatus",
@@ -3527,7 +3267,6 @@ __all__ = (
     "PostV1GameIconGamesGameIdLanguageCodesLanguageCodeBody",
     "PostV1GamePassesGamePassIdIconsLanguageCodesLanguageCodeBody",
     "PostV1GameThumbnailsGamesGameIdLanguageCodesLanguageCodeImageBody",
-    "PostV1GroupsCreateBody",
     "PostV1UniversesUniverseIdBadgesBody",
     "PostV1UniversesUniverseIdBadgesBodyPaymentSourceType",
     "PresenceApiErrorResponse",
@@ -3729,6 +3468,8 @@ __all__ = (
     "RobloxApiDevelopModelsPlaceModel",
     "RobloxApiDevelopModelsPlaceModelV2",
     "RobloxApiDevelopModelsPlaceModelV2AllowedGearTypesItem",
+    "RobloxApiDevelopModelsPlaytesterEligibility",
+    "RobloxApiDevelopModelsPlaytesterEligibilityResponse",
     "RobloxApiDevelopModelsPlaytestersRequest",
     "RobloxApiDevelopModelsPlaytestersResponse",
     "RobloxApiDevelopModelsPrivateServerDetailsResponse",
@@ -3812,6 +3553,10 @@ __all__ = (
     "RobloxAuthenticationApiModelsAccountPinRequest",
     "RobloxAuthenticationApiModelsAccountPinResponse",
     "RobloxAuthenticationApiModelsAccountPinStatusResponse",
+    "RobloxAuthenticationApiModelsAccountUpgradeRequest",
+    "RobloxAuthenticationApiModelsAccountUpgradeRequestGender",
+    "RobloxAuthenticationApiModelsAccountUpgradeRequestUpgradeType",
+    "RobloxAuthenticationApiModelsAccountUpgradeResponse",
     "RobloxAuthenticationApiModelsAuthMetaDataResponse",
     "RobloxAuthenticationApiModelsAuthMethodsMetadataResponse",
     "RobloxAuthenticationApiModelsEmailValidationResponse",
@@ -4125,80 +3870,11 @@ __all__ = (
     "RobloxGamesApiModelsResponseRefundPolicy",
     "RobloxGamesApiModelsResponseUpsellUxTreatment",
     "RobloxGamesApiModelsResponseUpsellUxTreatmentData",
-    "RobloxGroupsApiBlockedKeywordPageResponseRobloxGroupsClientBlockedKeywordModel",
-    "RobloxGroupsApiChangeOwnerRequest",
     "RobloxGroupsApiCommunityFeatureFreezeStatus",
-    "RobloxGroupsApiCreateBlockedKeywordsRequest",
     "RobloxGroupsApiGetCommunityFeatureFreezesResponse",
     "RobloxGroupsApiGetGroupFeaturesResponse",
-    "RobloxGroupsApiGetSocialLinkResponse",
-    "RobloxGroupsApiGetSocialLinkResponseSocialLinksVerificationStatus",
-    "RobloxGroupsApiGroupAllRolesResponse",
-    "RobloxGroupsApiGroupAuditLogPageResponseRobloxGroupsApiModelsResponseGroupAuditLogResponseItem",
-    "RobloxGroupsApiGroupBanMemberResponse",
-    "RobloxGroupsApiGroupChannelPermissionsModel",
-    "RobloxGroupsApiGroupConfigurationDetailsResponse",
-    "RobloxGroupsApiGroupConfigurationDisplayOptionsResponse",
-    "RobloxGroupsApiGroupConfigurationResponse",
-    "RobloxGroupsApiGroupContentModerationPermissionsModel",
-    "RobloxGroupsApiGroupDescriptionResponse",
-    "RobloxGroupsApiGroupDetailResponse",
-    "RobloxGroupsApiGroupEconomyPermissionsModel",
     "RobloxGroupsApiGroupFeatureResponse",
     "RobloxGroupsApiGroupFeatureResponseFeature",
-    "RobloxGroupsApiGroupForumsPermissionsModel",
-    "RobloxGroupsApiGroupJoinRequestResponse",
-    "RobloxGroupsApiGroupManagementPermissionsModel",
-    "RobloxGroupsApiGroupMembershipDetailResponse",
-    "RobloxGroupsApiGroupMembershipMetadataResponse",
-    "RobloxGroupsApiGroupMembershipPermissionsModel",
-    "RobloxGroupsApiGroupMembershipResponse",
-    "RobloxGroupsApiGroupNameChangeConfigurationResponse",
-    "RobloxGroupsApiGroupNotificationPreferenceData",
-    "RobloxGroupsApiGroupNotificationPreferenceDataType",
-    "RobloxGroupsApiGroupOpenCloudPermissionsModel",
-    "RobloxGroupsApiGroupPayoutResponse",
-    "RobloxGroupsApiGroupPayoutRestrictionResponse",
-    "RobloxGroupsApiGroupPermissionsModel",
-    "RobloxGroupsApiGroupPermissionsResponse",
-    "RobloxGroupsApiGroupPoliciesResponse",
-    "RobloxGroupsApiGroupPolicyRequest",
-    "RobloxGroupsApiGroupPolicyResponse",
-    "RobloxGroupsApiGroupPostsPermissionsModel",
-    "RobloxGroupsApiGroupRelationshipsResponse",
-    "RobloxGroupsApiGroupRelationshipsResponseRelationshipType",
-    "RobloxGroupsApiGroupRoleDetailResponse",
-    "RobloxGroupsApiGroupRoleDetailResponseColor",
-    "RobloxGroupsApiGroupRoleResponse",
-    "RobloxGroupsApiGroupRoleResponseColor",
-    "RobloxGroupsApiGroupsDisplayOptionsResponse",
-    "RobloxGroupsApiGroupSearchMetadataResponse",
-    "RobloxGroupsApiGroupSearchPageResponse",
-    "RobloxGroupsApiGroupSearchResponseItem",
-    "RobloxGroupsApiGroupSettingsResponse",
-    "RobloxGroupsApiGroupSettingsResponseAccountTenureRequirement",
-    "RobloxGroupsApiGroupSettingsResponseSlowmode",
-    "RobloxGroupsApiGroupSettingsResponseVerificationLevel",
-    "RobloxGroupsApiHasGroupFeaturesBlockedResponse",
-    "RobloxGroupsApiJoinGroupRequest",
-    "RobloxGroupsApiMembersRequest",
-    "RobloxGroupsApiModelsRequestCreateRoleSetRequest",
-    "RobloxGroupsApiModelsRequestUpdateRoleSetRequest",
-    "RobloxGroupsApiModelsResponseGroupAuditLogResponseItem",
-    "RobloxGroupsApiModelsResponseGroupExperienceResponse",
-    "RobloxGroupsApiModelsResponseGroupNameHistoryResponseItem",
-    "RobloxGroupsApiModelsResponseUserModel",
-    "RobloxGroupsApiModelsResponseUserModelBuildersClubMembershipType",
-    "RobloxGroupsApiOneTimePayoutResponse",
-    "RobloxGroupsApiOneTimePayoutResponseStatus",
-    "RobloxGroupsApiPayoutRecipientRequest",
-    "RobloxGroupsApiPayoutRecipientRequestRecipientType",
-    "RobloxGroupsApiPayoutRequest",
-    "RobloxGroupsApiPayoutRequestPayoutType",
-    "RobloxGroupsApiPostGroupStatusRequest",
-    "RobloxGroupsApiPrimaryGroupRequest",
-    "RobloxGroupsApiRecurringPayoutsConfigurationResponse",
-    "RobloxGroupsApiRoleConfigurationResponse",
     "RobloxGroupsApiSetFeaturesRequestModel",
     "RobloxGroupsApiSetFeaturesRequestModelFeatures",
     "RobloxGroupsApiSetFeaturesRequestModelFeaturesContentUpload",
@@ -4208,35 +3884,7 @@ __all__ = (
     "RobloxGroupsApiSetFeaturesRequestModelFeaturesGroupOwnershipTransfer",
     "RobloxGroupsApiSetFeaturesRequestModelFeaturesPayouts",
     "RobloxGroupsApiSetFeaturesResponseModel",
-    "RobloxGroupsApiShoutResponse",
-    "RobloxGroupsApiSocialLinkRequest",
-    "RobloxGroupsApiSocialLinkRequestType",
-    "RobloxGroupsApiSocialLinkResponse",
-    "RobloxGroupsApiSocialLinkResponseType",
-    "RobloxGroupsApiUpdateBlockedKeywordRequest",
-    "RobloxGroupsApiUpdateGroupDescriptionRequest",
-    "RobloxGroupsApiUpdateGroupNameRequest",
-    "RobloxGroupsApiUpdateGroupNameResponse",
-    "RobloxGroupsApiUpdateGroupNotificationPreferenceRequest",
-    "RobloxGroupsApiUpdateGroupNotificationPreferenceRequestType",
-    "RobloxGroupsApiUpdateGroupSettingsRequest",
-    "RobloxGroupsApiUpdateGroupSettingsRequestAccountTenureRequirement",
-    "RobloxGroupsApiUpdateGroupSettingsRequestSlowmode",
-    "RobloxGroupsApiUpdateGroupSettingsRequestVerificationLevel",
-    "RobloxGroupsApiUpdatePermissionsRequest",
-    "RobloxGroupsApiUpdatePermissionsRequestPermissions",
-    "RobloxGroupsApiUpdateUserRoleRequest",
-    "RobloxGroupsApiUserGroupMembershipResponse",
-    "RobloxGroupsApiUserGroupRoleResponse",
-    "RobloxGroupsApiWatermarkContributionRequest",
-    "RobloxGroupsApiWatermarkContributionRequestBalanceKey",
-    "RobloxGroupsClientBlockedKeywordModel",
     "RobloxGroupsClientCommunityTierInfoResponse",
-    "RobloxGroupsClientCreateBlockedKeywordsResponse",
-    "RobloxGroupsClientEmoteModel",
-    "RobloxGroupsClientEmoteSetModel",
-    "RobloxGroupsClientGetGroupEmoteSetsResponse",
-    "RobloxGroupsClientGroupFeaturedContentResponse",
     "RobloxGroupsClientTierCapabilities",
     "RobloxGroupsClientTierEvaluationResultResponse",
     "RobloxGroupsClientTierRequirement",
@@ -4453,9 +4101,6 @@ __all__ = (
     "RobloxWebResponsesGamesGameFavoriteResponseModel",
     "RobloxWebResponsesGamesGameMediaItemResponseV2",
     "RobloxWebResponsesGamesGameResponseV2",
-    "RobloxWebResponsesGroupsGroupBasicResponse",
-    "RobloxWebResponsesGroupsGroupResponseV2",
-    "RobloxWebResponsesGroupsGroupRoleBasicResponse",
     "RobloxWebResponsesPluginsPluginResponse",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
@@ -4465,8 +4110,6 @@ __all__ = (
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityType",
     "RobloxWebResponsesRelatedEntityTypeResponseRobloxUsersClientAssociatedEntityTypeType",
-    "RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerType",
-    "RobloxWebResponsesRelatedEntityTypeResponseRobloxWebResponsesGroupsGroupOwnerTypeType",
     "RobloxWebResponsesUsersLegacyUserResponse",
     "RobloxWebResponsesUsersSkinnyUserResponse",
     "RobloxWebWebAPIApiEmptyResponseModel",
@@ -4489,20 +4132,11 @@ __all__ = (
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiUniverseDisplayInfoAutomaticTranslationSettings",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameDetailResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameProductResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupMembershipDetailResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupMembershipResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupPayoutResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupPermissionsResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupRoleDetailResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiUserGroupMembershipResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxLocaleApiSupportedLocaleLocus",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxTranslationRolesApiAssignee",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxUsersApiMultiGetUserByNameResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxUsersApiMultiGetUserResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesGamesGameMediaItemResponseV2",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesGroupsGroupBasicResponse",
-    "RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesGroupsGroupResponseV2",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesPluginsPluginResponse",
     "RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesUsersSkinnyUserResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxApiDevelopModelsIPlaceModel",
@@ -4513,12 +4147,6 @@ __all__ = (
     "RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiOwnedBundleModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiModelsResponseTrustedFriendRequestResponse",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiGroupBanMemberResponse",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiGroupJoinRequestResponse",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseGroupExperienceResponse",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseGroupNameHistoryResponseItem",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseUserModel",
-    "RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiUserGroupRoleResponse",
     "RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiModelsCollectibleUserAssetModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiModelsIItemModel",
     "RobloxWebWebAPIModelsApiPageResponseRobloxInventoryApiModelsInventoryItemModel",
