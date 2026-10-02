@@ -6,22 +6,25 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.transaction_used_types_response import TransactionUsedTypesResponse
+from ...models.delete_start_place_override_response import DeleteStartPlaceOverrideResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    user_id: int,
+    universe_id: int,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "https://economy.roblox.com/v2/users/{user_id}/transaction-types".format(
-            user_id=quote(str(user_id), safe=""),
+        "method": "delete",
+        "url": "/matchmaking-api/v1/matchmaking/universe/{universe_id}/start-place".format(
+            universe_id=quote(str(universe_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "TransactionRecords_GetUsedTransactionTypes",
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "delete_matchmaking-api_v1_matchmaking_universe_universeId_start-place",
         },
     }
 
@@ -30,9 +33,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> TransactionUsedTypesResponse | None:
+) -> DeleteStartPlaceOverrideResponse | None:
     if response.status_code == 200:
-        response_200 = TransactionUsedTypesResponse.from_dict(response.json())
+        response_200 = DeleteStartPlaceOverrideResponse.from_dict(response.json())
 
         return response_200
 
@@ -44,7 +47,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[TransactionUsedTypesResponse]:
+) -> Response[DeleteStartPlaceOverrideResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,24 +57,25 @@ def _build_response(
 
 
 def sync_detailed(
-    user_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[TransactionUsedTypesResponse]:
-    """
+) -> Response[DeleteStartPlaceOverrideResponse]:
+    """Deletes the start place override for a universe.
+
     Args:
-        user_id (int):
+        universe_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TransactionUsedTypesResponse]
+        Response[DeleteStartPlaceOverrideResponse]
     """
 
     kwargs = _get_kwargs(
-        user_id=user_id,
+        universe_id=universe_id,
     )
 
     response = client.get_httpx2_client().request(
@@ -82,47 +86,49 @@ def sync_detailed(
 
 
 def sync(
-    user_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> TransactionUsedTypesResponse | None:
-    """
+) -> DeleteStartPlaceOverrideResponse | None:
+    """Deletes the start place override for a universe.
+
     Args:
-        user_id (int):
+        universe_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TransactionUsedTypesResponse
+        DeleteStartPlaceOverrideResponse
     """
 
     return sync_detailed(
-        user_id=user_id,
+        universe_id=universe_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    user_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[TransactionUsedTypesResponse]:
-    """
+) -> Response[DeleteStartPlaceOverrideResponse]:
+    """Deletes the start place override for a universe.
+
     Args:
-        user_id (int):
+        universe_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[TransactionUsedTypesResponse]
+        Response[DeleteStartPlaceOverrideResponse]
     """
 
     kwargs = _get_kwargs(
-        user_id=user_id,
+        universe_id=universe_id,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)
@@ -131,25 +137,26 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    user_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> TransactionUsedTypesResponse | None:
-    """
+) -> DeleteStartPlaceOverrideResponse | None:
+    """Deletes the start place override for a universe.
+
     Args:
-        user_id (int):
+        universe_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        TransactionUsedTypesResponse
+        DeleteStartPlaceOverrideResponse
     """
 
     return (
         await asyncio_detailed(
-            user_id=user_id,
+            universe_id=universe_id,
             client=client,
         )
     ).parsed

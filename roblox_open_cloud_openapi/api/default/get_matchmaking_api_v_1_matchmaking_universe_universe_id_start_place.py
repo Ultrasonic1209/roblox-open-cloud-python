@@ -6,25 +6,25 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.revenue_summary_response import RevenueSummaryResponse
-from ...models.revenue_summary_time_frame import RevenueSummaryTimeFrame
+from ...models.get_start_place_override_response import GetStartPlaceOverrideResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    group_id: int,
-    time_frame: RevenueSummaryTimeFrame,
+    universe_id: int,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "https://economy.roblox.com/v1/groups/{group_id}/revenue/summary/{time_frame}".format(
-            group_id=quote(str(group_id), safe=""),
-            time_frame=quote(str(time_frame), safe=""),
+        "url": "/matchmaking-api/v1/matchmaking/universe/{universe_id}/start-place".format(
+            universe_id=quote(str(universe_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "RevenueSummary_GetGroupRevenueSummary",
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "get_matchmaking-api_v1_matchmaking_universe_universeId_start-place",
         },
     }
 
@@ -33,9 +33,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> RevenueSummaryResponse | None:
+) -> GetStartPlaceOverrideResponse | None:
     if response.status_code == 200:
-        response_200 = RevenueSummaryResponse.from_dict(response.json())
+        response_200 = GetStartPlaceOverrideResponse.from_dict(response.json())
 
         return response_200
 
@@ -47,7 +47,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[RevenueSummaryResponse]:
+) -> Response[GetStartPlaceOverrideResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,27 +57,25 @@ def _build_response(
 
 
 def sync_detailed(
-    group_id: int,
-    time_frame: RevenueSummaryTimeFrame,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[RevenueSummaryResponse]:
-    """
+) -> Response[GetStartPlaceOverrideResponse]:
+    """Gets the start place override for a universe.
+
     Args:
-        group_id (int):
-        time_frame (RevenueSummaryTimeFrame):
+        universe_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RevenueSummaryResponse]
+        Response[GetStartPlaceOverrideResponse]
     """
 
     kwargs = _get_kwargs(
-        group_id=group_id,
-        time_frame=time_frame,
+        universe_id=universe_id,
     )
 
     response = client.get_httpx2_client().request(
@@ -88,53 +86,49 @@ def sync_detailed(
 
 
 def sync(
-    group_id: int,
-    time_frame: RevenueSummaryTimeFrame,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> RevenueSummaryResponse | None:
-    """
+) -> GetStartPlaceOverrideResponse | None:
+    """Gets the start place override for a universe.
+
     Args:
-        group_id (int):
-        time_frame (RevenueSummaryTimeFrame):
+        universe_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RevenueSummaryResponse
+        GetStartPlaceOverrideResponse
     """
 
     return sync_detailed(
-        group_id=group_id,
-        time_frame=time_frame,
+        universe_id=universe_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    group_id: int,
-    time_frame: RevenueSummaryTimeFrame,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[RevenueSummaryResponse]:
-    """
+) -> Response[GetStartPlaceOverrideResponse]:
+    """Gets the start place override for a universe.
+
     Args:
-        group_id (int):
-        time_frame (RevenueSummaryTimeFrame):
+        universe_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RevenueSummaryResponse]
+        Response[GetStartPlaceOverrideResponse]
     """
 
     kwargs = _get_kwargs(
-        group_id=group_id,
-        time_frame=time_frame,
+        universe_id=universe_id,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)
@@ -143,28 +137,26 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    group_id: int,
-    time_frame: RevenueSummaryTimeFrame,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> RevenueSummaryResponse | None:
-    """
+) -> GetStartPlaceOverrideResponse | None:
+    """Gets the start place override for a universe.
+
     Args:
-        group_id (int):
-        time_frame (RevenueSummaryTimeFrame):
+        universe_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RevenueSummaryResponse
+        GetStartPlaceOverrideResponse
     """
 
     return (
         await asyncio_detailed(
-            group_id=group_id,
-            time_frame=time_frame,
+            universe_id=universe_id,
             client=client,
         )
     ).parsed

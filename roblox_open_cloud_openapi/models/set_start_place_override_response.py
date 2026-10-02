@@ -5,12 +5,12 @@ from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
-T = TypeVar("T", bound="TransactionDetailsResponse")
+T = TypeVar("T", bound="SetStartPlaceOverrideResponse")
 
 
 @_attrs_define
-class TransactionDetailsResponse:
-    """ """
+class SetStartPlaceOverrideResponse:
+    """Response for setting the start place override for a universe."""
 
     def to_dict(self) -> dict[str, Any]:
 
@@ -20,6 +20,6 @@ class TransactionDetailsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        transaction_details_response = cls()
+        set_start_place_override_response = cls()
 
-        return transaction_details_response
+        return set_start_place_override_response
