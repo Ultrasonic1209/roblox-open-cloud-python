@@ -22,22 +22,28 @@ class CreatorStoreAssetType0:
     """Representation of a creator store asset.
 
     Attributes:
+        asset (None | ToolboxServiceAssetType0): The asset information.
         voting (None | Unset | VotingModelType0): The asset's voting details.
         creator (CreatorModelV2Type0 | None | Unset): The asset creator's details.
         creator_store_product (None | ToolboxServiceCreatorStoreProductType0 | Unset): The asset's product details.
-        asset (None | ToolboxServiceAssetType0 | Unset): The asset information.
     """
 
+    asset: None | ToolboxServiceAssetType0
     voting: None | Unset | VotingModelType0 = UNSET
     creator: CreatorModelV2Type0 | None | Unset = UNSET
     creator_store_product: None | ToolboxServiceCreatorStoreProductType0 | Unset = UNSET
-    asset: None | ToolboxServiceAssetType0 | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.creator_model_v2_type_0 import CreatorModelV2Type0
         from ..models.toolbox_service_asset_type_0 import ToolboxServiceAssetType0
         from ..models.toolbox_service_creator_store_product_type_0 import ToolboxServiceCreatorStoreProductType0
         from ..models.voting_model_type_0 import VotingModelType0
+
+        asset: dict[str, Any] | None
+        if isinstance(self.asset, ToolboxServiceAssetType0):
+            asset = self.asset.to_dict()
+        else:
+            asset = self.asset
 
         voting: dict[str, Any] | None | Unset
         if isinstance(self.voting, Unset):
@@ -63,25 +69,19 @@ class CreatorStoreAssetType0:
         else:
             creator_store_product = self.creator_store_product
 
-        asset: dict[str, Any] | None | Unset
-        if isinstance(self.asset, Unset):
-            asset = UNSET
-        elif isinstance(self.asset, ToolboxServiceAssetType0):
-            asset = self.asset.to_dict()
-        else:
-            asset = self.asset
-
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
+        field_dict.update(
+            {
+                "asset": asset,
+            }
+        )
         if voting is not UNSET:
             field_dict["voting"] = voting
         if creator is not UNSET:
             field_dict["creator"] = creator
         if creator_store_product is not UNSET:
             field_dict["creatorStoreProduct"] = creator_store_product
-        if asset is not UNSET:
-            field_dict["asset"] = asset
 
         return field_dict
 
@@ -93,6 +93,21 @@ class CreatorStoreAssetType0:
         from ..models.voting_model_type_0 import VotingModelType0
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+
+        def _parse_asset(data: object) -> None | ToolboxServiceAssetType0:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                componentsschemas_toolbox_service_asset_type_0 = ToolboxServiceAssetType0.from_dict(data)
+
+                return componentsschemas_toolbox_service_asset_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | ToolboxServiceAssetType0, data)
+
+        asset = _parse_asset(d.pop("asset"))
 
         def _parse_voting(data: object) -> None | Unset | VotingModelType0:
             if data is None:
@@ -147,28 +162,11 @@ class CreatorStoreAssetType0:
 
         creator_store_product = _parse_creator_store_product(d.pop("creatorStoreProduct", UNSET))
 
-        def _parse_asset(data: object) -> None | ToolboxServiceAssetType0 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                componentsschemas_toolbox_service_asset_type_0 = ToolboxServiceAssetType0.from_dict(data)
-
-                return componentsschemas_toolbox_service_asset_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | ToolboxServiceAssetType0 | Unset, data)
-
-        asset = _parse_asset(d.pop("asset", UNSET))
-
         creator_store_asset_type_0 = cls(
+            asset=asset,
             voting=voting,
             creator=creator,
             creator_store_product=creator_store_product,
-            asset=asset,
         )
 
         return creator_store_asset_type_0

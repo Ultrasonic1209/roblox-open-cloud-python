@@ -15,7 +15,7 @@ class CreatorModelV2Type0:
     """Model representing a creator.
 
     Attributes:
-        creator (None | str | Unset): Deprecated: Please refer to the 'userId' and 'groupId' properties instead.
+        creator (None | str): Deprecated: Please refer to the 'userId' and 'groupId' properties instead.
             The creator type and ID. E.g. user/123 or group/456.
         user_id (int | None | Unset): The User ID of the creator. Required if the asset is individual-user-owned.
         group_id (int | None | Unset): The Group ID. Required if the asset is group-owned.
@@ -27,7 +27,7 @@ class CreatorModelV2Type0:
             represents the name of the creator who most recently updated the asset.
     """
 
-    creator: None | str | Unset = UNSET
+    creator: None | str
     user_id: int | None | Unset = UNSET
     group_id: int | None | Unset = UNSET
     name: None | str | Unset = UNSET
@@ -36,11 +36,8 @@ class CreatorModelV2Type0:
     latest_group_updater_user_name: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        creator: None | str | Unset
-        if isinstance(self.creator, Unset):
-            creator = UNSET
-        else:
-            creator = self.creator
+        creator: None | str
+        creator = self.creator
 
         user_id: int | None | Unset
         if isinstance(self.user_id, Unset):
@@ -80,9 +77,11 @@ class CreatorModelV2Type0:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if creator is not UNSET:
-            field_dict["creator"] = creator
+        field_dict.update(
+            {
+                "creator": creator,
+            }
+        )
         if user_id is not UNSET:
             field_dict["userId"] = user_id
         if group_id is not UNSET:
@@ -102,14 +101,12 @@ class CreatorModelV2Type0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
-        def _parse_creator(data: object) -> None | str | Unset:
+        def _parse_creator(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        creator = _parse_creator(d.pop("creator", UNSET))
+        creator = _parse_creator(d.pop("creator"))
 
         def _parse_user_id(data: object) -> int | None | Unset:
             if data is None:

@@ -1,0 +1,197 @@
+from http import HTTPStatus
+from typing import Any
+from urllib.parse import quote
+
+import httpx2
+
+from ... import errors
+from ...client import AuthenticatedClient, Client
+from ...models.group_invitation import GroupInvitation
+from ...models.organizations_service_api_error_response import OrganizationsServiceApiErrorResponse
+from ...types import Response
+
+
+def _get_kwargs(
+    group_id: int,
+    user_id: int,
+) -> dict[str, Any]:
+
+    _kwargs: dict[str, Any] = {
+        "method": "get",
+        "url": "https://groups.roblox.com/v2/groups/{group_id}/users/{user_id}/invitation".format(
+            group_id=quote(str(group_id), safe=""),
+            user_id=quote(str(user_id), safe=""),
+        ),
+        "extensions": {
+            "openapi-extensions": {
+                "x-roblox-stability": "BETA",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
+            "openapi-id": "get_v2_groups_groupId_users_userId_invitation",
+        },
+    }
+
+    return _kwargs
+
+
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
+) -> GroupInvitation | OrganizationsServiceApiErrorResponse | None:
+    if response.status_code == 200:
+        response_200 = GroupInvitation.from_dict(response.json())
+
+        return response_200
+
+    if response.status_code == 401:
+        response_401 = OrganizationsServiceApiErrorResponse.from_dict(response.json())
+
+        return response_401
+
+    if response.status_code == 403:
+        response_403 = OrganizationsServiceApiErrorResponse.from_dict(response.json())
+
+        return response_403
+
+    if response.status_code == 404:
+        response_404 = OrganizationsServiceApiErrorResponse.from_dict(response.json())
+
+        return response_404
+
+    if response.status_code == 500:
+        response_500 = OrganizationsServiceApiErrorResponse.from_dict(response.json())
+
+        return response_500
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
+) -> Response[GroupInvitation | OrganizationsServiceApiErrorResponse]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    group_id: int,
+    user_id: int,
+    *,
+    client: AuthenticatedClient,
+) -> Response[GroupInvitation | OrganizationsServiceApiErrorResponse]:
+    """Get the open invitation to a group for a user
+
+    Args:
+        group_id (int):
+        user_id (int):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[GroupInvitation | OrganizationsServiceApiErrorResponse]
+    """
+
+    kwargs = _get_kwargs(
+        group_id=group_id,
+        user_id=user_id,
+    )
+
+    response = client.get_httpx2_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+
+def sync(
+    group_id: int,
+    user_id: int,
+    *,
+    client: AuthenticatedClient,
+) -> GroupInvitation | OrganizationsServiceApiErrorResponse | None:
+    """Get the open invitation to a group for a user
+
+    Args:
+        group_id (int):
+        user_id (int):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        GroupInvitation | OrganizationsServiceApiErrorResponse
+    """
+
+    return sync_detailed(
+        group_id=group_id,
+        user_id=user_id,
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    group_id: int,
+    user_id: int,
+    *,
+    client: AuthenticatedClient,
+) -> Response[GroupInvitation | OrganizationsServiceApiErrorResponse]:
+    """Get the open invitation to a group for a user
+
+    Args:
+        group_id (int):
+        user_id (int):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[GroupInvitation | OrganizationsServiceApiErrorResponse]
+    """
+
+    kwargs = _get_kwargs(
+        group_id=group_id,
+        user_id=user_id,
+    )
+
+    response = await client.get_async_httpx2_client().request(**kwargs)
+
+    return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    group_id: int,
+    user_id: int,
+    *,
+    client: AuthenticatedClient,
+) -> GroupInvitation | OrganizationsServiceApiErrorResponse | None:
+    """Get the open invitation to a group for a user
+
+    Args:
+        group_id (int):
+        user_id (int):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        GroupInvitation | OrganizationsServiceApiErrorResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            group_id=group_id,
+            user_id=user_id,
+            client=client,
+        )
+    ).parsed

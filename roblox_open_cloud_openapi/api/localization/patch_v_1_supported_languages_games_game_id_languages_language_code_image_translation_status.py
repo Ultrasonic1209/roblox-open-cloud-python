@@ -27,7 +27,10 @@ def _get_kwargs(
             language_code=quote(str(language_code), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "patch_v1_supported-languages_games_gameId_languages_languageCode_image-translation-status",
         },
     }
