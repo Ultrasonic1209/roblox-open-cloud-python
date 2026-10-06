@@ -27,7 +27,10 @@ def _get_kwargs(
         "url": "https://contacts.roblox.com/v1/user/tag/validate",
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_user_tag_validate",
         },
     }

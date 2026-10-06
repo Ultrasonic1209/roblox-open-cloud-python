@@ -30,7 +30,7 @@ def _get_kwargs(
         "params": params,
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-stability": "BETA",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 600},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 600},

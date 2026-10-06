@@ -1,36 +1,39 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 from urllib.parse import quote
 
 import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_followings_api_models_user_following_universe_response import (
-    RobloxFollowingsApiModelsUserFollowingUniverseResponse,
-)
-from ...types import Response
+from ...models.test_start_place_override_response import TestStartPlaceOverrideResponse
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    user_id: int,
+    universe_id: int,
+    *,
+    user_id: int | Unset = UNSET,
 ) -> dict[str, Any]:
+
+    params: dict[str, Any] = {}
+
+    params["userId"] = user_id
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/legacy-followings/v1/users/{user_id}/universes".format(
-            user_id=quote(str(user_id), safe=""),
+        "url": "/matchmaking-api/v1/matchmaking/universe/{universe_id}/start-place/test".format(
+            universe_id=quote(str(universe_id), safe=""),
         ),
+        "params": params,
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
+                "x-roblox-stability": "BETA",
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "legacy-universe.following:read"}],
             },
-            "openapi-id": "get_legacy-followings_v1_users_userId_universes",
+            "openapi-id": "get_matchmaking-api_v1_matchmaking_universe_universeId_start-place_test",
         },
     }
 
@@ -39,24 +42,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse] | None:
+) -> TestStartPlaceOverrideResponse | None:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = RobloxFollowingsApiModelsUserFollowingUniverseResponse.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
+        response_200 = TestStartPlaceOverrideResponse.from_dict(response.json())
 
         return response_200
-
-    if response.status_code == 401:
-        response_401 = cast(Any, None)
-        return response_401
-
-    if response.status_code == 403:
-        response_403 = cast(Any, None)
-        return response_403
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -66,7 +56,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse]]:
+) -> Response[TestStartPlaceOverrideResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,24 +66,27 @@ def _build_response(
 
 
 def sync_detailed(
-    user_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse]]:
-    """Gets all the followings between a user with userId and universes
+    user_id: int | Unset = UNSET,
+) -> Response[TestStartPlaceOverrideResponse]:
+    """Tests a user's saved start place in a universe against the place checks gamejoin makes.
 
     Args:
-        user_id (int):
+        universe_id (int):
+        user_id (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse]]
+        Response[TestStartPlaceOverrideResponse]
     """
 
     kwargs = _get_kwargs(
+        universe_id=universe_id,
         user_id=user_id,
     )
 
@@ -105,48 +98,54 @@ def sync_detailed(
 
 
 def sync(
-    user_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse] | None:
-    """Gets all the followings between a user with userId and universes
+    user_id: int | Unset = UNSET,
+) -> TestStartPlaceOverrideResponse | None:
+    """Tests a user's saved start place in a universe against the place checks gamejoin makes.
 
     Args:
-        user_id (int):
+        universe_id (int):
+        user_id (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse]
+        TestStartPlaceOverrideResponse
     """
 
     return sync_detailed(
-        user_id=user_id,
+        universe_id=universe_id,
         client=client,
+        user_id=user_id,
     ).parsed
 
 
 async def asyncio_detailed(
-    user_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse]]:
-    """Gets all the followings between a user with userId and universes
+    user_id: int | Unset = UNSET,
+) -> Response[TestStartPlaceOverrideResponse]:
+    """Tests a user's saved start place in a universe against the place checks gamejoin makes.
 
     Args:
-        user_id (int):
+        universe_id (int):
+        user_id (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse]]
+        Response[TestStartPlaceOverrideResponse]
     """
 
     kwargs = _get_kwargs(
+        universe_id=universe_id,
         user_id=user_id,
     )
 
@@ -156,26 +155,29 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    user_id: int,
+    universe_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse] | None:
-    """Gets all the followings between a user with userId and universes
+    user_id: int | Unset = UNSET,
+) -> TestStartPlaceOverrideResponse | None:
+    """Tests a user's saved start place in a universe against the place checks gamejoin makes.
 
     Args:
-        user_id (int):
+        universe_id (int):
+        user_id (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | list[RobloxFollowingsApiModelsUserFollowingUniverseResponse]
+        TestStartPlaceOverrideResponse
     """
 
     return (
         await asyncio_detailed(
-            user_id=user_id,
+            universe_id=universe_id,
             client=client,
+            user_id=user_id,
         )
     ).parsed

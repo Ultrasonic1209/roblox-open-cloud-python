@@ -22,7 +22,7 @@ def _get_kwargs(
         "url": "/ads-management/v1/campaigns:batchGetStatus",
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-stability": "BETA",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},

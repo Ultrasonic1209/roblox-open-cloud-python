@@ -30,8 +30,7 @@ class InternalPublicV1CampaignOptionsResponse:
         ad_formats (list[InternalPublicV1AdFormat] | Unset): The supported creative formats and their pixel dimensions.
         eligibility (InternalPublicV1UniverseEligibility | Unset):
         objectives (list[InternalPublicV1CampaignOptionsResponseObjectivesItem] | Unset): The campaign objectives you
-            can create. Values can be `PLAYS` or the
-            deprecated `ENGAGEMENT` (both create the same campaign).
+            can create. Values can be `PLAYS` or `ENGAGEMENT`.
         payment_types (list[InternalPublicV1CampaignOptionsResponsePaymentTypesItem] | Unset): The payment types
             available for the caller's account. Values can be
             `CREDIT_CARD`, `ADS_CREDIT`, or `INVOICE`.

@@ -26,7 +26,10 @@ def _get_kwargs(
         "method": "post",
         "url": "https://contacts.roblox.com/v1/user/tag",
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "post_v1_user_tag",
         },
     }

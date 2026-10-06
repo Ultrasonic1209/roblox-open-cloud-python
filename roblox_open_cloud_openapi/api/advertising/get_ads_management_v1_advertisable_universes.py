@@ -19,7 +19,7 @@ def _get_kwargs() -> dict[str, Any]:
         "url": "/ads-management/v1/advertisable-universes",
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-stability": "BETA",
                 "x-roblox-rate-limits": {
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 600},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 600},
