@@ -6,7 +6,9 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_api_avatar_models_outfit_details_model_v2 import RobloxApiAvatarModelsOutfitDetailsModelV2
+from ...models.avatar_public_api_roblox_api_avatar_models_outfit_details_model_v2 import (
+    AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2,
+)
 from ...types import UNSET, Response, Unset
 
 
@@ -44,9 +46,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | RobloxApiAvatarModelsOutfitDetailsModelV2 | None:
+) -> Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2 | None:
     if response.status_code == 200:
-        response_200 = RobloxApiAvatarModelsOutfitDetailsModelV2.from_dict(response.json())
+        response_200 = AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2.from_dict(response.json())
 
         return response_200
 
@@ -70,7 +72,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]:
+) -> Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -85,7 +87,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     check_asset_availability: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
-) -> Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]:
+) -> Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]:
     """Gets details about the contents of an outfit.
 
     Args:
@@ -98,7 +100,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]
+        Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]
     """
 
     kwargs = _get_kwargs(
@@ -120,7 +122,7 @@ def sync(
     client: AuthenticatedClient,
     check_asset_availability: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
-) -> Any | RobloxApiAvatarModelsOutfitDetailsModelV2 | None:
+) -> Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2 | None:
     """Gets details about the contents of an outfit.
 
     Args:
@@ -133,7 +135,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | RobloxApiAvatarModelsOutfitDetailsModelV2
+        Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2
     """
 
     return sync_detailed(
@@ -150,7 +152,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     check_asset_availability: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
-) -> Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]:
+) -> Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]:
     """Gets details about the contents of an outfit.
 
     Args:
@@ -163,7 +165,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]
+        Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]
     """
 
     kwargs = _get_kwargs(
@@ -183,7 +185,7 @@ async def asyncio(
     client: AuthenticatedClient,
     check_asset_availability: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
-) -> Any | RobloxApiAvatarModelsOutfitDetailsModelV2 | None:
+) -> Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2 | None:
     """Gets details about the contents of an outfit.
 
     Args:
@@ -196,7 +198,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | RobloxApiAvatarModelsOutfitDetailsModelV2
+        Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2
     """
 
     return (

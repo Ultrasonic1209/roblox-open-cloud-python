@@ -1,3 +1,4 @@
+import sys
 from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
@@ -6,8 +7,14 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_api_avatar_models_avatar_model_v2 import RobloxApiAvatarModelsAvatarModelV2
 from ...types import UNSET, Response, Unset
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
+from ...models.roblox_api_avatar_models_avatar_model_v2 import RobloxApiAvatarModelsAvatarModelV2
 
 
 def _get_kwargs(
@@ -25,7 +32,13 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-deprecated": {
+                    "deprecatedDate": "2026-09-21T00:00:00.0000000+00:00",
+                    "description": "Please use GET v4/avatar/users/{userId}",
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v1_users_userId_avatar",
         },
     }
@@ -63,6 +76,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_users__userId__avatar"
+)
 def sync_detailed(
     user_id: int,
     *,
@@ -72,6 +88,8 @@ def sync_detailed(
     """Returns details about a specified user's avatar.
 
      Includes assets, bodycolors, and playerAvatarType.
+
+    Please use GET v4/avatar/users/{userId}
 
     Args:
         user_id (int):
@@ -97,6 +115,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_users__userId__avatar"
+)
 def sync(
     user_id: int,
     *,
@@ -106,6 +127,8 @@ def sync(
     """Returns details about a specified user's avatar.
 
      Includes assets, bodycolors, and playerAvatarType.
+
+    Please use GET v4/avatar/users/{userId}
 
     Args:
         user_id (int):
@@ -126,6 +149,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_users__userId__avatar"
+)
 async def asyncio_detailed(
     user_id: int,
     *,
@@ -135,6 +161,8 @@ async def asyncio_detailed(
     """Returns details about a specified user's avatar.
 
      Includes assets, bodycolors, and playerAvatarType.
+
+    Please use GET v4/avatar/users/{userId}
 
     Args:
         user_id (int):
@@ -158,6 +186,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_users__userId__avatar"
+)
 async def asyncio(
     user_id: int,
     *,
@@ -167,6 +198,8 @@ async def asyncio(
     """Returns details about a specified user's avatar.
 
      Includes assets, bodycolors, and playerAvatarType.
+
+    Please use GET v4/avatar/users/{userId}
 
     Args:
         user_id (int):

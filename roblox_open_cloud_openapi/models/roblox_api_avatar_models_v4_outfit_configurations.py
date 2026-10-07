@@ -8,8 +8,8 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.roblox_api_avatar_models_v4_avatar_background_model import (
-        RobloxApiAvatarModelsV4AvatarBackgroundModel,
+    from ..models.avatar_public_api_roblox_api_avatar_models_v4_avatar_background_model import (
+        AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel,
     )
 
 
@@ -21,10 +21,11 @@ class RobloxApiAvatarModelsV4OutfitConfigurations:
     """Background configuration for an outfit.
 
     Attributes:
-        background (RobloxApiAvatarModelsV4AvatarBackgroundModel | Unset): A model containing avatar background data.
+        background (AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel | Unset): A model containing avatar
+            background data.
     """
 
-    background: RobloxApiAvatarModelsV4AvatarBackgroundModel | Unset = UNSET
+    background: AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         background: dict[str, Any] | Unset = UNSET
@@ -41,17 +42,17 @@ class RobloxApiAvatarModelsV4OutfitConfigurations:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_api_avatar_models_v4_avatar_background_model import (
-            RobloxApiAvatarModelsV4AvatarBackgroundModel,
+        from ..models.avatar_public_api_roblox_api_avatar_models_v4_avatar_background_model import (
+            AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel,
         )
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _background = d.pop("background", UNSET)
-        background: RobloxApiAvatarModelsV4AvatarBackgroundModel | Unset
+        background: AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel | Unset
         if isinstance(_background, Unset):
             background = UNSET
         else:
-            background = RobloxApiAvatarModelsV4AvatarBackgroundModel.from_dict(_background)
+            background = AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel.from_dict(_background)
 
         roblox_api_avatar_models_v4_outfit_configurations = cls(
             background=background,

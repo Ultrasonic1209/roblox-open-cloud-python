@@ -29,6 +29,10 @@ def _get_kwargs(
         "url": "https://avatar.roblox.com/v1/avatar",
         "extensions": {
             "openapi-extensions": {
+                "x-roblox-deprecated": {
+                    "deprecatedDate": "2026-09-21T00:00:00.0000000+00:00",
+                    "description": "Please use GET v4/avatar",
+                },
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
                 "x-roblox-recommended-alternatives": [
                     {

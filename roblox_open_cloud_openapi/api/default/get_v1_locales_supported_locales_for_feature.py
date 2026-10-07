@@ -1,51 +1,49 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 
 import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.post_matchmaking_api_v1_game_instances_shutdown_all_body import (
-    PostMatchmakingApiV1GameInstancesShutdownAllBody,
-)
-from ...models.shutdown_all_game_instances_response import ShutdownAllGameInstancesResponse
-from ...types import UNSET, Response, Unset
+from ...models.roblox_locale_api_supported_locales_response import RobloxLocaleApiSupportedLocalesResponse
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     *,
-    body: PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset = UNSET,
+    feature_name: str,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
+
+    params: dict[str, Any] = {}
+
+    params["featureName"] = feature_name
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": "/matchmaking-api/v1/game-instances/shutdown-all",
+        "method": "get",
+        "url": "https://locale.roblox.com/v1/locales/supported-locales-for-feature",
+        "params": params,
         "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "post_matchmaking-api_v1_game-instances_shutdown-all",
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-id": "get_v1_locales_supported-locales-for-feature",
         },
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["files"] = body.to_multipart()
-
-    headers["Content-Type"] = "multipart/form-data; boundary=+++"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> ShutdownAllGameInstancesResponse | None:
+) -> Any | RobloxLocaleApiSupportedLocalesResponse | None:
     if response.status_code == 200:
-        response_200 = ShutdownAllGameInstancesResponse.from_dict(response.json())
+        response_200 = RobloxLocaleApiSupportedLocalesResponse.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -55,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[ShutdownAllGameInstancesResponse]:
+) -> Response[Any | RobloxLocaleApiSupportedLocalesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,23 +65,23 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset = UNSET,
-) -> Response[ShutdownAllGameInstancesResponse]:
-    """Shutdown all game instances.
+    feature_name: str,
+) -> Response[Any | RobloxLocaleApiSupportedLocalesResponse]:
+    """Get list of Supported locales for a specific feature.
 
     Args:
-        body (PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset):
+        feature_name (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ShutdownAllGameInstancesResponse]
+        Response[Any | RobloxLocaleApiSupportedLocalesResponse]
     """
 
     kwargs = _get_kwargs(
-        body=body,
+        feature_name=feature_name,
     )
 
     response = client.get_httpx2_client().request(
@@ -96,47 +94,47 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset = UNSET,
-) -> ShutdownAllGameInstancesResponse | None:
-    """Shutdown all game instances.
+    feature_name: str,
+) -> Any | RobloxLocaleApiSupportedLocalesResponse | None:
+    """Get list of Supported locales for a specific feature.
 
     Args:
-        body (PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset):
+        feature_name (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ShutdownAllGameInstancesResponse
+        Any | RobloxLocaleApiSupportedLocalesResponse
     """
 
     return sync_detailed(
         client=client,
-        body=body,
+        feature_name=feature_name,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset = UNSET,
-) -> Response[ShutdownAllGameInstancesResponse]:
-    """Shutdown all game instances.
+    feature_name: str,
+) -> Response[Any | RobloxLocaleApiSupportedLocalesResponse]:
+    """Get list of Supported locales for a specific feature.
 
     Args:
-        body (PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset):
+        feature_name (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ShutdownAllGameInstancesResponse]
+        Response[Any | RobloxLocaleApiSupportedLocalesResponse]
     """
 
     kwargs = _get_kwargs(
-        body=body,
+        feature_name=feature_name,
     )
 
     response = await client.get_async_httpx2_client().request(**kwargs)
@@ -147,24 +145,24 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset = UNSET,
-) -> ShutdownAllGameInstancesResponse | None:
-    """Shutdown all game instances.
+    feature_name: str,
+) -> Any | RobloxLocaleApiSupportedLocalesResponse | None:
+    """Get list of Supported locales for a specific feature.
 
     Args:
-        body (PostMatchmakingApiV1GameInstancesShutdownAllBody | Unset):
+        feature_name (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ShutdownAllGameInstancesResponse
+        Any | RobloxLocaleApiSupportedLocalesResponse
     """
 
     return (
         await asyncio_detailed(
             client=client,
-            body=body,
+            feature_name=feature_name,
         )
     ).parsed

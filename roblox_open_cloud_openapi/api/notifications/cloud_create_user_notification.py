@@ -25,7 +25,7 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "user.user-notification:write"}],
+                "x-roblox-scopes": [{"name": "user.user-notification:write"}, {"name": "user.user-notification:write"}],
                 "x-roblox-docs": {
                     "category": "Users and groups",
                     "methodProperties": {"scopes": ["user.user-notification:write"]},

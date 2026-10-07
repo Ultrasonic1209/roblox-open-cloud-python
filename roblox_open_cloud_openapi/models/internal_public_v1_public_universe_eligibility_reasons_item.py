@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class InternalPublicV1UniverseEligibilityReasonsItem(str, Enum):
+class InternalPublicV1PublicUniverseEligibilityReasonsItem(str, Enum):
     BLOCKED = "BLOCKED"
     NO_PERMISSION = "NO_PERMISSION"
 

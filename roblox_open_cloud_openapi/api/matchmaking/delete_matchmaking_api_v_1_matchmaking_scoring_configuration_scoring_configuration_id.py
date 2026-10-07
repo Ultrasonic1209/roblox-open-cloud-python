@@ -21,7 +21,7 @@ def _get_kwargs(
         ),
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-stability": "BETA",
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "delete_matchmaking-api_v1_matchmaking_scoring-configuration_scoringConfigurationId",

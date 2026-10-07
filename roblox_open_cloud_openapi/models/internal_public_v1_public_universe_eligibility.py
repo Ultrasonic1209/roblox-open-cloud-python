@@ -6,25 +6,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.internal_public_v1_universe_eligibility_reasons_item import InternalPublicV1UniverseEligibilityReasonsItem
+from ..models.internal_public_v1_public_universe_eligibility_reasons_item import (
+    InternalPublicV1PublicUniverseEligibilityReasonsItem,
+)
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="InternalPublicV1UniverseEligibility")
+T = TypeVar("T", bound="InternalPublicV1PublicUniverseEligibility")
 
 
 @_attrs_define
-class InternalPublicV1UniverseEligibility:
+class InternalPublicV1PublicUniverseEligibility:
     """
     Attributes:
         eligible (bool | Unset): Whether the experience can currently be advertised.
-        reasons (list[InternalPublicV1UniverseEligibilityReasonsItem] | Unset): The reasons the experience is not
+        reasons (list[InternalPublicV1PublicUniverseEligibilityReasonsItem] | Unset): The reasons the experience is not
             eligible. Omitted when eligible. Values can be
             `NO_PERMISSION` or `BLOCKED`.
         universe_id (str | Unset): The identifier of the experience that was checked.
     """
 
     eligible: bool | Unset = UNSET
-    reasons: list[InternalPublicV1UniverseEligibilityReasonsItem] | Unset = UNSET
+    reasons: list[InternalPublicV1PublicUniverseEligibilityReasonsItem] | Unset = UNSET
     universe_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -58,24 +60,24 @@ class InternalPublicV1UniverseEligibility:
         eligible = d.pop("eligible", UNSET)
 
         _reasons = d.pop("reasons", UNSET)
-        reasons: list[InternalPublicV1UniverseEligibilityReasonsItem] | Unset = UNSET
+        reasons: list[InternalPublicV1PublicUniverseEligibilityReasonsItem] | Unset = UNSET
         if _reasons is not UNSET:
             reasons = []
             for reasons_item_data in _reasons:
-                reasons_item = InternalPublicV1UniverseEligibilityReasonsItem(reasons_item_data)
+                reasons_item = InternalPublicV1PublicUniverseEligibilityReasonsItem(reasons_item_data)
 
                 reasons.append(reasons_item)
 
         universe_id = d.pop("universeId", UNSET)
 
-        internal_public_v1_universe_eligibility = cls(
+        internal_public_v1_public_universe_eligibility = cls(
             eligible=eligible,
             reasons=reasons,
             universe_id=universe_id,
         )
 
-        internal_public_v1_universe_eligibility.additional_properties = d
-        return internal_public_v1_universe_eligibility
+        internal_public_v1_public_universe_eligibility.additional_properties = d
+        return internal_public_v1_public_universe_eligibility
 
     @property
     def additional_keys(self) -> list[str]:

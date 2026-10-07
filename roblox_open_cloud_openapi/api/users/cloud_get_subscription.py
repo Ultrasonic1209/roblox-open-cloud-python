@@ -41,6 +41,8 @@ def _get_kwargs(
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
                 "x-roblox-scopes": [
+                    {"name": "universe:write", "targetResourceSpecifier": "universes"},
+                    {"name": "universe.subscription-product.subscription:read", "targetResourceSpecifier": ""},
                     {"name": "universe:write"},
                     {"name": "universe.subscription-product.subscription:read"},
                 ],

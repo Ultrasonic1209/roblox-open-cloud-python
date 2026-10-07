@@ -8,13 +8,13 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.avatar_public_api_roblox_api_avatar_models_v4_avatar_background_model import (
+        AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel,
+    )
     from ..models.roblox_api_avatar_models_avatar_thumbnail_customization_model import (
         RobloxApiAvatarModelsAvatarThumbnailCustomizationModel,
     )
     from ..models.roblox_api_avatar_models_emote_response_model import RobloxApiAvatarModelsEmoteResponseModel
-    from ..models.roblox_api_avatar_models_v4_avatar_background_model import (
-        RobloxApiAvatarModelsV4AvatarBackgroundModel,
-    )
     from ..models.roblox_api_avatar_models_v4_avatar_profile_frame_model import (
         RobloxApiAvatarModelsV4AvatarProfileFrameModel,
     )
@@ -29,7 +29,8 @@ class RobloxApiAvatarModelsV4AvatarConfigurations:
 
     Attributes:
         emotes (list[RobloxApiAvatarModelsEmoteResponseModel] | Unset): The emotes on the character.
-        background (RobloxApiAvatarModelsV4AvatarBackgroundModel | Unset): A model containing avatar background data.
+        background (AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel | Unset): A model containing avatar
+            background data.
         thumbnail_customizations (list[RobloxApiAvatarModelsAvatarThumbnailCustomizationModel] | Unset): List of
             customizations set for this avatar. At most one per thumbnail type (Closeup, FullBody).
         profile_frame (RobloxApiAvatarModelsV4AvatarProfileFrameModel | Unset): A model containing avatar profile frame
@@ -37,7 +38,7 @@ class RobloxApiAvatarModelsV4AvatarConfigurations:
     """
 
     emotes: list[RobloxApiAvatarModelsEmoteResponseModel] | Unset = UNSET
-    background: RobloxApiAvatarModelsV4AvatarBackgroundModel | Unset = UNSET
+    background: AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel | Unset = UNSET
     thumbnail_customizations: list[RobloxApiAvatarModelsAvatarThumbnailCustomizationModel] | Unset = UNSET
     profile_frame: RobloxApiAvatarModelsV4AvatarProfileFrameModel | Unset = UNSET
 
@@ -80,13 +81,13 @@ class RobloxApiAvatarModelsV4AvatarConfigurations:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.avatar_public_api_roblox_api_avatar_models_v4_avatar_background_model import (
+            AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel,
+        )
         from ..models.roblox_api_avatar_models_avatar_thumbnail_customization_model import (
             RobloxApiAvatarModelsAvatarThumbnailCustomizationModel,
         )
         from ..models.roblox_api_avatar_models_emote_response_model import RobloxApiAvatarModelsEmoteResponseModel
-        from ..models.roblox_api_avatar_models_v4_avatar_background_model import (
-            RobloxApiAvatarModelsV4AvatarBackgroundModel,
-        )
         from ..models.roblox_api_avatar_models_v4_avatar_profile_frame_model import (
             RobloxApiAvatarModelsV4AvatarProfileFrameModel,
         )
@@ -102,11 +103,11 @@ class RobloxApiAvatarModelsV4AvatarConfigurations:
                 emotes.append(emotes_item)
 
         _background = d.pop("background", UNSET)
-        background: RobloxApiAvatarModelsV4AvatarBackgroundModel | Unset
+        background: AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel | Unset
         if isinstance(_background, Unset):
             background = UNSET
         else:
-            background = RobloxApiAvatarModelsV4AvatarBackgroundModel.from_dict(_background)
+            background = AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel.from_dict(_background)
 
         _thumbnail_customizations = d.pop("thumbnailCustomizations", UNSET)
         thumbnail_customizations: list[RobloxApiAvatarModelsAvatarThumbnailCustomizationModel] | Unset = UNSET

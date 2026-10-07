@@ -25,7 +25,7 @@ def _get_kwargs(
         "url": "/matchmaking-api/v1/matchmaking/scoring-configuration/place",
         "extensions": {
             "openapi-extensions": {
-                "x-roblox-stability": "BETA",
+                "x-roblox-stability": "EXPERIMENTAL",
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "post_matchmaking-api_v1_matchmaking_scoring-configuration_place",

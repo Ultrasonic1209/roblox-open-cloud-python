@@ -19,7 +19,7 @@ class RobloxAuthenticationApiModelsPasswordValidationResponse:
     Attributes:
         code (RobloxAuthenticationApiModelsPasswordValidationResponseCode | Unset):  ['ValidPassword' = 0,
             'WeakPasswordError' = 1, 'PasswordLengthError' = 2, 'PasswordSameAsUsernameError' = 3, 'ForbiddenPasswordError'
-            = 4, 'DumbStringsError' = 5]
+            = 4, 'DumbStringsError' = 5, 'PasswordLowComplexityError' = 6, 'PasswordTooSimilarToUsernameError' = 7]
         message (str | Unset):
     """
 

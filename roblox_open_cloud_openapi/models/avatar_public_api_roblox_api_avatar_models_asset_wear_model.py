@@ -8,26 +8,28 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.roblox_api_avatar_models_asset_meta_model_v1 import RobloxApiAvatarModelsAssetMetaModelV1
+    from ..models.avatar_public_api_roblox_api_avatar_models_asset_meta_model_v1 import (
+        AvatarPublicApiRobloxApiAvatarModelsAssetMetaModelV1,
+    )
 
 
-T = TypeVar("T", bound="RobloxApiAvatarModelsAssetWearModel")
+T = TypeVar("T", bound="AvatarPublicApiRobloxApiAvatarModelsAssetWearModel")
 
 
 @_attrs_define
-class RobloxApiAvatarModelsAssetWearModel:
+class AvatarPublicApiRobloxApiAvatarModelsAssetWearModel:
     """A model which contains
     - an asset id
     - AssetMetaModel
 
         Attributes:
             id (int | Unset): An asset id
-            meta (RobloxApiAvatarModelsAssetMetaModelV1 | Unset): Exhaustive model denoting all possible metadata fields of
-                an asset
+            meta (AvatarPublicApiRobloxApiAvatarModelsAssetMetaModelV1 | Unset): Exhaustive model denoting all possible
+                metadata fields of an asset
     """
 
     id: int | Unset = UNSET
-    meta: RobloxApiAvatarModelsAssetMetaModelV1 | Unset = UNSET
+    meta: AvatarPublicApiRobloxApiAvatarModelsAssetMetaModelV1 | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
@@ -48,21 +50,23 @@ class RobloxApiAvatarModelsAssetWearModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_api_avatar_models_asset_meta_model_v1 import RobloxApiAvatarModelsAssetMetaModelV1
+        from ..models.avatar_public_api_roblox_api_avatar_models_asset_meta_model_v1 import (
+            AvatarPublicApiRobloxApiAvatarModelsAssetMetaModelV1,
+        )
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
         _meta = d.pop("meta", UNSET)
-        meta: RobloxApiAvatarModelsAssetMetaModelV1 | Unset
+        meta: AvatarPublicApiRobloxApiAvatarModelsAssetMetaModelV1 | Unset
         if isinstance(_meta, Unset):
             meta = UNSET
         else:
-            meta = RobloxApiAvatarModelsAssetMetaModelV1.from_dict(_meta)
+            meta = AvatarPublicApiRobloxApiAvatarModelsAssetMetaModelV1.from_dict(_meta)
 
-        roblox_api_avatar_models_asset_wear_model = cls(
+        avatar_public_api_roblox_api_avatar_models_asset_wear_model = cls(
             id=id,
             meta=meta,
         )
 
-        return roblox_api_avatar_models_asset_wear_model
+        return avatar_public_api_roblox_api_avatar_models_asset_wear_model

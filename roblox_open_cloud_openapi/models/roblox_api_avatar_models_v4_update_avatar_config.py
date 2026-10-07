@@ -8,13 +8,13 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.avatar_public_api_roblox_api_avatar_models_v4_avatar_background_request_model import (
+        AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
+    )
     from ..models.roblox_api_avatar_models_avatar_thumbnail_customization_model import (
         RobloxApiAvatarModelsAvatarThumbnailCustomizationModel,
     )
     from ..models.roblox_api_avatar_models_emote_request_model import RobloxApiAvatarModelsEmoteRequestModel
-    from ..models.roblox_api_avatar_models_v4_avatar_background_request_model import (
-        RobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
-    )
     from ..models.roblox_api_avatar_models_v4_avatar_profile_frame_request_model import (
         RobloxApiAvatarModelsV4AvatarProfileFrameRequestModel,
     )
@@ -31,8 +31,8 @@ class RobloxApiAvatarModelsV4UpdateAvatarConfig:
         emote_request_models (list[RobloxApiAvatarModelsEmoteRequestModel] | Unset): The avatar's emotes.
         thumbnail_customization_models (list[RobloxApiAvatarModelsAvatarThumbnailCustomizationModel] | Unset): The
             avatar's thumbnail customizations.
-        background_request_model (RobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset): A model which contains
-            the asset id of the background. This can be
+        background_request_model (AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset): A model
+            which contains the asset id of the background. This can be
             extended to have more attributes in the future.
         profile_frame_request_model (RobloxApiAvatarModelsV4AvatarProfileFrameRequestModel | Unset): A model which
             contains the asset id of the profile frame.
@@ -40,7 +40,7 @@ class RobloxApiAvatarModelsV4UpdateAvatarConfig:
 
     emote_request_models: list[RobloxApiAvatarModelsEmoteRequestModel] | Unset = UNSET
     thumbnail_customization_models: list[RobloxApiAvatarModelsAvatarThumbnailCustomizationModel] | Unset = UNSET
-    background_request_model: RobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset = UNSET
+    background_request_model: AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset = UNSET
     profile_frame_request_model: RobloxApiAvatarModelsV4AvatarProfileFrameRequestModel | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -82,13 +82,13 @@ class RobloxApiAvatarModelsV4UpdateAvatarConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.avatar_public_api_roblox_api_avatar_models_v4_avatar_background_request_model import (
+            AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
+        )
         from ..models.roblox_api_avatar_models_avatar_thumbnail_customization_model import (
             RobloxApiAvatarModelsAvatarThumbnailCustomizationModel,
         )
         from ..models.roblox_api_avatar_models_emote_request_model import RobloxApiAvatarModelsEmoteRequestModel
-        from ..models.roblox_api_avatar_models_v4_avatar_background_request_model import (
-            RobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
-        )
         from ..models.roblox_api_avatar_models_v4_avatar_profile_frame_request_model import (
             RobloxApiAvatarModelsV4AvatarProfileFrameRequestModel,
         )
@@ -117,11 +117,11 @@ class RobloxApiAvatarModelsV4UpdateAvatarConfig:
                 thumbnail_customization_models.append(thumbnail_customization_models_item)
 
         _background_request_model = d.pop("backgroundRequestModel", UNSET)
-        background_request_model: RobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset
+        background_request_model: AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset
         if isinstance(_background_request_model, Unset):
             background_request_model = UNSET
         else:
-            background_request_model = RobloxApiAvatarModelsV4AvatarBackgroundRequestModel.from_dict(
+            background_request_model = AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel.from_dict(
                 _background_request_model
             )
 

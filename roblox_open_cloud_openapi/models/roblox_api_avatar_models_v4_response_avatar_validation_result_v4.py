@@ -8,7 +8,9 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2
+    from ..models.avatar_public_api_roblox_api_avatar_models_asset_model_v2 import (
+        AvatarPublicApiRobloxApiAvatarModelsAssetModelV2,
+    )
     from ..models.roblox_api_avatar_models_invalid_background_response import (
         RobloxApiAvatarModelsInvalidBackgroundResponse,
     )
@@ -31,7 +33,7 @@ class RobloxApiAvatarModelsV4ResponseAvatarValidationResultV4:
     """Validation details for avatar mutation responses when one or more inputs could not be applied.
 
     Attributes:
-        invalid_assets (list[RobloxApiAvatarModelsAssetModelV2] | Unset): Assets that could not be worn.
+        invalid_assets (list[AvatarPublicApiRobloxApiAvatarModelsAssetModelV2] | Unset): Assets that could not be worn.
         invalid_background (list[RobloxApiAvatarModelsInvalidBackgroundResponse] | Unset): Background assets that could
             not be applied.
         invalid_profile_frame (list[RobloxApiAvatarModelsInvalidProfileFrameResponse] | Unset): Profile frame assets
@@ -42,7 +44,7 @@ class RobloxApiAvatarModelsV4ResponseAvatarValidationResultV4:
             Unset): Thumbnail customizations that could not be applied.
     """
 
-    invalid_assets: list[RobloxApiAvatarModelsAssetModelV2] | Unset = UNSET
+    invalid_assets: list[AvatarPublicApiRobloxApiAvatarModelsAssetModelV2] | Unset = UNSET
     invalid_background: list[RobloxApiAvatarModelsInvalidBackgroundResponse] | Unset = UNSET
     invalid_profile_frame: list[RobloxApiAvatarModelsInvalidProfileFrameResponse] | Unset = UNSET
     invalid_emotes: list[RobloxApiAvatarModelsInvalidEmoteResponseModel] | Unset = UNSET
@@ -104,7 +106,9 @@ class RobloxApiAvatarModelsV4ResponseAvatarValidationResultV4:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2
+        from ..models.avatar_public_api_roblox_api_avatar_models_asset_model_v2 import (
+            AvatarPublicApiRobloxApiAvatarModelsAssetModelV2,
+        )
         from ..models.roblox_api_avatar_models_invalid_background_response import (
             RobloxApiAvatarModelsInvalidBackgroundResponse,
         )
@@ -120,11 +124,13 @@ class RobloxApiAvatarModelsV4ResponseAvatarValidationResultV4:
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _invalid_assets = d.pop("invalidAssets", UNSET)
-        invalid_assets: list[RobloxApiAvatarModelsAssetModelV2] | Unset = UNSET
+        invalid_assets: list[AvatarPublicApiRobloxApiAvatarModelsAssetModelV2] | Unset = UNSET
         if _invalid_assets is not UNSET:
             invalid_assets = []
             for invalid_assets_item_data in _invalid_assets:
-                invalid_assets_item = RobloxApiAvatarModelsAssetModelV2.from_dict(invalid_assets_item_data)
+                invalid_assets_item = AvatarPublicApiRobloxApiAvatarModelsAssetModelV2.from_dict(
+                    invalid_assets_item_data
+                )
 
                 invalid_assets.append(invalid_assets_item)
 

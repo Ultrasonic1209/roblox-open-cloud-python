@@ -22,7 +22,7 @@ class RobloxAuthenticationApiModelsAccountUpgradeRequest:
     """
     Attributes:
         upgrade_type (RobloxAuthenticationApiModelsAccountUpgradeRequestUpgradeType | Unset):  ['Unknown' = 0, 'Pioneer'
-            = 1, 'OAuth' = 2, 'Guest' = 3]
+            = 1, 'OAuth' = 2, 'Guest' = 3, 'PioneerU13' = 4]
         username (str | Unset):
         password (str | Unset):
         birthday (datetime.datetime | Unset):

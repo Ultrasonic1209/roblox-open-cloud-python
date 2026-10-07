@@ -30,7 +30,10 @@ def _get_kwargs(
                     "description": "Text translation requests are subject to additional rate limits [documented here](https://create.roblox.com/docs/production/localization/auto-translate-dynamic-content#limits).",
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 10000},
                 },
-                "x-roblox-scopes": [{"name": "universe:write"}],
+                "x-roblox-scopes": [
+                    {"name": "universe:write", "targetResourceSpecifier": "universes"},
+                    {"name": "universe:write"},
+                ],
                 "x-roblox-docs": {
                     "category": "Universes and places",
                     "methodProperties": {"scopes": ["universe:write"]},
