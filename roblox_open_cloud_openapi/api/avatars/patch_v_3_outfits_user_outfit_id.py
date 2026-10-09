@@ -34,7 +34,13 @@ def _get_kwargs(
             user_outfit_id=quote(str(user_outfit_id), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-deprecated": {
+                    "deprecatedDate": "2026-09-21T00:00:00.0000000+00:00",
+                    "description": "Please use PATCH v4/outfits/{outfitId}",
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "patch_v3_outfits_userOutfitId",
         },
     }

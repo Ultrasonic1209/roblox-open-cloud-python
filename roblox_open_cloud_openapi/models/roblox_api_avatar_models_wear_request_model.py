@@ -8,9 +8,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.avatar_public_api_roblox_api_avatar_models_asset_wear_model import (
-        AvatarPublicApiRobloxApiAvatarModelsAssetWearModel,
-    )
+    from ..models.roblox_api_avatar_models_asset_wear_model import RobloxApiAvatarModelsAssetWearModel
 
 
 T = TypeVar("T", bound="RobloxApiAvatarModelsWearRequestModel")
@@ -21,10 +19,10 @@ class RobloxApiAvatarModelsWearRequestModel:
     """A model that contains a list of AssetWear models
 
     Attributes:
-        assets (list[AvatarPublicApiRobloxApiAvatarModelsAssetWearModel] | Unset): The asset ids
+        assets (list[RobloxApiAvatarModelsAssetWearModel] | Unset): The asset ids
     """
 
-    assets: list[AvatarPublicApiRobloxApiAvatarModelsAssetWearModel] | Unset = UNSET
+    assets: list[RobloxApiAvatarModelsAssetWearModel] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         assets: list[dict[str, Any]] | Unset = UNSET
@@ -44,17 +42,15 @@ class RobloxApiAvatarModelsWearRequestModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.avatar_public_api_roblox_api_avatar_models_asset_wear_model import (
-            AvatarPublicApiRobloxApiAvatarModelsAssetWearModel,
-        )
+        from ..models.roblox_api_avatar_models_asset_wear_model import RobloxApiAvatarModelsAssetWearModel
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _assets = d.pop("assets", UNSET)
-        assets: list[AvatarPublicApiRobloxApiAvatarModelsAssetWearModel] | Unset = UNSET
+        assets: list[RobloxApiAvatarModelsAssetWearModel] | Unset = UNSET
         if _assets is not UNSET:
             assets = []
             for assets_item_data in _assets:
-                assets_item = AvatarPublicApiRobloxApiAvatarModelsAssetWearModel.from_dict(assets_item_data)
+                assets_item = RobloxApiAvatarModelsAssetWearModel.from_dict(assets_item_data)
 
                 assets.append(assets_item)
 

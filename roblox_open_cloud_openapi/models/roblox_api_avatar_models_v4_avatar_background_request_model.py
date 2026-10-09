@@ -7,11 +7,11 @@ from attrs import define as _attrs_define
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel")
+T = TypeVar("T", bound="RobloxApiAvatarModelsV4AvatarBackgroundRequestModel")
 
 
 @_attrs_define
-class AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel:
+class RobloxApiAvatarModelsV4AvatarBackgroundRequestModel:
     """A model which contains the asset id of the background. This can be
     extended to have more attributes in the future.
 
@@ -37,8 +37,8 @@ class AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel:
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         id = d.pop("id", UNSET)
 
-        avatar_public_api_roblox_api_avatar_models_v4_avatar_background_request_model = cls(
+        roblox_api_avatar_models_v4_avatar_background_request_model = cls(
             id=id,
         )
 
-        return avatar_public_api_roblox_api_avatar_models_v4_avatar_background_request_model
+        return roblox_api_avatar_models_v4_avatar_background_request_model

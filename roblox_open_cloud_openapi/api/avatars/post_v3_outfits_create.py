@@ -30,7 +30,13 @@ def _get_kwargs(
         "method": "post",
         "url": "https://avatar.roblox.com/v3/outfits/create",
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-deprecated": {
+                    "deprecatedDate": "2026-09-21T00:00:00.0000000+00:00",
+                    "description": "Please use POST v4/outfits/create",
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "post_v3_outfits_create",
         },
     }

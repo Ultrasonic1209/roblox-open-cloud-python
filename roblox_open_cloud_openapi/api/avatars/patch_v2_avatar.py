@@ -32,7 +32,13 @@ def _get_kwargs(
         "method": "patch",
         "url": "https://avatar.roblox.com/v2/avatar",
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-deprecated": {
+                    "deprecatedDate": "2026-09-21T00:00:00.0000000+00:00",
+                    "description": "Please use PATCH v4/avatar",
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "patch_v2_avatar",
         },
     }

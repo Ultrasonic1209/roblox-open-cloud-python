@@ -7,6 +7,7 @@ class RobloxApiAvatarModelsV4UpdateOutfitModelV4OutfitType(IntEnum):
     VALUE_2 = 2
     VALUE_4 = 4
     VALUE_5 = 5
+    VALUE_6 = 6
 
     def __str__(self) -> str:
         return str(self.value)

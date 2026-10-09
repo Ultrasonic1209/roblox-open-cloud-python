@@ -26,6 +26,7 @@ def _get_kwargs(
         "method": "post",
         "url": "https://auth.roblox.com/v1/account/upgrade",
         "extensions": {
+            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
             "openapi-id": "post_v1_account_upgrade",
         },
     }
@@ -94,7 +95,7 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: RobloxAuthenticationApiModelsAccountUpgradeRequest
     | RobloxAuthenticationApiModelsAccountUpgradeRequest
     | Unset = UNSET,
@@ -134,7 +135,7 @@ def sync_detailed(
 
 def sync(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: RobloxAuthenticationApiModelsAccountUpgradeRequest
     | RobloxAuthenticationApiModelsAccountUpgradeRequest
     | Unset = UNSET,
@@ -169,7 +170,7 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: RobloxAuthenticationApiModelsAccountUpgradeRequest
     | RobloxAuthenticationApiModelsAccountUpgradeRequest
     | Unset = UNSET,
@@ -207,7 +208,7 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: RobloxAuthenticationApiModelsAccountUpgradeRequest
     | RobloxAuthenticationApiModelsAccountUpgradeRequest
     | Unset = UNSET,

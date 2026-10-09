@@ -8,8 +8,8 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.avatar_public_api_roblox_api_avatar_models_v4_avatar_background_request_model import (
-        AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
+    from ..models.roblox_api_avatar_models_v4_avatar_background_request_model import (
+        RobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
     )
 
 
@@ -21,12 +21,12 @@ class RobloxApiAvatarModelsV4UpdateOutfitConfig:
     """A model containing outfit config fields to update.
 
     Attributes:
-        background_request_model (AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset): A model
-            which contains the asset id of the background. This can be
+        background_request_model (RobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset): A model which contains
+            the asset id of the background. This can be
             extended to have more attributes in the future.
     """
 
-    background_request_model: AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset = UNSET
+    background_request_model: RobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         background_request_model: dict[str, Any] | Unset = UNSET
@@ -43,17 +43,17 @@ class RobloxApiAvatarModelsV4UpdateOutfitConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.avatar_public_api_roblox_api_avatar_models_v4_avatar_background_request_model import (
-            AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
+        from ..models.roblox_api_avatar_models_v4_avatar_background_request_model import (
+            RobloxApiAvatarModelsV4AvatarBackgroundRequestModel,
         )
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _background_request_model = d.pop("backgroundRequestModel", UNSET)
-        background_request_model: AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset
+        background_request_model: RobloxApiAvatarModelsV4AvatarBackgroundRequestModel | Unset
         if isinstance(_background_request_model, Unset):
             background_request_model = UNSET
         else:
-            background_request_model = AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundRequestModel.from_dict(
+            background_request_model = RobloxApiAvatarModelsV4AvatarBackgroundRequestModel.from_dict(
                 _background_request_model
             )
 

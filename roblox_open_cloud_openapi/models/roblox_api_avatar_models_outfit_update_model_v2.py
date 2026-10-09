@@ -11,9 +11,7 @@ from ..models.roblox_api_avatar_models_outfit_update_model_v2_outfit_type import
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.avatar_public_api_roblox_api_avatar_models_asset_wear_model import (
-        AvatarPublicApiRobloxApiAvatarModelsAssetWearModel,
-    )
+    from ..models.roblox_api_avatar_models_asset_wear_model import RobloxApiAvatarModelsAssetWearModel
     from ..models.roblox_api_avatar_models_body_colors_model import RobloxApiAvatarModelsBodyColorsModel
     from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
 
@@ -28,7 +26,7 @@ class RobloxApiAvatarModelsOutfitUpdateModelV2:
     Attributes:
         name (str | Unset): The outfit name
         body_colors (RobloxApiAvatarModelsBodyColorsModel | Unset): A model container BrickColor ids for each body part.
-        assets (list[AvatarPublicApiRobloxApiAvatarModelsAssetWearModel] | Unset): Array of assets
+        assets (list[RobloxApiAvatarModelsAssetWearModel] | Unset): Array of assets
         scale (RobloxWebResponsesAvatarScaleModel | Unset):
         player_avatar_type (str | Unset): The avatar scale
         outfit_type (RobloxApiAvatarModelsOutfitUpdateModelV2OutfitType | Unset): The type of outfit
@@ -36,7 +34,7 @@ class RobloxApiAvatarModelsOutfitUpdateModelV2:
 
     name: str | Unset = UNSET
     body_colors: RobloxApiAvatarModelsBodyColorsModel | Unset = UNSET
-    assets: list[AvatarPublicApiRobloxApiAvatarModelsAssetWearModel] | Unset = UNSET
+    assets: list[RobloxApiAvatarModelsAssetWearModel] | Unset = UNSET
     scale: RobloxWebResponsesAvatarScaleModel | Unset = UNSET
     player_avatar_type: str | Unset = UNSET
     outfit_type: RobloxApiAvatarModelsOutfitUpdateModelV2OutfitType | Unset = UNSET
@@ -85,9 +83,7 @@ class RobloxApiAvatarModelsOutfitUpdateModelV2:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.avatar_public_api_roblox_api_avatar_models_asset_wear_model import (
-            AvatarPublicApiRobloxApiAvatarModelsAssetWearModel,
-        )
+        from ..models.roblox_api_avatar_models_asset_wear_model import RobloxApiAvatarModelsAssetWearModel
         from ..models.roblox_api_avatar_models_body_colors_model import RobloxApiAvatarModelsBodyColorsModel
         from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
 
@@ -102,11 +98,11 @@ class RobloxApiAvatarModelsOutfitUpdateModelV2:
             body_colors = RobloxApiAvatarModelsBodyColorsModel.from_dict(_body_colors)
 
         _assets = d.pop("assets", UNSET)
-        assets: list[AvatarPublicApiRobloxApiAvatarModelsAssetWearModel] | Unset = UNSET
+        assets: list[RobloxApiAvatarModelsAssetWearModel] | Unset = UNSET
         if _assets is not UNSET:
             assets = []
             for assets_item_data in _assets:
-                assets_item = AvatarPublicApiRobloxApiAvatarModelsAssetWearModel.from_dict(assets_item_data)
+                assets_item = RobloxApiAvatarModelsAssetWearModel.from_dict(assets_item_data)
 
                 assets.append(assets_item)
 

@@ -1,3 +1,4 @@
+import sys
 from http import HTTPStatus
 from typing import Any, cast
 
@@ -5,8 +6,14 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_api_avatar_models_avatar_model_v3 import RobloxApiAvatarModelsAvatarModelV3
 from ...types import UNSET, Response, Unset
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
+from ...models.roblox_api_avatar_models_avatar_model_v3 import RobloxApiAvatarModelsAvatarModelV3
 
 
 def _get_kwargs(
@@ -29,7 +36,13 @@ def _get_kwargs(
         "url": "https://avatar.roblox.com/v2/avatar/avatar",
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-deprecated": {
+                    "deprecatedDate": "2026-09-21T00:00:00.0000000+00:00",
+                    "description": "Please use GET v4/avatar",
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v2_avatar_avatar",
         },
     }
@@ -67,6 +80,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v2_avatar_avatar"
+)
 def sync_detailed(
     *,
     client: AuthenticatedClient,
@@ -74,6 +90,8 @@ def sync_detailed(
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any | RobloxApiAvatarModelsAvatarModelV3]:
     """Returns details about the authenticated user's avatar.
+
+     Please use GET v4/avatar
 
     Args:
         check_asset_availability (bool | Unset):  Default: False.
@@ -99,6 +117,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v2_avatar_avatar"
+)
 def sync(
     *,
     client: AuthenticatedClient,
@@ -106,6 +127,8 @@ def sync(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsAvatarModelV3 | None:
     """Returns details about the authenticated user's avatar.
+
+     Please use GET v4/avatar
 
     Args:
         check_asset_availability (bool | Unset):  Default: False.
@@ -126,6 +149,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v2_avatar_avatar"
+)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -133,6 +159,8 @@ async def asyncio_detailed(
     roblox_place_id: int | Unset = UNSET,
 ) -> Response[Any | RobloxApiAvatarModelsAvatarModelV3]:
     """Returns details about the authenticated user's avatar.
+
+     Please use GET v4/avatar
 
     Args:
         check_asset_availability (bool | Unset):  Default: False.
@@ -156,6 +184,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v2_avatar_avatar"
+)
 async def asyncio(
     *,
     client: AuthenticatedClient,
@@ -163,6 +194,8 @@ async def asyncio(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsAvatarModelV3 | None:
     """Returns details about the authenticated user's avatar.
+
+     Please use GET v4/avatar
 
     Args:
         check_asset_availability (bool | Unset):  Default: False.

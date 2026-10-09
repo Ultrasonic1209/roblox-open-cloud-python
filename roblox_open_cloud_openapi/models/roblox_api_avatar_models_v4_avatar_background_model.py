@@ -8,25 +8,22 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.avatar_public_api_roblox_api_avatar_models_asset_model_v2 import (
-        AvatarPublicApiRobloxApiAvatarModelsAssetModelV2,
-    )
+    from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2
 
 
-T = TypeVar("T", bound="AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel")
+T = TypeVar("T", bound="RobloxApiAvatarModelsV4AvatarBackgroundModel")
 
 
 @_attrs_define
-class AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel:
+class RobloxApiAvatarModelsV4AvatarBackgroundModel:
     """A model containing avatar background data.
 
     Attributes:
-        background_asset (AvatarPublicApiRobloxApiAvatarModelsAssetModelV2 | Unset): A model containing details about an
-            asset
+        background_asset (RobloxApiAvatarModelsAssetModelV2 | Unset): A model containing details about an asset
             - V2: adds CurrentVersionId, AssetMetaModel
     """
 
-    background_asset: AvatarPublicApiRobloxApiAvatarModelsAssetModelV2 | Unset = UNSET
+    background_asset: RobloxApiAvatarModelsAssetModelV2 | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         background_asset: dict[str, Any] | Unset = UNSET
@@ -43,20 +40,18 @@ class AvatarPublicApiRobloxApiAvatarModelsV4AvatarBackgroundModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.avatar_public_api_roblox_api_avatar_models_asset_model_v2 import (
-            AvatarPublicApiRobloxApiAvatarModelsAssetModelV2,
-        )
+        from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _background_asset = d.pop("backgroundAsset", UNSET)
-        background_asset: AvatarPublicApiRobloxApiAvatarModelsAssetModelV2 | Unset
+        background_asset: RobloxApiAvatarModelsAssetModelV2 | Unset
         if isinstance(_background_asset, Unset):
             background_asset = UNSET
         else:
-            background_asset = AvatarPublicApiRobloxApiAvatarModelsAssetModelV2.from_dict(_background_asset)
+            background_asset = RobloxApiAvatarModelsAssetModelV2.from_dict(_background_asset)
 
-        avatar_public_api_roblox_api_avatar_models_v4_avatar_background_model = cls(
+        roblox_api_avatar_models_v4_avatar_background_model = cls(
             background_asset=background_asset,
         )
 
-        return avatar_public_api_roblox_api_avatar_models_v4_avatar_background_model
+        return roblox_api_avatar_models_v4_avatar_background_model

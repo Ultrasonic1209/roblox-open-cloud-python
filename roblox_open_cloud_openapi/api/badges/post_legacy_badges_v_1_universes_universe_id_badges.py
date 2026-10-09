@@ -32,8 +32,10 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
                 },
+                "x-roblox-scopes": [
+                    {"name": "legacy-universe.badge:manage-and-spend-robux", "targetResourceSpecifier": ""}
+                ],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "legacy-universe.badge:manage-and-spend-robux"}],
             },
             "openapi-id": "post_legacy-badges_v1_universes_universeId_badges",
         },

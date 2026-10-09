@@ -1,3 +1,4 @@
+import sys
 from http import HTTPStatus
 from typing import Any, cast
 from urllib.parse import quote
@@ -6,10 +7,14 @@ import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.avatar_public_api_roblox_api_avatar_models_outfit_details_model_v2 import (
-    AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2,
-)
 from ...types import UNSET, Response, Unset
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
+from ...models.roblox_api_avatar_models_outfit_details_model_v2 import RobloxApiAvatarModelsOutfitDetailsModelV2
 
 
 def _get_kwargs(
@@ -35,7 +40,13 @@ def _get_kwargs(
         ),
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-deprecated": {
+                    "deprecatedDate": "2026-09-21T00:00:00.0000000+00:00",
+                    "description": "Please use GET v4/outfits/{outfitId}/details",
+                },
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v3_outfits_userOutfitId_details",
         },
     }
@@ -46,9 +57,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2 | None:
+) -> Any | RobloxApiAvatarModelsOutfitDetailsModelV2 | None:
     if response.status_code == 200:
-        response_200 = AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2.from_dict(response.json())
+        response_200 = RobloxApiAvatarModelsOutfitDetailsModelV2.from_dict(response.json())
 
         return response_200
 
@@ -72,7 +83,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]:
+) -> Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -81,14 +92,19 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v3_outfits__userOutfitId__details"
+)
 def sync_detailed(
     user_outfit_id: int,
     *,
     client: AuthenticatedClient,
     check_asset_availability: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
-) -> Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]:
+) -> Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]:
     """Gets details about the contents of an outfit.
+
+     Please use GET v4/outfits/{outfitId}/details
 
     Args:
         user_outfit_id (int):
@@ -100,7 +116,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]
+        Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]
     """
 
     kwargs = _get_kwargs(
@@ -116,14 +132,19 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v3_outfits__userOutfitId__details"
+)
 def sync(
     user_outfit_id: int,
     *,
     client: AuthenticatedClient,
     check_asset_availability: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
-) -> Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2 | None:
+) -> Any | RobloxApiAvatarModelsOutfitDetailsModelV2 | None:
     """Gets details about the contents of an outfit.
+
+     Please use GET v4/outfits/{outfitId}/details
 
     Args:
         user_outfit_id (int):
@@ -135,7 +156,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2
+        Any | RobloxApiAvatarModelsOutfitDetailsModelV2
     """
 
     return sync_detailed(
@@ -146,14 +167,19 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v3_outfits__userOutfitId__details"
+)
 async def asyncio_detailed(
     user_outfit_id: int,
     *,
     client: AuthenticatedClient,
     check_asset_availability: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
-) -> Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]:
+) -> Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]:
     """Gets details about the contents of an outfit.
+
+     Please use GET v4/outfits/{outfitId}/details
 
     Args:
         user_outfit_id (int):
@@ -165,7 +191,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2]
+        Response[Any | RobloxApiAvatarModelsOutfitDetailsModelV2]
     """
 
     kwargs = _get_kwargs(
@@ -179,14 +205,19 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v3_outfits__userOutfitId__details"
+)
 async def asyncio(
     user_outfit_id: int,
     *,
     client: AuthenticatedClient,
     check_asset_availability: bool | Unset = False,
     roblox_place_id: int | Unset = UNSET,
-) -> Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2 | None:
+) -> Any | RobloxApiAvatarModelsOutfitDetailsModelV2 | None:
     """Gets details about the contents of an outfit.
+
+     Please use GET v4/outfits/{outfitId}/details
 
     Args:
         user_outfit_id (int):
@@ -198,7 +229,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | AvatarPublicApiRobloxApiAvatarModelsOutfitDetailsModelV2
+        Any | RobloxApiAvatarModelsOutfitDetailsModelV2
     """
 
     return (

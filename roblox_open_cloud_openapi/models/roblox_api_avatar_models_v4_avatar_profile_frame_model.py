@@ -8,9 +8,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.avatar_public_api_roblox_api_avatar_models_asset_model_v2 import (
-        AvatarPublicApiRobloxApiAvatarModelsAssetModelV2,
-    )
+    from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2
 
 
 T = TypeVar("T", bound="RobloxApiAvatarModelsV4AvatarProfileFrameModel")
@@ -21,12 +19,11 @@ class RobloxApiAvatarModelsV4AvatarProfileFrameModel:
     """A model containing avatar profile frame data.
 
     Attributes:
-        frame_asset (AvatarPublicApiRobloxApiAvatarModelsAssetModelV2 | Unset): A model containing details about an
-            asset
+        frame_asset (RobloxApiAvatarModelsAssetModelV2 | Unset): A model containing details about an asset
             - V2: adds CurrentVersionId, AssetMetaModel
     """
 
-    frame_asset: AvatarPublicApiRobloxApiAvatarModelsAssetModelV2 | Unset = UNSET
+    frame_asset: RobloxApiAvatarModelsAssetModelV2 | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         frame_asset: dict[str, Any] | Unset = UNSET
@@ -43,17 +40,15 @@ class RobloxApiAvatarModelsV4AvatarProfileFrameModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.avatar_public_api_roblox_api_avatar_models_asset_model_v2 import (
-            AvatarPublicApiRobloxApiAvatarModelsAssetModelV2,
-        )
+        from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
         _frame_asset = d.pop("frameAsset", UNSET)
-        frame_asset: AvatarPublicApiRobloxApiAvatarModelsAssetModelV2 | Unset
+        frame_asset: RobloxApiAvatarModelsAssetModelV2 | Unset
         if isinstance(_frame_asset, Unset):
             frame_asset = UNSET
         else:
-            frame_asset = AvatarPublicApiRobloxApiAvatarModelsAssetModelV2.from_dict(_frame_asset)
+            frame_asset = RobloxApiAvatarModelsAssetModelV2.from_dict(_frame_asset)
 
         roblox_api_avatar_models_v4_avatar_profile_frame_model = cls(
             frame_asset=frame_asset,
