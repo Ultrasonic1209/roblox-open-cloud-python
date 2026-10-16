@@ -20,9 +20,7 @@ class RobloxTwoStepVerificationApiSendCodeRequest:
     Attributes:
         challenge_id (str | Unset): The two step verification challenge ID.
         action_type (RobloxTwoStepVerificationApiSendCodeRequestActionType | Unset): The
-            Roblox.TwoStepVerification.Client.TwoStepVerificationActionType associated with the challenge. ['Unknown' = 0,
-            'Login' = 1, 'RobuxSpend' = 2, 'ItemTrade' = 3, 'Resale' = 4, 'PasswordReset' = 5, 'RevertAccount' = 6,
-            'Generic' = 7, 'GenericWithRecoveryCodes' = 8]
+            Roblox.TwoStepVerification.Client.TwoStepVerificationActionType associated with the challenge.
     """
 
     challenge_id: str | Unset = UNSET

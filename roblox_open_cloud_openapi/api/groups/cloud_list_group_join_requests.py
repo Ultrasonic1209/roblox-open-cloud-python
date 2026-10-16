@@ -37,7 +37,7 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "group:read"}],
+                "x-roblox-scopes": [{"name": "group:read", "targetResourceSpecifier": ""}, {"name": "group:read"}],
                 "x-roblox-docs": {
                     "category": "Users and groups",
                     "methodProperties": {"scopes": ["group:read"]},

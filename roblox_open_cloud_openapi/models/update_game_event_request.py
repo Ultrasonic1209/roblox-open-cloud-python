@@ -13,7 +13,6 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.event_media import EventMedia
     from ..models.event_ranked_category import EventRankedCategory
-    from ..models.update_game_event_config_request import UpdateGameEventConfigRequest
 
 
 T = TypeVar("T", bound="UpdateGameEventRequest")
@@ -35,8 +34,6 @@ class UpdateGameEventRequest:
             place_id (int | None | Unset):
             categories (list[EventRankedCategory] | None | Unset):
             thumbnails (list[EventMedia] | None | Unset):
-            config (None | Unset | UpdateGameEventConfigRequest): Optional config block on the v3 PATCH body. Null sub-
-                fields = no change.
             featuring_status (FeaturingStatus | None | Unset):
             tagline (None | str | Unset):
     """
@@ -50,13 +47,10 @@ class UpdateGameEventRequest:
     place_id: int | None | Unset = UNSET
     categories: list[EventRankedCategory] | None | Unset = UNSET
     thumbnails: list[EventMedia] | None | Unset = UNSET
-    config: None | Unset | UpdateGameEventConfigRequest = UNSET
     featuring_status: FeaturingStatus | None | Unset = UNSET
     tagline: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_game_event_config_request import UpdateGameEventConfigRequest
-
         title: None | str | Unset
         if isinstance(self.title, Unset):
             title = UNSET
@@ -129,14 +123,6 @@ class UpdateGameEventRequest:
         else:
             thumbnails = self.thumbnails
 
-        config: dict[str, Any] | None | Unset
-        if isinstance(self.config, Unset):
-            config = UNSET
-        elif isinstance(self.config, UpdateGameEventConfigRequest):
-            config = self.config.to_dict()
-        else:
-            config = self.config
-
         featuring_status: None | str | Unset
         if isinstance(self.featuring_status, Unset):
             featuring_status = UNSET
@@ -172,8 +158,6 @@ class UpdateGameEventRequest:
             field_dict["categories"] = categories
         if thumbnails is not UNSET:
             field_dict["thumbnails"] = thumbnails
-        if config is not UNSET:
-            field_dict["config"] = config
         if featuring_status is not UNSET:
             field_dict["featuringStatus"] = featuring_status
         if tagline is not UNSET:
@@ -185,7 +169,6 @@ class UpdateGameEventRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.event_media import EventMedia
         from ..models.event_ranked_category import EventRankedCategory
-        from ..models.update_game_event_config_request import UpdateGameEventConfigRequest
 
         d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
 
@@ -320,23 +303,6 @@ class UpdateGameEventRequest:
 
         thumbnails = _parse_thumbnails(d.pop("thumbnails", UNSET))
 
-        def _parse_config(data: object) -> None | Unset | UpdateGameEventConfigRequest:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                config_type_1 = UpdateGameEventConfigRequest.from_dict(data)
-
-                return config_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | Unset | UpdateGameEventConfigRequest, data)
-
-        config = _parse_config(d.pop("config", UNSET))
-
         def _parse_featuring_status(data: object) -> FeaturingStatus | None | Unset:
             if data is None:
                 return data
@@ -373,7 +339,6 @@ class UpdateGameEventRequest:
             place_id=place_id,
             categories=categories,
             thumbnails=thumbnails,
-            config=config,
             featuring_status=featuring_status,
             tagline=tagline,
         )

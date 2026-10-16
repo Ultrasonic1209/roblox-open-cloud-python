@@ -22,7 +22,10 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "creator-store-product:read"}],
+                "x-roblox-scopes": [
+                    {"name": "creator-store-product:read", "targetResourceSpecifier": ""},
+                    {"name": "creator-store-product:read"},
+                ],
                 "x-roblox-docs": {
                     "category": "Monetization",
                     "methodProperties": {"scopes": ["creator-store-product:read"]},

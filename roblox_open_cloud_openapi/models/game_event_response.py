@@ -13,7 +13,6 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.category_response import CategoryResponse
-    from ..models.config_response import ConfigResponse
     from ..models.host_response import HostResponse
     from ..models.thumbnail_response import ThumbnailResponse
 
@@ -52,7 +51,6 @@ class GameEventResponse:
             thumbnails (list[ThumbnailResponse] | None | Unset):
             all_thumbnails_created (bool | None | Unset): Whether all requested thumbnails were successfully persisted.
                 Returned on Create/Update.
-            config (ConfigResponse | None | Unset):
             user_rsvp_status (None | RsvpStatus | Unset): Authenticated caller's RSVP status. Omitted for unauthenticated
                 callers.
             create_time (datetime.datetime | None | Unset):
@@ -77,13 +75,11 @@ class GameEventResponse:
     categories: list[CategoryResponse] | None | Unset = UNSET
     thumbnails: list[ThumbnailResponse] | None | Unset = UNSET
     all_thumbnails_created: bool | None | Unset = UNSET
-    config: ConfigResponse | None | Unset = UNSET
     user_rsvp_status: None | RsvpStatus | Unset = UNSET
     create_time: datetime.datetime | None | Unset = UNSET
     update_time: datetime.datetime | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.config_response import ConfigResponse
         from ..models.host_response import HostResponse
 
         id: None | str | Unset
@@ -216,14 +212,6 @@ class GameEventResponse:
         else:
             all_thumbnails_created = self.all_thumbnails_created
 
-        config: dict[str, Any] | None | Unset
-        if isinstance(self.config, Unset):
-            config = UNSET
-        elif isinstance(self.config, ConfigResponse):
-            config = self.config.to_dict()
-        else:
-            config = self.config
-
         user_rsvp_status: None | str | Unset
         if isinstance(self.user_rsvp_status, Unset):
             user_rsvp_status = UNSET
@@ -287,8 +275,6 @@ class GameEventResponse:
             field_dict["thumbnails"] = thumbnails
         if all_thumbnails_created is not UNSET:
             field_dict["allThumbnailsCreated"] = all_thumbnails_created
-        if config is not UNSET:
-            field_dict["config"] = config
         if user_rsvp_status is not UNSET:
             field_dict["userRsvpStatus"] = user_rsvp_status
         if create_time is not UNSET:
@@ -301,7 +287,6 @@ class GameEventResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.category_response import CategoryResponse
-        from ..models.config_response import ConfigResponse
         from ..models.host_response import HostResponse
         from ..models.thumbnail_response import ThumbnailResponse
 
@@ -535,23 +520,6 @@ class GameEventResponse:
 
         all_thumbnails_created = _parse_all_thumbnails_created(d.pop("allThumbnailsCreated", UNSET))
 
-        def _parse_config(data: object) -> ConfigResponse | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                config_type_1 = ConfigResponse.from_dict(data)
-
-                return config_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ConfigResponse | None | Unset, data)
-
-        config = _parse_config(d.pop("config", UNSET))
-
         def _parse_user_rsvp_status(data: object) -> None | RsvpStatus | Unset:
             if data is None:
                 return data
@@ -622,7 +590,6 @@ class GameEventResponse:
             categories=categories,
             thumbnails=thumbnails,
             all_thumbnails_created=all_thumbnails_created,
-            config=config,
             user_rsvp_status=user_rsvp_status,
             create_time=create_time,
             update_time=update_time,

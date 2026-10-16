@@ -11,7 +11,6 @@ from ..models.featuring_status import FeaturingStatus
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.create_game_event_config_request import CreateGameEventConfigRequest
     from ..models.event_media import EventMedia
     from ..models.event_ranked_category import EventRankedCategory
 
@@ -44,8 +43,6 @@ class CreateGameEventRequest:
                 place.
             categories (list[EventRankedCategory] | None | Unset):
             thumbnails (list[EventMedia] | None | Unset):
-            config (CreateGameEventConfigRequest | None | Unset): Optional event configuration block (recurrence +
-                notification audience) on the v3 Create body.
             featuring_status (FeaturingStatus | None | Unset): Optional featuring status flag. When omitted, defaults to
                 "not featured".
             tagline (None | str | Unset): Optional tagline. Length and content are validated server-side.
@@ -61,13 +58,10 @@ class CreateGameEventRequest:
     place_id: int | None | Unset = UNSET
     categories: list[EventRankedCategory] | None | Unset = UNSET
     thumbnails: list[EventMedia] | None | Unset = UNSET
-    config: CreateGameEventConfigRequest | None | Unset = UNSET
     featuring_status: FeaturingStatus | None | Unset = UNSET
     tagline: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.create_game_event_config_request import CreateGameEventConfigRequest
-
         title: None | str | Unset
         if isinstance(self.title, Unset):
             title = UNSET
@@ -146,14 +140,6 @@ class CreateGameEventRequest:
         else:
             thumbnails = self.thumbnails
 
-        config: dict[str, Any] | None | Unset
-        if isinstance(self.config, Unset):
-            config = UNSET
-        elif isinstance(self.config, CreateGameEventConfigRequest):
-            config = self.config.to_dict()
-        else:
-            config = self.config
-
         featuring_status: None | str | Unset
         if isinstance(self.featuring_status, Unset):
             featuring_status = UNSET
@@ -191,8 +177,6 @@ class CreateGameEventRequest:
             field_dict["categories"] = categories
         if thumbnails is not UNSET:
             field_dict["thumbnails"] = thumbnails
-        if config is not UNSET:
-            field_dict["config"] = config
         if featuring_status is not UNSET:
             field_dict["featuringStatus"] = featuring_status
         if tagline is not UNSET:
@@ -202,7 +186,6 @@ class CreateGameEventRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.create_game_event_config_request import CreateGameEventConfigRequest
         from ..models.event_media import EventMedia
         from ..models.event_ranked_category import EventRankedCategory
 
@@ -348,23 +331,6 @@ class CreateGameEventRequest:
 
         thumbnails = _parse_thumbnails(d.pop("thumbnails", UNSET))
 
-        def _parse_config(data: object) -> CreateGameEventConfigRequest | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                config_type_1 = CreateGameEventConfigRequest.from_dict(data)
-
-                return config_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(CreateGameEventConfigRequest | None | Unset, data)
-
-        config = _parse_config(d.pop("config", UNSET))
-
         def _parse_featuring_status(data: object) -> FeaturingStatus | None | Unset:
             if data is None:
                 return data
@@ -402,7 +368,6 @@ class CreateGameEventRequest:
             place_id=place_id,
             categories=categories,
             thumbnails=thumbnails,
-            config=config,
             featuring_status=featuring_status,
             tagline=tagline,
         )

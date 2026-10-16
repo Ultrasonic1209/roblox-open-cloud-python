@@ -42,7 +42,10 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 150},
                     "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 30},
                 },
-                "x-roblox-scopes": [{"name": "universe.user-restriction:read"}],
+                "x-roblox-scopes": [
+                    {"name": "universe.user-restriction:read", "targetResourceSpecifier": "universes"},
+                    {"name": "universe.user-restriction:read"},
+                ],
                 "x-roblox-docs": {
                     "category": "Users and groups",
                     "methodProperties": {"scopes": ["universe.user-restriction:read"]},

@@ -31,10 +31,7 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 600},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 600},
-                },
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 600}},
                 "x-roblox-scopes": [
                     {"name": "ad.billing:read", "targetResourceSpecifier": "", "firstPartyOAuthOnly": True}
                 ],

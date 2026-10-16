@@ -28,7 +28,7 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "group:write"}],
+                "x-roblox-scopes": [{"name": "group:write", "targetResourceSpecifier": ""}, {"name": "group:write"}],
                 "x-roblox-docs": {
                     "category": "Users and groups",
                     "methodProperties": {"scopes": ["group:write"]},

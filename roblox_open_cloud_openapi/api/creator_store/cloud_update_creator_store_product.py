@@ -36,7 +36,10 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "creator-store-product:write"}],
+                "x-roblox-scopes": [
+                    {"name": "creator-store-product:write", "targetResourceSpecifier": ""},
+                    {"name": "creator-store-product:write"},
+                ],
                 "x-roblox-docs": {
                     "category": "Monetization",
                     "methodProperties": {"scopes": ["creator-store-product:write"]},

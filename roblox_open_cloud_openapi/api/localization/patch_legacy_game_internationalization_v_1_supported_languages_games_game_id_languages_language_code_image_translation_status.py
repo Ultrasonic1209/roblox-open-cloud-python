@@ -33,6 +33,7 @@ def _get_kwargs(
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
                     "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
                 },
+                "x-roblox-scopes": [{"name": "legacy-universe:manage"}],
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
             },
             "openapi-id": "patch_legacy-game-internationalization_v1_supported-languages_games_gameId_languages_languageCode_image-translation-status",

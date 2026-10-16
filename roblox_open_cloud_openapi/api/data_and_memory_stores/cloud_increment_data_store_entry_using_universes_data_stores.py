@@ -37,6 +37,8 @@ def _get_kwargs(
                 "x-roblox-scopes": [
                     {"name": "universe-datastores.objects:create"},
                     {"name": "universe-datastores.objects:update"},
+                    {"name": "universe-datastores.objects:create"},
+                    {"name": "universe-datastores.objects:update"},
                 ],
                 "x-roblox-docs": {
                     "category": "Data and memory stores",

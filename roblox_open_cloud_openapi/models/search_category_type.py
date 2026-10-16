@@ -7,6 +7,7 @@ class SearchCategoryType(str, Enum):
     FONT_FAMILY = "FontFamily"
     MESH_PART = "MeshPart"
     MODEL = "Model"
+    PLACE = "Place"
     PLUGIN = "Plugin"
     VIDEO = "Video"
 

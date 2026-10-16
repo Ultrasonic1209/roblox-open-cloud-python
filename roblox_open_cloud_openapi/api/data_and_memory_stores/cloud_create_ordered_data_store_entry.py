@@ -41,7 +41,10 @@ def _get_kwargs(
                     "description": "Ordered data stores requests are subject to additional throttling limits described in the [Open Cloud guide for data stores](https://create.roblox.com/docs/cloud/guides/data-stores/throttling).",
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000},
                 },
-                "x-roblox-scopes": [{"name": "universe.ordered-data-store.scope.entry:write"}],
+                "x-roblox-scopes": [
+                    {"name": "universe.ordered-data-store.scope.entry:write"},
+                    {"name": "universe.ordered-data-store.scope.entry:write"},
+                ],
                 "x-roblox-docs": {
                     "category": "Data and memory stores",
                     "methodProperties": {"scopes": ["universe.ordered-data-store.scope.entry:write"]},

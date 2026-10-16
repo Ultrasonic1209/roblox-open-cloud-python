@@ -42,7 +42,7 @@ def _get_kwargs(
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
                 "x-roblox-scopes": [
                     {"name": "universe:write", "targetResourceSpecifier": "universes"},
-                    {"name": "universe.subscription-product.subscription:read", "targetResourceSpecifier": ""},
+                    {"name": "universe.subscription-product.subscription:read", "targetResourceSpecifier": "universes"},
                     {"name": "universe:write"},
                     {"name": "universe.subscription-product.subscription:read"},
                 ],

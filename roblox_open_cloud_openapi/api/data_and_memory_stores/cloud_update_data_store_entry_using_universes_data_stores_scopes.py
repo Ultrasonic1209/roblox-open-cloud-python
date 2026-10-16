@@ -43,7 +43,10 @@ def _get_kwargs(
                     "description": "Data stores requests are subject to additional throttling limits described in the [Open Cloud guide for data stores](https://create.roblox.com/docs/cloud/guides/data-stores/throttling).",
                     "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000},
                 },
-                "x-roblox-scopes": [{"name": "universe-datastores.objects:update"}],
+                "x-roblox-scopes": [
+                    {"name": "universe-datastores.objects:update"},
+                    {"name": "universe-datastores.objects:update"},
+                ],
                 "x-roblox-docs": {
                     "category": "Data and memory stores",
                     "methodProperties": {"scopes": ["universe-datastores.objects:update"]},

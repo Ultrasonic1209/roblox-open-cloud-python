@@ -47,7 +47,10 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "group-forum:read"}],
+                "x-roblox-scopes": [
+                    {"name": "group-forum:read", "targetResourceSpecifier": ""},
+                    {"name": "group-forum:read"},
+                ],
                 "x-roblox-docs": {
                     "category": "Users and groups",
                     "methodProperties": {"scopes": ["group-forum:read"]},

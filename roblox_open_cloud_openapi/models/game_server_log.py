@@ -32,6 +32,7 @@ class GameServerLog:
         stack_trace (None | str | Unset): The stack trace of the log
         message_template (None | str | Unset): Optional message template included with structured logging
         context (None | str | Unset): Optional message context included with structured logging
+        logger_full_path (None | str | Unset): The full path of the logger that emitted the log entry
         skipped_count (int | Unset): How many duplicate versions of this message were present in the same time window as
             this log
         rate_limited_count (int | Unset): How many more messages were present in the time window beyond our overall rate
@@ -52,6 +53,7 @@ class GameServerLog:
     stack_trace: None | str | Unset = UNSET
     message_template: None | str | Unset = UNSET
     context: None | str | Unset = UNSET
+    logger_full_path: None | str | Unset = UNSET
     skipped_count: int | Unset = UNSET
     rate_limited_count: int | Unset = UNSET
     structured_stack_trace: list[StructuredStackFrame] | None | Unset = UNSET
@@ -109,6 +111,12 @@ class GameServerLog:
         else:
             context = self.context
 
+        logger_full_path: None | str | Unset
+        if isinstance(self.logger_full_path, Unset):
+            logger_full_path = UNSET
+        else:
+            logger_full_path = self.logger_full_path
+
         skipped_count = self.skipped_count
 
         rate_limited_count = self.rate_limited_count
@@ -148,6 +156,8 @@ class GameServerLog:
             field_dict["messageTemplate"] = message_template
         if context is not UNSET:
             field_dict["context"] = context
+        if logger_full_path is not UNSET:
+            field_dict["loggerFullPath"] = logger_full_path
         if skipped_count is not UNSET:
             field_dict["skippedCount"] = skipped_count
         if rate_limited_count is not UNSET:
@@ -241,6 +251,15 @@ class GameServerLog:
 
         context = _parse_context(d.pop("context", UNSET))
 
+        def _parse_logger_full_path(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        logger_full_path = _parse_logger_full_path(d.pop("loggerFullPath", UNSET))
+
         skipped_count = d.pop("skippedCount", UNSET)
 
         rate_limited_count = d.pop("rateLimitedCount", UNSET)
@@ -280,6 +299,7 @@ class GameServerLog:
             stack_trace=stack_trace,
             message_template=message_template,
             context=context,
+            logger_full_path=logger_full_path,
             skipped_count=skipped_count,
             rate_limited_count=rate_limited_count,
             structured_stack_trace=structured_stack_trace,

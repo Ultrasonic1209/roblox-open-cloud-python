@@ -30,7 +30,14 @@ def _get_kwargs(
                     "response": {"$ref": "#/components/schemas/GenerateSpeechAssetResponse"},
                 },
                 "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "universe:write"}, {"name": "asset:read"}, {"name": "asset:write"}],
+                "x-roblox-scopes": [
+                    {"name": "universe:write", "targetResourceSpecifier": "universes"},
+                    {"name": "asset:read", "targetResourceSpecifier": ""},
+                    {"name": "asset:write", "targetResourceSpecifier": ""},
+                    {"name": "universe:write"},
+                    {"name": "asset:read"},
+                    {"name": "asset:write"},
+                ],
                 "x-roblox-docs": {
                     "category": "Universes and places",
                     "methodProperties": {"scopes": ["universe:write", "asset:read", "asset:write"]},

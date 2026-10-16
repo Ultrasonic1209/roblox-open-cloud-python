@@ -35,10 +35,7 @@ def _get_kwargs(
         "extensions": {
             "openapi-extensions": {
                 "x-roblox-stability": "EXPERIMENTAL",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 50},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 50},
-                },
+                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 50}},
                 "x-roblox-scopes": [
                     {
                         "name": "universe.thumbnail:write",
