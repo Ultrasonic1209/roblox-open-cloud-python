@@ -47,10 +47,10 @@ class RobloxApiNotificationsModelsGetMetadataResponseModel:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_notifications_models_push_notification_client_metadata import (
-            RobloxApiNotificationsModelsPushNotificationClientMetadata,
+            RobloxApiNotificationsModelsPushNotificationClientMetadata,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _metadata = d.pop("metadata", UNSET)
         metadata: RobloxApiNotificationsModelsPushNotificationClientMetadata | Unset
         if isinstance(_metadata, Unset):

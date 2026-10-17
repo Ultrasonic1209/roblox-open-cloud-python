@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class DataStoreState(str, Enum):
+class DataStoreState(StrEnum):
     ACTIVE = "ACTIVE"
     DELETED = "DELETED"
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"

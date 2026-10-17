@@ -1,13 +1,33 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.secrets_store_service_problem_details import SecretsStoreServiceProblemDetails
 from ...types import Response
+
+"""
+{'x-roblox-scopes': [{'name': 'universe.secret:write', 'description': 'Required'}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 120}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 120}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+from ...models.secrets_store_service_problem_details import SecretsStoreServiceProblemDetails
 
 
 def _get_kwargs(
@@ -21,25 +41,13 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             secret_id=quote(str(secret_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-scopes": [{"name": "universe.secret:write", "description": "Required"}],
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "delete_cloud_v2_universes_universeId_secrets_secretId",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | SecretsStoreServiceProblemDetails | None:
     if response.status_code == 200:
         response_200 = cast(Any, None)
@@ -67,7 +75,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | SecretsStoreServiceProblemDetails]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -110,7 +118,7 @@ def sync_detailed(
         secret_id=secret_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -185,7 +193,7 @@ async def asyncio_detailed(
         secret_id=secret_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -70,9 +70,9 @@ class UserRestriction:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.user_restriction_game_join_restriction import UserRestrictionGameJoinRestriction
+        from ..models.user_restriction_game_join_restriction import UserRestrictionGameJoinRestriction  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         path = d.pop("path", UNSET)
 
         _update_time = d.pop("updateTime", UNSET)

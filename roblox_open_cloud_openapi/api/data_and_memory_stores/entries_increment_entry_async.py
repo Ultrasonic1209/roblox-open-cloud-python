@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-cloud-api-operation-name': 'Increment Entry', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'universe-datastores.objects:update', 'description': 'If the entry key being incremented exists.'}, {'name': 'universe-datastores.objects:create', 'description': "If the entry key being incremented doesn't exist."}, {'name': 'universe-datastores.control:create', 'description': "If the Data Store the entry key is in doesn't exist."}], 'x-roblox-cloud-api-operation': True, 'x-roblox-lua-equivalent': 'GlobalDataStore:IncrementAsync', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'curl', 'script': 'curl --include --location --request POST "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries/entry/increment" \\\n--header "x-api-key: ${API_KEY}" \\\n--header \'content-length: 0\' \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "entryKey=269323" \\\n-d "incrementBy=3"'}], 'x-roblox-rate-limits': {'description': 'See [Throttling](/cloud/guides/data-stores/throttling.md).', 'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 5000}}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}:increment', 'httpMethod': 'POST', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_IncrementDataStoreEntry__Using_Universes_DataStores'}, {'url': 'https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries/{entry_id}:increment', 'httpMethod': 'POST', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_IncrementDataStoreEntry__Using_Universes_DataStores_Scopes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -15,6 +34,7 @@ else:
     from typing_extensions import deprecated
 
 from ...models.entries_increment_entry_async_response_200 import EntriesIncrementEntryAsyncResponse200
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -67,52 +87,6 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-cloud-api-operation-name": "Increment Entry",
-                "x-roblox-stability": "BETA",
-                "x-roblox-scopes": [
-                    {
-                        "name": "universe-datastores.objects:update",
-                        "description": "If the entry key being incremented exists.",
-                    },
-                    {
-                        "name": "universe-datastores.objects:create",
-                        "description": "If the entry key being incremented doesn't exist.",
-                    },
-                    {
-                        "name": "universe-datastores.control:create",
-                        "description": "If the Data Store the entry key is in doesn't exist.",
-                    },
-                ],
-                "x-roblox-cloud-api-operation": True,
-                "x-roblox-lua-equivalent": "GlobalDataStore:IncrementAsync",
-                "x-roblox-cloud-api-operation-code-samples": [
-                    {
-                        "language": "curl",
-                        "script": 'curl --include --location --request POST "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries/entry/increment" \\\n--header "x-api-key: ${API_KEY}" \\\n--header \'content-length: 0\' \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "entryKey=269323" \\\n-d "incrementBy=3"',
-                    }
-                ],
-                "x-roblox-rate-limits": {
-                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
-                },
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}:increment",
-                        "httpMethod": "POST",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_IncrementDataStoreEntry__Using_Universes_DataStores",
-                    },
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries/{entry_id}:increment",
-                        "httpMethod": "POST",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_IncrementDataStoreEntry__Using_Universes_DataStores_Scopes",
-                    },
-                ],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "Entries_IncrementEntryAsync",
-        },
     }
 
     _kwargs["headers"] = headers
@@ -120,7 +94,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | EntriesIncrementEntryAsyncResponse200 | None:
     if response.status_code == 200:
         response_200 = EntriesIncrementEntryAsyncResponse200.from_dict(response.json())
@@ -138,7 +112,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | EntriesIncrementEntryAsyncResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -162,7 +136,7 @@ def sync_detailed(
     roblox_entry_attributes: None | str | Unset = UNSET,
     roblox_entry_userids: None | str | Unset = UNSET,
 ) -> Response[Any | EntriesIncrementEntryAsyncResponse200]:
-    r"""Increment entry
+    """Increment entry
 
      Increments the value for an entry by a given amount, or create a new entry with that amount. Returns
     the entry and metadata.
@@ -173,7 +147,7 @@ def sync_detailed(
     roblox-entry-version: 08D9E6A3F2188CFF.0000000001.08D9E6A3F2188CFF.01
     roblox-entry-created-time: 2022-02-02T23:30:06.5388799+00:00
     roblox-entry-version-created-time: 2022-02-02T23:30:06.5388799+00:00
-    roblox-entry-attributes: { \"myAttribute\": \"myValue\" }
+    roblox-entry-attributes: { "myAttribute": "myValue" }
     roblox-entry-userids: [1, 2, 3]
     ```
 
@@ -214,7 +188,7 @@ def sync_detailed(
         roblox_entry_userids=roblox_entry_userids,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -235,7 +209,7 @@ def sync(
     roblox_entry_attributes: None | str | Unset = UNSET,
     roblox_entry_userids: None | str | Unset = UNSET,
 ) -> Any | EntriesIncrementEntryAsyncResponse200 | None:
-    r"""Increment entry
+    """Increment entry
 
      Increments the value for an entry by a given amount, or create a new entry with that amount. Returns
     the entry and metadata.
@@ -246,7 +220,7 @@ def sync(
     roblox-entry-version: 08D9E6A3F2188CFF.0000000001.08D9E6A3F2188CFF.01
     roblox-entry-created-time: 2022-02-02T23:30:06.5388799+00:00
     roblox-entry-version-created-time: 2022-02-02T23:30:06.5388799+00:00
-    roblox-entry-attributes: { \"myAttribute\": \"myValue\" }
+    roblox-entry-attributes: { "myAttribute": "myValue" }
     roblox-entry-userids: [1, 2, 3]
     ```
 
@@ -303,7 +277,7 @@ async def asyncio_detailed(
     roblox_entry_attributes: None | str | Unset = UNSET,
     roblox_entry_userids: None | str | Unset = UNSET,
 ) -> Response[Any | EntriesIncrementEntryAsyncResponse200]:
-    r"""Increment entry
+    """Increment entry
 
      Increments the value for an entry by a given amount, or create a new entry with that amount. Returns
     the entry and metadata.
@@ -314,7 +288,7 @@ async def asyncio_detailed(
     roblox-entry-version: 08D9E6A3F2188CFF.0000000001.08D9E6A3F2188CFF.01
     roblox-entry-created-time: 2022-02-02T23:30:06.5388799+00:00
     roblox-entry-version-created-time: 2022-02-02T23:30:06.5388799+00:00
-    roblox-entry-attributes: { \"myAttribute\": \"myValue\" }
+    roblox-entry-attributes: { "myAttribute": "myValue" }
     roblox-entry-userids: [1, 2, 3]
     ```
 
@@ -355,7 +329,7 @@ async def asyncio_detailed(
         roblox_entry_userids=roblox_entry_userids,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -374,7 +348,7 @@ async def asyncio(
     roblox_entry_attributes: None | str | Unset = UNSET,
     roblox_entry_userids: None | str | Unset = UNSET,
 ) -> Any | EntriesIncrementEntryAsyncResponse200 | None:
-    r"""Increment entry
+    """Increment entry
 
      Increments the value for an entry by a given amount, or create a new entry with that amount. Returns
     the entry and metadata.
@@ -385,7 +359,7 @@ async def asyncio(
     roblox-entry-version: 08D9E6A3F2188CFF.0000000001.08D9E6A3F2188CFF.01
     roblox-entry-created-time: 2022-02-02T23:30:06.5388799+00:00
     roblox-entry-version-created-time: 2022-02-02T23:30:06.5388799+00:00
-    roblox-entry-attributes: { \"myAttribute\": \"myValue\" }
+    roblox-entry-attributes: { "myAttribute": "myValue" }
     roblox-entry-userids: [1, 2, 3]
     ```
 

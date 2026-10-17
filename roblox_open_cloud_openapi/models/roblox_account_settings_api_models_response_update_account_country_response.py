@@ -10,8 +10,6 @@ T = TypeVar("T", bound="RobloxAccountSettingsApiModelsResponseUpdateAccountCount
 
 @_attrs_define
 class RobloxAccountSettingsApiModelsResponseUpdateAccountCountryResponse:
-    """ """
-
     def to_dict(self) -> dict[str, Any]:
 
         field_dict: dict[str, Any] = {}

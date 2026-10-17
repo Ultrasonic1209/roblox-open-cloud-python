@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SearchView(str, Enum):
+class SearchView(StrEnum):
     CORE = "Core"
     FULL = "Full"
     I_DS = "IDs"

@@ -58,13 +58,13 @@ class RobloxGameInternationalizationApiUpdateNameDescriptionsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_failed_name_description import (
-            RobloxGameInternationalizationApiFailedNameDescription,
+            RobloxGameInternationalizationApiFailedNameDescription,  # noqa: PLC0415
         )
         from ..models.roblox_game_internationalization_api_name_description import (
-            RobloxGameInternationalizationApiNameDescription,
+            RobloxGameInternationalizationApiNameDescription,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _success_operations = d.pop("successOperations", UNSET)
         success_operations: list[RobloxGameInternationalizationApiNameDescription] | Unset = UNSET
         if _success_operations is not UNSET:

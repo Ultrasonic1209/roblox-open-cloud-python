@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxApiNotificationsModelsPushNotificationRegistrationPlatform(str, Enum):
+class RobloxApiNotificationsModelsPushNotificationRegistrationPlatform(StrEnum):
     ANDROIDAMAZON = "AndroidAmazon"
     ANDROIDNATIVE = "AndroidNative"
     ANDROIDTENCENTSERVICE = "AndroidTencentService"

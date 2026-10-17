@@ -24,7 +24,7 @@ class DataStoreEntryAttributes:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         data_store_entry_attributes = cls()
 
         data_store_entry_attributes.additional_properties = d

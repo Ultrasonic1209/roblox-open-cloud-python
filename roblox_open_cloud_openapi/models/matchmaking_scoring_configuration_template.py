@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MatchmakingScoringConfigurationTemplate(str, Enum):
+class MatchmakingScoringConfigurationTemplate(StrEnum):
     NOTAPPLICABLE = "NotApplicable"
     USEDEFAULT = "UseDefault"
 

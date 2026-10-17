@@ -72,12 +72,12 @@ class RobloxEngineInstanceDetails:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_engine_folder import RobloxEngineFolder
-        from ..models.roblox_engine_local_script import RobloxEngineLocalScript
-        from ..models.roblox_engine_module_script import RobloxEngineModuleScript
-        from ..models.roblox_engine_script import RobloxEngineScript
+        from ..models.roblox_engine_folder import RobloxEngineFolder  # noqa: PLC0415
+        from ..models.roblox_engine_local_script import RobloxEngineLocalScript  # noqa: PLC0415
+        from ..models.roblox_engine_module_script import RobloxEngineModuleScript  # noqa: PLC0415
+        from ..models.roblox_engine_script import RobloxEngineScript  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _folder = d.pop("Folder", UNSET)
         folder: RobloxEngineFolder | Unset
         if isinstance(_folder, Unset):

@@ -1,16 +1,36 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.roblox_two_step_verification_api_send_code_request import RobloxTwoStepVerificationApiSendCodeRequest
 from ...models.roblox_two_step_verification_api_verify_start_security_key_response import (
     RobloxTwoStepVerificationApiVerifyStartSecurityKeyResponse,
 )
-from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -25,10 +45,6 @@ def _get_kwargs(
         "url": "https://twostepverification.roblox.com/v1/users/{user_id}/challenges/security-key/verify-start".format(
             user_id=quote(str(user_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "post_v1_users_userId_challenges_security-key_verify-start",
-        },
     }
 
     if isinstance(body, RobloxTwoStepVerificationApiSendCodeRequest):
@@ -45,7 +61,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxTwoStepVerificationApiVerifyStartSecurityKeyResponse | None:
     if response.status_code == 200:
         response_200 = RobloxTwoStepVerificationApiVerifyStartSecurityKeyResponse.from_dict(response.json())
@@ -71,7 +87,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxTwoStepVerificationApiVerifyStartSecurityKeyResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -109,7 +125,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -174,7 +190,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

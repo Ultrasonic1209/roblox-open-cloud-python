@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...types import Response
+
+"""
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items', 'httpMethod': 'GET', 'description': 'The addTime response field corresponds with the badge awarded date', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -26,26 +45,12 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
             badge_id=quote(str(badge_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items",
-                        "httpMethod": "GET",
-                        "description": "The addTime response field corresponds with the badge awarded date",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems",
-                    }
-                ],
-            },
-            "openapi-id": "get_v1_users_userId_badges_badgeId_awarded-date",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if response.status_code == 200:
         return None
 
@@ -58,7 +63,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -78,6 +83,8 @@ def sync_detailed(
 ) -> Response[Any]:
     """Gets timestamp for when a single badge was awarded to a user.
 
+     Returns 204 when the user has not been awarded the badge or the badge is filtered from view.
+
     Args:
         user_id (int):
         badge_id (int):
@@ -95,7 +102,7 @@ def sync_detailed(
         badge_id=badge_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -113,6 +120,8 @@ async def asyncio_detailed(
 ) -> Response[Any]:
     """Gets timestamp for when a single badge was awarded to a user.
 
+     Returns 204 when the user has not been awarded the badge or the badge is filtered from view.
+
     Args:
         user_id (int):
         badge_id (int):
@@ -130,6 +139,6 @@ async def asyncio_detailed(
         badge_id=badge_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)

@@ -1,16 +1,37 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 50}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 50}}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
 from ...models.action_result import ActionResult
 from ...models.draft_hash_response import DraftHashResponse
 from ...models.repository import Repository
 from ...models.update_draft_request import UpdateDraftRequest
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -27,18 +48,6 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             repository=quote(str(repository), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 50},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 50},
-                },
-                "x-roblox-scopes": [{"name": "universe:write", "targetResourceSpecifier": "universes"}],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            },
-            "openapi-id": "CreatorConfigsPublicApi_UpdateDraft",
-        },
     }
 
     if isinstance(body, UpdateDraftRequest):
@@ -67,7 +76,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> ActionResult | DraftHashResponse | None:
     if response.status_code == 200:
         response_200 = DraftHashResponse.from_dict(response.json())
@@ -96,7 +105,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ActionResult | DraftHashResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -144,6 +153,10 @@ def sync_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
+
+            AntiCheatConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -171,7 +184,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -216,6 +229,10 @@ def sync(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
+
+            AntiCheatConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -283,6 +300,10 @@ async def asyncio_detailed(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
+
+            AntiCheatConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -310,7 +331,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -353,6 +374,10 @@ async def asyncio(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
+
+            AntiCheatConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiLanguageOrLocaleSettingsLanguageCodeType(str, Enum):
+class RobloxGameInternationalizationApiLanguageOrLocaleSettingsLanguageCodeType(StrEnum):
     LANGUAGE = "Language"
     LOCALE = "Locale"
 

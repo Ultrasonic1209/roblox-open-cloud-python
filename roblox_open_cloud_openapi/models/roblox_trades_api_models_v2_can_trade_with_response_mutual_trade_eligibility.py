@@ -1,7 +1,8 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxTradesApiModelsV2CanTradeWithResponseMutualTradeEligibility(str, Enum):
+class RobloxTradesApiModelsV2CanTradeWithResponseMutualTradeEligibility(StrEnum):
+    CALLINGUSERAGECHECKREQUIRED = "CallingUserAgeCheckRequired"
     CALLINGUSERINELIGIBLE = "CallingUserIneligible"
     CALLINGUSERPRIVACYSETTINGSRESTRICTED = "CallingUserPrivacySettingsRestricted"
     CANNOTTRADEWITHSELF = "CannotTradeWithSelf"

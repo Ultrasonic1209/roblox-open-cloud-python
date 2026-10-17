@@ -41,9 +41,9 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesGroupsGroupBasicRes
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_web_responses_groups_group_basic_response import RobloxWebResponsesGroupsGroupBasicResponse
+        from ..models.roblox_web_responses_groups_group_basic_response import RobloxWebResponsesGroupsGroupBasicResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxWebResponsesGroupsGroupBasicResponse] | Unset = UNSET
         if _data is not UNSET:

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGroupsApiGroupFeatureResponseFeature(str, Enum):
+class RobloxGroupsApiGroupFeatureResponseFeature(StrEnum):
     CONTENTUPLOAD = "ContentUpload"
     FORUMREAD = "ForumRead"
     FORUMWRITE = "ForumWrite"

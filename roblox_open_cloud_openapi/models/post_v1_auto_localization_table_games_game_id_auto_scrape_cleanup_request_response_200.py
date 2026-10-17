@@ -11,8 +11,6 @@ T = TypeVar("T", bound="PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupR
 
 @_attrs_define
 class PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200:
-    """ """
-
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -24,7 +22,7 @@ class PostV1AutoLocalizationTableGamesGameIdAutoScrapeCleanupRequestResponse200:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         post_v1_auto_localization_table_games_game_id_auto_scrape_cleanup_request_response_200 = cls()
 
         post_v1_auto_localization_table_games_game_id_auto_scrape_cleanup_request_response_200.additional_properties = d

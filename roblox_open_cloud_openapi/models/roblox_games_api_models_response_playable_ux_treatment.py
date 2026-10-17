@@ -47,10 +47,10 @@ class RobloxGamesApiModelsResponsePlayableUxTreatment:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_games_api_models_response_playable_ux_treatment_data import (
-            RobloxGamesApiModelsResponsePlayableUxTreatmentData,
+            RobloxGamesApiModelsResponsePlayableUxTreatmentData,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         treatment = d.pop("treatment", UNSET)
 
         _data = d.pop("data", UNSET)

@@ -59,10 +59,10 @@ class RobloxClientSettingsApiModelsResponseMobileClientVersionResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_client_settings_api_models_response_mobile_client_version_response_data import (
-            RobloxClientSettingsApiModelsResponseMobileClientVersionResponseData,
+            RobloxClientSettingsApiModelsResponseMobileClientVersionResponseData,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         active_version = d.pop("activeVersion", UNSET)
 
         upgrade_source = d.pop("upgradeSource", UNSET)

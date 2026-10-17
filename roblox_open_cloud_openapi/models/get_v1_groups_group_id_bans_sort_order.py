@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1GroupsGroupIdBansSortOrder(str, Enum):
+class GetV1GroupsGroupIdBansSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

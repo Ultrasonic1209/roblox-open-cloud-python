@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AssetQuotaAssetType(str, Enum):
+class AssetQuotaAssetType(StrEnum):
     ADS_VIDEO = "ADS_VIDEO"
     ANIMATION = "ANIMATION"
     APP = "APP"

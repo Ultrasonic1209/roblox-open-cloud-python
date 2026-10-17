@@ -138,9 +138,9 @@ class RobloxAdConfigurationApiModelsCreateSponsoredCampaignRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_ad_configuration_api_creative_model import RobloxAdConfigurationApiCreativeModel
+        from ..models.roblox_ad_configuration_api_creative_model import RobloxAdConfigurationApiCreativeModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         campaign_target_id = d.pop("campaignTargetId", UNSET)
 
         _campaign_target_type = d.pop("campaignTargetType", UNSET)

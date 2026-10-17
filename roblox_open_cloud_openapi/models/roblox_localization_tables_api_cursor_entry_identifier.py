@@ -26,7 +26,7 @@ class RobloxLocalizationTablesApiCursorEntryIdentifier:
         identifier (RobloxLocalizationTablesApiEntryIdentifier | Unset):
         count (int | Unset): The translation history count to get.
         sort_order (RobloxLocalizationTablesApiCursorEntryIdentifierSortOrder | Unset): In which order the data is
-            sorted. ['Asc' = 1, 'Desc' = 2]
+            sorted.
     """
 
     cursor: str | Unset = UNSET
@@ -63,9 +63,9 @@ class RobloxLocalizationTablesApiCursorEntryIdentifier:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_entry_identifier import RobloxLocalizationTablesApiEntryIdentifier
+        from ..models.roblox_localization_tables_api_entry_identifier import RobloxLocalizationTablesApiEntryIdentifier  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         cursor = d.pop("cursor", UNSET)
 
         _identifier = d.pop("identifier", UNSET)

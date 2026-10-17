@@ -1,15 +1,35 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response
+
+"""
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'universe:read', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
 from ...models.action_result import ActionResult
 from ...models.config_repository_values import ConfigRepositoryValues
 from ...models.repository import Repository
-from ...types import Response
 
 
 def _get_kwargs(
@@ -23,25 +43,13 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             repository=quote(str(repository), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
-                "x-roblox-scopes": [{"name": "universe:read", "targetResourceSpecifier": "universes"}],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            },
-            "openapi-id": "CreatorConfigsPublicApi_GetConfigRepositoryValues",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> ActionResult | ConfigRepositoryValues | None:
     if response.status_code == 200:
         response_200 = ConfigRepositoryValues.from_dict(response.json())
@@ -70,7 +78,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ActionResult | ConfigRepositoryValues]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -110,6 +118,10 @@ def sync_detailed(
 
             ExperienceUserConfig
 
+            JourneysConfig
+
+            AntiCheatConfig
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -123,7 +135,7 @@ def sync_detailed(
         repository=repository,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -159,6 +171,10 @@ def sync(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
+
+            AntiCheatConfig
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -205,6 +221,10 @@ async def asyncio_detailed(
 
             ExperienceUserConfig
 
+            JourneysConfig
+
+            AntiCheatConfig
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -218,7 +238,7 @@ async def asyncio_detailed(
         repository=repository,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -252,6 +272,10 @@ async def asyncio(
             LeaderboardsConfig
 
             ExperienceUserConfig
+
+            JourneysConfig
+
+            AntiCheatConfig
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CustomSignalType(str, Enum):
+class CustomSignalType(StrEnum):
     INVALID = "Invalid"
     PLAYERCATEGORICAL = "PlayerCategorical"
     PLAYERNUMERICAL = "PlayerNumerical"

@@ -73,14 +73,14 @@ class RobloxGroupsApiGroupMembershipResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_group_notification_preference_data import (
-            RobloxGroupsApiGroupNotificationPreferenceData,
+            RobloxGroupsApiGroupNotificationPreferenceData,  # noqa: PLC0415
         )
-        from ..models.roblox_web_responses_groups_group_basic_response import RobloxWebResponsesGroupsGroupBasicResponse
+        from ..models.roblox_web_responses_groups_group_basic_response import RobloxWebResponsesGroupsGroupBasicResponse  # noqa: PLC0415
         from ..models.roblox_web_responses_groups_group_role_basic_response import (
-            RobloxWebResponsesGroupsGroupRoleBasicResponse,
+            RobloxWebResponsesGroupsGroupRoleBasicResponse,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _group = d.pop("group", UNSET)
         group: RobloxWebResponsesGroupsGroupBasicResponse | Unset
         if isinstance(_group, Unset):

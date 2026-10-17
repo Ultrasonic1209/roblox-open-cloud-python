@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MusicChartType(str, Enum):
+class MusicChartType(StrEnum):
     CURRENT = "Current"
     MONTH = "Month"
     NONE = "None"

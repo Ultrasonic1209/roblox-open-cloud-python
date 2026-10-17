@@ -38,7 +38,7 @@ class GameUpdateStatus:
     bleed_off_servers: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.game_update_status_place_update_statuses_type_0 import GameUpdateStatusPlaceUpdateStatusesType0
+        from ..models.game_update_status_place_update_statuses_type_0 import GameUpdateStatusPlaceUpdateStatusesType0  # noqa: PLC0415
 
         id: str | Unset = UNSET
         if not isinstance(self.id, Unset):
@@ -88,9 +88,9 @@ class GameUpdateStatus:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.game_update_status_place_update_statuses_type_0 import GameUpdateStatusPlaceUpdateStatusesType0
+        from ..models.game_update_status_place_update_statuses_type_0 import GameUpdateStatusPlaceUpdateStatusesType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _id = d.pop("id", UNSET)
         id: UUID | Unset
         if isinstance(_id, Unset):

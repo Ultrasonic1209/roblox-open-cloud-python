@@ -20,8 +20,7 @@ class RobloxLocalizationTablesApiGetTableResponse:
     Attributes:
         id (UUID | Unset):
         name (str | Unset):
-        owner_type (RobloxLocalizationTablesApiGetTableResponseOwnerType | Unset): Enum for valid OwnerTypes. ['User' =
-            0, 'Group' = 1]
+        owner_type (RobloxLocalizationTablesApiGetTableResponseOwnerType | Unset): Enum for valid OwnerTypes.
         owner_id (int | Unset):
         asset_id (int | Unset):
     """
@@ -65,7 +64,7 @@ class RobloxLocalizationTablesApiGetTableResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _id = d.pop("id", UNSET)
         id: UUID | Unset
         if isinstance(_id, Unset):

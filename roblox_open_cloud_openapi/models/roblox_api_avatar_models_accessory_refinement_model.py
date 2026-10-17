@@ -63,14 +63,14 @@ class RobloxApiAvatarModelsAccessoryRefinementModel:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_avatar_models_accessory_position_model import (
-            RobloxApiAvatarModelsAccessoryPositionModel,
+            RobloxApiAvatarModelsAccessoryPositionModel,  # noqa: PLC0415
         )
         from ..models.roblox_api_avatar_models_accessory_rotation_model import (
-            RobloxApiAvatarModelsAccessoryRotationModel,
+            RobloxApiAvatarModelsAccessoryRotationModel,  # noqa: PLC0415
         )
-        from ..models.roblox_api_avatar_models_accessory_scale_model import RobloxApiAvatarModelsAccessoryScaleModel
+        from ..models.roblox_api_avatar_models_accessory_scale_model import RobloxApiAvatarModelsAccessoryScaleModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _position = d.pop("position", UNSET)
         position: RobloxApiAvatarModelsAccessoryPositionModel | Unset
         if isinstance(_position, Unset):

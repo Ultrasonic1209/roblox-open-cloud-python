@@ -53,10 +53,10 @@ class RobloxLocalizationTablesApiUpdateTableContentsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_failed_entry import RobloxLocalizationTablesApiFailedEntry
-        from ..models.roblox_localization_tables_api_modified_entry import RobloxLocalizationTablesApiModifiedEntry
+        from ..models.roblox_localization_tables_api_failed_entry import RobloxLocalizationTablesApiFailedEntry  # noqa: PLC0415
+        from ..models.roblox_localization_tables_api_modified_entry import RobloxLocalizationTablesApiModifiedEntry  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _failed_entries_and_translations = d.pop("failedEntriesAndTranslations", UNSET)
         failed_entries_and_translations: list[RobloxLocalizationTablesApiFailedEntry] | Unset = UNSET
         if _failed_entries_and_translations is not UNSET:

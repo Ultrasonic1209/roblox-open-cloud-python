@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GamePassesPricingFeature(str, Enum):
+class GamePassesPricingFeature(StrEnum):
     INVALID = "Invalid"
     PRICEOPTIMIZATION = "PriceOptimization"
     REGIONALPRICING = "RegionalPricing"

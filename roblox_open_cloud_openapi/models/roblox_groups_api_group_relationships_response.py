@@ -72,9 +72,9 @@ class RobloxGroupsApiGroupRelationshipsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse
+        from ..models.roblox_groups_api_group_detail_response import RobloxGroupsApiGroupDetailResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         group_id = d.pop("groupId", UNSET)
 
         _relationship_type = d.pop("relationshipType", UNSET)

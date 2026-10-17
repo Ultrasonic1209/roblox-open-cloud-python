@@ -53,9 +53,9 @@ class TranslateTextResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.translate_text_response_translations import TranslateTextResponseTranslations
+        from ..models.translate_text_response_translations import TranslateTextResponseTranslations  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         source_language_code = d.pop("sourceLanguageCode", UNSET)
 
         _translations = d.pop("translations", UNSET)

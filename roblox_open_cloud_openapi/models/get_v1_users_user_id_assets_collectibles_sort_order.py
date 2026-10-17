@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UsersUserIdAssetsCollectiblesSortOrder(str, Enum):
+class GetV1UsersUserIdAssetsCollectiblesSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

@@ -41,7 +41,7 @@ class GamePassConfigV2:
     is_managed_pricing_enabled: bool
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.game_passes_price_information_struct import GamePassesPriceInformationStruct
+        from ..models.game_passes_price_information_struct import GamePassesPriceInformationStruct  # noqa: PLC0415
 
         game_pass_id = self.game_pass_id
 
@@ -85,9 +85,9 @@ class GamePassConfigV2:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.game_passes_price_information_struct import GamePassesPriceInformationStruct
+        from ..models.game_passes_price_information_struct import GamePassesPriceInformationStruct  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         game_pass_id = d.pop("gamePassId")
 
         name = d.pop("name")

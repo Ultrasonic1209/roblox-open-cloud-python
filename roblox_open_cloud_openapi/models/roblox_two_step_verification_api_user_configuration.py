@@ -58,10 +58,10 @@ class RobloxTwoStepVerificationApiUserConfiguration:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_two_step_verification_api_user_configuration_method import (
-            RobloxTwoStepVerificationApiUserConfigurationMethod,
+            RobloxTwoStepVerificationApiUserConfigurationMethod,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _primary_media_type = d.pop("primaryMediaType", UNSET)
         primary_media_type: RobloxTwoStepVerificationApiUserConfigurationPrimaryMediaType | Unset
         if isinstance(_primary_media_type, Unset):

@@ -44,10 +44,10 @@ class RobloxPrivateMessagesApiModelsBatchMessagesResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_private_messages_api_models_failed_message_response import (
-            RobloxPrivateMessagesApiModelsFailedMessageResponse,
+            RobloxPrivateMessagesApiModelsFailedMessageResponse,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _failed_messages = d.pop("failedMessages", UNSET)
         failed_messages: list[RobloxPrivateMessagesApiModelsFailedMessageResponse] | Unset = UNSET
         if _failed_messages is not UNSET:

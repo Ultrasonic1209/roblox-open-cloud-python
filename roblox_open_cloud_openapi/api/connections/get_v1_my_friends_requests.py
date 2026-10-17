@@ -1,15 +1,36 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_v1_my_friends_requests_friend_request_sort import GetV1MyFriendsRequestsFriendRequestSort
 from ...models.roblox_web_web_api_models_api_page_response_roblox_friends_api_friend_request_response import (
     RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -19,6 +40,7 @@ def _get_kwargs(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -35,23 +57,21 @@ def _get_kwargs(
 
     params["friendRequestSort"] = json_friend_request_sort
 
+    params["uprankUnseen"] = uprank_unseen
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://friends.roblox.com/v1/my/friends/requests",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_my_friends_requests",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse.from_dict(
@@ -83,7 +103,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -101,6 +121,7 @@ def sync_detailed(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse]:
     """Get all users that friend requests with targetUserId using exclusive start paging
 
@@ -110,6 +131,7 @@ def sync_detailed(
         session_id (str | Unset):
         friend_request_sort (GetV1MyFriendsRequestsFriendRequestSort | Unset):  Default:
             GetV1MyFriendsRequestsFriendRequestSort.VALUE_1.
+        uprank_unseen (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -124,9 +146,10 @@ def sync_detailed(
         cursor=cursor,
         session_id=session_id,
         friend_request_sort=friend_request_sort,
+        uprank_unseen=uprank_unseen,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -141,6 +164,7 @@ def sync(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse | None:
     """Get all users that friend requests with targetUserId using exclusive start paging
 
@@ -150,6 +174,7 @@ def sync(
         session_id (str | Unset):
         friend_request_sort (GetV1MyFriendsRequestsFriendRequestSort | Unset):  Default:
             GetV1MyFriendsRequestsFriendRequestSort.VALUE_1.
+        uprank_unseen (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -165,6 +190,7 @@ def sync(
         cursor=cursor,
         session_id=session_id,
         friend_request_sort=friend_request_sort,
+        uprank_unseen=uprank_unseen,
     ).parsed
 
 
@@ -176,6 +202,7 @@ async def asyncio_detailed(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse]:
     """Get all users that friend requests with targetUserId using exclusive start paging
 
@@ -185,6 +212,7 @@ async def asyncio_detailed(
         session_id (str | Unset):
         friend_request_sort (GetV1MyFriendsRequestsFriendRequestSort | Unset):  Default:
             GetV1MyFriendsRequestsFriendRequestSort.VALUE_1.
+        uprank_unseen (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -199,9 +227,10 @@ async def asyncio_detailed(
         cursor=cursor,
         session_id=session_id,
         friend_request_sort=friend_request_sort,
+        uprank_unseen=uprank_unseen,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -214,6 +243,7 @@ async def asyncio(
     session_id: str | Unset = UNSET,
     friend_request_sort: GetV1MyFriendsRequestsFriendRequestSort
     | Unset = GetV1MyFriendsRequestsFriendRequestSort.VALUE_1,
+    uprank_unseen: bool | Unset = False,
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxFriendsApiFriendRequestResponse | None:
     """Get all users that friend requests with targetUserId using exclusive start paging
 
@@ -223,6 +253,7 @@ async def asyncio(
         session_id (str | Unset):
         friend_request_sort (GetV1MyFriendsRequestsFriendRequestSort | Unset):  Default:
             GetV1MyFriendsRequestsFriendRequestSort.VALUE_1.
+        uprank_unseen (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -239,5 +270,6 @@ async def asyncio(
             cursor=cursor,
             session_id=session_id,
             friend_request_sort=friend_request_sort,
+            uprank_unseen=uprank_unseen,
         )
     ).parsed

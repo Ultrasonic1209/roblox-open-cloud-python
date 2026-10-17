@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UserUniversesSortOrder(str, Enum):
+class GetV1UserUniversesSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

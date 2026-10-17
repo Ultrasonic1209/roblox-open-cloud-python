@@ -11,8 +11,6 @@ T = TypeVar("T", bound="GetV1TranslationAnalyticsGamesGameIdDownloadTranslationA
 
 @_attrs_define
 class GetV1TranslationAnalyticsGamesGameIdDownloadTranslationAnalyticsReportResponse200:
-    """ """
-
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -24,7 +22,7 @@ class GetV1TranslationAnalyticsGamesGameIdDownloadTranslationAnalyticsReportResp
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         get_v1_translation_analytics_games_game_id_download_translation_analytics_report_response_200 = cls()
 
         get_v1_translation_analytics_games_game_id_download_translation_analytics_report_response_200.additional_properties = d

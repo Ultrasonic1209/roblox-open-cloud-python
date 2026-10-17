@@ -63,6 +63,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
         id (int | Unset): The universe Id.
         name (str | Unset): The universe name.
         description (str | Unset): The universe description.
+        promotional_text (str | Unset): Promotional Text for the universe.
         universe_avatar_type (RobloxApiDevelopModelsUniverseSettingsResponseV2UniverseAvatarType | Unset): Which avatar
             types are allowed in the universe. ['MorphToR6' = 1, 'PlayerChoice' = 2, 'MorphToR15' = 3]
         universe_animation_type (RobloxApiDevelopModelsUniverseSettingsResponseV2UniverseAnimationType | Unset): Whether
@@ -99,8 +100,9 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
             universe is visible to (e.g. Editors, PlayTesters, Friends, Public).
             Always non-null; may be empty when audience visibility has not been configured.
         demo_mode_enabled (bool | Unset): Whether demo mode is enabled.
-        demo_mode_last_changed_time (datetime.datetime | Unset): When demo mode was last toggled. For client-side
-            throttle UX.
+        demo_mode_changeable_after (datetime.datetime | Unset): The earliest time at which demo mode can be toggled
+            again (ISO 8601).
+            Null when no cooldown is active (i.e. demo mode can be changed immediately).
     """
 
     allow_private_servers: bool | Unset = UNSET
@@ -111,6 +113,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
     id: int | Unset = UNSET
     name: str | Unset = UNSET
     description: str | Unset = UNSET
+    promotional_text: str | Unset = UNSET
     universe_avatar_type: RobloxApiDevelopModelsUniverseSettingsResponseV2UniverseAvatarType | Unset = UNSET
     universe_animation_type: RobloxApiDevelopModelsUniverseSettingsResponseV2UniverseAnimationType | Unset = UNSET
     universe_collision_type: RobloxApiDevelopModelsUniverseSettingsResponseV2UniverseCollisionType | Unset = UNSET
@@ -136,7 +139,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
     fiat_moderation_status: RobloxApiDevelopModelsUniverseSettingsResponseV2FiatModerationStatus | Unset = UNSET
     audiences: list[RobloxApiDevelopModelsUniverseSettingsResponseV2AudiencesItem] | Unset = UNSET
     demo_mode_enabled: bool | Unset = UNSET
-    demo_mode_last_changed_time: datetime.datetime | Unset = UNSET
+    demo_mode_changeable_after: datetime.datetime | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         allow_private_servers = self.allow_private_servers
@@ -159,6 +162,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
         name = self.name
 
         description = self.description
+
+        promotional_text = self.promotional_text
 
         universe_avatar_type: int | Unset = UNSET
         if not isinstance(self.universe_avatar_type, Unset):
@@ -235,9 +240,9 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
 
         demo_mode_enabled = self.demo_mode_enabled
 
-        demo_mode_last_changed_time: str | Unset = UNSET
-        if not isinstance(self.demo_mode_last_changed_time, Unset):
-            demo_mode_last_changed_time = self.demo_mode_last_changed_time.isoformat()
+        demo_mode_changeable_after: str | Unset = UNSET
+        if not isinstance(self.demo_mode_changeable_after, Unset):
+            demo_mode_changeable_after = self.demo_mode_changeable_after.isoformat()
 
         field_dict: dict[str, Any] = {}
 
@@ -258,6 +263,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
             field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
+        if promotional_text is not UNSET:
+            field_dict["promotionalText"] = promotional_text
         if universe_avatar_type is not UNSET:
             field_dict["universeAvatarType"] = universe_avatar_type
         if universe_animation_type is not UNSET:
@@ -300,25 +307,25 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
             field_dict["audiences"] = audiences
         if demo_mode_enabled is not UNSET:
             field_dict["demoModeEnabled"] = demo_mode_enabled
-        if demo_mode_last_changed_time is not UNSET:
-            field_dict["demoModeLastChangedTime"] = demo_mode_last_changed_time
+        if demo_mode_changeable_after is not UNSET:
+            field_dict["demoModeChangeableAfter"] = demo_mode_changeable_after
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_develop_models_universe_moderation_policy_status import (
-            RobloxApiDevelopModelsUniverseModerationPolicyStatus,
+            RobloxApiDevelopModelsUniverseModerationPolicyStatus,  # noqa: PLC0415
         )
         from ..models.roblox_platform_universe_settings_universe_avatar_asset_override_response_model import (
-            RobloxPlatformUniverseSettingsUniverseAvatarAssetOverrideResponseModel,
+            RobloxPlatformUniverseSettingsUniverseAvatarAssetOverrideResponseModel,  # noqa: PLC0415
         )
         from ..models.roblox_universe_plugin_permission_authority_models_universe_plugin_permissions import (
-            RobloxUniversePluginPermissionAuthorityModelsUniversePluginPermissions,
+            RobloxUniversePluginPermissionAuthorityModelsUniversePluginPermissions,  # noqa: PLC0415
         )
-        from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
+        from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         allow_private_servers = d.pop("allowPrivateServers", UNSET)
 
         private_server_price = d.pop("privateServerPrice", UNSET)
@@ -343,6 +350,8 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
         name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
+
+        promotional_text = d.pop("promotionalText", UNSET)
 
         _universe_avatar_type = d.pop("universeAvatarType", UNSET)
         universe_avatar_type: RobloxApiDevelopModelsUniverseSettingsResponseV2UniverseAvatarType | Unset
@@ -474,12 +483,12 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
 
         demo_mode_enabled = d.pop("demoModeEnabled", UNSET)
 
-        _demo_mode_last_changed_time = d.pop("demoModeLastChangedTime", UNSET)
-        demo_mode_last_changed_time: datetime.datetime | Unset
-        if isinstance(_demo_mode_last_changed_time, Unset):
-            demo_mode_last_changed_time = UNSET
+        _demo_mode_changeable_after = d.pop("demoModeChangeableAfter", UNSET)
+        demo_mode_changeable_after: datetime.datetime | Unset
+        if isinstance(_demo_mode_changeable_after, Unset):
+            demo_mode_changeable_after = UNSET
         else:
-            demo_mode_last_changed_time = datetime.datetime.fromisoformat(_demo_mode_last_changed_time)
+            demo_mode_changeable_after = datetime.datetime.fromisoformat(_demo_mode_changeable_after)
 
         roblox_api_develop_models_universe_settings_response_v2 = cls(
             allow_private_servers=allow_private_servers,
@@ -490,6 +499,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
             id=id,
             name=name,
             description=description,
+            promotional_text=promotional_text,
             universe_avatar_type=universe_avatar_type,
             universe_animation_type=universe_animation_type,
             universe_collision_type=universe_collision_type,
@@ -511,7 +521,7 @@ class RobloxApiDevelopModelsUniverseSettingsResponseV2:
             fiat_moderation_status=fiat_moderation_status,
             audiences=audiences,
             demo_mode_enabled=demo_mode_enabled,
-            demo_mode_last_changed_time=demo_mode_last_changed_time,
+            demo_mode_changeable_after=demo_mode_changeable_after,
         )
 
         return roblox_api_develop_models_universe_settings_response_v2

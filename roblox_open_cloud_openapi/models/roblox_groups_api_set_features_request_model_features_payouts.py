@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGroupsApiSetFeaturesRequestModelFeaturesPayouts(str, Enum):
+class RobloxGroupsApiSetFeaturesRequestModelFeaturesPayouts(StrEnum):
     BLOCKED = "Blocked"
     ON = "On"
 

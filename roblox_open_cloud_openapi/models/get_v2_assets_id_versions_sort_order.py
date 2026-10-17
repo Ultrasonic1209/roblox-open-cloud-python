@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV2AssetsIdVersionsSortOrder(str, Enum):
+class GetV2AssetsIdVersionsSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

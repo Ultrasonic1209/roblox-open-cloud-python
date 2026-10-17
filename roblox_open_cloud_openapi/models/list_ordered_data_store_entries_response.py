@@ -52,9 +52,9 @@ class ListOrderedDataStoreEntriesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.ordered_data_store_entry import OrderedDataStoreEntry
+        from ..models.ordered_data_store_entry import OrderedDataStoreEntry  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _ordered_data_store_entries = d.pop("orderedDataStoreEntries", UNSET)
         ordered_data_store_entries: list[OrderedDataStoreEntry] | Unset = UNSET
         if _ordered_data_store_entries is not UNSET:

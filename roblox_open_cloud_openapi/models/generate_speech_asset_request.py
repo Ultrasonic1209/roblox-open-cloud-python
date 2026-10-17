@@ -53,10 +53,10 @@ class GenerateSpeechAssetRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.generate_speech_asset_request_generated_speech_style import (
-            GenerateSpeechAssetRequestGeneratedSpeechStyle,
+            GenerateSpeechAssetRequestGeneratedSpeechStyle,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         text = d.pop("text")
 
         _speech_style = d.pop("speechStyle", UNSET)

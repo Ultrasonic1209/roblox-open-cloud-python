@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxEngineLocalScriptRunContext(str, Enum):
+class RobloxEngineLocalScriptRunContext(StrEnum):
     CLIENT = "Client"
     LEGACY = "Legacy"
     PLUGIN = "Plugin"

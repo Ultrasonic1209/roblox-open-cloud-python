@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiTranslationCountTranslationStatus(str, Enum):
+class RobloxGameInternationalizationApiTranslationCountTranslationStatus(StrEnum):
     APPROVED = "Approved"
 
     def __str__(self) -> str:

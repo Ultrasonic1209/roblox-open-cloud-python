@@ -105,10 +105,10 @@ class RobloxPrivateMessagesApiModelsMessageDetailsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_private_messages_api_models_verified_skinny_user_response import (
-            RobloxPrivateMessagesApiModelsVerifiedSkinnyUserResponse,
+            RobloxPrivateMessagesApiModelsVerifiedSkinnyUserResponse,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         _sender = d.pop("sender", UNSET)

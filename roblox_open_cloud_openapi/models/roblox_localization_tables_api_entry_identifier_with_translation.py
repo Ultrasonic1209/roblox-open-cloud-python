@@ -67,9 +67,9 @@ class RobloxLocalizationTablesApiEntryIdentifierWithTranslation:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_translation import RobloxLocalizationTablesApiTranslation
+        from ..models.roblox_localization_tables_api_translation import RobloxLocalizationTablesApiTranslation  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _translation = d.pop("translation", UNSET)
         translation: RobloxLocalizationTablesApiTranslation | Unset
         if isinstance(_translation, Unset):

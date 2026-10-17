@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AttributeAggregationFunction(str, Enum):
+class AttributeAggregationFunction(StrEnum):
     AVERAGE = "Average"
     INVALID = "Invalid"
     MEDIAN = "Median"

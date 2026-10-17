@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxTranslationRolesApiAssigneeType(str, Enum):
+class RobloxTranslationRolesApiAssigneeType(StrEnum):
     GROUP = "group"
     GROUPROLE = "groupRole"
     USER = "user"

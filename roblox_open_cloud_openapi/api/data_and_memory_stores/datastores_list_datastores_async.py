@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-cloud-api-operation-name': 'List Data Stores', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'universe-datastores.control:list'}], 'x-roblox-cloud-api-operation': True, 'x-roblox-lua-equivalent': 'DataStoreService:ListDataStoresAsync', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'curl', 'script': 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "prefix=Player" \\\n-d "limit=5"'}], 'x-roblox-rate-limits': {'description': 'See [Throttling](/cloud/guides/data-stores/throttling.md).', 'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 5000}}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStores'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -15,6 +34,7 @@ else:
     from typing_extensions import deprecated
 
 from ...models.datastores_list_datastores_async_response_200 import DatastoresListDatastoresAsyncResponse200
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -51,41 +71,13 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-cloud-api-operation-name": "List Data Stores",
-                "x-roblox-stability": "BETA",
-                "x-roblox-scopes": [{"name": "universe-datastores.control:list"}],
-                "x-roblox-cloud-api-operation": True,
-                "x-roblox-lua-equivalent": "DataStoreService:ListDataStoresAsync",
-                "x-roblox-cloud-api-operation-code-samples": [
-                    {
-                        "language": "curl",
-                        "script": 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "prefix=Player" \\\n-d "limit=5"',
-                    }
-                ],
-                "x-roblox-rate-limits": {
-                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
-                },
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_ListDataStores",
-                    }
-                ],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "Datastores_ListDatastoresAsync",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> DatastoresListDatastoresAsyncResponse200 | None:
     if response.status_code == 200:
         response_200 = DatastoresListDatastoresAsyncResponse200.from_dict(response.json())
@@ -99,7 +91,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[DatastoresListDatastoresAsyncResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -145,7 +137,7 @@ def sync_detailed(
         prefix=prefix,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -226,7 +218,7 @@ async def asyncio_detailed(
         prefix=prefix,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -44,10 +44,10 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiLang
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_language_or_locale_settings import (
-            RobloxGameInternationalizationApiLanguageOrLocaleSettings,
+            RobloxGameInternationalizationApiLanguageOrLocaleSettings,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxGameInternationalizationApiLanguageOrLocaleSettings] | Unset = UNSET
         if _data is not UNSET:

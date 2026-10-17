@@ -26,7 +26,7 @@ class ToolboxServiceMoneyType0:
     quantity: None | ToolboxServiceDecimalType0 | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.toolbox_service_decimal_type_0 import ToolboxServiceDecimalType0
+        from ..models.toolbox_service_decimal_type_0 import ToolboxServiceDecimalType0  # noqa: PLC0415
 
         currency_code: None | str | Unset
         if isinstance(self.currency_code, Unset):
@@ -54,9 +54,9 @@ class ToolboxServiceMoneyType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.toolbox_service_decimal_type_0 import ToolboxServiceDecimalType0
+        from ..models.toolbox_service_decimal_type_0 import ToolboxServiceDecimalType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_currency_code(data: object) -> None | str | Unset:
             if data is None:

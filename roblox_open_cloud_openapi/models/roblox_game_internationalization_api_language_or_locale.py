@@ -19,7 +19,7 @@ class RobloxGameInternationalizationApiLanguageOrLocale:
     Attributes:
         name (str | Unset):
         language_code_type (RobloxGameInternationalizationApiLanguageOrLocaleLanguageCodeType | Unset): An enum to
-            distinguish between locale codes and language codes. ['Language' = 0, 'Locale' = 1]
+            distinguish between locale codes and language codes.
         language_code (str | Unset):
     """
 
@@ -50,7 +50,7 @@ class RobloxGameInternationalizationApiLanguageOrLocale:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         name = d.pop("name", UNSET)
 
         _language_code_type = d.pop("languageCodeType", UNSET)

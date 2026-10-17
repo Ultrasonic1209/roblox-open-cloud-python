@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel
     from ..models.roblox_groups_api_shout_response import RobloxGroupsApiShoutResponse
+    from ..models.roblox_groups_client_community_tier_info_response import RobloxGroupsClientCommunityTierInfoResponse
 
 
 T = TypeVar("T", bound="RobloxGroupsApiGroupDetailResponse")
@@ -30,9 +31,11 @@ class RobloxGroupsApiGroupDetailResponse:
         is_builders_club_only (bool | Unset): Whether the group is Builders Club only
         public_entry_allowed (bool | Unset): Whether the group is public (no approval required)
         is_locked (bool | Unset): Whether the group is locked
+        is_deactivated (bool | Unset): Whether the group is deactivated
         has_verified_badge (bool | Unset): Whether the group has a verified badge.
         has_social_modules (bool | Unset): Whether the group has social modules enabled (e.g. Forums)
             (determines if "Followers" vs "Members" should be shown).
+        community_tier (RobloxGroupsClientCommunityTierInfoResponse | Unset):
     """
 
     id: int | Unset = UNSET
@@ -44,8 +47,10 @@ class RobloxGroupsApiGroupDetailResponse:
     is_builders_club_only: bool | Unset = UNSET
     public_entry_allowed: bool | Unset = UNSET
     is_locked: bool | Unset = UNSET
+    is_deactivated: bool | Unset = UNSET
     has_verified_badge: bool | Unset = UNSET
     has_social_modules: bool | Unset = UNSET
+    community_tier: RobloxGroupsClientCommunityTierInfoResponse | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
@@ -70,9 +75,15 @@ class RobloxGroupsApiGroupDetailResponse:
 
         is_locked = self.is_locked
 
+        is_deactivated = self.is_deactivated
+
         has_verified_badge = self.has_verified_badge
 
         has_social_modules = self.has_social_modules
+
+        community_tier: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.community_tier, Unset):
+            community_tier = self.community_tier.to_dict()
 
         field_dict: dict[str, Any] = {}
 
@@ -95,19 +106,26 @@ class RobloxGroupsApiGroupDetailResponse:
             field_dict["publicEntryAllowed"] = public_entry_allowed
         if is_locked is not UNSET:
             field_dict["isLocked"] = is_locked
+        if is_deactivated is not UNSET:
+            field_dict["isDeactivated"] = is_deactivated
         if has_verified_badge is not UNSET:
             field_dict["hasVerifiedBadge"] = has_verified_badge
         if has_social_modules is not UNSET:
             field_dict["hasSocialModules"] = has_social_modules
+        if community_tier is not UNSET:
+            field_dict["communityTier"] = community_tier
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel
-        from ..models.roblox_groups_api_shout_response import RobloxGroupsApiShoutResponse
+        from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel  # noqa: PLC0415
+        from ..models.roblox_groups_api_shout_response import RobloxGroupsApiShoutResponse  # noqa: PLC0415
+        from ..models.roblox_groups_client_community_tier_info_response import (
+            RobloxGroupsClientCommunityTierInfoResponse,  # noqa: PLC0415
+        )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)
@@ -136,9 +154,18 @@ class RobloxGroupsApiGroupDetailResponse:
 
         is_locked = d.pop("isLocked", UNSET)
 
+        is_deactivated = d.pop("isDeactivated", UNSET)
+
         has_verified_badge = d.pop("hasVerifiedBadge", UNSET)
 
         has_social_modules = d.pop("hasSocialModules", UNSET)
+
+        _community_tier = d.pop("communityTier", UNSET)
+        community_tier: RobloxGroupsClientCommunityTierInfoResponse | Unset
+        if isinstance(_community_tier, Unset):
+            community_tier = UNSET
+        else:
+            community_tier = RobloxGroupsClientCommunityTierInfoResponse.from_dict(_community_tier)
 
         roblox_groups_api_group_detail_response = cls(
             id=id,
@@ -150,8 +177,10 @@ class RobloxGroupsApiGroupDetailResponse:
             is_builders_club_only=is_builders_club_only,
             public_entry_allowed=public_entry_allowed,
             is_locked=is_locked,
+            is_deactivated=is_deactivated,
             has_verified_badge=has_verified_badge,
             has_social_modules=has_social_modules,
+            community_tier=community_tier,
         )
 
         return roblox_groups_api_group_detail_response

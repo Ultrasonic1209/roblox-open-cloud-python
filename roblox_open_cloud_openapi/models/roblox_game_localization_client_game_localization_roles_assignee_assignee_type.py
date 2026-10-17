@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameLocalizationClientGameLocalizationRolesAssigneeAssigneeType(str, Enum):
+class RobloxGameLocalizationClientGameLocalizationRolesAssigneeAssigneeType(StrEnum):
     GROUP = "group"
     GROUPROLE = "groupRole"
     USER = "user"

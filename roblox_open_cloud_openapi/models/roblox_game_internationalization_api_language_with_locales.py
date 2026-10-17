@@ -50,10 +50,10 @@ class RobloxGameInternationalizationApiLanguageWithLocales:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_game_internationalization_api_language import RobloxGameInternationalizationApiLanguage
-        from ..models.roblox_localization_client_supported_locale import RobloxLocalizationClientSupportedLocale
+        from ..models.roblox_game_internationalization_api_language import RobloxGameInternationalizationApiLanguage  # noqa: PLC0415
+        from ..models.roblox_localization_client_supported_locale import RobloxLocalizationClientSupportedLocale  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _language_family = d.pop("languageFamily", UNSET)
         language_family: RobloxGameInternationalizationApiLanguage | Unset
         if isinstance(_language_family, Unset):

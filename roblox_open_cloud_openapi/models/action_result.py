@@ -10,8 +10,6 @@ T = TypeVar("T", bound="ActionResult")
 
 @_attrs_define
 class ActionResult:
-    """ """
-
     def to_dict(self) -> dict[str, Any]:
 
         field_dict: dict[str, Any] = {}

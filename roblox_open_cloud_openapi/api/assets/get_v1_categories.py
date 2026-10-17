@@ -1,12 +1,32 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_catalog_api_category_model import RobloxCatalogApiCategoryModel
 from ...types import Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+from ...models.roblox_catalog_api_category_model import RobloxCatalogApiCategoryModel
 
 
 def _get_kwargs() -> dict[str, Any]:
@@ -14,17 +34,13 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://catalog.roblox.com/v1/categories",
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_categories",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> list[RobloxCatalogApiCategoryModel] | None:
     if response.status_code == 200:
         response_200 = []
@@ -43,7 +59,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[list[RobloxCatalogApiCategoryModel]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -69,7 +85,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs()
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -111,7 +127,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs()
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

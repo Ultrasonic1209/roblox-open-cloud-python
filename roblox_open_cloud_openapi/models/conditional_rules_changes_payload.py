@@ -28,8 +28,8 @@ class ConditionalRulesChangesPayload:
     rules: ConditionalRulesChangesPayloadRulesType0 | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.conditional_rules_changes_payload_rules_type_0 import ConditionalRulesChangesPayloadRulesType0
-        from ..models.rules_order_delta_payload import RulesOrderDeltaPayload
+        from ..models.conditional_rules_changes_payload_rules_type_0 import ConditionalRulesChangesPayloadRulesType0  # noqa: PLC0415
+        from ..models.rules_order_delta_payload import RulesOrderDeltaPayload  # noqa: PLC0415
 
         rules_order: dict[str, Any] | None | Unset
         if isinstance(self.rules_order, Unset):
@@ -59,10 +59,10 @@ class ConditionalRulesChangesPayload:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.conditional_rules_changes_payload_rules_type_0 import ConditionalRulesChangesPayloadRulesType0
-        from ..models.rules_order_delta_payload import RulesOrderDeltaPayload
+        from ..models.conditional_rules_changes_payload_rules_type_0 import ConditionalRulesChangesPayloadRulesType0  # noqa: PLC0415
+        from ..models.rules_order_delta_payload import RulesOrderDeltaPayload  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_rules_order(data: object) -> None | RulesOrderDeltaPayload | Unset:
             if data is None:

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus(str, Enum):
+class RobloxItemConfigurationApiAssetCreationsDetailsResponseStatus(StrEnum):
     DELAYEDRELEASE = "DelayedRelease"
     FREE = "Free"
     MODERATED = "Moderated"

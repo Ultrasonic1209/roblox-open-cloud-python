@@ -28,7 +28,7 @@ class GameResponse:
     root_place: None | PlaceResponse | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.place_response import PlaceResponse
+        from ..models.place_response import PlaceResponse  # noqa: PLC0415
 
         id = self.id
 
@@ -60,9 +60,9 @@ class GameResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.place_response import PlaceResponse
+        from ..models.place_response import PlaceResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:

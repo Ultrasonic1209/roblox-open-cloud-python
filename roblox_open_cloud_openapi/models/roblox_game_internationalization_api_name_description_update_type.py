@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiNameDescriptionUpdateType(str, Enum):
+class RobloxGameInternationalizationApiNameDescriptionUpdateType(StrEnum):
     DESCRIPTION = "Description"
     INVALID = "Invalid"
     NAME = "Name"

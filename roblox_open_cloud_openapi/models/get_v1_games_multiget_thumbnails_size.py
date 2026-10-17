@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1GamesMultigetThumbnailsSize(str, Enum):
+class GetV1GamesMultigetThumbnailsSize(StrEnum):
     VALUE_0 = "768x432"
     VALUE_1 = "576x324"
     VALUE_2 = "480x270"

@@ -1,16 +1,37 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_v1_users_user_id_friends_online_user_sort import GetV1UsersUserIdFriendsOnlineUserSort
 from ...models.roblox_web_web_api_models_api_array_response_roblox_friends_api_models_response_user_presence_response import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxFriendsApiModelsResponseUserPresenceResponse,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -35,17 +56,13 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_users_userId_friends_online",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxFriendsApiModelsResponseUserPresenceResponse | None:
     if response.status_code == 200:
         response_200 = (
@@ -71,7 +88,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxFriendsApiModelsResponseUserPresenceResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -106,7 +123,7 @@ def sync_detailed(
         user_sort=user_sort,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -165,7 +182,7 @@ async def asyncio_detailed(
         user_sort=user_sort,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

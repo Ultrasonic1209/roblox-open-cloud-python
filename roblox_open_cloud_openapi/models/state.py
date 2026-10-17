@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class State(str, Enum):
+class State(StrEnum):
     ACTIVE = "Active"
     ARCHIVED = "Archived"
     UNSPECIFIED = "Unspecified"

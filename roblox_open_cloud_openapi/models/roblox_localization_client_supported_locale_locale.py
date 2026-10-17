@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxLocalizationClientSupportedLocaleLocale(str, Enum):
+class RobloxLocalizationClientSupportedLocaleLocale(StrEnum):
     AR_001 = "ar_001"
     BG_BG = "bg_bg"
     BN_BD = "bn_bd"

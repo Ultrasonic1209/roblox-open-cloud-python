@@ -44,7 +44,7 @@ class RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItem:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         target_id = d.pop("TargetId", UNSET)
 
         _item_type = d.pop("ItemType", UNSET)

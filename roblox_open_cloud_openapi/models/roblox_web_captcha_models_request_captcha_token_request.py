@@ -50,7 +50,7 @@ class RobloxWebCaptchaModelsRequestCaptchaTokenRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         captcha_id = d.pop("captchaId", UNSET)
 
         captcha_token = d.pop("captchaToken", UNSET)

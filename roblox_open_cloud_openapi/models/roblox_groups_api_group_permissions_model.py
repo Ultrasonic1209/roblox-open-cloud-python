@@ -108,24 +108,24 @@ class RobloxGroupsApiGroupPermissionsModel:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_group_content_moderation_permissions_model import (
-            RobloxGroupsApiGroupContentModerationPermissionsModel,
+            RobloxGroupsApiGroupContentModerationPermissionsModel,  # noqa: PLC0415
         )
         from ..models.roblox_groups_api_group_economy_permissions_model import (
-            RobloxGroupsApiGroupEconomyPermissionsModel,
+            RobloxGroupsApiGroupEconomyPermissionsModel,  # noqa: PLC0415
         )
-        from ..models.roblox_groups_api_group_forums_permissions_model import RobloxGroupsApiGroupForumsPermissionsModel
+        from ..models.roblox_groups_api_group_forums_permissions_model import RobloxGroupsApiGroupForumsPermissionsModel  # noqa: PLC0415
         from ..models.roblox_groups_api_group_management_permissions_model import (
-            RobloxGroupsApiGroupManagementPermissionsModel,
+            RobloxGroupsApiGroupManagementPermissionsModel,  # noqa: PLC0415
         )
         from ..models.roblox_groups_api_group_membership_permissions_model import (
-            RobloxGroupsApiGroupMembershipPermissionsModel,
+            RobloxGroupsApiGroupMembershipPermissionsModel,  # noqa: PLC0415
         )
         from ..models.roblox_groups_api_group_open_cloud_permissions_model import (
-            RobloxGroupsApiGroupOpenCloudPermissionsModel,
+            RobloxGroupsApiGroupOpenCloudPermissionsModel,  # noqa: PLC0415
         )
-        from ..models.roblox_groups_api_group_posts_permissions_model import RobloxGroupsApiGroupPostsPermissionsModel
+        from ..models.roblox_groups_api_group_posts_permissions_model import RobloxGroupsApiGroupPostsPermissionsModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _group_posts_permissions = d.pop("groupPostsPermissions", UNSET)
         group_posts_permissions: RobloxGroupsApiGroupPostsPermissionsModel | Unset
         if isinstance(_group_posts_permissions, Unset):

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV2UsersUserIdTradableItemsSortBy(str, Enum):
+class GetV2UsersUserIdTradableItemsSortBy(StrEnum):
     ACQUISITIONTIME = "AcquisitionTime"
     CREATIONTIME = "CreationTime"
     UNKNOWN = "Unknown"

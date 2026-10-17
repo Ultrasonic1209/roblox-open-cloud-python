@@ -1,15 +1,37 @@
-import datetime
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+import datetime
+
 from ...models.roblox_api_notifications_models_game_update_notification_model import (
     RobloxApiNotificationsModelsGameUpdateNotificationModel,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -35,17 +57,13 @@ def _get_kwargs(
         "method": "get",
         "url": "https://notifications.roblox.com/v2/stream-notifications/get-latest-game-updates",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v2_stream-notifications_get-latest-game-updates",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | list[RobloxApiNotificationsModelsGameUpdateNotificationModel] | None:
     if response.status_code == 200:
         response_200 = []
@@ -70,7 +88,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | list[RobloxApiNotificationsModelsGameUpdateNotificationModel]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -105,7 +123,7 @@ def sync_detailed(
         since_date_time=since_date_time,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -164,7 +182,7 @@ async def asyncio_detailed(
         since_date_time=since_date_time,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

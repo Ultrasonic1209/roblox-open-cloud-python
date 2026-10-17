@@ -1,12 +1,31 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...types import Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-localization-tables/v1/autolocalization/metadata', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/localization#get_legacy_localization_tables_v1_autolocalization_metadata'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -23,26 +42,13 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://gameinternationalization.roblox.com/v1/autolocalization/metadata",
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/legacy-localization-tables/v1/autolocalization/metadata",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/localization#get_legacy_localization_tables_v1_autolocalization_metadata",
-                    }
-                ],
-            },
-            "openapi-id": "get_v1_autolocalization_metadata",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxGameInternationalizationApiAutoLocalizationMetadataResponse | None:
     if response.status_code == 200:
         response_200 = RobloxGameInternationalizationApiAutoLocalizationMetadataResponse.from_dict(response.json())
@@ -60,7 +66,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxGameInternationalizationApiAutoLocalizationMetadataResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -91,7 +97,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs()
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -143,7 +149,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs()
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

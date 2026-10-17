@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGroupsApiSetFeaturesRequestModelFeaturesContentUpload(str, Enum):
+class RobloxGroupsApiSetFeaturesRequestModelFeaturesContentUpload(StrEnum):
     BLOCKED = "Blocked"
     ON = "On"
 

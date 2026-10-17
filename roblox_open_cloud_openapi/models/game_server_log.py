@@ -2,12 +2,16 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
 from ..models.log_severity import LogSeverity
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.structured_stack_frame import StructuredStackFrame
+
 
 T = TypeVar("T", bound="GameServerLog")
 
@@ -28,10 +32,15 @@ class GameServerLog:
         stack_trace (None | str | Unset): The stack trace of the log
         message_template (None | str | Unset): Optional message template included with structured logging
         context (None | str | Unset): Optional message context included with structured logging
+        logger_full_path (None | str | Unset): The full path of the logger that emitted the log entry
         skipped_count (int | Unset): How many duplicate versions of this message were present in the same time window as
             this log
         rate_limited_count (int | Unset): How many more messages were present in the time window beyond our overall rate
             limits
+        structured_stack_trace (list[StructuredStackFrame] | None | Unset): A list of
+            ServerManagementService.V2.Models.StructuredStackFrame metadata, identifying the script that errored when
+            combined
+            with the ServerManagementService.V2.Models.GameServerLog.PlaceVersion
     """
 
     message_timestamp_ms: datetime.datetime | Unset = UNSET
@@ -44,8 +53,10 @@ class GameServerLog:
     stack_trace: None | str | Unset = UNSET
     message_template: None | str | Unset = UNSET
     context: None | str | Unset = UNSET
+    logger_full_path: None | str | Unset = UNSET
     skipped_count: int | Unset = UNSET
     rate_limited_count: int | Unset = UNSET
+    structured_stack_trace: list[StructuredStackFrame] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         message_timestamp_ms: str | Unset = UNSET
@@ -100,9 +111,27 @@ class GameServerLog:
         else:
             context = self.context
 
+        logger_full_path: None | str | Unset
+        if isinstance(self.logger_full_path, Unset):
+            logger_full_path = UNSET
+        else:
+            logger_full_path = self.logger_full_path
+
         skipped_count = self.skipped_count
 
         rate_limited_count = self.rate_limited_count
+
+        structured_stack_trace: list[dict[str, Any]] | None | Unset
+        if isinstance(self.structured_stack_trace, Unset):
+            structured_stack_trace = UNSET
+        elif isinstance(self.structured_stack_trace, list):
+            structured_stack_trace = []
+            for structured_stack_trace_type_0_item_data in self.structured_stack_trace:
+                structured_stack_trace_type_0_item = structured_stack_trace_type_0_item_data.to_dict()
+                structured_stack_trace.append(structured_stack_trace_type_0_item)
+
+        else:
+            structured_stack_trace = self.structured_stack_trace
 
         field_dict: dict[str, Any] = {}
 
@@ -127,16 +156,22 @@ class GameServerLog:
             field_dict["messageTemplate"] = message_template
         if context is not UNSET:
             field_dict["context"] = context
+        if logger_full_path is not UNSET:
+            field_dict["loggerFullPath"] = logger_full_path
         if skipped_count is not UNSET:
             field_dict["skippedCount"] = skipped_count
         if rate_limited_count is not UNSET:
             field_dict["rateLimitedCount"] = rate_limited_count
+        if structured_stack_trace is not UNSET:
+            field_dict["structuredStackTrace"] = structured_stack_trace
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        from ..models.structured_stack_frame import StructuredStackFrame  # noqa: PLC0415
+
+        d = dict(src_dict)
         _message_timestamp_ms = d.pop("messageTimestampMs", UNSET)
         message_timestamp_ms: datetime.datetime | Unset
         if isinstance(_message_timestamp_ms, Unset):
@@ -216,9 +251,42 @@ class GameServerLog:
 
         context = _parse_context(d.pop("context", UNSET))
 
+        def _parse_logger_full_path(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        logger_full_path = _parse_logger_full_path(d.pop("loggerFullPath", UNSET))
+
         skipped_count = d.pop("skippedCount", UNSET)
 
         rate_limited_count = d.pop("rateLimitedCount", UNSET)
+
+        def _parse_structured_stack_trace(data: object) -> list[StructuredStackFrame] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                structured_stack_trace_type_0 = []
+                _structured_stack_trace_type_0 = data
+                for structured_stack_trace_type_0_item_data in _structured_stack_trace_type_0:
+                    structured_stack_trace_type_0_item = StructuredStackFrame.from_dict(
+                        structured_stack_trace_type_0_item_data
+                    )
+
+                    structured_stack_trace_type_0.append(structured_stack_trace_type_0_item)
+
+                return structured_stack_trace_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[StructuredStackFrame] | None | Unset, data)
+
+        structured_stack_trace = _parse_structured_stack_trace(d.pop("structuredStackTrace", UNSET))
 
         game_server_log = cls(
             message_timestamp_ms=message_timestamp_ms,
@@ -231,8 +299,10 @@ class GameServerLog:
             stack_trace=stack_trace,
             message_template=message_template,
             context=context,
+            logger_full_path=logger_full_path,
             skipped_count=skipped_count,
             rate_limited_count=rate_limited_count,
+            structured_stack_trace=structured_stack_trace,
         )
 
         return game_server_log

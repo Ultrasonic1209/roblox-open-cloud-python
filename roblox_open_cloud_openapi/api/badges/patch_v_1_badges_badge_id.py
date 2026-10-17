@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-badges/v1/badges/{badgeId}', 'httpMethod': 'PATCH', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/badges#patch_legacy_badges_v1_badges__badgeId_'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -30,19 +49,6 @@ def _get_kwargs(
         "url": "https://badges.roblox.com/v1/badges/{badge_id}".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/legacy-badges/v1/badges/{badgeId}",
-                        "httpMethod": "PATCH",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#patch_legacy_badges_v1_badges__badgeId_",
-                    }
-                ],
-            },
-            "openapi-id": "patch_v1_badges_badgeId",
-        },
     }
 
     if isinstance(body, RobloxBadgesApiUpdateBadgeRequest):
@@ -59,7 +65,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIApiEmptyResponseModel | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIApiEmptyResponseModel.from_dict(response.json())
@@ -89,7 +95,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIApiEmptyResponseModel]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -109,6 +115,8 @@ def sync_detailed(
     body: RobloxBadgesApiUpdateBadgeRequest | RobloxBadgesApiUpdateBadgeRequest | Unset = UNSET,
 ) -> Response[Any | RobloxWebWebAPIApiEmptyResponseModel]:
     """Updates badge configuration.
+
+     Managers may change enabled state, name, and description when authorized for the badge.
 
     Args:
         badge_id (int):
@@ -130,7 +138,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -147,6 +155,8 @@ def sync(
     body: RobloxBadgesApiUpdateBadgeRequest | RobloxBadgesApiUpdateBadgeRequest | Unset = UNSET,
 ) -> Any | RobloxWebWebAPIApiEmptyResponseModel | None:
     """Updates badge configuration.
+
+     Managers may change enabled state, name, and description when authorized for the badge.
 
     Args:
         badge_id (int):
@@ -181,6 +191,8 @@ async def asyncio_detailed(
 ) -> Response[Any | RobloxWebWebAPIApiEmptyResponseModel]:
     """Updates badge configuration.
 
+     Managers may change enabled state, name, and description when authorized for the badge.
+
     Args:
         badge_id (int):
         body (RobloxBadgesApiUpdateBadgeRequest): A request model used for updating badge
@@ -201,7 +213,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -216,6 +228,8 @@ async def asyncio(
     body: RobloxBadgesApiUpdateBadgeRequest | RobloxBadgesApiUpdateBadgeRequest | Unset = UNSET,
 ) -> Any | RobloxWebWebAPIApiEmptyResponseModel | None:
     """Updates badge configuration.
+
+     Managers may change enabled state, name, and description when authorized for the badge.
 
     Args:
         badge_id (int):

@@ -41,7 +41,7 @@ class MessageReaction:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         emote_id = d.pop("emoteId", UNSET)
 
         count = d.pop("count", UNSET)

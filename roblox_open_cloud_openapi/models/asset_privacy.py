@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AssetPrivacy(str, Enum):
+class AssetPrivacy(StrEnum):
     DEFAULT = "default"
     OPENUSE = "openUse"
     RESTRICTED = "restricted"

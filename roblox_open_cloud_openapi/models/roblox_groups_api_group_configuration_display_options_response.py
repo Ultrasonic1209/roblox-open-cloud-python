@@ -88,16 +88,16 @@ class RobloxGroupsApiGroupConfigurationDisplayOptionsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_group_configuration_response import RobloxGroupsApiGroupConfigurationResponse
+        from ..models.roblox_groups_api_group_configuration_response import RobloxGroupsApiGroupConfigurationResponse  # noqa: PLC0415
         from ..models.roblox_groups_api_group_name_change_configuration_response import (
-            RobloxGroupsApiGroupNameChangeConfigurationResponse,
+            RobloxGroupsApiGroupNameChangeConfigurationResponse,  # noqa: PLC0415
         )
         from ..models.roblox_groups_api_recurring_payouts_configuration_response import (
-            RobloxGroupsApiRecurringPayoutsConfigurationResponse,
+            RobloxGroupsApiRecurringPayoutsConfigurationResponse,  # noqa: PLC0415
         )
-        from ..models.roblox_groups_api_role_configuration_response import RobloxGroupsApiRoleConfigurationResponse
+        from ..models.roblox_groups_api_role_configuration_response import RobloxGroupsApiRoleConfigurationResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _group_configuration = d.pop("groupConfiguration", UNSET)
         group_configuration: RobloxGroupsApiGroupConfigurationResponse | Unset
         if isinstance(_group_configuration, Unset):

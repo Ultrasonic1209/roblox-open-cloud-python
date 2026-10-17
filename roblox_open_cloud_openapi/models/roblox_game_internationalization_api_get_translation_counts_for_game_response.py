@@ -54,10 +54,10 @@ class RobloxGameInternationalizationApiGetTranslationCountsForGameResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_translation_count_language_or_locale_response import (
-            RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponse,
+            RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponse,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         game_id = d.pop("gameId", UNSET)
 
         _languages_or_locales = d.pop("languagesOrLocales", UNSET)

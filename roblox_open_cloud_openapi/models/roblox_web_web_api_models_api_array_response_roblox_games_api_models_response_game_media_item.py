@@ -41,9 +41,9 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameMedia
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_games_api_models_response_game_media_item import RobloxGamesApiModelsResponseGameMediaItem
+        from ..models.roblox_games_api_models_response_game_media_item import RobloxGamesApiModelsResponseGameMediaItem  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxGamesApiModelsResponseGameMediaItem] | Unset = UNSET
         if _data is not UNSET:

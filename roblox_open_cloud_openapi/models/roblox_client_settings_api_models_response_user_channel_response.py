@@ -78,10 +78,10 @@ class RobloxClientSettingsApiModelsResponseUserChannelResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_client_settings_api_models_response_beta_program_info import (
-            RobloxClientSettingsApiModelsResponseBetaProgramInfo,
+            RobloxClientSettingsApiModelsResponseBetaProgramInfo,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         channel_name = d.pop("channelName", UNSET)
 
         _channel_assignment_type = d.pop("channelAssignmentType", UNSET)

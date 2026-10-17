@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SortCategory(str, Enum):
+class SortCategory(StrEnum):
     AUDIO_DURATION = "AudioDuration"
     CREATE_TIME = "CreateTime"
     RATINGS = "Ratings"

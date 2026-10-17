@@ -1,14 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'group:write', 'targetResourceSpecifier': ''}, {'name': 'group:write'}], 'x-roblox-docs': {'category': 'Users and groups', 'methodProperties': {'scopes': ['group:write']}, 'resource': {'$ref': '#/components/schemas/GroupMembership', 'name': 'GroupMembership'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 300}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 90}}}
+"""
+
+
 from ...models.group_membership import GroupMembership
 from ...models.unassign_role_group_membership_request import UnassignRoleGroupMembershipRequest
-from ...types import Response
 
 
 def _get_kwargs(
@@ -25,23 +45,6 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
             membership_id=quote(str(membership_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "group:write"}],
-                "x-roblox-docs": {
-                    "category": "Users and groups",
-                    "methodProperties": {"scopes": ["group:write"]},
-                    "resource": {"$ref": "#/components/schemas/GroupMembership", "name": "GroupMembership"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 300},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 90},
-                },
-            },
-            "openapi-id": "Cloud_UnassignRoleGroupMembership",
-        },
     }
 
     _kwargs["json"] = body.to_dict()
@@ -52,7 +55,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> GroupMembership | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GroupMembership | None:
     if response.status_code == 200:
         response_200 = GroupMembership.from_dict(response.json())
 
@@ -64,7 +67,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[GroupMembership]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[GroupMembership]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -105,7 +108,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -178,7 +181,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

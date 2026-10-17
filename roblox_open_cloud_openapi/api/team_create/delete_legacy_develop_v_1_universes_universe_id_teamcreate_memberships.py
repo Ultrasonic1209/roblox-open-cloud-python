@@ -1,16 +1,36 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-team-collaboration:manage'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.roblox_api_develop_models_team_create_membership_request import (
     RobloxApiDevelopModelsTeamCreateMembershipRequest,
 )
 from ...models.roblox_web_web_api_api_empty_response_model import RobloxWebWebAPIApiEmptyResponseModel
-from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -27,17 +47,6 @@ def _get_kwargs(
         "url": "/legacy-develop/v1/universes/{universe_id}/teamcreate/memberships".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "legacy-team-collaboration:manage"}],
-            },
-            "openapi-id": "delete_legacy-develop_v1_universes_universeId_teamcreate_memberships",
-        },
     }
 
     if isinstance(body, RobloxApiDevelopModelsTeamCreateMembershipRequest):
@@ -54,7 +63,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIApiEmptyResponseModel | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIApiEmptyResponseModel.from_dict(response.json())
@@ -80,7 +89,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIApiEmptyResponseModel]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -120,7 +129,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -189,7 +198,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

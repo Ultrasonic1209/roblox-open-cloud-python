@@ -47,10 +47,10 @@ class RobloxLocaleApiUserLocaleResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_locale_api_language import RobloxLocaleApiLanguage
-        from ..models.roblox_locale_api_supported_locale import RobloxLocaleApiSupportedLocale
+        from ..models.roblox_locale_api_language import RobloxLocaleApiLanguage  # noqa: PLC0415
+        from ..models.roblox_locale_api_supported_locale import RobloxLocaleApiSupportedLocale  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _supported_locale = d.pop("supportedLocale", UNSET)
         supported_locale: RobloxLocaleApiSupportedLocale | Unset
         if isinstance(_supported_locale, Unset):

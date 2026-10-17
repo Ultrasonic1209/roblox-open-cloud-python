@@ -34,7 +34,7 @@ class RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType:
             'EyebrowAccessory' = 76, 'EyelashAccessory' = 77, 'MoodAnimation' = 78, 'DynamicHead' = 79, 'CodeSnippet' = 80,
             'AdsVideo' = 81, 'OtaUpdate' = 82, 'Screenshot' = 83, 'RuntimePropertySet' = 84, 'StorePreviewVideo' = 85,
             'GamePreviewVideo' = 86, 'CreatorExperienceConfig' = 87, 'FaceMakeup' = 88, 'LipMakeup' = 89, 'EyeMakeup' = 90,
-            'VoxelFragment' = 91, 'AvatarBackground' = 92, 'TextDocument' = 93]
+            'VoxelFragment' = 91, 'AvatarBackground' = 92, 'TextDocument' = 93, 'Post' = 94]
         name (str | Unset):
     """
 
@@ -65,7 +65,7 @@ class RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)

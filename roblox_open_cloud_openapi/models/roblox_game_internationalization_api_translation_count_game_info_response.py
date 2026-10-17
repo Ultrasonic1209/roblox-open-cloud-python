@@ -26,9 +26,7 @@ class RobloxGameInternationalizationApiTranslationCountGameInfoResponse:
     Attributes:
         game_id (int | Unset): The game id.
         status (RobloxGameInternationalizationApiTranslationCountGameInfoResponseStatus | Unset): The status of the
-            response for the requested game. ['LanguageOrLocaleSupportedForGame' = 0, 'LanguageOrLocaleNotSupportedForGame'
-            = 1, 'LanguageOrLocaleIsSource' = 2, 'InsufficientPermission' = 3, 'GameDoesNotExist' = 4,
-            'GameDoesNotHaveTable' = 5, 'UnknownError' = 6]
+            response for the requested game.
         categories (list[RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse] | Unset): Categories of
             translation counts.
     """
@@ -66,10 +64,10 @@ class RobloxGameInternationalizationApiTranslationCountGameInfoResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_translation_count_category_info_response import (
-            RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse,
+            RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         game_id = d.pop("gameId", UNSET)
 
         _status = d.pop("status", UNSET)

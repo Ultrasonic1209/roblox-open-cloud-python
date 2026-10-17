@@ -45,10 +45,10 @@ class UserRestrictionLogRestrictionType:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.user_restriction_log_restriction_type_game_join_restriction import (
-            UserRestrictionLogRestrictionTypeGameJoinRestriction,
+            UserRestrictionLogRestrictionTypeGameJoinRestriction,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _game_join_restriction = d.pop("gameJoinRestriction", UNSET)
         game_join_restriction: UserRestrictionLogRestrictionTypeGameJoinRestriction | Unset
         if isinstance(_game_join_restriction, Unset):

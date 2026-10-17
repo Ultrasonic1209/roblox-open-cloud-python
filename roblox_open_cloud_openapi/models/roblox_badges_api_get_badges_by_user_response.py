@@ -127,15 +127,15 @@ class RobloxBadgesApiGetBadgesByUserResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_badges_api_badge_creator_response import RobloxBadgesApiBadgeCreatorResponse
+        from ..models.roblox_badges_api_badge_creator_response import RobloxBadgesApiBadgeCreatorResponse  # noqa: PLC0415
         from ..models.roblox_web_responses_badges_badge_award_statistics_response import (
-            RobloxWebResponsesBadgesBadgeAwardStatisticsResponse,
+            RobloxWebResponsesBadgesBadgeAwardStatisticsResponse,  # noqa: PLC0415
         )
         from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_badges_badge_awarder_type import (
-            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformBadgesBadgeAwarderType,
+            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformBadgesBadgeAwarderType,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _creator = d.pop("creator", UNSET)
         creator: RobloxBadgesApiBadgeCreatorResponse | Unset
         if isinstance(_creator, Unset):

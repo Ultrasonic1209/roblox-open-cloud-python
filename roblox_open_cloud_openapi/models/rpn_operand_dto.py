@@ -16,19 +16,18 @@ T = TypeVar("T", bound="RpnOperandDto")
 
 @_attrs_define
 class RpnOperandDto:
-    """RPN operand: attribute reference or literal value (same concepts as the proto `RpnOperand` oneof).
+    """RPN operand: attribute reference or literal value.
 
     Attributes:
         attribute_reference (None | str | Unset):
-        literal_value (LiteralValueDto | None | Unset): Literal constant for an RPN operand (proto `LiteralValue` oneof
-            as independent fields for JSON).
+        literal_value (LiteralValueDto | None | Unset): Literal constant for an RPN operand.
     """
 
     attribute_reference: None | str | Unset = UNSET
     literal_value: LiteralValueDto | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.literal_value_dto import LiteralValueDto
+        from ..models.literal_value_dto import LiteralValueDto  # noqa: PLC0415
 
         attribute_reference: None | str | Unset
         if isinstance(self.attribute_reference, Unset):
@@ -56,9 +55,9 @@ class RpnOperandDto:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.literal_value_dto import LiteralValueDto
+        from ..models.literal_value_dto import LiteralValueDto  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_attribute_reference(data: object) -> None | str | Unset:
             if data is None:

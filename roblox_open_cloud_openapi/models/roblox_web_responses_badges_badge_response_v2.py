@@ -117,13 +117,13 @@ class RobloxWebResponsesBadgesBadgeResponseV2:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_web_responses_badges_badge_award_statistics_response import (
-            RobloxWebResponsesBadgesBadgeAwardStatisticsResponse,
+            RobloxWebResponsesBadgesBadgeAwardStatisticsResponse,  # noqa: PLC0415
         )
         from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_badges_badge_awarder_type import (
-            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformBadgesBadgeAwarderType,
+            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformBadgesBadgeAwarderType,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)

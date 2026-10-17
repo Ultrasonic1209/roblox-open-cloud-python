@@ -41,9 +41,9 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupPayoutResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_group_payout_response import RobloxGroupsApiGroupPayoutResponse
+        from ..models.roblox_groups_api_group_payout_response import RobloxGroupsApiGroupPayoutResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxGroupsApiGroupPayoutResponse] | Unset = UNSET
         if _data is not UNSET:

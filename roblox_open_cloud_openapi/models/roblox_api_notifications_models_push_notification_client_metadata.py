@@ -53,7 +53,7 @@ class RobloxApiNotificationsModelsPushNotificationClientMetadata:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _notification_id = d.pop("notificationId", UNSET)
         notification_id: UUID | Unset
         if isinstance(_notification_id, Unset):

@@ -77,12 +77,12 @@ class RobloxLocalizationTablesApiFailedEntry:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_entry_identifier import RobloxLocalizationTablesApiEntryIdentifier
-        from ..models.roblox_localization_tables_api_entry_metadata import RobloxLocalizationTablesApiEntryMetadata
-        from ..models.roblox_localization_tables_api_error import RobloxLocalizationTablesApiError
-        from ..models.roblox_localization_tables_api_translation import RobloxLocalizationTablesApiTranslation
+        from ..models.roblox_localization_tables_api_entry_identifier import RobloxLocalizationTablesApiEntryIdentifier  # noqa: PLC0415
+        from ..models.roblox_localization_tables_api_entry_metadata import RobloxLocalizationTablesApiEntryMetadata  # noqa: PLC0415
+        from ..models.roblox_localization_tables_api_error import RobloxLocalizationTablesApiError  # noqa: PLC0415
+        from ..models.roblox_localization_tables_api_translation import RobloxLocalizationTablesApiTranslation  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _error = d.pop("error", UNSET)
         error: RobloxLocalizationTablesApiError | Unset
         if isinstance(_error, Unset):

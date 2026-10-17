@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MatchmakingNumericalAttributeComparisonType(str, Enum):
+class MatchmakingNumericalAttributeComparisonType(StrEnum):
     ABSOLUTEDIFFERENTTOCONSTANT = "AbsoluteDifferentToConstant"
     ABSOLUTEDIFFERENTTOPLAYER = "AbsoluteDifferentToPlayer"
     INVALID = "Invalid"

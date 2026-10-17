@@ -29,7 +29,7 @@ class ListRestartStatusesResponse:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.list_restart_statuses_response_restart_statuses_type_0 import (
-            ListRestartStatusesResponseRestartStatusesType0,
+            ListRestartStatusesResponseRestartStatusesType0,  # noqa: PLC0415
         )
 
         restart_statuses: dict[str, Any] | None | Unset
@@ -51,10 +51,10 @@ class ListRestartStatusesResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.list_restart_statuses_response_restart_statuses_type_0 import (
-            ListRestartStatusesResponseRestartStatusesType0,
+            ListRestartStatusesResponseRestartStatusesType0,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_restart_statuses(data: object) -> ListRestartStatusesResponseRestartStatusesType0 | None | Unset:
             if data is None:

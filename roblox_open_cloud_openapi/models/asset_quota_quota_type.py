@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AssetQuotaQuotaType(str, Enum):
+class AssetQuotaQuotaType(StrEnum):
     QUOTA_TYPE_UNSPECIFIED = "QUOTA_TYPE_UNSPECIFIED"
     RATE_LIMIT_CREATOR_STORE_DISTRIBUTE = "RATE_LIMIT_CREATOR_STORE_DISTRIBUTE"
     RATE_LIMIT_UPLOAD = "RATE_LIMIT_UPLOAD"

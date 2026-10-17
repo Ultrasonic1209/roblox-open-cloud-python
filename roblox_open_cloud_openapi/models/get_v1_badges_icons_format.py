@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1BadgesIconsFormat(str, Enum):
+class GetV1BadgesIconsFormat(StrEnum):
     PNG = "Png"
     WEBP = "Webp"
 

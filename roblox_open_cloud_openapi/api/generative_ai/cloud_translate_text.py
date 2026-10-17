@@ -1,14 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-rate-limits': {'description': 'Text translation requests are subject to additional rate limits [documented here](https://create.roblox.com/docs/production/localization/auto-translate-dynamic-content#limits).', 'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 10000}}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'universe:write'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe:write']}, 'resource': {'$ref': '#/components/schemas/Universe', 'name': 'Universe'}}, 'x-roblox-stability': 'BETA'}
+"""
+
+
 from ...models.translate_text_request import TranslateTextRequest
 from ...models.translate_text_response import TranslateTextResponse
-from ...types import Response
 
 
 def _get_kwargs(
@@ -23,23 +43,6 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}:translateText".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-rate-limits": {
-                    "description": "Text translation requests are subject to additional rate limits [documented here](https://create.roblox.com/docs/production/localization/auto-translate-dynamic-content#limits).",
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 10000},
-                },
-                "x-roblox-scopes": [{"name": "universe:write"}],
-                "x-roblox-docs": {
-                    "category": "Universes and places",
-                    "methodProperties": {"scopes": ["universe:write"]},
-                    "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
-                },
-                "x-roblox-stability": "BETA",
-            },
-            "openapi-id": "Cloud_TranslateText",
-        },
     }
 
     _kwargs["json"] = body.to_dict()
@@ -50,7 +53,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> TranslateTextResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> TranslateTextResponse | None:
     if response.status_code == 200:
         response_200 = TranslateTextResponse.from_dict(response.json())
 
@@ -63,7 +66,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[TranslateTextResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -102,7 +105,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -169,7 +172,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

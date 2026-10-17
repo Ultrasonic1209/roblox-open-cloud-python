@@ -55,10 +55,10 @@ class RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_localization_tables_api_entry_translation_feedback import (
-            RobloxLocalizationTablesApiEntryTranslationFeedback,
+            RobloxLocalizationTablesApiEntryTranslationFeedback,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _table_id = d.pop("tableId", UNSET)
         table_id: UUID | Unset
         if isinstance(_table_id, Unset):

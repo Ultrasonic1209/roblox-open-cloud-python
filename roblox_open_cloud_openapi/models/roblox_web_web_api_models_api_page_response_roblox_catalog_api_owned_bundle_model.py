@@ -53,9 +53,9 @@ class RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiOwnedBundleModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_catalog_api_owned_bundle_model import RobloxCatalogApiOwnedBundleModel
+        from ..models.roblox_catalog_api_owned_bundle_model import RobloxCatalogApiOwnedBundleModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         previous_page_cursor = d.pop("previousPageCursor", UNSET)
 
         next_page_cursor = d.pop("nextPageCursor", UNSET)

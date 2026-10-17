@@ -1,16 +1,37 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 200}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 200}}, 'x-roblox-scopes': [{'name': 'creator-store-save:read', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_saves_response_type_0 import GetSavesResponseType0
 from ...models.problem_details_type_0 import ProblemDetailsType0
 from ...models.saves_sort_category import SavesSortCategory
 from ...models.search_category_type import SearchCategoryType
 from ...models.sort_direction import SortDirection
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -72,25 +93,13 @@ def _get_kwargs(
         "method": "get",
         "url": "/toolbox-service/v1/saves",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 200},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 200},
-                },
-                "x-roblox-scopes": [{"name": "creator-store-save:read", "targetResourceSpecifier": ""}],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "Saves_GetSaves",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> GetSavesResponseType0 | None | None | ProblemDetailsType0 | None:
     if response.status_code == 200:
 
@@ -137,7 +146,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[GetSavesResponseType0 | None | None | ProblemDetailsType0]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -195,7 +204,7 @@ def sync_detailed(
         hide_owned_assets=hide_owned_assets,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -300,7 +309,7 @@ async def asyncio_detailed(
         hide_owned_assets=hide_owned_assets,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

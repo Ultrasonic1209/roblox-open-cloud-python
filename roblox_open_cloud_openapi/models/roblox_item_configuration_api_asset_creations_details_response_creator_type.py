@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxItemConfigurationApiAssetCreationsDetailsResponseCreatorType(str, Enum):
+class RobloxItemConfigurationApiAssetCreationsDetailsResponseCreatorType(StrEnum):
     GROUP = "Group"
     UNKNOWN = "Unknown"
     USER = "User"

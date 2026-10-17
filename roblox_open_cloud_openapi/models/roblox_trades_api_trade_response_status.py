@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxTradesApiTradeResponseStatus(str, Enum):
+class RobloxTradesApiTradeResponseStatus(StrEnum):
     COMPLETED = "Completed"
     COUNTERED = "Countered"
     DECLINED = "Declined"

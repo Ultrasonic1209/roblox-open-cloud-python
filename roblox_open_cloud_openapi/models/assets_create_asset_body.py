@@ -61,9 +61,9 @@ class AssetsCreateAssetBody:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.asset import Asset
+        from ..models.asset import Asset  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         request = Asset.from_dict(d.pop("request"))
 
         file_content = File(payload=BytesIO(d.pop("fileContent")))

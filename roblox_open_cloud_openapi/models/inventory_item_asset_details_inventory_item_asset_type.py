@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class InventoryItemAssetDetailsInventoryItemAssetType(str, Enum):
+class InventoryItemAssetDetailsInventoryItemAssetType(StrEnum):
     ANIMATION = "ANIMATION"
     AUDIO = "AUDIO"
     BACK_ACCESSORY = "BACK_ACCESSORY"

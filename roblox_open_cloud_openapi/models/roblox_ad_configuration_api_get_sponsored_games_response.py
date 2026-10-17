@@ -58,10 +58,10 @@ class RobloxAdConfigurationApiGetSponsoredGamesResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_ad_configuration_api_sponsored_game_v2_model import (
-            RobloxAdConfigurationApiSponsoredGameV2Model,
+            RobloxAdConfigurationApiSponsoredGameV2Model,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _sponsored_games = d.pop("sponsoredGames", UNSET)
         sponsored_games: list[RobloxAdConfigurationApiSponsoredGameV2Model] | Unset = UNSET
         if _sponsored_games is not UNSET:

@@ -19,8 +19,7 @@ class RobloxGameInternationalizationApiGetGameIconResponse:
     Attributes:
         image_id (str | Unset):
         image_url (str | Unset):
-        state (RobloxGameInternationalizationApiGetGameIconResponseState | Unset): Enum for image status. ['Approved' =
-            0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]
+        state (RobloxGameInternationalizationApiGetGameIconResponseState | Unset): Enum for image status.
         language_code (str | Unset):
     """
 
@@ -56,7 +55,7 @@ class RobloxGameInternationalizationApiGetGameIconResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         image_id = d.pop("imageId", UNSET)
 
         image_url = d.pop("imageUrl", UNSET)

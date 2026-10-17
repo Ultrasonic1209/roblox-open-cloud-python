@@ -26,7 +26,10 @@ class IncrementDataStoreEntryRequest:
                 and the increment amount must be integers.
             users (list[str] | Unset): Users associated with the entry.
 
-                If this is not provided, existing user IDs are cleared.
+                Each value must be a user resource path in the format `users/{user_id}`,
+                not a bare user ID.
+
+                If this is not provided, existing user IDs are cleared. Example: users/123.
             attributes (IncrementDataStoreEntryRequestAttributes | Unset): An arbitrary set of attributes associated with
                 the entry.
 
@@ -63,9 +66,9 @@ class IncrementDataStoreEntryRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.increment_data_store_entry_request_attributes import IncrementDataStoreEntryRequestAttributes
+        from ..models.increment_data_store_entry_request_attributes import IncrementDataStoreEntryRequestAttributes  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         amount = d.pop("amount", UNSET)
 
         users = cast(list[str], d.pop("users", UNSET))

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiGetTranslationCountsForLanguageOrLocaleResponseLanguageOrLocaleType(str, Enum):
+class RobloxGameInternationalizationApiGetTranslationCountsForLanguageOrLocaleResponseLanguageOrLocaleType(StrEnum):
     LANGUAGE = "Language"
     LOCALE = "Locale"
 

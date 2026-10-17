@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1BundlesThumbnailsFormat(str, Enum):
+class GetV1BundlesThumbnailsFormat(StrEnum):
     PNG = "Png"
     WEBP = "Webp"
 

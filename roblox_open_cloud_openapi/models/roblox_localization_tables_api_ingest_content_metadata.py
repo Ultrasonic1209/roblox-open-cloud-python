@@ -43,10 +43,10 @@ class RobloxLocalizationTablesApiIngestContentMetadata:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_localization_tables_api_ingest_content_metadata_place_information import (
-            RobloxLocalizationTablesApiIngestContentMetadataPlaceInformation,
+            RobloxLocalizationTablesApiIngestContentMetadataPlaceInformation,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _place_information = d.pop("placeInformation", UNSET)
         place_information: RobloxLocalizationTablesApiIngestContentMetadataPlaceInformation | Unset
         if isinstance(_place_information, Unset):

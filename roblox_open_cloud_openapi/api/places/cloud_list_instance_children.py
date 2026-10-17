@@ -1,13 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-long-running-operation-parameters': {'metadata': {'$ref': '#/components/schemas/ListInstanceChildrenMetadata'}, 'response': {'$ref': '#/components/schemas/ListInstanceChildrenResponse'}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'universe.place.instance:read'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe.place.instance:read']}, 'resource': {'$ref': '#/components/schemas/Instance', 'name': 'Instance'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 45}}}
+"""
+
+
 from ...models.operation import Operation
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -35,30 +56,12 @@ def _get_kwargs(
             instance_id=quote(str(instance_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-long-running-operation-parameters": {
-                    "metadata": {"$ref": "#/components/schemas/ListInstanceChildrenMetadata"},
-                    "response": {"$ref": "#/components/schemas/ListInstanceChildrenResponse"},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "universe.place.instance:read"}],
-                "x-roblox-docs": {
-                    "category": "Universes and places",
-                    "methodProperties": {"scopes": ["universe.place.instance:read"]},
-                    "resource": {"$ref": "#/components/schemas/Instance", "name": "Instance"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 45}},
-            },
-            "openapi-id": "Cloud_ListInstanceChildren",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Operation | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Operation | None:
     if response.status_code == 200:
         response_200 = Operation.from_dict(response.json())
 
@@ -70,7 +73,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Operation]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Operation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -120,7 +123,7 @@ def sync_detailed(
         page_token=page_token,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -211,7 +214,7 @@ async def asyncio_detailed(
         page_token=page_token,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

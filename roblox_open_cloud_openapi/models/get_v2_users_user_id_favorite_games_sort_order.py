@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV2UsersUserIdFavoriteGamesSortOrder(str, Enum):
+class GetV2UsersUserIdFavoriteGamesSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

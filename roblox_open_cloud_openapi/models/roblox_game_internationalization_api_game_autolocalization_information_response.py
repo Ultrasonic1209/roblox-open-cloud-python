@@ -17,12 +17,16 @@ class RobloxGameInternationalizationApiGameAutolocalizationInformationResponse:
     Attributes:
         is_autolocalization_enabled (bool | Unset):
         should_use_localization_table (bool | Unset):
+        should_use_image_localization_table (bool | Unset):
+        is_auto_localization_for_image_enabled (bool | Unset):
         auto_localization_table_id (UUID | Unset):
         asset_id (int | Unset):
     """
 
     is_autolocalization_enabled: bool | Unset = UNSET
     should_use_localization_table: bool | Unset = UNSET
+    should_use_image_localization_table: bool | Unset = UNSET
+    is_auto_localization_for_image_enabled: bool | Unset = UNSET
     auto_localization_table_id: UUID | Unset = UNSET
     asset_id: int | Unset = UNSET
 
@@ -30,6 +34,10 @@ class RobloxGameInternationalizationApiGameAutolocalizationInformationResponse:
         is_autolocalization_enabled = self.is_autolocalization_enabled
 
         should_use_localization_table = self.should_use_localization_table
+
+        should_use_image_localization_table = self.should_use_image_localization_table
+
+        is_auto_localization_for_image_enabled = self.is_auto_localization_for_image_enabled
 
         auto_localization_table_id: str | Unset = UNSET
         if not isinstance(self.auto_localization_table_id, Unset):
@@ -44,6 +52,10 @@ class RobloxGameInternationalizationApiGameAutolocalizationInformationResponse:
             field_dict["isAutolocalizationEnabled"] = is_autolocalization_enabled
         if should_use_localization_table is not UNSET:
             field_dict["shouldUseLocalizationTable"] = should_use_localization_table
+        if should_use_image_localization_table is not UNSET:
+            field_dict["shouldUseImageLocalizationTable"] = should_use_image_localization_table
+        if is_auto_localization_for_image_enabled is not UNSET:
+            field_dict["isAutoLocalizationForImageEnabled"] = is_auto_localization_for_image_enabled
         if auto_localization_table_id is not UNSET:
             field_dict["autoLocalizationTableId"] = auto_localization_table_id
         if asset_id is not UNSET:
@@ -53,10 +65,14 @@ class RobloxGameInternationalizationApiGameAutolocalizationInformationResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         is_autolocalization_enabled = d.pop("isAutolocalizationEnabled", UNSET)
 
         should_use_localization_table = d.pop("shouldUseLocalizationTable", UNSET)
+
+        should_use_image_localization_table = d.pop("shouldUseImageLocalizationTable", UNSET)
+
+        is_auto_localization_for_image_enabled = d.pop("isAutoLocalizationForImageEnabled", UNSET)
 
         _auto_localization_table_id = d.pop("autoLocalizationTableId", UNSET)
         auto_localization_table_id: UUID | Unset
@@ -70,6 +86,8 @@ class RobloxGameInternationalizationApiGameAutolocalizationInformationResponse:
         roblox_game_internationalization_api_game_autolocalization_information_response = cls(
             is_autolocalization_enabled=is_autolocalization_enabled,
             should_use_localization_table=should_use_localization_table,
+            should_use_image_localization_table=should_use_image_localization_table,
+            is_auto_localization_for_image_enabled=is_auto_localization_for_image_enabled,
             auto_localization_table_id=auto_localization_table_id,
             asset_id=asset_id,
         )

@@ -45,7 +45,7 @@ class RobloxApiAvatarModelsAssetPosition:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         x = d.pop("X", UNSET)
 
         y = d.pop("Y", UNSET)

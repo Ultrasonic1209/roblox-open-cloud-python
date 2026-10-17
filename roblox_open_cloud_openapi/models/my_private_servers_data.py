@@ -51,7 +51,7 @@ class MyPrivateServersData:
     metadata: None | PrivateServerSubscriptionMetadata | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.private_server_subscription_metadata import PrivateServerSubscriptionMetadata
+        from ..models.private_server_subscription_metadata import PrivateServerSubscriptionMetadata  # noqa: PLC0415
 
         active = self.active
 
@@ -153,9 +153,9 @@ class MyPrivateServersData:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.private_server_subscription_metadata import PrivateServerSubscriptionMetadata
+        from ..models.private_server_subscription_metadata import PrivateServerSubscriptionMetadata  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         active = d.pop("active", UNSET)
 
         universe_id = d.pop("universeId", UNSET)

@@ -94,13 +94,13 @@ class RobloxWebResponsesGamesGameResponseV2:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
-            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
+            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,  # noqa: PLC0415
         )
         from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
-            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
+            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)

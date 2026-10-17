@@ -51,9 +51,9 @@ class ListGroupRolesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.group_role import GroupRole
+        from ..models.group_role import GroupRole  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _group_roles = d.pop("groupRoles", UNSET)
         group_roles: list[GroupRole] | Unset = UNSET
         if _group_roles is not UNSET:

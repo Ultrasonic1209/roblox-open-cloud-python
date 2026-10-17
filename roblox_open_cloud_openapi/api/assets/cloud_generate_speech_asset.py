@@ -1,14 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response
+
+"""
+{'x-long-running-operation-parameters': {'metadata': {'$ref': '#/components/schemas/GenerateSpeechAssetMetadata'}, 'response': {'$ref': '#/components/schemas/GenerateSpeechAssetResponse'}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'asset:read', 'targetResourceSpecifier': ''}, {'name': 'asset:write', 'targetResourceSpecifier': ''}, {'name': 'universe:write'}, {'name': 'asset:read'}, {'name': 'asset:write'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe:write', 'asset:read', 'asset:write']}, 'resource': {'$ref': '#/components/schemas/Universe', 'name': 'Universe'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'SECOND', 'maxInPeriod': 4}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 4}}}
+"""
+
+
 from ...models.generate_speech_asset_request import GenerateSpeechAssetRequest
 from ...models.operation import Operation
-from ...types import Response
 
 
 def _get_kwargs(
@@ -23,27 +43,6 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}:generateSpeechAsset".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-long-running-operation-parameters": {
-                    "metadata": {"$ref": "#/components/schemas/GenerateSpeechAssetMetadata"},
-                    "response": {"$ref": "#/components/schemas/GenerateSpeechAssetResponse"},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "universe:write"}, {"name": "asset:read"}, {"name": "asset:write"}],
-                "x-roblox-docs": {
-                    "category": "Universes and places",
-                    "methodProperties": {"scopes": ["universe:write", "asset:read", "asset:write"]},
-                    "resource": {"$ref": "#/components/schemas/Universe", "name": "Universe"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 4},
-                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 4},
-                },
-            },
-            "openapi-id": "Cloud_GenerateSpeechAsset",
-        },
     }
 
     _kwargs["json"] = body.to_dict()
@@ -54,7 +53,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Operation | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Operation | None:
     if response.status_code == 200:
         response_200 = Operation.from_dict(response.json())
 
@@ -66,7 +65,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Operation]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Operation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -111,7 +110,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -192,7 +191,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

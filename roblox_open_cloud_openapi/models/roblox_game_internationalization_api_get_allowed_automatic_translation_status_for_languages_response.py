@@ -53,10 +53,10 @@ class RobloxGameInternationalizationApiGetAllowedAutomaticTranslationStatusForLa
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_automatic_translation_status_target_language import (
-            RobloxGameInternationalizationApiAutomaticTranslationStatusTargetLanguage,
+            RobloxGameInternationalizationApiAutomaticTranslationStatusTargetLanguage,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         source_language = d.pop("sourceLanguage", UNSET)
 
         _target_languages = d.pop("targetLanguages", UNSET)

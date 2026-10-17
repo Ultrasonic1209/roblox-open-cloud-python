@@ -20,18 +20,22 @@ class RobloxGroupsApiGroupSearchPageResponse:
 
     Attributes:
         keyword (str | Unset): Keyword used for search query
+        total_results (int | Unset):
         previous_page_cursor (str | Unset):
         next_page_cursor (str | Unset):
         data (list[RobloxGroupsApiGroupSearchResponseItem] | Unset):
     """
 
     keyword: str | Unset = UNSET
+    total_results: int | Unset = UNSET
     previous_page_cursor: str | Unset = UNSET
     next_page_cursor: str | Unset = UNSET
     data: list[RobloxGroupsApiGroupSearchResponseItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         keyword = self.keyword
+
+        total_results = self.total_results
 
         previous_page_cursor = self.previous_page_cursor
 
@@ -49,6 +53,8 @@ class RobloxGroupsApiGroupSearchPageResponse:
         field_dict.update({})
         if keyword is not UNSET:
             field_dict["keyword"] = keyword
+        if total_results is not UNSET:
+            field_dict["totalResults"] = total_results
         if previous_page_cursor is not UNSET:
             field_dict["previousPageCursor"] = previous_page_cursor
         if next_page_cursor is not UNSET:
@@ -60,10 +66,12 @@ class RobloxGroupsApiGroupSearchPageResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_group_search_response_item import RobloxGroupsApiGroupSearchResponseItem
+        from ..models.roblox_groups_api_group_search_response_item import RobloxGroupsApiGroupSearchResponseItem  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         keyword = d.pop("keyword", UNSET)
+
+        total_results = d.pop("totalResults", UNSET)
 
         previous_page_cursor = d.pop("previousPageCursor", UNSET)
 
@@ -80,6 +88,7 @@ class RobloxGroupsApiGroupSearchPageResponse:
 
         roblox_groups_api_group_search_page_response = cls(
             keyword=keyword,
+            total_results=total_results,
             previous_page_cursor=previous_page_cursor,
             next_page_cursor=next_page_cursor,
             data=data,

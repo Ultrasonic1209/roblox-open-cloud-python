@@ -20,9 +20,7 @@ class RobloxTwoStepVerificationApiVerifyApprovalRequest:
     Attributes:
         challenge_id (str | Unset): The two step verification challenge ID.
         action_type (RobloxTwoStepVerificationApiVerifyApprovalRequestActionType | Unset): The
-            Roblox.TwoStepVerification.Client.TwoStepVerificationActionType associated with the challenge. ['Unknown' = 0,
-            'Login' = 1, 'RobuxSpend' = 2, 'ItemTrade' = 3, 'Resale' = 4, 'PasswordReset' = 5, 'RevertAccount' = 6,
-            'Generic' = 7, 'GenericWithRecoveryCodes' = 8]
+            Roblox.TwoStepVerification.Client.TwoStepVerificationActionType associated with the challenge.
     """
 
     challenge_id: str | Unset = UNSET
@@ -47,7 +45,7 @@ class RobloxTwoStepVerificationApiVerifyApprovalRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         challenge_id = d.pop("challengeId", UNSET)
 
         _action_type = d.pop("actionType", UNSET)

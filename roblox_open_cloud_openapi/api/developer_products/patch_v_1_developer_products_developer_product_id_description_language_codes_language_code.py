@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/description/language-codes/{languageCode}', 'httpMethod': 'PATCH', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/developer-products#patch_legacy_game_internationalization_v1_developer_products__developerProductId__description_language_codes__languageCode_'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -38,19 +57,6 @@ def _get_kwargs(
             developer_product_id=quote(str(developer_product_id), safe=""),
             language_code=quote(str(language_code), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/description/language-codes/{languageCode}",
-                        "httpMethod": "PATCH",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/developer-products#patch_legacy_game_internationalization_v1_developer_products__developerProductId__description_language_codes__languageCode_",
-                    }
-                ],
-            },
-            "openapi-id": "patch_v1_developer-products_developerProductId_description_language-codes_languageCode",
-        },
     }
 
     if isinstance(body, RobloxGameInternationalizationApiUpdateDeveloperProductDescriptionRequest):
@@ -67,7 +73,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxGameInternationalizationApiUpdateDeveloperProductDescriptionResponse | None:
     if response.status_code == 200:
         response_200 = RobloxGameInternationalizationApiUpdateDeveloperProductDescriptionResponse.from_dict(
@@ -103,7 +109,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxGameInternationalizationApiUpdateDeveloperProductDescriptionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -149,7 +155,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -230,7 +236,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

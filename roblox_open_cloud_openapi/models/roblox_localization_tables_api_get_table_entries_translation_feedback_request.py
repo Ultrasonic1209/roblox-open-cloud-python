@@ -51,10 +51,10 @@ class RobloxLocalizationTablesApiGetTableEntriesTranslationFeedbackRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_localization_tables_api_entry_identifier_with_translation import (
-            RobloxLocalizationTablesApiEntryIdentifierWithTranslation,
+            RobloxLocalizationTablesApiEntryIdentifierWithTranslation,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         source_locale = d.pop("sourceLocale", UNSET)
 
         _entries = d.pop("entries", UNSET)

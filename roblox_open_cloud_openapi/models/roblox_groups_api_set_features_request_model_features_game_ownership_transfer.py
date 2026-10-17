@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGroupsApiSetFeaturesRequestModelFeaturesGameOwnershipTransfer(str, Enum):
+class RobloxGroupsApiSetFeaturesRequestModelFeaturesGameOwnershipTransfer(StrEnum):
     BLOCKED = "Blocked"
     ON = "On"
 

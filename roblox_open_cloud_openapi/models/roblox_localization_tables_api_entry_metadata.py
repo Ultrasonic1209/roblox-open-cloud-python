@@ -59,10 +59,10 @@ class RobloxLocalizationTablesApiEntryMetadata:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_in_game_content_tables_client_game_location import (
-            RobloxInGameContentTablesClientGameLocation,
+            RobloxInGameContentTablesClientGameLocation,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         example = d.pop("example", UNSET)
 
         _game_locations = d.pop("gameLocations", UNSET)

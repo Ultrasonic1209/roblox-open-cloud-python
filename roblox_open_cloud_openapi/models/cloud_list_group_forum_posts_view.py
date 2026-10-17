@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CloudListGroupForumPostsView(str, Enum):
+class CloudListGroupForumPostsView(StrEnum):
     FULL = "FULL"
     FULL_WITH_FIRST_COMMENT = "FULL_WITH_FIRST_COMMENT"
     VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED"

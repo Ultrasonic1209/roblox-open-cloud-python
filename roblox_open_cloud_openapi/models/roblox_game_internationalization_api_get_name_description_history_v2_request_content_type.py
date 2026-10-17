@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiGetNameDescriptionHistoryV2RequestContentType(str, Enum):
+class RobloxGameInternationalizationApiGetNameDescriptionHistoryV2RequestContentType(StrEnum):
     BADGEDISPLAYDESCRIPTION = "BadgeDisplayDescription"
     BADGEDISPLAYNAME = "BadgeDisplayName"
     DEVELOPERPRODUCTDISPLAYDESCRIPTION = "DeveloperProductDisplayDescription"

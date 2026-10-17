@@ -35,7 +35,7 @@ class LaunchRestartRequest:
     attributes: Any | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.launch_restart_request_places_type_0 import LaunchRestartRequestPlacesType0
+        from ..models.launch_restart_request_places_type_0 import LaunchRestartRequestPlacesType0  # noqa: PLC0415
 
         bleed_off_duration_minutes: int | None | Unset
         if isinstance(self.bleed_off_duration_minutes, Unset):
@@ -67,9 +67,9 @@ class LaunchRestartRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.launch_restart_request_places_type_0 import LaunchRestartRequestPlacesType0
+        from ..models.launch_restart_request_places_type_0 import LaunchRestartRequestPlacesType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_bleed_off_duration_minutes(data: object) -> int | None | Unset:
             if data is None:

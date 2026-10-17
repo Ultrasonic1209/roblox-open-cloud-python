@@ -60,9 +60,9 @@ class RobloxGroupsApiModelsResponseGroupAuditLogResponseItem:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_user_group_role_response import RobloxGroupsApiUserGroupRoleResponse
+        from ..models.roblox_groups_api_user_group_role_response import RobloxGroupsApiUserGroupRoleResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _actor = d.pop("actor", UNSET)
         actor: RobloxGroupsApiUserGroupRoleResponse | Unset
         if isinstance(_actor, Unset):

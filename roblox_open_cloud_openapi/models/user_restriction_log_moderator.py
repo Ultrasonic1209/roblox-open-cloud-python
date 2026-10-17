@@ -49,10 +49,10 @@ class UserRestrictionLogModerator:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.user_restriction_log_moderator_game_server_script import (
-            UserRestrictionLogModeratorGameServerScript,
+            UserRestrictionLogModeratorGameServerScript,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         roblox_user = d.pop("robloxUser", UNSET)
 
         _game_server_script = d.pop("gameServerScript", UNSET)

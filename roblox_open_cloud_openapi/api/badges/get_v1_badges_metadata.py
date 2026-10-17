@@ -1,12 +1,32 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_badges_api_badge_metadata_response import RobloxBadgesApiBadgeMetadataResponse
 from ...types import Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+from ...models.roblox_badges_api_badge_metadata_response import RobloxBadgesApiBadgeMetadataResponse
 
 
 def _get_kwargs() -> dict[str, Any]:
@@ -14,17 +34,13 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://badges.roblox.com/v1/badges/metadata",
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_badges_metadata",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> RobloxBadgesApiBadgeMetadataResponse | None:
     if response.status_code == 200:
         response_200 = RobloxBadgesApiBadgeMetadataResponse.from_dict(response.json())
@@ -38,7 +54,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[RobloxBadgesApiBadgeMetadataResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -54,6 +70,8 @@ def sync_detailed(
 ) -> Response[RobloxBadgesApiBadgeMetadataResponse]:
     """Gets metadata about the badges system.
 
+     Returns creation price and field length limits. Callers use this before creating or editing badges.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -64,7 +82,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs()
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -76,6 +94,8 @@ def sync(
     client: AuthenticatedClient,
 ) -> RobloxBadgesApiBadgeMetadataResponse | None:
     """Gets metadata about the badges system.
+
+     Returns creation price and field length limits. Callers use this before creating or editing badges.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,6 +116,8 @@ async def asyncio_detailed(
 ) -> Response[RobloxBadgesApiBadgeMetadataResponse]:
     """Gets metadata about the badges system.
 
+     Returns creation price and field length limits. Callers use this before creating or editing badges.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -106,7 +128,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs()
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -116,6 +138,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> RobloxBadgesApiBadgeMetadataResponse | None:
     """Gets metadata about the badges system.
+
+     Returns creation price and field length limits. Callers use this before creating or editing badges.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

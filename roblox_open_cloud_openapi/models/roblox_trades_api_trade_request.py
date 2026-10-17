@@ -41,9 +41,9 @@ class RobloxTradesApiTradeRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_trades_api_trade_offer_request import RobloxTradesApiTradeOfferRequest
+        from ..models.roblox_trades_api_trade_offer_request import RobloxTradesApiTradeOfferRequest  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _offers = d.pop("offers", UNSET)
         offers: list[RobloxTradesApiTradeOfferRequest] | Unset = UNSET
         if _offers is not UNSET:

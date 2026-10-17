@@ -44,8 +44,8 @@ class RevisionResponse:
     conditional_rules_changes: ConditionalRulesChangesPayload | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.conditional_rules_changes_payload import ConditionalRulesChangesPayload
-        from ..models.revision_response_changes_type_0 import RevisionResponseChangesType0
+        from ..models.conditional_rules_changes_payload import ConditionalRulesChangesPayload  # noqa: PLC0415
+        from ..models.revision_response_changes_type_0 import RevisionResponseChangesType0  # noqa: PLC0415
 
         revision_id: None | str | Unset
         if isinstance(self.revision_id, Unset):
@@ -121,10 +121,10 @@ class RevisionResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.conditional_rules_changes_payload import ConditionalRulesChangesPayload
-        from ..models.revision_response_changes_type_0 import RevisionResponseChangesType0
+        from ..models.conditional_rules_changes_payload import ConditionalRulesChangesPayload  # noqa: PLC0415
+        from ..models.revision_response_changes_type_0 import RevisionResponseChangesType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_revision_id(data: object) -> None | str | Unset:
             if data is None:

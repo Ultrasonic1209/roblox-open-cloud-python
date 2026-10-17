@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UsersAvatarHeadshotFormat(str, Enum):
+class GetV1UsersAvatarHeadshotFormat(StrEnum):
     JPEG = "Jpeg"
     PNG = "Png"
     WEBP = "Webp"

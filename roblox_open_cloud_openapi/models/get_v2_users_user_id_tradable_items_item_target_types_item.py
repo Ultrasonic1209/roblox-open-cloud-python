@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV2UsersUserIdTradableItemsItemTargetTypesItem(str, Enum):
+class GetV2UsersUserIdTradableItemsItemTargetTypesItem(StrEnum):
     ANIMATION = "Animation"
     BACKACCESSORY = "BackAccessory"
     CHARACTER = "Character"

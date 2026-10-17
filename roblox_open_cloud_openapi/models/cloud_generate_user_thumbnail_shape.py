@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CloudGenerateUserThumbnailShape(str, Enum):
+class CloudGenerateUserThumbnailShape(StrEnum):
     ROUND = "ROUND"
     SHAPE_UNSPECIFIED = "SHAPE_UNSPECIFIED"
     SQUARE = "SQUARE"

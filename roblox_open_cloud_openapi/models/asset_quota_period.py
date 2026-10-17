@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AssetQuotaPeriod(str, Enum):
+class AssetQuotaPeriod(StrEnum):
     DAY = "DAY"
     MONTH = "MONTH"
     PERIOD_UNSPECIFIED = "PERIOD_UNSPECIFIED"

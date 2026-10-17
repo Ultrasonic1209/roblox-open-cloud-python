@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class LuauExecutionSessionTaskLogLogMessageMessageType(str, Enum):
+class LuauExecutionSessionTaskLogLogMessageMessageType(StrEnum):
     ERROR = "ERROR"
     INFO = "INFO"
     MESSAGE_TYPE_UNSPECIFIED = "MESSAGE_TYPE_UNSPECIFIED"

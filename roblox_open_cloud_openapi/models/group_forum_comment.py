@@ -59,9 +59,9 @@ class GroupForumComment:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.content_message import ContentMessage
+        from ..models.content_message import ContentMessage  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         path = d.pop("path", UNSET)
 
         group_forum_comment_id = d.pop("groupForumCommentId", UNSET)

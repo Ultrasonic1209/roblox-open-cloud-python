@@ -46,10 +46,10 @@ class RobloxTwoStepVerificationApiListSecurityKeyResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_two_step_verification_api_security_key_credential import (
-            RobloxTwoStepVerificationApiSecurityKeyCredential,
+            RobloxTwoStepVerificationApiSecurityKeyCredential,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _credentials = d.pop("credentials", UNSET)
         credentials: list[RobloxTwoStepVerificationApiSecurityKeyCredential] | Unset = UNSET
         if _credentials is not UNSET:

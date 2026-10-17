@@ -65,9 +65,9 @@ class RobloxLocalizationTablesApiAutoScrapeEntryMetadata:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_matched_entry import RobloxLocalizationTablesApiMatchedEntry
+        from ..models.roblox_localization_tables_api_matched_entry import RobloxLocalizationTablesApiMatchedEntry  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         text = d.pop("text", UNSET)
 
         user_id = d.pop("userId", UNSET)

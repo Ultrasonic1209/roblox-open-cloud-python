@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UsersAvatarBustFormat(str, Enum):
+class GetV1UsersAvatarBustFormat(StrEnum):
     PNG = "Png"
     WEBP = "Webp"
 

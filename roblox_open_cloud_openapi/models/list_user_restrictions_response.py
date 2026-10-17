@@ -51,9 +51,9 @@ class ListUserRestrictionsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.user_restriction import UserRestriction
+        from ..models.user_restriction import UserRestriction  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _user_restrictions = d.pop("userRestrictions", UNSET)
         user_restrictions: list[UserRestriction] | Unset = UNSET
         if _user_restrictions is not UNSET:

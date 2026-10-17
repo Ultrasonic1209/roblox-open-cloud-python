@@ -65,10 +65,10 @@ class UserNotification:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.user_notification_payload import UserNotificationPayload
-        from ..models.user_notification_source import UserNotificationSource
+        from ..models.user_notification_payload import UserNotificationPayload  # noqa: PLC0415
+        from ..models.user_notification_source import UserNotificationSource  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         path = d.pop("path", UNSET)
 
         id = d.pop("id", UNSET)

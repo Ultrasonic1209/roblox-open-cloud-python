@@ -1,12 +1,30 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...types import Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
 
 
 def _get_kwargs(
@@ -18,16 +36,12 @@ def _get_kwargs(
         "url": "https://badges.roblox.com/v1/universes/{universe_id}/free-badges-quota".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_universes_universeId_free-badges-quota",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | int | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | int | None:
     if response.status_code == 200:
         response_200 = cast(int, response.json())
         return response_200
@@ -42,7 +56,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | int]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,6 +71,8 @@ def sync_detailed(
     client: AuthenticatedClient,
 ) -> Response[Any | int]:
     """Gets the number of free badges left for the current UTC day by their awarding game.
+
+     Reflects daily free-creation allowance for the universe when the feature is enabled.
 
     Args:
         universe_id (int):
@@ -73,7 +89,7 @@ def sync_detailed(
         universe_id=universe_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -86,6 +102,8 @@ def sync(
     client: AuthenticatedClient,
 ) -> Any | int | None:
     """Gets the number of free badges left for the current UTC day by their awarding game.
+
+     Reflects daily free-creation allowance for the universe when the feature is enabled.
 
     Args:
         universe_id (int):
@@ -111,6 +129,8 @@ async def asyncio_detailed(
 ) -> Response[Any | int]:
     """Gets the number of free badges left for the current UTC day by their awarding game.
 
+     Reflects daily free-creation allowance for the universe when the feature is enabled.
+
     Args:
         universe_id (int):
 
@@ -126,7 +146,7 @@ async def asyncio_detailed(
         universe_id=universe_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -137,6 +157,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> Any | int | None:
     """Gets the number of free badges left for the current UTC day by their awarding game.
+
+     Reflects daily free-creation allowance for the universe when the feature is enabled.
 
     Args:
         universe_id (int):

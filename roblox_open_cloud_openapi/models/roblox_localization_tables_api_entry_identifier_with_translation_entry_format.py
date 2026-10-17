@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxLocalizationTablesApiEntryIdentifierWithTranslationEntryFormat(str, Enum):
+class RobloxLocalizationTablesApiEntryIdentifierWithTranslationEntryFormat(StrEnum):
     ICU = "Icu"
     INVALID = "Invalid"
     LEGACY = "Legacy"

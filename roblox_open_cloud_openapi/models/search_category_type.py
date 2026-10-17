@@ -1,12 +1,13 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SearchCategoryType(str, Enum):
+class SearchCategoryType(StrEnum):
     AUDIO = "Audio"
     DECAL = "Decal"
     FONT_FAMILY = "FontFamily"
     MESH_PART = "MeshPart"
     MODEL = "Model"
+    PLACE = "Place"
     PLUGIN = "Plugin"
     VIDEO = "Video"
 

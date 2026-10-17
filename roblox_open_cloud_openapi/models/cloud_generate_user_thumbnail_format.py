@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CloudGenerateUserThumbnailFormat(str, Enum):
+class CloudGenerateUserThumbnailFormat(StrEnum):
     FORMAT_UNSPECIFIED = "FORMAT_UNSPECIFIED"
     JPEG = "JPEG"
     PNG = "PNG"

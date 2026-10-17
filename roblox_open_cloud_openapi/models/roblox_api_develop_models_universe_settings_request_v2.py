@@ -59,6 +59,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
         private_server_price (int | Unset): The price to purchase a private server in robux.
         name (str | Unset): The name of the universe.
         description (str | Unset): The description of the universe.
+        promotional_text (str | Unset): Promotional text for the universe. Empty stores an empty value.
         universe_avatar_type (RobloxApiDevelopModelsUniverseSettingsRequestV2UniverseAvatarType | Unset): Which avatar
             types are allowed in the universe.
         universe_animation_type (RobloxApiDevelopModelsUniverseSettingsRequestV2UniverseAnimationType | Unset): Whether
@@ -106,6 +107,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
     private_server_price: int | Unset = UNSET
     name: str | Unset = UNSET
     description: str | Unset = UNSET
+    promotional_text: str | Unset = UNSET
     universe_avatar_type: RobloxApiDevelopModelsUniverseSettingsRequestV2UniverseAvatarType | Unset = UNSET
     universe_animation_type: RobloxApiDevelopModelsUniverseSettingsRequestV2UniverseAnimationType | Unset = UNSET
     universe_collision_type: RobloxApiDevelopModelsUniverseSettingsRequestV2UniverseCollisionType | Unset = UNSET
@@ -143,6 +145,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
         name = self.name
 
         description = self.description
+
+        promotional_text = self.promotional_text
 
         universe_avatar_type: int | Unset = UNSET
         if not isinstance(self.universe_avatar_type, Unset):
@@ -246,6 +250,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
             field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
+        if promotional_text is not UNSET:
+            field_dict["promotionalText"] = promotional_text
         if universe_avatar_type is not UNSET:
             field_dict["universeAvatarType"] = universe_avatar_type
         if universe_animation_type is not UNSET:
@@ -300,14 +306,14 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_platform_universe_settings_universe_avatar_asset_override_response_model import (
-            RobloxPlatformUniverseSettingsUniverseAvatarAssetOverrideResponseModel,
+            RobloxPlatformUniverseSettingsUniverseAvatarAssetOverrideResponseModel,  # noqa: PLC0415
         )
         from ..models.roblox_universe_plugin_permission_authority_models_universe_plugin_permissions import (
-            RobloxUniversePluginPermissionAuthorityModelsUniversePluginPermissions,
+            RobloxUniversePluginPermissionAuthorityModelsUniversePluginPermissions,  # noqa: PLC0415
         )
-        from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
+        from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         allow_private_servers = d.pop("allowPrivateServers", UNSET)
 
         private_server_price = d.pop("privateServerPrice", UNSET)
@@ -315,6 +321,8 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
         name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
+
+        promotional_text = d.pop("promotionalText", UNSET)
 
         _universe_avatar_type = d.pop("universeAvatarType", UNSET)
         universe_avatar_type: RobloxApiDevelopModelsUniverseSettingsRequestV2UniverseAvatarType | Unset
@@ -475,6 +483,7 @@ class RobloxApiDevelopModelsUniverseSettingsRequestV2:
             private_server_price=private_server_price,
             name=name,
             description=description,
+            promotional_text=promotional_text,
             universe_avatar_type=universe_avatar_type,
             universe_animation_type=universe_animation_type,
             universe_collision_type=universe_collision_type,

@@ -1,14 +1,16 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class TransactionType(str, Enum):
+class TransactionType(StrEnum):
     ADIMPRESSIONPAYOUT = "AdImpressionPayout"
     ADSPEND = "AdSpend"
     ADSREVSHAREPAYOUT = "AdsRevsharePayout"
     AFFILIATEPAYOUT = "AffiliatePayout"
     AFFILIATESALE = "AffiliateSale"
+    CREATORREWARDSPAYOUT = "CreatorRewardsPayout"
     CSADJUSTMENT = "CSAdjustment"
     CURRENCYPURCHASE = "CurrencyPurchase"
+    CURRENCYSUBSCRIPTIONSTIPEND = "CurrencySubscriptionStipend"
     CURRENCYTRANSFER = "CurrencyTransfer"
     DEVEX = "DevEx"
     ENGAGEMENTPAYOUT = "EngagementPayout"
@@ -22,10 +24,12 @@ class TransactionType(str, Enum):
     LICENSINGPAYMENTCLAWBACK = "LicensingPaymentClawback"
     PENDINGROBUX = "PendingRobux"
     PREMIUMSTIPEND = "PremiumStipend"
+    PRIVATESERVERENGAGEMENTPAYOUT = "PrivateServerEngagementPayout"
     PUBLISHINGADVANCEREBATES = "PublishingAdvanceRebates"
     PURCHASE = "Purchase"
     ROBLOXSELECTTRANSFER = "RobloxSelectTransfer"
     SALE = "Sale"
+    SUBSCRIPTIONREFERRALPAYOUT = "SubscriptionReferralPayout"
     SUBSCRIPTIONSREVSHARECLAWBACK = "SubscriptionsRevshareClawback"
     SUBSCRIPTIONSREVSHAREPAYOUT = "SubscriptionsRevsharePayout"
     SUMMARY = "Summary"

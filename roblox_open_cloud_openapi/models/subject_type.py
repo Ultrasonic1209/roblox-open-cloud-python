@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SubjectType(str, Enum):
+class SubjectType(StrEnum):
     ALL = "All"
     GROUP = "Group"
     GROUPROLESET = "GroupRoleset"

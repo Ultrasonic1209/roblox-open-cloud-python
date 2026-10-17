@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class UniverseAgeRating(str, Enum):
+class UniverseAgeRating(StrEnum):
     AGE_RATING_13_PLUS = "AGE_RATING_13_PLUS"
     AGE_RATING_17_PLUS = "AGE_RATING_17_PLUS"
     AGE_RATING_9_PLUS = "AGE_RATING_9_PLUS"

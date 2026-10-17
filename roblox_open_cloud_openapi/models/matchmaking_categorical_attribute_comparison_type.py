@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MatchmakingCategoricalAttributeComparisonType(str, Enum):
+class MatchmakingCategoricalAttributeComparisonType(StrEnum):
     EQUALITYTOCONSTANT = "EqualityToConstant"
     EQUALITYTOPLAYER = "EqualityToPlayer"
     INVALID = "Invalid"

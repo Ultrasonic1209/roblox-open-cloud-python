@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1MessagesMessageTab(str, Enum):
+class GetV1MessagesMessageTab(StrEnum):
     ARCHIVE = "Archive"
     INBOX = "Inbox"
     SENT = "Sent"

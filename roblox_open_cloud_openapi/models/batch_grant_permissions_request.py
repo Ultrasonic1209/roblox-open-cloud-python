@@ -119,9 +119,9 @@ class BatchGrantPermissionsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.asset_grant_request import AssetGrantRequest
+        from ..models.asset_grant_request import AssetGrantRequest  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _subject_type = d.pop("subjectType", UNSET)
         subject_type: SubjectType | Unset
         if isinstance(_subject_type, Unset):

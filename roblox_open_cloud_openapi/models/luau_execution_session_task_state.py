@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class LuauExecutionSessionTaskState(str, Enum):
+class LuauExecutionSessionTaskState(StrEnum):
     CANCELLED = "CANCELLED"
     COMPLETE = "COMPLETE"
     FAILED = "FAILED"

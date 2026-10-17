@@ -45,6 +45,9 @@ class TransactionTotalsResponse:
         outgoing_robux_transfer_total (int | Unset):
         roblox_select_incoming_total (int | Unset):
         roblox_select_outgoing_total (int | Unset):
+        private_server_engagement_payouts_total (int | Unset):
+        creator_rewards_payouts_total (int | Unset):
+        subscription_referral_payouts_total (int | Unset):
     """
 
     sales_total: int | Unset = UNSET
@@ -78,6 +81,9 @@ class TransactionTotalsResponse:
     outgoing_robux_transfer_total: int | Unset = UNSET
     roblox_select_incoming_total: int | Unset = UNSET
     roblox_select_outgoing_total: int | Unset = UNSET
+    private_server_engagement_payouts_total: int | Unset = UNSET
+    creator_rewards_payouts_total: int | Unset = UNSET
+    subscription_referral_payouts_total: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         sales_total = self.sales_total
@@ -141,6 +147,12 @@ class TransactionTotalsResponse:
         roblox_select_incoming_total = self.roblox_select_incoming_total
 
         roblox_select_outgoing_total = self.roblox_select_outgoing_total
+
+        private_server_engagement_payouts_total = self.private_server_engagement_payouts_total
+
+        creator_rewards_payouts_total = self.creator_rewards_payouts_total
+
+        subscription_referral_payouts_total = self.subscription_referral_payouts_total
 
         field_dict: dict[str, Any] = {}
 
@@ -207,12 +219,18 @@ class TransactionTotalsResponse:
             field_dict["robloxSelectIncomingTotal"] = roblox_select_incoming_total
         if roblox_select_outgoing_total is not UNSET:
             field_dict["robloxSelectOutgoingTotal"] = roblox_select_outgoing_total
+        if private_server_engagement_payouts_total is not UNSET:
+            field_dict["privateServerEngagementPayoutsTotal"] = private_server_engagement_payouts_total
+        if creator_rewards_payouts_total is not UNSET:
+            field_dict["creatorRewardsPayoutsTotal"] = creator_rewards_payouts_total
+        if subscription_referral_payouts_total is not UNSET:
+            field_dict["subscriptionReferralPayoutsTotal"] = subscription_referral_payouts_total
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         sales_total = d.pop("salesTotal", UNSET)
 
         purchases_total = d.pop("purchasesTotal", UNSET)
@@ -275,6 +293,12 @@ class TransactionTotalsResponse:
 
         roblox_select_outgoing_total = d.pop("robloxSelectOutgoingTotal", UNSET)
 
+        private_server_engagement_payouts_total = d.pop("privateServerEngagementPayoutsTotal", UNSET)
+
+        creator_rewards_payouts_total = d.pop("creatorRewardsPayoutsTotal", UNSET)
+
+        subscription_referral_payouts_total = d.pop("subscriptionReferralPayoutsTotal", UNSET)
+
         transaction_totals_response = cls(
             sales_total=sales_total,
             purchases_total=purchases_total,
@@ -307,6 +331,9 @@ class TransactionTotalsResponse:
             outgoing_robux_transfer_total=outgoing_robux_transfer_total,
             roblox_select_incoming_total=roblox_select_incoming_total,
             roblox_select_outgoing_total=roblox_select_outgoing_total,
+            private_server_engagement_payouts_total=private_server_engagement_payouts_total,
+            creator_rewards_payouts_total=creator_rewards_payouts_total,
+            subscription_referral_payouts_total=subscription_referral_payouts_total,
         )
 
         return transaction_totals_response

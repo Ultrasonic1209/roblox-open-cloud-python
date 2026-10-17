@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MatchmakingAttributeValueLocationCase(str, Enum):
+class MatchmakingAttributeValueLocationCase(StrEnum):
     DATASTORELOCATION = "DataStoreLocation"
     INVALID = "Invalid"
 

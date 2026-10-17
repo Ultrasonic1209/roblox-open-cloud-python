@@ -1,15 +1,36 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'SECOND', 'maxInPeriod': 3}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 3}}, 'x-roblox-scopes': [{'name': 'developer-product:write', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
 from ...models.developer_product_config_v2 import DeveloperProductConfigV2
 from ...models.developer_products_create_developer_product_v2_body import DeveloperProductsCreateDeveloperProductV2Body
 from ...models.error_response import ErrorResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -24,18 +45,6 @@ def _get_kwargs(
         "url": "/developer-products/v2/universes/{universe_id}/developer-products".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 3},
-                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 3},
-                },
-                "x-roblox-scopes": [{"name": "developer-product:write", "targetResourceSpecifier": "universes"}],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            },
-            "openapi-id": "DeveloperProducts_CreateDeveloperProductV2",
-        },
     }
 
     if not isinstance(body, Unset):
@@ -48,7 +57,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> DeveloperProductConfigV2 | ErrorResponse | None:
     if response.status_code == 200:
         response_200 = DeveloperProductConfigV2.from_dict(response.json())
@@ -82,7 +91,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[DeveloperProductConfigV2 | ErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -119,7 +128,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -182,7 +191,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -70,9 +70,9 @@ class RobloxGamesApiModelsResponseGameProductResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_games_api_models_response_purchase_data import RobloxGamesApiModelsResponsePurchaseData
+        from ..models.roblox_games_api_models_response_purchase_data import RobloxGamesApiModelsResponsePurchaseData  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         universe_id = d.pop("universeId", UNSET)
 
         is_for_sale = d.pop("isForSale", UNSET)

@@ -53,12 +53,12 @@ class RobloxLocalizationTablesApiIngestAutoScrapedContentForGameRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_auto_scrape_entry import RobloxLocalizationTablesApiAutoScrapeEntry
+        from ..models.roblox_localization_tables_api_auto_scrape_entry import RobloxLocalizationTablesApiAutoScrapeEntry  # noqa: PLC0415
         from ..models.roblox_localization_tables_api_ingest_content_metadata import (
-            RobloxLocalizationTablesApiIngestContentMetadata,
+            RobloxLocalizationTablesApiIngestContentMetadata,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _entries = d.pop("entries", UNSET)
         entries: list[RobloxLocalizationTablesApiAutoScrapeEntry] | Unset = UNSET
         if _entries is not UNSET:

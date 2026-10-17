@@ -52,9 +52,9 @@ class ListGroupForumCommentsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.group_forum_comment import GroupForumComment
+        from ..models.group_forum_comment import GroupForumComment  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _group_forum_comments = d.pop("groupForumComments", UNSET)
         group_forum_comments: list[GroupForumComment] | Unset = UNSET
         if _group_forum_comments is not UNSET:

@@ -55,10 +55,10 @@ class PlaceSummaryForGameUpdate:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.place_summary_for_game_update_version_to_instance_counts_type_0 import (
-            PlaceSummaryForGameUpdateVersionToInstanceCountsType0,
+            PlaceSummaryForGameUpdateVersionToInstanceCountsType0,  # noqa: PLC0415
         )
         from ..models.place_summary_for_game_update_version_to_player_counts_type_0 import (
-            PlaceSummaryForGameUpdateVersionToPlayerCountsType0,
+            PlaceSummaryForGameUpdateVersionToPlayerCountsType0,  # noqa: PLC0415
         )
 
         place_id = self.place_id
@@ -124,13 +124,13 @@ class PlaceSummaryForGameUpdate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.place_summary_for_game_update_version_to_instance_counts_type_0 import (
-            PlaceSummaryForGameUpdateVersionToInstanceCountsType0,
+            PlaceSummaryForGameUpdateVersionToInstanceCountsType0,  # noqa: PLC0415
         )
         from ..models.place_summary_for_game_update_version_to_player_counts_type_0 import (
-            PlaceSummaryForGameUpdateVersionToPlayerCountsType0,
+            PlaceSummaryForGameUpdateVersionToPlayerCountsType0,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         place_id = d.pop("placeId", UNSET)
 
         players_to_be_kicked = d.pop("playersToBeKicked", UNSET)

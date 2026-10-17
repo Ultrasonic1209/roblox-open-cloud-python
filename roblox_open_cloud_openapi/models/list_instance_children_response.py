@@ -52,9 +52,9 @@ class ListInstanceChildrenResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.instance import Instance
+        from ..models.instance import Instance  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _instances = d.pop("instances", UNSET)
         instances: list[Instance] | Unset = UNSET
         if _instances is not UNSET:

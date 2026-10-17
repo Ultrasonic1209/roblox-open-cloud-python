@@ -62,7 +62,7 @@ class RobloxLocalizationTablesApiLocalizationTablesMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         is_bulk_upload_feature_enabled = d.pop("isBulkUploadFeatureEnabled", UNSET)
 
         is_csv_download_enabled = d.pop("isCsvDownloadEnabled", UNSET)

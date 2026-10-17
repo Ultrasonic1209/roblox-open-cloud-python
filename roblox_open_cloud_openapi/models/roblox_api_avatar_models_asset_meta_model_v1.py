@@ -96,11 +96,11 @@ class RobloxApiAvatarModelsAssetMetaModelV1:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_api_avatar_models_asset_position import RobloxApiAvatarModelsAssetPosition
-        from ..models.roblox_api_avatar_models_asset_rotation import RobloxApiAvatarModelsAssetRotation
-        from ..models.roblox_api_avatar_models_asset_scale import RobloxApiAvatarModelsAssetScale
+        from ..models.roblox_api_avatar_models_asset_position import RobloxApiAvatarModelsAssetPosition  # noqa: PLC0415
+        from ..models.roblox_api_avatar_models_asset_rotation import RobloxApiAvatarModelsAssetRotation  # noqa: PLC0415
+        from ..models.roblox_api_avatar_models_asset_scale import RobloxApiAvatarModelsAssetScale  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         order = d.pop("order", UNSET)
 
         puffiness = d.pop("puffiness", UNSET)

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxLocalizationTablesApiCursorEntryIdentifierSortOrder(str, Enum):
+class RobloxLocalizationTablesApiCursorEntryIdentifierSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

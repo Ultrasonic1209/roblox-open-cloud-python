@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UsersUserIdUsernameHistorySortOrder(str, Enum):
+class GetV1UsersUserIdUsernameHistorySortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

@@ -40,9 +40,9 @@ class UpdateMatchmakingScoringConfigurationResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.matchmaking_scoring_configuration import MatchmakingScoringConfiguration
+        from ..models.matchmaking_scoring_configuration import MatchmakingScoringConfiguration  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _scoring_configuration = d.pop("scoringConfiguration", UNSET)
         scoring_configuration: MatchmakingScoringConfiguration | Unset
         if isinstance(_scoring_configuration, Unset):

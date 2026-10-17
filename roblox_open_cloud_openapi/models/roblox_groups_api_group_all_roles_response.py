@@ -48,9 +48,9 @@ class RobloxGroupsApiGroupAllRolesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_group_role_response import RobloxGroupsApiGroupRoleResponse
+        from ..models.roblox_groups_api_group_role_response import RobloxGroupsApiGroupRoleResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         group_id = d.pop("groupId", UNSET)
 
         _roles = d.pop("roles", UNSET)

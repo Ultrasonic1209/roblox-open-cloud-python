@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UniversesUniverseIdStatsType(str, Enum):
+class GetV1UniversesUniverseIdStatsType(StrEnum):
     PREMIUMUPSELLS = "PremiumUpsells"
     PREMIUMVISITS = "PremiumVisits"
 

@@ -51,7 +51,7 @@ class RobloxGroupsApiPayoutRecipientRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         recipient_id = d.pop("recipientId", UNSET)
 
         _recipient_type = d.pop("recipientType", UNSET)

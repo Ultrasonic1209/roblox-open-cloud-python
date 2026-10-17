@@ -33,9 +33,9 @@ class ConditionalRulesPayloadRulesType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.conditional_rule_definition import ConditionalRuleDefinition
+        from ..models.conditional_rule_definition import ConditionalRuleDefinition  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         conditional_rules_payload_rules_type_0 = cls()
 
         additional_properties = {}

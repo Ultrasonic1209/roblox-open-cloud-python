@@ -51,13 +51,13 @@ class RobloxGameInternationalizationApiGetAutomaticTranslationQuotaForGameRespon
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_monthly_quota_model import (
-            RobloxGameInternationalizationApiMonthlyQuotaModel,
+            RobloxGameInternationalizationApiMonthlyQuotaModel,  # noqa: PLC0415
         )
         from ..models.roblox_game_internationalization_api_quota_model import (
-            RobloxGameInternationalizationApiQuotaModel,
+            RobloxGameInternationalizationApiQuotaModel,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _monthly_quota = d.pop("monthlyQuota", UNSET)
         monthly_quota: RobloxGameInternationalizationApiMonthlyQuotaModel | Unset
         if isinstance(_monthly_quota, Unset):

@@ -1,15 +1,42 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-deprecated': {'deprecatedDate': '2026-09-21T00:00:00.0000000+00:00', 'description': 'Please use GET v2/avatar/users/{userId}/outfits'}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
 from ...models.roblox_api_avatar_models_avatar_filtered_page_response_roblox_api_avatar_models_outfit_model import (
     RobloxApiAvatarModelsAvatarFilteredPageResponseRobloxApiAvatarModelsOutfitModel,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -43,10 +70,6 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_users_userId_outfits",
-        },
     }
 
     _kwargs["headers"] = headers
@@ -54,7 +77,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxApiAvatarModelsAvatarFilteredPageResponseRobloxApiAvatarModelsOutfitModel | None:
     if response.status_code == 200:
         response_200 = RobloxApiAvatarModelsAvatarFilteredPageResponseRobloxApiAvatarModelsOutfitModel.from_dict(
@@ -74,7 +97,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxApiAvatarModelsAvatarFilteredPageResponseRobloxApiAvatarModelsOutfitModel]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -84,6 +107,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_users__userId__outfits"
+)
 def sync_detailed(
     user_id: int,
     *,
@@ -96,6 +122,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxApiAvatarModelsAvatarFilteredPageResponseRobloxApiAvatarModelsOutfitModel]:
     """Deprecated, user v2.
     Gets a list of outfits for the specified user.
+
+     Please use GET v2/avatar/users/{userId}/outfits
 
     Args:
         user_id (int):
@@ -122,13 +150,16 @@ def sync_detailed(
         roblox_place_id=roblox_place_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_users__userId__outfits"
+)
 def sync(
     user_id: int,
     *,
@@ -141,6 +172,8 @@ def sync(
 ) -> Any | RobloxApiAvatarModelsAvatarFilteredPageResponseRobloxApiAvatarModelsOutfitModel | None:
     """Deprecated, user v2.
     Gets a list of outfits for the specified user.
+
+     Please use GET v2/avatar/users/{userId}/outfits
 
     Args:
         user_id (int):
@@ -169,6 +202,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_users__userId__outfits"
+)
 async def asyncio_detailed(
     user_id: int,
     *,
@@ -181,6 +217,8 @@ async def asyncio_detailed(
 ) -> Response[Any | RobloxApiAvatarModelsAvatarFilteredPageResponseRobloxApiAvatarModelsOutfitModel]:
     """Deprecated, user v2.
     Gets a list of outfits for the specified user.
+
+     Please use GET v2/avatar/users/{userId}/outfits
 
     Args:
         user_id (int):
@@ -207,11 +245,14 @@ async def asyncio_detailed(
         roblox_place_id=roblox_place_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v1_users__userId__outfits"
+)
 async def asyncio(
     user_id: int,
     *,
@@ -224,6 +265,8 @@ async def asyncio(
 ) -> Any | RobloxApiAvatarModelsAvatarFilteredPageResponseRobloxApiAvatarModelsOutfitModel | None:
     """Deprecated, user v2.
     Gets a list of outfits for the specified user.
+
+     Please use GET v2/avatar/users/{userId}/outfits
 
     Args:
         user_id (int):

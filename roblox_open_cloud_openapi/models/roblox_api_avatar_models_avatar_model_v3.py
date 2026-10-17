@@ -96,12 +96,12 @@ class RobloxApiAvatarModelsAvatarModelV3:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2
-        from ..models.roblox_api_avatar_models_body_colors_3_model import RobloxApiAvatarModelsBodyColors3Model
-        from ..models.roblox_api_avatar_models_emote_response_model import RobloxApiAvatarModelsEmoteResponseModel
-        from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
+        from ..models.roblox_api_avatar_models_asset_model_v2 import RobloxApiAvatarModelsAssetModelV2  # noqa: PLC0415
+        from ..models.roblox_api_avatar_models_body_colors_3_model import RobloxApiAvatarModelsBodyColors3Model  # noqa: PLC0415
+        from ..models.roblox_api_avatar_models_emote_response_model import RobloxApiAvatarModelsEmoteResponseModel  # noqa: PLC0415
+        from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _scales = d.pop("scales", UNSET)
         scales: RobloxWebResponsesAvatarScaleModel | Unset
         if isinstance(_scales, Unset):

@@ -41,9 +41,9 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_badges_api_badge_award_response import RobloxBadgesApiBadgeAwardResponse
+        from ..models.roblox_badges_api_badge_award_response import RobloxBadgesApiBadgeAwardResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxBadgesApiBadgeAwardResponse] | Unset = UNSET
         if _data is not UNSET:

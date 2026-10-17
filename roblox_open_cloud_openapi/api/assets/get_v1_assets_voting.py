@@ -1,12 +1,31 @@
-import sys
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
+
+"""
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/toolbox-service/v2/assets/{id}', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#Toolbox_GetAssetDetails'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -35,26 +54,13 @@ def _get_kwargs(
         "method": "get",
         "url": "https://develop.roblox.com/v1/assets/voting",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/toolbox-service/v2/assets/{id}",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#Toolbox_GetAssetDetails",
-                    }
-                ],
-            },
-            "openapi-id": "get_v1_assets_voting",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsResponseAssetVotingModel | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsResponseAssetVotingModel.from_dict(
@@ -70,7 +76,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsResponseAssetVotingModel]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -107,7 +113,7 @@ def sync_detailed(
         asset_ids=asset_ids,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -170,7 +176,7 @@ async def asyncio_detailed(
         asset_ids=asset_ids,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiGetNameDescriptionHistoryV2RequestSortOrder(str, Enum):
+class RobloxGameInternationalizationApiGetNameDescriptionHistoryV2RequestSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

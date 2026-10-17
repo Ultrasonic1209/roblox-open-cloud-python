@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
+
+"""
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items', 'httpMethod': 'GET', 'description': 'The addTime response field corresponds with the badge awarded date', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -39,27 +58,13 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items",
-                        "httpMethod": "GET",
-                        "description": "The addTime response field corresponds with the badge awarded date",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems",
-                    }
-                ],
-            },
-            "openapi-id": "get_v1_users_userId_badges_awarded-dates",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse.from_dict(response.json())
@@ -81,7 +86,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -102,6 +107,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse]:
     """Gets timestamps for when badges were awarded to a user.
 
+     Batch form of awarded-date lookup with a maximum number of badge ids per request.
+
     Args:
         user_id (int):
         badge_ids (list[int]):
@@ -119,7 +126,7 @@ def sync_detailed(
         badge_ids=badge_ids,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -136,6 +143,8 @@ def sync(
     badge_ids: list[int],
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse | None:
     """Gets timestamps for when badges were awarded to a user.
+
+     Batch form of awarded-date lookup with a maximum number of badge ids per request.
 
     Args:
         user_id (int):
@@ -167,6 +176,8 @@ async def asyncio_detailed(
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse]:
     """Gets timestamps for when badges were awarded to a user.
 
+     Batch form of awarded-date lookup with a maximum number of badge ids per request.
+
     Args:
         user_id (int):
         badge_ids (list[int]):
@@ -184,7 +195,7 @@ async def asyncio_detailed(
         badge_ids=badge_ids,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -199,6 +210,8 @@ async def asyncio(
     badge_ids: list[int],
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxBadgesApiBadgeAwardResponse | None:
     """Gets timestamps for when badges were awarded to a user.
+
+     Batch form of awarded-date lookup with a maximum number of badge ids per request.
 
     Args:
         user_id (int):

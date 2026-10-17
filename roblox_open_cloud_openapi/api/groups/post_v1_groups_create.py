@@ -1,13 +1,34 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.post_v1_groups_create_body import PostV1GroupsCreateBody
 from ...models.roblox_web_responses_groups_group_response_v2 import RobloxWebResponsesGroupsGroupResponseV2
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -19,10 +40,6 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://groups.roblox.com/v1/groups/create",
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "post_v1_groups_create",
-        },
     }
 
     if not isinstance(body, Unset):
@@ -35,7 +52,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebResponsesGroupsGroupResponseV2 | None:
     if response.status_code == 200:
         response_200 = RobloxWebResponsesGroupsGroupResponseV2.from_dict(response.json())
@@ -77,7 +94,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebResponsesGroupsGroupResponseV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -92,11 +109,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PostV1GroupsCreateBody | Unset = UNSET,
 ) -> Response[Any | RobloxWebResponsesGroupsGroupResponseV2]:
-    r"""Creates a new group.
+    """Creates a new group.
 
      This endpoint will charge Robux for the group purchase.
-    Accepts \"icon\" and \"coverPhoto\" in Files object. Defaults to first file if \"icon\" is not
-    present.
+    Accepts "icon" and "coverPhoto" in Files object. Defaults to first file if "icon" is not present.
     Http status code 413 is thrown when the group icon file size is too large.
 
     Args:
@@ -114,7 +130,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -126,11 +142,10 @@ def sync(
     client: AuthenticatedClient,
     body: PostV1GroupsCreateBody | Unset = UNSET,
 ) -> Any | RobloxWebResponsesGroupsGroupResponseV2 | None:
-    r"""Creates a new group.
+    """Creates a new group.
 
      This endpoint will charge Robux for the group purchase.
-    Accepts \"icon\" and \"coverPhoto\" in Files object. Defaults to first file if \"icon\" is not
-    present.
+    Accepts "icon" and "coverPhoto" in Files object. Defaults to first file if "icon" is not present.
     Http status code 413 is thrown when the group icon file size is too large.
 
     Args:
@@ -155,11 +170,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PostV1GroupsCreateBody | Unset = UNSET,
 ) -> Response[Any | RobloxWebResponsesGroupsGroupResponseV2]:
-    r"""Creates a new group.
+    """Creates a new group.
 
      This endpoint will charge Robux for the group purchase.
-    Accepts \"icon\" and \"coverPhoto\" in Files object. Defaults to first file if \"icon\" is not
-    present.
+    Accepts "icon" and "coverPhoto" in Files object. Defaults to first file if "icon" is not present.
     Http status code 413 is thrown when the group icon file size is too large.
 
     Args:
@@ -177,7 +191,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -187,11 +201,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PostV1GroupsCreateBody | Unset = UNSET,
 ) -> Any | RobloxWebResponsesGroupsGroupResponseV2 | None:
-    r"""Creates a new group.
+    """Creates a new group.
 
      This endpoint will charge Robux for the group purchase.
-    Accepts \"icon\" and \"coverPhoto\" in Files object. Defaults to first file if \"icon\" is not
-    present.
+    Accepts "icon" and "coverPhoto" in Files object. Defaults to first file if "icon" is not present.
     Http status code 413 is thrown when the group icon file size is too large.
 
     Args:

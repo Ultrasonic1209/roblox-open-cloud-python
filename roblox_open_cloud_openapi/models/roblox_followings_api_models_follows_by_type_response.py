@@ -28,10 +28,8 @@ class RobloxFollowingsApiModelsFollowsByTypeResponse:
 
     Attributes:
         follower_type (RobloxFollowingsApiModelsFollowsByTypeResponseFollowerType | Unset): Type of the follower entity.
-            ['Invalid' = 0, 'User' = 1]
         follower_id (int | Unset): ID of the follower entity.
         source_type (RobloxFollowingsApiModelsFollowsByTypeResponseSourceType | Unset): Type of the source entity.
-            ['Invalid' = 0, 'Universe' = 1]
         followed_sources (RobloxFollowingsApiModelsFollowsByTypeResponseFollowedSources | Unset): Followed sources: map
             of (source ID => follow date)
     """
@@ -73,10 +71,10 @@ class RobloxFollowingsApiModelsFollowsByTypeResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_followings_api_models_follows_by_type_response_followed_sources import (
-            RobloxFollowingsApiModelsFollowsByTypeResponseFollowedSources,
+            RobloxFollowingsApiModelsFollowsByTypeResponseFollowedSources,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _follower_type = d.pop("followerType", UNSET)
         follower_type: RobloxFollowingsApiModelsFollowsByTypeResponseFollowerType | Unset
         if isinstance(_follower_type, Unset):

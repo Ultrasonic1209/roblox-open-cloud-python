@@ -1,14 +1,35 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-long-running-operation-parameters': {'metadata': {'$ref': '#/components/schemas/FlushMemoryStoreMetadata'}, 'response': {'$ref': '#/components/schemas/FlushMemoryStoreResponse'}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store:flush', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store:flush'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store:flush']}, 'resource': {'$ref': '#/components/schemas/MemoryStore', 'name': 'MemoryStore'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+"""
+
+
 from ...models.cloud_flush_memory_store_scope import CloudFlushMemoryStoreScope
 from ...models.operation import Operation
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -33,30 +54,12 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-long-running-operation-parameters": {
-                    "metadata": {"$ref": "#/components/schemas/FlushMemoryStoreMetadata"},
-                    "response": {"$ref": "#/components/schemas/FlushMemoryStoreResponse"},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "memory-store:flush"}],
-                "x-roblox-docs": {
-                    "category": "Data and memory stores",
-                    "methodProperties": {"scopes": ["memory-store:flush"]},
-                    "resource": {"$ref": "#/components/schemas/MemoryStore", "name": "MemoryStore"},
-                },
-                "x-roblox-stability": "STABLE",
-                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
-            },
-            "openapi-id": "Cloud_FlushMemoryStore",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Operation | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Operation | None:
     if response.status_code == 200:
         response_200 = Operation.from_dict(response.json())
 
@@ -68,7 +71,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Operation]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Operation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -87,6 +90,10 @@ def sync_detailed(
 
      Asynchronously flush all data structures in the universe.
 
+    Unlike some other endpoints, the flush response `path` already
+    includes the `cloud/v2` prefix. Poll the operation at
+    `https://apis.roblox.com/{path}` without adding another prefix.
+
     Args:
         universe_id (str):
         scope (CloudFlushMemoryStoreScope | Unset):  Example: LIVE.
@@ -104,7 +111,7 @@ def sync_detailed(
         scope=scope,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -120,6 +127,10 @@ def sync(
     """Flush Memory Store
 
      Asynchronously flush all data structures in the universe.
+
+    Unlike some other endpoints, the flush response `path` already
+    includes the `cloud/v2` prefix. Poll the operation at
+    `https://apis.roblox.com/{path}` without adding another prefix.
 
     Args:
         universe_id (str):
@@ -150,6 +161,10 @@ async def asyncio_detailed(
 
      Asynchronously flush all data structures in the universe.
 
+    Unlike some other endpoints, the flush response `path` already
+    includes the `cloud/v2` prefix. Poll the operation at
+    `https://apis.roblox.com/{path}` without adding another prefix.
+
     Args:
         universe_id (str):
         scope (CloudFlushMemoryStoreScope | Unset):  Example: LIVE.
@@ -167,7 +182,7 @@ async def asyncio_detailed(
         scope=scope,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -181,6 +196,10 @@ async def asyncio(
     """Flush Memory Store
 
      Asynchronously flush all data structures in the universe.
+
+    Unlike some other endpoints, the flush response `path` already
+    includes the `cloud/v2` prefix. Poll the operation at
+    `https://apis.roblox.com/{path}` without adding another prefix.
 
     Args:
         universe_id (str):

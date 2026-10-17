@@ -1,18 +1,38 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.roblox_api_develop_models_universe_settings_request_v2 import (
     RobloxApiDevelopModelsUniverseSettingsRequestV2,
 )
 from ...models.roblox_api_develop_models_universe_settings_response_v2 import (
     RobloxApiDevelopModelsUniverseSettingsResponseV2,
 )
-from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -29,10 +49,6 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v2/universes/{universe_id}/configuration".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "patch_v2_universes_universeId_configuration",
-        },
     }
 
     if isinstance(body, RobloxApiDevelopModelsUniverseSettingsRequestV2):
@@ -49,7 +65,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxApiDevelopModelsUniverseSettingsResponseV2 | None:
     if response.status_code == 200:
         response_200 = RobloxApiDevelopModelsUniverseSettingsResponseV2.from_dict(response.json())
@@ -76,6 +92,10 @@ def _parse_response(
         response_500 = cast(Any, None)
         return response_500
 
+    if response.status_code == 503:
+        response_503 = cast(Any, None)
+        return response_503
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -83,7 +103,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxApiDevelopModelsUniverseSettingsResponseV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -124,7 +144,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -195,7 +215,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

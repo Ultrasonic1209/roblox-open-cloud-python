@@ -35,9 +35,9 @@ class UserNotificationPayloadParameters:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.user_notification_payload_parameter_value import UserNotificationPayloadParameterValue
+        from ..models.user_notification_payload_parameter_value import UserNotificationPayloadParameterValue  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         user_notification_payload_parameters = cls()
 
         additional_properties = {}

@@ -1,14 +1,35 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'SECOND', 'maxInPeriod': 5}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 5}}, 'x-roblox-scopes': [{'name': 'game-pass:write', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
 from ...models.game_passes_error_response import GamePassesErrorResponse
 from ...models.game_passes_update_game_pass_body import GamePassesUpdateGamePassBody
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -25,18 +46,6 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             game_pass_id=quote(str(game_pass_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 5},
-                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 5},
-                },
-                "x-roblox-scopes": [{"name": "game-pass:write", "targetResourceSpecifier": "universes"}],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            },
-            "openapi-id": "GamePasses_UpdateGamePass",
-        },
     }
 
     if not isinstance(body, Unset):
@@ -49,7 +58,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | GamePassesErrorResponse | None:
     if response.status_code == 204:
         response_204 = cast(Any, None)
@@ -87,7 +96,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | GamePassesErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -128,7 +137,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -199,7 +208,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

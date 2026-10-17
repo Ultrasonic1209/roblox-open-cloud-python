@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ModelSubType(str, Enum):
+class ModelSubType(StrEnum):
     AD = "Ad"
     MATERIAL_PACK = "MaterialPack"
     PACKAGE = "Package"

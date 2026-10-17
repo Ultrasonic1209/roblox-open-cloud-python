@@ -50,9 +50,9 @@ class UpdateMatchmakingServerAttributeDefinitionRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.matchmaking_server_attribute_default_value import MatchmakingServerAttributeDefaultValue
+        from ..models.matchmaking_server_attribute_default_value import MatchmakingServerAttributeDefaultValue  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_attribute_id(data: object) -> None | str | Unset:
             if data is None:

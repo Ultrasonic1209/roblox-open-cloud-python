@@ -40,9 +40,9 @@ class UpdateMatchmakingServerAttributeDefinitionResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.matchmaking_server_attribute_definition import MatchmakingServerAttributeDefinition
+        from ..models.matchmaking_server_attribute_definition import MatchmakingServerAttributeDefinition  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _player_attribute_definition = d.pop("playerAttributeDefinition", UNSET)
         player_attribute_definition: MatchmakingServerAttributeDefinition | Unset
         if isinstance(_player_attribute_definition, Unset):

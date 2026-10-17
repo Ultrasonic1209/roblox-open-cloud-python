@@ -1,14 +1,35 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'universe.place.luau-execution-session:read'}, {'name': 'universe.place.luau-execution-session:write'}], 'x-roblox-docs': {'category': 'Luau execution', 'methodProperties': {'scopes': ['universe.place.luau-execution-session:read', 'universe.place.luau-execution-session:write']}, 'resource': {'$ref': '#/components/schemas/LuauExecutionSessionTask', 'name': 'LuauExecutionSessionTask'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 200}}}
+"""
+
+
 from ...models.cloud_get_luau_execution_session_task_view import CloudGetLuauExecutionSessionTaskView
 from ...models.luau_execution_session_task import LuauExecutionSessionTask
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -41,38 +62,13 @@ def _get_kwargs(
             task_id=quote(str(task_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [
-                    {"name": "universe.place.luau-execution-session:read"},
-                    {"name": "universe.place.luau-execution-session:write"},
-                ],
-                "x-roblox-docs": {
-                    "category": "Luau execution",
-                    "methodProperties": {
-                        "scopes": [
-                            "universe.place.luau-execution-session:read",
-                            "universe.place.luau-execution-session:write",
-                        ]
-                    },
-                    "resource": {
-                        "$ref": "#/components/schemas/LuauExecutionSessionTask",
-                        "name": "LuauExecutionSessionTask",
-                    },
-                },
-                "x-roblox-stability": "STABLE",
-                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 200}},
-            },
-            "openapi-id": "Cloud_GetLuauExecutionSessionTask",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> LuauExecutionSessionTask | None:
     if response.status_code == 200:
         response_200 = LuauExecutionSessionTask.from_dict(response.json())
@@ -86,7 +82,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[LuauExecutionSessionTask]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -109,9 +105,6 @@ def sync_detailed(
     """Get Luau Execution Session Task
 
      Gets information about a task.
-
-    Quotas:
-    * 45 calls per minute per API key owner or IP address
 
     Args:
         universe_id (str):
@@ -138,7 +131,7 @@ def sync_detailed(
         view=view,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -158,9 +151,6 @@ def sync(
     """Get Luau Execution Session Task
 
      Gets information about a task.
-
-    Quotas:
-    * 45 calls per minute per API key owner or IP address
 
     Args:
         universe_id (str):
@@ -203,9 +193,6 @@ async def asyncio_detailed(
 
      Gets information about a task.
 
-    Quotas:
-    * 45 calls per minute per API key owner or IP address
-
     Args:
         universe_id (str):
         place_id (str):
@@ -231,7 +218,7 @@ async def asyncio_detailed(
         view=view,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -249,9 +236,6 @@ async def asyncio(
     """Get Luau Execution Session Task
 
      Gets information about a task.
-
-    Quotas:
-    * 45 calls per minute per API key owner or IP address
 
     Args:
         universe_id (str):

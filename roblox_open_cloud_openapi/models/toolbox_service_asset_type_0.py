@@ -46,8 +46,8 @@ class ToolboxServiceAssetType0:
     category_path: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.preview_assets_model_type_0 import PreviewAssetsModelType0
-        from ..models.social_link_model_type_0 import SocialLinkModelType0
+        from ..models.preview_assets_model_type_0 import PreviewAssetsModelType0  # noqa: PLC0415
+        from ..models.social_link_model_type_0 import SocialLinkModelType0  # noqa: PLC0415
 
         id = self.id
 
@@ -149,10 +149,10 @@ class ToolboxServiceAssetType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.preview_assets_model_type_0 import PreviewAssetsModelType0
-        from ..models.social_link_model_type_0 import SocialLinkModelType0
+        from ..models.preview_assets_model_type_0 import PreviewAssetsModelType0  # noqa: PLC0415
+        from ..models.social_link_model_type_0 import SocialLinkModelType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:

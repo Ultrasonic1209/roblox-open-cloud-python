@@ -45,10 +45,10 @@ class CreateMatchmakingScoringConfigurationRequest:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.create_matchmaking_scoring_configuration_request_custom_signal_weights_type_0 import (
-            CreateMatchmakingScoringConfigurationRequestCustomSignalWeightsType0,
+            CreateMatchmakingScoringConfigurationRequestCustomSignalWeightsType0,  # noqa: PLC0415
         )
         from ..models.create_matchmaking_scoring_configuration_request_matchmaking_signal_weights_type_0 import (
-            CreateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,
+            CreateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,  # noqa: PLC0415
         )
 
         universe_id = self.universe_id
@@ -102,13 +102,13 @@ class CreateMatchmakingScoringConfigurationRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.create_matchmaking_scoring_configuration_request_custom_signal_weights_type_0 import (
-            CreateMatchmakingScoringConfigurationRequestCustomSignalWeightsType0,
+            CreateMatchmakingScoringConfigurationRequestCustomSignalWeightsType0,  # noqa: PLC0415
         )
         from ..models.create_matchmaking_scoring_configuration_request_matchmaking_signal_weights_type_0 import (
-            CreateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,
+            CreateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         universe_id = d.pop("universeId", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:

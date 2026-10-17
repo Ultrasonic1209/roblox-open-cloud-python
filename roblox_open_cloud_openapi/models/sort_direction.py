@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SortDirection(str, Enum):
+class SortDirection(StrEnum):
     ASCENDING = "Ascending"
     DESCENDING = "Descending"
     NONE = "None"

@@ -1,15 +1,36 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_v1_users_search_limit import GetV1UsersSearchLimit
 from ...models.roblox_web_web_api_models_api_page_response_roblox_users_api_search_get_user_response import (
     RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiSearchGetUserResponse,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -40,17 +61,13 @@ def _get_kwargs(
         "method": "get",
         "url": "https://users.roblox.com/v1/users/search",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_users_search",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiSearchGetUserResponse | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiSearchGetUserResponse.from_dict(
@@ -74,7 +91,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxUsersApiSearchGetUserResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -115,7 +132,7 @@ def sync_detailed(
         cursor=cursor,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -186,7 +203,7 @@ async def asyncio_detailed(
         cursor=cursor,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

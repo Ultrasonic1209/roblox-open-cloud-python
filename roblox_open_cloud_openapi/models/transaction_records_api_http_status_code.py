@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class TransactionRecordsApiHttpStatusCode(str, Enum):
+class TransactionRecordsApiHttpStatusCode(StrEnum):
     ACCEPTED = "Accepted"
     ALREADYREPORTED = "AlreadyReported"
     BADGATEWAY = "BadGateway"

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxLocalizationtablesLocalizationtablesV1ChangeAgentOptionalIdCase(str, Enum):
+class RobloxLocalizationtablesLocalizationtablesV1ChangeAgentOptionalIdCase(StrEnum):
     ID = "Id"
     NONE = "None"
 

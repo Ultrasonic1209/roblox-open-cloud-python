@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SubscriptionPurchasePlatform(str, Enum):
+class SubscriptionPurchasePlatform(StrEnum):
     DESKTOP = "DESKTOP"
     MOBILE = "MOBILE"
     PURCHASE_PLATFORM_UNSPECIFIED = "PURCHASE_PLATFORM_UNSPECIFIED"

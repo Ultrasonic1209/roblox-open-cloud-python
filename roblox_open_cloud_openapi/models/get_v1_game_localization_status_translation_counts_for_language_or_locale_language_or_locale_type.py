@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1GameLocalizationStatusTranslationCountsForLanguageOrLocaleLanguageOrLocaleType(str, Enum):
+class GetV1GameLocalizationStatusTranslationCountsForLanguageOrLocaleLanguageOrLocaleType(StrEnum):
     LANGUAGE = "Language"
     LOCALE = "Locale"
 

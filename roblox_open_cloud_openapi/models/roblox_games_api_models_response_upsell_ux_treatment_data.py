@@ -12,14 +12,10 @@ T = TypeVar("T", bound="RobloxGamesApiModelsResponseUpsellUxTreatmentData")
 
 @_attrs_define
 class RobloxGamesApiModelsResponseUpsellUxTreatmentData:
-    """Localized strings for an Roblox.Games.Api.Models.Response.UpsellUxTreatment. Currently only carries
-    Roblox.Games.Api.Models.Response.UpsellUxTreatmentData.BodyText; structured to allow additional fields without
-    breaking the
-    JSON contract.
+    """Localized strings for an Roblox.Games.Api.Models.Response.UpsellUxTreatment.
 
-        Attributes:
-            body_text (str | Unset): Localized body text for the upsell banner (e.g. "You'll soon need an age check to
-                join this game.").
+    Attributes:
+        body_text (str | Unset): Localized body text for the upsell.
     """
 
     body_text: str | Unset = UNSET
@@ -37,7 +33,7 @@ class RobloxGamesApiModelsResponseUpsellUxTreatmentData:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         body_text = d.pop("bodyText", UNSET)
 
         roblox_games_api_models_response_upsell_ux_treatment_data = cls(

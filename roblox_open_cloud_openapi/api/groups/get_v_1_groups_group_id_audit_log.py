@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-groups/v1/groups/{groupId}/audit-log', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_groups__groupId__audit_log'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -20,6 +39,7 @@ from ...models.get_v1_groups_group_id_audit_log_sort_order import GetV1GroupsGro
 from ...models.roblox_groups_api_group_audit_log_page_response_roblox_groups_api_models_response_group_audit_log_response_item import (
     RobloxGroupsApiGroupAuditLogPageResponseRobloxGroupsApiModelsResponseGroupAuditLogResponseItem,
 )
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -64,26 +84,13 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/legacy-groups/v1/groups/{groupId}/audit-log",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_groups__groupId__audit_log",
-                    }
-                ],
-            },
-            "openapi-id": "get_v1_groups_groupId_audit-log",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxGroupsApiGroupAuditLogPageResponseRobloxGroupsApiModelsResponseGroupAuditLogResponseItem | None:
     if response.status_code == 200:
         response_200 = (
@@ -113,7 +120,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxGroupsApiGroupAuditLogPageResponseRobloxGroupsApiModelsResponseGroupAuditLogResponseItem]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -165,7 +172,7 @@ def sync_detailed(
         sort_order=sort_order,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -258,7 +265,7 @@ async def asyncio_detailed(
         sort_order=sort_order,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RestartState(str, Enum):
+class RestartState(StrEnum):
     DELAYING = "DELAYING"
     RESTARTING = "RESTARTING"
     SUCCEEDED = "SUCCEEDED"

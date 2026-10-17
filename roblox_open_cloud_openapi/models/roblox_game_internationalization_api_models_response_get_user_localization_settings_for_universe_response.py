@@ -44,10 +44,10 @@ class RobloxGameInternationalizationApiModelsResponseGetUserLocalizationSettings
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_localization_client_user_universe_localization_setting_value import (
-            RobloxGameLocalizationClientUserUniverseLocalizationSettingValue,
+            RobloxGameLocalizationClientUserUniverseLocalizationSettingValue,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _user_universe_localization_setting_value = d.pop("userUniverseLocalizationSettingValue", UNSET)
         user_universe_localization_setting_value: (
             RobloxGameLocalizationClientUserUniverseLocalizationSettingValue | Unset

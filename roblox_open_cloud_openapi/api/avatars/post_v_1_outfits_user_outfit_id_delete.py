@@ -1,13 +1,34 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.roblox_api_avatar_models_avatar_api_success_response import RobloxApiAvatarModelsAvatarApiSuccessResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -24,10 +45,6 @@ def _get_kwargs(
         "url": "https://avatar.roblox.com/v1/outfits/{user_outfit_id}/delete".format(
             user_outfit_id=quote(str(user_outfit_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "post_v1_outfits_userOutfitId_delete",
-        },
     }
 
     _kwargs["headers"] = headers
@@ -35,7 +52,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxApiAvatarModelsAvatarApiSuccessResponse | None:
     if response.status_code == 200:
         response_200 = RobloxApiAvatarModelsAvatarApiSuccessResponse.from_dict(response.json())
@@ -65,7 +82,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxApiAvatarModelsAvatarApiSuccessResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -102,7 +119,7 @@ def sync_detailed(
         roblox_place_id=roblox_place_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -165,7 +182,7 @@ async def asyncio_detailed(
         roblox_place_id=roblox_place_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

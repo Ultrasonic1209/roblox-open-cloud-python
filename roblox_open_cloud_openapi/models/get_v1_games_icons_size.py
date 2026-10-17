@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1GamesIconsSize(str, Enum):
+class GetV1GamesIconsSize(StrEnum):
     VALUE_0 = "50x50"
     VALUE_1 = "128x128"
     VALUE_2 = "150x150"

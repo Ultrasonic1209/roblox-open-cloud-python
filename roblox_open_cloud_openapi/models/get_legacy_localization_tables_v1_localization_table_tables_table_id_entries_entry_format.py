@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetLegacyLocalizationTablesV1LocalizationTableTablesTableIdEntriesEntryFormat(str, Enum):
+class GetLegacyLocalizationTablesV1LocalizationTableTablesTableIdEntriesEntryFormat(StrEnum):
     ICU = "Icu"
     INVALID = "Invalid"
     LEGACY = "Legacy"

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiRequestTranslationAnalyticsReportRequestReportType(str, Enum):
+class RobloxGameInternationalizationApiRequestTranslationAnalyticsReportRequestReportType(StrEnum):
     GAMETRANSLATIONSTATUS = "GameTranslationStatus"
     GAMETRANSLATIONSTATUSFORTRANSLATOR = "GameTranslationStatusForTranslator"
     GAMETRANSLATIONSTATUSFORTRANSLATORGROUP = "GameTranslationStatusForTranslatorGroup"

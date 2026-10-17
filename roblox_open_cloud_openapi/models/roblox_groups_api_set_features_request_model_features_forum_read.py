@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGroupsApiSetFeaturesRequestModelFeaturesForumRead(str, Enum):
+class RobloxGroupsApiSetFeaturesRequestModelFeaturesForumRead(StrEnum):
     BLOCKED = "Blocked"
     ON = "On"
 

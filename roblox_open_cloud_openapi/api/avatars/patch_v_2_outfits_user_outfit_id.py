@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-deprecated': {'deprecatedDate': '2026-09-21T00:00:00.0000000+00:00', 'description': 'Please use PATCH v4/outfits/{outfitId}'}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://avatar.roblox.com/v3/outfits/{userOutfitId}', 'httpMethod': 'PATCH', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_patch_v3_outfits__userOutfitId_'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -16,6 +35,7 @@ else:
 
 from ...models.roblox_api_avatar_models_outfit_model import RobloxApiAvatarModelsOutfitModel
 from ...models.roblox_api_avatar_models_outfit_update_model_v2 import RobloxApiAvatarModelsOutfitUpdateModelV2
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -33,19 +53,6 @@ def _get_kwargs(
         "url": "https://avatar.roblox.com/v2/outfits/{user_outfit_id}".format(
             user_outfit_id=quote(str(user_outfit_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://avatar.roblox.com/v3/outfits/{userOutfitId}",
-                        "httpMethod": "PATCH",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_patch_v3_outfits__userOutfitId_",
-                    }
-                ],
-            },
-            "openapi-id": "patch_v2_outfits_userOutfitId",
-        },
     }
 
     if isinstance(body, RobloxApiAvatarModelsOutfitUpdateModelV2):
@@ -62,7 +69,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxApiAvatarModelsOutfitModel | None:
     if response.status_code == 200:
         response_200 = RobloxApiAvatarModelsOutfitModel.from_dict(response.json())
@@ -96,7 +103,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxApiAvatarModelsOutfitModel]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -121,7 +128,7 @@ def sync_detailed(
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
 
-    Please use PATCH v3/outfits/{userOutfitId}
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -145,7 +152,7 @@ def sync_detailed(
         roblox_place_id=roblox_place_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -167,7 +174,7 @@ def sync(
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
 
-    Please use PATCH v3/outfits/{userOutfitId}
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -208,7 +215,7 @@ async def asyncio_detailed(
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
 
-    Please use PATCH v3/outfits/{userOutfitId}
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):
@@ -232,7 +239,7 @@ async def asyncio_detailed(
         roblox_place_id=roblox_place_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -252,7 +259,7 @@ async def asyncio(
      Fails if the user does not own any of the assetIds or if they are not wearable asset types.
     Accepts partial updates.
 
-    Please use PATCH v3/outfits/{userOutfitId}
+    Please use PATCH v4/outfits/{outfitId}
 
     Args:
         user_outfit_id (int):

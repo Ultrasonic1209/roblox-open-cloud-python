@@ -1,13 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'BETA', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.forecast_update_request import ForecastUpdateRequest
 from ...models.forecast_update_response import ForecastUpdateResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -19,13 +40,6 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/matchmaking-api/v1/game-instances/forecast-update",
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "post_matchmaking-api_v1_game-instances_forecast-update",
-        },
     }
 
     if isinstance(body, ForecastUpdateRequest):
@@ -53,9 +67,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> ForecastUpdateResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ForecastUpdateResponse | None:
     if response.status_code == 200:
         response_200 = ForecastUpdateResponse.from_dict(response.json())
 
@@ -68,7 +80,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ForecastUpdateResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -107,7 +119,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -174,7 +186,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

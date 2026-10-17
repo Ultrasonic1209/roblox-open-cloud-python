@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigVariantType(str, Enum):
+class ConfigVariantType(StrEnum):
     CONDITIONAL = "conditional"
 
     def __str__(self) -> str:

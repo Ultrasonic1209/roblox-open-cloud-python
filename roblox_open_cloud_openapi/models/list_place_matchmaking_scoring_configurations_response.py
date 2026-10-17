@@ -31,7 +31,7 @@ class ListPlaceMatchmakingScoringConfigurationsResponse:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.list_place_matchmaking_scoring_configurations_response_place_scoring_configurations_type_0 import (
-            ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0,
+            ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0,  # noqa: PLC0415
         )
 
         place_scoring_configurations: dict[str, Any] | None | Unset
@@ -56,10 +56,10 @@ class ListPlaceMatchmakingScoringConfigurationsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.list_place_matchmaking_scoring_configurations_response_place_scoring_configurations_type_0 import (
-            ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0,
+            ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_place_scoring_configurations(
             data: object,

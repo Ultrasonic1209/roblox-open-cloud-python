@@ -1,15 +1,36 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Update Asset', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'asset:read'}, {'name': 'asset:write'}], 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Update Content Only and Create a New Version', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": {assetId} }"\' \\\n--form \'fileContent="@\\"{file-path}\\""\''}, {'language': 'Update Content and Metadata', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=description%2CdisplayName\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\n    \\"assetType\\": \\"{assetType}\\",\n    \\"assetId\\": {assetId},\n    \\"displayName\\": \\"{new display name}\\",\n    \\"description\\": \\"{new description}\\",    \n    \\"creationContext\\": { \n        \\"creator\\": {\n            \\"userId\\": {userId}\n        },\n        \\"expectedPrice\\":{expectedPrice}\n    },\n}"\' \\\n--form \'fileContent=@\\"{file-path}\\"\''}, {'language': 'Update a List of Previews', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=previews\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"previews\\": [{\\"asset\\": \\"assets/123\\", \\"altText\\": \\"Your alt text.\\"}]}"\''}, {'language': 'Update Social Links', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=twitchSocialLink%2CgithubSocialLink\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"twitchSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://twitch.tv/your-channel\\"}, \\"githubSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://github.com/your-repo\\"}}"\''}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 120}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 120}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
 from ...models.assets_update_asset_body import AssetsUpdateAssetBody
 from ...models.ocv1_assets_operation import OCV1AssetsOperation
 from ...models.ocv1_assets_status import OCV1AssetsStatus
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -32,39 +53,6 @@ def _get_kwargs(
             asset_id=quote(str(asset_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-cloud-api-operation": True,
-                "x-roblox-cloud-api-operation-name": "Update Asset",
-                "x-roblox-stability": "BETA",
-                "x-roblox-scopes": [{"name": "asset:read"}, {"name": "asset:write"}],
-                "x-roblox-cloud-api-operation-code-samples": [
-                    {
-                        "language": "Update Content Only and Create a New Version",
-                        "script": "curl --location --request PATCH 'https://apis.roblox.com/assets/v1/assets/{assetId}' \\\n--header 'x-api-key: {apiKey}' \\\n--form 'request=\"{\\\"assetId\\\": {assetId} }\"' \\\n--form 'fileContent=\"@\\\"{file-path}\\\"\"'",
-                    },
-                    {
-                        "language": "Update Content and Metadata",
-                        "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=description%2CdisplayName\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\n    \\"assetType\\": \\"{assetType}\\",\n    \\"assetId\\": {assetId},\n    \\"displayName\\": \\"{new display name}\\",\n    \\"description\\": \\"{new description}\\",    \n    \\"creationContext\\": { \n        \\"creator\\": {\n            \\"userId\\": {userId}\n        },\n        \\"expectedPrice\\":{expectedPrice}\n    },\n}"\' \\\n--form \'fileContent=@\\"{file-path}\\"\'',
-                    },
-                    {
-                        "language": "Update a List of Previews",
-                        "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=previews\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"previews\\": [{\\"asset\\": \\"assets/123\\", \\"altText\\": \\"Your alt text.\\"}]}"\'',
-                    },
-                    {
-                        "language": "Update Social Links",
-                        "script": 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=twitchSocialLink%2CgithubSocialLink\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"twitchSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://twitch.tv/your-channel\\"}, \\"githubSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://github.com/your-repo\\"}}"\'',
-                    },
-                ],
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
-                },
-                "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 120}},
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            },
-            "openapi-id": "Assets_UpdateAsset",
-        },
     }
 
     if not isinstance(body, Unset):
@@ -77,7 +65,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
     if response.status_code == 200:
         response_200 = OCV1AssetsOperation.from_dict(response.json())
@@ -104,7 +92,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -149,7 +137,7 @@ def sync_detailed(
         update_mask=update_mask,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -228,7 +216,7 @@ async def asyncio_detailed(
         update_mask=update_mask,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

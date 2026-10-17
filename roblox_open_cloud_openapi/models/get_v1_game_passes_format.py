@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1GamePassesFormat(str, Enum):
+class GetV1GamePassesFormat(StrEnum):
     PNG = "Png"
     WEBP = "Webp"
 

@@ -62,10 +62,10 @@ class RobloxInventoryApiModelsAssetsExplorerCategoryModel:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_inventory_api_models_assets_explorer_category_item_model import (
-            RobloxInventoryApiModelsAssetsExplorerCategoryItemModel,
+            RobloxInventoryApiModelsAssetsExplorerCategoryItemModel,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         name = d.pop("name", UNSET)
 
         display_name = d.pop("displayName", UNSET)

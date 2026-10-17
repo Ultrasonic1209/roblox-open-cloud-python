@@ -10,8 +10,6 @@ T = TypeVar("T", bound="ApiEmptyResponseModel")
 
 @_attrs_define
 class ApiEmptyResponseModel:
-    """ """
-
     def to_dict(self) -> dict[str, Any]:
 
         field_dict: dict[str, Any] = {}

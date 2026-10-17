@@ -74,10 +74,10 @@ class CreateMatchmakingPlayerAttributeDefinitionRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.matchmaking_attribute_value import MatchmakingAttributeValue
-        from ..models.matchmaking_attribute_value_location import MatchmakingAttributeValueLocation
+        from ..models.matchmaking_attribute_value import MatchmakingAttributeValue  # noqa: PLC0415
+        from ..models.matchmaking_attribute_value_location import MatchmakingAttributeValueLocation  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         universe_id = d.pop("universeId", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:

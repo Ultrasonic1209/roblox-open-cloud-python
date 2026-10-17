@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-cloud-api-operation-name': 'Get Entry Version', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'universe-datastores.versions:read'}], 'x-roblox-cloud-api-operation': True, 'x-roblox-lua-equivalent': 'DataStore:GetVersionAsync', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'curl', 'script': 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries/entry/versions/version" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "entryKey=269323" \\\n-d "versionId=08D9E6A3F2188CFF.0000000003.08D9E6DE485A7680.01"'}], 'x-roblox-rate-limits': {'description': 'See [Throttling](/cloud/guides/data-stores/throttling.md).', 'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 5000}}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_GetDataStoreEntry__Using_Universes_DataStores'}, {'url': 'https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries/{entry_id}', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_GetDataStoreEntry__Using_Universes_DataStores_Scopes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -15,6 +34,7 @@ else:
     from typing_extensions import deprecated
 
 from ...models.entries_get_entry_version_async_response_200 import EntriesGetEntryVersionAsyncResponse200
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -64,47 +84,13 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-cloud-api-operation-name": "Get Entry Version",
-                "x-roblox-stability": "BETA",
-                "x-roblox-scopes": [{"name": "universe-datastores.versions:read"}],
-                "x-roblox-cloud-api-operation": True,
-                "x-roblox-lua-equivalent": "DataStore:GetVersionAsync",
-                "x-roblox-cloud-api-operation-code-samples": [
-                    {
-                        "language": "curl",
-                        "script": 'curl --include --location --request GET "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries/entry/versions/version" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "entryKey=269323" \\\n-d "versionId=08D9E6A3F2188CFF.0000000003.08D9E6DE485A7680.01"',
-                    }
-                ],
-                "x-roblox-rate-limits": {
-                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
-                },
-                "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 5000}},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_GetDataStoreEntry__Using_Universes_DataStores",
-                    },
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries/{entry_id}",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_GetDataStoreEntry__Using_Universes_DataStores_Scopes",
-                    },
-                ],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "Entries_GetEntryVersionAsync",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> EntriesGetEntryVersionAsyncResponse200 | None:
     if response.status_code == 200:
         response_200 = EntriesGetEntryVersionAsyncResponse200.from_dict(response.json())
@@ -118,7 +104,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[EntriesGetEntryVersionAsyncResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -140,7 +126,7 @@ def sync_detailed(
     version_id: None | str | Unset = UNSET,
     scope: None | str | Unset = "global",
 ) -> Response[EntriesGetEntryVersionAsyncResponse200]:
-    r"""Get entry version.
+    """Get entry version.
 
      Returns the value and metadata of a specific version of an entry.
 
@@ -150,7 +136,7 @@ def sync_detailed(
     roblox-entry-version: 08D9E6A3F2188CFF.0000000001.08D9E6A3F2188CFF.01
     roblox-entry-created-time: 2022-02-02T23:30:06.5388799+00:00
     roblox-entry-version-created-time: 2022-02-02T23:30:06.5388799+00:00
-    roblox-entry-attributes: { \"myAttribute\": \"myValue\" }
+    roblox-entry-attributes: { "myAttribute": "myValue" }
     roblox-entry-userids: [1, 2, 3]
     ```
 
@@ -187,7 +173,7 @@ def sync_detailed(
         scope=scope,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -206,7 +192,7 @@ def sync(
     version_id: None | str | Unset = UNSET,
     scope: None | str | Unset = "global",
 ) -> EntriesGetEntryVersionAsyncResponse200 | None:
-    r"""Get entry version.
+    """Get entry version.
 
      Returns the value and metadata of a specific version of an entry.
 
@@ -216,7 +202,7 @@ def sync(
     roblox-entry-version: 08D9E6A3F2188CFF.0000000001.08D9E6A3F2188CFF.01
     roblox-entry-created-time: 2022-02-02T23:30:06.5388799+00:00
     roblox-entry-version-created-time: 2022-02-02T23:30:06.5388799+00:00
-    roblox-entry-attributes: { \"myAttribute\": \"myValue\" }
+    roblox-entry-attributes: { "myAttribute": "myValue" }
     roblox-entry-userids: [1, 2, 3]
     ```
 
@@ -267,7 +253,7 @@ async def asyncio_detailed(
     version_id: None | str | Unset = UNSET,
     scope: None | str | Unset = "global",
 ) -> Response[EntriesGetEntryVersionAsyncResponse200]:
-    r"""Get entry version.
+    """Get entry version.
 
      Returns the value and metadata of a specific version of an entry.
 
@@ -277,7 +263,7 @@ async def asyncio_detailed(
     roblox-entry-version: 08D9E6A3F2188CFF.0000000001.08D9E6A3F2188CFF.01
     roblox-entry-created-time: 2022-02-02T23:30:06.5388799+00:00
     roblox-entry-version-created-time: 2022-02-02T23:30:06.5388799+00:00
-    roblox-entry-attributes: { \"myAttribute\": \"myValue\" }
+    roblox-entry-attributes: { "myAttribute": "myValue" }
     roblox-entry-userids: [1, 2, 3]
     ```
 
@@ -314,7 +300,7 @@ async def asyncio_detailed(
         scope=scope,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -331,7 +317,7 @@ async def asyncio(
     version_id: None | str | Unset = UNSET,
     scope: None | str | Unset = "global",
 ) -> EntriesGetEntryVersionAsyncResponse200 | None:
-    r"""Get entry version.
+    """Get entry version.
 
      Returns the value and metadata of a specific version of an entry.
 
@@ -341,7 +327,7 @@ async def asyncio(
     roblox-entry-version: 08D9E6A3F2188CFF.0000000001.08D9E6A3F2188CFF.01
     roblox-entry-created-time: 2022-02-02T23:30:06.5388799+00:00
     roblox-entry-version-created-time: 2022-02-02T23:30:06.5388799+00:00
-    roblox-entry-attributes: { \"myAttribute\": \"myValue\" }
+    roblox-entry-attributes: { "myAttribute": "myValue" }
     roblox-entry-userids: [1, 2, 3]
     ```
 

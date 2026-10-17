@@ -1,12 +1,31 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/toolbox/v2/assets:search', 'httpMethod': 'POST', 'description': 'This endpoint is being deprecated in favor of using POST which has the same functionality but with better structured data & support for image-based search.'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 1000}}, 'x-roblox-scopes': [{'name': 'creator-store-product:read'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -23,6 +42,7 @@ from ...models.search_creator_store_assets_response_type_0 import SearchCreatorS
 from ...models.search_view import SearchView
 from ...models.sort_category import SortCategory
 from ...models.sort_direction import SortDirection
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -231,32 +251,13 @@ def _get_kwargs(
         "method": "get",
         "url": "/toolbox-service/v2/assets:search",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/toolbox/v2/assets:search",
-                        "httpMethod": "POST",
-                        "description": "This endpoint is being deprecated in favor of using POST which has the same functionality but with better structured data & support for image-based search.",
-                    }
-                ],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
-                },
-                "x-roblox-scopes": [{"name": "creator-store-product:read"}],
-            },
-            "openapi-id": "Toolbox_SearchCreatorStoreAssetsDeprecated",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0 | None:
     if response.status_code == 200:
 
@@ -328,7 +329,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -449,7 +450,7 @@ def sync_detailed(
         swimlane=swimlane,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -680,7 +681,7 @@ async def asyncio_detailed(
         swimlane=swimlane,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

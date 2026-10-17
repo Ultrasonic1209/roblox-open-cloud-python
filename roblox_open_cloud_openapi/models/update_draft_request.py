@@ -43,8 +43,8 @@ class UpdateDraftRequest:
     conditional_rules: ConditionalRulesPayload | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.conditional_rules_payload import ConditionalRulesPayload
-        from ..models.update_draft_request_entries_type_0 import UpdateDraftRequestEntriesType0
+        from ..models.conditional_rules_payload import ConditionalRulesPayload  # noqa: PLC0415
+        from ..models.update_draft_request_entries_type_0 import UpdateDraftRequestEntriesType0  # noqa: PLC0415
 
         draft_hash: None | str | Unset
         if isinstance(self.draft_hash, Unset):
@@ -82,10 +82,10 @@ class UpdateDraftRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.conditional_rules_payload import ConditionalRulesPayload
-        from ..models.update_draft_request_entries_type_0 import UpdateDraftRequestEntriesType0
+        from ..models.conditional_rules_payload import ConditionalRulesPayload  # noqa: PLC0415
+        from ..models.update_draft_request_entries_type_0 import UpdateDraftRequestEntriesType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_draft_hash(data: object) -> None | str | Unset:
             if data is None:

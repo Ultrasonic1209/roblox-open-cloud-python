@@ -1,14 +1,35 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'group-forum:read', 'targetResourceSpecifier': ''}, {'name': 'group-forum:read'}], 'x-roblox-docs': {'category': 'Users and groups', 'methodProperties': {'scopes': ['group-forum:read']}, 'resource': {'$ref': '#/components/schemas/GroupForumPost', 'name': 'GroupForumPost'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 150}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 30}}}
+"""
+
+
 from ...models.cloud_list_group_forum_posts_view import CloudListGroupForumPostsView
 from ...models.list_group_forum_posts_response import ListGroupForumPostsResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -44,30 +65,13 @@ def _get_kwargs(
             forum_category_id=quote(str(forum_category_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "group-forum:read"}],
-                "x-roblox-docs": {
-                    "category": "Users and groups",
-                    "methodProperties": {"scopes": ["group-forum:read"]},
-                    "resource": {"$ref": "#/components/schemas/GroupForumPost", "name": "GroupForumPost"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 150},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
-                },
-            },
-            "openapi-id": "Cloud_ListGroupForumPosts",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> ListGroupForumPostsResponse | None:
     if response.status_code == 200:
         response_200 = ListGroupForumPostsResponse.from_dict(response.json())
@@ -81,7 +85,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ListGroupForumPostsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -130,7 +134,7 @@ def sync_detailed(
         view=view,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -217,7 +221,7 @@ async def asyncio_detailed(
         view=view,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -93,11 +93,11 @@ class UserNotificationPayload:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.user_notification_payload_analytics_data import UserNotificationPayloadAnalyticsData
-        from ..models.user_notification_payload_join_experience import UserNotificationPayloadJoinExperience
-        from ..models.user_notification_payload_parameters import UserNotificationPayloadParameters
+        from ..models.user_notification_payload_analytics_data import UserNotificationPayloadAnalyticsData  # noqa: PLC0415
+        from ..models.user_notification_payload_join_experience import UserNotificationPayloadJoinExperience  # noqa: PLC0415
+        from ..models.user_notification_payload_parameters import UserNotificationPayloadParameters  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
         type_: UserNotificationPayloadType | Unset
         if isinstance(_type_, Unset):

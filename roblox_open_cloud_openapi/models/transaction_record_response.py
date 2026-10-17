@@ -51,10 +51,10 @@ class TransactionRecordResponse:
     robux_rate_breakdown: None | RobuxRateBreakdown | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.agent_response import AgentResponse
-        from ..models.generic_currency_response import GenericCurrencyResponse
-        from ..models.robux_rate_breakdown import RobuxRateBreakdown
-        from ..models.transaction_details_response import TransactionDetailsResponse
+        from ..models.agent_response import AgentResponse  # noqa: PLC0415
+        from ..models.generic_currency_response import GenericCurrencyResponse  # noqa: PLC0415
+        from ..models.robux_rate_breakdown import RobuxRateBreakdown  # noqa: PLC0415
+        from ..models.transaction_details_response import TransactionDetailsResponse  # noqa: PLC0415
 
         id = self.id
 
@@ -160,12 +160,12 @@ class TransactionRecordResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.agent_response import AgentResponse
-        from ..models.generic_currency_response import GenericCurrencyResponse
-        from ..models.robux_rate_breakdown import RobuxRateBreakdown
-        from ..models.transaction_details_response import TransactionDetailsResponse
+        from ..models.agent_response import AgentResponse  # noqa: PLC0415
+        from ..models.generic_currency_response import GenericCurrencyResponse  # noqa: PLC0415
+        from ..models.robux_rate_breakdown import RobuxRateBreakdown  # noqa: PLC0415
+        from ..models.transaction_details_response import TransactionDetailsResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         def _parse_id_hash(data: object) -> None | str | Unset:

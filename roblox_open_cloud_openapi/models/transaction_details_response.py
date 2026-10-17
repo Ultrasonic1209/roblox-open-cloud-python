@@ -10,8 +10,6 @@ T = TypeVar("T", bound="TransactionDetailsResponse")
 
 @_attrs_define
 class TransactionDetailsResponse:
-    """ """
-
     def to_dict(self) -> dict[str, Any]:
 
         field_dict: dict[str, Any] = {}

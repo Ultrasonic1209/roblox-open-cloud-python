@@ -105,11 +105,11 @@ class RobloxApiAvatarModelsGameStartInfoResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_avatar_models_universe_avatar_asset_override_response_model import (
-            RobloxApiAvatarModelsUniverseAvatarAssetOverrideResponseModel,
+            RobloxApiAvatarModelsUniverseAvatarAssetOverrideResponseModel,  # noqa: PLC0415
         )
-        from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel
+        from ..models.roblox_web_responses_avatar_scale_model import RobloxWebResponsesAvatarScaleModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         game_avatar_type = d.pop("gameAvatarType", UNSET)
 
         allow_custom_animations = d.pop("allowCustomAnimations", UNSET)

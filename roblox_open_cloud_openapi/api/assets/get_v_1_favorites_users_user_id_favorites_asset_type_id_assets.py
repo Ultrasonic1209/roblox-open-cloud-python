@@ -1,11 +1,32 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_v1_favorites_users_user_id_favorites_asset_type_id_assets_limit import (
     GetV1FavoritesUsersUserIdFavoritesAssetTypeIdAssetsLimit,
 )
@@ -15,7 +36,7 @@ from ...models.get_v1_favorites_users_user_id_favorites_asset_type_id_assets_sor
 from ...models.roblox_web_web_api_models_api_page_response_roblox_catalog_api_catalog_search_detailed_response_item import (
     RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItem,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -54,17 +75,13 @@ def _get_kwargs(
             asset_type_id=quote(str(asset_type_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_favorites_users_userId_favorites_assetTypeId_assets",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItem | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItem.from_dict(
@@ -88,7 +105,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItem]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -136,7 +153,7 @@ def sync_detailed(
         sort_order=sort_order,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -221,7 +238,7 @@ async def asyncio_detailed(
         sort_order=sort_order,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -1,14 +1,35 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'universe.subscription-product.subscription:read', 'targetResourceSpecifier': 'universes'}, {'name': 'universe:write'}, {'name': 'universe.subscription-product.subscription:read'}], 'x-roblox-docs': {'category': 'Monetization', 'methodProperties': {'scopes': ['universe:write', 'universe.subscription-product.subscription:read']}, 'resource': {'$ref': '#/components/schemas/Subscription', 'name': 'Subscription'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 500}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 3}}}
+"""
+
+
 from ...models.cloud_get_subscription_view import CloudGetSubscriptionView
 from ...models.subscription import Subscription
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -37,34 +58,12 @@ def _get_kwargs(
             subscription_id=quote(str(subscription_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [
-                    {"name": "universe:write"},
-                    {"name": "universe.subscription-product.subscription:read"},
-                ],
-                "x-roblox-docs": {
-                    "category": "Monetization",
-                    "methodProperties": {
-                        "scopes": ["universe:write", "universe.subscription-product.subscription:read"]
-                    },
-                    "resource": {"$ref": "#/components/schemas/Subscription", "name": "Subscription"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
-                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 3},
-                },
-            },
-            "openapi-id": "Cloud_GetSubscription",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Subscription | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Subscription | None:
     if response.status_code == 200:
         response_200 = Subscription.from_dict(response.json())
 
@@ -76,7 +75,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Subscription]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Subscription]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -126,7 +125,7 @@ def sync_detailed(
         view=view,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -217,7 +216,7 @@ async def asyncio_detailed(
         view=view,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

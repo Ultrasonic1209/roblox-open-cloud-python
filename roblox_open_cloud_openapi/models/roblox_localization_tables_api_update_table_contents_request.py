@@ -47,9 +47,9 @@ class RobloxLocalizationTablesApiUpdateTableContentsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_patch_entry import RobloxLocalizationTablesApiPatchEntry
+        from ..models.roblox_localization_tables_api_patch_entry import RobloxLocalizationTablesApiPatchEntry  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         name = d.pop("name", UNSET)
 
         _entries = d.pop("entries", UNSET)

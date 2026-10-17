@@ -52,10 +52,10 @@ class RobloxGamesApiModelsResponseGameRecommendationsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_games_api_models_response_game_response_model import (
-            RobloxGamesApiModelsResponseGameResponseModel,
+            RobloxGamesApiModelsResponseGameResponseModel,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _games = d.pop("games", UNSET)
         games: list[RobloxGamesApiModelsResponseGameResponseModel] | Unset = UNSET
         if _games is not UNSET:

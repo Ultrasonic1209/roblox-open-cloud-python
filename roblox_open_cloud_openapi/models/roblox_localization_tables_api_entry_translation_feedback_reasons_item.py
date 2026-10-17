@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxLocalizationTablesApiEntryTranslationFeedbackReasonsItem(str, Enum):
+class RobloxLocalizationTablesApiEntryTranslationFeedbackReasonsItem(StrEnum):
     INACCURATE = "Inaccurate"
     INAPPROPRIATE = "Inappropriate"
     NONE = "None"

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class HttpVersionPolicy(str, Enum):
+class HttpVersionPolicy(StrEnum):
     REQUESTVERSIONEXACT = "RequestVersionExact"
     REQUESTVERSIONORHIGHER = "RequestVersionOrHigher"
     REQUESTVERSIONORLOWER = "RequestVersionOrLower"

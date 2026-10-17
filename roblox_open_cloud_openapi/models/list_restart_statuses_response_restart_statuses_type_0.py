@@ -29,9 +29,9 @@ class ListRestartStatusesResponseRestartStatusesType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.restart_status import RestartStatus
+        from ..models.restart_status import RestartStatus  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         list_restart_statuses_response_restart_statuses_type_0 = cls()
 
         additional_properties = {}

@@ -9,11 +9,11 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
-        RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
+    from ..models.groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
+        GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
     )
-    from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
-        RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
+    from ..models.groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
+        GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
     )
 
 
@@ -28,8 +28,8 @@ class RobloxGroupsApiModelsResponseGroupExperienceResponse:
         id (int | Unset): The game (universe) Id.
         name (str | Unset): The game name.
         description (str | Unset): The game description.
-        creator (RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset):
-        root_place (RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset):
+        creator (GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset):
+        root_place (GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset):
         created (datetime.datetime | Unset): When the game was created.
         updated (datetime.datetime | Unset): When the game was last updated.
         place_visits (int | Unset): The number of place visits for this game.
@@ -38,8 +38,8 @@ class RobloxGroupsApiModelsResponseGroupExperienceResponse:
     id: int | Unset = UNSET
     name: str | Unset = UNSET
     description: str | Unset = UNSET
-    creator: RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset = UNSET
-    root_place: RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset = UNSET
+    creator: GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset = UNSET
+    root_place: GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset = UNSET
     created: datetime.datetime | Unset = UNSET
     updated: datetime.datetime | Unset = UNSET
     place_visits: int | Unset = UNSET
@@ -93,14 +93,14 @@ class RobloxGroupsApiModelsResponseGroupExperienceResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
-            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,
+        from ..models.groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type import (
+            GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType,  # noqa: PLC0415
         )
-        from ..models.roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
-            RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
+        from ..models.groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
+            GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)
@@ -108,18 +108,22 @@ class RobloxGroupsApiModelsResponseGroupExperienceResponse:
         description = d.pop("description", UNSET)
 
         _creator = d.pop("creator", UNSET)
-        creator: RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset
+        creator: GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType | Unset
         if isinstance(_creator, Unset):
             creator = UNSET
         else:
-            creator = RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType.from_dict(_creator)
+            creator = GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType.from_dict(
+                _creator
+            )
 
         _root_place = d.pop("rootPlace", UNSET)
-        root_place: RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset
+        root_place: GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType | Unset
         if isinstance(_root_place, Unset):
             root_place = UNSET
         else:
-            root_place = RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType.from_dict(_root_place)
+            root_place = GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType.from_dict(
+                _root_place
+            )
 
         _created = d.pop("created", UNSET)
         created: datetime.datetime | Unset

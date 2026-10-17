@@ -35,7 +35,7 @@ class RobloxApiAvatarModelsAssetIdListModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         asset_ids = cast(list[int], d.pop("assetIds", UNSET))
 
         roblox_api_avatar_models_asset_id_list_model = cls(

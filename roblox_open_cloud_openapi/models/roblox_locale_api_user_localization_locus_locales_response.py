@@ -61,9 +61,9 @@ class RobloxLocaleApiUserLocalizationLocusLocalesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_locale_api_supported_locale import RobloxLocaleApiSupportedLocale
+        from ..models.roblox_locale_api_supported_locale import RobloxLocaleApiSupportedLocale  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _signup_and_login = d.pop("signupAndLogin", UNSET)
         signup_and_login: RobloxLocaleApiSupportedLocale | Unset
         if isinstance(_signup_and_login, Unset):

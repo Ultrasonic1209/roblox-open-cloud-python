@@ -16,20 +16,18 @@ T = TypeVar("T", bound="RpnTokenDto")
 
 @_attrs_define
 class RpnTokenDto:
-    """One RPN token: either a logical/comparison CreatorConfigsPublicApi.Models.ConditionalRuleOperator (proto JSON
-    `OPERATOR_*`) or an operand object.
+    """One RPN token: either a logical/comparison ConditionalRuleOperator or an operand object.
 
-        Attributes:
-            operator (None | str | Unset):
-            operand (None | RpnOperandDto | Unset): RPN operand: attribute reference or literal value (same concepts as the
-                proto `RpnOperand` oneof).
+    Attributes:
+        operator (None | str | Unset):
+        operand (None | RpnOperandDto | Unset): RPN operand: attribute reference or literal value.
     """
 
     operator: None | str | Unset = UNSET
     operand: None | RpnOperandDto | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.rpn_operand_dto import RpnOperandDto
+        from ..models.rpn_operand_dto import RpnOperandDto  # noqa: PLC0415
 
         operator: None | str | Unset
         if isinstance(self.operator, Unset):
@@ -57,9 +55,9 @@ class RpnTokenDto:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.rpn_operand_dto import RpnOperandDto
+        from ..models.rpn_operand_dto import RpnOperandDto  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_operator(data: object) -> None | str | Unset:
             if data is None:

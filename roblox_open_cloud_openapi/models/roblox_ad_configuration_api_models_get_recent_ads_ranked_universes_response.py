@@ -44,10 +44,10 @@ class RobloxAdConfigurationApiModelsGetRecentAdsRankedUniversesResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_ad_configuration_api_models_universe_model import (
-            RobloxAdConfigurationApiModelsUniverseModel,
+            RobloxAdConfigurationApiModelsUniverseModel,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _universes = d.pop("universes", UNSET)
         universes: list[RobloxAdConfigurationApiModelsUniverseModel] | Unset = UNSET
         if _universes is not UNSET:

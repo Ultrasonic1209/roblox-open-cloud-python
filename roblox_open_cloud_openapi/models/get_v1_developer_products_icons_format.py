@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1DeveloperProductsIconsFormat(str, Enum):
+class GetV1DeveloperProductsIconsFormat(StrEnum):
     PNG = "Png"
     WEBP = "Webp"
 

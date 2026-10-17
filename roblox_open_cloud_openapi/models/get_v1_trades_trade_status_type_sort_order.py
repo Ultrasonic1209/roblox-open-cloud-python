@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1TradesTradeStatusTypeSortOrder(str, Enum):
+class GetV1TradesTradeStatusTypeSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

@@ -19,8 +19,7 @@ class RobloxGameInternationalizationApiMediaAssetResponse:
     Attributes:
         media_asset_id (str | Unset):
         media_asset_alt_text (str | Unset):
-        state (RobloxGameInternationalizationApiMediaAssetResponseState | Unset): Enum for image status. ['Approved' =
-            0, 'PendingReview' = 1, 'UnAvailable' = 2, 'Rejected' = 3, 'Error' = 4]
+        state (RobloxGameInternationalizationApiMediaAssetResponseState | Unset): Enum for image status.
         media_asset_url (str | Unset):
     """
 
@@ -56,7 +55,7 @@ class RobloxGameInternationalizationApiMediaAssetResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         media_asset_id = d.pop("mediaAssetId", UNSET)
 
         media_asset_alt_text = d.pop("mediaAssetAltText", UNSET)

@@ -1,14 +1,35 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store:get', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
 from ...models.cloud_get_memory_store_flush_operation_scope import CloudGetMemoryStoreFlushOperationScope
 from ...models.ocv2_operations_operation import OCV2OperationsOperation
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -35,21 +56,13 @@ def _get_kwargs(
             operation_id=quote(str(operation_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            },
-            "openapi-id": "Cloud_GetMemoryStoreFlushOperation",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> OCV2OperationsOperation | None:
     if response.status_code == 200:
         response_200 = OCV2OperationsOperation.from_dict(response.json())
@@ -63,7 +76,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[OCV2OperationsOperation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -83,8 +96,7 @@ def sync_detailed(
     """Get Memory Store Flush Operation
 
      Retrieves the status of the operation to [flush the memory stores of a
-    universe](https://create.roblox.com/docs/cloud/reference/features/memory-
-    stores#Cloud_FlushMemoryStore).
+    universe](https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_FlushMemoryStore).
 
     Args:
         universe_id (str):
@@ -105,7 +117,7 @@ def sync_detailed(
         scope=scope,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -122,8 +134,7 @@ def sync(
     """Get Memory Store Flush Operation
 
      Retrieves the status of the operation to [flush the memory stores of a
-    universe](https://create.roblox.com/docs/cloud/reference/features/memory-
-    stores#Cloud_FlushMemoryStore).
+    universe](https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_FlushMemoryStore).
 
     Args:
         universe_id (str):
@@ -156,8 +167,7 @@ async def asyncio_detailed(
     """Get Memory Store Flush Operation
 
      Retrieves the status of the operation to [flush the memory stores of a
-    universe](https://create.roblox.com/docs/cloud/reference/features/memory-
-    stores#Cloud_FlushMemoryStore).
+    universe](https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_FlushMemoryStore).
 
     Args:
         universe_id (str):
@@ -178,7 +188,7 @@ async def asyncio_detailed(
         scope=scope,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -193,8 +203,7 @@ async def asyncio(
     """Get Memory Store Flush Operation
 
      Retrieves the status of the operation to [flush the memory stores of a
-    universe](https://create.roblox.com/docs/cloud/reference/features/memory-
-    stores#Cloud_FlushMemoryStore).
+    universe](https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_FlushMemoryStore).
 
     Args:
         universe_id (str):

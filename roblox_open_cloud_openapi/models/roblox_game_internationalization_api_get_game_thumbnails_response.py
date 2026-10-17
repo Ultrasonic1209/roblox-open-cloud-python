@@ -50,10 +50,10 @@ class RobloxGameInternationalizationApiGetGameThumbnailsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_media_asset_response import (
-            RobloxGameInternationalizationApiMediaAssetResponse,
+            RobloxGameInternationalizationApiMediaAssetResponse,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         language_code = d.pop("languageCode", UNSET)
 
         _media_assets = d.pop("mediaAssets", UNSET)

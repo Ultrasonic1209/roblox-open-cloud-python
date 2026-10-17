@@ -49,10 +49,10 @@ class RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssig
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_localization_client_game_localization_roles_assignee import (
-            RobloxGameLocalizationClientGameLocalizationRolesAssignee,
+            RobloxGameLocalizationClientGameLocalizationRolesAssignee,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         game_id = d.pop("gameId", UNSET)
 
         _assignee = d.pop("assignee", UNSET)

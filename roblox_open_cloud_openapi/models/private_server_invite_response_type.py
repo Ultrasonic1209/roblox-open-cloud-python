@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class PrivateServerInviteResponseType(str, Enum):
+class PrivateServerInviteResponseType(StrEnum):
     CANINVITE = "CanInvite"
     INVALID = "Invalid"
     UNABLETOADDANYUSER = "UnableToAddAnyUser"

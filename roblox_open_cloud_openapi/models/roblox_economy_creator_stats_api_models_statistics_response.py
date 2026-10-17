@@ -54,10 +54,10 @@ class RobloxEconomyCreatorStatsApiModelsStatisticsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_economy_creator_stats_api_models_statistics_response_data import (
-            RobloxEconomyCreatorStatsApiModelsStatisticsResponseData,
+            RobloxEconomyCreatorStatsApiModelsStatisticsResponseData,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data_granularity = d.pop("dataGranularity", UNSET)
         data_granularity: RobloxEconomyCreatorStatsApiModelsStatisticsResponseDataGranularity | Unset
         if isinstance(_data_granularity, Unset):

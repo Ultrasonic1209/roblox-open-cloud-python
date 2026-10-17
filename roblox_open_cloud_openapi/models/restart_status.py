@@ -33,7 +33,7 @@ class RestartStatus:
     place_restart_statuses: None | RestartStatusPlaceRestartStatusesType0 | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.restart_status_place_restart_statuses_type_0 import RestartStatusPlaceRestartStatusesType0
+        from ..models.restart_status_place_restart_statuses_type_0 import RestartStatusPlaceRestartStatusesType0  # noqa: PLC0415
 
         universe_id: None | str | Unset
         if isinstance(self.universe_id, Unset):
@@ -73,9 +73,9 @@ class RestartStatus:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.restart_status_place_restart_statuses_type_0 import RestartStatusPlaceRestartStatusesType0
+        from ..models.restart_status_place_restart_statuses_type_0 import RestartStatusPlaceRestartStatusesType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_universe_id(data: object) -> None | str | Unset:
             if data is None:

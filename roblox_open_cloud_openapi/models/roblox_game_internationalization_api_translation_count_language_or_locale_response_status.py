@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponseStatus(str, Enum):
+class RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponseStatus(StrEnum):
     LANGUAGEORLOCALENOTSUPPORTEDFORGAME = "LanguageOrLocaleNotSupportedForGame"
     SUCCESS = "Success"
 

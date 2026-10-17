@@ -52,13 +52,13 @@ class RobloxLocalizationTablesApiGetLimitsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_localization_tables_api_entry_operation_limits import (
-            RobloxLocalizationTablesApiEntryOperationLimits,
+            RobloxLocalizationTablesApiEntryOperationLimits,  # noqa: PLC0415
         )
         from ..models.roblox_localization_tables_api_table_operation_limits import (
-            RobloxLocalizationTablesApiTableOperationLimits,
+            RobloxLocalizationTablesApiTableOperationLimits,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _entry_operation_limits = d.pop("entryOperationLimits", UNSET)
         entry_operation_limits: RobloxLocalizationTablesApiEntryOperationLimits | Unset
         if isinstance(_entry_operation_limits, Unset):

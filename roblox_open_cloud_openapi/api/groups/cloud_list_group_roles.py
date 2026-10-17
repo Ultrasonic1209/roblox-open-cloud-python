@@ -1,13 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'description': 'Required to view permissions in non-guest roles.', 'name': 'group:read'}], 'x-roblox-docs': {'category': 'Users and groups', 'methodProperties': {'scopes': []}, 'resource': {'$ref': '#/components/schemas/GroupRole', 'name': 'GroupRole'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 300}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 90}}}
+"""
+
+
 from ...models.list_group_roles_response import ListGroupRolesResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -31,33 +52,12 @@ def _get_kwargs(
             group_id=quote(str(group_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [
-                    {"description": "Required to view permissions in non-guest roles.", "name": "group:read"}
-                ],
-                "x-roblox-docs": {
-                    "category": "Users and groups",
-                    "methodProperties": {"scopes": []},
-                    "resource": {"$ref": "#/components/schemas/GroupRole", "name": "GroupRole"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 300},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 90},
-                },
-            },
-            "openapi-id": "Cloud_ListGroupRoles",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> ListGroupRolesResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ListGroupRolesResponse | None:
     if response.status_code == 200:
         response_200 = ListGroupRolesResponse.from_dict(response.json())
 
@@ -70,7 +70,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ListGroupRolesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -90,6 +90,10 @@ def sync_detailed(
     """List Group Roles
 
      List roles in a group.
+
+    Roles can be public or private. The response includes private roles and
+    their fields only when the acting user is permitted to view them. The
+    endpoint does not provide a public-roles-only view.
 
     The permissions field for roles is viewable based on the requester's access
     and scopes.
@@ -121,7 +125,7 @@ def sync_detailed(
         page_token=page_token,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -138,6 +142,10 @@ def sync(
     """List Group Roles
 
      List roles in a group.
+
+    Roles can be public or private. The response includes private roles and
+    their fields only when the acting user is permitted to view them. The
+    endpoint does not provide a public-roles-only view.
 
     The permissions field for roles is viewable based on the requester's access
     and scopes.
@@ -182,6 +190,10 @@ async def asyncio_detailed(
 
      List roles in a group.
 
+    Roles can be public or private. The response includes private roles and
+    their fields only when the acting user is permitted to view them. The
+    endpoint does not provide a public-roles-only view.
+
     The permissions field for roles is viewable based on the requester's access
     and scopes.
 
@@ -212,7 +224,7 @@ async def asyncio_detailed(
         page_token=page_token,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -227,6 +239,10 @@ async def asyncio(
     """List Group Roles
 
      List roles in a group.
+
+    Roles can be public or private. The response includes private roles and
+    their fields only when the acting user is permitted to view them. The
+    endpoint does not provide a public-roles-only view.
 
     The permissions field for roles is viewable based on the requester's access
     and scopes.

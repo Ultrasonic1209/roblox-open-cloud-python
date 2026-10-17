@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SubscriptionExpirationDetailsReason(str, Enum):
+class SubscriptionExpirationDetailsReason(StrEnum):
     EXPIRATION_REASON_UNSPECIFIED = "EXPIRATION_REASON_UNSPECIFIED"
     LAPSED = "LAPSED"
     PRODUCT_DELETED = "PRODUCT_DELETED"

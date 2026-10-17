@@ -43,10 +43,10 @@ class RobloxGroupsApiUpdatePermissionsRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_update_permissions_request_permissions import (
-            RobloxGroupsApiUpdatePermissionsRequestPermissions,
+            RobloxGroupsApiUpdatePermissionsRequestPermissions,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _permissions = d.pop("permissions", UNSET)
         permissions: RobloxGroupsApiUpdatePermissionsRequestPermissions | Unset
         if isinstance(_permissions, Unset):

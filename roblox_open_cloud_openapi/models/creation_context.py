@@ -60,9 +60,9 @@ class CreationContext:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.creator import Creator
+        from ..models.creator import Creator  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _asset_privacy = d.pop("assetPrivacy", UNSET)
         asset_privacy: AssetPrivacy | Unset
         if isinstance(_asset_privacy, Unset):

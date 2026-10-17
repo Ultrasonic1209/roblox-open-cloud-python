@@ -1,15 +1,36 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_v1_messages_message_tab import GetV1MessagesMessageTab
 from ...models.roblox_private_messages_api_models_get_messages_response import (
     RobloxPrivateMessagesApiModelsGetMessagesResponse,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -37,17 +58,13 @@ def _get_kwargs(
         "method": "get",
         "url": "https://privatemessages.roblox.com/v1/messages",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_messages",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxPrivateMessagesApiModelsGetMessagesResponse | None:
     if response.status_code == 200:
         response_200 = RobloxPrivateMessagesApiModelsGetMessagesResponse.from_dict(response.json())
@@ -65,7 +82,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxPrivateMessagesApiModelsGetMessagesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -103,7 +120,7 @@ def sync_detailed(
         message_tab=message_tab,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -168,7 +185,7 @@ async def asyncio_detailed(
         message_tab=message_tab,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

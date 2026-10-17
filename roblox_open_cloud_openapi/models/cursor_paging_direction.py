@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CursorPagingDirection(str, Enum):
+class CursorPagingDirection(StrEnum):
     BACKWARD = "Backward"
     FORWARD = "Forward"
 

@@ -1,12 +1,31 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-deprecated': {'deprecatedDate': '2026-09-21T00:00:00.0000000+00:00', 'description': 'Please use GET v4/avatar'}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://avatar.roblox.com/v2/avatar/avatar', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v2_avatar_avatar'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -14,6 +33,7 @@ else:
     from typing_extensions import deprecated
 
 from ...models.roblox_api_avatar_models_avatar_model_v2 import RobloxApiAvatarModelsAvatarModelV2
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -27,19 +47,6 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://avatar.roblox.com/v1/avatar",
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://avatar.roblox.com/v2/avatar/avatar",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/avatars#avatar_get_v2_avatar_avatar",
-                    }
-                ],
-            },
-            "openapi-id": "get_v1_avatar",
-        },
     }
 
     _kwargs["headers"] = headers
@@ -47,7 +54,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxApiAvatarModelsAvatarModelV2 | None:
     if response.status_code == 200:
         response_200 = RobloxApiAvatarModelsAvatarModelV2.from_dict(response.json())
@@ -65,7 +72,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxApiAvatarModelsAvatarModelV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -85,6 +92,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxApiAvatarModelsAvatarModelV2]:
     """Returns details about the authenticated user's avatar.
 
+     Please use GET v4/avatar
+
     Args:
         roblox_place_id (int | Unset):
 
@@ -100,7 +109,7 @@ def sync_detailed(
         roblox_place_id=roblox_place_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -116,6 +125,8 @@ def sync(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsAvatarModelV2 | None:
     """Returns details about the authenticated user's avatar.
+
+     Please use GET v4/avatar
 
     Args:
         roblox_place_id (int | Unset):
@@ -144,6 +155,8 @@ async def asyncio_detailed(
 ) -> Response[Any | RobloxApiAvatarModelsAvatarModelV2]:
     """Returns details about the authenticated user's avatar.
 
+     Please use GET v4/avatar
+
     Args:
         roblox_place_id (int | Unset):
 
@@ -159,7 +172,7 @@ async def asyncio_detailed(
         roblox_place_id=roblox_place_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -173,6 +186,8 @@ async def asyncio(
     roblox_place_id: int | Unset = UNSET,
 ) -> Any | RobloxApiAvatarModelsAvatarModelV2 | None:
     """Returns details about the authenticated user's avatar.
+
+     Please use GET v4/avatar
 
     Args:
         roblox_place_id (int | Unset):

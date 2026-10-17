@@ -53,7 +53,7 @@ class RobloxApiAvatarModelsAccessoryScaleModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         x_scale = d.pop("xScale", UNSET)
 
         y_scale = d.pop("yScale", UNSET)

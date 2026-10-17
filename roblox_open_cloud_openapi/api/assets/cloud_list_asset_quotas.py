@@ -1,13 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'asset:read'}], 'x-roblox-docs': {'category': 'Users and groups', 'methodProperties': {'scopes': ['asset:read']}, 'resource': {'$ref': '#/components/schemas/AssetQuota', 'name': 'AssetQuota'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 60}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 60}}}
+"""
+
+
 from ...models.list_asset_quotas_response import ListAssetQuotasResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -34,30 +55,13 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "asset:read"}],
-                "x-roblox-docs": {
-                    "category": "Users and groups",
-                    "methodProperties": {"scopes": ["asset:read"]},
-                    "resource": {"$ref": "#/components/schemas/AssetQuota", "name": "AssetQuota"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 60},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 60},
-                },
-            },
-            "openapi-id": "Cloud_ListAssetQuotas",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> ListAssetQuotasResponse | None:
     if response.status_code == 200:
         response_200 = ListAssetQuotasResponse.from_dict(response.json())
@@ -71,7 +75,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ListAssetQuotasResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -114,7 +118,7 @@ def sync_detailed(
         filter_=filter_,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -189,7 +193,7 @@ async def asyncio_detailed(
         filter_=filter_,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

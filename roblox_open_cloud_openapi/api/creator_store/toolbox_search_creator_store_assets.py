@@ -1,14 +1,35 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 1000}}, 'x-roblox-scopes': [{'name': 'creator-store-product:read'}]}
+"""
+
+
 from ...models.problem_details_type_0 import ProblemDetailsType0
 from ...models.search_creator_store_assets_request_type_0 import SearchCreatorStoreAssetsRequestType0
 from ...models.search_creator_store_assets_response_type_0 import SearchCreatorStoreAssetsResponseType0
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -28,18 +49,6 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/toolbox-service/v2/assets:search",
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 1000},
-                },
-                "x-roblox-scopes": [{"name": "creator-store-product:read"}],
-            },
-            "openapi-id": "Toolbox_SearchCreatorStoreAssets",
-        },
     }
 
     if isinstance(body, None | SearchCreatorStoreAssetsRequestType0):
@@ -76,7 +85,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0 | None:
     if response.status_code == 200:
 
@@ -148,7 +157,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | None | ProblemDetailsType0 | None | SearchCreatorStoreAssetsResponseType0]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -197,7 +206,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -284,7 +293,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -1,13 +1,33 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_badges_api_badge_response import RobloxBadgesApiBadgeResponse
 from ...types import Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+from ...models.roblox_badges_api_badge_response import RobloxBadgesApiBadgeResponse
 
 
 def _get_kwargs(
@@ -19,17 +39,13 @@ def _get_kwargs(
         "url": "https://badges.roblox.com/v1/badges/{badge_id}".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_badges_badgeId",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxBadgesApiBadgeResponse | None:
     if response.status_code == 200:
         response_200 = RobloxBadgesApiBadgeResponse.from_dict(response.json())
@@ -47,7 +63,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxBadgesApiBadgeResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -64,6 +80,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxBadgesApiBadgeResponse]:
     """Gets badge information by the badge Id.
 
+     Returns display fields, award statistics, and owning universe for a single badge.
+
     Args:
         badge_id (int):
 
@@ -79,7 +97,7 @@ def sync_detailed(
         badge_id=badge_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -92,6 +110,8 @@ def sync(
     client: AuthenticatedClient,
 ) -> Any | RobloxBadgesApiBadgeResponse | None:
     """Gets badge information by the badge Id.
+
+     Returns display fields, award statistics, and owning universe for a single badge.
 
     Args:
         badge_id (int):
@@ -117,6 +137,8 @@ async def asyncio_detailed(
 ) -> Response[Any | RobloxBadgesApiBadgeResponse]:
     """Gets badge information by the badge Id.
 
+     Returns display fields, award statistics, and owning universe for a single badge.
+
     Args:
         badge_id (int):
 
@@ -132,7 +154,7 @@ async def asyncio_detailed(
         badge_id=badge_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -143,6 +165,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> Any | RobloxBadgesApiBadgeResponse | None:
     """Gets badge information by the badge Id.
+
+     Returns display fields, award statistics, and owning universe for a single badge.
 
     Args:
         badge_id (int):

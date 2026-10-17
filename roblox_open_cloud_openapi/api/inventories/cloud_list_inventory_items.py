@@ -1,19 +1,40 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-scopes': [{'name': 'user.inventory-item:read', 'description': "Required to read the target user's own private inventory; not required for public inventories."}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 20}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
 from ...models.list_inventory_items_response import ListInventoryItemsResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
     user_id: str,
     *,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -34,35 +55,13 @@ def _get_kwargs(
             user_id=quote(str(user_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [
-                    {
-                        "description": "Grants access to read the target user&#x27;s private inventory.",
-                        "name": "user.inventory-item:read",
-                    }
-                ],
-                "x-roblox-docs": {
-                    "category": "Users and groups",
-                    "methodProperties": {"scopes": []},
-                    "resource": {"$ref": "#/components/schemas/InventoryItem", "name": "InventoryItem"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 20},
-                },
-            },
-            "openapi-id": "Cloud_ListInventoryItems",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> ListInventoryItemsResponse | None:
     if response.status_code == 200:
         response_200 = ListInventoryItemsResponse.from_dict(response.json())
@@ -76,7 +75,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ListInventoryItemsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -90,20 +89,20 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> Response[ListInventoryItemsResponse]:
-    r"""List Inventory Items
+    """List Inventory Items
 
      List the inventory items in a user's inventory.
 
     The inventory items returned depend on the target user’s choice under
     **Settings > Privacy > Who can see my inventory?**:
-    * If the user granted inventory visibility to \"Everyone,\" then any API key
+    * If the user granted inventory visibility to "Everyone," then any API key
     or OAuth2 token can be used to view the target’s inventory, no matter what
     scopes it has or who created it.
-    * If the user has not granted inventory visibility to \"Everyone\":
+    * If the user has not granted inventory visibility to "Everyone":
       * Their inventory can still be viewed with an API key created by the
       target user with **Inventory: Read** permission.
       * Their inventory can still be viewed with an OAuth2 token if the target
@@ -112,7 +111,7 @@ def sync_detailed(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 10.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -131,7 +130,7 @@ def sync_detailed(
         filter_=filter_,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -142,20 +141,20 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> ListInventoryItemsResponse | None:
-    r"""List Inventory Items
+    """List Inventory Items
 
      List the inventory items in a user's inventory.
 
     The inventory items returned depend on the target user’s choice under
     **Settings > Privacy > Who can see my inventory?**:
-    * If the user granted inventory visibility to \"Everyone,\" then any API key
+    * If the user granted inventory visibility to "Everyone," then any API key
     or OAuth2 token can be used to view the target’s inventory, no matter what
     scopes it has or who created it.
-    * If the user has not granted inventory visibility to \"Everyone\":
+    * If the user has not granted inventory visibility to "Everyone":
       * Their inventory can still be viewed with an API key created by the
       target user with **Inventory: Read** permission.
       * Their inventory can still be viewed with an OAuth2 token if the target
@@ -164,7 +163,7 @@ def sync(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 10.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -189,20 +188,20 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> Response[ListInventoryItemsResponse]:
-    r"""List Inventory Items
+    """List Inventory Items
 
      List the inventory items in a user's inventory.
 
     The inventory items returned depend on the target user’s choice under
     **Settings > Privacy > Who can see my inventory?**:
-    * If the user granted inventory visibility to \"Everyone,\" then any API key
+    * If the user granted inventory visibility to "Everyone," then any API key
     or OAuth2 token can be used to view the target’s inventory, no matter what
     scopes it has or who created it.
-    * If the user has not granted inventory visibility to \"Everyone\":
+    * If the user has not granted inventory visibility to "Everyone":
       * Their inventory can still be viewed with an API key created by the
       target user with **Inventory: Read** permission.
       * Their inventory can still be viewed with an OAuth2 token if the target
@@ -211,7 +210,7 @@ async def asyncio_detailed(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 10.
         page_token (str | Unset):
         filter_ (str | Unset):
 
@@ -230,7 +229,7 @@ async def asyncio_detailed(
         filter_=filter_,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -239,20 +238,20 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 10,
     page_token: str | Unset = UNSET,
     filter_: str | Unset = UNSET,
 ) -> ListInventoryItemsResponse | None:
-    r"""List Inventory Items
+    """List Inventory Items
 
      List the inventory items in a user's inventory.
 
     The inventory items returned depend on the target user’s choice under
     **Settings > Privacy > Who can see my inventory?**:
-    * If the user granted inventory visibility to \"Everyone,\" then any API key
+    * If the user granted inventory visibility to "Everyone," then any API key
     or OAuth2 token can be used to view the target’s inventory, no matter what
     scopes it has or who created it.
-    * If the user has not granted inventory visibility to \"Everyone\":
+    * If the user has not granted inventory visibility to "Everyone":
       * Their inventory can still be viewed with an API key created by the
       target user with **Inventory: Read** permission.
       * Their inventory can still be viewed with an OAuth2 token if the target
@@ -261,7 +260,7 @@ async def asyncio(
 
     Args:
         user_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 10.
         page_token (str | Unset):
         filter_ (str | Unset):
 

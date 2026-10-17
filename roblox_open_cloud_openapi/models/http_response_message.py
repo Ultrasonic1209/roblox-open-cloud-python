@@ -41,8 +41,8 @@ class HttpResponseMessage:
     is_success_status_code: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.http_content import HttpContent
-        from ..models.http_request_message import HttpRequestMessage
+        from ..models.http_content import HttpContent  # noqa: PLC0415
+        from ..models.http_request_message import HttpRequestMessage  # noqa: PLC0415
 
         version: None | str | Unset
         if isinstance(self.version, Unset):
@@ -126,11 +126,11 @@ class HttpResponseMessage:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.http_content import HttpContent
-        from ..models.http_request_message import HttpRequestMessage
-        from ..models.string_string_i_enumerable_key_value_pair import StringStringIEnumerableKeyValuePair
+        from ..models.http_content import HttpContent  # noqa: PLC0415
+        from ..models.http_request_message import HttpRequestMessage  # noqa: PLC0415
+        from ..models.string_string_i_enumerable_key_value_pair import StringStringIEnumerableKeyValuePair  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_version(data: object) -> None | str | Unset:
             if data is None:

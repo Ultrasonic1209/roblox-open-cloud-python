@@ -1,19 +1,41 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
-from uuid import UUID
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-universe:manage'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+from uuid import UUID
+
 from ...models.get_legacy_localization_tables_v1_localization_table_tables_table_id_entries_entry_format import (
     GetLegacyLocalizationTablesV1LocalizationTableTablesTableIdEntriesEntryFormat,
 )
 from ...models.roblox_localization_tables_api_get_table_entries_paged_response import (
     RobloxLocalizationTablesApiGetTableEntriesPagedResponse,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -45,24 +67,13 @@ def _get_kwargs(
             table_id=quote(str(table_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "legacy-universe:manage"}],
-            },
-            "openapi-id": "get_legacy-localization-tables_v1_localization-table_tables_tableId_entries",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxLocalizationTablesApiGetTableEntriesPagedResponse | None:
     if response.status_code == 200:
         response_200 = RobloxLocalizationTablesApiGetTableEntriesPagedResponse.from_dict(response.json())
@@ -88,7 +99,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxLocalizationTablesApiGetTableEntriesPagedResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -133,7 +144,7 @@ def sync_detailed(
         entry_format=entry_format,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -212,7 +223,7 @@ async def asyncio_detailed(
         entry_format=entry_format,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

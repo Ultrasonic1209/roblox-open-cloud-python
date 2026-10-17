@@ -1,18 +1,39 @@
-import sys
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-cloud-api-operation-name': 'Delete Entry', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'universe-datastores.objects:delete'}], 'x-roblox-cloud-api-operation': True, 'x-roblox-lua-equivalent': 'GlobalDataStore:RemoveAsync', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'curl', 'script': 'curl --include --location --request DELETE "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries/entry" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "entryKey=269323"'}], 'x-roblox-rate-limits': {'description': 'See [Throttling](/cloud/guides/data-stores/throttling.md).', 'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 5000}}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}', 'httpMethod': 'DELETE', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_DeleteDataStoreEntry__Using_Universes_DataStores'}, {'url': 'https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries/{entry_id}', 'httpMethod': 'DELETE', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_DeleteDataStoreEntry__Using_Universes_DataStores_Scopes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
 else:
     from typing_extensions import deprecated
+
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -54,45 +75,12 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-cloud-api-operation-name": "Delete Entry",
-                "x-roblox-stability": "BETA",
-                "x-roblox-scopes": [{"name": "universe-datastores.objects:delete"}],
-                "x-roblox-cloud-api-operation": True,
-                "x-roblox-lua-equivalent": "GlobalDataStore:RemoveAsync",
-                "x-roblox-cloud-api-operation-code-samples": [
-                    {
-                        "language": "curl",
-                        "script": 'curl --include --location --request DELETE "https://apis.roblox.com/datastores/v1/universes/3310576216/standard-datastores/datastore/entries/entry" \\\n--header "x-api-key: ${API_KEY}" \\\n--get \\\n-d "datastoreName=Coins" \\\n-d "entryKey=269323"',
-                    }
-                ],
-                "x-roblox-rate-limits": {
-                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 5000},
-                },
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/entries/{entry_id}",
-                        "httpMethod": "DELETE",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_DeleteDataStoreEntry__Using_Universes_DataStores",
-                    },
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/data-stores/{data_store_id}/scopes/{scope_id}/entries/{entry_id}",
-                        "httpMethod": "DELETE",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_DeleteDataStoreEntry__Using_Universes_DataStores_Scopes",
-                    },
-                ],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "Entries_DeleteEntryAsync",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if response.status_code == 204:
         return None
 
@@ -102,7 +90,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -148,7 +136,7 @@ def sync_detailed(
         scope=scope,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -192,6 +180,6 @@ async def asyncio_detailed(
         scope=scope,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)

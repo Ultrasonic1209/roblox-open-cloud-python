@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class O18EligibilityTag(str, Enum):
+class O18EligibilityTag(StrEnum):
     NONE = "None"
     O18ELIGIBLE = "O18Eligible"
     O18ELIGIBLEANDPLUS = "O18EligibleAndPlus"

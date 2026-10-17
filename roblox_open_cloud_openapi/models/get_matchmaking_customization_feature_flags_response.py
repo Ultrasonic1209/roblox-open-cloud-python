@@ -40,9 +40,9 @@ class GetMatchmakingCustomizationFeatureFlagsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.matchmaking_customization_feature_flags import MatchmakingCustomizationFeatureFlags
+        from ..models.matchmaking_customization_feature_flags import MatchmakingCustomizationFeatureFlags  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _feature_flags = d.pop("featureFlags", UNSET)
         feature_flags: MatchmakingCustomizationFeatureFlags | Unset
         if isinstance(_feature_flags, Unset):

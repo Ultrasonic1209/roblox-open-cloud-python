@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class TransactionRecordsApiCurrencyType(str, Enum):
+class TransactionRecordsApiCurrencyType(StrEnum):
     ROBUX = "Robux"
     TICKETS = "Tickets"
 

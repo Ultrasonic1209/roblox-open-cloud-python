@@ -50,10 +50,10 @@ class RobloxPrivateMessagesApiModelsGetAnnouncementsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_private_messages_api_models_announcements_details_response import (
-            RobloxPrivateMessagesApiModelsAnnouncementsDetailsResponse,
+            RobloxPrivateMessagesApiModelsAnnouncementsDetailsResponse,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _collection = d.pop("collection", UNSET)
         collection: list[RobloxPrivateMessagesApiModelsAnnouncementsDetailsResponse] | Unset = UNSET
         if _collection is not UNSET:

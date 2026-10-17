@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UsersOutfitsFormat(str, Enum):
+class GetV1UsersOutfitsFormat(StrEnum):
     PNG = "Png"
     WEBP = "Webp"
 

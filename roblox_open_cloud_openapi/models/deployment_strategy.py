@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class DeploymentStrategy(str, Enum):
+class DeploymentStrategy(StrEnum):
     GRADUAL_ROLLOUT = "GradualRollout"
     IMMEDIATE = "Immediate"
     INVALID = "Invalid"

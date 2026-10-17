@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class UserNotificationPayloadType(str, Enum):
+class UserNotificationPayloadType(StrEnum):
     MOMENT = "MOMENT"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
 

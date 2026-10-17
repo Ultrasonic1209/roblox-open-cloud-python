@@ -74,9 +74,9 @@ class SecretPaginatedList:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.secret import Secret
+        from ..models.secret import Secret  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_secrets(data: object) -> list[Secret] | None | Unset:
             if data is None:

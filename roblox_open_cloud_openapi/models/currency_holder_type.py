@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CurrencyHolderType(str, Enum):
+class CurrencyHolderType(StrEnum):
     GROUP = "Group"
     UNDEFINED = "Undefined"
     USER = "User"

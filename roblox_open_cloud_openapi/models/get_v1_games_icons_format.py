@@ -1,7 +1,9 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1GamesIconsFormat(str, Enum):
+class GetV1GamesIconsFormat(StrEnum):
+    ICNS = "Icns"
+    ICO = "Ico"
     JPEG = "Jpeg"
     PNG = "Png"
     WEBP = "Webp"

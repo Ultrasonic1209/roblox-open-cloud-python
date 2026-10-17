@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxLocalizationTablesApiGetTableResponseOwnerType(str, Enum):
+class RobloxLocalizationTablesApiGetTableResponseOwnerType(StrEnum):
     GROUP = "Group"
     USER = "User"
 

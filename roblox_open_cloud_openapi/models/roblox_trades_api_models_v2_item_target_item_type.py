@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxTradesApiModelsV2ItemTargetItemType(str, Enum):
+class RobloxTradesApiModelsV2ItemTargetItemType(StrEnum):
     ASSET = "Asset"
     BUNDLE = "Bundle"
     UNKNOWN = "Unknown"

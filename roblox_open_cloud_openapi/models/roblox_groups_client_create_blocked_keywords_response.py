@@ -53,9 +53,9 @@ class RobloxGroupsClientCreateBlockedKeywordsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_client_blocked_keyword_model import RobloxGroupsClientBlockedKeywordModel
+        from ..models.roblox_groups_client_blocked_keyword_model import RobloxGroupsClientBlockedKeywordModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _created_keywords = d.pop("createdKeywords", UNSET)
         created_keywords: list[RobloxGroupsClientBlockedKeywordModel] | Unset = UNSET
         if _created_keywords is not UNSET:

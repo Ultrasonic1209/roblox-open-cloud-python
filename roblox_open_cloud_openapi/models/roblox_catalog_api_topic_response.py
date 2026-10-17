@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -22,10 +22,12 @@ class RobloxCatalogApiTopicResponse:
     """
     Attributes:
         topics (list[RobloxCatalogApiTopicModel] | Unset):
+        queries (list[str] | Unset):
         error (RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error | Unset):
     """
 
     topics: list[RobloxCatalogApiTopicModel] | Unset = UNSET
+    queries: list[str] | Unset = UNSET
     error: RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,6 +38,10 @@ class RobloxCatalogApiTopicResponse:
                 topics_item = topics_item_data.to_dict()
                 topics.append(topics_item)
 
+        queries: list[str] | Unset = UNSET
+        if not isinstance(self.queries, Unset):
+            queries = self.queries
+
         error: dict[str, Any] | Unset = UNSET
         if not isinstance(self.error, Unset):
             error = self.error.to_dict()
@@ -45,6 +51,8 @@ class RobloxCatalogApiTopicResponse:
         field_dict.update({})
         if topics is not UNSET:
             field_dict["topics"] = topics
+        if queries is not UNSET:
+            field_dict["queries"] = queries
         if error is not UNSET:
             field_dict["error"] = error
 
@@ -52,12 +60,12 @@ class RobloxCatalogApiTopicResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_catalog_api_topic_model import RobloxCatalogApiTopicModel
+        from ..models.roblox_catalog_api_topic_model import RobloxCatalogApiTopicModel  # noqa: PLC0415
         from ..models.roblox_marketplace_topic_discovery_topic_discovery_service_v1_beta_1_error import (
-            RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error,
+            RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _topics = d.pop("topics", UNSET)
         topics: list[RobloxCatalogApiTopicModel] | Unset = UNSET
         if _topics is not UNSET:
@@ -66,6 +74,8 @@ class RobloxCatalogApiTopicResponse:
                 topics_item = RobloxCatalogApiTopicModel.from_dict(topics_item_data)
 
                 topics.append(topics_item)
+
+        queries = cast(list[str], d.pop("queries", UNSET))
 
         _error = d.pop("error", UNSET)
         error: RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error | Unset
@@ -76,6 +86,7 @@ class RobloxCatalogApiTopicResponse:
 
         roblox_catalog_api_topic_response = cls(
             topics=topics,
+            queries=queries,
             error=error,
         )
 

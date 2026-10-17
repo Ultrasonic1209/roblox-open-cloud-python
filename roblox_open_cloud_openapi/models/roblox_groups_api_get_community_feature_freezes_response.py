@@ -44,10 +44,10 @@ class RobloxGroupsApiGetCommunityFeatureFreezesResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_groups_api_community_feature_freeze_status import (
-            RobloxGroupsApiCommunityFeatureFreezeStatus,
+            RobloxGroupsApiCommunityFeatureFreezeStatus,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _features = d.pop("features", UNSET)
         features: list[RobloxGroupsApiCommunityFeatureFreezeStatus] | Unset = UNSET
         if _features is not UNSET:

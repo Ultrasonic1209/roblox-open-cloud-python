@@ -47,9 +47,9 @@ class ForecastUpdateResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.place_summary_for_game_update import PlaceSummaryForGameUpdate
+        from ..models.place_summary_for_game_update import PlaceSummaryForGameUpdate  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_place_summaries(data: object) -> list[PlaceSummaryForGameUpdate] | None | Unset:
             if data is None:

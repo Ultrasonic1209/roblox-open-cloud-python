@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ModelInstanceType(str, Enum):
+class ModelInstanceType(StrEnum):
     ANIMATION = "Animation"
     AUDIO = "Audio"
     DECAL = "Decal"

@@ -11,8 +11,6 @@ T = TypeVar("T", bound="GetV2SponsoredCampaignsMultiGetCanUserSponsorResponse200
 
 @_attrs_define
 class GetV2SponsoredCampaignsMultiGetCanUserSponsorResponse200:
-    """ """
-
     additional_properties: dict[str, bool] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -24,7 +22,7 @@ class GetV2SponsoredCampaignsMultiGetCanUserSponsorResponse200:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         get_v2_sponsored_campaigns_multi_get_can_user_sponsor_response_200 = cls()
 
         get_v2_sponsored_campaigns_multi_get_can_user_sponsor_response_200.additional_properties = d

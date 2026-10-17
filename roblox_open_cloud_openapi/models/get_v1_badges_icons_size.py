@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1BadgesIconsSize(str, Enum):
+class GetV1BadgesIconsSize(StrEnum):
     VALUE_0 = "150x150"
 
     def __str__(self) -> str:

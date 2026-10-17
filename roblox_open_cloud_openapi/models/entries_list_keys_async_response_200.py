@@ -56,7 +56,7 @@ class EntriesListKeysAsyncResponse200:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         keys = cast(list[str], d.pop("keys", UNSET))
 
         def _parse_next_page_cursor(data: object) -> None | str | Unset:

@@ -1,13 +1,33 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.roblox_api_develop_models_place_model_v2 import RobloxApiDevelopModelsPlaceModelV2
 from ...types import Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+from ...models.roblox_api_develop_models_place_model_v2 import RobloxApiDevelopModelsPlaceModelV2
 
 
 def _get_kwargs(
@@ -19,17 +39,13 @@ def _get_kwargs(
         "url": "https://develop.roblox.com/v2/places/{place_id}".format(
             place_id=quote(str(place_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v2_places_placeId",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxApiDevelopModelsPlaceModelV2 | None:
     if response.status_code == 200:
         response_200 = RobloxApiDevelopModelsPlaceModelV2.from_dict(response.json())
@@ -55,7 +71,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxApiDevelopModelsPlaceModelV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -87,7 +103,7 @@ def sync_detailed(
         place_id=place_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -140,7 +156,7 @@ async def asyncio_detailed(
         place_id=place_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -23,7 +23,7 @@ class BulkDeleteSavesRequestType0:
     targets: list[DeleteSaveRequestType0 | None] | None
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.delete_save_request_type_0 import DeleteSaveRequestType0
+        from ..models.delete_save_request_type_0 import DeleteSaveRequestType0  # noqa: PLC0415
 
         targets: list[dict[str, Any] | None] | None
         if isinstance(self.targets, list):
@@ -51,9 +51,9 @@ class BulkDeleteSavesRequestType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.delete_save_request_type_0 import DeleteSaveRequestType0
+        from ..models.delete_save_request_type_0 import DeleteSaveRequestType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_targets(data: object) -> list[DeleteSaveRequestType0 | None] | None:
             if data is None:

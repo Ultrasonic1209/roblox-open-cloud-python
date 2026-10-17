@@ -1,13 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'universe.place:write'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe.place:write']}, 'resource': {'$ref': '#/components/schemas/Place', 'name': 'Place'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}}
+"""
+
+
 from ...models.place import Place
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -32,23 +53,6 @@ def _get_kwargs(
             place_id=quote(str(place_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "universe.place:write"}],
-                "x-roblox-docs": {
-                    "category": "Universes and places",
-                    "methodProperties": {"scopes": ["universe.place:write"]},
-                    "resource": {"$ref": "#/components/schemas/Place", "name": "Place"},
-                },
-                "x-roblox-stability": "STABLE",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
-            },
-            "openapi-id": "Cloud_UpdatePlace",
-        },
     }
 
     _kwargs["json"] = body.to_dict()
@@ -59,7 +63,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Place | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Place | None:
     if response.status_code == 200:
         response_200 = Place.from_dict(response.json())
 
@@ -71,7 +75,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Place]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Place]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -90,7 +94,9 @@ def sync_detailed(
 ) -> Response[Place]:
     """Update Place
 
-     Updates the specified place.
+     Updates the specified place. To avoid overwriting changes, this endpoint
+    responds with an HTTP 409 Conflict error if the place is open in an
+    active Team Create session.
 
     Args:
         universe_id (str):
@@ -113,7 +119,7 @@ def sync_detailed(
         update_mask=update_mask,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -130,7 +136,9 @@ def sync(
 ) -> Place | None:
     """Update Place
 
-     Updates the specified place.
+     Updates the specified place. To avoid overwriting changes, this endpoint
+    responds with an HTTP 409 Conflict error if the place is open in an
+    active Team Create session.
 
     Args:
         universe_id (str):
@@ -165,7 +173,9 @@ async def asyncio_detailed(
 ) -> Response[Place]:
     """Update Place
 
-     Updates the specified place.
+     Updates the specified place. To avoid overwriting changes, this endpoint
+    responds with an HTTP 409 Conflict error if the place is open in an
+    active Team Create session.
 
     Args:
         universe_id (str):
@@ -188,7 +198,7 @@ async def asyncio_detailed(
         update_mask=update_mask,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -203,7 +213,9 @@ async def asyncio(
 ) -> Place | None:
     """Update Place
 
-     Updates the specified place.
+     Updates the specified place. To avoid overwriting changes, this endpoint
+    responds with an HTTP 409 Conflict error if the place is open in an
+    active Team Create session.
 
     Args:
         universe_id (str):

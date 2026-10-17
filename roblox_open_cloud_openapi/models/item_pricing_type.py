@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ItemPricingType(str, Enum):
+class ItemPricingType(StrEnum):
     ALL = "All"
     PAIDANDLIMITED = "PaidAndLimited"
     UNDEFINED = "Undefined"

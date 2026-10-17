@@ -1,9 +1,11 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxTradesApiModelsV2CanTradeResponseTradeEligibility(str, Enum):
+class RobloxTradesApiModelsV2CanTradeResponseTradeEligibility(StrEnum):
     ELIGIBLE = "Eligible"
+    INELIGIBLEAGECHECKREQUIRED = "IneligibleAgeCheckRequired"
     INELIGIBLECANNOTTRADEWITHROBLOX = "IneligibleCannotTradeWithRoblox"
+    INELIGIBLEFREETRADESLIMITREACHED = "IneligibleFreeTradesLimitReached"
     INELIGIBLELEGALORREGULATORYRESTRICTIONS = "IneligibleLegalOrRegulatoryRestrictions"
     INELIGIBLEMISSINGPREMIUMMEMBERSHIP = "IneligibleMissingPremiumMembership"
     INELIGIBLETRADESYSTEMDISABLED = "IneligibleTradeSystemDisabled"

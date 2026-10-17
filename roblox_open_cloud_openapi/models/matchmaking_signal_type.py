@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MatchmakingSignalType(str, Enum):
+class MatchmakingSignalType(StrEnum):
     AGE = "Age"
     DEVICETYPE = "DeviceType"
     INVALID = "Invalid"

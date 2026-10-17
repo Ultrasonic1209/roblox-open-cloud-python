@@ -66,9 +66,9 @@ class MyPrivateServersResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.my_private_servers_data import MyPrivateServersData
+        from ..models.my_private_servers_data import MyPrivateServersData  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_next_page_cursor(data: object) -> None | str | Unset:
             if data is None:

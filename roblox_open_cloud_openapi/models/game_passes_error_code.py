@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GamePassesErrorCode(str, Enum):
+class GamePassesErrorCode(StrEnum):
     ACTIVEINPO = "ActiveInPO"
     ASSETCREATIONFAILURE = "AssetCreationFailure"
     ASSETNOTFOUND = "AssetNotFound"

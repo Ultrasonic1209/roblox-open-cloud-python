@@ -48,9 +48,9 @@ class RobloxApiAvatarModelsAssetWearModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_api_avatar_models_asset_meta_model_v1 import RobloxApiAvatarModelsAssetMetaModelV1
+        from ..models.roblox_api_avatar_models_asset_meta_model_v1 import RobloxApiAvatarModelsAssetMetaModelV1  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         _meta = d.pop("meta", UNSET)

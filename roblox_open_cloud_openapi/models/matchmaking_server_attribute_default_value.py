@@ -61,10 +61,10 @@ class MatchmakingServerAttributeDefaultValue:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.matchmaking_attribute_reference import MatchmakingAttributeReference
-        from ..models.matchmaking_attribute_value import MatchmakingAttributeValue
+        from ..models.matchmaking_attribute_reference import MatchmakingAttributeReference  # noqa: PLC0415
+        from ..models.matchmaking_attribute_value import MatchmakingAttributeValue  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _source_case = d.pop("sourceCase", UNSET)
         source_case: MatchmakingServerAttributeDefaultValueSourceCase | Unset
         if isinstance(_source_case, Unset):

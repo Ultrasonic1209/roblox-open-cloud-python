@@ -41,9 +41,9 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxWebResponsesUsersSkinnyUserResp
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_web_responses_users_skinny_user_response import RobloxWebResponsesUsersSkinnyUserResponse
+        from ..models.roblox_web_responses_users_skinny_user_response import RobloxWebResponsesUsersSkinnyUserResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxWebResponsesUsersSkinnyUserResponse] | Unset = UNSET
         if _data is not UNSET:

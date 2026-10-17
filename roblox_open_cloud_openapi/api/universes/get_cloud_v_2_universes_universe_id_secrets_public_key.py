@@ -1,14 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response
+
+"""
+{'x-roblox-scopes': [{'name': 'universe.secret:read', 'description': 'Required'}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 120}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 120}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.secret import Secret
 from ...models.secrets_store_service_problem_details import SecretsStoreServiceProblemDetails
-from ...types import Response
 
 
 def _get_kwargs(
@@ -20,25 +40,13 @@ def _get_kwargs(
         "url": "/cloud/v2/universes/{universe_id}/secrets/public-key".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-scopes": [{"name": "universe.secret:read", "description": "Required"}],
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 120},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 120},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "get_cloud_v2_universes_universeId_secrets_public-key",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Secret | SecretsStoreServiceProblemDetails | None:
     if response.status_code == 200:
         response_200 = Secret.from_dict(response.json())
@@ -62,7 +70,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Secret | SecretsStoreServiceProblemDetails]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -77,7 +85,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Secret | SecretsStoreServiceProblemDetails]:
-    r"""Get Public Key
+    """Get Public Key
 
      Retrieves the public key for a universe. You need this key to encrypt secret content
     before sending it to Roblox.
@@ -86,7 +94,7 @@ def sync_detailed(
     group owner or
     authorized members can retrieve the public key.
 
-    The secret id field is static and always returns \"public-key\".
+    The secret id field is static and always returns "public-key".
 
     The returned public key in the secret field is universe-specific and derived from a master key using
     the universe ID.
@@ -110,7 +118,7 @@ def sync_detailed(
         universe_id=universe_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -122,7 +130,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Secret | SecretsStoreServiceProblemDetails | None:
-    r"""Get Public Key
+    """Get Public Key
 
      Retrieves the public key for a universe. You need this key to encrypt secret content
     before sending it to Roblox.
@@ -131,7 +139,7 @@ def sync(
     group owner or
     authorized members can retrieve the public key.
 
-    The secret id field is static and always returns \"public-key\".
+    The secret id field is static and always returns "public-key".
 
     The returned public key in the secret field is universe-specific and derived from a master key using
     the universe ID.
@@ -162,7 +170,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Secret | SecretsStoreServiceProblemDetails]:
-    r"""Get Public Key
+    """Get Public Key
 
      Retrieves the public key for a universe. You need this key to encrypt secret content
     before sending it to Roblox.
@@ -171,7 +179,7 @@ async def asyncio_detailed(
     group owner or
     authorized members can retrieve the public key.
 
-    The secret id field is static and always returns \"public-key\".
+    The secret id field is static and always returns "public-key".
 
     The returned public key in the secret field is universe-specific and derived from a master key using
     the universe ID.
@@ -195,7 +203,7 @@ async def asyncio_detailed(
         universe_id=universe_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -205,7 +213,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Secret | SecretsStoreServiceProblemDetails | None:
-    r"""Get Public Key
+    """Get Public Key
 
      Retrieves the public key for a universe. You need this key to encrypt secret content
     before sending it to Roblox.
@@ -214,7 +222,7 @@ async def asyncio(
     group owner or
     authorized members can retrieve the public key.
 
-    The secret id field is static and always returns \"public-key\".
+    The secret id field is static and always returns "public-key".
 
     The returned public key in the secret field is universe-specific and derived from a master key using
     the universe ID.

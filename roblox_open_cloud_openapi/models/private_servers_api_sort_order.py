@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class PrivateServersApiSortOrder(str, Enum):
+class PrivateServersApiSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

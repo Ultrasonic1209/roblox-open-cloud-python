@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class TransactionRecordsApiSortOrder(str, Enum):
+class TransactionRecordsApiSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

@@ -76,13 +76,13 @@ class RobloxLocalizationTablesApiGetTableEntriesTranslationHistoryResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_localization_tables_api_entry_translation_history_paged import (
-            RobloxLocalizationTablesApiEntryTranslationHistoryPaged,
+            RobloxLocalizationTablesApiEntryTranslationHistoryPaged,  # noqa: PLC0415
         )
         from ..models.roblox_localization_tables_api_failed_entry_translation_history_paged import (
-            RobloxLocalizationTablesApiFailedEntryTranslationHistoryPaged,
+            RobloxLocalizationTablesApiFailedEntryTranslationHistoryPaged,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _table_id = d.pop("tableId", UNSET)
         table_id: UUID | Unset
         if isinstance(_table_id, Unset):

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UsersAvatarSize(str, Enum):
+class GetV1UsersAvatarSize(StrEnum):
     VALUE_0 = "30x30"
     VALUE_1 = "48x48"
     VALUE_10 = "250x250"

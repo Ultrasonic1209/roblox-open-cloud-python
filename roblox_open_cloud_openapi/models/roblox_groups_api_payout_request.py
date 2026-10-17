@@ -71,12 +71,12 @@ class RobloxGroupsApiPayoutRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_payout_recipient_request import RobloxGroupsApiPayoutRecipientRequest
+        from ..models.roblox_groups_api_payout_recipient_request import RobloxGroupsApiPayoutRecipientRequest  # noqa: PLC0415
         from ..models.roblox_groups_api_watermark_contribution_request import (
-            RobloxGroupsApiWatermarkContributionRequest,
+            RobloxGroupsApiWatermarkContributionRequest,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _payout_type = d.pop("PayoutType", UNSET)
         payout_type: RobloxGroupsApiPayoutRequestPayoutType | Unset
         if isinstance(_payout_type, Unset):

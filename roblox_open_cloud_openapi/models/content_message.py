@@ -76,9 +76,9 @@ class ContentMessage:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.message_reaction import MessageReaction
+        from ..models.message_reaction import MessageReaction  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _create_time = d.pop("createTime", UNSET)
         create_time: datetime.datetime | Unset
         if isinstance(_create_time, Unset):

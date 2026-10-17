@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxLocalizationTablesApiTranslatorAgentType(str, Enum):
+class RobloxLocalizationTablesApiTranslatorAgentType(StrEnum):
     AUTOMATION = "Automation"
     USER = "User"
 

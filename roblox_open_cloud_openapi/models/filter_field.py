@@ -1,9 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class FilterField(str, Enum):
+class FilterField(StrEnum):
     ALL = "ALL"
     ENGINEVERSION = "EngineVersion"
+    PLACEVERSION = "PlaceVersion"
 
     def __str__(self) -> str:
         return str(self.value)

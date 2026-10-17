@@ -41,9 +41,9 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxCatalogApiBundleDetailsModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_catalog_api_bundle_details_model import RobloxCatalogApiBundleDetailsModel
+        from ..models.roblox_catalog_api_bundle_details_model import RobloxCatalogApiBundleDetailsModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxCatalogApiBundleDetailsModel] | Unset = UNSET
         if _data is not UNSET:

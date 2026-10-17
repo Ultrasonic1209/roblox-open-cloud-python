@@ -59,10 +59,10 @@ class RobloxLocalizationTablesApiAutoScrapeEntry:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_localization_tables_api_auto_scrape_entry_metadata import (
-            RobloxLocalizationTablesApiAutoScrapeEntryMetadata,
+            RobloxLocalizationTablesApiAutoScrapeEntryMetadata,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         context = d.pop("context", UNSET)
 
         source = d.pop("source", UNSET)

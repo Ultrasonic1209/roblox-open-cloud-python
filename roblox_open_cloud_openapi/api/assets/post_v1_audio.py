@@ -1,13 +1,33 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.roblox_publish_api_publish_audio_response import RobloxPublishApiPublishAudioResponse
 from ...models.roblox_publish_api_upload_audio_request import RobloxPublishApiUploadAudioRequest
-from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -19,10 +39,6 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://publish.roblox.com/v1/audio",
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "post_v1_audio",
-        },
     }
 
     if isinstance(body, RobloxPublishApiUploadAudioRequest):
@@ -39,7 +55,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxPublishApiPublishAudioResponse | None:
     if response.status_code == 200:
         response_200 = RobloxPublishApiPublishAudioResponse.from_dict(response.json())
@@ -69,7 +85,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxPublishApiPublishAudioResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -102,7 +118,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -157,7 +173,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

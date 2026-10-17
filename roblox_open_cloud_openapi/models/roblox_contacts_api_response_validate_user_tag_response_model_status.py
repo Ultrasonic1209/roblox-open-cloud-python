@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxContactsApiResponseValidateUserTagResponseModelStatus(str, Enum):
+class RobloxContactsApiResponseValidateUserTagResponseModelStatus(StrEnum):
     MODERATED = "Moderated"
     SUCCESS = "Success"
     TOOLONG = "TooLong"

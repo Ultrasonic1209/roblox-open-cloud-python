@@ -39,7 +39,7 @@ class ObjectMeshSummaryType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         triangles = d.pop("triangles", UNSET)
 
         vertices = d.pop("vertices", UNSET)

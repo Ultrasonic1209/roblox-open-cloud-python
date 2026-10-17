@@ -1,15 +1,36 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-developer-product:manage'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.roblox_web_web_api_models_api_array_response_roblox_game_internationalization_api_get_developer_product_icon_response import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiGetDeveloperProductIconResponse,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -33,24 +54,13 @@ def _get_kwargs(
             developer_product_id=quote(str(developer_product_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "legacy-developer-product:manage"}],
-            },
-            "openapi-id": "get_legacy-game-internationalization_v1_developer-products_developerProductId_icons",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiGetDeveloperProductIconResponse | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiGetDeveloperProductIconResponse.from_dict(
@@ -82,7 +92,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[
     Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiGetDeveloperProductIconResponse
 ]:
@@ -124,7 +134,7 @@ def sync_detailed(
         height=height,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -191,7 +201,7 @@ async def asyncio_detailed(
         height=height,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

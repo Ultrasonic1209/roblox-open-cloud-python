@@ -15,8 +15,6 @@ T = TypeVar("T", bound="GameUpdateStatusPlaceUpdateStatusesType0")
 
 @_attrs_define
 class GameUpdateStatusPlaceUpdateStatusesType0:
-    """ """
-
     additional_properties: dict[str, PlaceUpdateStatus] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,9 +27,9 @@ class GameUpdateStatusPlaceUpdateStatusesType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.place_update_status import PlaceUpdateStatus
+        from ..models.place_update_status import PlaceUpdateStatus  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         game_update_status_place_update_statuses_type_0 = cls()
 
         additional_properties = {}

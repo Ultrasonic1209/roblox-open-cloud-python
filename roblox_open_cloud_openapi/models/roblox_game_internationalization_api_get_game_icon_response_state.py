@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiGetGameIconResponseState(str, Enum):
+class RobloxGameInternationalizationApiGetGameIconResponseState(StrEnum):
     APPROVED = "Approved"
     ERROR = "Error"
     PENDINGREVIEW = "PendingReview"

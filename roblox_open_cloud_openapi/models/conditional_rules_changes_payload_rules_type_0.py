@@ -15,8 +15,6 @@ T = TypeVar("T", bound="ConditionalRulesChangesPayloadRulesType0")
 
 @_attrs_define
 class ConditionalRulesChangesPayloadRulesType0:
-    """ """
-
     additional_properties: dict[str, RuleDeltaPayload] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,9 +27,9 @@ class ConditionalRulesChangesPayloadRulesType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.rule_delta_payload import RuleDeltaPayload
+        from ..models.rule_delta_payload import RuleDeltaPayload  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         conditional_rules_changes_payload_rules_type_0 = cls()
 
         additional_properties = {}

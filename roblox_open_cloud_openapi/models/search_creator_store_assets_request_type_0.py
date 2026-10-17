@@ -81,8 +81,8 @@ class SearchCreatorStoreAssetsRequestType0:
     model_search_filters: ModelSearchFiltersType0 | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.audio_search_filters_type_0 import AudioSearchFiltersType0
-        from ..models.model_search_filters_type_0 import ModelSearchFiltersType0
+        from ..models.audio_search_filters_type_0 import AudioSearchFiltersType0  # noqa: PLC0415
+        from ..models.model_search_filters_type_0 import ModelSearchFiltersType0  # noqa: PLC0415
 
         search_category_type: None | str | Unset
         if isinstance(self.search_category_type, Unset):
@@ -250,10 +250,10 @@ class SearchCreatorStoreAssetsRequestType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.audio_search_filters_type_0 import AudioSearchFiltersType0
-        from ..models.model_search_filters_type_0 import ModelSearchFiltersType0
+        from ..models.audio_search_filters_type_0 import AudioSearchFiltersType0  # noqa: PLC0415
+        from ..models.model_search_filters_type_0 import ModelSearchFiltersType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_search_category_type(data: object) -> None | SearchCategoryType | Unset:
             if data is None:

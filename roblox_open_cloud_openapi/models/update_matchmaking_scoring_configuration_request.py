@@ -42,10 +42,10 @@ class UpdateMatchmakingScoringConfigurationRequest:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_matchmaking_scoring_configuration_request_custom_signal_weights_type_0 import (
-            UpdateMatchmakingScoringConfigurationRequestCustomSignalWeightsType0,
+            UpdateMatchmakingScoringConfigurationRequestCustomSignalWeightsType0,  # noqa: PLC0415
         )
         from ..models.update_matchmaking_scoring_configuration_request_matchmaking_signal_weights_type_0 import (
-            UpdateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,
+            UpdateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,  # noqa: PLC0415
         )
 
         scoring_configuration_id: None | str | Unset
@@ -97,13 +97,13 @@ class UpdateMatchmakingScoringConfigurationRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.update_matchmaking_scoring_configuration_request_custom_signal_weights_type_0 import (
-            UpdateMatchmakingScoringConfigurationRequestCustomSignalWeightsType0,
+            UpdateMatchmakingScoringConfigurationRequestCustomSignalWeightsType0,  # noqa: PLC0415
         )
         from ..models.update_matchmaking_scoring_configuration_request_matchmaking_signal_weights_type_0 import (
-            UpdateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,
+            UpdateMatchmakingScoringConfigurationRequestMatchmakingSignalWeightsType0,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_scoring_configuration_id(data: object) -> None | str | Unset:
             if data is None:

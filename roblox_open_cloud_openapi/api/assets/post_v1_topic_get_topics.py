@@ -1,13 +1,33 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.roblox_catalog_api_topic_request_model import RobloxCatalogApiTopicRequestModel
 from ...models.roblox_catalog_api_topic_response import RobloxCatalogApiTopicResponse
-from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -19,10 +39,6 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "https://catalog.roblox.com/v1/topic/get-topics",
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "post_v1_topic_get-topics",
-        },
     }
 
     if isinstance(body, RobloxCatalogApiTopicRequestModel):
@@ -39,7 +55,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxCatalogApiTopicResponse | None:
     if response.status_code == 200:
         response_200 = RobloxCatalogApiTopicResponse.from_dict(response.json())
@@ -57,7 +73,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxCatalogApiTopicResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -72,7 +88,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RobloxCatalogApiTopicRequestModel | RobloxCatalogApiTopicRequestModel | Unset = UNSET,
 ) -> Response[Any | RobloxCatalogApiTopicResponse]:
-    """Get topic given TopicRequestModel.
+    """Gets topics for a populated request, or trending queries when the request has no topic inputs.
+    Topics and queries are mutually exclusive in the response.
 
     Args:
         body (RobloxCatalogApiTopicRequestModel):
@@ -90,7 +107,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -102,7 +119,8 @@ def sync(
     client: AuthenticatedClient,
     body: RobloxCatalogApiTopicRequestModel | RobloxCatalogApiTopicRequestModel | Unset = UNSET,
 ) -> Any | RobloxCatalogApiTopicResponse | None:
-    """Get topic given TopicRequestModel.
+    """Gets topics for a populated request, or trending queries when the request has no topic inputs.
+    Topics and queries are mutually exclusive in the response.
 
     Args:
         body (RobloxCatalogApiTopicRequestModel):
@@ -127,7 +145,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RobloxCatalogApiTopicRequestModel | RobloxCatalogApiTopicRequestModel | Unset = UNSET,
 ) -> Response[Any | RobloxCatalogApiTopicResponse]:
-    """Get topic given TopicRequestModel.
+    """Gets topics for a populated request, or trending queries when the request has no topic inputs.
+    Topics and queries are mutually exclusive in the response.
 
     Args:
         body (RobloxCatalogApiTopicRequestModel):
@@ -145,7 +164,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -155,7 +174,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RobloxCatalogApiTopicRequestModel | RobloxCatalogApiTopicRequestModel | Unset = UNSET,
 ) -> Any | RobloxCatalogApiTopicResponse | None:
-    """Get topic given TopicRequestModel.
+    """Gets topics for a populated request, or trending queries when the request has no topic inputs.
+    Topics and queries are mutually exclusive in the response.
 
     Args:
         body (RobloxCatalogApiTopicRequestModel):

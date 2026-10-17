@@ -65,13 +65,13 @@ class RobloxLocalizationTablesApiPatchEntry:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_entry_identifier import RobloxLocalizationTablesApiEntryIdentifier
-        from ..models.roblox_localization_tables_api_entry_metadata import RobloxLocalizationTablesApiEntryMetadata
+        from ..models.roblox_localization_tables_api_entry_identifier import RobloxLocalizationTablesApiEntryIdentifier  # noqa: PLC0415
+        from ..models.roblox_localization_tables_api_entry_metadata import RobloxLocalizationTablesApiEntryMetadata  # noqa: PLC0415
         from ..models.roblox_localization_tables_api_patch_translation import (
-            RobloxLocalizationTablesApiPatchTranslation,
+            RobloxLocalizationTablesApiPatchTranslation,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _identifier = d.pop("identifier", UNSET)
         identifier: RobloxLocalizationTablesApiEntryIdentifier | Unset
         if isinstance(_identifier, Unset):

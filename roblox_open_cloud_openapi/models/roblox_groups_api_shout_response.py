@@ -62,9 +62,9 @@ class RobloxGroupsApiShoutResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel
+        from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         body = d.pop("body", UNSET)
 
         _poster = d.pop("poster", UNSET)

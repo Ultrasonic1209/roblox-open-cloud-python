@@ -27,12 +27,12 @@ class RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponse:
     """
     Attributes:
         status (RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponseStatus | Unset): The status of
-            the response for the requested game. ['Success' = 1, 'LanguageOrLocaleNotSupportedForGame' = 2]
+            the response for the requested game.
         categories (list[RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse] | Unset): Categories of
             translation counts.
         name (str | Unset):
         language_code_type (RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponseLanguageCodeType |
-            Unset): An enum to distinguish between locale codes and language codes. ['Language' = 0, 'Locale' = 1]
+            Unset): An enum to distinguish between locale codes and language codes.
         language_code (str | Unset):
     """
 
@@ -83,10 +83,10 @@ class RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_translation_count_category_info_response import (
-            RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse,
+            RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _status = d.pop("status", UNSET)
         status: RobloxGameInternationalizationApiTranslationCountLanguageOrLocaleResponseStatus | Unset
         if isinstance(_status, Unset):

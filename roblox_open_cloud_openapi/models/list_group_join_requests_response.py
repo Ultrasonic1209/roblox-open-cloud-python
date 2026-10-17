@@ -51,9 +51,9 @@ class ListGroupJoinRequestsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.group_join_request import GroupJoinRequest
+        from ..models.group_join_request import GroupJoinRequest  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _group_join_requests = d.pop("groupJoinRequests", UNSET)
         group_join_requests: list[GroupJoinRequest] | Unset = UNSET
         if _group_join_requests is not UNSET:

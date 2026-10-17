@@ -120,10 +120,10 @@ class UserRestrictionLog:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.user_restriction_log_moderator import UserRestrictionLogModerator
-        from ..models.user_restriction_log_restriction_type import UserRestrictionLogRestrictionType
+        from ..models.user_restriction_log_moderator import UserRestrictionLogModerator  # noqa: PLC0415
+        from ..models.user_restriction_log_restriction_type import UserRestrictionLogRestrictionType  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         user = d.pop("user", UNSET)
 
         place = d.pop("place", UNSET)

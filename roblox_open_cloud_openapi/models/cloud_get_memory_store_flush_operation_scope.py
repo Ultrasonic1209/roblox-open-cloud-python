@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CloudGetMemoryStoreFlushOperationScope(str, Enum):
+class CloudGetMemoryStoreFlushOperationScope(StrEnum):
     LIVE = "LIVE"
     TEST = "TEST"
 

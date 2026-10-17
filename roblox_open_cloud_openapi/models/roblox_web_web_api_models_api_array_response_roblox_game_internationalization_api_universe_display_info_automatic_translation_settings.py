@@ -47,10 +47,10 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiUniv
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_universe_display_info_automatic_translation_settings import (
-            RobloxGameInternationalizationApiUniverseDisplayInfoAutomaticTranslationSettings,
+            RobloxGameInternationalizationApiUniverseDisplayInfoAutomaticTranslationSettings,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxGameInternationalizationApiUniverseDisplayInfoAutomaticTranslationSettings] | Unset = UNSET
         if _data is not UNSET:

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ErrorCode(str, Enum):
+class ErrorCode(StrEnum):
     BADREQUEST = "BadRequest"
     BLOCKED = "Blocked"
     CONFLICT = "Conflict"

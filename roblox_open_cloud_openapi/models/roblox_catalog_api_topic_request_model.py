@@ -73,10 +73,10 @@ class RobloxCatalogApiTopicRequestModel:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_marketplace_topic_discovery_topic_discovery_service_v1_beta_1_avatar_item import (
-            RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItem,
+            RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItem,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _items = d.pop("items", UNSET)
         items: list[RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItem] | Unset = UNSET
         if _items is not UNSET:

@@ -16,11 +16,10 @@ T = TypeVar("T", bound="ConditionalRuleDefinition")
 
 @_attrs_define
 class ConditionalRuleDefinition:
-    """JSON shape of an RPN conditional rule in public API requests, aligned with
-    `roblox.creatorexperienceconfig.conditionrules.v1.RpnRule`.
+    """JSON shape of an RPN conditional rule in public API requests.
 
-        Attributes:
-            tokens (list[RpnTokenDto] | None | Unset): Postfix RPN token sequence.
+    Attributes:
+        tokens (list[RpnTokenDto] | None | Unset): Postfix RPN token sequence.
     """
 
     tokens: list[RpnTokenDto] | None | Unset = UNSET
@@ -48,9 +47,9 @@ class ConditionalRuleDefinition:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.rpn_token_dto import RpnTokenDto
+        from ..models.rpn_token_dto import RpnTokenDto  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_tokens(data: object) -> list[RpnTokenDto] | None | Unset:
             if data is None:

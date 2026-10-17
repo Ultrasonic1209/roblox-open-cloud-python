@@ -1,16 +1,25 @@
 import ssl
-import sys
 from collections.abc import Callable, Coroutine
 from http import HTTPStatus
-from typing import Any, Literal, TypedDict, cast
+from typing import TYPE_CHECKING, Any, Literal, TypedDict, cast
 
-sys.modules["httpx"] = sys.modules["httpx2"]
-for name, module in list(sys.modules.items()):
-    if name.startswith("httpx2.") and module is not None:
-        sys.modules.setdefault("httpx." + name.removeprefix("httpx2."), module)
+if TYPE_CHECKING:
+    import httpx2 as httpx
 
+    httpx.alias_httpx()  # this will probably come back to bite me in the rear
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
 
-import httpx2
 from attrs import define, evolve, field
 from httpx_limiter import AbstractRateLimiterRepository, AsyncMultiRateLimitedTransport, Rate
 from httpx_limiter.pyrate import PyrateAsyncLimiter
@@ -25,13 +34,13 @@ class RobloxRateLimit(TypedDict):
 class AsyncRobloxOpenAPIDefinedRateLimiterRepository(AbstractRateLimiterRepository):
     """Apply different rate limits based on the endpoint being requested, based off endpoint extension "x-roblox-rate-limits"."""
 
-    def get_identifier(self, request: httpx2.Request) -> str:
+    def get_identifier(self, request: httpx.Request) -> str:
         """Return the OpenAPI Endpoint ID as the identifier for rate limiting."""
         identifier = cast(str | None, request.extensions.get("openapi-id"))
 
         return identifier or (request.url.host + request.url.path + ":" + request.method)
 
-    def create_rate(self, request: httpx2.Request) -> Rate:
+    def create_rate(self, request: httpx.Request) -> Rate:
         extensions = cast(dict[str, Any] | None, request.extensions.get("openapi-extensions"))
 
         default_ret = Rate.create(magnitude=1000)
@@ -53,14 +62,14 @@ class AsyncRobloxOpenAPIDefinedRateLimiterRepository(AbstractRateLimiterReposito
 
         return Rate.create(magnitude=magnitude, duration=duration)
 
-    def create(self, request: httpx2.Request) -> PyrateAsyncLimiter:
+    def create(self, request: httpx.Request) -> PyrateAsyncLimiter:
         """Create a rate limiter for the endpoint."""
         rate = self.create_rate(request)
 
         return PyrateAsyncLimiter.create(rate)
 
 
-class CSRFHandlingTransport(httpx2.BaseTransport, httpx2.AsyncBaseTransport):
+class CSRFHandlingTransport(httpx.BaseTransport, httpx.AsyncBaseTransport):
     """
     A transport that handles Roblox's CSRF header flow by automatically retrying requests
     if they are responded with HTTP 403 (Forbidden) along with a new X-CSRF-Token
@@ -69,18 +78,18 @@ class CSRFHandlingTransport(httpx2.BaseTransport, httpx2.AsyncBaseTransport):
     header injected
     """
 
-    def __init__(self, transport: httpx2.BaseTransport | httpx2.AsyncBaseTransport | None = None):
+    def __init__(self, transport: httpx.BaseTransport | httpx.AsyncBaseTransport | None = None):
         if transport is not None:
-            self._sync_transport = transport if isinstance(transport, httpx2.BaseTransport) else None
-            self._async_transport = transport if isinstance(transport, httpx2.AsyncBaseTransport) else None
+            self._sync_transport = transport if isinstance(transport, httpx.BaseTransport) else None
+            self._async_transport = transport if isinstance(transport, httpx.AsyncBaseTransport) else None
         else:
-            self._sync_transport = httpx2.HTTPTransport()
-            self._async_transport = httpx2.AsyncHTTPTransport()
+            self._sync_transport = httpx.HTTPTransport()
+            self._async_transport = httpx.AsyncHTTPTransport()
 
         self.__X_CSRF_TOKEN = None
 
     @staticmethod
-    def _can_use_csrf(request: httpx2.Request) -> bool:
+    def _can_use_csrf(request: httpx.Request) -> bool:
         """
         Returns whether the request should be subject to this transport's logic
         """
@@ -102,8 +111,8 @@ class CSRFHandlingTransport(httpx2.BaseTransport, httpx2.AsyncBaseTransport):
             await self._async_transport.aclose()
 
     def _handle_request_with_csrf(
-        self, request: httpx2.Request, handle_request: Callable[..., httpx2.Response]
-    ) -> httpx2.Response:
+        self, request: httpx.Request, handle_request: Callable[..., httpx.Response]
+    ) -> httpx.Response:
 
         if self.__X_CSRF_TOKEN:
             request.headers["X-CSRF-Token"] = self.__X_CSRF_TOKEN
@@ -113,8 +122,8 @@ class CSRFHandlingTransport(httpx2.BaseTransport, httpx2.AsyncBaseTransport):
         return response
 
     async def _handle_request_with_csrf_async(
-        self, request: httpx2.Request, handle_request: Callable[..., Coroutine[Any, Any, httpx2.Response]]
-    ) -> httpx2.Response:
+        self, request: httpx.Request, handle_request: Callable[..., Coroutine[Any, Any, httpx.Response]]
+    ) -> httpx.Response:
 
         if self.__X_CSRF_TOKEN:
             request.headers["X-CSRF-Token"] = self.__X_CSRF_TOKEN
@@ -123,7 +132,7 @@ class CSRFHandlingTransport(httpx2.BaseTransport, httpx2.AsyncBaseTransport):
 
         return response
 
-    def handle_request(self, request: httpx2.Request) -> httpx2.Response:
+    def handle_request(self, request: httpx.Request) -> httpx.Response:
         if self._sync_transport is None:
             raise RuntimeError(
                 "This transport was initalised with an underlying AsyncBaseTransport, so it cannot accept synchronous requests"
@@ -142,7 +151,7 @@ class CSRFHandlingTransport(httpx2.BaseTransport, httpx2.AsyncBaseTransport):
 
         return response
 
-    async def handle_async_request(self, request: httpx2.Request) -> httpx2.Response:
+    async def handle_async_request(self, request: httpx.Request) -> httpx.Response:
         if self._async_transport is None:
             raise RuntimeError(
                 "This transport was initalised with an underlying BaseTransport, so it cannot accept asynchronous requests"
@@ -194,7 +203,11 @@ class Client:
     """
 
     raise_on_unexpected_status: bool = field(default=False, kw_only=True)
-    _base_url: str = field(default="https://apis.roblox.com", kw_only=True, alias="base_url")
+    _base_url: str = field(
+        default="<openapi_python_client.schema.untrusted_string.UntrustedString object at 0x000001B554D51910>",
+        kw_only=True,
+        alias="base_url",
+    )
     _cookies: dict[str, str] = field(factory=dict, kw_only=True, alias="cookies")
 
     _headers: dict[str, str] = field(
@@ -203,12 +216,12 @@ class Client:
         kw_only=True,
         alias="headers",
     )
-    _timeout: httpx2.Timeout | None = field(default=None, kw_only=True, alias="timeout")
+    _timeout: httpx.Timeout | None = field(default=None, kw_only=True, alias="timeout")
     _verify_ssl: str | bool | ssl.SSLContext = field(default=True, kw_only=True, alias="verify_ssl")
     _follow_redirects: bool = field(default=False, kw_only=True, alias="follow_redirects")
-    _httpx2_args: dict[str, Any] = field(factory=dict, kw_only=True, alias="httpx2_args")
-    _client: httpx2.Client | None = field(default=None, init=False)
-    _async_client: httpx2.AsyncClient | None = field(default=None, init=False)
+    _httpx_args: dict[str, Any] = field(factory=dict, kw_only=True, alias="httpx_args")
+    _client: httpx.Client | None = field(default=None, init=False)
+    _async_client: httpx.AsyncClient | None = field(default=None, init=False)
 
     def with_headers(self, headers: dict[str, str]) -> "Client":
         """Get a new client matching this one with additional headers"""
@@ -226,7 +239,7 @@ class Client:
             self._async_client.cookies.update(cookies)
         return evolve(self, cookies={**self._cookies, **cookies})
 
-    def with_timeout(self, timeout: httpx2.Timeout) -> "Client":
+    def with_timeout(self, timeout: httpx.Timeout) -> "Client":
         """Get a new client matching this one with a new timeout configuration"""
         if self._client is not None:
             self._client.timeout = timeout
@@ -234,7 +247,7 @@ class Client:
             self._async_client.timeout = timeout
         return evolve(self, timeout=timeout)
 
-    def set_httpx2_client(self, client: httpx2.Client) -> "Client":
+    def set_httpx_client(self, client: httpx.Client) -> "Client":
         """Manually set the underlying httpx2.Client
 
         **NOTE**: This will override any other settings on the client, including cookies, headers, and timeout.
@@ -242,12 +255,12 @@ class Client:
         self._client = client
         return self
 
-    def get_httpx2_client(self) -> httpx2.Client:
+    def get_httpx_client(self) -> httpx.Client:
         """Get the underlying httpx2.Client, constructing a new one if not previously set"""
         if self._client is None:
             transport = CSRFHandlingTransport(RetryTransport(retry=Retry(total=5, backoff_factor=0.5)))
 
-            self._client = httpx2.Client(
+            self._client = httpx.Client(
                 base_url=self._base_url,
                 cookies=self._cookies,
                 headers=self._headers,
@@ -255,20 +268,20 @@ class Client:
                 verify=self._verify_ssl,
                 follow_redirects=self._follow_redirects,
                 transport=transport,
-                **self._httpx2_args,
+                **self._httpx_args,
             )
         return self._client
 
     def __enter__(self) -> "Client":
         """Enter a context manager for self.client—you cannot enter twice (see httpx2 docs)"""
-        self.get_httpx2_client().__enter__()
+        self.get_httpx_client().__enter__()
         return self
 
     def __exit__(self, *args: Any, **kwargs: Any) -> None:
-        """Exit a context manager for internal httpx2.Client (see httpx2 docs)"""
-        self.get_httpx2_client().__exit__(*args, **kwargs)
+        """Exit a context manager for internal httpx.Client (see httpx2 docs)"""
+        self.get_httpx_client().__exit__(*args, **kwargs)
 
-    def set_async_httpx2_client(self, async_client: httpx2.AsyncClient) -> "Client":
+    def set_async_httpx_client(self, async_client: httpx.AsyncClient) -> "Client":
         """Manually set the underlying httpx2.AsyncClient
 
         **NOTE**: This will override any other settings on the client, including cookies, headers, and timeout.
@@ -276,7 +289,7 @@ class Client:
         self._async_client = async_client
         return self
 
-    def get_async_httpx2_client(self) -> httpx2.AsyncClient:
+    def get_async_httpx_client(self) -> httpx.AsyncClient:
         """Get the underlying httpx2.AsyncClient, constructing a new one if not previously set"""
         if self._async_client is None:
             transport = AsyncMultiRateLimitedTransport(
@@ -288,7 +301,7 @@ class Client:
                 ),
             )
 
-            self._async_client = httpx2.AsyncClient(
+            self._async_client = httpx.AsyncClient(
                 base_url=self._base_url,
                 cookies=self._cookies,
                 headers=self._headers,
@@ -296,18 +309,18 @@ class Client:
                 verify=self._verify_ssl,
                 follow_redirects=self._follow_redirects,
                 transport=transport,
-                **self._httpx2_args,
+                **self._httpx_args,
             )
         return self._async_client
 
     async def __aenter__(self) -> "Client":
         """Enter a context manager for underlying httpx2.AsyncClient—you cannot enter twice (see httpx2 docs)"""
-        await self.get_async_httpx2_client().__aenter__()
+        await self.get_async_httpx_client().__aenter__()
         return self
 
     async def __aexit__(self, *args: Any, **kwargs: Any) -> None:
         """Exit a context manager for underlying httpx2.AsyncClient (see httpx2 docs)"""
-        await self.get_async_httpx2_client().__aexit__(*args, **kwargs)
+        await self.get_async_httpx_client().__aexit__(*args, **kwargs)
 
 
 @define
@@ -343,7 +356,11 @@ class AuthenticatedClient:
     """
 
     raise_on_unexpected_status: bool = field(default=False, kw_only=True)
-    _base_url: str = field(default="https://apis.roblox.com", kw_only=True, alias="base_url")
+    _base_url: str = field(
+        default="<openapi_python_client.schema.untrusted_string.UntrustedString object at 0x000001B554D51910>",
+        kw_only=True,
+        alias="base_url",
+    )
     _cookies: dict[str, str] = field(factory=dict, kw_only=True, alias="cookies")
 
     _headers: dict[str, str] = field(
@@ -352,12 +369,12 @@ class AuthenticatedClient:
         kw_only=True,
         alias="headers",
     )
-    _timeout: httpx2.Timeout | None = field(default=None, kw_only=True, alias="timeout")
+    _timeout: httpx.Timeout | None = field(default=None, kw_only=True, alias="timeout")
     _verify_ssl: str | bool | ssl.SSLContext = field(default=True, kw_only=True, alias="verify_ssl")
     _follow_redirects: bool = field(default=False, kw_only=True, alias="follow_redirects")
-    _httpx2_args: dict[str, Any] = field(factory=dict, kw_only=True, alias="httpx2_args")
-    _client: httpx2.Client | None = field(default=None, init=False)
-    _async_client: httpx2.AsyncClient | None = field(default=None, init=False)
+    _httpx_args: dict[str, Any] = field(factory=dict, kw_only=True, alias="httpx_args")
+    _client: httpx.Client | None = field(default=None, init=False)
+    _async_client: httpx.AsyncClient | None = field(default=None, init=False)
 
     token: str
     prefix: str = "Bearer"
@@ -379,7 +396,7 @@ class AuthenticatedClient:
             self._async_client.cookies.update(cookies)
         return evolve(self, cookies={**self._cookies, **cookies})
 
-    def with_timeout(self, timeout: httpx2.Timeout) -> "AuthenticatedClient":
+    def with_timeout(self, timeout: httpx.Timeout) -> "AuthenticatedClient":
         """Get a new client matching this one with a new timeout configuration"""
         if self._client is not None:
             self._client.timeout = timeout
@@ -387,7 +404,7 @@ class AuthenticatedClient:
             self._async_client.timeout = timeout
         return evolve(self, timeout=timeout)
 
-    def set_httpx2_client(self, client: httpx2.Client) -> "AuthenticatedClient":
+    def set_httpx_client(self, client: httpx.Client) -> "AuthenticatedClient":
         """Manually set the underlying httpx2.Client
 
         **NOTE**: This will override any other settings on the client, including cookies, headers, and timeout.
@@ -395,13 +412,13 @@ class AuthenticatedClient:
         self._client = client
         return self
 
-    def get_httpx2_client(self) -> httpx2.Client:
+    def get_httpx_client(self) -> httpx.Client:
         """Get the underlying httpx2.Client, constructing a new one if not previously set"""
         if self._client is None:
             self._headers[self.auth_header_name] = f"{self.prefix} {self.token}" if self.prefix else self.token
             transport = CSRFHandlingTransport(RetryTransport(retry=Retry(total=5, backoff_factor=0.5)))
 
-            self._client = httpx2.Client(
+            self._client = httpx.Client(
                 base_url=self._base_url,
                 cookies=self._cookies,
                 headers=self._headers,
@@ -409,20 +426,20 @@ class AuthenticatedClient:
                 verify=self._verify_ssl,
                 follow_redirects=self._follow_redirects,
                 transport=transport,
-                **self._httpx2_args,
+                **self._httpx_args,
             )
         return self._client
 
     def __enter__(self) -> "AuthenticatedClient":
         """Enter a context manager for self.client—you cannot enter twice (see httpx2 docs)"""
-        self.get_httpx2_client().__enter__()
+        self.get_httpx_client().__enter__()
         return self
 
     def __exit__(self, *args: Any, **kwargs: Any) -> None:
-        """Exit a context manager for internal httpx2.Client (see httpx2 docs)"""
-        self.get_httpx2_client().__exit__(*args, **kwargs)
+        """Exit a context manager for internal httpx.Client (see httpx2 docs)"""
+        self.get_httpx_client().__exit__(*args, **kwargs)
 
-    def set_async_httpx2_client(self, async_client: httpx2.AsyncClient) -> "AuthenticatedClient":
+    def set_async_httpx_client(self, async_client: httpx.AsyncClient) -> "AuthenticatedClient":
         """Manually set the underlying httpx2.AsyncClient
 
         **NOTE**: This will override any other settings on the client, including cookies, headers, and timeout.
@@ -430,7 +447,7 @@ class AuthenticatedClient:
         self._async_client = async_client
         return self
 
-    def get_async_httpx2_client(self) -> httpx2.AsyncClient:
+    def get_async_httpx_client(self) -> httpx.AsyncClient:
         """Get the underlying httpx2.AsyncClient, constructing a new one if not previously set"""
         if self._async_client is None:
             self._headers[self.auth_header_name] = f"{self.prefix} {self.token}" if self.prefix else self.token
@@ -443,7 +460,7 @@ class AuthenticatedClient:
                 ),
             )
 
-            self._async_client = httpx2.AsyncClient(
+            self._async_client = httpx.AsyncClient(
                 base_url=self._base_url,
                 cookies=self._cookies,
                 headers=self._headers,
@@ -451,15 +468,15 @@ class AuthenticatedClient:
                 verify=self._verify_ssl,
                 follow_redirects=self._follow_redirects,
                 transport=transport,
-                **self._httpx2_args,
+                **self._httpx_args,
             )
         return self._async_client
 
     async def __aenter__(self) -> "AuthenticatedClient":
         """Enter a context manager for underlying httpx2.AsyncClient—you cannot enter twice (see httpx2 docs)"""
-        await self.get_async_httpx2_client().__aenter__()
+        await self.get_async_httpx_client().__aenter__()
         return self
 
     async def __aexit__(self, *args: Any, **kwargs: Any) -> None:
         """Exit a context manager for underlying httpx2.AsyncClient (see httpx2 docs)"""
-        await self.get_async_httpx2_client().__aexit__(*args, **kwargs)
+        await self.get_async_httpx_client().__aexit__(*args, **kwargs)

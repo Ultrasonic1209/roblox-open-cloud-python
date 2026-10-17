@@ -160,20 +160,20 @@ class RobloxApiAvatarModelsAvatarRulesModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_api_avatar_models_asset_type_rules_model import RobloxApiAvatarModelsAssetTypeRulesModel
+        from ..models.roblox_api_avatar_models_asset_type_rules_model import RobloxApiAvatarModelsAssetTypeRulesModel  # noqa: PLC0415
         from ..models.roblox_api_avatar_models_avatar_rules_model_accessory_refinement_lower_bounds import (
-            RobloxApiAvatarModelsAvatarRulesModelAccessoryRefinementLowerBounds,
+            RobloxApiAvatarModelsAvatarRulesModelAccessoryRefinementLowerBounds,  # noqa: PLC0415
         )
         from ..models.roblox_api_avatar_models_avatar_rules_model_accessory_refinement_upper_bounds import (
-            RobloxApiAvatarModelsAvatarRulesModelAccessoryRefinementUpperBounds,
+            RobloxApiAvatarModelsAvatarRulesModelAccessoryRefinementUpperBounds,  # noqa: PLC0415
         )
         from ..models.roblox_api_avatar_models_avatar_rules_model_scales import (
-            RobloxApiAvatarModelsAvatarRulesModelScales,
+            RobloxApiAvatarModelsAvatarRulesModelScales,  # noqa: PLC0415
         )
-        from ..models.roblox_api_avatar_models_body_color_model import RobloxApiAvatarModelsBodyColorModel
-        from ..models.roblox_api_avatar_models_default_clothing_assets import RobloxApiAvatarModelsDefaultClothingAssets
+        from ..models.roblox_api_avatar_models_body_color_model import RobloxApiAvatarModelsBodyColorModel  # noqa: PLC0415
+        from ..models.roblox_api_avatar_models_default_clothing_assets import RobloxApiAvatarModelsDefaultClothingAssets  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _player_avatar_types = d.pop("playerAvatarTypes", UNSET)
         player_avatar_types: list[RobloxApiAvatarModelsAvatarRulesModelPlayerAvatarTypesItem] | Unset = UNSET
         if _player_avatar_types is not UNSET:

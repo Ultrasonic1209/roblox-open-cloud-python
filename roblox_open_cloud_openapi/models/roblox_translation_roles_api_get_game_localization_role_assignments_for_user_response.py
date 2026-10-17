@@ -60,10 +60,10 @@ class RobloxTranslationRolesApiGetGameLocalizationRoleAssignmentsForUserResponse
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_localization_client_game_localization_roles_game_localization_role_assignment import (
-            RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssignment,
+            RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssignment,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _games = d.pop("games", UNSET)
         games: list[RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssignment] | Unset = UNSET
         if _games is not UNSET:

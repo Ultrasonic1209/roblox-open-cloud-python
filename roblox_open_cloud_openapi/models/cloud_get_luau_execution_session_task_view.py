@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CloudGetLuauExecutionSessionTaskView(str, Enum):
+class CloudGetLuauExecutionSessionTaskView(StrEnum):
     BASIC = "BASIC"
     FULL = "FULL"
     VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED"

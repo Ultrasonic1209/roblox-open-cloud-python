@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1GameLocalizationRolesGamesGameIdRolesRoleAssigneesRole(str, Enum):
+class GetV1GameLocalizationRolesGamesGameIdRolesRoleAssigneesRole(StrEnum):
     TRANSLATOR = "translator"
 
     def __str__(self) -> str:

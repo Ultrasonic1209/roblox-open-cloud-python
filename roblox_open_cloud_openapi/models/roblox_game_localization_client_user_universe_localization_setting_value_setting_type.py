@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameLocalizationClientUserUniverseLocalizationSettingValueSettingType(str, Enum):
+class RobloxGameLocalizationClientUserUniverseLocalizationSettingValueSettingType(StrEnum):
     LANGUAGEFAMILY = "LanguageFamily"
     SOURCEORTRANSLATION = "SourceOrTranslation"
     SUPPORTEDLOCALE = "SupportedLocale"

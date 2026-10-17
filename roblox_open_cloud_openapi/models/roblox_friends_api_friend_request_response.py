@@ -23,6 +23,7 @@ class RobloxFriendsApiFriendRequestResponse:
         friend_request (RobloxFriendsApiFriendRequest | Unset): A response model representing a friend request.
         mutual_friends_list (list[str] | Unset): mutualFriendsList
         has_verified_badge (bool | Unset): The user's verified badge status.
+        is_unseen (bool | Unset): The user's verified badge status.
         description (str | Unset): The user description.
         created (datetime.datetime | Unset): When the user signed up.
         is_banned (bool | Unset): Whether or not the user is banned
@@ -36,6 +37,7 @@ class RobloxFriendsApiFriendRequestResponse:
     friend_request: RobloxFriendsApiFriendRequest | Unset = UNSET
     mutual_friends_list: list[str] | Unset = UNSET
     has_verified_badge: bool | Unset = UNSET
+    is_unseen: bool | Unset = UNSET
     description: str | Unset = UNSET
     created: datetime.datetime | Unset = UNSET
     is_banned: bool | Unset = UNSET
@@ -54,6 +56,8 @@ class RobloxFriendsApiFriendRequestResponse:
             mutual_friends_list = self.mutual_friends_list
 
         has_verified_badge = self.has_verified_badge
+
+        is_unseen = self.is_unseen
 
         description = self.description
 
@@ -80,6 +84,8 @@ class RobloxFriendsApiFriendRequestResponse:
             field_dict["mutualFriendsList"] = mutual_friends_list
         if has_verified_badge is not UNSET:
             field_dict["hasVerifiedBadge"] = has_verified_badge
+        if is_unseen is not UNSET:
+            field_dict["isUnseen"] = is_unseen
         if description is not UNSET:
             field_dict["description"] = description
         if created is not UNSET:
@@ -99,9 +105,9 @@ class RobloxFriendsApiFriendRequestResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_friends_api_friend_request import RobloxFriendsApiFriendRequest
+        from ..models.roblox_friends_api_friend_request import RobloxFriendsApiFriendRequest  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _friend_request = d.pop("friendRequest", UNSET)
         friend_request: RobloxFriendsApiFriendRequest | Unset
         if isinstance(_friend_request, Unset):
@@ -112,6 +118,8 @@ class RobloxFriendsApiFriendRequestResponse:
         mutual_friends_list = cast(list[str], d.pop("mutualFriendsList", UNSET))
 
         has_verified_badge = d.pop("hasVerifiedBadge", UNSET)
+
+        is_unseen = d.pop("isUnseen", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -136,6 +144,7 @@ class RobloxFriendsApiFriendRequestResponse:
             friend_request=friend_request,
             mutual_friends_list=mutual_friends_list,
             has_verified_badge=has_verified_badge,
+            is_unseen=is_unseen,
             description=description,
             created=created,
             is_banned=is_banned,

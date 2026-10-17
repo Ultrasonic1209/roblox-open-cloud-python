@@ -81,10 +81,10 @@ class Operation:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.google_protobuf_any import GoogleProtobufAny
-        from ..models.status import Status
+        from ..models.google_protobuf_any import GoogleProtobufAny  # noqa: PLC0415
+        from ..models.status import Status  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         path = d.pop("path", UNSET)
 
         _metadata = d.pop("metadata", UNSET)

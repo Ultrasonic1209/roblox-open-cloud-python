@@ -46,9 +46,9 @@ class RobloxGroupsApiGroupChannelPermissionsModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_group_forums_permissions_model import RobloxGroupsApiGroupForumsPermissionsModel
+        from ..models.roblox_groups_api_group_forums_permissions_model import RobloxGroupsApiGroupForumsPermissionsModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         channel_id = d.pop("channelId", UNSET)
 
         _group_forums_permissions = d.pop("groupForumsPermissions", UNSET)

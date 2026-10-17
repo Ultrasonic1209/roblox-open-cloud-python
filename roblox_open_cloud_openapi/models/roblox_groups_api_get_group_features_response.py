@@ -48,9 +48,9 @@ class RobloxGroupsApiGetGroupFeaturesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_group_feature_response import RobloxGroupsApiGroupFeatureResponse
+        from ..models.roblox_groups_api_group_feature_response import RobloxGroupsApiGroupFeatureResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         is_locked = d.pop("isLocked", UNSET)
 
         _features = d.pop("features", UNSET)

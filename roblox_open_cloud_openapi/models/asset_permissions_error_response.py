@@ -39,9 +39,9 @@ class AssetPermissionsErrorResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.asset_permissions_error import AssetPermissionsError
+        from ..models.asset_permissions_error import AssetPermissionsError  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _error = d.pop("error", UNSET)
         error: AssetPermissionsError | Unset
         if isinstance(_error, Unset):

@@ -101,9 +101,9 @@ class RobloxInventoryApiModelsInventoryItemModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_inventory_api_models_user_model import RobloxInventoryApiModelsUserModel
+        from ..models.roblox_inventory_api_models_user_model import RobloxInventoryApiModelsUserModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _expire_at = d.pop("expireAt", UNSET)
         expire_at: datetime.datetime | Unset
         if isinstance(_expire_at, Unset):

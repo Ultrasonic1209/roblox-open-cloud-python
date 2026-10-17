@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetLegacyGroupsV1GroupsGroupIdAuditLogActionType(str, Enum):
+class GetLegacyGroupsV1GroupsGroupIdAuditLogActionType(StrEnum):
     ABANDON = "Abandon"
     ACCEPTALLYREQUEST = "AcceptAllyRequest"
     ACCEPTCOMMERCEPRODUCTBUNDLINGFEE = "AcceptCommerceProductBundlingFee"
@@ -34,6 +34,7 @@ class GetLegacyGroupsV1GroupsGroupIdAuditLogActionType(str, Enum):
     CREATEGROUPDEVELOPERSUBSCRIPTIONPRODUCT = "CreateGroupDeveloperSubscriptionProduct"
     CREATEITEMS = "CreateItems"
     CREATEROLESET = "CreateRoleset"
+    DEACTIVATEGROUP = "DeactivateGroup"
     DECLINEALLYREQUEST = "DeclineAllyRequest"
     DECLINEJOINREQUEST = "DeclineJoinRequest"
     DELETE = "Delete"
@@ -46,6 +47,7 @@ class GetLegacyGroupsV1GroupsGroupIdAuditLogActionType(str, Enum):
     DELETEPOST = "DeletePost"
     DELETEROLESET = "DeleteRoleset"
     DISCONNECTMERCHANT = "DisconnectMerchant"
+    GRANTENTERPRISETIER = "GrantEnterpriseTier"
     INVITETOCLAN = "InviteToClan"
     JOINGROUP = "JoinGroup"
     KICKFROMCLAN = "KickFromClan"
@@ -60,6 +62,7 @@ class GetLegacyGroupsV1GroupsGroupIdAuditLogActionType(str, Enum):
     REMOVEMEMBER = "RemoveMember"
     RENAME = "Rename"
     REVERTGROUPASSET = "RevertGroupAsset"
+    REVOKEENTERPRISETIER = "RevokeEnterpriseTier"
     SAVEPLACE = "SavePlace"
     SENDALLYREQUEST = "SendAllyRequest"
     SETCOMMERCEPRODUCTACTIVE = "SetCommerceProductActive"
@@ -74,7 +77,10 @@ class GetLegacyGroupsV1GroupsGroupIdAuditLogActionType(str, Enum):
     UPDATEGROUPASSET = "UpdateGroupAsset"
     UPDATEGROUPCOVERPHOTO = "UpdateGroupCoverPhoto"
     UPDATEGROUPICON = "UpdateGroupIcon"
+    UPDATEGROUPSECURITYSETTINGS = "UpdateGroupSecuritySettings"
     UPDATEROLESETDATA = "UpdateRolesetData"
+    UPDATEROLESETPERMISSIONS = "UpdateRoleSetPermissions"
+    UPDATEROLESETPOSITION = "UpdateRoleSetPosition"
     UPDATEROLESETRANK = "UpdateRolesetRank"
 
     def __str__(self) -> str:

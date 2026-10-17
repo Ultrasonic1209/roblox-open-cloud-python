@@ -1,15 +1,33 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET, Unset
+from ...types import Response, UNSET
 from ... import errors
 
+"""
+{{ endpoint["extensions"] }}
+"""
+
 {% set extensions = endpoint["extensions"] %}
-{% set deprecated = (extensions["x-roblox-recommended-alternatives"] or endpoint.deprecated) and "@deprecated('Roblox has deprecated this endpoint. See documentation: " ~ (endpoint.external_docs and endpoint.external_docs.url or "https://create.roblox.com/docs/cloud") ~ "')" %}
+{% set deprecated = (extensions["x-roblox-recommended-alternatives"] or endpoint.deprecated) and "@deprecated('Roblox has deprecated this endpoint. See documentation: " ~ (endpoint.external_docs and (endpoint.external_docs.url | in_double_quote_literal) or "https://create.roblox.com/docs/cloud") ~ "')" %}
 {% if deprecated %}
 import sys
 if sys.version_info >= (3, 13):
@@ -26,7 +44,7 @@ else:
     arguments, client, kwargs, parse_response, docstring, body_to_kwarg %}
 
 {% set return_string = endpoint.response_type() %}
-{% set parsed_responses = (endpoint.responses | length > 0) and return_string != "Any" %}
+{% set parsed_responses = (endpoint.responses | length > 0) and return_string != PythonCode("Any") %}
 
 def _get_kwargs(
     {{ arguments(endpoint, include_client=False) | indent(4) }}
@@ -40,13 +58,13 @@ def _get_kwargs(
     _kwargs: dict[str, Any] = {
         "method": "{{ endpoint.method }}",
         {% if endpoint.path_parameters %}
-        "url": "{{ endpoint.path }}".format(
+        "url": "{{ endpoint.path | in_double_quote_literal }}".format(
         {%- for parameter in endpoint.path_parameters -%}
         {{parameter.python_name}}=quote(str({{parameter.python_name}}), safe=""),
         {%- endfor -%}
         ),
         {% else %}
-        "url": "{{ endpoint.path }}",
+        "url": "{{ endpoint.path | in_double_quote_literal }}",
         {% endif %}
         {% if endpoint.query_parameters %}
         "params": params,
@@ -54,22 +72,16 @@ def _get_kwargs(
         {% if endpoint.cookie_parameters %}
         "cookies": cookies,
         {% endif %}
-        "extensions": {
-            {% if extensions %}
-            "openapi-extensions": {{ extensions }},
-            {% endif %}
-            "openapi-id": "{{ endpoint.name }}",
-        }
     }
 
 {% if endpoint.bodies | length > 1 %}
 {% for body in endpoint.bodies %}
-    if isinstance(body, {{body.prop.get_type_string(no_optional=True) }}):
+    if isinstance(body, {{body.prop.get_type_string(no_optional=True) | as_unembedded_code }}):
         {{ body_to_kwarg(body) | indent(8) }}
         {%- if body.content_type == "multipart/form-data" %}
         headers["Content-Type"] = "multipart/form-data; boundary=+++"
         {% else %}
-        headers["Content-Type"] = "{{ body.content_type }}"
+        headers["Content-Type"] = "{{ body.content_type | in_double_quote_literal }}"
         {% endif %}
 {% endfor %}
 {% elif endpoint.bodies | length == 1 %}
@@ -78,7 +90,7 @@ def _get_kwargs(
     {%- if body.content_type == "multipart/form-data" %}
     headers["Content-Type"] = "multipart/form-data; boundary=+++"
     {% else %}
-    headers["Content-Type"] = "{{ body.content_type }}"
+    headers["Content-Type"] = "{{ body.content_type | in_double_quote_literal }}"
     {% endif %}
 {% endif %}
 
@@ -88,13 +100,13 @@ def _get_kwargs(
     return _kwargs
 
 {% if endpoint.responses.default %}
-    {% set return_type = return_string %}
+    {% set return_type = return_string | as_unembedded_code %}
 {% else %}
-    {% set return_type = return_string + " | None" %}
+    {% set return_type = (return_string | as_unembedded_code) + " | None" %}
 {% endif %}
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> {{return_type}}:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> {{return_type}}:
     {% for response in endpoint.responses.patterns %}
     {% set code_range = response.status_code.range %}
     {% if code_range[0] == code_range[1] %}
@@ -114,7 +126,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
     {% endif %}
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[{{ return_string }}]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[{{ return_string | as_unembedded_code }}]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -127,14 +139,14 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
 {% endif %}
 def sync_detailed(
     {{ arguments(endpoint) | indent(4) }}
-) -> Response[{{ return_string }}]:
+) -> Response[{{ return_string | as_unembedded_code }}]:
     {{ docstring(endpoint, return_string, is_detailed=true) | indent(4) }}
 
     kwargs = _get_kwargs(
         {{ kwargs(endpoint, include_client=False) }}
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -146,7 +158,7 @@ def sync_detailed(
 {% endif %}
 def sync(
     {{ arguments(endpoint) | indent(4) }}
-) -> {{ return_string }} | None:
+) -> {{ return_string | as_unembedded_code }} | None:
     {{ docstring(endpoint, return_string, is_detailed=false) | indent(4) }}
 
     return sync_detailed(
@@ -159,14 +171,14 @@ def sync(
 {% endif %}
 async def asyncio_detailed(
     {{ arguments(endpoint) | indent(4) }}
-) -> Response[{{ return_string }}]:
+) -> Response[{{ return_string | as_unembedded_code }}]:
     {{ docstring(endpoint, return_string, is_detailed=true) | indent(4) }}
 
     kwargs = _get_kwargs(
         {{ kwargs(endpoint, include_client=False) }}
     )
 
-    response = await client.get_async_httpx2_client().request(
+    response = await client.get_async_httpx_client().request(
         **kwargs
     )
 
@@ -178,7 +190,7 @@ async def asyncio_detailed(
 {% endif %}
 async def asyncio(
     {{ arguments(endpoint) | indent(4) }}
-) -> {{ return_string }} | None:
+) -> {{ return_string | as_unembedded_code }} | None:
     {{ docstring(endpoint, return_string, is_detailed=false) | indent(4) }}
 
     return (await asyncio_detailed(

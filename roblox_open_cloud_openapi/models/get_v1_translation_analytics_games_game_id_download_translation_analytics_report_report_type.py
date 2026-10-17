@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1TranslationAnalyticsGamesGameIdDownloadTranslationAnalyticsReportReportType(str, Enum):
+class GetV1TranslationAnalyticsGamesGameIdDownloadTranslationAnalyticsReportReportType(StrEnum):
     GAMETRANSLATIONSTATUS = "GameTranslationStatus"
     GAMETRANSLATIONSTATUSFORTRANSLATOR = "GameTranslationStatusForTranslator"
     GAMETRANSLATIONSTATUSFORTRANSLATORGROUP = "GameTranslationStatusForTranslatorGroup"

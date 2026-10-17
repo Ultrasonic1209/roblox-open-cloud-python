@@ -141,12 +141,12 @@ class Asset:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.creation_context import CreationContext
-        from ..models.moderation_result import ModerationResult
-        from ..models.preview import Preview
-        from ..models.social_link import SocialLink
+        from ..models.creation_context import CreationContext  # noqa: PLC0415
+        from ..models.moderation_result import ModerationResult  # noqa: PLC0415
+        from ..models.preview import Preview  # noqa: PLC0415
+        from ..models.social_link import SocialLink  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         asset_type = d.pop("assetType", UNSET)
 
         asset_id = d.pop("assetId", UNSET)

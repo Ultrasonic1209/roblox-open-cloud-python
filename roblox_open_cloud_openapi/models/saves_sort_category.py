@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SavesSortCategory(str, Enum):
+class SavesSortCategory(StrEnum):
     CREATOR = "Creator"
     DATE_SAVED = "DateSaved"
     LAST_MODIFIED = "LastModified"

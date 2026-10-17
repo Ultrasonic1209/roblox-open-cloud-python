@@ -1,13 +1,33 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.asset_version import AssetVersion
 from ...types import Response
+
+"""
+{'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Get Asset Version', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'asset:read'}], 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Get Asset Version', 'script': "curl --location 'https://apis.roblox.com/assets/v1/assets/{assetId}/versions/{versionNumber}' \\\n--header 'x-api-key: {apiKey}'"}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
+from ...models.asset_version import AssetVersion
 
 
 def _get_kwargs(
@@ -21,33 +41,12 @@ def _get_kwargs(
             asset_id=quote(str(asset_id), safe=""),
             version_number=quote(str(version_number), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-cloud-api-operation": True,
-                "x-roblox-cloud-api-operation-name": "Get Asset Version",
-                "x-roblox-stability": "BETA",
-                "x-roblox-scopes": [{"name": "asset:read"}],
-                "x-roblox-cloud-api-operation-code-samples": [
-                    {
-                        "language": "Get Asset Version",
-                        "script": "curl --location 'https://apis.roblox.com/assets/v1/assets/{assetId}/versions/{versionNumber}' \\\n--header 'x-api-key: {apiKey}'",
-                    }
-                ],
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
-                "x-roblox-throttling-limit": {"perApiKey": {"periodInSeconds": "60", "maxInPeriod": 100}},
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            },
-            "openapi-id": "Assets_GetAssetVersion",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | AssetVersion | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | AssetVersion | None:
     if response.status_code == 200:
         response_200 = AssetVersion.from_dict(response.json())
 
@@ -67,7 +66,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | AssetVersion]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | AssetVersion]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -103,7 +102,7 @@ def sync_detailed(
         version_number=version_number,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -166,7 +165,7 @@ async def asyncio_detailed(
         version_number=version_number,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

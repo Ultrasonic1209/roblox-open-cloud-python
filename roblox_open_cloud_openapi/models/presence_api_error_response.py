@@ -46,9 +46,9 @@ class PresenceApiErrorResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.error import Error
+        from ..models.error import Error  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_errors(data: object) -> list[Error] | None | Unset:
             if data is None:

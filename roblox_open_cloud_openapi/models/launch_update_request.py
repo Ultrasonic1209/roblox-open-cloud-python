@@ -49,7 +49,7 @@ class LaunchUpdateRequest:
     attributes: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.launch_update_request_place_id_to_versions_type_0 import LaunchUpdateRequestPlaceIdToVersionsType0
+        from ..models.launch_update_request_place_id_to_versions_type_0 import LaunchUpdateRequestPlaceIdToVersionsType0  # noqa: PLC0415
 
         universe_id = self.universe_id
 
@@ -104,9 +104,9 @@ class LaunchUpdateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.launch_update_request_place_id_to_versions_type_0 import LaunchUpdateRequestPlaceIdToVersionsType0
+        from ..models.launch_update_request_place_id_to_versions_type_0 import LaunchUpdateRequestPlaceIdToVersionsType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         universe_id = d.pop("universeId", UNSET)
 
         def _parse_place_ids(data: object) -> list[int] | None | Unset:

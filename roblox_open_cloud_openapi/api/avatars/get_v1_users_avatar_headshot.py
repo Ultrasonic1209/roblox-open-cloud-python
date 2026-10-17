@@ -1,19 +1,41 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'STABLE', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_v1_users_avatar_headshot_format import GetV1UsersAvatarHeadshotFormat
 from ...models.get_v1_users_avatar_headshot_size import GetV1UsersAvatarHeadshotSize
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
     *,
     user_ids: list[int],
     include_background: bool | Unset = False,
+    include_profile_frame: bool | Unset = False,
     size: GetV1UsersAvatarHeadshotSize | Unset = GetV1UsersAvatarHeadshotSize.VALUE_0,
     format_: GetV1UsersAvatarHeadshotFormat | Unset = GetV1UsersAvatarHeadshotFormat.PNG,
     is_circular: bool | Unset = False,
@@ -26,6 +48,8 @@ def _get_kwargs(
     params["userIds"] = json_user_ids
 
     params["includeBackground"] = include_background
+
+    params["includeProfileFrame"] = include_profile_frame
 
     json_size: str | Unset = UNSET
     if not isinstance(size, Unset):
@@ -47,19 +71,12 @@ def _get_kwargs(
         "method": "get",
         "url": "https://thumbnails.roblox.com/v1/users/avatar-headshot",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "STABLE",
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "get_v1_users_avatar-headshot",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if response.status_code == 200:
         return None
 
@@ -72,7 +89,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,6 +103,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     user_ids: list[int],
     include_background: bool | Unset = False,
+    include_profile_frame: bool | Unset = False,
     size: GetV1UsersAvatarHeadshotSize | Unset = GetV1UsersAvatarHeadshotSize.VALUE_0,
     format_: GetV1UsersAvatarHeadshotFormat | Unset = GetV1UsersAvatarHeadshotFormat.PNG,
     is_circular: bool | Unset = False,
@@ -95,6 +113,7 @@ def sync_detailed(
     Args:
         user_ids (list[int]):
         include_background (bool | Unset):  Default: False.
+        include_profile_frame (bool | Unset):  Default: False.
         size (GetV1UsersAvatarHeadshotSize | Unset):  Default:
             GetV1UsersAvatarHeadshotSize.VALUE_0.
         format_ (GetV1UsersAvatarHeadshotFormat | Unset):  Default:
@@ -112,12 +131,13 @@ def sync_detailed(
     kwargs = _get_kwargs(
         user_ids=user_ids,
         include_background=include_background,
+        include_profile_frame=include_profile_frame,
         size=size,
         format_=format_,
         is_circular=is_circular,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -129,6 +149,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     user_ids: list[int],
     include_background: bool | Unset = False,
+    include_profile_frame: bool | Unset = False,
     size: GetV1UsersAvatarHeadshotSize | Unset = GetV1UsersAvatarHeadshotSize.VALUE_0,
     format_: GetV1UsersAvatarHeadshotFormat | Unset = GetV1UsersAvatarHeadshotFormat.PNG,
     is_circular: bool | Unset = False,
@@ -138,6 +159,7 @@ async def asyncio_detailed(
     Args:
         user_ids (list[int]):
         include_background (bool | Unset):  Default: False.
+        include_profile_frame (bool | Unset):  Default: False.
         size (GetV1UsersAvatarHeadshotSize | Unset):  Default:
             GetV1UsersAvatarHeadshotSize.VALUE_0.
         format_ (GetV1UsersAvatarHeadshotFormat | Unset):  Default:
@@ -155,11 +177,12 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         user_ids=user_ids,
         include_background=include_background,
+        include_profile_frame=include_profile_frame,
         size=size,
         format_=format_,
         is_circular=is_circular,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)

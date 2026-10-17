@@ -1,14 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response
+
+"""
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'SECOND', 'maxInPeriod': 10}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 10}}, 'x-roblox-scopes': [{'name': 'game-pass:read', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+"""
+
+
 from ...models.game_pass_config_v2 import GamePassConfigV2
 from ...models.game_passes_error_response import GamePassesErrorResponse
-from ...types import Response
 
 
 def _get_kwargs(
@@ -22,25 +42,13 @@ def _get_kwargs(
             universe_id=quote(str(universe_id), safe=""),
             game_pass_id=quote(str(game_pass_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "SECOND", "maxInPeriod": 10},
-                    "perOauth2Authorization": {"period": "SECOND", "maxInPeriod": 10},
-                },
-                "x-roblox-scopes": [{"name": "game-pass:read", "targetResourceSpecifier": "universes"}],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-            },
-            "openapi-id": "GamePasses_GetGamePassConfig",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> GamePassConfigV2 | GamePassesErrorResponse | None:
     if response.status_code == 200:
         response_200 = GamePassConfigV2.from_dict(response.json())
@@ -69,7 +77,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[GamePassConfigV2 | GamePassesErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -104,7 +112,7 @@ def sync_detailed(
         game_pass_id=game_pass_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -163,7 +171,7 @@ async def asyncio_detailed(
         game_pass_id=game_pass_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxLocalizationtablesLocalizationtablesV1ChangeAgentChangeAgentType(str, Enum):
+class RobloxLocalizationtablesLocalizationtablesV1ChangeAgentChangeAgentType(StrEnum):
     AUTOMATION = "Automation"
     DEFAULT = "Default"
     INVALID = "Invalid"

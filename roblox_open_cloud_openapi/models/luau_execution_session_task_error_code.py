@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class LuauExecutionSessionTaskErrorCode(str, Enum):
+class LuauExecutionSessionTaskErrorCode(StrEnum):
     DEADLINE_EXCEEDED = "DEADLINE_EXCEEDED"
     ERROR_CODE_UNSPECIFIED = "ERROR_CODE_UNSPECIFIED"
     INTERNAL_ERROR = "INTERNAL_ERROR"

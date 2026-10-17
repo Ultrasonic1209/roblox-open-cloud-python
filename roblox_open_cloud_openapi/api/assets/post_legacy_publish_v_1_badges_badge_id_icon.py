@@ -1,14 +1,41 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-publish/v1/badges/{badgeId}/icon', 'httpMethod': 'POST'}], 'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-badge:manage'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
+
 from ...models.post_legacy_publish_v1_badges_badge_id_icon_body import PostLegacyPublishV1BadgesBadgeIdIconBody
 from ...models.roblox_publish_api_upload_response import RobloxPublishApiUploadResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -23,17 +50,6 @@ def _get_kwargs(
         "url": "/legacy-publish/v1/badges/{badge_id}/icon".format(
             badge_id=quote(str(badge_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "legacy-badge:manage"}],
-            },
-            "openapi-id": "post_legacy-publish_v1_badges_badgeId_icon",
-        },
     }
 
     if not isinstance(body, Unset):
@@ -46,7 +62,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxPublishApiUploadResponse | None:
     if response.status_code == 200:
         response_200 = RobloxPublishApiUploadResponse.from_dict(response.json())
@@ -80,7 +96,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxPublishApiUploadResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -90,6 +106,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#post_legacy_publish_v1_badges__badgeId__icon"
+)
 def sync_detailed(
     badge_id: int,
     *,
@@ -115,13 +134,16 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#post_legacy_publish_v1_badges__badgeId__icon"
+)
 def sync(
     badge_id: int,
     *,
@@ -149,6 +171,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#post_legacy_publish_v1_badges__badgeId__icon"
+)
 async def asyncio_detailed(
     badge_id: int,
     *,
@@ -174,11 +199,14 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#post_legacy_publish_v1_badges__badgeId__icon"
+)
 async def asyncio(
     badge_id: int,
     *,

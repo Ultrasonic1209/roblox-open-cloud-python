@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SubscriptionState(str, Enum):
+class SubscriptionState(StrEnum):
     EXPIRED = "EXPIRED"
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
     SUBSCRIBED_RENEWAL_PAYMENT_PENDING = "SUBSCRIBED_RENEWAL_PAYMENT_PENDING"

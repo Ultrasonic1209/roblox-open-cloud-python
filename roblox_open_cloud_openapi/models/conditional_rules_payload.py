@@ -29,7 +29,7 @@ class ConditionalRulesPayload:
     rules_order: list[str] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.conditional_rules_payload_rules_type_0 import ConditionalRulesPayloadRulesType0
+        from ..models.conditional_rules_payload_rules_type_0 import ConditionalRulesPayloadRulesType0  # noqa: PLC0415
 
         rules: dict[str, Any] | None | Unset
         if isinstance(self.rules, Unset):
@@ -60,9 +60,9 @@ class ConditionalRulesPayload:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.conditional_rules_payload_rules_type_0 import ConditionalRulesPayloadRulesType0
+        from ..models.conditional_rules_payload_rules_type_0 import ConditionalRulesPayloadRulesType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_rules(data: object) -> ConditionalRulesPayloadRulesType0 | None | Unset:
             if data is None:

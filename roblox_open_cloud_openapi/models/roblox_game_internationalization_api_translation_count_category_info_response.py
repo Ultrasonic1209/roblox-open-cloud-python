@@ -25,7 +25,7 @@ class RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse:
 
     Attributes:
         category (RobloxGameInternationalizationApiTranslationCountCategoryInfoResponseCategory | Unset): The category
-            of the translation counts. ['InGameContent' = 0]
+            of the translation counts.
         translation_counts (list[RobloxGameInternationalizationApiTranslationCount] | Unset): The translation counts.
         total_translatable_item_count (int | Unset): The total number of translatable items.
             The translation count percentage can be calculated by doing translationCounts / totalTranslatableItemCount.
@@ -64,10 +64,10 @@ class RobloxGameInternationalizationApiTranslationCountCategoryInfoResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_translation_count import (
-            RobloxGameInternationalizationApiTranslationCount,
+            RobloxGameInternationalizationApiTranslationCount,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _category = d.pop("category", UNSET)
         category: RobloxGameInternationalizationApiTranslationCountCategoryInfoResponseCategory | Unset
         if isinstance(_category, Unset):

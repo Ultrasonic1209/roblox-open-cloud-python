@@ -53,9 +53,9 @@ class RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiGroupBanMemberResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_group_ban_member_response import RobloxGroupsApiGroupBanMemberResponse
+        from ..models.roblox_groups_api_group_ban_member_response import RobloxGroupsApiGroupBanMemberResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         previous_page_cursor = d.pop("previousPageCursor", UNSET)
 
         next_page_cursor = d.pop("nextPageCursor", UNSET)

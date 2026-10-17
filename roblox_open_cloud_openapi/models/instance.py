@@ -57,9 +57,9 @@ class Instance:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_engine_instance import RobloxEngineInstance
+        from ..models.roblox_engine_instance import RobloxEngineInstance  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         path = d.pop("path", UNSET)
 
         has_children = d.pop("hasChildren", UNSET)

@@ -58,10 +58,10 @@ class RobloxGroupsApiGroupBanMemberResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel
-        from ..models.roblox_groups_api_user_group_role_response import RobloxGroupsApiUserGroupRoleResponse
+        from ..models.roblox_groups_api_models_response_user_model import RobloxGroupsApiModelsResponseUserModel  # noqa: PLC0415
+        from ..models.roblox_groups_api_user_group_role_response import RobloxGroupsApiUserGroupRoleResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _user = d.pop("user", UNSET)
         user: RobloxGroupsApiModelsResponseUserModel | Unset
         if isinstance(_user, Unset):

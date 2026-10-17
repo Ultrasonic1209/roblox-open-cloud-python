@@ -26,7 +26,7 @@ class FilterOptionsResponse:
     filters: FilterOptionsResponseFiltersType0 | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0
+        from ..models.filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0  # noqa: PLC0415
 
         filters: dict[str, Any] | None | Unset
         if isinstance(self.filters, Unset):
@@ -46,9 +46,9 @@ class FilterOptionsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0
+        from ..models.filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_filters(data: object) -> FilterOptionsResponseFiltersType0 | None | Unset:
             if data is None:

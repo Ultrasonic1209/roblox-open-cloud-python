@@ -12,7 +12,7 @@ T = TypeVar("T", bound="LiteralValueDto")
 
 @_attrs_define
 class LiteralValueDto:
-    """Literal constant for an RPN operand (proto `LiteralValue` oneof as independent fields for JSON).
+    """Literal constant for an RPN operand.
 
     Attributes:
         boolean_value (None | str | Unset):
@@ -67,7 +67,7 @@ class LiteralValueDto:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_boolean_value(data: object) -> None | str | Unset:
             if data is None:

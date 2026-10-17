@@ -46,9 +46,9 @@ class HttpContent:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.string_string_i_enumerable_key_value_pair import StringStringIEnumerableKeyValuePair
+        from ..models.string_string_i_enumerable_key_value_pair import StringStringIEnumerableKeyValuePair  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_headers(data: object) -> list[StringStringIEnumerableKeyValuePair] | None | Unset:
             if data is None:

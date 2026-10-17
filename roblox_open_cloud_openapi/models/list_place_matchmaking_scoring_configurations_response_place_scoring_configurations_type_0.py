@@ -29,9 +29,9 @@ class ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfiguration
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.matchmaking_scoring_configuration import MatchmakingScoringConfiguration
+        from ..models.matchmaking_scoring_configuration import MatchmakingScoringConfiguration  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         list_place_matchmaking_scoring_configurations_response_place_scoring_configurations_type_0 = cls()
 
         additional_properties = {}

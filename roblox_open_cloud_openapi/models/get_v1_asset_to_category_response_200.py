@@ -11,8 +11,6 @@ T = TypeVar("T", bound="GetV1AssetToCategoryResponse200")
 
 @_attrs_define
 class GetV1AssetToCategoryResponse200:
-    """ """
-
     additional_properties: dict[str, int] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -24,7 +22,7 @@ class GetV1AssetToCategoryResponse200:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         get_v1_asset_to_category_response_200 = cls()
 
         get_v1_asset_to_category_response_200.additional_properties = d

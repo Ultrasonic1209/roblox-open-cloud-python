@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGroupsApiWatermarkContributionRequestBalanceKey(str, Enum):
+class RobloxGroupsApiWatermarkContributionRequestBalanceKey(StrEnum):
     O18BOOSTED = "O18Boosted"
     STANDARD = "Standard"
 

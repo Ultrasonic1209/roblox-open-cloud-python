@@ -1,14 +1,34 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response
+
+"""
+{'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-group:manage', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.roblox_web_web_api_models_api_array_response_roblox_groups_api_group_detail_response import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse,
 )
-from ...types import Response
 
 
 def _get_kwargs() -> dict[str, Any]:
@@ -16,24 +36,13 @@ def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/legacy-groups/v1/user/groups/pending",
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 100},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 100},
-                },
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-scopes": [{"name": "legacy-group:manage"}],
-            },
-            "openapi-id": "get_legacy-groups_v1_user_groups_pending",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse.from_dict(
@@ -53,7 +62,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -79,7 +88,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs()
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -121,7 +130,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs()
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

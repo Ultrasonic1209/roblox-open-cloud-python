@@ -1,11 +1,13 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class Repository(str, Enum):
+class Repository(StrEnum):
+    ANTI_CHEAT_CONFIG = "AntiCheatConfig"
     DATA_STORES_CONFIG = "DataStoresConfig"
     EXPERIENCE_USER_CONFIG = "ExperienceUserConfig"
     EXTENDED_SERVICES_CONFIG = "ExtendedServicesConfig"
     IN_EXPERIENCE_CONFIG = "InExperienceConfig"
+    JOURNEYS_CONFIG = "JourneysConfig"
     LEADERBOARDS_CONFIG = "LeaderboardsConfig"
     RECOMMENDATION_SERVICES_CONFIG = "RecommendationServicesConfig"
 

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CloudListLuauExecutionSessionTaskLogsView(str, Enum):
+class CloudListLuauExecutionSessionTaskLogsView(StrEnum):
     FLAT = "FLAT"
     STRUCTURED = "STRUCTURED"
     VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED"

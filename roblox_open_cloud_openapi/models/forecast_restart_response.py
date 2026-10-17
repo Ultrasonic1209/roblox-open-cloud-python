@@ -27,7 +27,7 @@ class ForecastRestartResponse:
     place_forecasts: ForecastRestartResponsePlaceForecastsType0 | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.forecast_restart_response_place_forecasts_type_0 import ForecastRestartResponsePlaceForecastsType0
+        from ..models.forecast_restart_response_place_forecasts_type_0 import ForecastRestartResponsePlaceForecastsType0  # noqa: PLC0415
 
         place_forecasts: dict[str, Any] | None | Unset
         if isinstance(self.place_forecasts, Unset):
@@ -47,9 +47,9 @@ class ForecastRestartResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.forecast_restart_response_place_forecasts_type_0 import ForecastRestartResponsePlaceForecastsType0
+        from ..models.forecast_restart_response_place_forecasts_type_0 import ForecastRestartResponsePlaceForecastsType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_place_forecasts(data: object) -> ForecastRestartResponsePlaceForecastsType0 | None | Unset:
             if data is None:

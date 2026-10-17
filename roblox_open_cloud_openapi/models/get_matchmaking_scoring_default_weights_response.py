@@ -29,7 +29,7 @@ class GetMatchmakingScoringDefaultWeightsResponse:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.get_matchmaking_scoring_default_weights_response_weights_type_0 import (
-            GetMatchmakingScoringDefaultWeightsResponseWeightsType0,
+            GetMatchmakingScoringDefaultWeightsResponseWeightsType0,  # noqa: PLC0415
         )
 
         weights: dict[str, Any] | None | Unset
@@ -51,10 +51,10 @@ class GetMatchmakingScoringDefaultWeightsResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.get_matchmaking_scoring_default_weights_response_weights_type_0 import (
-            GetMatchmakingScoringDefaultWeightsResponseWeightsType0,
+            GetMatchmakingScoringDefaultWeightsResponseWeightsType0,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_weights(data: object) -> GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None | Unset:
             if data is None:

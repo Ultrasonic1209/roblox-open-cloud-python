@@ -42,9 +42,9 @@ class RobloxPublishApiAssetQuotasResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_publish_api_asset_quota import RobloxPublishApiAssetQuota
+        from ..models.roblox_publish_api_asset_quota import RobloxPublishApiAssetQuota  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _quotas = d.pop("quotas", UNSET)
         quotas: list[RobloxPublishApiAssetQuota] | Unset = UNSET
         if _quotas is not UNSET:

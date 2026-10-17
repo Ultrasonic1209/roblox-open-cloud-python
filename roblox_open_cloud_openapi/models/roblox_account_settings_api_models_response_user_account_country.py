@@ -56,7 +56,7 @@ class RobloxAccountSettingsApiModelsResponseUserAccountCountry:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         country_name = d.pop("countryName", UNSET)
 
         subdivision_iso = d.pop("subdivisionIso", UNSET)

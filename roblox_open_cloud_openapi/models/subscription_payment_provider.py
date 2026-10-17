@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SubscriptionPaymentProvider(str, Enum):
+class SubscriptionPaymentProvider(StrEnum):
     APPLE = "APPLE"
     GOOGLE = "GOOGLE"
     PAYMENT_PROVIDER_UNSPECIFIED = "PAYMENT_PROVIDER_UNSPECIFIED"

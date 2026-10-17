@@ -33,9 +33,9 @@ class ConfigRepositoryFull:
     conditional_rules: ConditionalRulesPayload | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.conditional_rules_payload import ConditionalRulesPayload
-        from ..models.config_repository_full_entries_type_0 import ConfigRepositoryFullEntriesType0
-        from ..models.config_repository_metadata import ConfigRepositoryMetadata
+        from ..models.conditional_rules_payload import ConditionalRulesPayload  # noqa: PLC0415
+        from ..models.config_repository_full_entries_type_0 import ConfigRepositoryFullEntriesType0  # noqa: PLC0415
+        from ..models.config_repository_metadata import ConfigRepositoryMetadata  # noqa: PLC0415
 
         entries: dict[str, Any] | None | Unset
         if isinstance(self.entries, Unset):
@@ -75,11 +75,11 @@ class ConfigRepositoryFull:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.conditional_rules_payload import ConditionalRulesPayload
-        from ..models.config_repository_full_entries_type_0 import ConfigRepositoryFullEntriesType0
-        from ..models.config_repository_metadata import ConfigRepositoryMetadata
+        from ..models.conditional_rules_payload import ConditionalRulesPayload  # noqa: PLC0415
+        from ..models.config_repository_full_entries_type_0 import ConfigRepositoryFullEntriesType0  # noqa: PLC0415
+        from ..models.config_repository_metadata import ConfigRepositoryMetadata  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_entries(data: object) -> ConfigRepositoryFullEntriesType0 | None | Unset:
             if data is None:

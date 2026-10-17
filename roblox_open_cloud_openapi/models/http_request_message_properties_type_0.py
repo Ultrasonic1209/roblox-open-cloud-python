@@ -11,8 +11,6 @@ T = TypeVar("T", bound="HttpRequestMessagePropertiesType0")
 
 @_attrs_define
 class HttpRequestMessagePropertiesType0:
-    """ """
-
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -24,7 +22,7 @@ class HttpRequestMessagePropertiesType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         http_request_message_properties_type_0 = cls()
 
         http_request_message_properties_type_0.additional_properties = d

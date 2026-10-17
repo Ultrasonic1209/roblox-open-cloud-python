@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UsersOutfitsSize(str, Enum):
+class GetV1UsersOutfitsSize(StrEnum):
     VALUE_0 = "150x150"
     VALUE_1 = "420x420"
 

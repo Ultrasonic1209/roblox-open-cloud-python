@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MatchmakingAttributeValueType(str, Enum):
+class MatchmakingAttributeValueType(StrEnum):
     BOOL = "Bool"
     INVALID = "Invalid"
     NUMBER = "Number"

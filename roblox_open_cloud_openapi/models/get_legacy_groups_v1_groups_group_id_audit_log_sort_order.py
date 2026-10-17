@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetLegacyGroupsV1GroupsGroupIdAuditLogSortOrder(str, Enum):
+class GetLegacyGroupsV1GroupsGroupIdAuditLogSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

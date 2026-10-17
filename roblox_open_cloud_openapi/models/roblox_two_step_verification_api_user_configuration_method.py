@@ -20,8 +20,7 @@ class RobloxTwoStepVerificationApiUserConfigurationMethod:
 
     Attributes:
         media_type (RobloxTwoStepVerificationApiUserConfigurationMethodMediaType | Unset): The
-            Roblox.TwoStepVerification.Client.TwoStepVerificationMediaType for the method. ['Email' = 0, 'SMS' = 1,
-            'Authenticator' = 2, 'RecoveryCode' = 3, 'SecurityKey' = 4, 'CrossDevice' = 5, 'Password' = 6, 'Passkey' = 7]
+            Roblox.TwoStepVerification.Client.TwoStepVerificationMediaType for the method.
         enabled (bool | Unset): Whether or not the method is enabled.
         updated (datetime.datetime | Unset): The last time this method was updated for the user.
     """
@@ -55,7 +54,7 @@ class RobloxTwoStepVerificationApiUserConfigurationMethod:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _media_type = d.pop("mediaType", UNSET)
         media_type: RobloxTwoStepVerificationApiUserConfigurationMethodMediaType | Unset
         if isinstance(_media_type, Unset):

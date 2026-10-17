@@ -47,9 +47,9 @@ class GetUpdateStatusResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.game_update_status import GameUpdateStatus
+        from ..models.game_update_status import GameUpdateStatus  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_update_status_list(data: object) -> list[GameUpdateStatus] | None | Unset:
             if data is None:

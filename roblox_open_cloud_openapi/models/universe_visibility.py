@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class UniverseVisibility(str, Enum):
+class UniverseVisibility(StrEnum):
     PRIVATE = "PRIVATE"
     PUBLIC = "PUBLIC"
     VISIBILITY_UNSPECIFIED = "VISIBILITY_UNSPECIFIED"

@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-badges/v1/universes/{universeId}/badges', 'httpMethod': 'POST', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/badges#post_legacy_badges_v1_universes__universeId__badges'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -16,6 +35,7 @@ else:
 
 from ...models.post_v1_universes_universe_id_badges_body import PostV1UniversesUniverseIdBadgesBody
 from ...models.roblox_web_responses_badges_badge_response_v2 import RobloxWebResponsesBadgesBadgeResponseV2
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -30,19 +50,6 @@ def _get_kwargs(
         "url": "https://badges.roblox.com/v1/universes/{universe_id}/badges".format(
             universe_id=quote(str(universe_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/legacy-badges/v1/universes/{universeId}/badges",
-                        "httpMethod": "POST",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/badges#post_legacy_badges_v1_universes__universeId__badges",
-                    }
-                ],
-            },
-            "openapi-id": "post_v1_universes_universeId_badges",
-        },
     }
 
     if not isinstance(body, Unset):
@@ -55,7 +62,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebResponsesBadgesBadgeResponseV2 | None:
     if response.status_code == 200:
         response_200 = RobloxWebResponsesBadgesBadgeResponseV2.from_dict(response.json())
@@ -89,7 +96,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebResponsesBadgesBadgeResponseV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -110,6 +117,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxWebResponsesBadgesBadgeResponseV2]:
     """Creates a new badge.
 
+     Charges the selected payment source and creates the badge under the universe's root place.
+
     Args:
         universe_id (int):
         body (PostV1UniversesUniverseIdBadgesBody | Unset):
@@ -127,7 +136,7 @@ def sync_detailed(
         body=body,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -144,6 +153,8 @@ def sync(
     body: PostV1UniversesUniverseIdBadgesBody | Unset = UNSET,
 ) -> Any | RobloxWebResponsesBadgesBadgeResponseV2 | None:
     """Creates a new badge.
+
+     Charges the selected payment source and creates the badge under the universe's root place.
 
     Args:
         universe_id (int):
@@ -175,6 +186,8 @@ async def asyncio_detailed(
 ) -> Response[Any | RobloxWebResponsesBadgesBadgeResponseV2]:
     """Creates a new badge.
 
+     Charges the selected payment source and creates the badge under the universe's root place.
+
     Args:
         universe_id (int):
         body (PostV1UniversesUniverseIdBadgesBody | Unset):
@@ -192,7 +205,7 @@ async def asyncio_detailed(
         body=body,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -207,6 +220,8 @@ async def asyncio(
     body: PostV1UniversesUniverseIdBadgesBody | Unset = UNSET,
 ) -> Any | RobloxWebResponsesBadgesBadgeResponseV2 | None:
     """Creates a new badge.
+
+     Charges the selected payment source and creates the badge under the universe's root place.
 
     Args:
         universe_id (int):

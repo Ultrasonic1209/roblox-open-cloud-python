@@ -18,19 +18,12 @@ T = TypeVar("T", bound="RobloxGamesApiModelsResponseUpsellUxTreatment")
 
 @_attrs_define
 class RobloxGamesApiModelsResponseUpsellUxTreatment:
-    """Upsell UX treatment metadata appended to a playability response when an experience is
-    currently playable but will be restricted under upcoming Roblox-Core content rules.
-    Mirrors the existing Roblox.Games.Api.Models.Response.PlayableUxTreatment contract intentionally so client
-    rendering can be unified.
+    """Upsell UX treatment metadata appended to a playability response.
 
-        Attributes:
-            treatment (str | Unset): Identifier of the client component to render (currently "ageCheckUpsell").
-                Absent when the upsell should not surface.
-            data (RobloxGamesApiModelsResponseUpsellUxTreatmentData | Unset): Localized strings for an
-                Roblox.Games.Api.Models.Response.UpsellUxTreatment. Currently only carries
-                Roblox.Games.Api.Models.Response.UpsellUxTreatmentData.BodyText; structured to allow additional fields without
-                breaking the
-                JSON contract.
+    Attributes:
+        treatment (str | Unset): Identifier of the client component to render.
+        data (RobloxGamesApiModelsResponseUpsellUxTreatmentData | Unset): Localized strings for an
+            Roblox.Games.Api.Models.Response.UpsellUxTreatment.
     """
 
     treatment: str | Unset = UNSET
@@ -56,10 +49,10 @@ class RobloxGamesApiModelsResponseUpsellUxTreatment:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_games_api_models_response_upsell_ux_treatment_data import (
-            RobloxGamesApiModelsResponseUpsellUxTreatmentData,
+            RobloxGamesApiModelsResponseUpsellUxTreatmentData,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         treatment = d.pop("treatment", UNSET)
 
         _data = d.pop("data", UNSET)

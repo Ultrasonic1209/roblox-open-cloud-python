@@ -219,10 +219,10 @@ class LuauExecutionSessionTask:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.luau_execution_session_task_error import LuauExecutionSessionTaskError
-        from ..models.luau_execution_session_task_output import LuauExecutionSessionTaskOutput
+        from ..models.luau_execution_session_task_error import LuauExecutionSessionTaskError  # noqa: PLC0415
+        from ..models.luau_execution_session_task_output import LuauExecutionSessionTaskOutput  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         path = d.pop("path", UNSET)
 
         _create_time = d.pop("createTime", UNSET)

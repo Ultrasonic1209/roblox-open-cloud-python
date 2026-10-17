@@ -10,8 +10,6 @@ T = TypeVar("T", bound="RobloxGameInternationalizationApiModelsResponseSetUserLo
 
 @_attrs_define
 class RobloxGameInternationalizationApiModelsResponseSetUserLocalizationSettingsResponse:
-    """ """
-
     def to_dict(self) -> dict[str, Any]:
 
         field_dict: dict[str, Any] = {}

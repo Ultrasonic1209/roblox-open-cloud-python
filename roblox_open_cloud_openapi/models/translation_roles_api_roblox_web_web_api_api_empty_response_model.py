@@ -11,8 +11,6 @@ T = TypeVar("T", bound="TranslationRolesApiRobloxWebWebAPIApiEmptyResponseModel"
 
 @_attrs_define
 class TranslationRolesApiRobloxWebWebAPIApiEmptyResponseModel:
-    """ """
-
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -24,7 +22,7 @@ class TranslationRolesApiRobloxWebWebAPIApiEmptyResponseModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         translation_roles_api_roblox_web_web_api_api_empty_response_model = cls()
 
         translation_roles_api_roblox_web_web_api_api_empty_response_model.additional_properties = d

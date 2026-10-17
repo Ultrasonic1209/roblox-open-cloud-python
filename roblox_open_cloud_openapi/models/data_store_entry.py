@@ -61,6 +61,9 @@ class DataStoreEntry:
             This matches the last segment of the resource path, and is provided
             only for convenience.
         users (list[str] | Unset): Users associated with the entry.
+
+            Each value must be a user resource path in the format `users/{user_id}`,
+            not a bare user ID. Example: users/123.
         attributes (DataStoreEntryAttributes | Unset): An arbitrary set of attributes associated with the entry.
     """
 
@@ -135,9 +138,9 @@ class DataStoreEntry:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.data_store_entry_attributes import DataStoreEntryAttributes
+        from ..models.data_store_entry_attributes import DataStoreEntryAttributes  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         path = d.pop("path", UNSET)
 
         _create_time = d.pop("createTime", UNSET)

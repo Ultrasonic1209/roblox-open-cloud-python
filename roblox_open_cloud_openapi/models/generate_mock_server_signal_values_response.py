@@ -47,9 +47,9 @@ class GenerateMockServerSignalValuesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.mock_server_signal_values import MockServerSignalValues
+        from ..models.mock_server_signal_values import MockServerSignalValues  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_example_game_signal_values(data: object) -> list[MockServerSignalValues] | None | Unset:
             if data is None:

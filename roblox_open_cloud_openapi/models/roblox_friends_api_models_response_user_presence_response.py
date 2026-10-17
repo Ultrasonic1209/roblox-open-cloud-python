@@ -67,10 +67,10 @@ class RobloxFriendsApiModelsResponseUserPresenceResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_friends_api_models_response_user_presence_response_model import (
-            RobloxFriendsApiModelsResponseUserPresenceResponseModel,
+            RobloxFriendsApiModelsResponseUserPresenceResponseModel,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _user_presence = d.pop("userPresence", UNSET)
         user_presence: RobloxFriendsApiModelsResponseUserPresenceResponseModel | Unset
         if isinstance(_user_presence, Unset):

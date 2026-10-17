@@ -60,9 +60,9 @@ class BatchGrantPermissionsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.grant_permission_error import GrantPermissionError
+        from ..models.grant_permission_error import GrantPermissionError  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_success_asset_ids(data: object) -> list[int] | None | Unset:
             if data is None:

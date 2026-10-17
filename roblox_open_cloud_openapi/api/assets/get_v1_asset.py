@@ -1,17 +1,38 @@
-import sys
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://assetdelivery.roblox.com/v2/asset', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_asset'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
 else:
     from typing_extensions import deprecated
+
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -32,17 +53,16 @@ def _get_kwargs(
     expected_asset_type: str | Unset = "",
     skip_signing_scripts: bool | Unset = False,
     permission_context: str | Unset = UNSET,
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     asset_resolution_mode: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
-    usage_context: int | Unset = UNSET,
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
     headers["Accept-Encoding"] = accept_encoding
@@ -51,11 +71,12 @@ def _get_kwargs(
 
     headers["AssetType"] = asset_type
 
-    headers["Accept"] = accept
-
     headers["AssetFormat"] = asset_format
 
     headers["Roblox-AssetFormat"] = roblox_asset_format
+
+    if not isinstance(roblox_usage_context, Unset):
+        headers["Roblox-Usage-Context"] = roblox_usage_context
 
     params: dict[str, Any] = {}
 
@@ -99,34 +120,19 @@ def _get_kwargs(
 
     params["accessContext"] = access_context
 
-    params["usageContext"] = usage_context
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "https://assetdelivery.roblox.com/v1/asset",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://assetdelivery.roblox.com/v2/asset",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_asset",
-                    }
-                ],
-            },
-            "openapi-id": "get_v1_asset",
-        },
     }
 
     _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if response.status_code == 200:
         return None
 
@@ -136,7 +142,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -167,17 +173,16 @@ def sync_detailed(
     expected_asset_type: str | Unset = "",
     skip_signing_scripts: bool | Unset = False,
     permission_context: str | Unset = UNSET,
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     asset_resolution_mode: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
-    usage_context: int | Unset = UNSET,
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> Response[Any]:
     """
     Args:
@@ -197,17 +202,16 @@ def sync_detailed(
         expected_asset_type (str | Unset):  Default: ''.
         skip_signing_scripts (bool | Unset):  Default: False.
         permission_context (str | Unset):
-        do_not_fallback_to_baseline_representation (bool | Unset):  Default: False.
-        content_representation_priority_list (str | Unset):  Default: ''.
+        do_not_fallback_to_baseline_representation (bool | Unset):
+        content_representation_priority_list (str | Unset):
         asset_resolution_mode (str | Unset):
         access_context (str | Unset):
-        usage_context (int | Unset):
         accept_encoding (str):
         roblox_place_id (int):
         asset_type (str):
-        accept (str):
         asset_format (str):
         roblox_asset_format (str):
+        roblox_usage_context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -238,16 +242,15 @@ def sync_detailed(
         content_representation_priority_list=content_representation_priority_list,
         asset_resolution_mode=asset_resolution_mode,
         access_context=access_context,
-        usage_context=usage_context,
         accept_encoding=accept_encoding,
         roblox_place_id=roblox_place_id,
         asset_type=asset_type,
-        accept=accept,
         asset_format=asset_format,
         roblox_asset_format=roblox_asset_format,
+        roblox_usage_context=roblox_usage_context,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -276,17 +279,16 @@ async def asyncio_detailed(
     expected_asset_type: str | Unset = "",
     skip_signing_scripts: bool | Unset = False,
     permission_context: str | Unset = UNSET,
-    do_not_fallback_to_baseline_representation: bool | Unset = False,
-    content_representation_priority_list: str | Unset = "",
+    do_not_fallback_to_baseline_representation: bool | Unset = UNSET,
+    content_representation_priority_list: str | Unset = UNSET,
     asset_resolution_mode: str | Unset = UNSET,
     access_context: str | Unset = UNSET,
-    usage_context: int | Unset = UNSET,
     accept_encoding: str,
     roblox_place_id: int,
     asset_type: str,
-    accept: str,
     asset_format: str,
     roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
 ) -> Response[Any]:
     """
     Args:
@@ -306,17 +308,16 @@ async def asyncio_detailed(
         expected_asset_type (str | Unset):  Default: ''.
         skip_signing_scripts (bool | Unset):  Default: False.
         permission_context (str | Unset):
-        do_not_fallback_to_baseline_representation (bool | Unset):  Default: False.
-        content_representation_priority_list (str | Unset):  Default: ''.
+        do_not_fallback_to_baseline_representation (bool | Unset):
+        content_representation_priority_list (str | Unset):
         asset_resolution_mode (str | Unset):
         access_context (str | Unset):
-        usage_context (int | Unset):
         accept_encoding (str):
         roblox_place_id (int):
         asset_type (str):
-        accept (str):
         asset_format (str):
         roblox_asset_format (str):
+        roblox_usage_context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -347,15 +348,14 @@ async def asyncio_detailed(
         content_representation_priority_list=content_representation_priority_list,
         asset_resolution_mode=asset_resolution_mode,
         access_context=access_context,
-        usage_context=usage_context,
         accept_encoding=accept_encoding,
         roblox_place_id=roblox_place_id,
         asset_type=asset_type,
-        accept=accept,
         asset_format=asset_format,
         roblox_asset_format=roblox_asset_format,
+        roblox_usage_context=roblox_usage_context,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)

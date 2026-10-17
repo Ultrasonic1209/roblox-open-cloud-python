@@ -1,10 +1,31 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_v2_search_items_details_category_filter import GetV2SearchItemsDetailsCategoryFilter
 from ...models.get_v2_search_items_details_creator_type import GetV2SearchItemsDetailsCreatorType
 from ...models.get_v2_search_items_details_limit import GetV2SearchItemsDetailsLimit
@@ -15,7 +36,7 @@ from ...models.get_v2_search_items_details_sort_type import GetV2SearchItemsDeta
 from ...models.roblox_catalog_api_catalog_search_page_response_roblox_catalog_api_catalog_search_detailed_response_item_v2 import (
     RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItemV2,
 )
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -123,17 +144,13 @@ def _get_kwargs(
         "method": "get",
         "url": "https://catalog.roblox.com/v2/search/items/details",
         "params": params,
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v2_search_items_details",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItemV2 | None:
     if response.status_code == 200:
         response_200 = (
@@ -167,7 +184,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxCatalogApiCatalogSearchPageResponseRobloxCatalogApiCatalogSearchDetailedResponseItemV2]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -257,7 +274,7 @@ def sync_detailed(
         sort_order=sort_order,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -426,7 +443,7 @@ async def asyncio_detailed(
         sort_order=sort_order,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

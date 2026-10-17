@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UniversesUniverseIdBadgesSortOrder(str, Enum):
+class GetV1UniversesUniverseIdBadgesSortOrder(StrEnum):
     ASC = "Asc"
     DESC = "Desc"
 

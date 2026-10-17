@@ -124,13 +124,13 @@ class RobloxCatalogApiBundleDetailsModel:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_catalog_api_bundle_creator_model import RobloxCatalogApiBundleCreatorModel
-        from ..models.roblox_catalog_api_bundle_item_detail_model import RobloxCatalogApiBundleItemDetailModel
-        from ..models.roblox_catalog_api_bundle_product_model import RobloxCatalogApiBundleProductModel
-        from ..models.roblox_catalog_api_collectible_item_detail import RobloxCatalogApiCollectibleItemDetail
-        from ..models.roblox_catalog_api_discount_information import RobloxCatalogApiDiscountInformation
+        from ..models.roblox_catalog_api_bundle_creator_model import RobloxCatalogApiBundleCreatorModel  # noqa: PLC0415
+        from ..models.roblox_catalog_api_bundle_item_detail_model import RobloxCatalogApiBundleItemDetailModel  # noqa: PLC0415
+        from ..models.roblox_catalog_api_bundle_product_model import RobloxCatalogApiBundleProductModel  # noqa: PLC0415
+        from ..models.roblox_catalog_api_collectible_item_detail import RobloxCatalogApiCollectibleItemDetail  # noqa: PLC0415
+        from ..models.roblox_catalog_api_discount_information import RobloxCatalogApiDiscountInformation  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)

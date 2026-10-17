@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RevenueSummaryTimeFrame(str, Enum):
+class RevenueSummaryTimeFrame(StrEnum):
     DAY = "Day"
     MONTH = "Month"
     WEEK = "Week"

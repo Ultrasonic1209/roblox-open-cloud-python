@@ -81,12 +81,12 @@ class RobloxTradesApiModelsV2TradableItem:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_trades_api_models_v2_item_target import RobloxTradesApiModelsV2ItemTarget
+        from ..models.roblox_trades_api_models_v2_item_target import RobloxTradesApiModelsV2ItemTarget  # noqa: PLC0415
         from ..models.roblox_trades_api_models_v2_tradable_item_instance import (
-            RobloxTradesApiModelsV2TradableItemInstance,
+            RobloxTradesApiModelsV2TradableItemInstance,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         collectible_item_id = d.pop("collectibleItemId", UNSET)
 
         _item_target = d.pop("itemTarget", UNSET)

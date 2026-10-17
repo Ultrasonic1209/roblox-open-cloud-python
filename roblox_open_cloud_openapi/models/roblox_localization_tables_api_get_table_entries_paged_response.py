@@ -53,9 +53,9 @@ class RobloxLocalizationTablesApiGetTableEntriesPagedResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_localization_tables_api_entry import RobloxLocalizationTablesApiEntry
+        from ..models.roblox_localization_tables_api_entry import RobloxLocalizationTablesApiEntry  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         previous_page_cursor = d.pop("previousPageCursor", UNSET)
 
         next_page_cursor = d.pop("nextPageCursor", UNSET)

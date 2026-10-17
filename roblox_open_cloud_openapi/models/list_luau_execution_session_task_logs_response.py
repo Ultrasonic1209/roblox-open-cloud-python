@@ -53,9 +53,9 @@ class ListLuauExecutionSessionTaskLogsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.luau_execution_session_task_log import LuauExecutionSessionTaskLog
+        from ..models.luau_execution_session_task_log import LuauExecutionSessionTaskLog  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _luau_execution_session_task_logs = d.pop("luauExecutionSessionTaskLogs", UNSET)
         luau_execution_session_task_logs: list[LuauExecutionSessionTaskLog] | Unset = UNSET
         if _luau_execution_session_task_logs is not UNSET:

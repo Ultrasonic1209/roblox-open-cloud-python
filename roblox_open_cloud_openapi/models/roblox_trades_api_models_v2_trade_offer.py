@@ -58,11 +58,11 @@ class RobloxTradesApiModelsV2TradeOffer:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_trades_api_models_v2_tradable_item_instance import (
-            RobloxTradesApiModelsV2TradableItemInstance,
+            RobloxTradesApiModelsV2TradableItemInstance,  # noqa: PLC0415
         )
-        from ..models.roblox_web_responses_users_skinny_user_response import RobloxWebResponsesUsersSkinnyUserResponse
+        from ..models.roblox_web_responses_users_skinny_user_response import RobloxWebResponsesUsersSkinnyUserResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _user = d.pop("user", UNSET)
         user: RobloxWebResponsesUsersSkinnyUserResponse | Unset
         if isinstance(_user, Unset):

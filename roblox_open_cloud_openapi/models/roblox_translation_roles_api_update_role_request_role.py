@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxTranslationRolesApiUpdateRoleRequestRole(str, Enum):
+class RobloxTranslationRolesApiUpdateRoleRequestRole(StrEnum):
     TRANSLATOR = "translator"
 
     def __str__(self) -> str:

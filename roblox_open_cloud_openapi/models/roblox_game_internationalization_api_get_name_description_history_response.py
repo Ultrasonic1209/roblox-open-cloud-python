@@ -50,10 +50,10 @@ class RobloxGameInternationalizationApiGetNameDescriptionHistoryResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_translation_history import (
-            RobloxGameInternationalizationApiTranslationHistory,
+            RobloxGameInternationalizationApiTranslationHistory,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _history = d.pop("history", UNSET)
         history: list[RobloxGameInternationalizationApiTranslationHistory] | Unset = UNSET
         if _history is not UNSET:

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class FilterType(str, Enum):
+class FilterType(StrEnum):
     NUMBER = "Number"
     STRING = "String"
 

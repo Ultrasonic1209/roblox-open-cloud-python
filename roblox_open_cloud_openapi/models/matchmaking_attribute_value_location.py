@@ -49,9 +49,9 @@ class MatchmakingAttributeValueLocation:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.data_store_location import DataStoreLocation
+        from ..models.data_store_location import DataStoreLocation  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _location_case = d.pop("locationCase", UNSET)
         location_case: MatchmakingAttributeValueLocationCase | Unset
         if isinstance(_location_case, Unset):

@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-cloud-api-operation-name': 'Update', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'universe.ordered-data-store.scope.entry:write'}], 'x-roblox-cloud-api-operation-code-samples': [{'language': 'curl', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/ordered-data-stores/v1/universes/<universeId>/orderedDataStores/<orderedDataStore>/scopes/<scope>/entries/<entry>\' \\\n--header \'x-api-key: <insert-api-key>\' \\\n--header \'Content-Type: application/json\' \\\n--data \'{ \n    "value": <long> \n}\'\n'}], 'x-roblox-rate-limits': {'description': 'See [Throttling](/cloud/guides/data-stores/throttling.md).', 'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 500}}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/universes/{universe_id}/ordered-data-stores/{ordered_data_store_id}/scopes/{scope_id}/entries/{entry_id}', 'httpMethod': 'PATCH', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_UpdateOrderedDataStoreEntry'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -16,6 +35,7 @@ else:
 
 from ...models.entry import Entry
 from ...models.update_entry_request import UpdateEntryRequest
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -44,32 +64,6 @@ def _get_kwargs(
             entry=quote(str(entry), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-cloud-api-operation-name": "Update",
-                "x-roblox-stability": "BETA",
-                "x-roblox-scopes": [{"name": "universe.ordered-data-store.scope.entry:write"}],
-                "x-roblox-cloud-api-operation-code-samples": [
-                    {
-                        "language": "curl",
-                        "script": "curl --location --request PATCH 'https://apis.roblox.com/ordered-data-stores/v1/universes/<universeId>/orderedDataStores/<orderedDataStore>/scopes/<scope>/entries/<entry>' \\\n--header 'x-api-key: <insert-api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{ \n    \"value\": <long> \n}'\n",
-                    }
-                ],
-                "x-roblox-rate-limits": {
-                    "description": "See [Throttling](/cloud/guides/data-stores/throttling.md).",
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 500},
-                },
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/cloud/v2/universes/{universe_id}/ordered-data-stores/{ordered_data_store_id}/scopes/{scope_id}/entries/{entry_id}",
-                        "httpMethod": "PATCH",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_UpdateOrderedDataStoreEntry",
-                    }
-                ],
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-            },
-            "openapi-id": "OrderedDataStores_UpdateEntry",
-        },
     }
 
     _kwargs["json"] = body.to_dict()
@@ -80,7 +74,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | Entry | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | Entry | None:
     if response.status_code == 200:
         response_200 = Entry.from_dict(response.json())
 
@@ -112,7 +106,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | Entry]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | Entry]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -161,7 +155,7 @@ def sync_detailed(
         allow_missing=allow_missing,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -250,7 +244,7 @@ async def asyncio_detailed(
         allow_missing=allow_missing,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

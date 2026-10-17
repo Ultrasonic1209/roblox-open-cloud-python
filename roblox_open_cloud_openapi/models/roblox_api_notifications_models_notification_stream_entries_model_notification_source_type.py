@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxApiNotificationsModelsNotificationStreamEntriesModelNotificationSourceType(str, Enum):
+class RobloxApiNotificationsModelsNotificationStreamEntriesModelNotificationSourceType(StrEnum):
     CHATNEWMESSAGE = "ChatNewMessage"
     CONVERSATIONUNIVERSECHANGED = "ConversationUniverseChanged"
     DEVELOPERMETRICSAVAILABLE = "DeveloperMetricsAvailable"

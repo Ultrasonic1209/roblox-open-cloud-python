@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiTranslationCountCategoryInfoResponseCategory(str, Enum):
+class RobloxGameInternationalizationApiTranslationCountCategoryInfoResponseCategory(StrEnum):
     INGAMECONTENT = "InGameContent"
 
     def __str__(self) -> str:

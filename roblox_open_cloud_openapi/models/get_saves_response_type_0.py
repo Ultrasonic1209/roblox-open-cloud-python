@@ -25,7 +25,7 @@ class GetSavesResponseType0:
     saves: list[HydratedSaveType0 | None] | None
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.hydrated_save_type_0 import HydratedSaveType0
+        from ..models.hydrated_save_type_0 import HydratedSaveType0  # noqa: PLC0415
 
         total_count = self.total_count
 
@@ -56,9 +56,9 @@ class GetSavesResponseType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.hydrated_save_type_0 import HydratedSaveType0
+        from ..models.hydrated_save_type_0 import HydratedSaveType0  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         total_count = d.pop("totalCount")
 
         def _parse_saves(data: object) -> list[HydratedSaveType0 | None] | None:

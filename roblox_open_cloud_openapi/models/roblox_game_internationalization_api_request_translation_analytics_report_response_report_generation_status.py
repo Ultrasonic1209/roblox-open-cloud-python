@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiRequestTranslationAnalyticsReportResponseReportGenerationStatus(str, Enum):
+class RobloxGameInternationalizationApiRequestTranslationAnalyticsReportResponseReportGenerationStatus(StrEnum):
     INPROGRESS = "inProgress"
     READY = "ready"
     UNAVAILABLE = "unavailable"

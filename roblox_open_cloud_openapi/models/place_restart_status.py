@@ -43,7 +43,7 @@ class PlaceRestartStatus:
     latest_version: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.place_filter import PlaceFilter
+        from ..models.place_filter import PlaceFilter  # noqa: PLC0415
 
         state: str | Unset = UNSET
         if not isinstance(self.state, Unset):
@@ -109,9 +109,9 @@ class PlaceRestartStatus:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.place_filter import PlaceFilter
+        from ..models.place_filter import PlaceFilter  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _state = d.pop("state", UNSET)
         state: RestartState | Unset
         if isinstance(_state, Unset):

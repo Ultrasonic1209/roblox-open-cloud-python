@@ -11,7 +11,6 @@ if TYPE_CHECKING:
     from ..models.game_response import GameResponse
     from ..models.private_server_permissions_response import PrivateServerPermissionsResponse
     from ..models.private_server_subscription_response import PrivateServerSubscriptionResponse
-    from ..models.private_server_voice_settings_response import PrivateServerVoiceSettingsResponse
 
 
 T = TypeVar("T", bound="PrivateServerResponse")
@@ -28,7 +27,6 @@ class PrivateServerResponse:
         active (bool | Unset):
         subscription (None | PrivateServerSubscriptionResponse | Unset):
         permissions (None | PrivateServerPermissionsResponse | Unset):
-        voice_settings (None | PrivateServerVoiceSettingsResponse | Unset):
         link (None | str | Unset):
     """
 
@@ -39,14 +37,12 @@ class PrivateServerResponse:
     active: bool | Unset = UNSET
     subscription: None | PrivateServerSubscriptionResponse | Unset = UNSET
     permissions: None | PrivateServerPermissionsResponse | Unset = UNSET
-    voice_settings: None | PrivateServerVoiceSettingsResponse | Unset = UNSET
     link: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.game_response import GameResponse
-        from ..models.private_server_permissions_response import PrivateServerPermissionsResponse
-        from ..models.private_server_subscription_response import PrivateServerSubscriptionResponse
-        from ..models.private_server_voice_settings_response import PrivateServerVoiceSettingsResponse
+        from ..models.game_response import GameResponse  # noqa: PLC0415
+        from ..models.private_server_permissions_response import PrivateServerPermissionsResponse  # noqa: PLC0415
+        from ..models.private_server_subscription_response import PrivateServerSubscriptionResponse  # noqa: PLC0415
 
         id = self.id
 
@@ -88,14 +84,6 @@ class PrivateServerResponse:
         else:
             permissions = self.permissions
 
-        voice_settings: dict[str, Any] | None | Unset
-        if isinstance(self.voice_settings, Unset):
-            voice_settings = UNSET
-        elif isinstance(self.voice_settings, PrivateServerVoiceSettingsResponse):
-            voice_settings = self.voice_settings.to_dict()
-        else:
-            voice_settings = self.voice_settings
-
         link: None | str | Unset
         if isinstance(self.link, Unset):
             link = UNSET
@@ -119,8 +107,6 @@ class PrivateServerResponse:
             field_dict["subscription"] = subscription
         if permissions is not UNSET:
             field_dict["permissions"] = permissions
-        if voice_settings is not UNSET:
-            field_dict["voiceSettings"] = voice_settings
         if link is not UNSET:
             field_dict["link"] = link
 
@@ -128,12 +114,11 @@ class PrivateServerResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.game_response import GameResponse
-        from ..models.private_server_permissions_response import PrivateServerPermissionsResponse
-        from ..models.private_server_subscription_response import PrivateServerSubscriptionResponse
-        from ..models.private_server_voice_settings_response import PrivateServerVoiceSettingsResponse
+        from ..models.game_response import GameResponse  # noqa: PLC0415
+        from ..models.private_server_permissions_response import PrivateServerPermissionsResponse  # noqa: PLC0415
+        from ..models.private_server_subscription_response import PrivateServerSubscriptionResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         id = d.pop("id", UNSET)
 
         def _parse_name(data: object) -> None | str | Unset:
@@ -207,23 +192,6 @@ class PrivateServerResponse:
 
         permissions = _parse_permissions(d.pop("permissions", UNSET))
 
-        def _parse_voice_settings(data: object) -> None | PrivateServerVoiceSettingsResponse | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                voice_settings_type_1 = PrivateServerVoiceSettingsResponse.from_dict(data)
-
-                return voice_settings_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | PrivateServerVoiceSettingsResponse | Unset, data)
-
-        voice_settings = _parse_voice_settings(d.pop("voiceSettings", UNSET))
-
         def _parse_link(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -241,7 +209,6 @@ class PrivateServerResponse:
             active=active,
             subscription=subscription,
             permissions=permissions,
-            voice_settings=voice_settings,
             link=link,
         )
 

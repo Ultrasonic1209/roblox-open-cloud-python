@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CreatorStoreProductRestrictionsItem(str, Enum):
+class CreatorStoreProductRestrictionsItem(StrEnum):
     RESTRICTION_UNSPECIFIED = "RESTRICTION_UNSPECIFIED"
     SELLER_NO_LONGER_ACTIVE = "SELLER_NO_LONGER_ACTIVE"
     SELLER_PERMANENTLY_RESTRICTED = "SELLER_PERMANENTLY_RESTRICTED"

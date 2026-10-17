@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MatchmakingServerAttributeDefaultValueSourceCase(str, Enum):
+class MatchmakingServerAttributeDefaultValueSourceCase(StrEnum):
     CONSTANT = "Constant"
     INVALID = "Invalid"
     PLAYERATTRIBUTEREFERENCE = "PlayerAttributeReference"

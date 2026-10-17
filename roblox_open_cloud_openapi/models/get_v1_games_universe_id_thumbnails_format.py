@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1GamesUniverseIdThumbnailsFormat(str, Enum):
+class GetV1GamesUniverseIdThumbnailsFormat(StrEnum):
     JPEG = "Jpeg"
     PNG = "Png"
     WEBP = "Webp"

@@ -60,9 +60,9 @@ class RobloxGroupsApiBlockedKeywordPageResponseRobloxGroupsClientBlockedKeywordM
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.roblox_groups_client_blocked_keyword_model import RobloxGroupsClientBlockedKeywordModel
+        from ..models.roblox_groups_client_blocked_keyword_model import RobloxGroupsClientBlockedKeywordModel  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         total_active_keywords_count = d.pop("totalActiveKeywordsCount", UNSET)
 
         previous_page_cursor = d.pop("previousPageCursor", UNSET)

@@ -64,10 +64,10 @@ class AssetVersion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.creation_context import CreationContext
-        from ..models.moderation_result import ModerationResult
+        from ..models.creation_context import CreationContext  # noqa: PLC0415
+        from ..models.moderation_result import ModerationResult  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _creation_context = d.pop("creationContext", UNSET)
         creation_context: CreationContext | Unset
         if isinstance(_creation_context, Unset):

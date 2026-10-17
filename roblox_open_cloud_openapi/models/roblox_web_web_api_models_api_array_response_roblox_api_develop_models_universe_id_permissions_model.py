@@ -44,10 +44,10 @@ class RobloxWebWebAPIModelsApiArrayResponseRobloxApiDevelopModelsUniverseIdPermi
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_api_develop_models_universe_id_permissions_model import (
-            RobloxApiDevelopModelsUniverseIdPermissionsModel,
+            RobloxApiDevelopModelsUniverseIdPermissionsModel,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _data = d.pop("data", UNSET)
         data: list[RobloxApiDevelopModelsUniverseIdPermissionsModel] | Unset = UNSET
         if _data is not UNSET:

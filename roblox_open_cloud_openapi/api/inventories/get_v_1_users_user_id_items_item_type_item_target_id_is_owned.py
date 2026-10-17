@@ -1,15 +1,35 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
 from ...models.get_v1_users_user_id_items_item_type_item_target_id_is_owned_item_type import (
     GetV1UsersUserIdItemsItemTypeItemTargetIdIsOwnedItemType,
 )
-from ...types import Response
 
 
 def _get_kwargs(
@@ -25,16 +45,12 @@ def _get_kwargs(
             item_type=quote(str(item_type), safe=""),
             item_target_id=quote(str(item_target_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
-            "openapi-id": "get_v1_users_userId_items_itemType_itemTargetId_is-owned",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Any | bool | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | bool | None:
     if response.status_code == 200:
         response_200 = cast(bool, response.json())
         return response_200
@@ -49,7 +65,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> Response[Any | bool]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | bool]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,7 +102,7 @@ def sync_detailed(
         item_target_id=item_target_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -151,7 +167,7 @@ async def asyncio_detailed(
         item_target_id=item_target_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

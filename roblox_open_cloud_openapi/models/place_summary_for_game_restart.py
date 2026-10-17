@@ -51,10 +51,10 @@ class PlaceSummaryForGameRestart:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.place_summary_for_game_restart_instances_per_version_type_0 import (
-            PlaceSummaryForGameRestartInstancesPerVersionType0,
+            PlaceSummaryForGameRestartInstancesPerVersionType0,  # noqa: PLC0415
         )
         from ..models.place_summary_for_game_restart_players_per_version_type_0 import (
-            PlaceSummaryForGameRestartPlayersPerVersionType0,
+            PlaceSummaryForGameRestartPlayersPerVersionType0,  # noqa: PLC0415
         )
 
         players_impacted = self.players_impacted
@@ -120,13 +120,13 @@ class PlaceSummaryForGameRestart:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.place_summary_for_game_restart_instances_per_version_type_0 import (
-            PlaceSummaryForGameRestartInstancesPerVersionType0,
+            PlaceSummaryForGameRestartInstancesPerVersionType0,  # noqa: PLC0415
         )
         from ..models.place_summary_for_game_restart_players_per_version_type_0 import (
-            PlaceSummaryForGameRestartPlayersPerVersionType0,
+            PlaceSummaryForGameRestartPlayersPerVersionType0,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         players_impacted = d.pop("playersImpacted", UNSET)
 
         total_players = d.pop("totalPlayers", UNSET)

@@ -1,13 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.queue:dequeue', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.queue:dequeue'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.queue:dequeue']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreQueueItem', 'name': 'MemoryStoreQueueItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+"""
+
+
 from ...models.read_memory_store_queue_items_response import ReadMemoryStoreQueueItemsResponse
-from ...types import UNSET, Response, Unset
+from ...types import Unset
 
 
 def _get_kwargs(
@@ -36,27 +57,13 @@ def _get_kwargs(
             queue_id=quote(str(queue_id), safe=""),
         ),
         "params": params,
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "memory-store.queue:dequeue"}],
-                "x-roblox-docs": {
-                    "category": "Data and memory stores",
-                    "methodProperties": {"scopes": ["memory-store.queue:dequeue"]},
-                    "resource": {"$ref": "#/components/schemas/MemoryStoreQueueItem", "name": "MemoryStoreQueueItem"},
-                },
-                "x-roblox-stability": "STABLE",
-                "x-roblox-rate-limits": {"perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 1000000}},
-            },
-            "openapi-id": "Cloud_ReadMemoryStoreQueueItems",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> ReadMemoryStoreQueueItemsResponse | None:
     if response.status_code == 200:
         response_200 = ReadMemoryStoreQueueItemsResponse.from_dict(response.json())
@@ -70,7 +77,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ReadMemoryStoreQueueItemsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -117,7 +124,7 @@ def sync_detailed(
         invisibility_window=invisibility_window,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -200,7 +207,7 @@ async def asyncio_detailed(
         invisibility_window=invisibility_window,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

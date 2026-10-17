@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class PrivateServersTab(str, Enum):
+class PrivateServersTab(StrEnum):
     MYPRIVATESERVERS = "MyPrivateServers"
     OTHERPRIVATESERVERS = "OtherPrivateServers"
 

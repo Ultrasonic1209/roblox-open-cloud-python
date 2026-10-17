@@ -1,13 +1,33 @@
 from http import HTTPStatus
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.creator_store_product import CreatorStoreProduct
 from ...types import Response
+
+"""
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'creator-store-product:read', 'targetResourceSpecifier': ''}, {'name': 'creator-store-product:read'}], 'x-roblox-docs': {'category': 'Monetization', 'methodProperties': {'scopes': ['creator-store-product:read']}, 'resource': {'$ref': '#/components/schemas/CreatorStoreProduct', 'name': 'CreatorStoreProduct'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 30}}}
+"""
+
+
+from ...models.creator_store_product import CreatorStoreProduct
 
 
 def _get_kwargs(
@@ -19,29 +39,12 @@ def _get_kwargs(
         "url": "/cloud/v2/creator-store-products/{creator_store_product_id}".format(
             creator_store_product_id=quote(str(creator_store_product_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": True},
-                "x-roblox-scopes": [{"name": "creator-store-product:read"}],
-                "x-roblox-docs": {
-                    "category": "Monetization",
-                    "methodProperties": {"scopes": ["creator-store-product:read"]},
-                    "resource": {"$ref": "#/components/schemas/CreatorStoreProduct", "name": "CreatorStoreProduct"},
-                },
-                "x-roblox-stability": "BETA",
-                "x-roblox-rate-limits": {
-                    "perApiKeyOwner": {"period": "MINUTE", "maxInPeriod": 30},
-                    "perOauth2Authorization": {"period": "MINUTE", "maxInPeriod": 30},
-                },
-            },
-            "openapi-id": "Cloud_GetCreatorStoreProduct",
-        },
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Response) -> CreatorStoreProduct | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CreatorStoreProduct | None:
     if response.status_code == 200:
         response_200 = CreatorStoreProduct.from_dict(response.json())
 
@@ -53,9 +56,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx2.Re
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
-) -> Response[CreatorStoreProduct]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CreatorStoreProduct]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -88,7 +89,7 @@ def sync_detailed(
         creator_store_product_id=creator_store_product_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -145,7 +146,7 @@ async def asyncio_detailed(
         creator_store_product_id=creator_store_product_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

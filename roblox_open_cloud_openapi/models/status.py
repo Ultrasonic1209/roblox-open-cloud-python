@@ -62,9 +62,9 @@ class Status:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.google_protobuf_any import GoogleProtobufAny
+        from ..models.google_protobuf_any import GoogleProtobufAny  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         code = d.pop("code", UNSET)
 
         message = d.pop("message", UNSET)

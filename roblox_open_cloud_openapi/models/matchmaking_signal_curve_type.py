@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class MatchmakingSignalCurveType(str, Enum):
+class MatchmakingSignalCurveType(StrEnum):
     INVALID = "Invalid"
     NEGATIVELINEAR = "NegativeLinear"
     POSITIVELINEAR = "PositiveLinear"

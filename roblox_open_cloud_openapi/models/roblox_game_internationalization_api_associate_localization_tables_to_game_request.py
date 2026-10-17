@@ -44,10 +44,10 @@ class RobloxGameInternationalizationApiAssociateLocalizationTablesToGameRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.roblox_game_internationalization_api_localization_table_game_association import (
-            RobloxGameInternationalizationApiLocalizationTableGameAssociation,
+            RobloxGameInternationalizationApiLocalizationTableGameAssociation,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         _tables = d.pop("tables", UNSET)
         tables: list[RobloxGameInternationalizationApiLocalizationTableGameAssociation] | Unset = UNSET
         if _tables is not UNSET:

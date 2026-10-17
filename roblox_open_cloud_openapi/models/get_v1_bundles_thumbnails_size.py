@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1BundlesThumbnailsSize(str, Enum):
+class GetV1BundlesThumbnailsSize(StrEnum):
     VALUE_0 = "150x150"
     VALUE_1 = "420x420"
 

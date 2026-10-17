@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class SearchAudioTypeModel(str, Enum):
+class SearchAudioTypeModel(StrEnum):
     MUSIC = "Music"
     SOUND_EFFECT = "SoundEffect"
     UNKNOWN = "Unknown"

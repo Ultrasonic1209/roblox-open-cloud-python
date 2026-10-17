@@ -34,9 +34,10 @@ class RobloxWebAssetsBatchAssetRequestItem:
         roblox_asset_format (str | Unset):
         asset_resolution_mode (str | Unset):
         access_context (str | Unset):
-        usage_context (int | Unset):
+        usage_context (str | Unset):
         content_representation_priority_list (str | Unset):
         do_not_fallback_to_baseline_representation (bool | Unset):
+        xcachesplit (int | Unset):
     """
 
     asset_name: str | Unset = UNSET
@@ -59,9 +60,10 @@ class RobloxWebAssetsBatchAssetRequestItem:
     roblox_asset_format: str | Unset = UNSET
     asset_resolution_mode: str | Unset = UNSET
     access_context: str | Unset = UNSET
-    usage_context: int | Unset = UNSET
+    usage_context: str | Unset = UNSET
     content_representation_priority_list: str | Unset = UNSET
     do_not_fallback_to_baseline_representation: bool | Unset = UNSET
+    xcachesplit: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         asset_name = self.asset_name
@@ -109,6 +111,8 @@ class RobloxWebAssetsBatchAssetRequestItem:
         content_representation_priority_list = self.content_representation_priority_list
 
         do_not_fallback_to_baseline_representation = self.do_not_fallback_to_baseline_representation
+
+        xcachesplit = self.xcachesplit
 
         field_dict: dict[str, Any] = {}
 
@@ -159,12 +163,14 @@ class RobloxWebAssetsBatchAssetRequestItem:
             field_dict["contentRepresentationPriorityList"] = content_representation_priority_list
         if do_not_fallback_to_baseline_representation is not UNSET:
             field_dict["doNotFallbackToBaselineRepresentation"] = do_not_fallback_to_baseline_representation
+        if xcachesplit is not UNSET:
+            field_dict["xcachesplit"] = xcachesplit
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         asset_name = d.pop("assetName", UNSET)
 
         asset_type = d.pop("assetType", UNSET)
@@ -211,6 +217,8 @@ class RobloxWebAssetsBatchAssetRequestItem:
 
         do_not_fallback_to_baseline_representation = d.pop("doNotFallbackToBaselineRepresentation", UNSET)
 
+        xcachesplit = d.pop("xcachesplit", UNSET)
+
         roblox_web_assets_batch_asset_request_item = cls(
             asset_name=asset_name,
             asset_type=asset_type,
@@ -235,6 +243,7 @@ class RobloxWebAssetsBatchAssetRequestItem:
             usage_context=usage_context,
             content_representation_priority_list=content_representation_priority_list,
             do_not_fallback_to_baseline_representation=do_not_fallback_to_baseline_representation,
+            xcachesplit=xcachesplit,
         )
 
         return roblox_web_assets_batch_asset_request_item

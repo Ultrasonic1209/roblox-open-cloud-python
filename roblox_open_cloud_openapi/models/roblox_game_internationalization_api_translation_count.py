@@ -23,7 +23,7 @@ class RobloxGameInternationalizationApiTranslationCount:
     Attributes:
         count (int | Unset):
         translation_status (RobloxGameInternationalizationApiTranslationCountTranslationStatus | Unset): The enum
-            representing a translation status. ['Approved' = 0]
+            representing a translation status.
         translator_type (RobloxGameInternationalizationApiTranslationCountTranslatorType | Unset): Gets or sets the type
             of the translator associated with the count, or `null` if the count is not associated with a specific type of
             translator.
@@ -58,7 +58,7 @@ class RobloxGameInternationalizationApiTranslationCount:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         count = d.pop("count", UNSET)
 
         _translation_status = d.pop("translationStatus", UNSET)

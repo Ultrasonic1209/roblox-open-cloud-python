@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RobloxGameInternationalizationApiTranslationCountGameInfoResponseStatus(str, Enum):
+class RobloxGameInternationalizationApiTranslationCountGameInfoResponseStatus(StrEnum):
     GAMEDOESNOTEXIST = "GameDoesNotExist"
     GAMEDOESNOTHAVETABLE = "GameDoesNotHaveTable"
     INSUFFICIENTPERMISSION = "InsufficientPermission"

@@ -1,13 +1,32 @@
-import sys
 from http import HTTPStatus
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
-import httpx2
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...types import Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/name-description', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/developer-products#get_legacy_game_internationalization_v1_developer_products__developerProductId__name_description'}]}
+"""
+
+import sys
 
 if sys.version_info >= (3, 13):
     from warnings import deprecated
@@ -28,26 +47,13 @@ def _get_kwargs(
         "url": "https://gameinternationalization.roblox.com/v1/developer-products/{developer_product_id}/name-description".format(
             developer_product_id=quote(str(developer_product_id), safe=""),
         ),
-        "extensions": {
-            "openapi-extensions": {
-                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
-                "x-roblox-recommended-alternatives": [
-                    {
-                        "url": "https://apis.roblox.com/legacy-game-internationalization/v1/developer-products/{developerProductId}/name-description",
-                        "httpMethod": "GET",
-                        "documentationUrl": "https://create.roblox.com/docs/cloud/reference/features/developer-products#get_legacy_game_internationalization_v1_developer_products__developerProductId__name_description",
-                    }
-                ],
-            },
-            "openapi-id": "get_v1_developer-products_developerProductId_name-description",
-        },
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiNameDescription | None:
     if response.status_code == 200:
         response_200 = RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiNameDescription.from_dict(
@@ -75,7 +81,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx2.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxGameInternationalizationApiNameDescription]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -110,7 +116,7 @@ def sync_detailed(
         developer_product_id=developer_product_id,
     )
 
-    response = client.get_httpx2_client().request(
+    response = client.get_httpx_client().request(
         **kwargs,
     )
 
@@ -169,7 +175,7 @@ async def asyncio_detailed(
         developer_product_id=developer_product_id,
     )
 
-    response = await client.get_async_httpx2_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
 

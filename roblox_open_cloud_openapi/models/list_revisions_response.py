@@ -47,9 +47,9 @@ class ListRevisionsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.revision_response import RevisionResponse
+        from ..models.revision_response import RevisionResponse  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_revisions(data: object) -> list[RevisionResponse] | None | Unset:
             if data is None:

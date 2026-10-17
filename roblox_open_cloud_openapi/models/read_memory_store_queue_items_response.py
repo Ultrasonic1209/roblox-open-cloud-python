@@ -52,9 +52,9 @@ class ReadMemoryStoreQueueItemsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.memory_store_queue_item import MemoryStoreQueueItem
+        from ..models.memory_store_queue_item import MemoryStoreQueueItem  # noqa: PLC0415
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
         read_id = d.pop("readId", UNSET)
 
         _items = d.pop("items", UNSET)

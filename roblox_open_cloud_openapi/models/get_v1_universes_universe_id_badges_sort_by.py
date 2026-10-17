@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetV1UniversesUniverseIdBadgesSortBy(str, Enum):
+class GetV1UniversesUniverseIdBadgesSortBy(StrEnum):
     DATECREATED = "DateCreated"
     RANK = "Rank"
 

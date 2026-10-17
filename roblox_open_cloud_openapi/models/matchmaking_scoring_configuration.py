@@ -44,10 +44,10 @@ class MatchmakingScoringConfiguration:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.matchmaking_scoring_configuration_custom_signals_type_0 import (
-            MatchmakingScoringConfigurationCustomSignalsType0,
+            MatchmakingScoringConfigurationCustomSignalsType0,  # noqa: PLC0415
         )
         from ..models.matchmaking_scoring_configuration_signal_weights_type_0 import (
-            MatchmakingScoringConfigurationSignalWeightsType0,
+            MatchmakingScoringConfigurationSignalWeightsType0,  # noqa: PLC0415
         )
 
         id: None | str | Unset
@@ -107,13 +107,13 @@ class MatchmakingScoringConfiguration:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.matchmaking_scoring_configuration_custom_signals_type_0 import (
-            MatchmakingScoringConfigurationCustomSignalsType0,
+            MatchmakingScoringConfigurationCustomSignalsType0,  # noqa: PLC0415
         )
         from ..models.matchmaking_scoring_configuration_signal_weights_type_0 import (
-            MatchmakingScoringConfigurationSignalWeightsType0,
+            MatchmakingScoringConfigurationSignalWeightsType0,  # noqa: PLC0415
         )
 
-        d = dict(src_dict) if isinstance(src_dict, Mapping) else {}
+        d = dict(src_dict)
 
         def _parse_id(data: object) -> None | str | Unset:
             if data is None:
