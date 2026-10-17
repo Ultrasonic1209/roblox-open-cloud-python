@@ -19,7 +19,10 @@ def _get_kwargs(
             dictionary_sha_256=quote(str(dictionary_sha_256), safe=""),
         ),
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v2_compression-dictionaries_dictionarySha256",
         },
     }

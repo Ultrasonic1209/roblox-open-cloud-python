@@ -1,7 +1,10 @@
 """Contains all the data models used in inputs/outputs"""
 
 from .accept_group_join_request_request import AcceptGroupJoinRequestRequest
+from .account import Account
+from .account_tax_type import AccountTaxType
 from .action_result import ActionResult
+from .address import Address
 from .agent_response import AgentResponse
 from .agent_type import AgentType
 from .alert_storage_alert_condition import AlertStorageAlertCondition
@@ -82,12 +85,18 @@ from .attribute_aggregation_function import AttributeAggregationFunction
 from .audio_search_filters_type_0 import AudioSearchFiltersType0
 from .batch_grant_permissions_request import BatchGrantPermissionsRequest
 from .batch_grant_permissions_response import BatchGrantPermissionsResponse
+from .bill_details_response import BillDetailsResponse
+from .bill_status import BillStatus
+from .bill_summary import BillSummary
+from .billing_activities_response import BillingActivitiesResponse
+from .budget_level import BudgetLevel
 from .bulk_delete_saves_request_type_0 import BulkDeleteSavesRequestType0
 from .bulk_delete_saves_response_type_0 import BulkDeleteSavesResponseType0
 from .calculate_experiment_mde_data import CalculateExperimentMdeData
 from .calculate_experiment_mde_response import CalculateExperimentMdeResponse
 from .can_invite_user_response import CanInviteUserResponse
 from .category_response import CategoryResponse
+from .check_eligibility_response import CheckEligibilityResponse
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
 from .cloud_flush_memory_store_scope import CloudFlushMemoryStoreScope
@@ -116,6 +125,9 @@ from .config_repository_values_entries_type_0 import ConfigRepositoryValuesEntri
 from .config_value_full import ConfigValueFull
 from .config_variant_dto import ConfigVariantDto
 from .config_variant_type import ConfigVariantType
+from .consumer_configuration_request import ConsumerConfigurationRequest
+from .consumer_configuration_response import ConsumerConfigurationResponse
+from .consumer_usage import ConsumerUsage
 from .content_message import ContentMessage
 from .create_custom_matchmaking_signal_request import CreateCustomMatchmakingSignalRequest
 from .create_custom_matchmaking_signal_response import CreateCustomMatchmakingSignalResponse
@@ -136,9 +148,11 @@ from .create_matchmaking_scoring_configuration_request_matchmaking_signal_weight
 from .create_matchmaking_scoring_configuration_response import CreateMatchmakingScoringConfigurationResponse
 from .create_matchmaking_server_attribute_definition_request import CreateMatchmakingServerAttributeDefinitionRequest
 from .create_matchmaking_server_attribute_definition_response import CreateMatchmakingServerAttributeDefinitionResponse
+from .create_payment_profile_response import CreatePaymentProfileResponse
 from .create_private_server_request import CreatePrivateServerRequest
 from .create_save_request_type_0 import CreateSaveRequestType0
 from .create_thumbnail_personalization_request import CreateThumbnailPersonalizationRequest
+from .create_universe_regex_http_request import CreateUniverseRegexHttpRequest
 from .creation_context import CreationContext
 from .creator import Creator
 from .creator_model_v2_type_0 import CreatorModelV2Type0
@@ -164,6 +178,7 @@ from .delete_draft_request import DeleteDraftRequest
 from .delete_matchmaking_player_attribute_definition_response import DeleteMatchmakingPlayerAttributeDefinitionResponse
 from .delete_matchmaking_scoring_configuration_response import DeleteMatchmakingScoringConfigurationResponse
 from .delete_matchmaking_server_attribute_definition_response import DeleteMatchmakingServerAttributeDefinitionResponse
+from .delete_payment_profile_response import DeletePaymentProfileResponse
 from .delete_save_request_type_0 import DeleteSaveRequestType0
 from .delete_start_place_override_response import DeleteStartPlaceOverrideResponse
 from .delete_v1_collections_items_item_type_item_target_id_item_type import (
@@ -178,6 +193,8 @@ from .dimension_values_operation_result import DimensionValuesOperationResult
 from .discard_experiment_response import DiscardExperimentResponse
 from .discard_memory_store_queue_items_request import DiscardMemoryStoreQueueItemsRequest
 from .draft_hash_response import DraftHashResponse
+from .eligibility_requirement import EligibilityRequirement
+from .eligibility_requirement_result import EligibilityRequirementResult
 from .entries_get_entry_async_response_200 import EntriesGetEntryAsyncResponse200
 from .entries_get_entry_version_async_response_200 import EntriesGetEntryVersionAsyncResponse200
 from .entries_increment_entry_async_response_200 import EntriesIncrementEntryAsyncResponse200
@@ -186,6 +203,8 @@ from .entry import Entry
 from .entry_version import EntryVersion
 from .error import Error
 from .error_code import ErrorCode
+from .error_log_detail import ErrorLogDetail
+from .error_log_detail_response import ErrorLogDetailResponse
 from .error_response import ErrorResponse
 from .event_category import EventCategory
 from .event_media import EventMedia
@@ -211,6 +230,7 @@ from .filter_options_response_filters_type_0 import FilterOptionsResponseFilters
 from .filter_type import FilterType
 from .find_personalized_configs_response import FindPersonalizedConfigsResponse
 from .find_thumbnails_response import FindThumbnailsResponse
+from .find_universe_regexes_http_response import FindUniverseRegexesHttpResponse
 from .flush_memory_store_metadata import FlushMemoryStoreMetadata
 from .flush_memory_store_response import FlushMemoryStoreResponse
 from .forecast_restart_response import ForecastRestartResponse
@@ -241,6 +261,7 @@ from .generate_speech_asset_response import GenerateSpeechAssetResponse
 from .generate_user_thumbnail_metadata import GenerateUserThumbnailMetadata
 from .generate_user_thumbnail_response import GenerateUserThumbnailResponse
 from .generic_currency_response import GenericCurrencyResponse
+from .get_account_response import GetAccountResponse
 from .get_ads_management_v1_campaign_options_objective import GetAdsManagementV1CampaignOptionsObjective
 from .get_experiment_operation_status_response import GetExperimentOperationStatusResponse
 from .get_experiment_response import GetExperimentResponse
@@ -265,6 +286,7 @@ from .get_place_contributors_response import GetPlaceContributorsResponse
 from .get_place_version_history_response import GetPlaceVersionHistoryResponse
 from .get_private_server_list_response import GetPrivateServerListResponse
 from .get_saves_response_type_0 import GetSavesResponseType0
+from .get_service_efficiency_payment_method_response import GetServiceEfficiencyPaymentMethodResponse
 from .get_start_place_override_response import GetStartPlaceOverrideResponse
 from .get_update_status_response import GetUpdateStatusResponse
 from .get_v1_asset_to_category_response_200 import GetV1AssetToCategoryResponse200
@@ -583,6 +605,7 @@ from .list_matchmaking_scoring_configurations_response import ListMatchmakingSco
 from .list_matchmaking_server_attribute_definitions_response import ListMatchmakingServerAttributeDefinitionsResponse
 from .list_memory_store_sorted_map_items_response import ListMemoryStoreSortedMapItemsResponse
 from .list_ordered_data_store_entries_response import ListOrderedDataStoreEntriesResponse
+from .list_payment_profiles_response import ListPaymentProfilesResponse
 from .list_place_matchmaking_scoring_configurations_response import ListPlaceMatchmakingScoringConfigurationsResponse
 from .list_place_matchmaking_scoring_configurations_response_place_scoring_configurations_type_0 import (
     ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0,
@@ -672,6 +695,8 @@ from .patch_v1_groups_group_id_notification_preference_response_200 import (
 )
 from .patch_v1_groups_icon_body import PatchV1GroupsIconBody
 from .patch_v1_themes_consumer_type_consumer_id_consumer_type import PatchV1ThemesConsumerTypeConsumerIdConsumerType
+from .payment import Payment
+from .payment_profile import PaymentProfile
 from .personalized_config_status import PersonalizedConfigStatus
 from .personalized_thumbnail import PersonalizedThumbnail
 from .personalized_thumbnail_status import PersonalizedThumbnailStatus
@@ -755,6 +780,7 @@ from .presence_api_error_response import PresenceApiErrorResponse
 from .presence_type import PresenceType
 from .preview import Preview
 from .preview_assets_model_type_0 import PreviewAssetsModelType0
+from .price import Price
 from .price_information_struct import PriceInformationStruct
 from .pricing_feature import PricingFeature
 from .private_server_invite_response_type import PrivateServerInviteResponseType
@@ -794,8 +820,14 @@ from .query_correction_type_0 import QueryCorrectionType0
 from .query_facets_type_0 import QueryFacetsType0
 from .query_operation_result import QueryOperationResult
 from .read_memory_store_queue_items_response import ReadMemoryStoreQueueItemsResponse
+from .regex_operation import RegexOperation
+from .regex_status import RegexStatus
 from .remove_place_matchmaking_scoring_configuration_response import RemovePlaceMatchmakingScoringConfigurationResponse
+from .reorder_universe_regex_http_request import ReorderUniverseRegexHttpRequest
 from .repository import Repository
+from .resource_configuration import ResourceConfiguration
+from .resource_usage import ResourceUsage
+from .response_account_state import ResponseAccountState
 from .restart_state import RestartState
 from .restart_status import RestartStatus
 from .restart_status_place_restart_statuses_type_0 import RestartStatusPlaceRestartStatusesType0
@@ -3189,8 +3221,13 @@ from .server_management_service_problem_details import ServerManagementServicePr
 from .server_numerical_signal_configuration import ServerNumericalSignalConfiguration
 from .server_status import ServerStatus
 from .server_type import ServerType
+from .service_configuration import ServiceConfiguration
+from .service_efficiency_api_money import ServiceEfficiencyApiMoney
+from .service_efficiency_api_transaction_status import ServiceEfficiencyApiTransactionStatus
+from .service_usage import ServiceUsage
 from .set_matchmaking_scoring_configuration_response import SetMatchmakingScoringConfigurationResponse
 from .set_place_matchmaking_scoring_configuration_request import SetPlaceMatchmakingScoringConfigurationRequest
+from .set_service_efficiency_payment_method_response import SetServiceEfficiencyPaymentMethodResponse
 from .set_start_place_override_request_body import SetStartPlaceOverrideRequestBody
 from .set_start_place_override_response import SetStartPlaceOverrideResponse
 from .shutdown_all_game_instances_response import ShutdownAllGameInstancesResponse
@@ -3212,6 +3249,8 @@ from .string_exclusive_start_key_cursor import StringExclusiveStartKeyCursor
 from .string_string_i_enumerable_key_value_pair import StringStringIEnumerableKeyValuePair
 from .structured_stack_frame import StructuredStackFrame
 from .subject_type import SubjectType
+from .submit_manual_payment_request import SubmitManualPaymentRequest
+from .submit_manual_payment_response import SubmitManualPaymentResponse
 from .subscription import Subscription
 from .subscription_expiration_details import SubscriptionExpirationDetails
 from .subscription_expiration_details_reason import SubscriptionExpirationDetailsReason
@@ -3220,6 +3259,7 @@ from .subscription_purchase_platform import SubscriptionPurchasePlatform
 from .subscription_state import SubscriptionState
 from .success_response import SuccessResponse
 from .targeting_criteria import TargetingCriteria
+from .tax_id_type import TaxIdType
 from .test_start_place_override_response import TestStartPlaceOverrideResponse
 from .thumbnail_personalization_api_homepage_thumbnail_delete_homepage_thumbnails_response_200 import (
     ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200,
@@ -3260,8 +3300,12 @@ from .universe import Universe
 from .universe_age_rating import UniverseAgeRating
 from .universe_experiment_metric import UniverseExperimentMetric
 from .universe_metric_configuration import UniverseMetricConfiguration
+from .universe_regex_http_response import UniverseRegexHttpResponse
+from .universe_regex_mutation_http_response import UniverseRegexMutationHttpResponse
 from .universe_social_link import UniverseSocialLink
 from .universe_visibility import UniverseVisibility
+from .update_account_request import UpdateAccountRequest
+from .update_account_response import UpdateAccountResponse
 from .update_custom_matchmaking_signal_request import UpdateCustomMatchmakingSignalRequest
 from .update_custom_matchmaking_signal_response import UpdateCustomMatchmakingSignalResponse
 from .update_draft_request import UpdateDraftRequest
@@ -3287,6 +3331,7 @@ from .update_matchmaking_server_attribute_definition_response import UpdateMatch
 from .update_place_version_notes_request import UpdatePlaceVersionNotesRequest
 from .update_place_version_notes_response import UpdatePlaceVersionNotesResponse
 from .update_thumbnail_personalization_request import UpdateThumbnailPersonalizationRequest
+from .update_universe_regex_http_request import UpdateUniverseRegexHttpRequest
 from .upload_status import UploadStatus
 from .upload_thumbnail_status import UploadThumbnailStatus
 from .upload_thumbnails_response import UploadThumbnailsResponse
@@ -3324,7 +3369,10 @@ from .voting_model_type_0 import VotingModelType0
 
 __all__ = (
     "AcceptGroupJoinRequestRequest",
+    "Account",
+    "AccountTaxType",
     "ActionResult",
+    "Address",
     "AgentResponse",
     "AgentType",
     "AlertStorageAlertCondition",
@@ -3385,12 +3433,18 @@ __all__ = (
     "AudioSearchFiltersType0",
     "BatchGrantPermissionsRequest",
     "BatchGrantPermissionsResponse",
+    "BillDetailsResponse",
+    "BillingActivitiesResponse",
+    "BillStatus",
+    "BillSummary",
+    "BudgetLevel",
     "BulkDeleteSavesRequestType0",
     "BulkDeleteSavesResponseType0",
     "CalculateExperimentMdeData",
     "CalculateExperimentMdeResponse",
     "CanInviteUserResponse",
     "CategoryResponse",
+    "CheckEligibilityResponse",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
     "CloudFlushMemoryStoreScope",
@@ -3419,6 +3473,9 @@ __all__ = (
     "ConfigValueFull",
     "ConfigVariantDto",
     "ConfigVariantType",
+    "ConsumerConfigurationRequest",
+    "ConsumerConfigurationResponse",
+    "ConsumerUsage",
     "ContentMessage",
     "CreateCustomMatchmakingSignalRequest",
     "CreateCustomMatchmakingSignalResponse",
@@ -3435,9 +3492,11 @@ __all__ = (
     "CreateMatchmakingScoringConfigurationResponse",
     "CreateMatchmakingServerAttributeDefinitionRequest",
     "CreateMatchmakingServerAttributeDefinitionResponse",
+    "CreatePaymentProfileResponse",
     "CreatePrivateServerRequest",
     "CreateSaveRequestType0",
     "CreateThumbnailPersonalizationRequest",
+    "CreateUniverseRegexHttpRequest",
     "CreationContext",
     "Creator",
     "CreatorModelV2Type0",
@@ -3463,6 +3522,7 @@ __all__ = (
     "DeleteMatchmakingPlayerAttributeDefinitionResponse",
     "DeleteMatchmakingScoringConfigurationResponse",
     "DeleteMatchmakingServerAttributeDefinitionResponse",
+    "DeletePaymentProfileResponse",
     "DeleteSaveRequestType0",
     "DeleteStartPlaceOverrideResponse",
     "DeleteV1CollectionsItemsItemTypeItemTargetIdItemType",
@@ -3475,6 +3535,8 @@ __all__ = (
     "DiscardExperimentResponse",
     "DiscardMemoryStoreQueueItemsRequest",
     "DraftHashResponse",
+    "EligibilityRequirement",
+    "EligibilityRequirementResult",
     "EntriesGetEntryAsyncResponse200",
     "EntriesGetEntryVersionAsyncResponse200",
     "EntriesIncrementEntryAsyncResponse200",
@@ -3483,6 +3545,8 @@ __all__ = (
     "EntryVersion",
     "Error",
     "ErrorCode",
+    "ErrorLogDetail",
+    "ErrorLogDetailResponse",
     "ErrorResponse",
     "EventCategory",
     "EventMedia",
@@ -3508,6 +3572,7 @@ __all__ = (
     "FilterType",
     "FindPersonalizedConfigsResponse",
     "FindThumbnailsResponse",
+    "FindUniverseRegexesHttpResponse",
     "FlushMemoryStoreMetadata",
     "FlushMemoryStoreResponse",
     "ForecastRestartResponse",
@@ -3538,6 +3603,7 @@ __all__ = (
     "GenerateUserThumbnailMetadata",
     "GenerateUserThumbnailResponse",
     "GenericCurrencyResponse",
+    "GetAccountResponse",
     "GetAdsManagementV1CampaignOptionsObjective",
     "GetExperimentOperationStatusResponse",
     "GetExperimentResponse",
@@ -3556,6 +3622,7 @@ __all__ = (
     "GetPlaceVersionHistoryResponse",
     "GetPrivateServerListResponse",
     "GetSavesResponseType0",
+    "GetServiceEfficiencyPaymentMethodResponse",
     "GetStartPlaceOverrideResponse",
     "GetUpdateStatusResponse",
     "GetV1AssetsAssetIdBundlesLimit",
@@ -3828,6 +3895,7 @@ __all__ = (
     "ListMatchmakingServerAttributeDefinitionsResponse",
     "ListMemoryStoreSortedMapItemsResponse",
     "ListOrderedDataStoreEntriesResponse",
+    "ListPaymentProfilesResponse",
     "ListPlaceMatchmakingScoringConfigurationsResponse",
     "ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0",
     "ListRestartStatusesResponse",
@@ -3909,6 +3977,8 @@ __all__ = (
     "PatchV1GroupsGroupIdNotificationPreferenceResponse200",
     "PatchV1GroupsIconBody",
     "PatchV1ThemesConsumerTypeConsumerIdConsumerType",
+    "Payment",
+    "PaymentProfile",
     "PersonalizedConfigStatus",
     "PersonalizedThumbnail",
     "PersonalizedThumbnailStatus",
@@ -3956,6 +4026,7 @@ __all__ = (
     "PresenceType",
     "Preview",
     "PreviewAssetsModelType0",
+    "Price",
     "PriceInformationStruct",
     "PricingFeature",
     "PrivateServerInviteResponseType",
@@ -3995,8 +4066,14 @@ __all__ = (
     "QueryFacetsType0",
     "QueryOperationResult",
     "ReadMemoryStoreQueueItemsResponse",
+    "RegexOperation",
+    "RegexStatus",
     "RemovePlaceMatchmakingScoringConfigurationResponse",
+    "ReorderUniverseRegexHttpRequest",
     "Repository",
+    "ResourceConfiguration",
+    "ResourceUsage",
+    "ResponseAccountState",
     "RestartState",
     "RestartStatus",
     "RestartStatusPlaceRestartStatusesType0",
@@ -5122,8 +5199,13 @@ __all__ = (
     "ServerNumericalSignalConfiguration",
     "ServerStatus",
     "ServerType",
+    "ServiceConfiguration",
+    "ServiceEfficiencyApiMoney",
+    "ServiceEfficiencyApiTransactionStatus",
+    "ServiceUsage",
     "SetMatchmakingScoringConfigurationResponse",
     "SetPlaceMatchmakingScoringConfigurationRequest",
+    "SetServiceEfficiencyPaymentMethodResponse",
     "SetStartPlaceOverrideRequestBody",
     "SetStartPlaceOverrideResponse",
     "ShutdownAllGameInstancesResponse",
@@ -5145,6 +5227,8 @@ __all__ = (
     "StringStringIEnumerableKeyValuePair",
     "StructuredStackFrame",
     "SubjectType",
+    "SubmitManualPaymentRequest",
+    "SubmitManualPaymentResponse",
     "Subscription",
     "SubscriptionExpirationDetails",
     "SubscriptionExpirationDetailsReason",
@@ -5153,6 +5237,7 @@ __all__ = (
     "SubscriptionState",
     "SuccessResponse",
     "TargetingCriteria",
+    "TaxIdType",
     "TestStartPlaceOverrideResponse",
     "ThumbnailPersonalizationApiHomepageThumbnailDeleteHomepageThumbnailsResponse200",
     "ThumbnailPersonalizationApiHomepageThumbnailUploadHomepageThumbnailsBody",
@@ -5185,8 +5270,12 @@ __all__ = (
     "UniverseAgeRating",
     "UniverseExperimentMetric",
     "UniverseMetricConfiguration",
+    "UniverseRegexHttpResponse",
+    "UniverseRegexMutationHttpResponse",
     "UniverseSocialLink",
     "UniverseVisibility",
+    "UpdateAccountRequest",
+    "UpdateAccountResponse",
     "UpdateCustomMatchmakingSignalRequest",
     "UpdateCustomMatchmakingSignalResponse",
     "UpdateDraftRequest",
@@ -5208,6 +5297,7 @@ __all__ = (
     "UpdatePlaceVersionNotesRequest",
     "UpdatePlaceVersionNotesResponse",
     "UpdateThumbnailPersonalizationRequest",
+    "UpdateUniverseRegexHttpRequest",
     "UploadStatus",
     "UploadThumbnailsResponse",
     "UploadThumbnailsResponseFileToOperationIdDict",

@@ -40,7 +40,10 @@ def _get_kwargs(
         ),
         "params": params,
         "extensions": {
-            "openapi-extensions": {"x-roblox-engine-usability": {"apiKeyWithHttpService": False}},
+            "openapi-extensions": {
+                "x-roblox-stability": "EXPERIMENTAL",
+                "x-roblox-engine-usability": {"apiKeyWithHttpService": False},
+            },
             "openapi-id": "get_v2_ota-version_binaryType",
         },
     }
@@ -102,6 +105,8 @@ def sync_detailed(
     name: str | Unset = UNSET,
 ) -> Response[Any | list[RobloxClientSettingsApiModelsResponseOtaVersionResponse]]:
     """Get OTA information for a specific binary type with a given version on some channel.
+    When a named channel has no OTA config for that version, the version is ignored and the channel's
+    config is returned.
     Returns empty list if no updates are found or channel/application with the given version does not
     exist in CVS.
 
@@ -145,6 +150,8 @@ def sync(
     name: str | Unset = UNSET,
 ) -> Any | list[RobloxClientSettingsApiModelsResponseOtaVersionResponse] | None:
     """Get OTA information for a specific binary type with a given version on some channel.
+    When a named channel has no OTA config for that version, the version is ignored and the channel's
+    config is returned.
     Returns empty list if no updates are found or channel/application with the given version does not
     exist in CVS.
 
@@ -183,6 +190,8 @@ async def asyncio_detailed(
     name: str | Unset = UNSET,
 ) -> Response[Any | list[RobloxClientSettingsApiModelsResponseOtaVersionResponse]]:
     """Get OTA information for a specific binary type with a given version on some channel.
+    When a named channel has no OTA config for that version, the version is ignored and the channel's
+    config is returned.
     Returns empty list if no updates are found or channel/application with the given version does not
     exist in CVS.
 
@@ -224,6 +233,8 @@ async def asyncio(
     name: str | Unset = UNSET,
 ) -> Any | list[RobloxClientSettingsApiModelsResponseOtaVersionResponse] | None:
     """Get OTA information for a specific binary type with a given version on some channel.
+    When a named channel has no OTA config for that version, the version is ignored and the channel's
+    config is returned.
     Returns empty list if no updates are found or channel/application with the given version does not
     exist in CVS.
 
