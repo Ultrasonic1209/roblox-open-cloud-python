@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Any, Literal, TypedDict, cast
 if TYPE_CHECKING:
     import httpx2 as httpx
 
-    httpx.alias_httpx()  # this will probably come back to bite me in the rear
+    httpx.alias_httpx()  # this will probably come back to bite me in the rear # (it did)
 else:
     try:
         import httpx2 as httpx
@@ -135,7 +135,7 @@ class CSRFHandlingTransport(httpx.BaseTransport, httpx.AsyncBaseTransport):
     def handle_request(self, request: httpx.Request) -> httpx.Response:
         if self._sync_transport is None:
             raise RuntimeError(
-                "This transport was initalised with an underlying AsyncBaseTransport, so it cannot accept synchronous requests"
+                "This transport was initalised with an underlying AsyncBaseTransport, so it cannot accept synchronous requests\n\n(or there is an issue with httpx(2))"
             )
 
         if self._can_use_csrf(request):
@@ -154,7 +154,7 @@ class CSRFHandlingTransport(httpx.BaseTransport, httpx.AsyncBaseTransport):
     async def handle_async_request(self, request: httpx.Request) -> httpx.Response:
         if self._async_transport is None:
             raise RuntimeError(
-                "This transport was initalised with an underlying BaseTransport, so it cannot accept asynchronous requests"
+                "This transport was initalised with an underlying BaseTransport, so it cannot accept asynchronous requests\n\n(or there is an issue with httpx(2))"
             )
 
         if self._can_use_csrf(request):
@@ -203,11 +203,7 @@ class Client:
     """
 
     raise_on_unexpected_status: bool = field(default=False, kw_only=True)
-    _base_url: str = field(
-        default="<openapi_python_client.schema.untrusted_string.UntrustedString object at 0x000001B554D51910>",
-        kw_only=True,
-        alias="base_url",
-    )
+    _base_url: str = field(default="https://apis.roblox.com", kw_only=True, alias="base_url")
     _cookies: dict[str, str] = field(factory=dict, kw_only=True, alias="cookies")
 
     _headers: dict[str, str] = field(
@@ -356,11 +352,7 @@ class AuthenticatedClient:
     """
 
     raise_on_unexpected_status: bool = field(default=False, kw_only=True)
-    _base_url: str = field(
-        default="<openapi_python_client.schema.untrusted_string.UntrustedString object at 0x000001B554D51910>",
-        kw_only=True,
-        alias="base_url",
-    )
+    _base_url: str = field(default="https://apis.roblox.com", kw_only=True, alias="base_url")
     _cookies: dict[str, str] = field(factory=dict, kw_only=True, alias="cookies")
 
     _headers: dict[str, str] = field(

@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Any, Literal, TypedDict, cast
 
 if TYPE_CHECKING:
     import httpx2 as httpx
-    httpx.alias_httpx() # this will probably come back to bite me in the rear
+    httpx.alias_httpx() # this will probably come back to bite me in the rear # (it did)
 else:
     try:
         import httpx2 as httpx
@@ -135,7 +135,7 @@ class CSRFHandlingTransport(httpx.BaseTransport, httpx.AsyncBaseTransport):
     def handle_request(self, request: httpx.Request) -> httpx.Response:
         if self._sync_transport is None:
             raise RuntimeError(
-                "This transport was initalised with an underlying AsyncBaseTransport, so it cannot accept synchronous requests"
+                "This transport was initalised with an underlying AsyncBaseTransport, so it cannot accept synchronous requests\n\n(or there is an issue with httpx(2))"
             )
 
         if self._can_use_csrf(request):
@@ -154,7 +154,7 @@ class CSRFHandlingTransport(httpx.BaseTransport, httpx.AsyncBaseTransport):
     async def handle_async_request(self, request: httpx.Request) -> httpx.Response:
         if self._async_transport is None:
             raise RuntimeError(
-                "This transport was initalised with an underlying BaseTransport, so it cannot accept asynchronous requests"
+                "This transport was initalised with an underlying BaseTransport, so it cannot accept asynchronous requests\n\n(or there is an issue with httpx(2))"
             )
 
         if self._can_use_csrf(request):
@@ -245,7 +245,7 @@ class Client:
 {% macro attributes() %}
 {{ declare_attr("raise_on_unexpected_status") }}
     {% if openapi.default_base_url %}
-    _base_url: str = field(default="{{ openapi.default_base_url }}", kw_only=True, alias="base_url")
+    _base_url: str = field(default="{{ openapi.default_base_url | in_double_quote_literal }}", kw_only=True, alias="base_url")
     {% else %}
     _base_url: str = field(alias="base_url")
     {% endif %}
