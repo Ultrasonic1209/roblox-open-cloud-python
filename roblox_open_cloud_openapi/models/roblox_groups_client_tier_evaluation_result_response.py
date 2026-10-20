@@ -1,0 +1,83 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, cast
+
+from attrs import define as _attrs_define
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.roblox_groups_client_community_tier_info_response import RobloxGroupsClientCommunityTierInfoResponse
+    from ..models.roblox_groups_client_tier_requirement import RobloxGroupsClientTierRequirement
+
+
+T = TypeVar("T", bound="RobloxGroupsClientTierEvaluationResultResponse")
+
+
+@_attrs_define
+class RobloxGroupsClientTierEvaluationResultResponse:
+    """
+    Attributes:
+        tier_info (RobloxGroupsClientCommunityTierInfoResponse):
+        passed_signals (list[str]):
+        requirements (list[RobloxGroupsClientTierRequirement] | Unset):
+    """
+
+    tier_info: RobloxGroupsClientCommunityTierInfoResponse
+    passed_signals: list[str]
+    requirements: list[RobloxGroupsClientTierRequirement] | Unset = UNSET
+
+    def to_dict(self) -> dict[str, Any]:
+        tier_info = self.tier_info.to_dict()
+
+        passed_signals = self.passed_signals
+
+        requirements: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.requirements, Unset):
+            requirements = []
+            for requirements_item_data in self.requirements:
+                requirements_item = requirements_item_data.to_dict()
+                requirements.append(requirements_item)
+
+        field_dict: dict[str, Any] = {}
+
+        field_dict.update(
+            {
+                "tierInfo": tier_info,
+                "passedSignals": passed_signals,
+            }
+        )
+        if requirements is not UNSET:
+            field_dict["requirements"] = requirements
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.roblox_groups_client_community_tier_info_response import (
+            RobloxGroupsClientCommunityTierInfoResponse,  # noqa: PLC0415
+        )
+        from ..models.roblox_groups_client_tier_requirement import RobloxGroupsClientTierRequirement  # noqa: PLC0415
+
+        d = dict(src_dict)
+        tier_info = RobloxGroupsClientCommunityTierInfoResponse.from_dict(d.pop("tierInfo"))
+
+        passed_signals = cast(list[str], d.pop("passedSignals"))
+
+        _requirements = d.pop("requirements", UNSET)
+        requirements: list[RobloxGroupsClientTierRequirement] | Unset = UNSET
+        if _requirements is not UNSET:
+            requirements = []
+            for requirements_item_data in _requirements:
+                requirements_item = RobloxGroupsClientTierRequirement.from_dict(requirements_item_data)
+
+                requirements.append(requirements_item)
+
+        roblox_groups_client_tier_evaluation_result_response = cls(
+            tier_info=tier_info,
+            passed_signals=passed_signals,
+            requirements=requirements,
+        )
+
+        return roblox_groups_client_tier_evaluation_result_response
