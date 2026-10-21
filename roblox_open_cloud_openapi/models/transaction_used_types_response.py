@@ -40,6 +40,7 @@ class TransactionUsedTypesResponse:
         has_private_server_engagement_payout (bool | Unset):
         has_creator_rewards_payout (bool | Unset):
         has_subscription_referral_payout (bool | Unset):
+        has_gifts (bool | Unset):
     """
 
     has_purchase: bool | Unset = UNSET
@@ -68,6 +69,7 @@ class TransactionUsedTypesResponse:
     has_private_server_engagement_payout: bool | Unset = UNSET
     has_creator_rewards_payout: bool | Unset = UNSET
     has_subscription_referral_payout: bool | Unset = UNSET
+    has_gifts: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         has_purchase = self.has_purchase
@@ -121,6 +123,8 @@ class TransactionUsedTypesResponse:
         has_creator_rewards_payout = self.has_creator_rewards_payout
 
         has_subscription_referral_payout = self.has_subscription_referral_payout
+
+        has_gifts = self.has_gifts
 
         field_dict: dict[str, Any] = {}
 
@@ -177,6 +181,8 @@ class TransactionUsedTypesResponse:
             field_dict["HasCreatorRewardsPayout"] = has_creator_rewards_payout
         if has_subscription_referral_payout is not UNSET:
             field_dict["HasSubscriptionReferralPayout"] = has_subscription_referral_payout
+        if has_gifts is not UNSET:
+            field_dict["HasGifts"] = has_gifts
 
         return field_dict
 
@@ -235,6 +241,8 @@ class TransactionUsedTypesResponse:
 
         has_subscription_referral_payout = d.pop("HasSubscriptionReferralPayout", UNSET)
 
+        has_gifts = d.pop("HasGifts", UNSET)
+
         transaction_used_types_response = cls(
             has_purchase=has_purchase,
             has_sale=has_sale,
@@ -262,6 +270,7 @@ class TransactionUsedTypesResponse:
             has_private_server_engagement_payout=has_private_server_engagement_payout,
             has_creator_rewards_payout=has_creator_rewards_payout,
             has_subscription_referral_payout=has_subscription_referral_payout,
+            has_gifts=has_gifts,
         )
 
         return transaction_used_types_response

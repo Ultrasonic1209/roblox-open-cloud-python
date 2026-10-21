@@ -14,6 +14,7 @@ class TransactionType(StrEnum):
     CURRENCYTRANSFER = "CurrencyTransfer"
     DEVEX = "DevEx"
     ENGAGEMENTPAYOUT = "EngagementPayout"
+    GIFTS = "Gifts"
     GROUPADSREVSHAREPAYOUT = "GroupAdsRevsharePayout"
     GROUPENGAGEMENTPAYOUT = "GroupEngagementPayout"
     GROUPPAYOUT = "GroupPayout"

@@ -29,6 +29,7 @@ class TransactionRecordResponse:
         created (datetime.datetime | Unset):
         is_pending (bool | Unset):
         agent (AgentResponse | None | Unset):
+        recipient (AgentResponse | None | Unset):
         details (None | TransactionDetailsResponse | Unset):
         currency (GenericCurrencyResponse | None | Unset):
         purchase_token (None | str | Unset):
@@ -43,6 +44,7 @@ class TransactionRecordResponse:
     created: datetime.datetime | Unset = UNSET
     is_pending: bool | Unset = UNSET
     agent: AgentResponse | None | Unset = UNSET
+    recipient: AgentResponse | None | Unset = UNSET
     details: None | TransactionDetailsResponse | Unset = UNSET
     currency: GenericCurrencyResponse | None | Unset = UNSET
     purchase_token: None | str | Unset = UNSET
@@ -83,6 +85,14 @@ class TransactionRecordResponse:
             agent = self.agent.to_dict()
         else:
             agent = self.agent
+
+        recipient: dict[str, Any] | None | Unset
+        if isinstance(self.recipient, Unset):
+            recipient = UNSET
+        elif isinstance(self.recipient, AgentResponse):
+            recipient = self.recipient.to_dict()
+        else:
+            recipient = self.recipient
 
         details: dict[str, Any] | None | Unset
         if isinstance(self.details, Unset):
@@ -143,6 +153,8 @@ class TransactionRecordResponse:
             field_dict["isPending"] = is_pending
         if agent is not UNSET:
             field_dict["agent"] = agent
+        if recipient is not UNSET:
+            field_dict["recipient"] = recipient
         if details is not UNSET:
             field_dict["details"] = details
         if currency is not UNSET:
@@ -211,6 +223,23 @@ class TransactionRecordResponse:
             return cast(AgentResponse | None | Unset, data)
 
         agent = _parse_agent(d.pop("agent", UNSET))
+
+        def _parse_recipient(data: object) -> AgentResponse | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                recipient_type_1 = AgentResponse.from_dict(data)
+
+                return recipient_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(AgentResponse | None | Unset, data)
+
+        recipient = _parse_recipient(d.pop("recipient", UNSET))
 
         def _parse_details(data: object) -> None | TransactionDetailsResponse | Unset:
             if data is None:
@@ -305,6 +334,7 @@ class TransactionRecordResponse:
             created=created,
             is_pending=is_pending,
             agent=agent,
+            recipient=recipient,
             details=details,
             currency=currency,
             purchase_token=purchase_token,

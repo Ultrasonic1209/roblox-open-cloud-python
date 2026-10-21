@@ -17,14 +17,14 @@ class SecretsStoreServiceProblemDetails:
     Attributes:
         type_ (None | str | Unset):
         title (None | str | Unset):
-        status (None | str | Unset):
+        status (int | None | Unset):
         detail (None | str | Unset):
         instance (None | str | Unset):
     """
 
     type_: None | str | Unset = UNSET
     title: None | str | Unset = UNSET
-    status: None | str | Unset = UNSET
+    status: int | None | Unset = UNSET
     detail: None | str | Unset = UNSET
     instance: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -42,7 +42,7 @@ class SecretsStoreServiceProblemDetails:
         else:
             title = self.title
 
-        status: None | str | Unset
+        status: int | None | Unset
         if isinstance(self.status, Unset):
             status = UNSET
         else:
@@ -98,12 +98,12 @@ class SecretsStoreServiceProblemDetails:
 
         title = _parse_title(d.pop("title", UNSET))
 
-        def _parse_status(data: object) -> None | str | Unset:
+        def _parse_status(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(int | None | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 

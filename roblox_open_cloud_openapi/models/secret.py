@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -37,16 +38,16 @@ class Secret:
             addPrefix/addSuffix or sent as a header or URL.
 
             In order to make the secret accessible for all domains, use "*"
-        create_time (None | str | Unset): Date and time when the secret was originally created.
-        update_time (None | str | Unset): Date and time when the secret was last updated
+        create_time (datetime.datetime | None | Unset): Date and time when the secret was originally created.
+        update_time (datetime.datetime | None | Unset): Date and time when the secret was last updated
     """
 
     id: None | str | Unset = UNSET
     secret: None | str | Unset = UNSET
     key_id: None | str | Unset = UNSET
     domain: None | str | Unset = UNSET
-    create_time: None | str | Unset = UNSET
-    update_time: None | str | Unset = UNSET
+    create_time: datetime.datetime | None | Unset = UNSET
+    update_time: datetime.datetime | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         id: None | str | Unset
@@ -76,12 +77,16 @@ class Secret:
         create_time: None | str | Unset
         if isinstance(self.create_time, Unset):
             create_time = UNSET
+        elif isinstance(self.create_time, datetime.datetime):
+            create_time = self.create_time.isoformat()
         else:
             create_time = self.create_time
 
         update_time: None | str | Unset
         if isinstance(self.update_time, Unset):
             update_time = UNSET
+        elif isinstance(self.update_time, datetime.datetime):
+            update_time = self.update_time.isoformat()
         else:
             update_time = self.update_time
 
@@ -143,21 +148,37 @@ class Secret:
 
         domain = _parse_domain(d.pop("domain", UNSET))
 
-        def _parse_create_time(data: object) -> None | str | Unset:
+        def _parse_create_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                create_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return create_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         create_time = _parse_create_time(d.pop("create_time", UNSET))
 
-        def _parse_update_time(data: object) -> None | str | Unset:
+        def _parse_update_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                update_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return update_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         update_time = _parse_update_time(d.pop("update_time", UNSET))
 
