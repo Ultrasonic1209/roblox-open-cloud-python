@@ -1,0 +1,11 @@
+from enum import StrEnum
+
+
+class BenchmarkType(StrEnum):
+    BENCHMARK_TYPE_GENRE = "BENCHMARK_TYPE_GENRE"
+    BENCHMARK_TYPE_INVALID = "BENCHMARK_TYPE_INVALID"
+    BENCHMARK_TYPE_SIMILARITY = "BENCHMARK_TYPE_SIMILARITY"
+    BENCHMARK_TYPE_TOP_EXPERIENCES = "BENCHMARK_TYPE_TOP_EXPERIENCES"
+
+    def __str__(self) -> str:
+        return str(self.value)

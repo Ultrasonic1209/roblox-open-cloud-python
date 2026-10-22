@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-rate-limits': {'description': 'Text translation requests are subject to additional rate limits [documented here](https://create.roblox.com/docs/production/localization/auto-translate-dynamic-content#limits).', 'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 10000}}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'universe:write'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe:write']}, 'resource': {'$ref': '#/components/schemas/Universe', 'name': 'Universe'}}, 'x-roblox-stability': 'BETA'}
+{'x-roblox-rate-limits': {'description': 'Text translation requests are subject to additional rate limits [documented here](https://create.roblox.com/docs/production/localization/auto-translate-dynamic-content#limits).', 'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 10000}}, 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
