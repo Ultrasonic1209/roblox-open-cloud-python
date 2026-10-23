@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -22,7 +23,7 @@ class ExperimentStatsOperation:
 
         Attributes:
             experiment_id (int | Unset): Experiment ID the stats are for.
-            last_modified_time (None | str | Unset): UTC time the operation was last modified.
+            last_modified_time (datetime.datetime | None | Unset): UTC time the operation was last modified.
             done (bool | Unset): True once the stats fetch terminates (success or failure).
             error (ExperimentApiError | None | Unset): Error outcome, when Done is true and the fetch failed.
             experiment_stats (ExperimentStats | None | Unset): Successful outcome, when Done is true and stats are
@@ -30,7 +31,7 @@ class ExperimentStatsOperation:
     """
 
     experiment_id: int | Unset = UNSET
-    last_modified_time: None | str | Unset = UNSET
+    last_modified_time: datetime.datetime | None | Unset = UNSET
     done: bool | Unset = UNSET
     error: ExperimentApiError | None | Unset = UNSET
     experiment_stats: ExperimentStats | None | Unset = UNSET
@@ -44,6 +45,8 @@ class ExperimentStatsOperation:
         last_modified_time: None | str | Unset
         if isinstance(self.last_modified_time, Unset):
             last_modified_time = UNSET
+        elif isinstance(self.last_modified_time, datetime.datetime):
+            last_modified_time = self.last_modified_time.isoformat()
         else:
             last_modified_time = self.last_modified_time
 
@@ -89,12 +92,20 @@ class ExperimentStatsOperation:
         d = dict(src_dict)
         experiment_id = d.pop("experimentId", UNSET)
 
-        def _parse_last_modified_time(data: object) -> None | str | Unset:
+        def _parse_last_modified_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                last_modified_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return last_modified_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         last_modified_time = _parse_last_modified_time(d.pop("lastModifiedTime", UNSET))
 

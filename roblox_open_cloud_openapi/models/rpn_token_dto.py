@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
+from ..models.conditional_rule_operator import ConditionalRuleOperator
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -19,11 +20,33 @@ class RpnTokenDto:
     """One RPN token: either a logical/comparison ConditionalRuleOperator or an operand object.
 
     Attributes:
-        operator (None | str | Unset):
+        operator (ConditionalRuleOperator | None | Unset):
+
+            OPERATOR_AND
+
+            OPERATOR_OR
+
+            OPERATOR_NOT
+
+            OPERATOR_EQ
+
+            OPERATOR_NE
+
+            OPERATOR_GT
+
+            OPERATOR_LT
+
+            OPERATOR_GTE
+
+            OPERATOR_LTE
+
+            OPERATOR_IN
+
+            OPERATOR_NIN
         operand (None | RpnOperandDto | Unset): RPN operand: attribute reference or literal value.
     """
 
-    operator: None | str | Unset = UNSET
+    operator: ConditionalRuleOperator | None | Unset = UNSET
     operand: None | RpnOperandDto | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,6 +55,8 @@ class RpnTokenDto:
         operator: None | str | Unset
         if isinstance(self.operator, Unset):
             operator = UNSET
+        elif isinstance(self.operator, ConditionalRuleOperator):
+            operator = self.operator.value
         else:
             operator = self.operator
 
@@ -59,12 +84,20 @@ class RpnTokenDto:
 
         d = dict(src_dict)
 
-        def _parse_operator(data: object) -> None | str | Unset:
+        def _parse_operator(data: object) -> ConditionalRuleOperator | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                operator_type_1 = ConditionalRuleOperator(data)
+
+                return operator_type_1
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(ConditionalRuleOperator | None | Unset, data)
 
         operator = _parse_operator(d.pop("operator", UNSET))
 

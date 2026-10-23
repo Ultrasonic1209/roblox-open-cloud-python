@@ -23,9 +23,9 @@ class ExperimentSummary:
             name (None | str | Unset): Experiment display name.
             description (None | str | Unset): Experiment description.
             created_time (datetime.datetime | Unset): UTC time the experiment was created.
-            last_updated_time (None | str | Unset): UTC time the experiment was last updated.
-            started_time (None | str | Unset): UTC time the experiment was started, if running.
-            stopped_time (None | str | Unset): UTC time the experiment was stopped, if completed/cancelled.
+            last_updated_time (datetime.datetime | None | Unset): UTC time the experiment was last updated.
+            started_time (datetime.datetime | None | Unset): UTC time the experiment was started, if running.
+            stopped_time (datetime.datetime | None | Unset): UTC time the experiment was stopped, if completed/cancelled.
             state (ExperimentState | Unset): Lifecycle state of an experiment.
 
                 EXPERIMENT_STATE_DRAFT
@@ -43,7 +43,7 @@ class ExperimentSummary:
             experiment_config_key (None | str | Unset): Convenience field exposing the first config key referenced by the
                 first variant
                 (in-game-configs experiments only). Empty for matchmaking.
-            scheduled_time (None | str | Unset): UTC time the experiment is scheduled to start, if scheduled.
+            scheduled_time (datetime.datetime | None | Unset): UTC time the experiment is scheduled to start, if scheduled.
             duration_seconds (int | Unset): Planned experiment duration in whole seconds.
             product_type (ExperimentProductType | Unset): Type of product the experiment is targeting.
 
@@ -56,13 +56,13 @@ class ExperimentSummary:
     name: None | str | Unset = UNSET
     description: None | str | Unset = UNSET
     created_time: datetime.datetime | Unset = UNSET
-    last_updated_time: None | str | Unset = UNSET
-    started_time: None | str | Unset = UNSET
-    stopped_time: None | str | Unset = UNSET
+    last_updated_time: datetime.datetime | None | Unset = UNSET
+    started_time: datetime.datetime | None | Unset = UNSET
+    stopped_time: datetime.datetime | None | Unset = UNSET
     state: ExperimentState | Unset = UNSET
     created_by: None | str | Unset = UNSET
     experiment_config_key: None | str | Unset = UNSET
-    scheduled_time: None | str | Unset = UNSET
+    scheduled_time: datetime.datetime | None | Unset = UNSET
     duration_seconds: int | Unset = UNSET
     product_type: ExperimentProductType | Unset = UNSET
 
@@ -92,18 +92,24 @@ class ExperimentSummary:
         last_updated_time: None | str | Unset
         if isinstance(self.last_updated_time, Unset):
             last_updated_time = UNSET
+        elif isinstance(self.last_updated_time, datetime.datetime):
+            last_updated_time = self.last_updated_time.isoformat()
         else:
             last_updated_time = self.last_updated_time
 
         started_time: None | str | Unset
         if isinstance(self.started_time, Unset):
             started_time = UNSET
+        elif isinstance(self.started_time, datetime.datetime):
+            started_time = self.started_time.isoformat()
         else:
             started_time = self.started_time
 
         stopped_time: None | str | Unset
         if isinstance(self.stopped_time, Unset):
             stopped_time = UNSET
+        elif isinstance(self.stopped_time, datetime.datetime):
+            stopped_time = self.stopped_time.isoformat()
         else:
             stopped_time = self.stopped_time
 
@@ -126,6 +132,8 @@ class ExperimentSummary:
         scheduled_time: None | str | Unset
         if isinstance(self.scheduled_time, Unset):
             scheduled_time = UNSET
+        elif isinstance(self.scheduled_time, datetime.datetime):
+            scheduled_time = self.scheduled_time.isoformat()
         else:
             scheduled_time = self.scheduled_time
 
@@ -205,30 +213,54 @@ class ExperimentSummary:
         else:
             created_time = datetime.datetime.fromisoformat(_created_time)
 
-        def _parse_last_updated_time(data: object) -> None | str | Unset:
+        def _parse_last_updated_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                last_updated_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return last_updated_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         last_updated_time = _parse_last_updated_time(d.pop("lastUpdatedTime", UNSET))
 
-        def _parse_started_time(data: object) -> None | str | Unset:
+        def _parse_started_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                started_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return started_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         started_time = _parse_started_time(d.pop("startedTime", UNSET))
 
-        def _parse_stopped_time(data: object) -> None | str | Unset:
+        def _parse_stopped_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                stopped_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return stopped_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         stopped_time = _parse_stopped_time(d.pop("stoppedTime", UNSET))
 
@@ -257,12 +289,20 @@ class ExperimentSummary:
 
         experiment_config_key = _parse_experiment_config_key(d.pop("experimentConfigKey", UNSET))
 
-        def _parse_scheduled_time(data: object) -> None | str | Unset:
+        def _parse_scheduled_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                scheduled_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return scheduled_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         scheduled_time = _parse_scheduled_time(d.pop("scheduledTime", UNSET))
 

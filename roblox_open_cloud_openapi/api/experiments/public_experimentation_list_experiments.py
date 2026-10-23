@@ -28,7 +28,10 @@ from ...types import UNSET, Response
 
 
 from ...models.action_result import ActionResult
+from ...models.creator_configs_public_api_sort_order import CreatorConfigsPublicApiSortOrder
+from ...models.experiment_product_type import ExperimentProductType
 from ...models.experiment_state import ExperimentState
+from ...models.list_experiment_sort_key import ListExperimentSortKey
 from ...models.list_experiments_response import ListExperimentsResponse
 from ...types import Unset
 
@@ -36,13 +39,13 @@ from ...types import Unset
 def _get_kwargs(
     universe_id: int,
     *,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     state_filters: list[ExperimentState] | Unset = UNSET,
-    sort_order: str | Unset = UNSET,
-    sort_key: str | Unset = UNSET,
-    product_type_filter: str | Unset = UNSET,
+    sort_order: CreatorConfigsPublicApiSortOrder | Unset = UNSET,
+    sort_key: ListExperimentSortKey | Unset = UNSET,
+    product_type_filter: ExperimentProductType | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -62,11 +65,23 @@ def _get_kwargs(
 
     params["stateFilters"] = json_state_filters
 
-    params["sortOrder"] = sort_order
+    json_sort_order: str | Unset = UNSET
+    if not isinstance(sort_order, Unset):
+        json_sort_order = sort_order.value
 
-    params["sortKey"] = sort_key
+    params["sortOrder"] = json_sort_order
 
-    params["productTypeFilter"] = product_type_filter
+    json_sort_key: str | Unset = UNSET
+    if not isinstance(sort_key, Unset):
+        json_sort_key = sort_key.value
+
+    params["sortKey"] = json_sort_key
+
+    json_product_type_filter: str | Unset = UNSET
+    if not isinstance(product_type_filter, Unset):
+        json_product_type_filter = product_type_filter.value
+
+    params["productTypeFilter"] = json_product_type_filter
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -125,13 +140,13 @@ def sync_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     state_filters: list[ExperimentState] | Unset = UNSET,
-    sort_order: str | Unset = UNSET,
-    sort_key: str | Unset = UNSET,
-    product_type_filter: str | Unset = UNSET,
+    sort_order: CreatorConfigsPublicApiSortOrder | Unset = UNSET,
+    sort_key: ListExperimentSortKey | Unset = UNSET,
+    product_type_filter: ExperimentProductType | Unset = UNSET,
 ) -> Response[ActionResult | ListExperimentsResponse]:
     """Lists experiments for a universe.
 
@@ -141,13 +156,30 @@ def sync_detailed(
 
     Args:
         universe_id (int):
-        max_page_size (str | Unset):
-        skip (str | Unset):
+        max_page_size (int | Unset):
+        skip (int | Unset):
         search_key (str | Unset):
         state_filters (list[ExperimentState] | Unset):
-        sort_order (str | Unset):
-        sort_key (str | Unset):
-        product_type_filter (str | Unset):
+        sort_order (CreatorConfigsPublicApiSortOrder | Unset): Sort direction for list queries.
+
+            SORT_ORDER_ASCENDING
+
+            SORT_ORDER_DESCENDING
+        sort_key (ListExperimentSortKey | Unset): Key to sort an experiment list by.
+
+            LIST_EXPERIMENT_SORT_KEY_NAME
+
+            LIST_EXPERIMENT_SORT_KEY_LAST_MODIFIED_TIME
+
+            LIST_EXPERIMENT_SORT_KEY_START_TIME
+
+            LIST_EXPERIMENT_SORT_KEY_RELEVANCE
+        product_type_filter (ExperimentProductType | Unset): Type of product the experiment is
+            targeting.
+
+            EXPERIMENT_PRODUCT_TYPE_IN_GAME_CONFIGS
+
+            EXPERIMENT_PRODUCT_TYPE_MATCHMAKING
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -179,13 +211,13 @@ def sync(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     state_filters: list[ExperimentState] | Unset = UNSET,
-    sort_order: str | Unset = UNSET,
-    sort_key: str | Unset = UNSET,
-    product_type_filter: str | Unset = UNSET,
+    sort_order: CreatorConfigsPublicApiSortOrder | Unset = UNSET,
+    sort_key: ListExperimentSortKey | Unset = UNSET,
+    product_type_filter: ExperimentProductType | Unset = UNSET,
 ) -> ActionResult | ListExperimentsResponse | None:
     """Lists experiments for a universe.
 
@@ -195,13 +227,30 @@ def sync(
 
     Args:
         universe_id (int):
-        max_page_size (str | Unset):
-        skip (str | Unset):
+        max_page_size (int | Unset):
+        skip (int | Unset):
         search_key (str | Unset):
         state_filters (list[ExperimentState] | Unset):
-        sort_order (str | Unset):
-        sort_key (str | Unset):
-        product_type_filter (str | Unset):
+        sort_order (CreatorConfigsPublicApiSortOrder | Unset): Sort direction for list queries.
+
+            SORT_ORDER_ASCENDING
+
+            SORT_ORDER_DESCENDING
+        sort_key (ListExperimentSortKey | Unset): Key to sort an experiment list by.
+
+            LIST_EXPERIMENT_SORT_KEY_NAME
+
+            LIST_EXPERIMENT_SORT_KEY_LAST_MODIFIED_TIME
+
+            LIST_EXPERIMENT_SORT_KEY_START_TIME
+
+            LIST_EXPERIMENT_SORT_KEY_RELEVANCE
+        product_type_filter (ExperimentProductType | Unset): Type of product the experiment is
+            targeting.
+
+            EXPERIMENT_PRODUCT_TYPE_IN_GAME_CONFIGS
+
+            EXPERIMENT_PRODUCT_TYPE_MATCHMAKING
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -228,13 +277,13 @@ async def asyncio_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     state_filters: list[ExperimentState] | Unset = UNSET,
-    sort_order: str | Unset = UNSET,
-    sort_key: str | Unset = UNSET,
-    product_type_filter: str | Unset = UNSET,
+    sort_order: CreatorConfigsPublicApiSortOrder | Unset = UNSET,
+    sort_key: ListExperimentSortKey | Unset = UNSET,
+    product_type_filter: ExperimentProductType | Unset = UNSET,
 ) -> Response[ActionResult | ListExperimentsResponse]:
     """Lists experiments for a universe.
 
@@ -244,13 +293,30 @@ async def asyncio_detailed(
 
     Args:
         universe_id (int):
-        max_page_size (str | Unset):
-        skip (str | Unset):
+        max_page_size (int | Unset):
+        skip (int | Unset):
         search_key (str | Unset):
         state_filters (list[ExperimentState] | Unset):
-        sort_order (str | Unset):
-        sort_key (str | Unset):
-        product_type_filter (str | Unset):
+        sort_order (CreatorConfigsPublicApiSortOrder | Unset): Sort direction for list queries.
+
+            SORT_ORDER_ASCENDING
+
+            SORT_ORDER_DESCENDING
+        sort_key (ListExperimentSortKey | Unset): Key to sort an experiment list by.
+
+            LIST_EXPERIMENT_SORT_KEY_NAME
+
+            LIST_EXPERIMENT_SORT_KEY_LAST_MODIFIED_TIME
+
+            LIST_EXPERIMENT_SORT_KEY_START_TIME
+
+            LIST_EXPERIMENT_SORT_KEY_RELEVANCE
+        product_type_filter (ExperimentProductType | Unset): Type of product the experiment is
+            targeting.
+
+            EXPERIMENT_PRODUCT_TYPE_IN_GAME_CONFIGS
+
+            EXPERIMENT_PRODUCT_TYPE_MATCHMAKING
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -280,13 +346,13 @@ async def asyncio(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     state_filters: list[ExperimentState] | Unset = UNSET,
-    sort_order: str | Unset = UNSET,
-    sort_key: str | Unset = UNSET,
-    product_type_filter: str | Unset = UNSET,
+    sort_order: CreatorConfigsPublicApiSortOrder | Unset = UNSET,
+    sort_key: ListExperimentSortKey | Unset = UNSET,
+    product_type_filter: ExperimentProductType | Unset = UNSET,
 ) -> ActionResult | ListExperimentsResponse | None:
     """Lists experiments for a universe.
 
@@ -296,13 +362,30 @@ async def asyncio(
 
     Args:
         universe_id (int):
-        max_page_size (str | Unset):
-        skip (str | Unset):
+        max_page_size (int | Unset):
+        skip (int | Unset):
         search_key (str | Unset):
         state_filters (list[ExperimentState] | Unset):
-        sort_order (str | Unset):
-        sort_key (str | Unset):
-        product_type_filter (str | Unset):
+        sort_order (CreatorConfigsPublicApiSortOrder | Unset): Sort direction for list queries.
+
+            SORT_ORDER_ASCENDING
+
+            SORT_ORDER_DESCENDING
+        sort_key (ListExperimentSortKey | Unset): Key to sort an experiment list by.
+
+            LIST_EXPERIMENT_SORT_KEY_NAME
+
+            LIST_EXPERIMENT_SORT_KEY_LAST_MODIFIED_TIME
+
+            LIST_EXPERIMENT_SORT_KEY_START_TIME
+
+            LIST_EXPERIMENT_SORT_KEY_RELEVANCE
+        product_type_filter (ExperimentProductType | Unset): Type of product the experiment is
+            targeting.
+
+            EXPERIMENT_PRODUCT_TYPE_IN_GAME_CONFIGS
+
+            EXPERIMENT_PRODUCT_TYPE_MATCHMAKING
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

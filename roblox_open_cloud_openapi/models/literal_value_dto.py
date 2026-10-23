@@ -15,31 +15,31 @@ class LiteralValueDto:
     """Literal constant for an RPN operand.
 
     Attributes:
-        boolean_value (None | str | Unset):
-        integer_value (None | str | Unset):
-        double_value (None | str | Unset):
+        boolean_value (bool | None | Unset):
+        integer_value (int | None | Unset):
+        double_value (float | None | Unset):
         string_value (None | str | Unset):
     """
 
-    boolean_value: None | str | Unset = UNSET
-    integer_value: None | str | Unset = UNSET
-    double_value: None | str | Unset = UNSET
+    boolean_value: bool | None | Unset = UNSET
+    integer_value: int | None | Unset = UNSET
+    double_value: float | None | Unset = UNSET
     string_value: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        boolean_value: None | str | Unset
+        boolean_value: bool | None | Unset
         if isinstance(self.boolean_value, Unset):
             boolean_value = UNSET
         else:
             boolean_value = self.boolean_value
 
-        integer_value: None | str | Unset
+        integer_value: int | None | Unset
         if isinstance(self.integer_value, Unset):
             integer_value = UNSET
         else:
             integer_value = self.integer_value
 
-        double_value: None | str | Unset
+        double_value: float | None | Unset
         if isinstance(self.double_value, Unset):
             double_value = UNSET
         else:
@@ -69,30 +69,30 @@ class LiteralValueDto:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_boolean_value(data: object) -> None | str | Unset:
+        def _parse_boolean_value(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(bool | None | Unset, data)
 
         boolean_value = _parse_boolean_value(d.pop("booleanValue", UNSET))
 
-        def _parse_integer_value(data: object) -> None | str | Unset:
+        def _parse_integer_value(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(int | None | Unset, data)
 
         integer_value = _parse_integer_value(d.pop("integerValue", UNSET))
 
-        def _parse_double_value(data: object) -> None | str | Unset:
+        def _parse_double_value(data: object) -> float | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(float | None | Unset, data)
 
         double_value = _parse_double_value(d.pop("doubleValue", UNSET))
 

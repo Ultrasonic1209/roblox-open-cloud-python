@@ -27,6 +27,8 @@ from ...types import UNSET, Response
 """
 
 
+import datetime
+
 from ...models.action_result import ActionResult
 from ...models.list_revisions_response import ListRevisionsResponse
 from ...models.repository import Repository
@@ -37,10 +39,10 @@ def _get_kwargs(
     universe_id: str,
     repository: Repository,
     *,
-    start_time: str | Unset = UNSET,
-    end_time: str | Unset = UNSET,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     sort_order: str | Unset = UNSET,
     sort_key: str | Unset = UNSET,
@@ -48,9 +50,15 @@ def _get_kwargs(
 
     params: dict[str, Any] = {}
 
-    params["startTime"] = start_time
+    json_start_time: str | Unset = UNSET
+    if not isinstance(start_time, Unset):
+        json_start_time = start_time.isoformat()
+    params["startTime"] = json_start_time
 
-    params["endTime"] = end_time
+    json_end_time: str | Unset = UNSET
+    if not isinstance(end_time, Unset):
+        json_end_time = end_time.isoformat()
+    params["endTime"] = json_end_time
 
     params["MaxPageSize"] = max_page_size
 
@@ -121,10 +129,10 @@ def sync_detailed(
     repository: Repository,
     *,
     client: AuthenticatedClient,
-    start_time: str | Unset = UNSET,
-    end_time: str | Unset = UNSET,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     sort_order: str | Unset = UNSET,
     sort_key: str | Unset = UNSET,
@@ -156,10 +164,10 @@ def sync_detailed(
             JourneysConfig
 
             AntiCheatConfig
-        start_time (str | Unset):
-        end_time (str | Unset):
-        max_page_size (str | Unset):
-        skip (str | Unset):
+        start_time (datetime.datetime | Unset):
+        end_time (datetime.datetime | Unset):
+        max_page_size (int | Unset):
+        skip (int | Unset):
         search_key (str | Unset):
         sort_order (str | Unset):
         sort_key (str | Unset):
@@ -196,10 +204,10 @@ def sync(
     repository: Repository,
     *,
     client: AuthenticatedClient,
-    start_time: str | Unset = UNSET,
-    end_time: str | Unset = UNSET,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     sort_order: str | Unset = UNSET,
     sort_key: str | Unset = UNSET,
@@ -231,10 +239,10 @@ def sync(
             JourneysConfig
 
             AntiCheatConfig
-        start_time (str | Unset):
-        end_time (str | Unset):
-        max_page_size (str | Unset):
-        skip (str | Unset):
+        start_time (datetime.datetime | Unset):
+        end_time (datetime.datetime | Unset):
+        max_page_size (int | Unset):
+        skip (int | Unset):
         search_key (str | Unset):
         sort_order (str | Unset):
         sort_key (str | Unset):
@@ -266,10 +274,10 @@ async def asyncio_detailed(
     repository: Repository,
     *,
     client: AuthenticatedClient,
-    start_time: str | Unset = UNSET,
-    end_time: str | Unset = UNSET,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     sort_order: str | Unset = UNSET,
     sort_key: str | Unset = UNSET,
@@ -301,10 +309,10 @@ async def asyncio_detailed(
             JourneysConfig
 
             AntiCheatConfig
-        start_time (str | Unset):
-        end_time (str | Unset):
-        max_page_size (str | Unset):
-        skip (str | Unset):
+        start_time (datetime.datetime | Unset):
+        end_time (datetime.datetime | Unset):
+        max_page_size (int | Unset):
+        skip (int | Unset):
         search_key (str | Unset):
         sort_order (str | Unset):
         sort_key (str | Unset):
@@ -339,10 +347,10 @@ async def asyncio(
     repository: Repository,
     *,
     client: AuthenticatedClient,
-    start_time: str | Unset = UNSET,
-    end_time: str | Unset = UNSET,
-    max_page_size: str | Unset = UNSET,
-    skip: str | Unset = UNSET,
+    start_time: datetime.datetime | Unset = UNSET,
+    end_time: datetime.datetime | Unset = UNSET,
+    max_page_size: int | Unset = UNSET,
+    skip: int | Unset = UNSET,
     search_key: str | Unset = UNSET,
     sort_order: str | Unset = UNSET,
     sort_key: str | Unset = UNSET,
@@ -374,10 +382,10 @@ async def asyncio(
             JourneysConfig
 
             AntiCheatConfig
-        start_time (str | Unset):
-        end_time (str | Unset):
-        max_page_size (str | Unset):
-        skip (str | Unset):
+        start_time (datetime.datetime | Unset):
+        end_time (datetime.datetime | Unset):
+        max_page_size (int | Unset):
+        skip (int | Unset):
         search_key (str | Unset):
         sort_order (str | Unset):
         sort_key (str | Unset):

@@ -19,13 +19,11 @@ class RobloxCatalogApiCollectibleLicense:
         id (str | Unset):
         license_type (RobloxCatalogApiCollectibleLicenseLicenseType | Unset): The type of license attached to a
             collectible. ['Invalid' = 0, 'ThirdParty' = 1, 'FirstParty' = 2]
-        license_holder (str | Unset):
         license_display_name (str | Unset):
     """
 
     id: str | Unset = UNSET
     license_type: RobloxCatalogApiCollectibleLicenseLicenseType | Unset = UNSET
-    license_holder: str | Unset = UNSET
     license_display_name: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,8 +32,6 @@ class RobloxCatalogApiCollectibleLicense:
         license_type: int | Unset = UNSET
         if not isinstance(self.license_type, Unset):
             license_type = self.license_type.value
-
-        license_holder = self.license_holder
 
         license_display_name = self.license_display_name
 
@@ -46,8 +42,6 @@ class RobloxCatalogApiCollectibleLicense:
             field_dict["id"] = id
         if license_type is not UNSET:
             field_dict["licenseType"] = license_type
-        if license_holder is not UNSET:
-            field_dict["licenseHolder"] = license_holder
         if license_display_name is not UNSET:
             field_dict["licenseDisplayName"] = license_display_name
 
@@ -65,14 +59,11 @@ class RobloxCatalogApiCollectibleLicense:
         else:
             license_type = RobloxCatalogApiCollectibleLicenseLicenseType(_license_type)
 
-        license_holder = d.pop("licenseHolder", UNSET)
-
         license_display_name = d.pop("licenseDisplayName", UNSET)
 
         roblox_catalog_api_collectible_license = cls(
             id=id,
             license_type=license_type,
-            license_holder=license_holder,
             license_display_name=license_display_name,
         )
 

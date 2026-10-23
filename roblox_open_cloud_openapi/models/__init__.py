@@ -117,6 +117,7 @@ from .cloud_list_luau_execution_session_task_logs_view import CloudListLuauExecu
 from .complete_experiment_request import CompleteExperimentRequest
 from .complete_experiment_response import CompleteExperimentResponse
 from .conditional_rule_definition import ConditionalRuleDefinition
+from .conditional_rule_operator import ConditionalRuleOperator
 from .conditional_rules_changes_payload import ConditionalRulesChangesPayload
 from .conditional_rules_changes_payload_rules_type_0 import ConditionalRulesChangesPayloadRulesType0
 from .conditional_rules_payload import ConditionalRulesPayload
@@ -162,6 +163,7 @@ from .create_thumbnail_personalization_request import CreateThumbnailPersonaliza
 from .create_universe_regex_http_request import CreateUniverseRegexHttpRequest
 from .creation_context import CreationContext
 from .creator import Creator
+from .creator_configs_public_api_sort_order import CreatorConfigsPublicApiSortOrder
 from .creator_model_v2_type_0 import CreatorModelV2Type0
 from .creator_store_asset_type_0 import CreatorStoreAssetType0
 from .creator_store_capabilities_model_type_0 import CreatorStoreCapabilitiesModelType0
@@ -592,6 +594,7 @@ from .list_data_store_entry_revisions_response import ListDataStoreEntryRevision
 from .list_data_stores_response import ListDataStoresResponse
 from .list_developer_product_configs_v2_response import ListDeveloperProductConfigsV2Response
 from .list_entries_response import ListEntriesResponse
+from .list_experiment_sort_key import ListExperimentSortKey
 from .list_experiments_response import ListExperimentsResponse
 from .list_game_pass_configs_by_universe_response import ListGamePassConfigsByUniverseResponse
 from .list_game_server_logs_response import ListGameServerLogsResponse
@@ -1897,6 +1900,9 @@ from .roblox_client_settings_api_models_response_android_binary_library_names im
 )
 from .roblox_client_settings_api_models_response_android_binary_response import (
     RobloxClientSettingsApiModelsResponseAndroidBinaryResponse,
+)
+from .roblox_client_settings_api_models_response_beta_program_channel_version_response import (
+    RobloxClientSettingsApiModelsResponseBetaProgramChannelVersionResponse,
 )
 from .roblox_client_settings_api_models_response_beta_program_info import (
     RobloxClientSettingsApiModelsResponseBetaProgramInfo,
@@ -3475,6 +3481,7 @@ __all__ = (
     "CompleteExperimentRequest",
     "CompleteExperimentResponse",
     "ConditionalRuleDefinition",
+    "ConditionalRuleOperator",
     "ConditionalRulesChangesPayload",
     "ConditionalRulesChangesPayloadRulesType0",
     "ConditionalRulesPayload",
@@ -3516,6 +3523,7 @@ __all__ = (
     "CreateUniverseRegexHttpRequest",
     "CreationContext",
     "Creator",
+    "CreatorConfigsPublicApiSortOrder",
     "CreatorModelV2Type0",
     "CreatorStoreAssetType0",
     "CreatorStoreCapabilitiesModelType0",
@@ -3894,6 +3902,7 @@ __all__ = (
     "ListDataStoresResponse",
     "ListDeveloperProductConfigsV2Response",
     "ListEntriesResponse",
+    "ListExperimentSortKey",
     "ListExperimentsResponse",
     "ListGamePassConfigsByUniverseResponse",
     "ListGameServerLogsResponse",
@@ -4574,6 +4583,7 @@ __all__ = (
     "RobloxCatalogApiTopicResponse",
     "RobloxClientSettingsApiModelsResponseAndroidBinaryLibraryNames",
     "RobloxClientSettingsApiModelsResponseAndroidBinaryResponse",
+    "RobloxClientSettingsApiModelsResponseBetaProgramChannelVersionResponse",
     "RobloxClientSettingsApiModelsResponseBetaProgramInfo",
     "RobloxClientSettingsApiModelsResponseClientVersionResponse",
     "RobloxClientSettingsApiModelsResponseMobileClientVersionResponse",
