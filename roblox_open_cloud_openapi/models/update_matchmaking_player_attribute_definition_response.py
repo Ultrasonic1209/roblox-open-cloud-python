@@ -5,8 +5,6 @@ from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
     from ..models.matchmaking_player_attribute_definition import MatchmakingPlayerAttributeDefinition
 
@@ -19,22 +17,22 @@ class UpdateMatchmakingPlayerAttributeDefinitionResponse:
     """The response for updating a matchmaking player attribute definition.
 
     Attributes:
-        player_attribute_definition (MatchmakingPlayerAttributeDefinition | Unset): Describes a player attribute
-            definition for matchmaking.
+        player_attribute_definition (MatchmakingPlayerAttributeDefinition): Describes a player attribute definition for
+            matchmaking.
     """
 
-    player_attribute_definition: MatchmakingPlayerAttributeDefinition | Unset = UNSET
+    player_attribute_definition: MatchmakingPlayerAttributeDefinition
 
     def to_dict(self) -> dict[str, Any]:
-        player_attribute_definition: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.player_attribute_definition, Unset):
-            player_attribute_definition = self.player_attribute_definition.to_dict()
+        player_attribute_definition = self.player_attribute_definition.to_dict()
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if player_attribute_definition is not UNSET:
-            field_dict["playerAttributeDefinition"] = player_attribute_definition
+        field_dict.update(
+            {
+                "playerAttributeDefinition": player_attribute_definition,
+            }
+        )
 
         return field_dict
 
@@ -43,12 +41,7 @@ class UpdateMatchmakingPlayerAttributeDefinitionResponse:
         from ..models.matchmaking_player_attribute_definition import MatchmakingPlayerAttributeDefinition  # noqa: PLC0415
 
         d = dict(src_dict)
-        _player_attribute_definition = d.pop("playerAttributeDefinition", UNSET)
-        player_attribute_definition: MatchmakingPlayerAttributeDefinition | Unset
-        if isinstance(_player_attribute_definition, Unset):
-            player_attribute_definition = UNSET
-        else:
-            player_attribute_definition = MatchmakingPlayerAttributeDefinition.from_dict(_player_attribute_definition)
+        player_attribute_definition = MatchmakingPlayerAttributeDefinition.from_dict(d.pop("playerAttributeDefinition"))
 
         update_matchmaking_player_attribute_definition_response = cls(
             player_attribute_definition=player_attribute_definition,

@@ -1,0 +1,10 @@
+from enum import StrEnum
+
+
+class DashboardMetadataLifecycleStateType0Type0(StrEnum):
+    DASHBOARD_LIFECYCLE_STATE_ACTIVE = "DASHBOARD_LIFECYCLE_STATE_ACTIVE"
+    DASHBOARD_LIFECYCLE_STATE_DELETED = "DASHBOARD_LIFECYCLE_STATE_DELETED"
+    DASHBOARD_LIFECYCLE_STATE_INVALID = "DASHBOARD_LIFECYCLE_STATE_INVALID"
+
+    def __str__(self) -> str:
+        return str(self.value)

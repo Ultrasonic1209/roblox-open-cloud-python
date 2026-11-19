@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/users/{user_id}', 'httpMethod': 'GET'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/users/{user_id}', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/users#Cloud_GetUser'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 import sys

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
 if TYPE_CHECKING:
@@ -23,12 +23,12 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Get Operation', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'asset:read'}], 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Get Operation', 'script': "curl --location 'https://apis.roblox.com/assets/v1/operations/{operationId}' \\\n--header 'x-api-key: {apiKey}'\n"}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 300}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 300}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-scopes': [{'name': 'asset:write', 'description': 'Required.'}], 'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Get Operation', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Get Operation', 'script': "curl --location 'https://apis.roblox.com/assets/v1/operations/{operationId}' \\\n--header 'x-api-key: {apiKey}'\n"}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 300}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 300}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
-from ...models.ocv1_assets_operation import OCV1AssetsOperation
-from ...models.ocv1_assets_status import OCV1AssetsStatus
+from ...models.assets_upload_api_operation import AssetsUploadApiOperation
+from ...models.assets_upload_api_status import AssetsUploadApiStatus
 
 
 def _get_kwargs(
@@ -47,23 +47,30 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     if response.status_code == 200:
-        response_200 = OCV1AssetsOperation.from_dict(response.json())
+        response_200 = AssetsUploadApiOperation.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = OCV1AssetsStatus.from_dict(response.json())
+        response_400 = AssetsUploadApiStatus.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 401:
-        response_401 = cast(Any, None)
+        response_401 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_401
 
+    if response.status_code == 403:
+        response_403 = AssetsUploadApiStatus.from_dict(response.json())
+
+        return response_403
+
     if response.status_code == 500:
-        response_500 = cast(Any, None)
+        response_500 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_500
 
     if client.raise_on_unexpected_status:
@@ -74,7 +81,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -87,11 +94,10 @@ def sync_detailed(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     """Get the result of an asset creation or update.
 
-     Get the result of an asset creation or update using the returned Operation ID. Requires **Read** for
-    the API key permission and **asset:read** for OAuth 2.0 apps.
+     Get the result of an asset creation or update using the returned Operation ID.
 
     Args:
         operation_id (str):
@@ -101,7 +107,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]
+        Response[AssetsUploadApiOperation | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -119,11 +125,10 @@ def sync(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     """Get the result of an asset creation or update.
 
-     Get the result of an asset creation or update using the returned Operation ID. Requires **Read** for
-    the API key permission and **asset:read** for OAuth 2.0 apps.
+     Get the result of an asset creation or update using the returned Operation ID.
 
     Args:
         operation_id (str):
@@ -133,7 +138,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | OCV1AssetsOperation | OCV1AssetsStatus
+        AssetsUploadApiOperation | AssetsUploadApiStatus
     """
 
     return sync_detailed(
@@ -146,11 +151,10 @@ async def asyncio_detailed(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     """Get the result of an asset creation or update.
 
-     Get the result of an asset creation or update using the returned Operation ID. Requires **Read** for
-    the API key permission and **asset:read** for OAuth 2.0 apps.
+     Get the result of an asset creation or update using the returned Operation ID.
 
     Args:
         operation_id (str):
@@ -160,7 +164,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]
+        Response[AssetsUploadApiOperation | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -176,11 +180,10 @@ async def asyncio(
     operation_id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     """Get the result of an asset creation or update.
 
-     Get the result of an asset creation or update using the returned Operation ID. Requires **Read** for
-    the API key permission and **asset:read** for OAuth 2.0 apps.
+     Get the result of an asset creation or update using the returned Operation ID.
 
     Args:
         operation_id (str):
@@ -190,7 +193,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | OCV1AssetsOperation | OCV1AssetsStatus
+        AssetsUploadApiOperation | AssetsUploadApiStatus
     """
 
     return (

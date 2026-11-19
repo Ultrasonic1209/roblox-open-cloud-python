@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://assetdelivery.roblox.com/v2/asset', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_asset'}]}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-recommended-alternatives': [{'url': 'https://assetdelivery.roblox.com/v2/asset', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#assetdelivery_get_v2_asset'}]}
 """
 
 import sys

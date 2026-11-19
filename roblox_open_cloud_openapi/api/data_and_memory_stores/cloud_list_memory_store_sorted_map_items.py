@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:read', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.sorted-map:read'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.sorted-map:read']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreSortedMapItem', 'name': 'MemoryStoreSortedMapItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:read', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
@@ -32,12 +32,12 @@ from ...types import Unset
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 1,
     page_token: str | Unset = UNSET,
-    order_by: str | Unset = UNSET,
+    order_by: str | Unset = "asc",
     filter_: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
@@ -91,13 +91,13 @@ def _build_response(
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 1,
     page_token: str | Unset = UNSET,
-    order_by: str | Unset = UNSET,
+    order_by: str | Unset = "asc",
     filter_: str | Unset = UNSET,
 ) -> Response[ListMemoryStoreSortedMapItemsResponse]:
     """List Memory Store Sorted Map Items
@@ -105,11 +105,11 @@ def sync_detailed(
      Gets and returns items in the map with a given order and filter.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 1.
         page_token (str | Unset):
-        order_by (str | Unset):
+        order_by (str | Unset):  Default: 'asc'.
         filter_ (str | Unset):
 
     Raises:
@@ -137,13 +137,13 @@ def sync_detailed(
 
 
 def sync(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 1,
     page_token: str | Unset = UNSET,
-    order_by: str | Unset = UNSET,
+    order_by: str | Unset = "asc",
     filter_: str | Unset = UNSET,
 ) -> ListMemoryStoreSortedMapItemsResponse | None:
     """List Memory Store Sorted Map Items
@@ -151,11 +151,11 @@ def sync(
      Gets and returns items in the map with a given order and filter.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 1.
         page_token (str | Unset):
-        order_by (str | Unset):
+        order_by (str | Unset):  Default: 'asc'.
         filter_ (str | Unset):
 
     Raises:
@@ -178,13 +178,13 @@ def sync(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 1,
     page_token: str | Unset = UNSET,
-    order_by: str | Unset = UNSET,
+    order_by: str | Unset = "asc",
     filter_: str | Unset = UNSET,
 ) -> Response[ListMemoryStoreSortedMapItemsResponse]:
     """List Memory Store Sorted Map Items
@@ -192,11 +192,11 @@ async def asyncio_detailed(
      Gets and returns items in the map with a given order and filter.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 1.
         page_token (str | Unset):
-        order_by (str | Unset):
+        order_by (str | Unset):  Default: 'asc'.
         filter_ (str | Unset):
 
     Raises:
@@ -222,13 +222,13 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
+    max_page_size: int | Unset = 1,
     page_token: str | Unset = UNSET,
-    order_by: str | Unset = UNSET,
+    order_by: str | Unset = "asc",
     filter_: str | Unset = UNSET,
 ) -> ListMemoryStoreSortedMapItemsResponse | None:
     """List Memory Store Sorted Map Items
@@ -236,11 +236,11 @@ async def asyncio(
      Gets and returns items in the map with a given order and filter.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
-        max_page_size (int | Unset):
+        max_page_size (int | Unset):  Default: 1.
         page_token (str | Unset):
-        order_by (str | Unset):
+        order_by (str | Unset):  Default: 'asc'.
         filter_ (str | Unset):
 
     Raises:

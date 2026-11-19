@@ -22,9 +22,15 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/assets/v1/assets', 'httpMethod': 'POST', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#Assets_CreateAsset'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
 
 from ...models.roblox_publish_api_publish_audio_response import RobloxPublishApiPublishAudioResponse
 from ...models.roblox_publish_api_upload_audio_request import RobloxPublishApiUploadAudioRequest
@@ -95,6 +101,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#publish_post_v1_audio"
+)
 def sync_detailed(
     *,
     client: AuthenticatedClient,
@@ -125,6 +134,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#publish_post_v1_audio"
+)
 def sync(
     *,
     client: AuthenticatedClient,
@@ -150,6 +162,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#publish_post_v1_audio"
+)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -178,6 +193,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#publish_post_v1_audio"
+)
 async def asyncio(
     *,
     client: AuthenticatedClient,

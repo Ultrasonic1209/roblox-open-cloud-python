@@ -1,0 +1,12 @@
+from enum import StrEnum
+
+
+class MarketplaceFiatServiceCreatorStoreProductRestrictionsType0Item(StrEnum):
+    RESTRICTION_UNSPECIFIED = "RESTRICTION_UNSPECIFIED"
+    SELLER_NO_LONGER_ACTIVE = "SELLER_NO_LONGER_ACTIVE"
+    SELLER_PERMANENTLY_RESTRICTED = "SELLER_PERMANENTLY_RESTRICTED"
+    SELLER_TEMPORARILY_RESTRICTED = "SELLER_TEMPORARILY_RESTRICTED"
+    SOLD_ITEM_RESTRICTED = "SOLD_ITEM_RESTRICTED"
+
+    def __str__(self) -> str:
+        return str(self.value)

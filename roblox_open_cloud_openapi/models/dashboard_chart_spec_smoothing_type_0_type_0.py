@@ -1,0 +1,10 @@
+from enum import StrEnum
+
+
+class DashboardChartSpecSmoothingType0Type0(StrEnum):
+    DASHBOARD_CHART_SMOOTHING_INVALID = "DASHBOARD_CHART_SMOOTHING_INVALID"
+    DASHBOARD_CHART_SMOOTHING_NONE = "DASHBOARD_CHART_SMOOTHING_NONE"
+    DASHBOARD_CHART_SMOOTHING_WEEKLY = "DASHBOARD_CHART_SMOOTHING_WEEKLY"
+
+    def __str__(self) -> str:
+        return str(self.value)

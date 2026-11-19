@@ -5,8 +5,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
     from ..models.game_update_status import GameUpdateStatus
 
@@ -19,16 +17,14 @@ class GetUpdateStatusResponse:
     """Get Update Status response.
 
     Attributes:
-        update_status_list (list[GameUpdateStatus] | None | Unset): The status of the game update.
+        update_status_list (list[GameUpdateStatus] | None): The status of the game update.
     """
 
-    update_status_list: list[GameUpdateStatus] | None | Unset = UNSET
+    update_status_list: list[GameUpdateStatus] | None
 
     def to_dict(self) -> dict[str, Any]:
-        update_status_list: list[dict[str, Any]] | None | Unset
-        if isinstance(self.update_status_list, Unset):
-            update_status_list = UNSET
-        elif isinstance(self.update_status_list, list):
+        update_status_list: list[dict[str, Any]] | None
+        if isinstance(self.update_status_list, list):
             update_status_list = []
             for update_status_list_type_0_item_data in self.update_status_list:
                 update_status_list_type_0_item = update_status_list_type_0_item_data.to_dict()
@@ -39,9 +35,11 @@ class GetUpdateStatusResponse:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if update_status_list is not UNSET:
-            field_dict["updateStatusList"] = update_status_list
+        field_dict.update(
+            {
+                "updateStatusList": update_status_list,
+            }
+        )
 
         return field_dict
 
@@ -51,10 +49,8 @@ class GetUpdateStatusResponse:
 
         d = dict(src_dict)
 
-        def _parse_update_status_list(data: object) -> list[GameUpdateStatus] | None | Unset:
+        def _parse_update_status_list(data: object) -> list[GameUpdateStatus] | None:
             if data is None:
-                return data
-            if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, list):
@@ -69,9 +65,9 @@ class GetUpdateStatusResponse:
                 return update_status_list_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(list[GameUpdateStatus] | None | Unset, data)
+            return cast(list[GameUpdateStatus] | None, data)
 
-        update_status_list = _parse_update_status_list(d.pop("updateStatusList", UNSET))
+        update_status_list = _parse_update_status_list(d.pop("updateStatusList"))
 
         get_update_status_response = cls(
             update_status_list=update_status_list,

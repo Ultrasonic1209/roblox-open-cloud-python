@@ -29,6 +29,9 @@ from ...types import UNSET, Response
 from ...models.get_v2_search_items_details_category_filter import GetV2SearchItemsDetailsCategoryFilter
 from ...models.get_v2_search_items_details_creator_type import GetV2SearchItemsDetailsCreatorType
 from ...models.get_v2_search_items_details_limit import GetV2SearchItemsDetailsLimit
+from ...models.get_v2_search_items_details_required_property_filters_item import (
+    GetV2SearchItemsDetailsRequiredPropertyFiltersItem,
+)
 from ...models.get_v2_search_items_details_sales_type_filter import GetV2SearchItemsDetailsSalesTypeFilter
 from ...models.get_v2_search_items_details_sort_aggregation import GetV2SearchItemsDetailsSortAggregation
 from ...models.get_v2_search_items_details_sort_order import GetV2SearchItemsDetailsSortOrder
@@ -41,6 +44,7 @@ from ...types import Unset
 
 def _get_kwargs(
     *,
+    required_property_filters: list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] | Unset = UNSET,
     taxonomy: str | Unset = UNSET,
     asset_type_ids: list[int] | Unset = UNSET,
     bundle_type_ids: list[int] | Unset = UNSET,
@@ -63,6 +67,15 @@ def _get_kwargs(
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
+
+    json_required_property_filters: list[int] | Unset = UNSET
+    if not isinstance(required_property_filters, Unset):
+        json_required_property_filters = []
+        for required_property_filters_item_data in required_property_filters:
+            required_property_filters_item = required_property_filters_item_data.value
+            json_required_property_filters.append(required_property_filters_item)
+
+    params["RequiredPropertyFilters"] = json_required_property_filters
 
     params["Taxonomy"] = taxonomy
 
@@ -197,6 +210,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    required_property_filters: list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] | Unset = UNSET,
     taxonomy: str | Unset = UNSET,
     asset_type_ids: list[int] | Unset = UNSET,
     bundle_type_ids: list[int] | Unset = UNSET,
@@ -222,6 +236,8 @@ def sync_detailed(
      This endpoint is for search by item type ids.
 
     Args:
+        required_property_filters (list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] |
+            Unset):
         taxonomy (str | Unset):
         asset_type_ids (list[int] | Unset):
         bundle_type_ids (list[int] | Unset):
@@ -253,6 +269,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        required_property_filters=required_property_filters,
         taxonomy=taxonomy,
         asset_type_ids=asset_type_ids,
         bundle_type_ids=bundle_type_ids,
@@ -284,6 +301,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    required_property_filters: list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] | Unset = UNSET,
     taxonomy: str | Unset = UNSET,
     asset_type_ids: list[int] | Unset = UNSET,
     bundle_type_ids: list[int] | Unset = UNSET,
@@ -309,6 +327,8 @@ def sync(
      This endpoint is for search by item type ids.
 
     Args:
+        required_property_filters (list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] |
+            Unset):
         taxonomy (str | Unset):
         asset_type_ids (list[int] | Unset):
         bundle_type_ids (list[int] | Unset):
@@ -341,6 +361,7 @@ def sync(
 
     return sync_detailed(
         client=client,
+        required_property_filters=required_property_filters,
         taxonomy=taxonomy,
         asset_type_ids=asset_type_ids,
         bundle_type_ids=bundle_type_ids,
@@ -366,6 +387,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    required_property_filters: list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] | Unset = UNSET,
     taxonomy: str | Unset = UNSET,
     asset_type_ids: list[int] | Unset = UNSET,
     bundle_type_ids: list[int] | Unset = UNSET,
@@ -391,6 +413,8 @@ async def asyncio_detailed(
      This endpoint is for search by item type ids.
 
     Args:
+        required_property_filters (list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] |
+            Unset):
         taxonomy (str | Unset):
         asset_type_ids (list[int] | Unset):
         bundle_type_ids (list[int] | Unset):
@@ -422,6 +446,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        required_property_filters=required_property_filters,
         taxonomy=taxonomy,
         asset_type_ids=asset_type_ids,
         bundle_type_ids=bundle_type_ids,
@@ -451,6 +476,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    required_property_filters: list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] | Unset = UNSET,
     taxonomy: str | Unset = UNSET,
     asset_type_ids: list[int] | Unset = UNSET,
     bundle_type_ids: list[int] | Unset = UNSET,
@@ -476,6 +502,8 @@ async def asyncio(
      This endpoint is for search by item type ids.
 
     Args:
+        required_property_filters (list[GetV2SearchItemsDetailsRequiredPropertyFiltersItem] |
+            Unset):
         taxonomy (str | Unset):
         asset_type_ids (list[int] | Unset):
         bundle_type_ids (list[int] | Unset):
@@ -509,6 +537,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            required_property_filters=required_property_filters,
             taxonomy=taxonomy,
             asset_type_ids=asset_type_ids,
             bundle_type_ids=bundle_type_ids,

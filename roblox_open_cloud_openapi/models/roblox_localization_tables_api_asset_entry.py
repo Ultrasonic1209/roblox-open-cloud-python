@@ -21,11 +21,13 @@ T = TypeVar("T", bound="RobloxLocalizationTablesApiAssetEntry")
 class RobloxLocalizationTablesApiAssetEntry:
     """A source asset (image) entry in a localization table, along with its per-locale asset
     translations. Unlike Roblox.LocalizationTables.Api.Entry, an asset entry is identified by its source asset
-    id and has no key/context/source; each translation's Roblox.LocalizationTables.Api.Translation.TranslationText
-    holds the translated asset id.
+    id and version and has no key/context/source; each translation's
+    Roblox.LocalizationTables.Api.Translation.TranslationText
+    holds "{translatedAssetId}#{translatedAssetVersion}".
 
         Attributes:
             source_asset_id (int | Unset):
+            source_asset_version (str | Unset): Source asset version; "" = bare (unpinned).
             asset_type (int | Unset):
             asset_class (int | Unset):
             asset_prop (int | Unset):
@@ -36,6 +38,7 @@ class RobloxLocalizationTablesApiAssetEntry:
     """
 
     source_asset_id: int | Unset = UNSET
+    source_asset_version: str | Unset = UNSET
     asset_type: int | Unset = UNSET
     asset_class: int | Unset = UNSET
     asset_prop: int | Unset = UNSET
@@ -46,6 +49,8 @@ class RobloxLocalizationTablesApiAssetEntry:
 
     def to_dict(self) -> dict[str, Any]:
         source_asset_id = self.source_asset_id
+
+        source_asset_version = self.source_asset_version
 
         asset_type = self.asset_type
 
@@ -80,6 +85,8 @@ class RobloxLocalizationTablesApiAssetEntry:
         field_dict.update({})
         if source_asset_id is not UNSET:
             field_dict["sourceAssetId"] = source_asset_id
+        if source_asset_version is not UNSET:
+            field_dict["sourceAssetVersion"] = source_asset_version
         if asset_type is not UNSET:
             field_dict["assetType"] = asset_type
         if asset_class is not UNSET:
@@ -107,6 +114,8 @@ class RobloxLocalizationTablesApiAssetEntry:
 
         d = dict(src_dict)
         source_asset_id = d.pop("sourceAssetId", UNSET)
+
+        source_asset_version = d.pop("sourceAssetVersion", UNSET)
 
         asset_type = d.pop("assetType", UNSET)
 
@@ -148,6 +157,7 @@ class RobloxLocalizationTablesApiAssetEntry:
 
         roblox_localization_tables_api_asset_entry = cls(
             source_asset_id=source_asset_id,
+            source_asset_version=source_asset_version,
             asset_type=asset_type,
             asset_class=asset_class,
             asset_prop=asset_prop,

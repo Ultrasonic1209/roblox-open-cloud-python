@@ -4,6 +4,7 @@ from enum import StrEnum
 class ServerStatus(StrEnum):
     ACTIVE = "active"
     CRASHED = "crashed"
+    DEVELOPER_RESTARTED = "developer_restarted"
     MODERATED = "moderated"
     OUT_OF_MEMORY = "out_of_memory"
     PENDING = "pending"

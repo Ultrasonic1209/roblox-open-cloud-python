@@ -31,7 +31,7 @@ from ...models.virtual_events_api_problem_details import VirtualEventsApiProblem
 
 
 def _get_kwargs(
-    event_id: int,
+    event_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
@@ -50,6 +50,11 @@ def _parse_response(
     if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
+
+    if response.status_code == 400:
+        response_400 = VirtualEventsApiProblemDetails.from_dict(response.json())
+
+        return response_400
 
     if response.status_code == 401:
         response_401 = VirtualEventsApiProblemDetails.from_dict(response.json())
@@ -89,7 +94,7 @@ def _build_response(
 
 
 def sync_detailed(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | VirtualEventsApiProblemDetails]:
@@ -98,7 +103,7 @@ def sync_detailed(
     receive 403; callers that cannot read receive 404.
 
     Args:
-        event_id (int):
+        event_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,7 +125,7 @@ def sync_detailed(
 
 
 def sync(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Any | VirtualEventsApiProblemDetails | None:
@@ -129,7 +134,7 @@ def sync(
     receive 403; callers that cannot read receive 404.
 
     Args:
-        event_id (int):
+        event_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,7 +151,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | VirtualEventsApiProblemDetails]:
@@ -155,7 +160,7 @@ async def asyncio_detailed(
     receive 403; callers that cannot read receive 404.
 
     Args:
-        event_id (int):
+        event_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -175,7 +180,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Any | VirtualEventsApiProblemDetails | None:
@@ -184,7 +189,7 @@ async def asyncio(
     receive 403; callers that cannot read receive 404.
 
     Args:
-        event_id (int):
+        event_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

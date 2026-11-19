@@ -22,9 +22,15 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://games.roblox.com/v1/games/{universeId}/votes', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/interactions#Voting_GetGameVoteStatus'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
 
 from ...models.game_vote_response_api_array_response import GameVoteResponseApiArrayResponse
 from ...types import Unset
@@ -79,6 +85,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/interactions#Voting_MultiGetGameVoteStatus"
+)
 def sync_detailed(
     *,
     client: AuthenticatedClient,
@@ -107,6 +116,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/interactions#Voting_MultiGetGameVoteStatus"
+)
 def sync(
     *,
     client: AuthenticatedClient,
@@ -130,6 +142,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/interactions#Voting_MultiGetGameVoteStatus"
+)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -156,6 +171,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/interactions#Voting_MultiGetGameVoteStatus"
+)
 async def asyncio(
     *,
     client: AuthenticatedClient,

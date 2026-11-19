@@ -20,10 +20,10 @@ else:
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.queue:discard', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.queue:discard'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.queue:discard']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreQueueItem', 'name': 'MemoryStoreQueueItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store.queue:discard', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
@@ -31,10 +31,13 @@ from ...models.discard_memory_store_queue_items_request import DiscardMemoryStor
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
-    body: DiscardMemoryStoreQueueItemsRequest,
+    body: DiscardMemoryStoreQueueItemsRequest
+    | DiscardMemoryStoreQueueItemsRequest
+    | DiscardMemoryStoreQueueItemsRequest
+    | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -46,9 +49,18 @@ def _get_kwargs(
         ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, DiscardMemoryStoreQueueItemsRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, DiscardMemoryStoreQueueItemsRequest):
+        _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "text/json"
+    if isinstance(body, DiscardMemoryStoreQueueItemsRequest):
+        _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/*+json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -74,11 +86,14 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    body: DiscardMemoryStoreQueueItemsRequest,
+    body: DiscardMemoryStoreQueueItemsRequest
+    | DiscardMemoryStoreQueueItemsRequest
+    | DiscardMemoryStoreQueueItemsRequest
+    | Unset = UNSET,
 ) -> Response[Any]:
     """Discard Memory Store Queue Items
 
@@ -87,8 +102,12 @@ def sync_detailed(
     Takes a `readId` from a previous `Read` operation.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
+        body (DiscardMemoryStoreQueueItemsRequest): Discards read items from the front of the
+            queue.
+        body (DiscardMemoryStoreQueueItemsRequest): Discards read items from the front of the
+            queue.
         body (DiscardMemoryStoreQueueItemsRequest): Discards read items from the front of the
             queue.
 
@@ -114,11 +133,14 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    body: DiscardMemoryStoreQueueItemsRequest,
+    body: DiscardMemoryStoreQueueItemsRequest
+    | DiscardMemoryStoreQueueItemsRequest
+    | DiscardMemoryStoreQueueItemsRequest
+    | Unset = UNSET,
 ) -> Response[Any]:
     """Discard Memory Store Queue Items
 
@@ -127,8 +149,12 @@ async def asyncio_detailed(
     Takes a `readId` from a previous `Read` operation.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
+        body (DiscardMemoryStoreQueueItemsRequest): Discards read items from the front of the
+            queue.
+        body (DiscardMemoryStoreQueueItemsRequest): Discards read items from the front of the
+            queue.
         body (DiscardMemoryStoreQueueItemsRequest): Discards read items from the front of the
             queue.
 

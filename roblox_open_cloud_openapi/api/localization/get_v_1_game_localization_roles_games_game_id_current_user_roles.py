@@ -23,12 +23,12 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
-from ...models.translation_roles_api_roblox_web_web_api_models_api_array_response_system_string import (
-    TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString,
+from ...models.roblox_web_web_api_models_api_array_response_system_string import (
+    RobloxWebWebAPIModelsApiArrayResponseSystemString,
 )
 
 
@@ -48,9 +48,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString | None:
+) -> Any | RobloxWebWebAPIModelsApiArrayResponseSystemString | None:
     if response.status_code == 200:
-        response_200 = TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString.from_dict(response.json())
+        response_200 = RobloxWebWebAPIModelsApiArrayResponseSystemString.from_dict(response.json())
 
         return response_200
 
@@ -74,7 +74,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString]:
+) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseSystemString]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -87,7 +87,7 @@ def sync_detailed(
     game_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString]:
+) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseSystemString]:
     """Retrieves the list of roles granted to current logged-in user
 
     Args:
@@ -98,7 +98,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString]
+        Response[Any | RobloxWebWebAPIModelsApiArrayResponseSystemString]
     """
 
     kwargs = _get_kwargs(
@@ -116,7 +116,7 @@ def sync(
     game_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString | None:
+) -> Any | RobloxWebWebAPIModelsApiArrayResponseSystemString | None:
     """Retrieves the list of roles granted to current logged-in user
 
     Args:
@@ -127,7 +127,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString
+        Any | RobloxWebWebAPIModelsApiArrayResponseSystemString
     """
 
     return sync_detailed(
@@ -140,7 +140,7 @@ async def asyncio_detailed(
     game_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString]:
+) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseSystemString]:
     """Retrieves the list of roles granted to current logged-in user
 
     Args:
@@ -151,7 +151,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString]
+        Response[Any | RobloxWebWebAPIModelsApiArrayResponseSystemString]
     """
 
     kwargs = _get_kwargs(
@@ -167,7 +167,7 @@ async def asyncio(
     game_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString | None:
+) -> Any | RobloxWebWebAPIModelsApiArrayResponseSystemString | None:
     """Retrieves the list of roles granted to current logged-in user
 
     Args:
@@ -178,7 +178,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | TranslationRolesApiRobloxWebWebAPIModelsApiArrayResponseSystemString
+        Any | RobloxWebWebAPIModelsApiArrayResponseSystemString
     """
 
     return (

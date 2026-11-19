@@ -67,6 +67,10 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
             inferring restriction from placeholder text.
         creation_source (str | Unset): How the experience was created, as reported by hydration (e.g. "build").
             Omitted when hydration does not return a value.
+        is_officially_licensed (bool | Unset): Whether the experience has an official brand license, as reported by
+            hydration.
+        is_community_licensed (bool | Unset): Whether the experience has a community (third-party) brand license, as
+            reported by hydration.
     """
 
     id: int | Unset = UNSET
@@ -103,6 +107,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
     canonical_url_path: str | Unset = UNSET
     is_content_restricted: bool | Unset = UNSET
     creation_source: str | Unset = UNSET
+    is_officially_licensed: bool | Unset = UNSET
+    is_community_licensed: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
@@ -187,6 +193,10 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
 
         creation_source = self.creation_source
 
+        is_officially_licensed = self.is_officially_licensed
+
+        is_community_licensed = self.is_community_licensed
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -258,6 +268,10 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
             field_dict["isContentRestricted"] = is_content_restricted
         if creation_source is not UNSET:
             field_dict["creationSource"] = creation_source
+        if is_officially_licensed is not UNSET:
+            field_dict["isOfficiallyLicensed"] = is_officially_licensed
+        if is_community_licensed is not UNSET:
+            field_dict["isCommunityLicensed"] = is_community_licensed
 
         return field_dict
 
@@ -362,6 +376,10 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
 
         creation_source = d.pop("creationSource", UNSET)
 
+        is_officially_licensed = d.pop("isOfficiallyLicensed", UNSET)
+
+        is_community_licensed = d.pop("isCommunityLicensed", UNSET)
+
         roblox_games_api_models_response_game_detail_response = cls(
             id=id,
             root_place_id=root_place_id,
@@ -397,6 +415,8 @@ class RobloxGamesApiModelsResponseGameDetailResponse:
             canonical_url_path=canonical_url_path,
             is_content_restricted=is_content_restricted,
             creation_source=creation_source,
+            is_officially_licensed=is_officially_licensed,
+            is_community_licensed=is_community_licensed,
         )
 
         return roblox_games_api_models_response_game_detail_response

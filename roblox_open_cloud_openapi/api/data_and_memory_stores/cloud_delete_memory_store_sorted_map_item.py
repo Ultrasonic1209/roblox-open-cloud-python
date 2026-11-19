@@ -23,12 +23,12 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:write', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.sorted-map:write'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.sorted-map:write']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreSortedMapItem', 'name': 'MemoryStoreSortedMapItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:write', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
 ) -> dict[str, Any]:
@@ -65,7 +65,7 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
@@ -76,7 +76,7 @@ def sync_detailed(
      Deletes the specified item from the map.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
 
@@ -102,7 +102,7 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
@@ -113,7 +113,7 @@ async def asyncio_detailed(
      Deletes the specified item from the map.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
 

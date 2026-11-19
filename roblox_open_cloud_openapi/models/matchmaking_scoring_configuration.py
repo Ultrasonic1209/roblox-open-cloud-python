@@ -6,8 +6,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
     from ..models.matchmaking_scoring_configuration_custom_signals_type_0 import (
         MatchmakingScoringConfigurationCustomSignalsType0,
@@ -25,22 +23,22 @@ class MatchmakingScoringConfiguration:
     """The custom scoring configuration for matchmaking.
 
     Attributes:
-        id (None | str | Unset): The id of the scoring configuration.
-        name (None | str | Unset): The name of the scoring configuration. It needs to be unique within a universe.
-        signal_weights (MatchmakingScoringConfigurationSignalWeightsType0 | None | Unset): The signal weights for the
-            scoring configuration.
-        custom_signals (MatchmakingScoringConfigurationCustomSignalsType0 | None | Unset): The custom signals part of
-            this place's scoring configuration.
-        created_time (datetime.datetime | Unset): The scoring configuration's created time.
-        updated_time (datetime.datetime | Unset): The scoring configuration's updated time.
+        id (None | str): The id of the scoring configuration.
+        name (None | str): The name of the scoring configuration. It needs to be unique within a universe.
+        signal_weights (MatchmakingScoringConfigurationSignalWeightsType0 | None): The signal weights for the scoring
+            configuration.
+        custom_signals (MatchmakingScoringConfigurationCustomSignalsType0 | None): The custom signals part of this
+            place's scoring configuration.
+        created_time (datetime.datetime): The scoring configuration's created time.
+        updated_time (datetime.datetime): The scoring configuration's updated time.
     """
 
-    id: None | str | Unset = UNSET
-    name: None | str | Unset = UNSET
-    signal_weights: MatchmakingScoringConfigurationSignalWeightsType0 | None | Unset = UNSET
-    custom_signals: MatchmakingScoringConfigurationCustomSignalsType0 | None | Unset = UNSET
-    created_time: datetime.datetime | Unset = UNSET
-    updated_time: datetime.datetime | Unset = UNSET
+    id: None | str
+    name: None | str
+    signal_weights: MatchmakingScoringConfigurationSignalWeightsType0 | None
+    custom_signals: MatchmakingScoringConfigurationCustomSignalsType0 | None
+    created_time: datetime.datetime
+    updated_time: datetime.datetime
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.matchmaking_scoring_configuration_custom_signals_type_0 import (
@@ -50,57 +48,40 @@ class MatchmakingScoringConfiguration:
             MatchmakingScoringConfigurationSignalWeightsType0,  # noqa: PLC0415
         )
 
-        id: None | str | Unset
-        if isinstance(self.id, Unset):
-            id = UNSET
-        else:
-            id = self.id
+        id: None | str
+        id = self.id
 
-        name: None | str | Unset
-        if isinstance(self.name, Unset):
-            name = UNSET
-        else:
-            name = self.name
+        name: None | str
+        name = self.name
 
-        signal_weights: dict[str, Any] | None | Unset
-        if isinstance(self.signal_weights, Unset):
-            signal_weights = UNSET
-        elif isinstance(self.signal_weights, MatchmakingScoringConfigurationSignalWeightsType0):
+        signal_weights: dict[str, Any] | None
+        if isinstance(self.signal_weights, MatchmakingScoringConfigurationSignalWeightsType0):
             signal_weights = self.signal_weights.to_dict()
         else:
             signal_weights = self.signal_weights
 
-        custom_signals: dict[str, Any] | None | Unset
-        if isinstance(self.custom_signals, Unset):
-            custom_signals = UNSET
-        elif isinstance(self.custom_signals, MatchmakingScoringConfigurationCustomSignalsType0):
+        custom_signals: dict[str, Any] | None
+        if isinstance(self.custom_signals, MatchmakingScoringConfigurationCustomSignalsType0):
             custom_signals = self.custom_signals.to_dict()
         else:
             custom_signals = self.custom_signals
 
-        created_time: str | Unset = UNSET
-        if not isinstance(self.created_time, Unset):
-            created_time = self.created_time.isoformat()
+        created_time = self.created_time.isoformat()
 
-        updated_time: str | Unset = UNSET
-        if not isinstance(self.updated_time, Unset):
-            updated_time = self.updated_time.isoformat()
+        updated_time = self.updated_time.isoformat()
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if id is not UNSET:
-            field_dict["id"] = id
-        if name is not UNSET:
-            field_dict["name"] = name
-        if signal_weights is not UNSET:
-            field_dict["signalWeights"] = signal_weights
-        if custom_signals is not UNSET:
-            field_dict["customSignals"] = custom_signals
-        if created_time is not UNSET:
-            field_dict["createdTime"] = created_time
-        if updated_time is not UNSET:
-            field_dict["updatedTime"] = updated_time
+        field_dict.update(
+            {
+                "id": id,
+                "name": name,
+                "signalWeights": signal_weights,
+                "customSignals": custom_signals,
+                "createdTime": created_time,
+                "updatedTime": updated_time,
+            }
+        )
 
         return field_dict
 
@@ -115,28 +96,22 @@ class MatchmakingScoringConfiguration:
 
         d = dict(src_dict)
 
-        def _parse_id(data: object) -> None | str | Unset:
+        def _parse_id(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        id = _parse_id(d.pop("id", UNSET))
+        id = _parse_id(d.pop("id"))
 
-        def _parse_name(data: object) -> None | str | Unset:
+        def _parse_name(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        name = _parse_name(d.pop("name", UNSET))
+        name = _parse_name(d.pop("name"))
 
-        def _parse_signal_weights(data: object) -> MatchmakingScoringConfigurationSignalWeightsType0 | None | Unset:
+        def _parse_signal_weights(data: object) -> MatchmakingScoringConfigurationSignalWeightsType0 | None:
             if data is None:
-                return data
-            if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, dict):
@@ -146,14 +121,12 @@ class MatchmakingScoringConfiguration:
                 return signal_weights_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(MatchmakingScoringConfigurationSignalWeightsType0 | None | Unset, data)
+            return cast(MatchmakingScoringConfigurationSignalWeightsType0 | None, data)
 
-        signal_weights = _parse_signal_weights(d.pop("signalWeights", UNSET))
+        signal_weights = _parse_signal_weights(d.pop("signalWeights"))
 
-        def _parse_custom_signals(data: object) -> MatchmakingScoringConfigurationCustomSignalsType0 | None | Unset:
+        def _parse_custom_signals(data: object) -> MatchmakingScoringConfigurationCustomSignalsType0 | None:
             if data is None:
-                return data
-            if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, dict):
@@ -163,23 +136,13 @@ class MatchmakingScoringConfiguration:
                 return custom_signals_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(MatchmakingScoringConfigurationCustomSignalsType0 | None | Unset, data)
+            return cast(MatchmakingScoringConfigurationCustomSignalsType0 | None, data)
 
-        custom_signals = _parse_custom_signals(d.pop("customSignals", UNSET))
+        custom_signals = _parse_custom_signals(d.pop("customSignals"))
 
-        _created_time = d.pop("createdTime", UNSET)
-        created_time: datetime.datetime | Unset
-        if isinstance(_created_time, Unset):
-            created_time = UNSET
-        else:
-            created_time = datetime.datetime.fromisoformat(_created_time)
+        created_time = datetime.datetime.fromisoformat(d.pop("createdTime"))
 
-        _updated_time = d.pop("updatedTime", UNSET)
-        updated_time: datetime.datetime | Unset
-        if isinstance(_updated_time, Unset):
-            updated_time = UNSET
-        else:
-            updated_time = datetime.datetime.fromisoformat(_updated_time)
+        updated_time = datetime.datetime.fromisoformat(d.pop("updatedTime"))
 
         matchmaking_scoring_configuration = cls(
             id=id,

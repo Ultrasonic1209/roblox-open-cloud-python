@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-publish/v1/badges/{badgeId}/icon', 'httpMethod': 'POST'}], 'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-badge:manage'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-game-internationalization/v1/badges/{badgeId}/icons/language-codes/{languageCode}', 'httpMethod': 'POST', 'description': 'A languageCode is required.', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/badges#post_legacy_game_internationalization_v1_badges__badgeId__icons_language_codes__languageCode_'}], 'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-badge:manage'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 import sys

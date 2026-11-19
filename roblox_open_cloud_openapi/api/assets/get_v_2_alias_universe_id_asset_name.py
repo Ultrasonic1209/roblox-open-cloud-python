@@ -1,0 +1,250 @@
+from http import HTTPStatus
+from typing import TYPE_CHECKING, Any
+from urllib.parse import quote
+
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
+
+from ... import errors
+from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+from ...types import Unset
+
+
+def _get_kwargs(
+    universe_id: str,
+    asset_name: str,
+    *,
+    skip_signing_scripts: bool | Unset = False,
+    client_insert: int | Unset = UNSET,
+    scriptinsert: int | Unset = UNSET,
+    module_place_id: int | Unset = UNSET,
+    serverplaceid: int | Unset = UNSET,
+    expected_asset_type: str | Unset = "",
+    access_context: str | Unset = UNSET,
+    accept_encoding: str,
+    roblox_place_id: int,
+    asset_type: str,
+    asset_format: str,
+    roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+    headers["Accept-Encoding"] = accept_encoding
+
+    headers["Roblox-Place-Id"] = str(roblox_place_id)
+
+    headers["AssetType"] = asset_type
+
+    headers["AssetFormat"] = asset_format
+
+    headers["Roblox-AssetFormat"] = roblox_asset_format
+
+    if not isinstance(roblox_usage_context, Unset):
+        headers["Roblox-Usage-Context"] = roblox_usage_context
+
+    params: dict[str, Any] = {}
+
+    params["skipSigningScripts"] = skip_signing_scripts
+
+    params["clientInsert"] = client_insert
+
+    params["scriptinsert"] = scriptinsert
+
+    params["modulePlaceId"] = module_place_id
+
+    params["serverplaceid"] = serverplaceid
+
+    params["expectedAssetType"] = expected_asset_type
+
+    params["accessContext"] = access_context
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
+    _kwargs: dict[str, Any] = {
+        "method": "get",
+        "url": "https://assetdelivery.roblox.com/v2/alias/{universe_id}/{asset_name}".format(
+            universe_id=quote(str(universe_id), safe=""),
+            asset_name=quote(str(asset_name), safe=""),
+        ),
+        "params": params,
+    }
+
+    _kwargs["headers"] = headers
+    return _kwargs
+
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+    if response.status_code == 200:
+        return None
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    universe_id: str,
+    asset_name: str,
+    *,
+    client: AuthenticatedClient,
+    skip_signing_scripts: bool | Unset = False,
+    client_insert: int | Unset = UNSET,
+    scriptinsert: int | Unset = UNSET,
+    module_place_id: int | Unset = UNSET,
+    serverplaceid: int | Unset = UNSET,
+    expected_asset_type: str | Unset = "",
+    access_context: str | Unset = UNSET,
+    accept_encoding: str,
+    roblox_place_id: int,
+    asset_type: str,
+    asset_format: str,
+    roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
+) -> Response[Any]:
+    """
+    Args:
+        universe_id (str):
+        asset_name (str):
+        skip_signing_scripts (bool | Unset):  Default: False.
+        client_insert (int | Unset):
+        scriptinsert (int | Unset):
+        module_place_id (int | Unset):
+        serverplaceid (int | Unset):
+        expected_asset_type (str | Unset):  Default: ''.
+        access_context (str | Unset):
+        accept_encoding (str):
+        roblox_place_id (int):
+        asset_type (str):
+        asset_format (str):
+        roblox_asset_format (str):
+        roblox_usage_context (str | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[Any]
+    """
+
+    kwargs = _get_kwargs(
+        universe_id=universe_id,
+        asset_name=asset_name,
+        skip_signing_scripts=skip_signing_scripts,
+        client_insert=client_insert,
+        scriptinsert=scriptinsert,
+        module_place_id=module_place_id,
+        serverplaceid=serverplaceid,
+        expected_asset_type=expected_asset_type,
+        access_context=access_context,
+        accept_encoding=accept_encoding,
+        roblox_place_id=roblox_place_id,
+        asset_type=asset_type,
+        asset_format=asset_format,
+        roblox_asset_format=roblox_asset_format,
+        roblox_usage_context=roblox_usage_context,
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+
+async def asyncio_detailed(
+    universe_id: str,
+    asset_name: str,
+    *,
+    client: AuthenticatedClient,
+    skip_signing_scripts: bool | Unset = False,
+    client_insert: int | Unset = UNSET,
+    scriptinsert: int | Unset = UNSET,
+    module_place_id: int | Unset = UNSET,
+    serverplaceid: int | Unset = UNSET,
+    expected_asset_type: str | Unset = "",
+    access_context: str | Unset = UNSET,
+    accept_encoding: str,
+    roblox_place_id: int,
+    asset_type: str,
+    asset_format: str,
+    roblox_asset_format: str,
+    roblox_usage_context: str | Unset = UNSET,
+) -> Response[Any]:
+    """
+    Args:
+        universe_id (str):
+        asset_name (str):
+        skip_signing_scripts (bool | Unset):  Default: False.
+        client_insert (int | Unset):
+        scriptinsert (int | Unset):
+        module_place_id (int | Unset):
+        serverplaceid (int | Unset):
+        expected_asset_type (str | Unset):  Default: ''.
+        access_context (str | Unset):
+        accept_encoding (str):
+        roblox_place_id (int):
+        asset_type (str):
+        asset_format (str):
+        roblox_asset_format (str):
+        roblox_usage_context (str | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[Any]
+    """
+
+    kwargs = _get_kwargs(
+        universe_id=universe_id,
+        asset_name=asset_name,
+        skip_signing_scripts=skip_signing_scripts,
+        client_insert=client_insert,
+        scriptinsert=scriptinsert,
+        module_place_id=module_place_id,
+        serverplaceid=serverplaceid,
+        expected_asset_type=expected_asset_type,
+        access_context=access_context,
+        accept_encoding=accept_encoding,
+        roblox_place_id=roblox_place_id,
+        asset_type=asset_type,
+        asset_format=asset_format,
+        roblox_asset_format=roblox_asset_format,
+        roblox_usage_context=roblox_usage_context,
+    )
+
+    response = await client.get_async_httpx_client().request(**kwargs)
+
+    return _build_response(client=client, response=response)

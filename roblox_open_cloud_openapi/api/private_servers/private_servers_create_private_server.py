@@ -28,7 +28,7 @@ from ...types import UNSET, Response
 
 
 from ...models.create_private_server_request import CreatePrivateServerRequest
-from ...models.private_servers_api_game_server_response import PrivateServersApiGameServerResponse
+from ...models.game_server_response import GameServerResponse
 from ...types import Unset
 
 
@@ -66,11 +66,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> PrivateServersApiGameServerResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GameServerResponse | None:
     if response.status_code == 200:
-        response_200 = PrivateServersApiGameServerResponse.from_dict(response.json())
+        response_200 = GameServerResponse.from_dict(response.json())
 
         return response_200
 
@@ -80,9 +78,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[PrivateServersApiGameServerResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[GameServerResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -96,7 +92,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreatePrivateServerRequest | CreatePrivateServerRequest | CreatePrivateServerRequest | Unset = UNSET,
-) -> Response[PrivateServersApiGameServerResponse]:
+) -> Response[GameServerResponse]:
     """
     Args:
         universe_id (int):
@@ -109,7 +105,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PrivateServersApiGameServerResponse]
+        Response[GameServerResponse]
     """
 
     kwargs = _get_kwargs(
@@ -129,7 +125,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreatePrivateServerRequest | CreatePrivateServerRequest | CreatePrivateServerRequest | Unset = UNSET,
-) -> PrivateServersApiGameServerResponse | None:
+) -> GameServerResponse | None:
     """
     Args:
         universe_id (int):
@@ -142,7 +138,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PrivateServersApiGameServerResponse
+        GameServerResponse
     """
 
     return sync_detailed(
@@ -157,7 +153,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreatePrivateServerRequest | CreatePrivateServerRequest | CreatePrivateServerRequest | Unset = UNSET,
-) -> Response[PrivateServersApiGameServerResponse]:
+) -> Response[GameServerResponse]:
     """
     Args:
         universe_id (int):
@@ -170,7 +166,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PrivateServersApiGameServerResponse]
+        Response[GameServerResponse]
     """
 
     kwargs = _get_kwargs(
@@ -188,7 +184,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreatePrivateServerRequest | CreatePrivateServerRequest | CreatePrivateServerRequest | Unset = UNSET,
-) -> PrivateServersApiGameServerResponse | None:
+) -> GameServerResponse | None:
     """
     Args:
         universe_id (int):
@@ -201,7 +197,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PrivateServersApiGameServerResponse
+        GameServerResponse
     """
 
     return (

@@ -8,7 +8,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.analytics_benchmark_api_any import AnalyticsBenchmarkApiAny
+    from ..models.any_ import Any
 
 
 T = TypeVar("T", bound="AnalyticsBenchmarkApiStatus")
@@ -20,12 +20,12 @@ class AnalyticsBenchmarkApiStatus:
     Attributes:
         code (int | Unset):
         message (str | Unset):
-        details (list[AnalyticsBenchmarkApiAny] | Unset):
+        details (list[Any] | Unset):
     """
 
     code: int | Unset = UNSET
     message: str | Unset = UNSET
-    details: list[AnalyticsBenchmarkApiAny] | Unset = UNSET
+    details: list[Any] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         code = self.code
@@ -53,7 +53,7 @@ class AnalyticsBenchmarkApiStatus:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.analytics_benchmark_api_any import AnalyticsBenchmarkApiAny  # noqa: PLC0415
+        from ..models.any_ import Any  # noqa: PLC0415
 
         d = dict(src_dict)
         code = d.pop("code", UNSET)
@@ -61,11 +61,11 @@ class AnalyticsBenchmarkApiStatus:
         message = d.pop("message", UNSET)
 
         _details = d.pop("details", UNSET)
-        details: list[AnalyticsBenchmarkApiAny] | Unset = UNSET
+        details: list[Any] | Unset = UNSET
         if _details is not UNSET:
             details = []
             for details_item_data in _details:
-                details_item = AnalyticsBenchmarkApiAny.from_dict(details_item_data)
+                details_item = Any.from_dict(details_item_data)
 
                 details.append(details_item)
 

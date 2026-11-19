@@ -23,17 +23,17 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store:get', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store:get', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
 from ...models.cloud_get_memory_store_flush_operation_scope import CloudGetMemoryStoreFlushOperationScope
-from ...models.ocv2_operations_operation import OCV2OperationsOperation
+from ...models.memory_store_flush_operation import MemoryStoreFlushOperation
 from ...types import Unset
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     operation_id: str,
     *,
     scope: CloudGetMemoryStoreFlushOperationScope | Unset = UNSET,
@@ -63,9 +63,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> OCV2OperationsOperation | None:
+) -> MemoryStoreFlushOperation | None:
     if response.status_code == 200:
-        response_200 = OCV2OperationsOperation.from_dict(response.json())
+        response_200 = MemoryStoreFlushOperation.from_dict(response.json())
 
         return response_200
 
@@ -77,7 +77,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[OCV2OperationsOperation]:
+) -> Response[MemoryStoreFlushOperation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -87,19 +87,19 @@ def _build_response(
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     operation_id: str,
     *,
     client: AuthenticatedClient,
     scope: CloudGetMemoryStoreFlushOperationScope | Unset = UNSET,
-) -> Response[OCV2OperationsOperation]:
+) -> Response[MemoryStoreFlushOperation]:
     """Get Memory Store Flush Operation
 
      Retrieves the status of the operation to [flush the memory stores of a
     universe](https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_FlushMemoryStore).
 
     Args:
-        universe_id (str):
+        universe_id (int):
         operation_id (str):
         scope (CloudGetMemoryStoreFlushOperationScope | Unset):  Example: LIVE.
 
@@ -108,7 +108,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OCV2OperationsOperation]
+        Response[MemoryStoreFlushOperation]
     """
 
     kwargs = _get_kwargs(
@@ -125,19 +125,19 @@ def sync_detailed(
 
 
 def sync(
-    universe_id: str,
+    universe_id: int,
     operation_id: str,
     *,
     client: AuthenticatedClient,
     scope: CloudGetMemoryStoreFlushOperationScope | Unset = UNSET,
-) -> OCV2OperationsOperation | None:
+) -> MemoryStoreFlushOperation | None:
     """Get Memory Store Flush Operation
 
      Retrieves the status of the operation to [flush the memory stores of a
     universe](https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_FlushMemoryStore).
 
     Args:
-        universe_id (str):
+        universe_id (int):
         operation_id (str):
         scope (CloudGetMemoryStoreFlushOperationScope | Unset):  Example: LIVE.
 
@@ -146,7 +146,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OCV2OperationsOperation
+        MemoryStoreFlushOperation
     """
 
     return sync_detailed(
@@ -158,19 +158,19 @@ def sync(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     operation_id: str,
     *,
     client: AuthenticatedClient,
     scope: CloudGetMemoryStoreFlushOperationScope | Unset = UNSET,
-) -> Response[OCV2OperationsOperation]:
+) -> Response[MemoryStoreFlushOperation]:
     """Get Memory Store Flush Operation
 
      Retrieves the status of the operation to [flush the memory stores of a
     universe](https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_FlushMemoryStore).
 
     Args:
-        universe_id (str):
+        universe_id (int):
         operation_id (str):
         scope (CloudGetMemoryStoreFlushOperationScope | Unset):  Example: LIVE.
 
@@ -179,7 +179,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OCV2OperationsOperation]
+        Response[MemoryStoreFlushOperation]
     """
 
     kwargs = _get_kwargs(
@@ -194,19 +194,19 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    universe_id: str,
+    universe_id: int,
     operation_id: str,
     *,
     client: AuthenticatedClient,
     scope: CloudGetMemoryStoreFlushOperationScope | Unset = UNSET,
-) -> OCV2OperationsOperation | None:
+) -> MemoryStoreFlushOperation | None:
     """Get Memory Store Flush Operation
 
      Retrieves the status of the operation to [flush the memory stores of a
     universe](https://create.roblox.com/docs/cloud/reference/features/storage#Cloud_FlushMemoryStore).
 
     Args:
-        universe_id (str):
+        universe_id (int):
         operation_id (str):
         scope (CloudGetMemoryStoreFlushOperationScope | Unset):  Example: LIVE.
 
@@ -215,7 +215,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OCV2OperationsOperation
+        MemoryStoreFlushOperation
     """
 
     return (

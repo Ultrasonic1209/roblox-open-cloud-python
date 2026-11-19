@@ -5,7 +5,7 @@ from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..models.thumbnail_personalization_api_moderation_status import ThumbnailPersonalizationApiModerationStatus
+from ..models.moderation_status import ModerationStatus
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="UploadThumbnailStatus")
@@ -18,13 +18,12 @@ class UploadThumbnailStatus:
     Attributes:
         homepage_thumbnail_id (None | str | Unset): The unique identifier of the created homepage thumbnail.
         asset_id (int | Unset): The identifier of the uploaded image asset.
-        moderation_status (ThumbnailPersonalizationApiModerationStatus | Unset): The moderation status of a homepage
-            thumbnail's image asset.
+        moderation_status (ModerationStatus | Unset): The moderation status of a homepage thumbnail's image asset.
     """
 
     homepage_thumbnail_id: None | str | Unset = UNSET
     asset_id: int | Unset = UNSET
-    moderation_status: ThumbnailPersonalizationApiModerationStatus | Unset = UNSET
+    moderation_status: ModerationStatus | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         homepage_thumbnail_id: None | str | Unset
@@ -67,11 +66,11 @@ class UploadThumbnailStatus:
         asset_id = d.pop("assetId", UNSET)
 
         _moderation_status = d.pop("moderationStatus", UNSET)
-        moderation_status: ThumbnailPersonalizationApiModerationStatus | Unset
+        moderation_status: ModerationStatus | Unset
         if isinstance(_moderation_status, Unset):
             moderation_status = UNSET
         else:
-            moderation_status = ThumbnailPersonalizationApiModerationStatus(_moderation_status)
+            moderation_status = ModerationStatus(_moderation_status)
 
         upload_thumbnail_status = cls(
             homepage_thumbnail_id=homepage_thumbnail_id,

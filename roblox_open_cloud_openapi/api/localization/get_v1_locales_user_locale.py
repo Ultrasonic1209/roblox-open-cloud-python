@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
@@ -74,6 +74,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxLocaleApiUserLocaleResponse]:
     """Gets user locale. If user is absent returns, locale from http request object.
 
+     Uses default locale when the caller lacks permission for a full user locale.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -97,6 +99,8 @@ def sync(
 ) -> Any | RobloxLocaleApiUserLocaleResponse | None:
     """Gets user locale. If user is absent returns, locale from http request object.
 
+     Uses default locale when the caller lacks permission for a full user locale.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -115,6 +119,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[Any | RobloxLocaleApiUserLocaleResponse]:
     """Gets user locale. If user is absent returns, locale from http request object.
+
+     Uses default locale when the caller lacks permission for a full user locale.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -136,6 +142,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> Any | RobloxLocaleApiUserLocaleResponse | None:
     """Gets user locale. If user is absent returns, locale from http request object.
+
+     Uses default locale when the caller lacks permission for a full user locale.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

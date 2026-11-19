@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     import httpx2 as httpx
@@ -22,13 +22,13 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Create Asset', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'asset:read'}, {'name': 'asset:write'}], 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Create Asset', 'script': 'curl --location --request POST \'https://apis.roblox.com/assets/v1/assets\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{ \n  \\"assetType\\": \\"Model\\",  \n  \\"displayName\\": \\"Name\\", \n  \\"description\\": \\"This is a description\\", \n  \\"creationContext\\": { \n    \\"creator\\": { \n      \\"userId\\": \\"${userId}\\" \n    } \n  } \n}"\' \\\n--form \'fileContent=@"/filepath/model.fbx";type=model/fbx\' \n'}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 120}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 120}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-scopes': [{'name': 'asset:write', 'description': "Required for the asset's creator (user or group)."}], 'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Create Asset', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Create Asset', 'script': 'curl --location --request POST \'https://apis.roblox.com/assets/v1/assets\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{ \n  \\"assetType\\": \\"Model\\",  \n  \\"displayName\\": \\"Name\\", \n  \\"description\\": \\"This is a description\\", \n  \\"creationContext\\": { \n    \\"creator\\": { \n      \\"userId\\": \\"${userId}\\" \n    } \n  } \n}"\' \\\n--form \'fileContent=@"/filepath/model.fbx";type=model/fbx\' \n'}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 120}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 120}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
 from ...models.assets_create_asset_body import AssetsCreateAssetBody
-from ...models.ocv1_assets_operation import OCV1AssetsOperation
-from ...models.ocv1_assets_status import OCV1AssetsStatus
+from ...models.assets_upload_api_operation import AssetsUploadApiOperation
+from ...models.assets_upload_api_status import AssetsUploadApiStatus
 from ...types import Unset
 
 
@@ -54,23 +54,30 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     if response.status_code == 200:
-        response_200 = OCV1AssetsOperation.from_dict(response.json())
+        response_200 = AssetsUploadApiOperation.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = OCV1AssetsStatus.from_dict(response.json())
+        response_400 = AssetsUploadApiStatus.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 401:
-        response_401 = cast(Any, None)
+        response_401 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_401
 
+    if response.status_code == 403:
+        response_403 = AssetsUploadApiStatus.from_dict(response.json())
+
+        return response_403
+
     if response.status_code == 500:
-        response_500 = cast(Any, None)
+        response_500 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_500
 
     if client.raise_on_unexpected_status:
@@ -81,7 +88,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -94,15 +101,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: AssetsCreateAssetBody | Unset = UNSET,
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     """Creates an asset with provided content and metadata.
 
      Creates an asset with provided content and metadata.
 
-    You can't add [SocialLink](#SocialLink) objects when you create an asset. Instead, use [Update
-    Asset](#PATCH-v1-assets-_assetId_).
+    You can't add `SocialLink` objects when you create an asset. Instead, use [Update
+    Asset](#Assets_UpdateAsset).
 
-    Provide the [Asset](#Asset), binary asset file path, and [content type](/cloud/guides/usage-
+    Provide the `Asset`, binary asset file path, and [content type](/cloud/guides/usage-
     assets.md#supported-asset-types-and-limits) in the form data.
 
     Args:
@@ -113,7 +120,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]
+        Response[AssetsUploadApiOperation | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -131,15 +138,15 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: AssetsCreateAssetBody | Unset = UNSET,
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     """Creates an asset with provided content and metadata.
 
      Creates an asset with provided content and metadata.
 
-    You can't add [SocialLink](#SocialLink) objects when you create an asset. Instead, use [Update
-    Asset](#PATCH-v1-assets-_assetId_).
+    You can't add `SocialLink` objects when you create an asset. Instead, use [Update
+    Asset](#Assets_UpdateAsset).
 
-    Provide the [Asset](#Asset), binary asset file path, and [content type](/cloud/guides/usage-
+    Provide the `Asset`, binary asset file path, and [content type](/cloud/guides/usage-
     assets.md#supported-asset-types-and-limits) in the form data.
 
     Args:
@@ -150,7 +157,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | OCV1AssetsOperation | OCV1AssetsStatus
+        AssetsUploadApiOperation | AssetsUploadApiStatus
     """
 
     return sync_detailed(
@@ -163,15 +170,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: AssetsCreateAssetBody | Unset = UNSET,
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     """Creates an asset with provided content and metadata.
 
      Creates an asset with provided content and metadata.
 
-    You can't add [SocialLink](#SocialLink) objects when you create an asset. Instead, use [Update
-    Asset](#PATCH-v1-assets-_assetId_).
+    You can't add `SocialLink` objects when you create an asset. Instead, use [Update
+    Asset](#Assets_UpdateAsset).
 
-    Provide the [Asset](#Asset), binary asset file path, and [content type](/cloud/guides/usage-
+    Provide the `Asset`, binary asset file path, and [content type](/cloud/guides/usage-
     assets.md#supported-asset-types-and-limits) in the form data.
 
     Args:
@@ -182,7 +189,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]
+        Response[AssetsUploadApiOperation | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -198,15 +205,15 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: AssetsCreateAssetBody | Unset = UNSET,
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     """Creates an asset with provided content and metadata.
 
      Creates an asset with provided content and metadata.
 
-    You can't add [SocialLink](#SocialLink) objects when you create an asset. Instead, use [Update
-    Asset](#PATCH-v1-assets-_assetId_).
+    You can't add `SocialLink` objects when you create an asset. Instead, use [Update
+    Asset](#Assets_UpdateAsset).
 
-    Provide the [Asset](#Asset), binary asset file path, and [content type](/cloud/guides/usage-
+    Provide the `Asset`, binary asset file path, and [content type](/cloud/guides/usage-
     assets.md#supported-asset-types-and-limits) in the form data.
 
     Args:
@@ -217,7 +224,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | OCV1AssetsOperation | OCV1AssetsStatus
+        AssetsUploadApiOperation | AssetsUploadApiStatus
     """
 
     return (

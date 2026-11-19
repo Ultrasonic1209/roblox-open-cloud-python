@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
@@ -94,6 +94,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxLocaleApiSupportedLocaleLocus]:
     """Get list of Supported locales with user locus information.
 
+     Returns supported locales with per-locus data for the current user context.
+
     Args:
         display_value_locale (str | Unset):
 
@@ -123,6 +125,8 @@ def sync(
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxLocaleApiSupportedLocaleLocus | None:
     """Get list of Supported locales with user locus information.
 
+     Returns supported locales with per-locus data for the current user context.
+
     Args:
         display_value_locale (str | Unset):
 
@@ -146,6 +150,8 @@ async def asyncio_detailed(
     display_value_locale: str | Unset = UNSET,
 ) -> Response[Any | RobloxWebWebAPIModelsApiArrayResponseRobloxLocaleApiSupportedLocaleLocus]:
     """Get list of Supported locales with user locus information.
+
+     Returns supported locales with per-locus data for the current user context.
 
     Args:
         display_value_locale (str | Unset):
@@ -173,6 +179,8 @@ async def asyncio(
     display_value_locale: str | Unset = UNSET,
 ) -> Any | RobloxWebWebAPIModelsApiArrayResponseRobloxLocaleApiSupportedLocaleLocus | None:
     """Get list of Supported locales with user locus information.
+
+     Returns supported locales with per-locus data for the current user context.
 
     Args:
         display_value_locale (str | Unset):

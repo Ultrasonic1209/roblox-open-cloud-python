@@ -1,10 +1,10 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -21,26 +21,40 @@ class AssetVersion:
     """An asset version.
 
     Attributes:
+        path (None | str | Unset): The returned resource path of the asset version. Format:
+            `assets/{assetId}/versions/{version}`. Example: assets/123/versions/123.
+        create_time (datetime.datetime | None | Unset): The timestamp when the asset version was created.
         creation_context (CreationContext | Unset): The context of creation that is not part of the asset content, such
-            as metadata and creator information. Required for [Create Asset](#POST-v1-assets).
-        path (str | Unset): The returned resource path of the asset version. Format:
-            `assets/{assetId}/versions/{version}`. Example: `assets/2205400862/versions/1`.
+            as metadata and creator information. Required for [Create Asset](#Assets_CreateAsset).
         moderation_result (ModerationResult | Unset): The moderation result of the asset.
-        published (bool | Unset): Only applies to place asset types. Indicates if the place has been published or not.
+        published (bool | Unset): Indicates whether the asset version is published. If omitted, the version is not
+            published.
     """
 
+    path: None | str | Unset = UNSET
+    create_time: datetime.datetime | None | Unset = UNSET
     creation_context: CreationContext | Unset = UNSET
-    path: str | Unset = UNSET
     moderation_result: ModerationResult | Unset = UNSET
     published: bool | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        path: None | str | Unset
+        if isinstance(self.path, Unset):
+            path = UNSET
+        else:
+            path = self.path
+
+        create_time: None | str | Unset
+        if isinstance(self.create_time, Unset):
+            create_time = UNSET
+        elif isinstance(self.create_time, datetime.datetime):
+            create_time = self.create_time.isoformat()
+        else:
+            create_time = self.create_time
+
         creation_context: dict[str, Any] | Unset = UNSET
         if not isinstance(self.creation_context, Unset):
             creation_context = self.creation_context.to_dict()
-
-        path = self.path
 
         moderation_result: dict[str, Any] | Unset = UNSET
         if not isinstance(self.moderation_result, Unset):
@@ -49,12 +63,14 @@ class AssetVersion:
         published = self.published
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
-        if creation_context is not UNSET:
-            field_dict["creationContext"] = creation_context
         if path is not UNSET:
             field_dict["path"] = path
+        if create_time is not UNSET:
+            field_dict["createTime"] = create_time
+        if creation_context is not UNSET:
+            field_dict["creationContext"] = creation_context
         if moderation_result is not UNSET:
             field_dict["moderationResult"] = moderation_result
         if published is not UNSET:
@@ -68,14 +84,39 @@ class AssetVersion:
         from ..models.moderation_result import ModerationResult  # noqa: PLC0415
 
         d = dict(src_dict)
+
+        def _parse_path(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        path = _parse_path(d.pop("path", UNSET))
+
+        def _parse_create_time(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                create_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return create_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        create_time = _parse_create_time(d.pop("createTime", UNSET))
+
         _creation_context = d.pop("creationContext", UNSET)
         creation_context: CreationContext | Unset
         if isinstance(_creation_context, Unset):
             creation_context = UNSET
         else:
             creation_context = CreationContext.from_dict(_creation_context)
-
-        path = d.pop("path", UNSET)
 
         _moderation_result = d.pop("moderationResult", UNSET)
         moderation_result: ModerationResult | Unset
@@ -87,27 +128,11 @@ class AssetVersion:
         published = d.pop("published", UNSET)
 
         asset_version = cls(
-            creation_context=creation_context,
             path=path,
+            create_time=create_time,
+            creation_context=creation_context,
             moderation_result=moderation_result,
             published=published,
         )
 
-        asset_version.additional_properties = d
         return asset_version
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

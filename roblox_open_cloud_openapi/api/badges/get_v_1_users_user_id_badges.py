@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/users/{user_id}/inventory-items', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/inventories#Cloud_ListInventoryItems'}], 'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 import sys

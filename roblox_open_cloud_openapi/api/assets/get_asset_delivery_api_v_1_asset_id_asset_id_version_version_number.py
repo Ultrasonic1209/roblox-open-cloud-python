@@ -23,9 +23,15 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 1000}}, 'x-roblox-scopes': [{'name': 'legacy-asset:manage', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/asset-delivery-api/v1/assetId/{assetId}/version/{versionNumber}', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#get_asset_delivery_api_v1_assetId__assetId__version__versionNumber_'}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 1000}}, 'x-roblox-scopes': [{'name': 'legacy-asset:manage', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
 
 from ...types import Unset
 
@@ -126,6 +132,9 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#get_asset_delivery_api_v1_assetId__assetId__version__versionNumber_"
+)
 def sync_detailed(
     asset_id: int,
     version_number: int,
@@ -211,6 +220,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#get_asset_delivery_api_v1_assetId__assetId__version__versionNumber_"
+)
 async def asyncio_detailed(
     asset_id: int,
     version_number: int,

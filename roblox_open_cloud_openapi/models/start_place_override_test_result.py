@@ -11,6 +11,7 @@ class StartPlaceOverrideTestResult(StrEnum):
     NOOVERRIDECONFIGURED = "NoOverrideConfigured"
     PLACENOTINEXPERIENCE = "PlaceNotInExperience"
     PLACENOTPUBLISHED = "PlaceNotPublished"
+    USERNOTFOUND = "UserNotFound"
     VALUEPARSEFAILURE = "ValueParseFailure"
 
     def __str__(self) -> str:

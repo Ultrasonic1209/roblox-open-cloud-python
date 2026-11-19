@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/users/{user_id}/asset-quotas', 'httpMethod': 'GET'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/cloud/v2/users/{user_id}/asset-quotas', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#Cloud_ListAssetQuotas'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 import sys

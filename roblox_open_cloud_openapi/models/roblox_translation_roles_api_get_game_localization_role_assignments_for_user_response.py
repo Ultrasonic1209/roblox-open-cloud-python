@@ -4,7 +4,6 @@ from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -31,7 +30,6 @@ class RobloxTranslationRolesApiGetGameLocalizationRoleAssignmentsForUserResponse
     games: list[RobloxGameLocalizationClientGameLocalizationRolesGameLocalizationRoleAssignment] | Unset = UNSET
     previous_page_cursor: str | Unset = UNSET
     next_page_cursor: str | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         games: list[dict[str, Any]] | Unset = UNSET
@@ -46,7 +44,7 @@ class RobloxTranslationRolesApiGetGameLocalizationRoleAssignmentsForUserResponse
         next_page_cursor = self.next_page_cursor
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if games is not UNSET:
             field_dict["games"] = games
@@ -85,21 +83,4 @@ class RobloxTranslationRolesApiGetGameLocalizationRoleAssignmentsForUserResponse
             next_page_cursor=next_page_cursor,
         )
 
-        roblox_translation_roles_api_get_game_localization_role_assignments_for_user_response.additional_properties = d
         return roblox_translation_roles_api_get_game_localization_role_assignments_for_user_response
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

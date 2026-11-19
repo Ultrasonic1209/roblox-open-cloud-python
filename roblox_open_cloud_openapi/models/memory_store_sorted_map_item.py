@@ -2,10 +2,9 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -17,54 +16,85 @@ class MemoryStoreSortedMapItem:
     """Represents an item within a sorted map structure.
 
     Attributes:
-        path (str | Unset): The resource path of the memory store sorted map item.
+        path (None | str | Unset): The resource path of the memory store sorted map item.
 
             Format:
             `cloud/v2/universes/{universe_id}/memory-store/sorted-
             maps/{memory_store_sorted_map_id}/items/{memory_store_sorted_map_item_id}` Example:
             cloud/v2/universes/123/memory-store/sorted-maps/some-memory-store-sorted-map-id/items/some-memory-store-sorted-
             map-item-id.
-        value (Any | Unset): Represents a dynamically typed value which can be either null, a number, a string, a
-            boolean, a recursive struct value, or a list of values.
-        etag (str | Unset): The server generated tag of an item.
-        ttl (str | Unset): The TTL for the item. Example: 3s.
-        expire_time (datetime.datetime | Unset): The expiration time of the item. Example: 2023-07-05T12:34:56Z.
-        id (str | Unset): The name of the item.
-        string_sort_key (str | Unset): The item will be sorted lexicographically according to this string.
-        numeric_sort_key (float | Unset): The item will be sorted according to this number.
+        value (Any | Unset): The value of the item.
+        etag (None | str | Unset): The server generated tag of an item.
+
+            When updating an item, if `etag` is provided, the update only succeeds if
+            it matches the current tag of the item.
+        expire_time (datetime.datetime | None | Unset): The expiration time of the item. Example: 2023-07-05T12:34:56Z.
+        ttl (None | str | Unset): Required on create and update. It must be a number ending in `s`, greater than 0 and
+            at most `3888000s`.
+            The response reports expiration as `expireTime`, not `ttl`. Example: 3s.
+        id (None | str | Unset): The name of the item.
+        string_sort_key (None | str | Unset): The item will be sorted lexicographically according to this string.
+        numeric_sort_key (float | None | Unset): The item will be sorted according to this number.
     """
 
-    path: str | Unset = UNSET
+    path: None | str | Unset = UNSET
     value: Any | Unset = UNSET
-    etag: str | Unset = UNSET
-    ttl: str | Unset = UNSET
-    expire_time: datetime.datetime | Unset = UNSET
-    id: str | Unset = UNSET
-    string_sort_key: str | Unset = UNSET
-    numeric_sort_key: float | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    etag: None | str | Unset = UNSET
+    expire_time: datetime.datetime | None | Unset = UNSET
+    ttl: None | str | Unset = UNSET
+    id: None | str | Unset = UNSET
+    string_sort_key: None | str | Unset = UNSET
+    numeric_sort_key: float | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        path = self.path
+        path: None | str | Unset
+        if isinstance(self.path, Unset):
+            path = UNSET
+        else:
+            path = self.path
 
         value = self.value
 
-        etag = self.etag
+        etag: None | str | Unset
+        if isinstance(self.etag, Unset):
+            etag = UNSET
+        else:
+            etag = self.etag
 
-        ttl = self.ttl
-
-        expire_time: str | Unset = UNSET
-        if not isinstance(self.expire_time, Unset):
+        expire_time: None | str | Unset
+        if isinstance(self.expire_time, Unset):
+            expire_time = UNSET
+        elif isinstance(self.expire_time, datetime.datetime):
             expire_time = self.expire_time.isoformat()
+        else:
+            expire_time = self.expire_time
 
-        id = self.id
+        ttl: None | str | Unset
+        if isinstance(self.ttl, Unset):
+            ttl = UNSET
+        else:
+            ttl = self.ttl
 
-        string_sort_key = self.string_sort_key
+        id: None | str | Unset
+        if isinstance(self.id, Unset):
+            id = UNSET
+        else:
+            id = self.id
 
-        numeric_sort_key = self.numeric_sort_key
+        string_sort_key: None | str | Unset
+        if isinstance(self.string_sort_key, Unset):
+            string_sort_key = UNSET
+        else:
+            string_sort_key = self.string_sort_key
+
+        numeric_sort_key: float | None | Unset
+        if isinstance(self.numeric_sort_key, Unset):
+            numeric_sort_key = UNSET
+        else:
+            numeric_sort_key = self.numeric_sort_key
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if path is not UNSET:
             field_dict["path"] = path
@@ -72,10 +102,10 @@ class MemoryStoreSortedMapItem:
             field_dict["value"] = value
         if etag is not UNSET:
             field_dict["etag"] = etag
-        if ttl is not UNSET:
-            field_dict["ttl"] = ttl
         if expire_time is not UNSET:
             field_dict["expireTime"] = expire_time
+        if ttl is not UNSET:
+            field_dict["ttl"] = ttl
         if id is not UNSET:
             field_dict["id"] = id
         if string_sort_key is not UNSET:
@@ -88,53 +118,89 @@ class MemoryStoreSortedMapItem:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        path = d.pop("path", UNSET)
+
+        def _parse_path(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        path = _parse_path(d.pop("path", UNSET))
 
         value = d.pop("value", UNSET)
 
-        etag = d.pop("etag", UNSET)
+        def _parse_etag(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
 
-        ttl = d.pop("ttl", UNSET)
+        etag = _parse_etag(d.pop("etag", UNSET))
 
-        _expire_time = d.pop("expireTime", UNSET)
-        expire_time: datetime.datetime | Unset
-        if isinstance(_expire_time, Unset):
-            expire_time = UNSET
-        else:
-            expire_time = datetime.datetime.fromisoformat(_expire_time)
+        def _parse_expire_time(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                expire_time_type_0 = datetime.datetime.fromisoformat(data)
 
-        id = d.pop("id", UNSET)
+                return expire_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
-        string_sort_key = d.pop("stringSortKey", UNSET)
+        expire_time = _parse_expire_time(d.pop("expireTime", UNSET))
 
-        numeric_sort_key = d.pop("numericSortKey", UNSET)
+        def _parse_ttl(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        ttl = _parse_ttl(d.pop("ttl", UNSET))
+
+        def _parse_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        id = _parse_id(d.pop("id", UNSET))
+
+        def _parse_string_sort_key(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        string_sort_key = _parse_string_sort_key(d.pop("stringSortKey", UNSET))
+
+        def _parse_numeric_sort_key(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        numeric_sort_key = _parse_numeric_sort_key(d.pop("numericSortKey", UNSET))
 
         memory_store_sorted_map_item = cls(
             path=path,
             value=value,
             etag=etag,
-            ttl=ttl,
             expire_time=expire_time,
+            ttl=ttl,
             id=id,
             string_sort_key=string_sort_key,
             numeric_sort_key=numeric_sort_key,
         )
 
-        memory_store_sorted_map_item.additional_properties = d
         return memory_store_sorted_map_item
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

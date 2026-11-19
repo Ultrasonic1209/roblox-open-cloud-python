@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..models.o18_eligibility_tag import O18EligibilityTag
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -30,7 +29,6 @@ class TransactionResponse:
         details (None | TransactionDetailsResponse | Unset):
         currency (GenericCurrencyResponse | None | Unset):
         purchase_token (None | str | Unset):
-        o_18_eligibility_tag (None | O18EligibilityTag | Unset):
     """
 
     id: int | Unset = UNSET
@@ -41,7 +39,6 @@ class TransactionResponse:
     details: None | TransactionDetailsResponse | Unset = UNSET
     currency: GenericCurrencyResponse | None | Unset = UNSET
     purchase_token: None | str | Unset = UNSET
-    o_18_eligibility_tag: None | O18EligibilityTag | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.agent_response import AgentResponse  # noqa: PLC0415
@@ -92,14 +89,6 @@ class TransactionResponse:
         else:
             purchase_token = self.purchase_token
 
-        o_18_eligibility_tag: None | str | Unset
-        if isinstance(self.o_18_eligibility_tag, Unset):
-            o_18_eligibility_tag = UNSET
-        elif isinstance(self.o_18_eligibility_tag, O18EligibilityTag):
-            o_18_eligibility_tag = self.o_18_eligibility_tag.value
-        else:
-            o_18_eligibility_tag = self.o_18_eligibility_tag
-
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -119,8 +108,6 @@ class TransactionResponse:
             field_dict["currency"] = currency
         if purchase_token is not UNSET:
             field_dict["purchaseToken"] = purchase_token
-        if o_18_eligibility_tag is not UNSET:
-            field_dict["o18EligibilityTag"] = o_18_eligibility_tag
 
         return field_dict
 
@@ -211,23 +198,6 @@ class TransactionResponse:
 
         purchase_token = _parse_purchase_token(d.pop("purchaseToken", UNSET))
 
-        def _parse_o_18_eligibility_tag(data: object) -> None | O18EligibilityTag | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                o_18_eligibility_tag_type_1 = O18EligibilityTag(data)
-
-                return o_18_eligibility_tag_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | O18EligibilityTag | Unset, data)
-
-        o_18_eligibility_tag = _parse_o_18_eligibility_tag(d.pop("o18EligibilityTag", UNSET))
-
         transaction_response = cls(
             id=id,
             id_hash=id_hash,
@@ -237,7 +207,6 @@ class TransactionResponse:
             details=details,
             currency=currency,
             purchase_token=purchase_token,
-            o_18_eligibility_tag=o_18_eligibility_tag,
         )
 
         return transaction_response

@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.queue:dequeue', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.queue:dequeue'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.queue:dequeue']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreQueueItem', 'name': 'MemoryStoreQueueItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store.queue:dequeue', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
@@ -32,12 +32,12 @@ from ...types import Unset
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
-    count: int | Unset = UNSET,
-    all_or_nothing: bool | Unset = UNSET,
-    invisibility_window: str | Unset = UNSET,
+    count: int | Unset = 1,
+    all_or_nothing: bool | Unset = False,
+    invisibility_window: str | Unset = "30s",
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -88,25 +88,24 @@ def _build_response(
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    count: int | Unset = UNSET,
-    all_or_nothing: bool | Unset = UNSET,
-    invisibility_window: str | Unset = UNSET,
+    count: int | Unset = 1,
+    all_or_nothing: bool | Unset = False,
+    invisibility_window: str | Unset = "30s",
 ) -> Response[ReadMemoryStoreQueueItemsResponse]:
     """Read Memory Store Queue Items
 
      Returns the specified number of items at the front of the queue.
 
-
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
-        count (int | Unset):
-        all_or_nothing (bool | Unset):  Example: True.
-        invisibility_window (str | Unset):  Example: 3s.
+        count (int | Unset):  Default: 1.
+        all_or_nothing (bool | Unset):  Default: False.
+        invisibility_window (str | Unset):  Default: '30s'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,25 +131,24 @@ def sync_detailed(
 
 
 def sync(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    count: int | Unset = UNSET,
-    all_or_nothing: bool | Unset = UNSET,
-    invisibility_window: str | Unset = UNSET,
+    count: int | Unset = 1,
+    all_or_nothing: bool | Unset = False,
+    invisibility_window: str | Unset = "30s",
 ) -> ReadMemoryStoreQueueItemsResponse | None:
     """Read Memory Store Queue Items
 
      Returns the specified number of items at the front of the queue.
 
-
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
-        count (int | Unset):
-        all_or_nothing (bool | Unset):  Example: True.
-        invisibility_window (str | Unset):  Example: 3s.
+        count (int | Unset):  Default: 1.
+        all_or_nothing (bool | Unset):  Default: False.
+        invisibility_window (str | Unset):  Default: '30s'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -171,25 +169,24 @@ def sync(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    count: int | Unset = UNSET,
-    all_or_nothing: bool | Unset = UNSET,
-    invisibility_window: str | Unset = UNSET,
+    count: int | Unset = 1,
+    all_or_nothing: bool | Unset = False,
+    invisibility_window: str | Unset = "30s",
 ) -> Response[ReadMemoryStoreQueueItemsResponse]:
     """Read Memory Store Queue Items
 
      Returns the specified number of items at the front of the queue.
 
-
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
-        count (int | Unset):
-        all_or_nothing (bool | Unset):  Example: True.
-        invisibility_window (str | Unset):  Example: 3s.
+        count (int | Unset):  Default: 1.
+        all_or_nothing (bool | Unset):  Default: False.
+        invisibility_window (str | Unset):  Default: '30s'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -213,25 +210,24 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    count: int | Unset = UNSET,
-    all_or_nothing: bool | Unset = UNSET,
-    invisibility_window: str | Unset = UNSET,
+    count: int | Unset = 1,
+    all_or_nothing: bool | Unset = False,
+    invisibility_window: str | Unset = "30s",
 ) -> ReadMemoryStoreQueueItemsResponse | None:
     """Read Memory Store Queue Items
 
      Returns the specified number of items at the front of the queue.
 
-
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
-        count (int | Unset):
-        all_or_nothing (bool | Unset):  Example: True.
-        invisibility_window (str | Unset):  Example: 3s.
+        count (int | Unset):  Default: 1.
+        all_or_nothing (bool | Unset):  Default: False.
+        invisibility_window (str | Unset):  Default: '30s'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

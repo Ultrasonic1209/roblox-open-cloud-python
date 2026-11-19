@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
@@ -78,6 +78,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxLocaleApiSupportedLocalesResponse]:
     """Get list of supported locales sorted by the Native Name property.
 
+     Locales are ordered by native display name for the authenticated user context.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -101,6 +103,8 @@ def sync(
 ) -> Any | RobloxLocaleApiSupportedLocalesResponse | None:
     """Get list of supported locales sorted by the Native Name property.
 
+     Locales are ordered by native display name for the authenticated user context.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -119,6 +123,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[Any | RobloxLocaleApiSupportedLocalesResponse]:
     """Get list of supported locales sorted by the Native Name property.
+
+     Locales are ordered by native display name for the authenticated user context.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -140,6 +146,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> Any | RobloxLocaleApiSupportedLocalesResponse | None:
     """Get list of supported locales sorted by the Native Name property.
+
+     Locales are ordered by native display name for the authenticated user context.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

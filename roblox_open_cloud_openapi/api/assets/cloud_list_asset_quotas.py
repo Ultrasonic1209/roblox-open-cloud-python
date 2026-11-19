@@ -23,20 +23,21 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'asset:read'}], 'x-roblox-docs': {'category': 'Users and groups', 'methodProperties': {'scopes': ['asset:read']}, 'resource': {'$ref': '#/components/schemas/AssetQuota', 'name': 'AssetQuota'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 60}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 60}}}
+{'x-roblox-scopes': [{'name': 'asset:read', 'description': 'Required for the user in the path.'}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 60}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 60}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
+from ...models.assets_upload_api_status import AssetsUploadApiStatus
 from ...models.list_asset_quotas_response import ListAssetQuotasResponse
 from ...types import Unset
 
 
 def _get_kwargs(
-    user_id: str,
+    user_id: int,
     *,
-    max_page_size: int | Unset = UNSET,
-    page_token: str | Unset = UNSET,
-    filter_: str | Unset = UNSET,
+    max_page_size: int | Unset = 10,
+    page_token: str | Unset = "",
+    filter_: str | Unset = "",
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -62,11 +63,26 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ListAssetQuotasResponse | None:
+) -> AssetsUploadApiStatus | ListAssetQuotasResponse | None:
     if response.status_code == 200:
         response_200 = ListAssetQuotasResponse.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 400:
+        response_400 = AssetsUploadApiStatus.from_dict(response.json())
+
+        return response_400
+
+    if response.status_code == 401:
+        response_401 = AssetsUploadApiStatus.from_dict(response.json())
+
+        return response_401
+
+    if response.status_code == 403:
+        response_403 = AssetsUploadApiStatus.from_dict(response.json())
+
+        return response_403
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -76,7 +92,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ListAssetQuotasResponse]:
+) -> Response[AssetsUploadApiStatus | ListAssetQuotasResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,29 +102,29 @@ def _build_response(
 
 
 def sync_detailed(
-    user_id: str,
+    user_id: int,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
-    page_token: str | Unset = UNSET,
-    filter_: str | Unset = UNSET,
-) -> Response[ListAssetQuotasResponse]:
+    max_page_size: int | Unset = 10,
+    page_token: str | Unset = "",
+    filter_: str | Unset = "",
+) -> Response[AssetsUploadApiStatus | ListAssetQuotasResponse]:
     """List Asset Quotas
 
      Returns a list of asset quotas.
 
     Args:
-        user_id (str):
-        max_page_size (int | Unset):
-        page_token (str | Unset):
-        filter_ (str | Unset):
+        user_id (int):
+        max_page_size (int | Unset):  Default: 10.
+        page_token (str | Unset):  Default: ''.
+        filter_ (str | Unset):  Default: ''.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ListAssetQuotasResponse]
+        Response[AssetsUploadApiStatus | ListAssetQuotasResponse]
     """
 
     kwargs = _get_kwargs(
@@ -126,29 +142,29 @@ def sync_detailed(
 
 
 def sync(
-    user_id: str,
+    user_id: int,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
-    page_token: str | Unset = UNSET,
-    filter_: str | Unset = UNSET,
-) -> ListAssetQuotasResponse | None:
+    max_page_size: int | Unset = 10,
+    page_token: str | Unset = "",
+    filter_: str | Unset = "",
+) -> AssetsUploadApiStatus | ListAssetQuotasResponse | None:
     """List Asset Quotas
 
      Returns a list of asset quotas.
 
     Args:
-        user_id (str):
-        max_page_size (int | Unset):
-        page_token (str | Unset):
-        filter_ (str | Unset):
+        user_id (int):
+        max_page_size (int | Unset):  Default: 10.
+        page_token (str | Unset):  Default: ''.
+        filter_ (str | Unset):  Default: ''.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ListAssetQuotasResponse
+        AssetsUploadApiStatus | ListAssetQuotasResponse
     """
 
     return sync_detailed(
@@ -161,29 +177,29 @@ def sync(
 
 
 async def asyncio_detailed(
-    user_id: str,
+    user_id: int,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
-    page_token: str | Unset = UNSET,
-    filter_: str | Unset = UNSET,
-) -> Response[ListAssetQuotasResponse]:
+    max_page_size: int | Unset = 10,
+    page_token: str | Unset = "",
+    filter_: str | Unset = "",
+) -> Response[AssetsUploadApiStatus | ListAssetQuotasResponse]:
     """List Asset Quotas
 
      Returns a list of asset quotas.
 
     Args:
-        user_id (str):
-        max_page_size (int | Unset):
-        page_token (str | Unset):
-        filter_ (str | Unset):
+        user_id (int):
+        max_page_size (int | Unset):  Default: 10.
+        page_token (str | Unset):  Default: ''.
+        filter_ (str | Unset):  Default: ''.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ListAssetQuotasResponse]
+        Response[AssetsUploadApiStatus | ListAssetQuotasResponse]
     """
 
     kwargs = _get_kwargs(
@@ -199,29 +215,29 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    user_id: str,
+    user_id: int,
     *,
     client: AuthenticatedClient,
-    max_page_size: int | Unset = UNSET,
-    page_token: str | Unset = UNSET,
-    filter_: str | Unset = UNSET,
-) -> ListAssetQuotasResponse | None:
+    max_page_size: int | Unset = 10,
+    page_token: str | Unset = "",
+    filter_: str | Unset = "",
+) -> AssetsUploadApiStatus | ListAssetQuotasResponse | None:
     """List Asset Quotas
 
      Returns a list of asset quotas.
 
     Args:
-        user_id (str):
-        max_page_size (int | Unset):
-        page_token (str | Unset):
-        filter_ (str | Unset):
+        user_id (int):
+        max_page_size (int | Unset):  Default: 10.
+        page_token (str | Unset):  Default: ''.
+        filter_ (str | Unset):  Default: ''.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ListAssetQuotasResponse
+        AssetsUploadApiStatus | ListAssetQuotasResponse
     """
 
     return (

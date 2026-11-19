@@ -15,7 +15,8 @@ class RobloxUsersApiSearchGetUserResponse:
     """A user response model specific to getting a user from user search.
 
     Attributes:
-        previous_usernames (list[str] | Unset): Previous usernames for a user.
+        previous_usernames (list[str] | Unset): Previous usernames for a user. Omitted when history is suppressed for
+            the result owner.
         has_verified_badge (bool | Unset): The user's verified badge status.
         id (int | Unset): The user Id.
         name (str | Unset): The user name.

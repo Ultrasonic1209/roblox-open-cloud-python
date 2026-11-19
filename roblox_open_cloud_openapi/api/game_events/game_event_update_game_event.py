@@ -34,7 +34,7 @@ from ...types import Unset
 
 
 def _get_kwargs(
-    event_id: int,
+    event_id: str,
     *,
     body: UpdateGameEventRequest
     | UpdateGameEventRequest
@@ -122,7 +122,7 @@ def _build_response(
 
 
 def sync_detailed(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateGameEventRequest
@@ -136,7 +136,7 @@ def sync_detailed(
     unchanged. Empty body is a no-op and returns the current game event resource.
 
     Args:
-        event_id (int):
+        event_id (str):
         body (UpdateGameEventRequest | Unset): Request body for `PATCH /v3/game-events/{eventId}`.
             Every field is optional; null = "no change". An empty body is a no-op and returns the
             current resource.
@@ -171,7 +171,7 @@ def sync_detailed(
 
 
 def sync(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateGameEventRequest
@@ -185,7 +185,7 @@ def sync(
     unchanged. Empty body is a no-op and returns the current game event resource.
 
     Args:
-        event_id (int):
+        event_id (str):
         body (UpdateGameEventRequest | Unset): Request body for `PATCH /v3/game-events/{eventId}`.
             Every field is optional; null = "no change". An empty body is a no-op and returns the
             current resource.
@@ -215,7 +215,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateGameEventRequest
@@ -229,7 +229,7 @@ async def asyncio_detailed(
     unchanged. Empty body is a no-op and returns the current game event resource.
 
     Args:
-        event_id (int):
+        event_id (str):
         body (UpdateGameEventRequest | Unset): Request body for `PATCH /v3/game-events/{eventId}`.
             Every field is optional; null = "no change". An empty body is a no-op and returns the
             current resource.
@@ -262,7 +262,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateGameEventRequest
@@ -276,7 +276,7 @@ async def asyncio(
     unchanged. Empty body is a no-op and returns the current game event resource.
 
     Args:
-        event_id (int):
+        event_id (str):
         body (UpdateGameEventRequest | Unset): Request body for `PATCH /v3/game-events/{eventId}`.
             Every field is optional; null = "no change". An empty body is a no-op and returns the
             current resource.

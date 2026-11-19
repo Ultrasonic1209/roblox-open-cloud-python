@@ -5,7 +5,6 @@ from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -21,24 +20,20 @@ class Place:
             creation.
             The newly created place will be a clone of this template.
             A list of the valid template places can be obtained from
-            ListTemplatePlaces. Format: universes/{universe_id}/places/{place_id} Example:
-            universes/{universe_id}/places/{place_id}.
+            ListTemplatePlaces. Format: universes/{universe_id}/places/{place_id}
         path (str | Unset): The resource path of the place.
 
-            Format: `universes/{universe_id}/places/{place_id}` Example: universes/123/places/123.
-        create_time (datetime.datetime | Unset): The timestamp at which the place was created. Example:
-            2023-07-05T12:34:56Z.
-        update_time (datetime.datetime | Unset): The timestamp at which the place was updated. Example:
-            2023-07-05T12:34:56Z.
-        display_name (str | Unset): The name of the place. Example: ROBLOX Battle [OPEN].
-        description (str | Unset): The description of the place. Example: OPEN SOURCE!
-             Feel free to check out how we made this game and ask us about it!.
+            Format: `universes/{universe_id}/places/{place_id}`
+        create_time (datetime.datetime | Unset): The timestamp at which the place was created.
+        update_time (datetime.datetime | Unset): The timestamp at which the place was updated.
+        display_name (str | Unset): The name of the place.
+        description (str | Unset): The description of the place.
         server_size (int | Unset): The maximum number of allowed users in a single server.
         root (bool | Unset): Whether this place is its parent universe's root place or not.
-            Each universe has exactly one root place. Example: True.
+            Each universe has exactly one root place.
         universe_runtime_creation (bool | Unset): Whether this place was created through in-experience creation.
             If true, the place was created by calling AssetService::CreatePlaceAsync()
-            from a script. Example: True.
+            from a script.
     """
 
     template_place: str
@@ -50,7 +45,6 @@ class Place:
     server_size: int | Unset = UNSET
     root: bool | Unset = UNSET
     universe_runtime_creation: bool | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         template_place = self.template_place
@@ -76,7 +70,7 @@ class Place:
         universe_runtime_creation = self.universe_runtime_creation
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update(
             {
                 "templatePlace": template_place,
@@ -144,21 +138,4 @@ class Place:
             universe_runtime_creation=universe_runtime_creation,
         )
 
-        place.additional_properties = d
         return place
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

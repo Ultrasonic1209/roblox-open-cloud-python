@@ -21,7 +21,9 @@ class RobloxLocaleApiSupportedLocale:
     Attributes:
         id (int | Unset): id of supported locale
         locale (str | Unset): locale of supported locale. Example "en-us"
-        name (str | Unset): Name of supported locale.
+        name (str | Unset): Name of supported locale. Example:
+                        English (United States)
+                        .
         native_name (str | Unset): Name of supported locale in native language. Example "English"
         language (RobloxLocaleApiLanguage | Unset): Model for Language
     """

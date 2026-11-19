@@ -6,7 +6,7 @@ from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..models.analytics_query_public_api_data_status import AnalyticsQueryPublicApiDataStatus
+from ..models.data_status import DataStatus
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="AnalyticsQueryPublicApiDataPoint")
@@ -20,13 +20,13 @@ class AnalyticsQueryPublicApiDataPoint:
         time (datetime.datetime): The timestamp of the data point in UTC.
         value (float): The numeric value of the data point.
         string_values (list[str] | None | Unset): String values associated with the data point, when applicable.
-        status (AnalyticsQueryPublicApiDataStatus | Unset): The status of a data point in a query result.
+        status (DataStatus | Unset): The status of a data point in a query result.
     """
 
     time: datetime.datetime
     value: float
     string_values: list[str] | None | Unset = UNSET
-    status: AnalyticsQueryPublicApiDataStatus | Unset = UNSET
+    status: DataStatus | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         time = self.time.isoformat()
@@ -86,11 +86,11 @@ class AnalyticsQueryPublicApiDataPoint:
         string_values = _parse_string_values(d.pop("stringValues", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: AnalyticsQueryPublicApiDataStatus | Unset
+        status: DataStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
-            status = AnalyticsQueryPublicApiDataStatus(_status)
+            status = DataStatus(_status)
 
         analytics_query_public_api_data_point = cls(
             time=time,

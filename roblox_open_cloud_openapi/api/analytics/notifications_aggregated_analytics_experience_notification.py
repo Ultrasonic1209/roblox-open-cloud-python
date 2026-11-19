@@ -1,0 +1,230 @@
+from http import HTTPStatus
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    import httpx2 as httpx
+else:
+    try:
+        import httpx2 as httpx
+    except ModuleNotFoundError:
+        try:
+            import httpx
+        except ModuleNotFoundError:
+            raise RuntimeError(
+                "This module requires the httpx2 package to be installed.\n"
+                "You can install it with:\n"
+                "    $ pip install httpx2\n"
+            ) from None
+
+
+from ... import errors
+from ...client import AuthenticatedClient, Client
+from ...types import UNSET, Response
+
+"""
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'universe.analytics:read', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+"""
+
+
+import datetime
+
+from ...models.get_notifications_analytics_response import GetNotificationsAnalyticsResponse
+from ...types import Unset
+
+
+def _get_kwargs(
+    *,
+    universe_id: int | Unset = UNSET,
+    user_id: int | Unset = UNSET,
+    aggregation_start_date_time: datetime.datetime | Unset = UNSET,
+    aggregation_end_date_time: datetime.datetime | Unset = UNSET,
+) -> dict[str, Any]:
+
+    params: dict[str, Any] = {}
+
+    params["UniverseId"] = universe_id
+
+    params["UserId"] = user_id
+
+    json_aggregation_start_date_time: str | Unset = UNSET
+    if not isinstance(aggregation_start_date_time, Unset):
+        json_aggregation_start_date_time = aggregation_start_date_time.isoformat()
+    params["AggregationStartDateTime"] = json_aggregation_start_date_time
+
+    json_aggregation_end_date_time: str | Unset = UNSET
+    if not isinstance(aggregation_end_date_time, Unset):
+        json_aggregation_end_date_time = aggregation_end_date_time.isoformat()
+    params["AggregationEndDateTime"] = json_aggregation_end_date_time
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
+    _kwargs: dict[str, Any] = {
+        "method": "get",
+        "url": "/notifications/v1/developer-analytics/get-notifs-analytics",
+        "params": params,
+    }
+
+    return _kwargs
+
+
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> GetNotificationsAnalyticsResponse | None:
+    if response.status_code == 200:
+        response_200 = GetNotificationsAnalyticsResponse.from_dict(response.json())
+
+        return response_200
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[GetNotificationsAnalyticsResponse]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    *,
+    client: AuthenticatedClient,
+    universe_id: int | Unset = UNSET,
+    user_id: int | Unset = UNSET,
+    aggregation_start_date_time: datetime.datetime | Unset = UNSET,
+    aggregation_end_date_time: datetime.datetime | Unset = UNSET,
+) -> Response[GetNotificationsAnalyticsResponse]:
+    """
+    Args:
+        universe_id (int | Unset):
+        user_id (int | Unset):
+        aggregation_start_date_time (datetime.datetime | Unset):
+        aggregation_end_date_time (datetime.datetime | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[GetNotificationsAnalyticsResponse]
+    """
+
+    kwargs = _get_kwargs(
+        universe_id=universe_id,
+        user_id=user_id,
+        aggregation_start_date_time=aggregation_start_date_time,
+        aggregation_end_date_time=aggregation_end_date_time,
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+
+def sync(
+    *,
+    client: AuthenticatedClient,
+    universe_id: int | Unset = UNSET,
+    user_id: int | Unset = UNSET,
+    aggregation_start_date_time: datetime.datetime | Unset = UNSET,
+    aggregation_end_date_time: datetime.datetime | Unset = UNSET,
+) -> GetNotificationsAnalyticsResponse | None:
+    """
+    Args:
+        universe_id (int | Unset):
+        user_id (int | Unset):
+        aggregation_start_date_time (datetime.datetime | Unset):
+        aggregation_end_date_time (datetime.datetime | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        GetNotificationsAnalyticsResponse
+    """
+
+    return sync_detailed(
+        client=client,
+        universe_id=universe_id,
+        user_id=user_id,
+        aggregation_start_date_time=aggregation_start_date_time,
+        aggregation_end_date_time=aggregation_end_date_time,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    universe_id: int | Unset = UNSET,
+    user_id: int | Unset = UNSET,
+    aggregation_start_date_time: datetime.datetime | Unset = UNSET,
+    aggregation_end_date_time: datetime.datetime | Unset = UNSET,
+) -> Response[GetNotificationsAnalyticsResponse]:
+    """
+    Args:
+        universe_id (int | Unset):
+        user_id (int | Unset):
+        aggregation_start_date_time (datetime.datetime | Unset):
+        aggregation_end_date_time (datetime.datetime | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[GetNotificationsAnalyticsResponse]
+    """
+
+    kwargs = _get_kwargs(
+        universe_id=universe_id,
+        user_id=user_id,
+        aggregation_start_date_time=aggregation_start_date_time,
+        aggregation_end_date_time=aggregation_end_date_time,
+    )
+
+    response = await client.get_async_httpx_client().request(**kwargs)
+
+    return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    universe_id: int | Unset = UNSET,
+    user_id: int | Unset = UNSET,
+    aggregation_start_date_time: datetime.datetime | Unset = UNSET,
+    aggregation_end_date_time: datetime.datetime | Unset = UNSET,
+) -> GetNotificationsAnalyticsResponse | None:
+    """
+    Args:
+        universe_id (int | Unset):
+        user_id (int | Unset):
+        aggregation_start_date_time (datetime.datetime | Unset):
+        aggregation_end_date_time (datetime.datetime | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        GetNotificationsAnalyticsResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            universe_id=universe_id,
+            user_id=user_id,
+            aggregation_start_date_time=aggregation_start_date_time,
+            aggregation_end_date_time=aggregation_end_date_time,
+        )
+    ).parsed

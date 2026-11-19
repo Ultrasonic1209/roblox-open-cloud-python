@@ -3,6 +3,7 @@ from enum import StrEnum
 
 class Repository(StrEnum):
     ANTI_CHEAT_CONFIG = "AntiCheatConfig"
+    DATA_CAPTURE_CONFIG = "DataCaptureConfig"
     DATA_STORES_CONFIG = "DataStoresConfig"
     EXPERIENCE_USER_CONFIG = "ExperienceUserConfig"
     EXTENDED_SERVICES_CONFIG = "ExtendedServicesConfig"

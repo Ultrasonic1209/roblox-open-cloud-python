@@ -18,23 +18,23 @@ else:
             ) from None
 
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'creator-store-product:write', 'targetResourceSpecifier': ''}, {'name': 'creator-store-product:write'}], 'x-roblox-docs': {'category': 'Monetization', 'methodProperties': {'scopes': ['creator-store-product:write']}, 'resource': {'$ref': '#/components/schemas/CreatorStoreProduct', 'name': 'CreatorStoreProduct'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 30}}}
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 30}}, 'x-roblox-scopes': [{'name': 'creator-store-product:write', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
-from ...models.creator_store_product import CreatorStoreProduct
+from ...models.google_rpc_status import GoogleRpcStatus
+from ...models.marketplace_fiat_service_creator_store_product import MarketplaceFiatServiceCreatorStoreProduct
 from ...types import Unset
 
 
 def _get_kwargs(
     creator_store_product_id: str,
     *,
-    body: CreatorStoreProduct,
+    body: MarketplaceFiatServiceCreatorStoreProduct,
     update_mask: str | Unset = UNSET,
     allow_missing: bool | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -64,19 +64,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CreatorStoreProduct | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct:
     if response.status_code == 200:
-        response_200 = CreatorStoreProduct.from_dict(response.json())
+        response_200 = MarketplaceFiatServiceCreatorStoreProduct.from_dict(response.json())
 
         return response_200
 
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    response_default = GoogleRpcStatus.from_dict(response.json())
+
+    return response_default
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CreatorStoreProduct]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -89,10 +92,10 @@ def sync_detailed(
     creator_store_product_id: str,
     *,
     client: AuthenticatedClient,
-    body: CreatorStoreProduct,
+    body: MarketplaceFiatServiceCreatorStoreProduct,
     update_mask: str | Unset = UNSET,
     allow_missing: bool | Unset = UNSET,
-) -> Response[CreatorStoreProduct]:
+) -> Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]:
     """Update Creator Store Product
 
      Update a Creator Store product.
@@ -101,8 +104,8 @@ def sync_detailed(
         creator_store_product_id (str):
         update_mask (str | Unset):
         allow_missing (bool | Unset):  Example: True.
-        body (CreatorStoreProduct): Represents a product in the Creator Store. This resource is
-            used to manage
+        body (MarketplaceFiatServiceCreatorStoreProduct): Represents a product in the Creator
+            Store. This resource is used to manage
             distribution and pricing of assets on the Creator Store.
 
     Raises:
@@ -110,7 +113,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreatorStoreProduct]
+        Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]
     """
 
     kwargs = _get_kwargs(
@@ -131,10 +134,10 @@ def sync(
     creator_store_product_id: str,
     *,
     client: AuthenticatedClient,
-    body: CreatorStoreProduct,
+    body: MarketplaceFiatServiceCreatorStoreProduct,
     update_mask: str | Unset = UNSET,
     allow_missing: bool | Unset = UNSET,
-) -> CreatorStoreProduct | None:
+) -> GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct | None:
     """Update Creator Store Product
 
      Update a Creator Store product.
@@ -143,8 +146,8 @@ def sync(
         creator_store_product_id (str):
         update_mask (str | Unset):
         allow_missing (bool | Unset):  Example: True.
-        body (CreatorStoreProduct): Represents a product in the Creator Store. This resource is
-            used to manage
+        body (MarketplaceFiatServiceCreatorStoreProduct): Represents a product in the Creator
+            Store. This resource is used to manage
             distribution and pricing of assets on the Creator Store.
 
     Raises:
@@ -152,7 +155,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreatorStoreProduct
+        GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct
     """
 
     return sync_detailed(
@@ -168,10 +171,10 @@ async def asyncio_detailed(
     creator_store_product_id: str,
     *,
     client: AuthenticatedClient,
-    body: CreatorStoreProduct,
+    body: MarketplaceFiatServiceCreatorStoreProduct,
     update_mask: str | Unset = UNSET,
     allow_missing: bool | Unset = UNSET,
-) -> Response[CreatorStoreProduct]:
+) -> Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]:
     """Update Creator Store Product
 
      Update a Creator Store product.
@@ -180,8 +183,8 @@ async def asyncio_detailed(
         creator_store_product_id (str):
         update_mask (str | Unset):
         allow_missing (bool | Unset):  Example: True.
-        body (CreatorStoreProduct): Represents a product in the Creator Store. This resource is
-            used to manage
+        body (MarketplaceFiatServiceCreatorStoreProduct): Represents a product in the Creator
+            Store. This resource is used to manage
             distribution and pricing of assets on the Creator Store.
 
     Raises:
@@ -189,7 +192,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreatorStoreProduct]
+        Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]
     """
 
     kwargs = _get_kwargs(
@@ -208,10 +211,10 @@ async def asyncio(
     creator_store_product_id: str,
     *,
     client: AuthenticatedClient,
-    body: CreatorStoreProduct,
+    body: MarketplaceFiatServiceCreatorStoreProduct,
     update_mask: str | Unset = UNSET,
     allow_missing: bool | Unset = UNSET,
-) -> CreatorStoreProduct | None:
+) -> GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct | None:
     """Update Creator Store Product
 
      Update a Creator Store product.
@@ -220,8 +223,8 @@ async def asyncio(
         creator_store_product_id (str):
         update_mask (str | Unset):
         allow_missing (bool | Unset):  Example: True.
-        body (CreatorStoreProduct): Represents a product in the Creator Store. This resource is
-            used to manage
+        body (MarketplaceFiatServiceCreatorStoreProduct): Represents a product in the Creator
+            Store. This resource is used to manage
             distribution and pricing of assets on the Creator Store.
 
     Raises:
@@ -229,7 +232,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreatorStoreProduct
+        GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct
     """
 
     return (

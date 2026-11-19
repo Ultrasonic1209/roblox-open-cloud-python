@@ -8,7 +8,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata
+    from ..models.operation_metadata import OperationMetadata
 
 
 T = TypeVar("T", bound="OperationPending")
@@ -21,13 +21,12 @@ class OperationPending:
     Attributes:
         path (None | str | Unset): The server-assigned resource path.
         done (bool | Unset): If false, the operation is still in progress. If true, the operation is completed.
-        metadata (AnalyticsQueryPublicApiOperationMetadata | Unset): The metadata associated with a long-running
-            operation.
+        metadata (OperationMetadata | Unset): The metadata associated with a long-running operation.
     """
 
     path: None | str | Unset = UNSET
     done: bool | Unset = UNSET
-    metadata: AnalyticsQueryPublicApiOperationMetadata | Unset = UNSET
+    metadata: OperationMetadata | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         path: None | str | Unset
@@ -56,7 +55,7 @@ class OperationPending:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata  # noqa: PLC0415
+        from ..models.operation_metadata import OperationMetadata  # noqa: PLC0415
 
         d = dict(src_dict)
 
@@ -72,11 +71,11 @@ class OperationPending:
         done = d.pop("done", UNSET)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: AnalyticsQueryPublicApiOperationMetadata | Unset
+        metadata: OperationMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
-            metadata = AnalyticsQueryPublicApiOperationMetadata.from_dict(_metadata)
+            metadata = OperationMetadata.from_dict(_metadata)
 
         operation_pending = cls(
             path=path,

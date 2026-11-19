@@ -25,8 +25,9 @@ class SearchCreatorStoreAssetsRequestType0:
 
     Attributes:
         search_category_type (None | SearchCategoryType | Unset): The asset type to search within. Optional when
-            Toolbox.Service.SearchCreatorStoreAssetsRequest.CategoryPath
-            resolves to an asset type; otherwise required.
+            CategoryPath
+            resolves to an asset type; otherwise required. SearchCategoryType.Place is only
+            valid with the `gameplay_templates` Swimlane.
         query (None | str | Unset): The search terms used to filter the results. Only one of 'query' and 'image' can be
             present in a query.
         image (None | str | Unset): The image file to search by. The image must be base64 encoded to be used in the

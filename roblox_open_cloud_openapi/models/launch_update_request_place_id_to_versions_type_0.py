@@ -17,17 +17,13 @@ class LaunchUpdateRequestPlaceIdToVersionsType0:
 
     """
 
-    additional_properties: dict[str, list[int] | None] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, list[int]] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
 
         field_dict: dict[str, Any] = {}
         for prop_name, prop in self.additional_properties.items():
-            if isinstance(prop, list):
-                field_dict[prop_name] = prop
-
-            else:
-                field_dict[prop_name] = prop
+            field_dict[prop_name] = prop
 
         return field_dict
 
@@ -38,21 +34,7 @@ class LaunchUpdateRequestPlaceIdToVersionsType0:
 
         additional_properties = {}
         for prop_name, prop_dict in d.items():
-
-            def _parse_additional_property(data: object) -> list[int] | None:
-                if data is None:
-                    return data
-                try:
-                    if not isinstance(data, list):
-                        raise TypeError()
-                    additional_property_type_0 = cast(list[int], data)
-
-                    return additional_property_type_0
-                except (TypeError, ValueError, AttributeError, KeyError):
-                    pass
-                return cast(list[int] | None, data)
-
-            additional_property = _parse_additional_property(prop_dict)
+            additional_property = cast(list[int], prop_dict)
 
             additional_properties[prop_name] = additional_property
 
@@ -63,10 +45,10 @@ class LaunchUpdateRequestPlaceIdToVersionsType0:
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> list[int] | None:
+    def __getitem__(self, key: str) -> list[int]:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: list[int] | None) -> None:
+    def __setitem__(self, key: str, value: list[int]) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

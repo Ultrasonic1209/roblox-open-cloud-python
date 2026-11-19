@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'user.user-notification:write'}, {'name': 'user.user-notification:write'}], 'x-roblox-docs': {'category': 'Users and groups', 'methodProperties': {'scopes': ['user.user-notification:write']}, 'resource': {'$ref': '#/components/schemas/UserNotification', 'name': 'UserNotification'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'SECOND', 'maxInPeriod': 4000}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 4000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'SECOND', 'maxInPeriod': 4000}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 4000}}, 'x-roblox-scopes': [{'name': 'user.user-notification:write'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 

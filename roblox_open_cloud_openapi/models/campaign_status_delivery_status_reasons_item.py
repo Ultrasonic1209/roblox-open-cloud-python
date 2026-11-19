@@ -1,0 +1,21 @@
+from enum import StrEnum
+
+
+class CampaignStatusDeliveryStatusReasonsItem(StrEnum):
+    CANCELLED = "CANCELLED"
+    CLICK_BAIT = "CLICK_BAIT"
+    COMPLETED = "COMPLETED"
+    EXPIRED = "EXPIRED"
+    GAME_FILTERED = "GAME_FILTERED"
+    INACTIVE = "INACTIVE"
+    INSUFFICIENT_AD_CREDIT = "INSUFFICIENT_AD_CREDIT"
+    LEARNING = "LEARNING"
+    MODERATED = "MODERATED"
+    PAUSED = "PAUSED"
+    PLACE_JOIN_RESTRICTED = "PLACE_JOIN_RESTRICTED"
+    PRIVATE = "PRIVATE"
+    QPP_AUTO_PAUSED = "QPP_AUTO_PAUSED"
+    SCHEDULED = "SCHEDULED"
+
+    def __str__(self) -> str:
+        return str(self.value)

@@ -149,6 +149,8 @@ def sync_detailed(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
@@ -209,6 +211,8 @@ def sync(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
@@ -264,6 +268,8 @@ async def asyncio_detailed(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
@@ -322,6 +328,8 @@ async def asyncio(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.
         body (PublishDraftRequest | Unset): Request model for publishing a draft.

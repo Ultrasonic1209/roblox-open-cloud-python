@@ -22,40 +22,36 @@ class MatchmakingPlayerAttributeDefinition:
     """Describes a player attribute definition for matchmaking.
 
     Attributes:
-        id (None | str | Unset): The id of the attribute.
+        id (None | str): The id of the attribute.
+        name (None | str): The name of the attribute.
+        attribute_value_location (MatchmakingAttributeValueLocation): Describes where an attribute value exists.
         universe_id (int | Unset): The universe id of the attribute.
-        name (None | str | Unset): The name of the attribute.
         data_type (MatchmakingAttributeDataType | Unset): Data type of a matchmaking attribute. Can be a bool, number,
             or string.
         default_value (MatchmakingAttributeValue | Unset): Matchmaking attribute value object for matchmaking rules.
-        attribute_value_location (MatchmakingAttributeValueLocation | Unset): Describes where an attribute value exists.
         created_time (datetime.datetime | Unset): The aggregation function of the attribute.
         updated_time (datetime.datetime | Unset): The time the attribute was last updated.
     """
 
-    id: None | str | Unset = UNSET
+    id: None | str
+    name: None | str
+    attribute_value_location: MatchmakingAttributeValueLocation
     universe_id: int | Unset = UNSET
-    name: None | str | Unset = UNSET
     data_type: MatchmakingAttributeDataType | Unset = UNSET
     default_value: MatchmakingAttributeValue | Unset = UNSET
-    attribute_value_location: MatchmakingAttributeValueLocation | Unset = UNSET
     created_time: datetime.datetime | Unset = UNSET
     updated_time: datetime.datetime | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        id: None | str | Unset
-        if isinstance(self.id, Unset):
-            id = UNSET
-        else:
-            id = self.id
+        id: None | str
+        id = self.id
+
+        name: None | str
+        name = self.name
+
+        attribute_value_location = self.attribute_value_location.to_dict()
 
         universe_id = self.universe_id
-
-        name: None | str | Unset
-        if isinstance(self.name, Unset):
-            name = UNSET
-        else:
-            name = self.name
 
         data_type: str | Unset = UNSET
         if not isinstance(self.data_type, Unset):
@@ -64,10 +60,6 @@ class MatchmakingPlayerAttributeDefinition:
         default_value: dict[str, Any] | Unset = UNSET
         if not isinstance(self.default_value, Unset):
             default_value = self.default_value.to_dict()
-
-        attribute_value_location: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.attribute_value_location, Unset):
-            attribute_value_location = self.attribute_value_location.to_dict()
 
         created_time: str | Unset = UNSET
         if not isinstance(self.created_time, Unset):
@@ -79,19 +71,19 @@ class MatchmakingPlayerAttributeDefinition:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if id is not UNSET:
-            field_dict["id"] = id
+        field_dict.update(
+            {
+                "id": id,
+                "name": name,
+                "attributeValueLocation": attribute_value_location,
+            }
+        )
         if universe_id is not UNSET:
             field_dict["universeId"] = universe_id
-        if name is not UNSET:
-            field_dict["name"] = name
         if data_type is not UNSET:
             field_dict["dataType"] = data_type
         if default_value is not UNSET:
             field_dict["defaultValue"] = default_value
-        if attribute_value_location is not UNSET:
-            field_dict["attributeValueLocation"] = attribute_value_location
         if created_time is not UNSET:
             field_dict["createdTime"] = created_time
         if updated_time is not UNSET:
@@ -106,25 +98,23 @@ class MatchmakingPlayerAttributeDefinition:
 
         d = dict(src_dict)
 
-        def _parse_id(data: object) -> None | str | Unset:
+        def _parse_id(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        id = _parse_id(d.pop("id", UNSET))
+        id = _parse_id(d.pop("id"))
+
+        def _parse_name(data: object) -> None | str:
+            if data is None:
+                return data
+            return cast(None | str, data)
+
+        name = _parse_name(d.pop("name"))
+
+        attribute_value_location = MatchmakingAttributeValueLocation.from_dict(d.pop("attributeValueLocation"))
 
         universe_id = d.pop("universeId", UNSET)
-
-        def _parse_name(data: object) -> None | str | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
-
-        name = _parse_name(d.pop("name", UNSET))
 
         _data_type = d.pop("dataType", UNSET)
         data_type: MatchmakingAttributeDataType | Unset
@@ -139,13 +129,6 @@ class MatchmakingPlayerAttributeDefinition:
             default_value = UNSET
         else:
             default_value = MatchmakingAttributeValue.from_dict(_default_value)
-
-        _attribute_value_location = d.pop("attributeValueLocation", UNSET)
-        attribute_value_location: MatchmakingAttributeValueLocation | Unset
-        if isinstance(_attribute_value_location, Unset):
-            attribute_value_location = UNSET
-        else:
-            attribute_value_location = MatchmakingAttributeValueLocation.from_dict(_attribute_value_location)
 
         _created_time = d.pop("createdTime", UNSET)
         created_time: datetime.datetime | Unset
@@ -163,11 +146,11 @@ class MatchmakingPlayerAttributeDefinition:
 
         matchmaking_player_attribute_definition = cls(
             id=id,
-            universe_id=universe_id,
             name=name,
+            attribute_value_location=attribute_value_location,
+            universe_id=universe_id,
             data_type=data_type,
             default_value=default_value,
-            attribute_value_location=attribute_value_location,
             created_time=created_time,
             updated_time=updated_time,
         )

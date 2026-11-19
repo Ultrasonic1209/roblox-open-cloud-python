@@ -17,7 +17,7 @@ class StructuredStackFrame:
     Representing the metadata for a single frame in a structured stack trace.
 
         Attributes:
-            line (int | Unset): The line number where the error occurred.
+            line (int): The line number where the error occurred.
             function (None | str | Unset): The name of the function in which the error occurred.
             script_path (None | str | Unset): The data model path to the script where the error occurred.
             script_unique_id (None | str | Unset): The unique id for the script where the error occurred.
@@ -31,7 +31,7 @@ class StructuredStackFrame:
                 This includes Starter scripts (e.g. StarterGui, StarterPack, StarterPlayerScripts, StarterCharacterScripts).
     """
 
-    line: int | Unset = UNSET
+    line: int
     function: None | str | Unset = UNSET
     script_path: None | str | Unset = UNSET
     script_unique_id: None | str | Unset = UNSET
@@ -66,9 +66,11 @@ class StructuredStackFrame:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if line is not UNSET:
-            field_dict["line"] = line
+        field_dict.update(
+            {
+                "line": line,
+            }
+        )
         if function is not UNSET:
             field_dict["function"] = function
         if script_path is not UNSET:
@@ -83,7 +85,7 @@ class StructuredStackFrame:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        line = d.pop("line", UNSET)
+        line = d.pop("line")
 
         def _parse_function(data: object) -> None | str | Unset:
             if data is None:

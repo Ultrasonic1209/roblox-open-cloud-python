@@ -8,10 +8,8 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.analytics_query_public_api_dimension_values_response import (
-        AnalyticsQueryPublicApiDimensionValuesResponse,
-    )
-    from ..models.analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata
+    from ..models.dimension_values_response import DimensionValuesResponse
+    from ..models.operation_metadata import OperationMetadata
 
 
 T = TypeVar("T", bound="DimensionValuesOperationResult")
@@ -24,15 +22,14 @@ class DimensionValuesOperationResult:
     Attributes:
         path (None | str | Unset): The server-assigned resource path.
         done (bool | Unset): If false, the operation is still in progress. If true, the operation is completed.
-        response (AnalyticsQueryPublicApiDimensionValuesResponse | Unset): The response for a dimension values query.
-        metadata (AnalyticsQueryPublicApiOperationMetadata | Unset): The metadata associated with a long-running
-            operation.
+        response (DimensionValuesResponse | Unset): The response for a dimension values query.
+        metadata (OperationMetadata | Unset): The metadata associated with a long-running operation.
     """
 
     path: None | str | Unset = UNSET
     done: bool | Unset = UNSET
-    response: AnalyticsQueryPublicApiDimensionValuesResponse | Unset = UNSET
-    metadata: AnalyticsQueryPublicApiOperationMetadata | Unset = UNSET
+    response: DimensionValuesResponse | Unset = UNSET
+    metadata: OperationMetadata | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         path: None | str | Unset
@@ -67,10 +64,8 @@ class DimensionValuesOperationResult:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.analytics_query_public_api_dimension_values_response import (
-            AnalyticsQueryPublicApiDimensionValuesResponse,  # noqa: PLC0415
-        )
-        from ..models.analytics_query_public_api_operation_metadata import AnalyticsQueryPublicApiOperationMetadata  # noqa: PLC0415
+        from ..models.dimension_values_response import DimensionValuesResponse  # noqa: PLC0415
+        from ..models.operation_metadata import OperationMetadata  # noqa: PLC0415
 
         d = dict(src_dict)
 
@@ -86,18 +81,18 @@ class DimensionValuesOperationResult:
         done = d.pop("done", UNSET)
 
         _response = d.pop("response", UNSET)
-        response: AnalyticsQueryPublicApiDimensionValuesResponse | Unset
+        response: DimensionValuesResponse | Unset
         if isinstance(_response, Unset):
             response = UNSET
         else:
-            response = AnalyticsQueryPublicApiDimensionValuesResponse.from_dict(_response)
+            response = DimensionValuesResponse.from_dict(_response)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: AnalyticsQueryPublicApiOperationMetadata | Unset
+        metadata: OperationMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
-            metadata = AnalyticsQueryPublicApiOperationMetadata.from_dict(_metadata)
+            metadata = OperationMetadata.from_dict(_metadata)
 
         dimension_values_operation_result = cls(
             path=path,

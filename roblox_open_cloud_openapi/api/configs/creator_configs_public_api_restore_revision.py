@@ -125,6 +125,8 @@ def sync_detailed(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         revision_id (str):
 
     Raises:
@@ -183,6 +185,8 @@ def sync(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         revision_id (str):
 
     Raises:
@@ -236,6 +240,8 @@ async def asyncio_detailed(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         revision_id (str):
 
     Raises:
@@ -292,6 +298,8 @@ async def asyncio(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         revision_id (str):
 
     Raises:

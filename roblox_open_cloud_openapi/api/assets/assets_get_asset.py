@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
 if TYPE_CHECKING:
@@ -23,23 +23,28 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Get Asset', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'asset:read'}], 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Get Asset without readMask', 'script': "curl --location --request GET 'https://apis.roblox.com/assets/v1/assets/{assetId}' \\\n--header 'x-api-key: {apiKey}'"}, {'language': 'Get Asset with readMask', 'script': "curl --location --request GET 'https://apis.roblox.com/assets/v1/assets/{assetId}?readMask={read_mask}' \\\n--header 'x-api-key: {apiKey}'"}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 120}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 120}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+{'x-roblox-scopes': [{'name': 'asset:read', 'description': 'Required.'}], 'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Get Asset', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Get Asset without readMask', 'script': "curl --location --request GET 'https://apis.roblox.com/assets/v1/assets/{assetId}' \\\n--header 'x-api-key: {apiKey}'"}, {'language': 'Get Asset with readMask', 'script': "curl --location --request GET 'https://apis.roblox.com/assets/v1/assets/{assetId}?readMask={read_mask}' \\\n--header 'x-api-key: {apiKey}'"}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 600}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 600}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
-from ...models.asset import Asset
+from ...models.assets_upload_api_asset import AssetsUploadApiAsset
+from ...models.assets_upload_api_status import AssetsUploadApiStatus
 from ...types import Unset
 
 
 def _get_kwargs(
-    asset_id: str,
+    asset_id: int,
     *,
-    read_mask: str | Unset = UNSET,
+    read_mask: list[str] | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    params["readMask"] = read_mask
+    json_read_mask: list[str] | Unset = UNSET
+    if not isinstance(read_mask, Unset):
+        json_read_mask = read_mask
+
+    params["readMask"] = json_read_mask
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -54,30 +59,37 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | Asset | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AssetsUploadApiAsset | AssetsUploadApiStatus | None:
     if response.status_code == 200:
-        response_200 = Asset.from_dict(response.json())
+        response_200 = AssetsUploadApiAsset.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = cast(Any, None)
+        response_400 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_400
 
     if response.status_code == 401:
-        response_401 = cast(Any, None)
+        response_401 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_401
 
     if response.status_code == 403:
-        response_403 = cast(Any, None)
+        response_403 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_403
 
     if response.status_code == 404:
-        response_404 = cast(Any, None)
+        response_404 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_404
 
     if response.status_code == 500:
-        response_500 = cast(Any, None)
+        response_500 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_500
 
     if client.raise_on_unexpected_status:
@@ -86,7 +98,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | Asset]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AssetsUploadApiAsset | AssetsUploadApiStatus]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -96,25 +110,25 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def sync_detailed(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
-    read_mask: str | Unset = UNSET,
-) -> Response[Any | Asset]:
+    read_mask: list[str] | Unset = UNSET,
+) -> Response[AssetsUploadApiAsset | AssetsUploadApiStatus]:
     """Retrieve specific asset metadata. Include the `readMask` parameter for additional asset metadata.
 
      Retrieve specific asset metadata.
 
     Args:
-        asset_id (str):
-        read_mask (str | Unset):
+        asset_id (int):
+        read_mask (list[str] | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | Asset]
+        Response[AssetsUploadApiAsset | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -130,25 +144,25 @@ def sync_detailed(
 
 
 def sync(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
-    read_mask: str | Unset = UNSET,
-) -> Any | Asset | None:
+    read_mask: list[str] | Unset = UNSET,
+) -> AssetsUploadApiAsset | AssetsUploadApiStatus | None:
     """Retrieve specific asset metadata. Include the `readMask` parameter for additional asset metadata.
 
      Retrieve specific asset metadata.
 
     Args:
-        asset_id (str):
-        read_mask (str | Unset):
+        asset_id (int):
+        read_mask (list[str] | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | Asset
+        AssetsUploadApiAsset | AssetsUploadApiStatus
     """
 
     return sync_detailed(
@@ -159,25 +173,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
-    read_mask: str | Unset = UNSET,
-) -> Response[Any | Asset]:
+    read_mask: list[str] | Unset = UNSET,
+) -> Response[AssetsUploadApiAsset | AssetsUploadApiStatus]:
     """Retrieve specific asset metadata. Include the `readMask` parameter for additional asset metadata.
 
      Retrieve specific asset metadata.
 
     Args:
-        asset_id (str):
-        read_mask (str | Unset):
+        asset_id (int):
+        read_mask (list[str] | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | Asset]
+        Response[AssetsUploadApiAsset | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -191,25 +205,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
-    read_mask: str | Unset = UNSET,
-) -> Any | Asset | None:
+    read_mask: list[str] | Unset = UNSET,
+) -> AssetsUploadApiAsset | AssetsUploadApiStatus | None:
     """Retrieve specific asset metadata. Include the `readMask` parameter for additional asset metadata.
 
      Retrieve specific asset metadata.
 
     Args:
-        asset_id (str):
-        read_mask (str | Unset):
+        asset_id (int):
+        read_mask (list[str] | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | Asset
+        AssetsUploadApiAsset | AssetsUploadApiStatus
     """
 
     return (

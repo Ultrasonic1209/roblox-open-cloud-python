@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -20,33 +19,41 @@ class ReadMemoryStoreQueueItemsResponse:
     """Returns the specified number of items at the front of the queue.
 
     Attributes:
-        read_id (str | Unset): An identifier of the read operation
+        queue_items (list[MemoryStoreQueueItem] | None | Unset): The items read from the queue
+        id (None | str | Unset): An identifier of the read operation
 
-            This can be passed to `:discard` in order to mark the items as processed.
-        items (list[MemoryStoreQueueItem] | Unset): The items read from the queue
+            This can be passed to `:discard` as `readId` in order to mark the items as processed.
     """
 
-    read_id: str | Unset = UNSET
-    items: list[MemoryStoreQueueItem] | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    queue_items: list[MemoryStoreQueueItem] | None | Unset = UNSET
+    id: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        read_id = self.read_id
+        queue_items: list[dict[str, Any]] | None | Unset
+        if isinstance(self.queue_items, Unset):
+            queue_items = UNSET
+        elif isinstance(self.queue_items, list):
+            queue_items = []
+            for queue_items_type_0_item_data in self.queue_items:
+                queue_items_type_0_item = queue_items_type_0_item_data.to_dict()
+                queue_items.append(queue_items_type_0_item)
 
-        items: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.items, Unset):
-            items = []
-            for items_item_data in self.items:
-                items_item = items_item_data.to_dict()
-                items.append(items_item)
+        else:
+            queue_items = self.queue_items
+
+        id: None | str | Unset
+        if isinstance(self.id, Unset):
+            id = UNSET
+        else:
+            id = self.id
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
-        if read_id is not UNSET:
-            field_dict["readId"] = read_id
-        if items is not UNSET:
-            field_dict["items"] = items
+        if queue_items is not UNSET:
+            field_dict["queueItems"] = queue_items
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
@@ -55,37 +62,41 @@ class ReadMemoryStoreQueueItemsResponse:
         from ..models.memory_store_queue_item import MemoryStoreQueueItem  # noqa: PLC0415
 
         d = dict(src_dict)
-        read_id = d.pop("readId", UNSET)
 
-        _items = d.pop("items", UNSET)
-        items: list[MemoryStoreQueueItem] | Unset = UNSET
-        if _items is not UNSET:
-            items = []
-            for items_item_data in _items:
-                items_item = MemoryStoreQueueItem.from_dict(items_item_data)
+        def _parse_queue_items(data: object) -> list[MemoryStoreQueueItem] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                queue_items_type_0 = []
+                _queue_items_type_0 = data
+                for queue_items_type_0_item_data in _queue_items_type_0:
+                    queue_items_type_0_item = MemoryStoreQueueItem.from_dict(queue_items_type_0_item_data)
 
-                items.append(items_item)
+                    queue_items_type_0.append(queue_items_type_0_item)
+
+                return queue_items_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[MemoryStoreQueueItem] | None | Unset, data)
+
+        queue_items = _parse_queue_items(d.pop("queueItems", UNSET))
+
+        def _parse_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        id = _parse_id(d.pop("id", UNSET))
 
         read_memory_store_queue_items_response = cls(
-            read_id=read_id,
-            items=items,
+            queue_items=queue_items,
+            id=id,
         )
 
-        read_memory_store_queue_items_response.additional_properties = d
         return read_memory_store_queue_items_response
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

@@ -161,6 +161,8 @@ def sync_detailed(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -241,6 +243,8 @@ def sync(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -316,6 +320,8 @@ async def asyncio_detailed(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.
@@ -394,6 +400,8 @@ async def asyncio(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         body (UpdateDraftRequest | Unset): Request model for draft updates: PATCH uses a partial
             merge; PUT `draft:overwrite` treats the body as the full intended configuration after
             publish.

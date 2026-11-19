@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'universe.place.luau-execution-session:write'}], 'x-roblox-docs': {'category': 'Luau execution', 'methodProperties': {'scopes': ['universe.place.luau-execution-session:write']}, 'resource': {'$ref': '#/components/schemas/LuauExecutionSessionTask', 'name': 'LuauExecutionSessionTask'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 5}}}
+{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'universe.place.luau-execution-session:write', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}, {'name': 'universe.place.luau-execution-session:write', 'firstPartyOAuthOnly': True}], 'x-roblox-docs': {'category': 'Luau execution', 'methodProperties': {'scopes': ['universe.place.luau-execution-session:write']}, 'resource': {'$ref': '#/components/schemas/LuauExecutionSessionTask', 'name': 'LuauExecutionSessionTask'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 5}}}
 """
 
 

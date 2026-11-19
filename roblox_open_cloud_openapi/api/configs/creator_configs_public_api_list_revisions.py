@@ -164,6 +164,8 @@ def sync_detailed(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         start_time (datetime.datetime | Unset):
         end_time (datetime.datetime | Unset):
         max_page_size (int | Unset):
@@ -239,6 +241,8 @@ def sync(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         start_time (datetime.datetime | Unset):
         end_time (datetime.datetime | Unset):
         max_page_size (int | Unset):
@@ -309,6 +313,8 @@ async def asyncio_detailed(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         start_time (datetime.datetime | Unset):
         end_time (datetime.datetime | Unset):
         max_page_size (int | Unset):
@@ -382,6 +388,8 @@ async def asyncio(
             JourneysConfig
 
             AntiCheatConfig
+
+            DataCaptureConfig
         start_time (datetime.datetime | Unset):
         end_time (datetime.datetime | Unset):
         max_page_size (int | Unset):

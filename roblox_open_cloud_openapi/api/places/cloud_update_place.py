@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'universe.place:write', 'targetResourceSpecifier': 'universes'}, {'name': 'universe.place:write'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe.place:write']}, 'resource': {'$ref': '#/components/schemas/Place', 'name': 'Place'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'universe.place:write', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
@@ -35,7 +35,7 @@ def _get_kwargs(
     universe_id: str,
     place_id: str,
     *,
-    body: Place,
+    body: Place | Place | Place | Place | Unset = UNSET,
     update_mask: str | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -55,9 +55,26 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, Place):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json-patch+json"
+    if isinstance(body, Place):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, Place):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "text/json"
+    if isinstance(body, Place):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/*+json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -89,7 +106,7 @@ def sync_detailed(
     place_id: str,
     *,
     client: AuthenticatedClient,
-    body: Place,
+    body: Place | Place | Place | Place | Unset = UNSET,
     update_mask: str | Unset = UNSET,
 ) -> Response[Place]:
     """Update Place
@@ -102,7 +119,10 @@ def sync_detailed(
         universe_id (str):
         place_id (str):
         update_mask (str | Unset):
-        body (Place): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -131,7 +151,7 @@ def sync(
     place_id: str,
     *,
     client: AuthenticatedClient,
-    body: Place,
+    body: Place | Place | Place | Place | Unset = UNSET,
     update_mask: str | Unset = UNSET,
 ) -> Place | None:
     """Update Place
@@ -144,7 +164,10 @@ def sync(
         universe_id (str):
         place_id (str):
         update_mask (str | Unset):
-        body (Place): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +191,7 @@ async def asyncio_detailed(
     place_id: str,
     *,
     client: AuthenticatedClient,
-    body: Place,
+    body: Place | Place | Place | Place | Unset = UNSET,
     update_mask: str | Unset = UNSET,
 ) -> Response[Place]:
     """Update Place
@@ -181,7 +204,10 @@ async def asyncio_detailed(
         universe_id (str):
         place_id (str):
         update_mask (str | Unset):
-        body (Place): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -208,7 +234,7 @@ async def asyncio(
     place_id: str,
     *,
     client: AuthenticatedClient,
-    body: Place,
+    body: Place | Place | Place | Place | Unset = UNSET,
     update_mask: str | Unset = UNSET,
 ) -> Place | None:
     """Update Place
@@ -221,7 +247,10 @@ async def asyncio(
         universe_id (str):
         place_id (str):
         update_mask (str | Unset):
-        body (Place): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
+        body (Place | Unset): Represents a Roblox place.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -85,6 +85,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxLocaleApiSupportedLocalesResponse]:
     """Get list of Supported locales for a specific feature.
 
+     Currently supports the image-translation feature only; other features return not implemented.
+
     Args:
         feature_name (str):
 
@@ -114,6 +116,8 @@ def sync(
 ) -> Any | RobloxLocaleApiSupportedLocalesResponse | None:
     """Get list of Supported locales for a specific feature.
 
+     Currently supports the image-translation feature only; other features return not implemented.
+
     Args:
         feature_name (str):
 
@@ -137,6 +141,8 @@ async def asyncio_detailed(
     feature_name: str,
 ) -> Response[Any | RobloxLocaleApiSupportedLocalesResponse]:
     """Get list of Supported locales for a specific feature.
+
+     Currently supports the image-translation feature only; other features return not implemented.
 
     Args:
         feature_name (str):
@@ -164,6 +170,8 @@ async def asyncio(
     feature_name: str,
 ) -> Any | RobloxLocaleApiSupportedLocalesResponse | None:
     """Get list of Supported locales for a specific feature.
+
+     Currently supports the image-translation feature only; other features return not implemented.
 
     Args:
         feature_name (str):

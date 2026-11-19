@@ -5,8 +5,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
     from ..models.get_matchmaking_scoring_default_weights_response_weights_type_0 import (
         GetMatchmakingScoringDefaultWeightsResponseWeightsType0,
@@ -21,30 +19,30 @@ class GetMatchmakingScoringDefaultWeightsResponse:
     """Response containing the weights of the current default matchmaking scoring weights
 
     Attributes:
-        weights (GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None | Unset): The weights of the current
-            default matchmaking scoring weights.
+        weights (GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None): The weights of the current default
+            matchmaking scoring weights.
     """
 
-    weights: GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None | Unset = UNSET
+    weights: GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.get_matchmaking_scoring_default_weights_response_weights_type_0 import (
             GetMatchmakingScoringDefaultWeightsResponseWeightsType0,  # noqa: PLC0415
         )
 
-        weights: dict[str, Any] | None | Unset
-        if isinstance(self.weights, Unset):
-            weights = UNSET
-        elif isinstance(self.weights, GetMatchmakingScoringDefaultWeightsResponseWeightsType0):
+        weights: dict[str, Any] | None
+        if isinstance(self.weights, GetMatchmakingScoringDefaultWeightsResponseWeightsType0):
             weights = self.weights.to_dict()
         else:
             weights = self.weights
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if weights is not UNSET:
-            field_dict["weights"] = weights
+        field_dict.update(
+            {
+                "weights": weights,
+            }
+        )
 
         return field_dict
 
@@ -56,10 +54,8 @@ class GetMatchmakingScoringDefaultWeightsResponse:
 
         d = dict(src_dict)
 
-        def _parse_weights(data: object) -> GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None | Unset:
+        def _parse_weights(data: object) -> GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None:
             if data is None:
-                return data
-            if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, dict):
@@ -69,9 +65,9 @@ class GetMatchmakingScoringDefaultWeightsResponse:
                 return weights_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None | Unset, data)
+            return cast(GetMatchmakingScoringDefaultWeightsResponseWeightsType0 | None, data)
 
-        weights = _parse_weights(d.pop("weights", UNSET))
+        weights = _parse_weights(d.pop("weights"))
 
         get_matchmaking_scoring_default_weights_response = cls(
             weights=weights,

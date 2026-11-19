@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
@@ -38,6 +38,8 @@ def _get_kwargs(
     page_number: int | Unset = 0,
     page_size: int | Unset = 20,
     message_tab: GetV1MessagesMessageTab | Unset = GetV1MessagesMessageTab.INBOX,
+    page_token: str | Unset = UNSET,
+    use_cursor: bool | Unset = False,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -51,6 +53,10 @@ def _get_kwargs(
         json_message_tab = message_tab.value
 
     params["messageTab"] = json_message_tab
+
+    params["pageToken"] = page_token
+
+    params["useCursor"] = use_cursor
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -98,6 +104,8 @@ def sync_detailed(
     page_number: int | Unset = 0,
     page_size: int | Unset = 20,
     message_tab: GetV1MessagesMessageTab | Unset = GetV1MessagesMessageTab.INBOX,
+    page_token: str | Unset = UNSET,
+    use_cursor: bool | Unset = False,
 ) -> Response[Any | RobloxPrivateMessagesApiModelsGetMessagesResponse]:
     """Gets a user's messages.
 
@@ -105,6 +113,8 @@ def sync_detailed(
         page_number (int | Unset):  Default: 0.
         page_size (int | Unset):  Default: 20.
         message_tab (GetV1MessagesMessageTab | Unset):  Default: GetV1MessagesMessageTab.INBOX.
+        page_token (str | Unset):
+        use_cursor (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -118,6 +128,8 @@ def sync_detailed(
         page_number=page_number,
         page_size=page_size,
         message_tab=message_tab,
+        page_token=page_token,
+        use_cursor=use_cursor,
     )
 
     response = client.get_httpx_client().request(
@@ -133,6 +145,8 @@ def sync(
     page_number: int | Unset = 0,
     page_size: int | Unset = 20,
     message_tab: GetV1MessagesMessageTab | Unset = GetV1MessagesMessageTab.INBOX,
+    page_token: str | Unset = UNSET,
+    use_cursor: bool | Unset = False,
 ) -> Any | RobloxPrivateMessagesApiModelsGetMessagesResponse | None:
     """Gets a user's messages.
 
@@ -140,6 +154,8 @@ def sync(
         page_number (int | Unset):  Default: 0.
         page_size (int | Unset):  Default: 20.
         message_tab (GetV1MessagesMessageTab | Unset):  Default: GetV1MessagesMessageTab.INBOX.
+        page_token (str | Unset):
+        use_cursor (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,6 +170,8 @@ def sync(
         page_number=page_number,
         page_size=page_size,
         message_tab=message_tab,
+        page_token=page_token,
+        use_cursor=use_cursor,
     ).parsed
 
 
@@ -163,6 +181,8 @@ async def asyncio_detailed(
     page_number: int | Unset = 0,
     page_size: int | Unset = 20,
     message_tab: GetV1MessagesMessageTab | Unset = GetV1MessagesMessageTab.INBOX,
+    page_token: str | Unset = UNSET,
+    use_cursor: bool | Unset = False,
 ) -> Response[Any | RobloxPrivateMessagesApiModelsGetMessagesResponse]:
     """Gets a user's messages.
 
@@ -170,6 +190,8 @@ async def asyncio_detailed(
         page_number (int | Unset):  Default: 0.
         page_size (int | Unset):  Default: 20.
         message_tab (GetV1MessagesMessageTab | Unset):  Default: GetV1MessagesMessageTab.INBOX.
+        page_token (str | Unset):
+        use_cursor (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -183,6 +205,8 @@ async def asyncio_detailed(
         page_number=page_number,
         page_size=page_size,
         message_tab=message_tab,
+        page_token=page_token,
+        use_cursor=use_cursor,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -196,6 +220,8 @@ async def asyncio(
     page_number: int | Unset = 0,
     page_size: int | Unset = 20,
     message_tab: GetV1MessagesMessageTab | Unset = GetV1MessagesMessageTab.INBOX,
+    page_token: str | Unset = UNSET,
+    use_cursor: bool | Unset = False,
 ) -> Any | RobloxPrivateMessagesApiModelsGetMessagesResponse | None:
     """Gets a user's messages.
 
@@ -203,6 +229,8 @@ async def asyncio(
         page_number (int | Unset):  Default: 0.
         page_size (int | Unset):  Default: 20.
         message_tab (GetV1MessagesMessageTab | Unset):  Default: GetV1MessagesMessageTab.INBOX.
+        page_token (str | Unset):
+        use_cursor (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -218,5 +246,7 @@ async def asyncio(
             page_number=page_number,
             page_size=page_size,
             message_tab=message_tab,
+            page_token=page_token,
+            use_cursor=use_cursor,
         )
     ).parsed

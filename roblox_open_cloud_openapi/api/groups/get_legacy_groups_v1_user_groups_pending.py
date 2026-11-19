@@ -22,9 +22,15 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-group:manage', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-groups/v1/user/groups/pending', 'httpMethod': 'GET', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_user_groups_pending'}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-group:manage', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
 
 from ...models.roblox_web_web_api_models_api_array_response_roblox_groups_api_group_detail_response import (
     RobloxWebWebAPIModelsApiArrayResponseRobloxGroupsApiGroupDetailResponse,
@@ -72,6 +78,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_user_groups_pending"
+)
 def sync_detailed(
     *,
     client: AuthenticatedClient,
@@ -95,6 +104,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_user_groups_pending"
+)
 def sync(
     *,
     client: AuthenticatedClient,
@@ -114,6 +126,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_user_groups_pending"
+)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -135,6 +150,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/groups#get_legacy_groups_v1_user_groups_pending"
+)
 async def asyncio(
     *,
     client: AuthenticatedClient,

@@ -25,6 +25,12 @@ from ...types import Response
 {'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
 
 from ...models.get_v1_subcategories_response_200 import GetV1SubcategoriesResponse200
 
@@ -64,11 +70,16 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#catalog_get_v1_subcategories"
+)
 def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetV1SubcategoriesResponse200]:
     """Lists Subcategory Names and their Ids.
+
+     This endpoint will be deprecated soon. No new features will be added.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -87,11 +98,16 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#catalog_get_v1_subcategories"
+)
 def sync(
     *,
     client: AuthenticatedClient,
 ) -> GetV1SubcategoriesResponse200 | None:
     """Lists Subcategory Names and their Ids.
+
+     This endpoint will be deprecated soon. No new features will be added.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -106,11 +122,16 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#catalog_get_v1_subcategories"
+)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetV1SubcategoriesResponse200]:
     """Lists Subcategory Names and their Ids.
+
+     This endpoint will be deprecated soon. No new features will be added.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -127,11 +148,16 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/assets#catalog_get_v1_subcategories"
+)
 async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GetV1SubcategoriesResponse200 | None:
     """Lists Subcategory Names and their Ids.
+
+     This endpoint will be deprecated soon. No new features will be added.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

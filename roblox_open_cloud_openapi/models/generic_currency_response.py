@@ -5,7 +5,7 @@ from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
-from ..models.transaction_records_api_currency_type import TransactionRecordsApiCurrencyType
+from ..models.currency_type import CurrencyType
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="GenericCurrencyResponse")
@@ -16,11 +16,11 @@ class GenericCurrencyResponse:
     """
     Attributes:
         amount (int | Unset):
-        type_ (TransactionRecordsApiCurrencyType | Unset):
+        type_ (CurrencyType | Unset):
     """
 
     amount: int | Unset = UNSET
-    type_: TransactionRecordsApiCurrencyType | Unset = UNSET
+    type_: CurrencyType | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         amount = self.amount
@@ -45,11 +45,11 @@ class GenericCurrencyResponse:
         amount = d.pop("amount", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: TransactionRecordsApiCurrencyType | Unset
+        type_: CurrencyType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
-            type_ = TransactionRecordsApiCurrencyType(_type_)
+            type_ = CurrencyType(_type_)
 
         generic_currency_response = cls(
             amount=amount,

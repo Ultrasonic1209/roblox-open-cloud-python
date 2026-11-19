@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..models.o18_eligibility_tag import O18EligibilityTag
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -34,7 +33,6 @@ class TransactionRecordResponse:
         currency (GenericCurrencyResponse | None | Unset):
         purchase_token (None | str | Unset):
         transaction_subtype (None | str | Unset):
-        o_18_eligibility_tag (None | O18EligibilityTag | Unset):
         robux_rate_breakdown (None | RobuxRateBreakdown | Unset):
     """
 
@@ -49,7 +47,6 @@ class TransactionRecordResponse:
     currency: GenericCurrencyResponse | None | Unset = UNSET
     purchase_token: None | str | Unset = UNSET
     transaction_subtype: None | str | Unset = UNSET
-    o_18_eligibility_tag: None | O18EligibilityTag | Unset = UNSET
     robux_rate_breakdown: None | RobuxRateBreakdown | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -122,14 +119,6 @@ class TransactionRecordResponse:
         else:
             transaction_subtype = self.transaction_subtype
 
-        o_18_eligibility_tag: None | str | Unset
-        if isinstance(self.o_18_eligibility_tag, Unset):
-            o_18_eligibility_tag = UNSET
-        elif isinstance(self.o_18_eligibility_tag, O18EligibilityTag):
-            o_18_eligibility_tag = self.o_18_eligibility_tag.value
-        else:
-            o_18_eligibility_tag = self.o_18_eligibility_tag
-
         robux_rate_breakdown: dict[str, Any] | None | Unset
         if isinstance(self.robux_rate_breakdown, Unset):
             robux_rate_breakdown = UNSET
@@ -163,8 +152,6 @@ class TransactionRecordResponse:
             field_dict["purchaseToken"] = purchase_token
         if transaction_subtype is not UNSET:
             field_dict["transactionSubtype"] = transaction_subtype
-        if o_18_eligibility_tag is not UNSET:
-            field_dict["o18EligibilityTag"] = o_18_eligibility_tag
         if robux_rate_breakdown is not UNSET:
             field_dict["robuxRateBreakdown"] = robux_rate_breakdown
 
@@ -293,23 +280,6 @@ class TransactionRecordResponse:
 
         transaction_subtype = _parse_transaction_subtype(d.pop("transactionSubtype", UNSET))
 
-        def _parse_o_18_eligibility_tag(data: object) -> None | O18EligibilityTag | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                o_18_eligibility_tag_type_1 = O18EligibilityTag(data)
-
-                return o_18_eligibility_tag_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | O18EligibilityTag | Unset, data)
-
-        o_18_eligibility_tag = _parse_o_18_eligibility_tag(d.pop("o18EligibilityTag", UNSET))
-
         def _parse_robux_rate_breakdown(data: object) -> None | RobuxRateBreakdown | Unset:
             if data is None:
                 return data
@@ -339,7 +309,6 @@ class TransactionRecordResponse:
             currency=currency,
             purchase_token=purchase_token,
             transaction_subtype=transaction_subtype,
-            o_18_eligibility_tag=o_18_eligibility_tag,
             robux_rate_breakdown=robux_rate_breakdown,
         )
 

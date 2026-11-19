@@ -23,9 +23,15 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-user:manage', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/legacy-groups/v1/groups/{groupId}/notification-preference', 'httpMethod': 'PATCH', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/groups#patch_legacy_groups_v1_groups__groupId__notification_preference'}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-scopes': [{'name': 'legacy-user:manage', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
 
 from ...models.patch_legacy_groups_v1_groups_group_id_notification_preference_response_200 import (
     PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200,
@@ -101,6 +107,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/groups#patch_legacy_groups_v1_groups__groupId__notification_preference"
+)
 def sync_detailed(
     group_id: int,
     *,
@@ -138,6 +147,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/groups#patch_legacy_groups_v1_groups__groupId__notification_preference"
+)
 def sync(
     group_id: int,
     *,
@@ -170,6 +182,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/groups#patch_legacy_groups_v1_groups__groupId__notification_preference"
+)
 async def asyncio_detailed(
     group_id: int,
     *,
@@ -205,6 +220,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/groups#patch_legacy_groups_v1_groups__groupId__notification_preference"
+)
 async def asyncio(
     group_id: int,
     *,

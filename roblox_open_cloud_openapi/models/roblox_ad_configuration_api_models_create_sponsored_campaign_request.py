@@ -48,7 +48,7 @@ class RobloxAdConfigurationApiModelsCreateSponsoredCampaignRequest:
         target_device_type (RobloxAdConfigurationApiModelsCreateSponsoredCampaignRequestTargetDeviceType | Unset):
             Targeting device type(s) of the ad set ['Undefined' = 1, 'Computer' = 2, 'Phone' = 4, 'Tablet' = 8, 'Console' =
             16, 'VR' = 32] Example: 2.
-        campaign_name (str | Unset): The name of the Campaign / Ad
+        campaign_name (str | Unset): The name of the Campaign / Ad Example: "Unique campaign name".
         daily_bid_amount_in_robux (int | Unset): The daily bid amount for the campaign / ad, in Robux Example: 101.
         placement_location (RobloxAdConfigurationApiModelsCreateSponsoredCampaignRequestPlacementLocation | Unset): The
             location to place the campaign ['Undefined' = 1, 'GameSort' = 2, 'AvatarShop' = 4, 'ItemDetails' = 8, 'HomePage'

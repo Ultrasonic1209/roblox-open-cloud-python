@@ -27,19 +27,16 @@ from ...types import UNSET, Response
 """
 
 
-from ...models.analytics_query_public_api_operation_error import AnalyticsQueryPublicApiOperationError
-from ...models.analytics_query_public_api_query_request import AnalyticsQueryPublicApiQueryRequest
+from ...models.operation_error import OperationError
 from ...models.operation_pending import OperationPending
 from ...models.query_operation_result import QueryOperationResult
+from ...models.query_request import QueryRequest
 
 
 def _get_kwargs(
     universe_id: int,
     *,
-    body: AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | Unset = UNSET,
+    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,15 +47,15 @@ def _get_kwargs(
         ),
     }
 
-    if isinstance(body, AnalyticsQueryPublicApiQueryRequest):
+    if isinstance(body, QueryRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/json"
-    if isinstance(body, AnalyticsQueryPublicApiQueryRequest):
+    if isinstance(body, QueryRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "text/json"
-    if isinstance(body, AnalyticsQueryPublicApiQueryRequest):
+    if isinstance(body, QueryRequest):
         _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/*+json"
@@ -69,7 +66,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult | None:
+) -> OperationError | OperationPending | QueryOperationResult | None:
     if response.status_code == 200:
         response_200 = QueryOperationResult.from_dict(response.json())
 
@@ -81,32 +78,32 @@ def _parse_response(
         return response_202
 
     if response.status_code == 400:
-        response_400 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
+        response_400 = OperationError.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 403:
-        response_403 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
+        response_403 = OperationError.from_dict(response.json())
 
         return response_403
 
     if response.status_code == 429:
-        response_429 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
+        response_429 = OperationError.from_dict(response.json())
 
         return response_429
 
     if response.status_code == 500:
-        response_500 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
+        response_500 = OperationError.from_dict(response.json())
 
         return response_500
 
     if response.status_code == 503:
-        response_503 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
+        response_503 = OperationError.from_dict(response.json())
 
         return response_503
 
     if response.status_code == 504:
-        response_504 = AnalyticsQueryPublicApiOperationError.from_dict(response.json())
+        response_504 = OperationError.from_dict(response.json())
 
         return response_504
 
@@ -118,7 +115,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]:
+) -> Response[OperationError | OperationPending | QueryOperationResult]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -131,11 +128,8 @@ def sync_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | Unset = UNSET,
-) -> Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]:
+    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+) -> Response[OperationError | OperationPending | QueryOperationResult]:
     """Queries time series metric data for a universe.
 
      See the <a href="https://create.roblox.com/docs/cloud/guides/analytics">Analytics guide</a> for more
@@ -143,16 +137,16 @@ def sync_detailed(
 
     Args:
         universe_id (int):
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]
+        Response[OperationError | OperationPending | QueryOperationResult]
     """
 
     kwargs = _get_kwargs(
@@ -171,11 +165,8 @@ def sync(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | Unset = UNSET,
-) -> AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult | None:
+    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+) -> OperationError | OperationPending | QueryOperationResult | None:
     """Queries time series metric data for a universe.
 
      See the <a href="https://create.roblox.com/docs/cloud/guides/analytics">Analytics guide</a> for more
@@ -183,16 +174,16 @@ def sync(
 
     Args:
         universe_id (int):
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult
+        OperationError | OperationPending | QueryOperationResult
     """
 
     return sync_detailed(
@@ -206,11 +197,8 @@ async def asyncio_detailed(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | Unset = UNSET,
-) -> Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]:
+    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+) -> Response[OperationError | OperationPending | QueryOperationResult]:
     """Queries time series metric data for a universe.
 
      See the <a href="https://create.roblox.com/docs/cloud/guides/analytics">Analytics guide</a> for more
@@ -218,16 +206,16 @@ async def asyncio_detailed(
 
     Args:
         universe_id (int):
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult]
+        Response[OperationError | OperationPending | QueryOperationResult]
     """
 
     kwargs = _get_kwargs(
@@ -244,11 +232,8 @@ async def asyncio(
     universe_id: int,
     *,
     client: AuthenticatedClient,
-    body: AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | AnalyticsQueryPublicApiQueryRequest
-    | Unset = UNSET,
-) -> AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult | None:
+    body: QueryRequest | QueryRequest | QueryRequest | Unset = UNSET,
+) -> OperationError | OperationPending | QueryOperationResult | None:
     """Queries time series metric data for a universe.
 
      See the <a href="https://create.roblox.com/docs/cloud/guides/analytics">Analytics guide</a> for more
@@ -256,16 +241,16 @@ async def asyncio(
 
     Args:
         universe_id (int):
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
-        body (AnalyticsQueryPublicApiQueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
+        body (QueryRequest): A request to query time series metric data.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AnalyticsQueryPublicApiOperationError | OperationPending | QueryOperationResult
+        OperationError | OperationPending | QueryOperationResult
     """
 
     return (

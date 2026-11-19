@@ -21,83 +21,67 @@ class GameServerLog:
     """Response model for listing a game server log
 
     Attributes:
-        message_timestamp_ms (datetime.datetime | Unset): The timestamp the log was received
-        universe_id (int | Unset): The universe where the log was created
-        place_id (None | str | Unset): The place where the log was created
-        place_version (None | str | Unset): The place version on which the log was created
-        job_id (None | str | Unset): The Game Server id where the log was created
-        severity (LogSeverity | Unset): Defines the various log severity types with values:
+        message_timestamp_ms (datetime.datetime): The timestamp the log was received
+        universe_id (int): The universe where the log was created
+        place_id (None | str): The place where the log was created
+        place_version (None | str): The place version on which the log was created
+        job_id (None | str): The Game Server id where the log was created
+        severity (LogSeverity): Defines the various log severity types with values:
             Output (0), Info (1), Warning (2), Error (3)
-        message (None | str | Unset): The log message
-        stack_trace (None | str | Unset): The stack trace of the log
+        message (None | str): The log message
+        stack_trace (None | str): The stack trace of the log
+        skipped_count (int): How many duplicate versions of this message were present in the same time window as this
+            log
+        rate_limited_count (int): How many more messages were present in the time window beyond our overall rate limits
         message_template (None | str | Unset): Optional message template included with structured logging
         context (None | str | Unset): Optional message context included with structured logging
         logger_full_path (None | str | Unset): The full path of the logger that emitted the log entry
-        skipped_count (int | Unset): How many duplicate versions of this message were present in the same time window as
-            this log
-        rate_limited_count (int | Unset): How many more messages were present in the time window beyond our overall rate
-            limits
         structured_stack_trace (list[StructuredStackFrame] | None | Unset): A list of
             ServerManagementService.V2.Models.StructuredStackFrame metadata, identifying the script that errored when
             combined
             with the ServerManagementService.V2.Models.GameServerLog.PlaceVersion
     """
 
-    message_timestamp_ms: datetime.datetime | Unset = UNSET
-    universe_id: int | Unset = UNSET
-    place_id: None | str | Unset = UNSET
-    place_version: None | str | Unset = UNSET
-    job_id: None | str | Unset = UNSET
-    severity: LogSeverity | Unset = UNSET
-    message: None | str | Unset = UNSET
-    stack_trace: None | str | Unset = UNSET
+    message_timestamp_ms: datetime.datetime
+    universe_id: int
+    place_id: None | str
+    place_version: None | str
+    job_id: None | str
+    severity: LogSeverity
+    message: None | str
+    stack_trace: None | str
+    skipped_count: int
+    rate_limited_count: int
     message_template: None | str | Unset = UNSET
     context: None | str | Unset = UNSET
     logger_full_path: None | str | Unset = UNSET
-    skipped_count: int | Unset = UNSET
-    rate_limited_count: int | Unset = UNSET
     structured_stack_trace: list[StructuredStackFrame] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        message_timestamp_ms: str | Unset = UNSET
-        if not isinstance(self.message_timestamp_ms, Unset):
-            message_timestamp_ms = self.message_timestamp_ms.isoformat()
+        message_timestamp_ms = self.message_timestamp_ms.isoformat()
 
         universe_id = self.universe_id
 
-        place_id: None | str | Unset
-        if isinstance(self.place_id, Unset):
-            place_id = UNSET
-        else:
-            place_id = self.place_id
+        place_id: None | str
+        place_id = self.place_id
 
-        place_version: None | str | Unset
-        if isinstance(self.place_version, Unset):
-            place_version = UNSET
-        else:
-            place_version = self.place_version
+        place_version: None | str
+        place_version = self.place_version
 
-        job_id: None | str | Unset
-        if isinstance(self.job_id, Unset):
-            job_id = UNSET
-        else:
-            job_id = self.job_id
+        job_id: None | str
+        job_id = self.job_id
 
-        severity: int | Unset = UNSET
-        if not isinstance(self.severity, Unset):
-            severity = self.severity.value
+        severity = self.severity.value
 
-        message: None | str | Unset
-        if isinstance(self.message, Unset):
-            message = UNSET
-        else:
-            message = self.message
+        message: None | str
+        message = self.message
 
-        stack_trace: None | str | Unset
-        if isinstance(self.stack_trace, Unset):
-            stack_trace = UNSET
-        else:
-            stack_trace = self.stack_trace
+        stack_trace: None | str
+        stack_trace = self.stack_trace
+
+        skipped_count = self.skipped_count
+
+        rate_limited_count = self.rate_limited_count
 
         message_template: None | str | Unset
         if isinstance(self.message_template, Unset):
@@ -117,10 +101,6 @@ class GameServerLog:
         else:
             logger_full_path = self.logger_full_path
 
-        skipped_count = self.skipped_count
-
-        rate_limited_count = self.rate_limited_count
-
         structured_stack_trace: list[dict[str, Any]] | None | Unset
         if isinstance(self.structured_stack_trace, Unset):
             structured_stack_trace = UNSET
@@ -135,33 +115,26 @@ class GameServerLog:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if message_timestamp_ms is not UNSET:
-            field_dict["messageTimestampMs"] = message_timestamp_ms
-        if universe_id is not UNSET:
-            field_dict["universeId"] = universe_id
-        if place_id is not UNSET:
-            field_dict["placeId"] = place_id
-        if place_version is not UNSET:
-            field_dict["placeVersion"] = place_version
-        if job_id is not UNSET:
-            field_dict["jobId"] = job_id
-        if severity is not UNSET:
-            field_dict["severity"] = severity
-        if message is not UNSET:
-            field_dict["message"] = message
-        if stack_trace is not UNSET:
-            field_dict["stackTrace"] = stack_trace
+        field_dict.update(
+            {
+                "messageTimestampMs": message_timestamp_ms,
+                "universeId": universe_id,
+                "placeId": place_id,
+                "placeVersion": place_version,
+                "jobId": job_id,
+                "severity": severity,
+                "message": message,
+                "stackTrace": stack_trace,
+                "skippedCount": skipped_count,
+                "rateLimitedCount": rate_limited_count,
+            }
+        )
         if message_template is not UNSET:
             field_dict["messageTemplate"] = message_template
         if context is not UNSET:
             field_dict["context"] = context
         if logger_full_path is not UNSET:
             field_dict["loggerFullPath"] = logger_full_path
-        if skipped_count is not UNSET:
-            field_dict["skippedCount"] = skipped_count
-        if rate_limited_count is not UNSET:
-            field_dict["rateLimitedCount"] = rate_limited_count
         if structured_stack_trace is not UNSET:
             field_dict["structuredStackTrace"] = structured_stack_trace
 
@@ -172,66 +145,50 @@ class GameServerLog:
         from ..models.structured_stack_frame import StructuredStackFrame  # noqa: PLC0415
 
         d = dict(src_dict)
-        _message_timestamp_ms = d.pop("messageTimestampMs", UNSET)
-        message_timestamp_ms: datetime.datetime | Unset
-        if isinstance(_message_timestamp_ms, Unset):
-            message_timestamp_ms = UNSET
-        else:
-            message_timestamp_ms = datetime.datetime.fromisoformat(_message_timestamp_ms)
+        message_timestamp_ms = datetime.datetime.fromisoformat(d.pop("messageTimestampMs"))
 
-        universe_id = d.pop("universeId", UNSET)
+        universe_id = d.pop("universeId")
 
-        def _parse_place_id(data: object) -> None | str | Unset:
+        def _parse_place_id(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        place_id = _parse_place_id(d.pop("placeId", UNSET))
+        place_id = _parse_place_id(d.pop("placeId"))
 
-        def _parse_place_version(data: object) -> None | str | Unset:
+        def _parse_place_version(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        place_version = _parse_place_version(d.pop("placeVersion", UNSET))
+        place_version = _parse_place_version(d.pop("placeVersion"))
 
-        def _parse_job_id(data: object) -> None | str | Unset:
+        def _parse_job_id(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        job_id = _parse_job_id(d.pop("jobId", UNSET))
+        job_id = _parse_job_id(d.pop("jobId"))
 
-        _severity = d.pop("severity", UNSET)
-        severity: LogSeverity | Unset
-        if isinstance(_severity, Unset):
-            severity = UNSET
-        else:
-            severity = LogSeverity(_severity)
+        severity = LogSeverity(d.pop("severity"))
 
-        def _parse_message(data: object) -> None | str | Unset:
+        def _parse_message(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        message = _parse_message(d.pop("message", UNSET))
+        message = _parse_message(d.pop("message"))
 
-        def _parse_stack_trace(data: object) -> None | str | Unset:
+        def _parse_stack_trace(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        stack_trace = _parse_stack_trace(d.pop("stackTrace", UNSET))
+        stack_trace = _parse_stack_trace(d.pop("stackTrace"))
+
+        skipped_count = d.pop("skippedCount")
+
+        rate_limited_count = d.pop("rateLimitedCount")
 
         def _parse_message_template(data: object) -> None | str | Unset:
             if data is None:
@@ -259,10 +216,6 @@ class GameServerLog:
             return cast(None | str | Unset, data)
 
         logger_full_path = _parse_logger_full_path(d.pop("loggerFullPath", UNSET))
-
-        skipped_count = d.pop("skippedCount", UNSET)
-
-        rate_limited_count = d.pop("rateLimitedCount", UNSET)
 
         def _parse_structured_stack_trace(data: object) -> list[StructuredStackFrame] | None | Unset:
             if data is None:
@@ -297,11 +250,11 @@ class GameServerLog:
             severity=severity,
             message=message,
             stack_trace=stack_trace,
+            skipped_count=skipped_count,
+            rate_limited_count=rate_limited_count,
             message_template=message_template,
             context=context,
             logger_full_path=logger_full_path,
-            skipped_count=skipped_count,
-            rate_limited_count=rate_limited_count,
             structured_stack_trace=structured_stack_trace,
         )
 

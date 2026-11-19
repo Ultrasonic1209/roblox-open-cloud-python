@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -20,27 +19,35 @@ class ListAssetQuotasResponse:
     """A list of AssetQuotas in the parent collection.
 
     Attributes:
-        asset_quotas (list[AssetQuota] | Unset): The AssetQuotas from the specified User.
-        next_page_token (str | Unset): A token that you can send as a `pageToken` parameter to retrieve the next
+        asset_quotas (list[AssetQuota] | None | Unset): The AssetQuotas from the specified User.
+        next_page_token (None | str | Unset): A token that you can send as a `pageToken` parameter to retrieve the next
             page. If this field is omitted, there are no subsequent pages.
     """
 
-    asset_quotas: list[AssetQuota] | Unset = UNSET
-    next_page_token: str | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    asset_quotas: list[AssetQuota] | None | Unset = UNSET
+    next_page_token: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        asset_quotas: list[dict[str, Any]] | Unset = UNSET
-        if not isinstance(self.asset_quotas, Unset):
+        asset_quotas: list[dict[str, Any]] | None | Unset
+        if isinstance(self.asset_quotas, Unset):
+            asset_quotas = UNSET
+        elif isinstance(self.asset_quotas, list):
             asset_quotas = []
-            for asset_quotas_item_data in self.asset_quotas:
-                asset_quotas_item = asset_quotas_item_data.to_dict()
-                asset_quotas.append(asset_quotas_item)
+            for asset_quotas_type_0_item_data in self.asset_quotas:
+                asset_quotas_type_0_item = asset_quotas_type_0_item_data.to_dict()
+                asset_quotas.append(asset_quotas_type_0_item)
 
-        next_page_token = self.next_page_token
+        else:
+            asset_quotas = self.asset_quotas
+
+        next_page_token: None | str | Unset
+        if isinstance(self.next_page_token, Unset):
+            next_page_token = UNSET
+        else:
+            next_page_token = self.next_page_token
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if asset_quotas is not UNSET:
             field_dict["assetQuotas"] = asset_quotas
@@ -54,37 +61,41 @@ class ListAssetQuotasResponse:
         from ..models.asset_quota import AssetQuota  # noqa: PLC0415
 
         d = dict(src_dict)
-        _asset_quotas = d.pop("assetQuotas", UNSET)
-        asset_quotas: list[AssetQuota] | Unset = UNSET
-        if _asset_quotas is not UNSET:
-            asset_quotas = []
-            for asset_quotas_item_data in _asset_quotas:
-                asset_quotas_item = AssetQuota.from_dict(asset_quotas_item_data)
 
-                asset_quotas.append(asset_quotas_item)
+        def _parse_asset_quotas(data: object) -> list[AssetQuota] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                asset_quotas_type_0 = []
+                _asset_quotas_type_0 = data
+                for asset_quotas_type_0_item_data in _asset_quotas_type_0:
+                    asset_quotas_type_0_item = AssetQuota.from_dict(asset_quotas_type_0_item_data)
 
-        next_page_token = d.pop("nextPageToken", UNSET)
+                    asset_quotas_type_0.append(asset_quotas_type_0_item)
+
+                return asset_quotas_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[AssetQuota] | None | Unset, data)
+
+        asset_quotas = _parse_asset_quotas(d.pop("assetQuotas", UNSET))
+
+        def _parse_next_page_token(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        next_page_token = _parse_next_page_token(d.pop("nextPageToken", UNSET))
 
         list_asset_quotas_response = cls(
             asset_quotas=asset_quotas,
             next_page_token=next_page_token,
         )
 
-        list_asset_quotas_response.additional_properties = d
         return list_asset_quotas_response
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

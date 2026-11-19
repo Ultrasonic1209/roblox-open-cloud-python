@@ -20,21 +20,26 @@ else:
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'universe:write'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe:write']}, 'resource': {'$ref': '#/components/schemas/Universe', 'name': 'Universe'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 30}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 30}}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
 from ...models.restart_universe_servers_request import RestartUniverseServersRequest
 from ...models.restart_universe_servers_response import RestartUniverseServersResponse
+from ...types import Unset
 
 
 def _get_kwargs(
     universe_id: str,
     *,
-    body: RestartUniverseServersRequest,
+    body: RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -45,9 +50,26 @@ def _get_kwargs(
         ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, RestartUniverseServersRequest):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json-patch+json"
+    if isinstance(body, RestartUniverseServersRequest):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, RestartUniverseServersRequest):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "text/json"
+    if isinstance(body, RestartUniverseServersRequest):
+        if not isinstance(body, Unset):
+            _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/*+json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -82,7 +104,11 @@ def sync_detailed(
     universe_id: str,
     *,
     client: AuthenticatedClient,
-    body: RestartUniverseServersRequest,
+    body: RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | Unset = UNSET,
 ) -> Response[RestartUniverseServersResponse]:
     """Restart Universe Servers
 
@@ -92,7 +118,10 @@ def sync_detailed(
 
     Args:
         universe_id (str):
-        body (RestartUniverseServersRequest): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -118,7 +147,11 @@ def sync(
     universe_id: str,
     *,
     client: AuthenticatedClient,
-    body: RestartUniverseServersRequest,
+    body: RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | Unset = UNSET,
 ) -> RestartUniverseServersResponse | None:
     """Restart Universe Servers
 
@@ -128,7 +161,10 @@ def sync(
 
     Args:
         universe_id (str):
-        body (RestartUniverseServersRequest): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -149,7 +185,11 @@ async def asyncio_detailed(
     universe_id: str,
     *,
     client: AuthenticatedClient,
-    body: RestartUniverseServersRequest,
+    body: RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | Unset = UNSET,
 ) -> Response[RestartUniverseServersResponse]:
     """Restart Universe Servers
 
@@ -159,7 +199,10 @@ async def asyncio_detailed(
 
     Args:
         universe_id (str):
-        body (RestartUniverseServersRequest): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -183,7 +226,11 @@ async def asyncio(
     universe_id: str,
     *,
     client: AuthenticatedClient,
-    body: RestartUniverseServersRequest,
+    body: RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | RestartUniverseServersRequest
+    | Unset = UNSET,
 ) -> RestartUniverseServersResponse | None:
     """Restart Universe Servers
 
@@ -193,7 +240,10 @@ async def asyncio(
 
     Args:
         universe_id (str):
-        body (RestartUniverseServersRequest): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
+        body (RestartUniverseServersRequest | Unset): Restarts all of the universe's servers.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

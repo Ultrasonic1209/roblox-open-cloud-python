@@ -23,12 +23,12 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-long-running-operation-parameters': {'metadata': {'$ref': '#/components/schemas/GenerateSpeechAssetMetadata'}, 'response': {'$ref': '#/components/schemas/GenerateSpeechAssetResponse'}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'asset:read', 'targetResourceSpecifier': ''}, {'name': 'asset:write', 'targetResourceSpecifier': ''}, {'name': 'universe:write'}, {'name': 'asset:read'}, {'name': 'asset:write'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe:write', 'asset:read', 'asset:write']}, 'resource': {'$ref': '#/components/schemas/Universe', 'name': 'Universe'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'SECOND', 'maxInPeriod': 4}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 4}}}
+{'x-long-running-operation-parameters': {'metadata': {'$ref': '#/components/schemas/GenerateSpeechAssetMetadata'}, 'response': {'$ref': '#/components/schemas/GenerateSpeechAssetResponse'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'SECOND', 'maxInPeriod': 4}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 4}}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'asset:read', 'targetResourceSpecifier': ''}, {'name': 'asset:write', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
 from ...models.generate_speech_asset_request import GenerateSpeechAssetRequest
-from ...models.operation import Operation
+from ...models.text_to_speech_service_operation import TextToSpeechServiceOperation
 
 
 def _get_kwargs(
@@ -53,9 +53,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Operation | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> TextToSpeechServiceOperation | None:
     if response.status_code == 200:
-        response_200 = Operation.from_dict(response.json())
+        response_200 = TextToSpeechServiceOperation.from_dict(response.json())
 
         return response_200
 
@@ -65,7 +67,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Operation]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[TextToSpeechServiceOperation]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -79,7 +83,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: GenerateSpeechAssetRequest,
-) -> Response[Operation]:
+) -> Response[TextToSpeechServiceOperation]:
     """Generate Speech Asset
 
      Generates an English speech audio asset from the specified text.
@@ -102,7 +106,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Operation]
+        Response[TextToSpeechServiceOperation]
     """
 
     kwargs = _get_kwargs(
@@ -122,7 +126,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: GenerateSpeechAssetRequest,
-) -> Operation | None:
+) -> TextToSpeechServiceOperation | None:
     """Generate Speech Asset
 
      Generates an English speech audio asset from the specified text.
@@ -145,7 +149,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Operation
+        TextToSpeechServiceOperation
     """
 
     return sync_detailed(
@@ -160,7 +164,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: GenerateSpeechAssetRequest,
-) -> Response[Operation]:
+) -> Response[TextToSpeechServiceOperation]:
     """Generate Speech Asset
 
      Generates an English speech audio asset from the specified text.
@@ -183,7 +187,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Operation]
+        Response[TextToSpeechServiceOperation]
     """
 
     kwargs = _get_kwargs(
@@ -201,7 +205,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: GenerateSpeechAssetRequest,
-) -> Operation | None:
+) -> TextToSpeechServiceOperation | None:
     """Generate Speech Asset
 
      Generates an English speech audio asset from the specified text.
@@ -224,7 +228,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Operation
+        TextToSpeechServiceOperation
     """
 
     return (

@@ -22,9 +22,15 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-stability': 'BETA', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/server-management/v1/universes/{universeId}/restarts', 'httpMethod': 'POST', 'description': 'Launch a server restart using the universe ID in the URL.', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/observability#Restarts_LaunchRestart'}], 'x-roblox-stability': 'BETA', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
 
 from ...models.launch_update_request import LaunchUpdateRequest
 from ...models.launch_update_response import LaunchUpdateResponse
@@ -90,6 +96,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/matchmaking#post_matchmaking_api_v1_game_instances_launch_update"
+)
 def sync_detailed(
     *,
     client: AuthenticatedClient,
@@ -126,6 +135,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/matchmaking#post_matchmaking_api_v1_game_instances_launch_update"
+)
 def sync(
     *,
     client: AuthenticatedClient,
@@ -157,6 +169,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/matchmaking#post_matchmaking_api_v1_game_instances_launch_update"
+)
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
@@ -191,6 +206,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/matchmaking#post_matchmaking_api_v1_game_instances_launch_update"
+)
 async def asyncio(
     *,
     client: AuthenticatedClient,

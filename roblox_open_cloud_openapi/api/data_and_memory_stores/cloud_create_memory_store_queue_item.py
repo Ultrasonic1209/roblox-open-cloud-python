@@ -20,21 +20,25 @@ else:
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.queue:add', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.queue:add'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.queue:add']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreQueueItem', 'name': 'MemoryStoreQueueItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store.queue:add', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
+from ...models.create_memory_store_queue_item_request import CreateMemoryStoreQueueItemRequest
 from ...models.memory_store_queue_item import MemoryStoreQueueItem
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
-    body: MemoryStoreQueueItem,
+    body: CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -46,9 +50,18 @@ def _get_kwargs(
         ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, CreateMemoryStoreQueueItemRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, CreateMemoryStoreQueueItemRequest):
+        _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "text/json"
+    if isinstance(body, CreateMemoryStoreQueueItemRequest):
+        _kwargs["json"] = body.to_dict()
+
+        headers["Content-Type"] = "application/*+json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -78,18 +91,22 @@ def _build_response(
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    body: MemoryStoreQueueItem,
+    body: CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | Unset = UNSET,
 ) -> Response[MemoryStoreQueueItem]:
     """Create Memory Store Queue Item
 
      Creates a new queue item.
 
-    If `ttl` is set, the item will automatically be removed from the queue
-    after the time interval specified.
+    `ttl` is optional. If omitted, the item expires after 45 days (3888000 seconds).
+    If set, it must be a number ending in `s`, greater than 0 and at most `3888000s`.
+    The response reports expiration as `expireTime`, not `ttl`.
 
     If a numerical `priority` is set, the item will be inserted into the queue
     based on the priority value. The higher the value, the closer to the front
@@ -97,9 +114,11 @@ def sync_detailed(
     item will be inserted after existing values with the same priority.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
-        body (MemoryStoreQueueItem): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -123,18 +142,22 @@ def sync_detailed(
 
 
 def sync(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    body: MemoryStoreQueueItem,
+    body: CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | Unset = UNSET,
 ) -> MemoryStoreQueueItem | None:
     """Create Memory Store Queue Item
 
      Creates a new queue item.
 
-    If `ttl` is set, the item will automatically be removed from the queue
-    after the time interval specified.
+    `ttl` is optional. If omitted, the item expires after 45 days (3888000 seconds).
+    If set, it must be a number ending in `s`, greater than 0 and at most `3888000s`.
+    The response reports expiration as `expireTime`, not `ttl`.
 
     If a numerical `priority` is set, the item will be inserted into the queue
     based on the priority value. The higher the value, the closer to the front
@@ -142,9 +165,11 @@ def sync(
     item will be inserted after existing values with the same priority.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
-        body (MemoryStoreQueueItem): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -163,18 +188,22 @@ def sync(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    body: MemoryStoreQueueItem,
+    body: CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | Unset = UNSET,
 ) -> Response[MemoryStoreQueueItem]:
     """Create Memory Store Queue Item
 
      Creates a new queue item.
 
-    If `ttl` is set, the item will automatically be removed from the queue
-    after the time interval specified.
+    `ttl` is optional. If omitted, the item expires after 45 days (3888000 seconds).
+    If set, it must be a number ending in `s`, greater than 0 and at most `3888000s`.
+    The response reports expiration as `expireTime`, not `ttl`.
 
     If a numerical `priority` is set, the item will be inserted into the queue
     based on the priority value. The higher the value, the closer to the front
@@ -182,9 +211,11 @@ async def asyncio_detailed(
     item will be inserted after existing values with the same priority.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
-        body (MemoryStoreQueueItem): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -206,18 +237,22 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    universe_id: str,
+    universe_id: int,
     queue_id: str,
     *,
     client: AuthenticatedClient,
-    body: MemoryStoreQueueItem,
+    body: CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | CreateMemoryStoreQueueItemRequest
+    | Unset = UNSET,
 ) -> MemoryStoreQueueItem | None:
     """Create Memory Store Queue Item
 
      Creates a new queue item.
 
-    If `ttl` is set, the item will automatically be removed from the queue
-    after the time interval specified.
+    `ttl` is optional. If omitted, the item expires after 45 days (3888000 seconds).
+    If set, it must be a number ending in `s`, greater than 0 and at most `3888000s`.
+    The response reports expiration as `expireTime`, not `ttl`.
 
     If a numerical `priority` is set, the item will be inserted into the queue
     based on the priority value. The higher the value, the closer to the front
@@ -225,9 +260,11 @@ async def asyncio(
     item will be inserted after existing values with the same priority.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         queue_id (str):
-        body (MemoryStoreQueueItem): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
+        body (CreateMemoryStoreQueueItemRequest): Represents an item within a queue structure.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

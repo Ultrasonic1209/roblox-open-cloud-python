@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:write', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.sorted-map:write'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.sorted-map:write']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreSortedMapItem', 'name': 'MemoryStoreSortedMapItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:write', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
@@ -32,12 +32,12 @@ from ...types import Unset
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
     body: MemoryStoreSortedMapItem,
-    allow_missing: bool | Unset = UNSET,
+    allow_missing: bool | Unset = False,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -91,23 +91,25 @@ def _build_response(
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
     client: AuthenticatedClient,
     body: MemoryStoreSortedMapItem,
-    allow_missing: bool | Unset = UNSET,
+    allow_missing: bool | Unset = False,
 ) -> Response[MemoryStoreSortedMapItem]:
     """Update Memory Store Sorted Map Item
 
-     Updates the specified map item.
+     Updates the specified map item. A provided sort key replaces the stored sort key.
+    Omitting both `stringSortKey` and `numericSortKey` clears the stored sort key.
+    Sending both is invalid.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
-        allow_missing (bool | Unset):  Example: True.
+        allow_missing (bool | Unset):  Default: False.
         body (MemoryStoreSortedMapItem): Represents an item within a sorted map structure.
 
     Raises:
@@ -134,23 +136,25 @@ def sync_detailed(
 
 
 def sync(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
     client: AuthenticatedClient,
     body: MemoryStoreSortedMapItem,
-    allow_missing: bool | Unset = UNSET,
+    allow_missing: bool | Unset = False,
 ) -> MemoryStoreSortedMapItem | None:
     """Update Memory Store Sorted Map Item
 
-     Updates the specified map item.
+     Updates the specified map item. A provided sort key replaces the stored sort key.
+    Omitting both `stringSortKey` and `numericSortKey` clears the stored sort key.
+    Sending both is invalid.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
-        allow_missing (bool | Unset):  Example: True.
+        allow_missing (bool | Unset):  Default: False.
         body (MemoryStoreSortedMapItem): Represents an item within a sorted map structure.
 
     Raises:
@@ -172,23 +176,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
     client: AuthenticatedClient,
     body: MemoryStoreSortedMapItem,
-    allow_missing: bool | Unset = UNSET,
+    allow_missing: bool | Unset = False,
 ) -> Response[MemoryStoreSortedMapItem]:
     """Update Memory Store Sorted Map Item
 
-     Updates the specified map item.
+     Updates the specified map item. A provided sort key replaces the stored sort key.
+    Omitting both `stringSortKey` and `numericSortKey` clears the stored sort key.
+    Sending both is invalid.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
-        allow_missing (bool | Unset):  Example: True.
+        allow_missing (bool | Unset):  Default: False.
         body (MemoryStoreSortedMapItem): Represents an item within a sorted map structure.
 
     Raises:
@@ -213,23 +219,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
     client: AuthenticatedClient,
     body: MemoryStoreSortedMapItem,
-    allow_missing: bool | Unset = UNSET,
+    allow_missing: bool | Unset = False,
 ) -> MemoryStoreSortedMapItem | None:
     """Update Memory Store Sorted Map Item
 
-     Updates the specified map item.
+     Updates the specified map item. A provided sort key replaces the stored sort key.
+    Omitting both `stringSortKey` and `numericSortKey` clears the stored sort key.
+    Sending both is invalid.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
-        allow_missing (bool | Unset):  Example: True.
+        allow_missing (bool | Unset):  Default: False.
         body (MemoryStoreSortedMapItem): Represents an item within a sorted map structure.
 
     Raises:

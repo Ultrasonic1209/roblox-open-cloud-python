@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
@@ -90,6 +90,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxLocaleApiCountryRegionListResponse]:
     """Get list of country regions sorted by localized name
 
+     Returns active country regions with names localized for the requested or user locale.
+
     Args:
         locale (str | Unset):
 
@@ -119,6 +121,8 @@ def sync(
 ) -> Any | RobloxLocaleApiCountryRegionListResponse | None:
     """Get list of country regions sorted by localized name
 
+     Returns active country regions with names localized for the requested or user locale.
+
     Args:
         locale (str | Unset):
 
@@ -142,6 +146,8 @@ async def asyncio_detailed(
     locale: str | Unset = UNSET,
 ) -> Response[Any | RobloxLocaleApiCountryRegionListResponse]:
     """Get list of country regions sorted by localized name
+
+     Returns active country regions with names localized for the requested or user locale.
 
     Args:
         locale (str | Unset):
@@ -169,6 +175,8 @@ async def asyncio(
     locale: str | Unset = UNSET,
 ) -> Any | RobloxLocaleApiCountryRegionListResponse | None:
     """Get list of country regions sorted by localized name
+
+     Returns active country regions with names localized for the requested or user locale.
 
     Args:
         locale (str | Unset):

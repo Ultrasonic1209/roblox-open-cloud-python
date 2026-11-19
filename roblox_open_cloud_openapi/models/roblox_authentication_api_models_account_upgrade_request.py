@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -28,6 +28,7 @@ class RobloxAuthenticationApiModelsAccountUpgradeRequest:
         birthday (datetime.datetime | Unset):
         email (str | Unset):
         gender (RobloxAuthenticationApiModelsAccountUpgradeRequestGender | Unset):
+        agreement_ids (list[str] | Unset):
     """
 
     upgrade_type: RobloxAuthenticationApiModelsAccountUpgradeRequestUpgradeType | Unset = UNSET
@@ -36,6 +37,7 @@ class RobloxAuthenticationApiModelsAccountUpgradeRequest:
     birthday: datetime.datetime | Unset = UNSET
     email: str | Unset = UNSET
     gender: RobloxAuthenticationApiModelsAccountUpgradeRequestGender | Unset = UNSET
+    agreement_ids: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         upgrade_type: int | Unset = UNSET
@@ -56,6 +58,10 @@ class RobloxAuthenticationApiModelsAccountUpgradeRequest:
         if not isinstance(self.gender, Unset):
             gender = self.gender.value
 
+        agreement_ids: list[str] | Unset = UNSET
+        if not isinstance(self.agreement_ids, Unset):
+            agreement_ids = self.agreement_ids
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -71,6 +77,8 @@ class RobloxAuthenticationApiModelsAccountUpgradeRequest:
             field_dict["email"] = email
         if gender is not UNSET:
             field_dict["gender"] = gender
+        if agreement_ids is not UNSET:
+            field_dict["agreementIds"] = agreement_ids
 
         return field_dict
 
@@ -104,6 +112,8 @@ class RobloxAuthenticationApiModelsAccountUpgradeRequest:
         else:
             gender = RobloxAuthenticationApiModelsAccountUpgradeRequestGender(_gender)
 
+        agreement_ids = cast(list[str], d.pop("agreementIds", UNSET))
+
         roblox_authentication_api_models_account_upgrade_request = cls(
             upgrade_type=upgrade_type,
             username=username,
@@ -111,6 +121,7 @@ class RobloxAuthenticationApiModelsAccountUpgradeRequest:
             birthday=birthday,
             email=email,
             gender=gender,
+            agreement_ids=agreement_ids,
         )
 
         return roblox_authentication_api_models_account_upgrade_request

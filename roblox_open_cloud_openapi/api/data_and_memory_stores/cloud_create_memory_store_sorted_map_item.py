@@ -23,20 +23,19 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:write', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.sorted-map:write'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.sorted-map:write']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreSortedMapItem', 'name': 'MemoryStoreSortedMapItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:write', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
 from ...models.memory_store_sorted_map_item import MemoryStoreSortedMapItem
-from ...types import Unset
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     body: MemoryStoreSortedMapItem,
-    id: str | Unset = UNSET,
+    id: str,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -89,21 +88,21 @@ def _build_response(
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     client: AuthenticatedClient,
     body: MemoryStoreSortedMapItem,
-    id: str | Unset = UNSET,
+    id: str,
 ) -> Response[MemoryStoreSortedMapItem]:
     """Create Memory Store Sorted Map Item
 
      Creates the specified map item if it doesn't exist.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
-        id (str | Unset):
+        id (str):
         body (MemoryStoreSortedMapItem): Represents an item within a sorted map structure.
 
     Raises:
@@ -129,21 +128,21 @@ def sync_detailed(
 
 
 def sync(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     client: AuthenticatedClient,
     body: MemoryStoreSortedMapItem,
-    id: str | Unset = UNSET,
+    id: str,
 ) -> MemoryStoreSortedMapItem | None:
     """Create Memory Store Sorted Map Item
 
      Creates the specified map item if it doesn't exist.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
-        id (str | Unset):
+        id (str):
         body (MemoryStoreSortedMapItem): Represents an item within a sorted map structure.
 
     Raises:
@@ -164,21 +163,21 @@ def sync(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     client: AuthenticatedClient,
     body: MemoryStoreSortedMapItem,
-    id: str | Unset = UNSET,
+    id: str,
 ) -> Response[MemoryStoreSortedMapItem]:
     """Create Memory Store Sorted Map Item
 
      Creates the specified map item if it doesn't exist.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
-        id (str | Unset):
+        id (str):
         body (MemoryStoreSortedMapItem): Represents an item within a sorted map structure.
 
     Raises:
@@ -202,21 +201,21 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     *,
     client: AuthenticatedClient,
     body: MemoryStoreSortedMapItem,
-    id: str | Unset = UNSET,
+    id: str,
 ) -> MemoryStoreSortedMapItem | None:
     """Create Memory Store Sorted Map Item
 
      Creates the specified map item if it doesn't exist.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
-        id (str | Unset):
+        id (str):
         body (MemoryStoreSortedMapItem): Represents an item within a sorted map structure.
 
     Raises:

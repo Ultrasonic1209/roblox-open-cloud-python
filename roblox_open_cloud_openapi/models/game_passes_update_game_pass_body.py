@@ -26,6 +26,8 @@ class GamePassesUpdateGamePassBody:
         price (int | None | Unset): The default price of the game pass.
         is_regional_pricing_enabled (bool | None | Unset): Whether regional pricing should be enabled for the game pass.
         is_managed_pricing_enabled (bool | None | Unset): Whether managed pricing should be enabled for the game pass.
+        is_trial_enabled (bool | None | Unset): Whether trials should be enabled for the game pass. Note for trials to
+            be available, the game pass must also be on sale.
     """
 
     name: None | str | Unset = UNSET
@@ -36,6 +38,7 @@ class GamePassesUpdateGamePassBody:
     price: int | None | Unset = UNSET
     is_regional_pricing_enabled: bool | None | Unset = UNSET
     is_managed_pricing_enabled: bool | None | Unset = UNSET
+    is_trial_enabled: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -93,6 +96,12 @@ class GamePassesUpdateGamePassBody:
         else:
             is_managed_pricing_enabled = self.is_managed_pricing_enabled
 
+        is_trial_enabled: bool | None | Unset
+        if isinstance(self.is_trial_enabled, Unset):
+            is_trial_enabled = UNSET
+        else:
+            is_trial_enabled = self.is_trial_enabled
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -112,6 +121,8 @@ class GamePassesUpdateGamePassBody:
             field_dict["isRegionalPricingEnabled"] = is_regional_pricing_enabled
         if is_managed_pricing_enabled is not UNSET:
             field_dict["isManagedPricingEnabled"] = is_managed_pricing_enabled
+        if is_trial_enabled is not UNSET:
+            field_dict["isTrialEnabled"] = is_trial_enabled
 
         return field_dict
 
@@ -173,6 +184,12 @@ class GamePassesUpdateGamePassBody:
                 files.append(
                     ("isManagedPricingEnabled", (None, str(self.is_managed_pricing_enabled).encode(), "text/plain"))
                 )
+
+        if not isinstance(self.is_trial_enabled, Unset):
+            if isinstance(self.is_trial_enabled, bool):
+                files.append(("isTrialEnabled", (None, str(self.is_trial_enabled).encode(), "text/plain")))
+            else:
+                files.append(("isTrialEnabled", (None, str(self.is_trial_enabled).encode(), "text/plain")))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -271,6 +288,15 @@ class GamePassesUpdateGamePassBody:
 
         is_managed_pricing_enabled = _parse_is_managed_pricing_enabled(d.pop("isManagedPricingEnabled", UNSET))
 
+        def _parse_is_trial_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        is_trial_enabled = _parse_is_trial_enabled(d.pop("isTrialEnabled", UNSET))
+
         game_passes_update_game_pass_body = cls(
             name=name,
             description=description,
@@ -280,6 +306,7 @@ class GamePassesUpdateGamePassBody:
             price=price,
             is_regional_pricing_enabled=is_regional_pricing_enabled,
             is_managed_pricing_enabled=is_managed_pricing_enabled,
+            is_trial_enabled=is_trial_enabled,
         )
 
         game_passes_update_game_pass_body.additional_properties = d

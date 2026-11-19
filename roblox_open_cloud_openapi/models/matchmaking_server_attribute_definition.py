@@ -21,9 +21,9 @@ class MatchmakingServerAttributeDefinition:
     """Describes a player attribute definition for matchmaking.
 
     Attributes:
-        id (None | str | Unset): The id of the attribute.
+        id (None | str): The id of the attribute.
+        name (None | str): The name of the attribute.
         universe_id (int | Unset): The universe id of the attribute.
-        name (None | str | Unset): The name of the attribute.
         data_type (MatchmakingAttributeDataType | Unset): Data type of a matchmaking attribute. Can be a bool, number,
             or string.
         default_value (MatchmakingServerAttributeDefaultValue | Unset): Describes how the server attribute value should
@@ -32,28 +32,22 @@ class MatchmakingServerAttributeDefinition:
         updated_time (datetime.datetime | Unset): The time the attribute was last updated.
     """
 
-    id: None | str | Unset = UNSET
+    id: None | str
+    name: None | str
     universe_id: int | Unset = UNSET
-    name: None | str | Unset = UNSET
     data_type: MatchmakingAttributeDataType | Unset = UNSET
     default_value: MatchmakingServerAttributeDefaultValue | Unset = UNSET
     created_time: datetime.datetime | Unset = UNSET
     updated_time: datetime.datetime | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        id: None | str | Unset
-        if isinstance(self.id, Unset):
-            id = UNSET
-        else:
-            id = self.id
+        id: None | str
+        id = self.id
+
+        name: None | str
+        name = self.name
 
         universe_id = self.universe_id
-
-        name: None | str | Unset
-        if isinstance(self.name, Unset):
-            name = UNSET
-        else:
-            name = self.name
 
         data_type: str | Unset = UNSET
         if not isinstance(self.data_type, Unset):
@@ -73,13 +67,14 @@ class MatchmakingServerAttributeDefinition:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if id is not UNSET:
-            field_dict["id"] = id
+        field_dict.update(
+            {
+                "id": id,
+                "name": name,
+            }
+        )
         if universe_id is not UNSET:
             field_dict["universeId"] = universe_id
-        if name is not UNSET:
-            field_dict["name"] = name
         if data_type is not UNSET:
             field_dict["dataType"] = data_type
         if default_value is not UNSET:
@@ -97,25 +92,21 @@ class MatchmakingServerAttributeDefinition:
 
         d = dict(src_dict)
 
-        def _parse_id(data: object) -> None | str | Unset:
+        def _parse_id(data: object) -> None | str:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
+            return cast(None | str, data)
 
-        id = _parse_id(d.pop("id", UNSET))
+        id = _parse_id(d.pop("id"))
+
+        def _parse_name(data: object) -> None | str:
+            if data is None:
+                return data
+            return cast(None | str, data)
+
+        name = _parse_name(d.pop("name"))
 
         universe_id = d.pop("universeId", UNSET)
-
-        def _parse_name(data: object) -> None | str | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
-
-        name = _parse_name(d.pop("name", UNSET))
 
         _data_type = d.pop("dataType", UNSET)
         data_type: MatchmakingAttributeDataType | Unset
@@ -147,8 +138,8 @@ class MatchmakingServerAttributeDefinition:
 
         matchmaking_server_attribute_definition = cls(
             id=id,
-            universe_id=universe_id,
             name=name,
+            universe_id=universe_id,
             data_type=data_type,
             default_value=default_value,
             created_time=created_time,

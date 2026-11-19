@@ -5,8 +5,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
     from ..models.matchmaking_scoring_configuration import MatchmakingScoringConfiguration
 
@@ -19,16 +17,14 @@ class ListMatchmakingScoringConfigurationsResponse:
     """Response to list matchmaking scoring configurations in a universe.
 
     Attributes:
-        scoring_configurations (list[MatchmakingScoringConfiguration] | None | Unset): The scoring configurations.
+        scoring_configurations (list[MatchmakingScoringConfiguration] | None): The scoring configurations.
     """
 
-    scoring_configurations: list[MatchmakingScoringConfiguration] | None | Unset = UNSET
+    scoring_configurations: list[MatchmakingScoringConfiguration] | None
 
     def to_dict(self) -> dict[str, Any]:
-        scoring_configurations: list[dict[str, Any]] | None | Unset
-        if isinstance(self.scoring_configurations, Unset):
-            scoring_configurations = UNSET
-        elif isinstance(self.scoring_configurations, list):
+        scoring_configurations: list[dict[str, Any]] | None
+        if isinstance(self.scoring_configurations, list):
             scoring_configurations = []
             for scoring_configurations_type_0_item_data in self.scoring_configurations:
                 scoring_configurations_type_0_item = scoring_configurations_type_0_item_data.to_dict()
@@ -39,9 +35,11 @@ class ListMatchmakingScoringConfigurationsResponse:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if scoring_configurations is not UNSET:
-            field_dict["scoringConfigurations"] = scoring_configurations
+        field_dict.update(
+            {
+                "scoringConfigurations": scoring_configurations,
+            }
+        )
 
         return field_dict
 
@@ -51,10 +49,8 @@ class ListMatchmakingScoringConfigurationsResponse:
 
         d = dict(src_dict)
 
-        def _parse_scoring_configurations(data: object) -> list[MatchmakingScoringConfiguration] | None | Unset:
+        def _parse_scoring_configurations(data: object) -> list[MatchmakingScoringConfiguration] | None:
             if data is None:
-                return data
-            if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, list):
@@ -71,9 +67,9 @@ class ListMatchmakingScoringConfigurationsResponse:
                 return scoring_configurations_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(list[MatchmakingScoringConfiguration] | None | Unset, data)
+            return cast(list[MatchmakingScoringConfiguration] | None, data)
 
-        scoring_configurations = _parse_scoring_configurations(d.pop("scoringConfigurations", UNSET))
+        scoring_configurations = _parse_scoring_configurations(d.pop("scoringConfigurations"))
 
         list_matchmaking_scoring_configurations_response = cls(
             scoring_configurations=scoring_configurations,

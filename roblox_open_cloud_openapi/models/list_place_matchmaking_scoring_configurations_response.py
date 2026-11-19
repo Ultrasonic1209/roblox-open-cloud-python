@@ -5,8 +5,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
     from ..models.list_place_matchmaking_scoring_configurations_response_place_scoring_configurations_type_0 import (
         ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0,
@@ -22,22 +20,20 @@ class ListPlaceMatchmakingScoringConfigurationsResponse:
 
     Attributes:
         place_scoring_configurations (ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0 |
-            None | Unset): The scoring configurations for places.
+            None): The scoring configurations for places.
     """
 
     place_scoring_configurations: (
-        ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0 | None | Unset
-    ) = UNSET
+        ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0 | None
+    )
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.list_place_matchmaking_scoring_configurations_response_place_scoring_configurations_type_0 import (
             ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0,  # noqa: PLC0415
         )
 
-        place_scoring_configurations: dict[str, Any] | None | Unset
-        if isinstance(self.place_scoring_configurations, Unset):
-            place_scoring_configurations = UNSET
-        elif isinstance(
+        place_scoring_configurations: dict[str, Any] | None
+        if isinstance(
             self.place_scoring_configurations,
             ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0,
         ):
@@ -47,9 +43,11 @@ class ListPlaceMatchmakingScoringConfigurationsResponse:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if place_scoring_configurations is not UNSET:
-            field_dict["placeScoringConfigurations"] = place_scoring_configurations
+        field_dict.update(
+            {
+                "placeScoringConfigurations": place_scoring_configurations,
+            }
+        )
 
         return field_dict
 
@@ -63,10 +61,8 @@ class ListPlaceMatchmakingScoringConfigurationsResponse:
 
         def _parse_place_scoring_configurations(
             data: object,
-        ) -> ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0 | None | Unset:
+        ) -> ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0 | None:
             if data is None:
-                return data
-            if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, dict):
@@ -78,11 +74,9 @@ class ListPlaceMatchmakingScoringConfigurationsResponse:
                 return place_scoring_configurations_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(
-                ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0 | None | Unset, data
-            )
+            return cast(ListPlaceMatchmakingScoringConfigurationsResponsePlaceScoringConfigurationsType0 | None, data)
 
-        place_scoring_configurations = _parse_place_scoring_configurations(d.pop("placeScoringConfigurations", UNSET))
+        place_scoring_configurations = _parse_place_scoring_configurations(d.pop("placeScoringConfigurations"))
 
         list_place_matchmaking_scoring_configurations_response = cls(
             place_scoring_configurations=place_scoring_configurations,

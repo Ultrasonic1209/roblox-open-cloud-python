@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/assets/v1/assets', 'httpMethod': 'POST', 'description': 'Validation occurs during asset creation; no separate verification call is needed.'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/assets/v1/assets', 'httpMethod': 'POST', 'description': 'Validation occurs during asset creation; no separate verification call is needed.', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#Assets_CreateAsset'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 import sys

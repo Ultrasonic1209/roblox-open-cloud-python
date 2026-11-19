@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
@@ -109,6 +109,8 @@ def sync_detailed(
     """Sets user's supported locale.
     Null supported locale will clear out user's supported locale (set users' supported locale to null)
 
+     Requires an authenticated user. Sending null clears the stored supported locale.
+
     Args:
         body (RobloxLocaleApiSetSupportedLocaleForUserRequest): Request entity to set Supported
             Locale for user
@@ -144,6 +146,8 @@ def sync(
     """Sets user's supported locale.
     Null supported locale will clear out user's supported locale (set users' supported locale to null)
 
+     Requires an authenticated user. Sending null clears the stored supported locale.
+
     Args:
         body (RobloxLocaleApiSetSupportedLocaleForUserRequest): Request entity to set Supported
             Locale for user
@@ -173,6 +177,8 @@ async def asyncio_detailed(
 ) -> Response[Any | RobloxLocaleApiSuccessResponse]:
     """Sets user's supported locale.
     Null supported locale will clear out user's supported locale (set users' supported locale to null)
+
+     Requires an authenticated user. Sending null clears the stored supported locale.
 
     Args:
         body (RobloxLocaleApiSetSupportedLocaleForUserRequest): Request entity to set Supported
@@ -206,6 +212,8 @@ async def asyncio(
 ) -> Any | RobloxLocaleApiSuccessResponse | None:
     """Sets user's supported locale.
     Null supported locale will clear out user's supported locale (set users' supported locale to null)
+
+     Requires an authenticated user. Sending null clears the stored supported locale.
 
     Args:
         body (RobloxLocaleApiSetSupportedLocaleForUserRequest): Request entity to set Supported

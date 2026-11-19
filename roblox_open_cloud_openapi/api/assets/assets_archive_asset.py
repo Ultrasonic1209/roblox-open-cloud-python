@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
 if TYPE_CHECKING:
@@ -23,15 +23,16 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Archive Asset', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'asset:read'}, {'name': 'asset:write'}], 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Archive Asset', 'script': "curl --location 'https://apis.roblox.com/assets/v1/assets/{assetid}:archive' \\\n--header 'x-api-key: {apiKey}' \\\n--header 'Content-Type: application/json'"}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-scopes': [{'name': 'asset:write', 'description': "Required for the asset's creator (user or group)."}], 'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Archive Asset', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Archive Asset', 'script': "curl --location 'https://apis.roblox.com/assets/v1/assets/{assetid}:archive' \\\n--header 'x-api-key: {apiKey}' \\\n--header 'Content-Type: application/json'"}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 100}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 100}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
-from ...models.asset import Asset
+from ...models.assets_upload_api_asset import AssetsUploadApiAsset
+from ...models.assets_upload_api_status import AssetsUploadApiStatus
 
 
 def _get_kwargs(
-    asset_id: str,
+    asset_id: int,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
@@ -44,22 +45,32 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | Asset | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AssetsUploadApiAsset | AssetsUploadApiStatus | None:
     if response.status_code == 200:
-        response_200 = Asset.from_dict(response.json())
+        response_200 = AssetsUploadApiAsset.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = cast(Any, None)
+        response_400 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_400
 
+    if response.status_code == 401:
+        response_401 = AssetsUploadApiStatus.from_dict(response.json())
+
+        return response_401
+
     if response.status_code == 403:
-        response_403 = cast(Any, None)
+        response_403 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_403
 
     if response.status_code == 404:
-        response_404 = cast(Any, None)
+        response_404 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_404
 
     if client.raise_on_unexpected_status:
@@ -68,7 +79,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | Asset]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AssetsUploadApiAsset | AssetsUploadApiStatus]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -78,24 +91,24 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def sync_detailed(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | Asset]:
+) -> Response[AssetsUploadApiAsset | AssetsUploadApiStatus]:
     """Archives the asset.
 
      Archives the asset. Archived assets disappear from the website and are no longer usable or visible
-    in Roblox experiences, but you can [restore](#POST-v1-assets-{assetId}:restore) them.
+    in Roblox experiences, but you can [restore](#Assets_RestoreAsset) them.
 
     Args:
-        asset_id (str):
+        asset_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | Asset]
+        Response[AssetsUploadApiAsset | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -110,24 +123,24 @@ def sync_detailed(
 
 
 def sync(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | Asset | None:
+) -> AssetsUploadApiAsset | AssetsUploadApiStatus | None:
     """Archives the asset.
 
      Archives the asset. Archived assets disappear from the website and are no longer usable or visible
-    in Roblox experiences, but you can [restore](#POST-v1-assets-{assetId}:restore) them.
+    in Roblox experiences, but you can [restore](#Assets_RestoreAsset) them.
 
     Args:
-        asset_id (str):
+        asset_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | Asset
+        AssetsUploadApiAsset | AssetsUploadApiStatus
     """
 
     return sync_detailed(
@@ -137,24 +150,24 @@ def sync(
 
 
 async def asyncio_detailed(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | Asset]:
+) -> Response[AssetsUploadApiAsset | AssetsUploadApiStatus]:
     """Archives the asset.
 
      Archives the asset. Archived assets disappear from the website and are no longer usable or visible
-    in Roblox experiences, but you can [restore](#POST-v1-assets-{assetId}:restore) them.
+    in Roblox experiences, but you can [restore](#Assets_RestoreAsset) them.
 
     Args:
-        asset_id (str):
+        asset_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | Asset]
+        Response[AssetsUploadApiAsset | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -167,24 +180,24 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
-) -> Any | Asset | None:
+) -> AssetsUploadApiAsset | AssetsUploadApiStatus | None:
     """Archives the asset.
 
      Archives the asset. Archived assets disappear from the website and are no longer usable or visible
-    in Roblox experiences, but you can [restore](#POST-v1-assets-{assetId}:restore) them.
+    in Roblox experiences, but you can [restore](#Assets_RestoreAsset) them.
 
     Args:
-        asset_id (str):
+        asset_id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | Asset
+        AssetsUploadApiAsset | AssetsUploadApiStatus
     """
 
     return (

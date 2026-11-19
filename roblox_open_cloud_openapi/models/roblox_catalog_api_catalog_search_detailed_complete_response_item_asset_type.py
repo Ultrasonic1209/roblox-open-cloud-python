@@ -91,6 +91,8 @@ class RobloxCatalogApiCatalogSearchDetailedCompleteResponseItemAssetType(IntEnum
     VALUE_94 = 94
     VALUE_95 = 95
     VALUE_96 = 96
+    VALUE_97 = 97
+    VALUE_98 = 98
 
     def __str__(self) -> str:
         return str(self.value)

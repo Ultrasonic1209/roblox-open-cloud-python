@@ -33,7 +33,7 @@ from ...types import Unset
 
 
 def _get_kwargs(
-    event_id: int,
+    event_id: str,
     *,
     fields: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -91,7 +91,7 @@ def _build_response(
 
 
 def sync_detailed(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
     fields: str | Unset = UNSET,
@@ -100,7 +100,7 @@ def sync_detailed(
     Use `?fields=` to request a subset of fields; unknown field names return 400.
 
     Args:
-        event_id (int):
+        event_id (str):
         fields (str | Unset):
 
     Raises:
@@ -124,7 +124,7 @@ def sync_detailed(
 
 
 def sync(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
     fields: str | Unset = UNSET,
@@ -133,7 +133,7 @@ def sync(
     Use `?fields=` to request a subset of fields; unknown field names return 400.
 
     Args:
-        event_id (int):
+        event_id (str):
         fields (str | Unset):
 
     Raises:
@@ -152,7 +152,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
     fields: str | Unset = UNSET,
@@ -161,7 +161,7 @@ async def asyncio_detailed(
     Use `?fields=` to request a subset of fields; unknown field names return 400.
 
     Args:
-        event_id (int):
+        event_id (str):
         fields (str | Unset):
 
     Raises:
@@ -183,7 +183,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    event_id: int,
+    event_id: str,
     *,
     client: AuthenticatedClient,
     fields: str | Unset = UNSET,
@@ -192,7 +192,7 @@ async def asyncio(
     Use `?fields=` to request a subset of fields; unknown field names return 400.
 
     Args:
-        event_id (int):
+        event_id (str):
         fields (str | Unset):
 
     Raises:

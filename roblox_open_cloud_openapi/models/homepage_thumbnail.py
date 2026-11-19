@@ -6,8 +6,8 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 
 from ..models.homepage_thumbnail_status import HomepageThumbnailStatus
+from ..models.moderation_status import ModerationStatus
 from ..models.personalized_config_status import PersonalizedConfigStatus
-from ..models.thumbnail_personalization_api_moderation_status import ThumbnailPersonalizationApiModerationStatus
 
 T = TypeVar("T", bound="HomepageThumbnail")
 
@@ -19,8 +19,7 @@ class HomepageThumbnail:
     Attributes:
         homepage_thumbnail_id (str): The unique identifier of the homepage thumbnail.
         asset_id (int): The identifier of the image asset used by the thumbnail.
-        moderation_status (ThumbnailPersonalizationApiModerationStatus): The moderation status of a homepage thumbnail's
-            image asset.
+        moderation_status (ModerationStatus): The moderation status of a homepage thumbnail's image asset.
         personalized_config_status (PersonalizedConfigStatus): The lifecycle status of a thumbnail personalization
             configuration.
         homepage_thumbnail_status (HomepageThumbnailStatus): The availability status of a homepage thumbnail.
@@ -28,7 +27,7 @@ class HomepageThumbnail:
 
     homepage_thumbnail_id: str
     asset_id: int
-    moderation_status: ThumbnailPersonalizationApiModerationStatus
+    moderation_status: ModerationStatus
     personalized_config_status: PersonalizedConfigStatus
     homepage_thumbnail_status: HomepageThumbnailStatus
 
@@ -64,7 +63,7 @@ class HomepageThumbnail:
 
         asset_id = d.pop("assetId")
 
-        moderation_status = ThumbnailPersonalizationApiModerationStatus(d.pop("moderationStatus"))
+        moderation_status = ModerationStatus(d.pop("moderationStatus"))
 
         personalized_config_status = PersonalizedConfigStatus(d.pop("personalizedConfigStatus"))
 

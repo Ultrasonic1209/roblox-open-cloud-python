@@ -29,7 +29,7 @@ from ...types import UNSET, Response
 
 from ...models.group_invitation_cursor_page_response import GroupInvitationCursorPageResponse
 from ...models.organizations_service_api_error_response import OrganizationsServiceApiErrorResponse
-from ...models.organizations_service_api_sort_order import OrganizationsServiceApiSortOrder
+from ...models.sort_order import SortOrder
 from ...types import Unset
 
 
@@ -39,7 +39,7 @@ def _get_kwargs(
     *,
     cursor: str | Unset = UNSET,
     limit: int | Unset = UNSET,
-    sort_order: OrganizationsServiceApiSortOrder | Unset = UNSET,
+    sort_order: SortOrder | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -125,7 +125,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     cursor: str | Unset = UNSET,
     limit: int | Unset = UNSET,
-    sort_order: OrganizationsServiceApiSortOrder | Unset = UNSET,
+    sort_order: SortOrder | Unset = UNSET,
 ) -> Response[GroupInvitationCursorPageResponse | OrganizationsServiceApiErrorResponse]:
     """List open invitations to a group that grant a role
 
@@ -134,8 +134,7 @@ def sync_detailed(
         role_id (int):
         cursor (str | Unset):
         limit (int | Unset):
-        sort_order (OrganizationsServiceApiSortOrder | Unset): Sort order for groups-api style
-            paginated requests.
+        sort_order (SortOrder | Unset): Sort order for groups-api style paginated requests.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -167,7 +166,7 @@ def sync(
     client: AuthenticatedClient,
     cursor: str | Unset = UNSET,
     limit: int | Unset = UNSET,
-    sort_order: OrganizationsServiceApiSortOrder | Unset = UNSET,
+    sort_order: SortOrder | Unset = UNSET,
 ) -> GroupInvitationCursorPageResponse | OrganizationsServiceApiErrorResponse | None:
     """List open invitations to a group that grant a role
 
@@ -176,8 +175,7 @@ def sync(
         role_id (int):
         cursor (str | Unset):
         limit (int | Unset):
-        sort_order (OrganizationsServiceApiSortOrder | Unset): Sort order for groups-api style
-            paginated requests.
+        sort_order (SortOrder | Unset): Sort order for groups-api style paginated requests.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -204,7 +202,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     cursor: str | Unset = UNSET,
     limit: int | Unset = UNSET,
-    sort_order: OrganizationsServiceApiSortOrder | Unset = UNSET,
+    sort_order: SortOrder | Unset = UNSET,
 ) -> Response[GroupInvitationCursorPageResponse | OrganizationsServiceApiErrorResponse]:
     """List open invitations to a group that grant a role
 
@@ -213,8 +211,7 @@ async def asyncio_detailed(
         role_id (int):
         cursor (str | Unset):
         limit (int | Unset):
-        sort_order (OrganizationsServiceApiSortOrder | Unset): Sort order for groups-api style
-            paginated requests.
+        sort_order (SortOrder | Unset): Sort order for groups-api style paginated requests.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -244,7 +241,7 @@ async def asyncio(
     client: AuthenticatedClient,
     cursor: str | Unset = UNSET,
     limit: int | Unset = UNSET,
-    sort_order: OrganizationsServiceApiSortOrder | Unset = UNSET,
+    sort_order: SortOrder | Unset = UNSET,
 ) -> GroupInvitationCursorPageResponse | OrganizationsServiceApiErrorResponse | None:
     """List open invitations to a group that grant a role
 
@@ -253,8 +250,7 @@ async def asyncio(
         role_id (int):
         cursor (str | Unset):
         limit (int | Unset):
-        sort_order (OrganizationsServiceApiSortOrder | Unset): Sort order for groups-api style
-            paginated requests.
+        sort_order (SortOrder | Unset): Sort order for groups-api style paginated requests.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

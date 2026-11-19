@@ -2,14 +2,13 @@ from __future__ import annotations
 
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..models.asset_quota_asset_type import AssetQuotaAssetType
-from ..models.asset_quota_period import AssetQuotaPeriod
-from ..models.asset_quota_quota_type import AssetQuotaQuotaType
+from ..models.period import Period
+from ..models.quota_type import QuotaType
+from ..models.roblox_open_cloud_cloud_v2_asset_type import RobloxOpenCloudCloudV2AssetType
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="AssetQuota")
@@ -34,117 +33,32 @@ class AssetQuota:
     guide](https://create.roblox.com/docs/en-us/cloud/open-cloud/usage-assets).
 
         Attributes:
-            path (str | Unset): The resource path of the asset quota.
+            path (None | str | Unset): The resource path of the asset quota.
 
                 Format: `users/{user_id}/asset-quotas/{asset_quota_id}` Example: users/123/asset-quotas/some-asset-quota.
-            quota_type (AssetQuotaQuotaType | Unset): Type of quota.
-
-                Possible values:
-
-                  | Value | Description |
-                  | --- | --- |
-                  | QUOTA_TYPE_UNSPECIFIED | The default quota type. |
-                  | RATE_LIMIT_UPLOAD | Rate limit on how often one can upload an asset. |
-                  | RATE_LIMIT_CREATOR_STORE_DISTRIBUTE | Rate limit on how often one can distribute an asset on the Creator
-                Store. | Example: QUOTA_TYPE_UNSPECIFIED.
-            asset_type (AssetQuotaAssetType | Unset): The asset type the quota is for.
-
-                Possible values:
-
-                  | Value | Description |
-                  | --- | --- |
-                  | ASSET_TYPE_UNSPECIFIED | The default asset type. |
-                  | IMAGE | Image |
-                  | TSHIRT | Tshirt |
-                  | AUDIO | Audio |
-                  | MESH | Mesh |
-                  | LUA | Lua |
-                  | HAT | Hat |
-                  | PLACE | Place |
-                  | MODEL | Model |
-                  | SHIRT | Classic Shirt |
-                  | PANTS | Classic Pants |
-                  | DECAL | Decal |
-                  | HEAD | Head |
-                  | FACE | Face |
-                  | GEAR | Gear |
-                  | ANIMATION | Animation |
-                  | TORSO | Torso |
-                  | RIGHT_ARM | Right Arm |
-                  | LEFT_ARM | Left Arm |
-                  | LEFT_LEG | Left Leg |
-                  | RIGHT_LEG | Right Leg |
-                  | YOUTUBE_VIDEO | YouTube Video |
-                  | APP | App |
-                  | CODE | Code |
-                  | PLUGIN | Plugin |
-                  | SOLID_MODEL | Solid Model |
-                  | MESH_PART | Mesh Part |
-                  | HAIR_ACCESSORY | Hair Accessory |
-                  | FACE_ACCESSORY | Face Accessory |
-                  | NECK_ACCESSORY | Neck Accessory |
-                  | SHOULDER_ACCESSORY | Shoulder Accessory |
-                  | FRONT_ACCESSORY | Front Accessory |
-                  | BACK_ACCESSORY | Back Accessory |
-                  | WAIST_ACCESSORY | Waist Accessory |
-                  | CLIMB_ANIMATION | Climb Animation |
-                  | DEATH_ANIMATION | Death Animation |
-                  | FALL_ANIMATION | Fall Animation |
-                  | IDLE_ANIMATION | Idle Animation |
-                  | JUMP_ANIMATION | Jump Animation |
-                  | RUN_ANIMATION | Run Animation |
-                  | SWIM_ANIMATION | Swim Animation |
-                  | WALK_ANIMATION | Walk Animation |
-                  | POSE_ANIMATION | Pose Animation |
-                  | LOCALIZATION_TABLE_MANIFEST | Localization Table Manifest |
-                  | LOCALIZATION_TABLE_TRANSLATION | Localization Table Translation |
-                  | EMOTE_ANIMATION | Emote Animation |
-                  | VIDEO | Video |
-                  | TEXTURE_PACK | Texture Pack |
-                  | TSHIRT_ACCESSORY | Tshirt Accessory |
-                  | SHIRT_ACCESSORY | Shirt Accessory |
-                  | PANTS_ACCESSORY | Pants Accessory |
-                  | JACKET_ACCESSORY | Jacket Accessory |
-                  | SWEATER_ACCESSORY | Sweater Accessory |
-                  | SHORTS_ACCESSORY | Shorts Accessory |
-                  | LEFT_SHOE_ACCESSORY | Left Shoe Accessory |
-                  | RIGHT_SHOE_ACCESSORY | Right Shoe Accessory |
-                  | DRESS_SKIRT_ACCESSORY | Dress Skirt Accessory |
-                  | FONT_FAMILY | Font Family |
-                  | FONT_FACE | Font Face |
-                  | MESH_HIDDEN_SURFACE_REMOVAL | Mesh Hidden Surface Removal |
-                  | EYEBROW_ACCESSORY | Eyebrow Accessory |
-                  | EYELASH_ACCESSORY | Eyelash Accessory |
-                  | MOOD_ANIMATION | Mood Animation |
-                  | DYNAMIC_HEAD | Dynamic Head |
-                  | CODE_SNIPPET | Code Snippet |
-                  | ADS_VIDEO | Ads Video | Example: ASSET_TYPE_UNSPECIFIED.
-            usage (int | Unset): The current usage of the quota.
-            capacity (int | Unset): The capacity of the quota.
-            period (AssetQuotaPeriod | Unset): The period of time the quota is for.
-
-                Possible values:
-
-                  | Value | Description |
-                  | --- | --- |
-                  | PERIOD_UNSPECIFIED | The default period, which is invalid. Specify another value. |
-                  | MONTH | Month |
-                  | DAY | Day | Example: PERIOD_UNSPECIFIED.
-            usage_reset_time (datetime.datetime | Unset): The time the usage will reset for this quota. Example:
+            quota_type (QuotaType | Unset): Quota type.
+            asset_type (RobloxOpenCloudCloudV2AssetType | Unset): Type of the Asset.
+            usage (str | Unset): The current usage of the quota.
+            capacity (str | Unset): The capacity of the quota.
+            period (Period | Unset): Period of time the quota is for.
+            usage_reset_time (datetime.datetime | None | Unset): The time the usage will reset for this quota. Example:
                 2023-07-05T12:34:56Z.
     """
 
-    path: str | Unset = UNSET
-    quota_type: AssetQuotaQuotaType | Unset = UNSET
-    asset_type: AssetQuotaAssetType | Unset = UNSET
-    usage: int | Unset = UNSET
-    capacity: int | Unset = UNSET
-    period: AssetQuotaPeriod | Unset = UNSET
-    usage_reset_time: datetime.datetime | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    path: None | str | Unset = UNSET
+    quota_type: QuotaType | Unset = UNSET
+    asset_type: RobloxOpenCloudCloudV2AssetType | Unset = UNSET
+    usage: str | Unset = UNSET
+    capacity: str | Unset = UNSET
+    period: Period | Unset = UNSET
+    usage_reset_time: datetime.datetime | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        path = self.path
+        path: None | str | Unset
+        if isinstance(self.path, Unset):
+            path = UNSET
+        else:
+            path = self.path
 
         quota_type: str | Unset = UNSET
         if not isinstance(self.quota_type, Unset):
@@ -162,12 +76,16 @@ class AssetQuota:
         if not isinstance(self.period, Unset):
             period = self.period.value
 
-        usage_reset_time: str | Unset = UNSET
-        if not isinstance(self.usage_reset_time, Unset):
+        usage_reset_time: None | str | Unset
+        if isinstance(self.usage_reset_time, Unset):
+            usage_reset_time = UNSET
+        elif isinstance(self.usage_reset_time, datetime.datetime):
             usage_reset_time = self.usage_reset_time.isoformat()
+        else:
+            usage_reset_time = self.usage_reset_time
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if path is not UNSET:
             field_dict["path"] = path
@@ -189,39 +107,57 @@ class AssetQuota:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        path = d.pop("path", UNSET)
+
+        def _parse_path(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        path = _parse_path(d.pop("path", UNSET))
 
         _quota_type = d.pop("quotaType", UNSET)
-        quota_type: AssetQuotaQuotaType | Unset
+        quota_type: QuotaType | Unset
         if isinstance(_quota_type, Unset):
             quota_type = UNSET
         else:
-            quota_type = AssetQuotaQuotaType(_quota_type)
+            quota_type = QuotaType(_quota_type)
 
         _asset_type = d.pop("assetType", UNSET)
-        asset_type: AssetQuotaAssetType | Unset
+        asset_type: RobloxOpenCloudCloudV2AssetType | Unset
         if isinstance(_asset_type, Unset):
             asset_type = UNSET
         else:
-            asset_type = AssetQuotaAssetType(_asset_type)
+            asset_type = RobloxOpenCloudCloudV2AssetType(_asset_type)
 
         usage = d.pop("usage", UNSET)
 
         capacity = d.pop("capacity", UNSET)
 
         _period = d.pop("period", UNSET)
-        period: AssetQuotaPeriod | Unset
+        period: Period | Unset
         if isinstance(_period, Unset):
             period = UNSET
         else:
-            period = AssetQuotaPeriod(_period)
+            period = Period(_period)
 
-        _usage_reset_time = d.pop("usageResetTime", UNSET)
-        usage_reset_time: datetime.datetime | Unset
-        if isinstance(_usage_reset_time, Unset):
-            usage_reset_time = UNSET
-        else:
-            usage_reset_time = datetime.datetime.fromisoformat(_usage_reset_time)
+        def _parse_usage_reset_time(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                usage_reset_time_type_0 = datetime.datetime.fromisoformat(data)
+
+                return usage_reset_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        usage_reset_time = _parse_usage_reset_time(d.pop("usageResetTime", UNSET))
 
         asset_quota = cls(
             path=path,
@@ -233,21 +169,4 @@ class AssetQuota:
             usage_reset_time=usage_reset_time,
         )
 
-        asset_quota.additional_properties = d
         return asset_quota
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

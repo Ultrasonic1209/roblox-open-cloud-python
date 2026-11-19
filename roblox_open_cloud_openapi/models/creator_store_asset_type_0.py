@@ -8,9 +8,9 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.asset_type_0 import AssetType0
     from ..models.creator_model_v2_type_0 import CreatorModelV2Type0
-    from ..models.toolbox_service_asset_type_0 import ToolboxServiceAssetType0
-    from ..models.toolbox_service_creator_store_product_type_0 import ToolboxServiceCreatorStoreProductType0
+    from ..models.creator_store_product_type_0 import CreatorStoreProductType0
     from ..models.voting_model_type_0 import VotingModelType0
 
 
@@ -22,25 +22,25 @@ class CreatorStoreAssetType0:
     """Representation of a creator store asset.
 
     Attributes:
-        asset (None | ToolboxServiceAssetType0): The asset information.
+        asset (AssetType0 | None): The asset information.
         voting (None | Unset | VotingModelType0): The asset's voting details.
         creator (CreatorModelV2Type0 | None | Unset): The asset creator's details.
-        creator_store_product (None | ToolboxServiceCreatorStoreProductType0 | Unset): The asset's product details.
+        creator_store_product (CreatorStoreProductType0 | None | Unset): The asset's product details.
     """
 
-    asset: None | ToolboxServiceAssetType0
+    asset: AssetType0 | None
     voting: None | Unset | VotingModelType0 = UNSET
     creator: CreatorModelV2Type0 | None | Unset = UNSET
-    creator_store_product: None | ToolboxServiceCreatorStoreProductType0 | Unset = UNSET
+    creator_store_product: CreatorStoreProductType0 | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.asset_type_0 import AssetType0  # noqa: PLC0415
         from ..models.creator_model_v2_type_0 import CreatorModelV2Type0  # noqa: PLC0415
-        from ..models.toolbox_service_asset_type_0 import ToolboxServiceAssetType0  # noqa: PLC0415
-        from ..models.toolbox_service_creator_store_product_type_0 import ToolboxServiceCreatorStoreProductType0  # noqa: PLC0415
+        from ..models.creator_store_product_type_0 import CreatorStoreProductType0  # noqa: PLC0415
         from ..models.voting_model_type_0 import VotingModelType0  # noqa: PLC0415
 
         asset: dict[str, Any] | None
-        if isinstance(self.asset, ToolboxServiceAssetType0):
+        if isinstance(self.asset, AssetType0):
             asset = self.asset.to_dict()
         else:
             asset = self.asset
@@ -64,7 +64,7 @@ class CreatorStoreAssetType0:
         creator_store_product: dict[str, Any] | None | Unset
         if isinstance(self.creator_store_product, Unset):
             creator_store_product = UNSET
-        elif isinstance(self.creator_store_product, ToolboxServiceCreatorStoreProductType0):
+        elif isinstance(self.creator_store_product, CreatorStoreProductType0):
             creator_store_product = self.creator_store_product.to_dict()
         else:
             creator_store_product = self.creator_store_product
@@ -87,25 +87,25 @@ class CreatorStoreAssetType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.asset_type_0 import AssetType0  # noqa: PLC0415
         from ..models.creator_model_v2_type_0 import CreatorModelV2Type0  # noqa: PLC0415
-        from ..models.toolbox_service_asset_type_0 import ToolboxServiceAssetType0  # noqa: PLC0415
-        from ..models.toolbox_service_creator_store_product_type_0 import ToolboxServiceCreatorStoreProductType0  # noqa: PLC0415
+        from ..models.creator_store_product_type_0 import CreatorStoreProductType0  # noqa: PLC0415
         from ..models.voting_model_type_0 import VotingModelType0  # noqa: PLC0415
 
         d = dict(src_dict)
 
-        def _parse_asset(data: object) -> None | ToolboxServiceAssetType0:
+        def _parse_asset(data: object) -> AssetType0 | None:
             if data is None:
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                componentsschemas_toolbox_service_asset_type_0 = ToolboxServiceAssetType0.from_dict(data)
+                componentsschemas_asset_type_0 = AssetType0.from_dict(data)
 
-                return componentsschemas_toolbox_service_asset_type_0
+                return componentsschemas_asset_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | ToolboxServiceAssetType0, data)
+            return cast(AssetType0 | None, data)
 
         asset = _parse_asset(d.pop("asset"))
 
@@ -143,7 +143,7 @@ class CreatorStoreAssetType0:
 
         creator = _parse_creator(d.pop("creator", UNSET))
 
-        def _parse_creator_store_product(data: object) -> None | ToolboxServiceCreatorStoreProductType0 | Unset:
+        def _parse_creator_store_product(data: object) -> CreatorStoreProductType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -151,14 +151,12 @@ class CreatorStoreAssetType0:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                componentsschemas_toolbox_service_creator_store_product_type_0 = (
-                    ToolboxServiceCreatorStoreProductType0.from_dict(data)
-                )
+                componentsschemas_creator_store_product_type_0 = CreatorStoreProductType0.from_dict(data)
 
-                return componentsschemas_toolbox_service_creator_store_product_type_0
+                return componentsschemas_creator_store_product_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | ToolboxServiceCreatorStoreProductType0 | Unset, data)
+            return cast(CreatorStoreProductType0 | None | Unset, data)
 
         creator_store_product = _parse_creator_store_product(d.pop("creatorStoreProduct", UNSET))
 

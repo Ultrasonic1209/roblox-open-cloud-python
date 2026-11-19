@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/assets/v1/assets', 'httpMethod': 'POST', 'description': 'First step: create or upload the icon asset.'}, {'url': 'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=icon', 'httpMethod': 'PATCH', 'description': 'Second step: set the created asset as the plugin icon.'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://apis.roblox.com/assets/v1/assets', 'httpMethod': 'POST', 'description': 'First step: create or upload the icon asset.', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#Assets_CreateAsset'}, {'url': 'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=icon', 'httpMethod': 'PATCH', 'description': 'Second step: set the created asset as the plugin icon.', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/assets#Assets_UpdateAsset'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 import sys

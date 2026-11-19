@@ -23,9 +23,15 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-recommended-alternatives': [{'url': 'https://friends.roblox.com/v1/users/{userId}/friends/find', 'httpMethod': 'GET', 'description': 'Paginated version of the same friends list.', 'documentationUrl': 'https://create.roblox.com/docs/cloud/reference/features/friends#friends_get_v1_users__userId__friends_find'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
+import sys
+
+if sys.version_info >= (3, 13):
+    from warnings import deprecated
+else:
+    from typing_extensions import deprecated
 
 from ...models.get_v1_users_user_id_friends_user_sort import GetV1UsersUserIdFriendsUserSort
 from ...models.roblox_web_web_api_models_api_array_response_roblox_friends_api_models_response_user_response import (
@@ -92,6 +98,9 @@ def _build_response(
     )
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/friends#friends_get_v1_users__userId__friends"
+)
 def sync_detailed(
     user_id: int,
     *,
@@ -124,6 +133,9 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/friends#friends_get_v1_users__userId__friends"
+)
 def sync(
     user_id: int,
     *,
@@ -151,6 +163,9 @@ def sync(
     ).parsed
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/friends#friends_get_v1_users__userId__friends"
+)
 async def asyncio_detailed(
     user_id: int,
     *,
@@ -181,6 +196,9 @@ async def asyncio_detailed(
     return _build_response(client=client, response=response)
 
 
+@deprecated(
+    "Roblox has deprecated this endpoint. See documentation: https://create.roblox.com/docs/cloud/reference/features/friends#friends_get_v1_users__userId__friends"
+)
 async def asyncio(
     user_id: int,
     *,

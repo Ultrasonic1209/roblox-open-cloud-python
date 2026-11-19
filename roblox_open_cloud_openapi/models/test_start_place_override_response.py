@@ -20,10 +20,15 @@ class TestStartPlaceOverrideResponse:
             not, why.
         place_id (int | None | Unset): The place id read from the user's data store entry.
             Null when no place id could be read.
+        saved_value (None | str | Unset): The value read at the configured value path of the user's data store entry, as
+            JSON text,
+            so a place id saved as text keeps its quotes. Cut to at most 100 characters.
+            Null when no value could be read.
     """
 
     result: StartPlaceOverrideTestResult | Unset = UNSET
     place_id: int | None | Unset = UNSET
+    saved_value: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         result: str | Unset = UNSET
@@ -36,6 +41,12 @@ class TestStartPlaceOverrideResponse:
         else:
             place_id = self.place_id
 
+        saved_value: None | str | Unset
+        if isinstance(self.saved_value, Unset):
+            saved_value = UNSET
+        else:
+            saved_value = self.saved_value
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -43,6 +54,8 @@ class TestStartPlaceOverrideResponse:
             field_dict["result"] = result
         if place_id is not UNSET:
             field_dict["placeId"] = place_id
+        if saved_value is not UNSET:
+            field_dict["savedValue"] = saved_value
 
         return field_dict
 
@@ -65,9 +78,19 @@ class TestStartPlaceOverrideResponse:
 
         place_id = _parse_place_id(d.pop("placeId", UNSET))
 
+        def _parse_saved_value(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        saved_value = _parse_saved_value(d.pop("savedValue", UNSET))
+
         test_start_place_override_response = cls(
             result=result,
             place_id=place_id,
+            saved_value=saved_value,
         )
 
         return test_start_place_override_response

@@ -1,0 +1,12 @@
+from enum import StrEnum
+
+
+class RobloxSubscriptionsOpenCloudV2SubscriptionState(StrEnum):
+    EXPIRED = "EXPIRED"
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    SUBSCRIBED_RENEWAL_PAYMENT_PENDING = "SUBSCRIBED_RENEWAL_PAYMENT_PENDING"
+    SUBSCRIBED_WILL_NOT_RENEW = "SUBSCRIBED_WILL_NOT_RENEW"
+    SUBSCRIBED_WILL_RENEW = "SUBSCRIBED_WILL_RENEW"
+
+    def __str__(self) -> str:
+        return str(self.value)

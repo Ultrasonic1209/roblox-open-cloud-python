@@ -22,7 +22,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
@@ -108,6 +108,8 @@ def sync_detailed(
 ) -> Response[Any | RobloxLocaleApiSuccessResponse]:
     """Sets whether translations suggested by Roblox will be shown to the user.
 
+     Updates the account localization preference for Roblox-suggested translations.
+
     Args:
         body (RobloxLocaleApiSetShowRobloxTranslationsRequest): Request entity to set the
             ShowRobloxTranslations field for an account
@@ -142,6 +144,8 @@ def sync(
 ) -> Any | RobloxLocaleApiSuccessResponse | None:
     """Sets whether translations suggested by Roblox will be shown to the user.
 
+     Updates the account localization preference for Roblox-suggested translations.
+
     Args:
         body (RobloxLocaleApiSetShowRobloxTranslationsRequest): Request entity to set the
             ShowRobloxTranslations field for an account
@@ -170,6 +174,8 @@ async def asyncio_detailed(
     | Unset = UNSET,
 ) -> Response[Any | RobloxLocaleApiSuccessResponse]:
     """Sets whether translations suggested by Roblox will be shown to the user.
+
+     Updates the account localization preference for Roblox-suggested translations.
 
     Args:
         body (RobloxLocaleApiSetShowRobloxTranslationsRequest): Request entity to set the
@@ -202,6 +208,8 @@ async def asyncio(
     | Unset = UNSET,
 ) -> Any | RobloxLocaleApiSuccessResponse | None:
     """Sets whether translations suggested by Roblox will be shown to the user.
+
+     Updates the account localization preference for Roblox-suggested translations.
 
     Args:
         body (RobloxLocaleApiSetShowRobloxTranslationsRequest): Request entity to set the

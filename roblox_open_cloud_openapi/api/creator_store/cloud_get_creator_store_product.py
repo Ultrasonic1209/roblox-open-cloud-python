@@ -18,16 +18,16 @@ else:
             ) from None
 
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'creator-store-product:read', 'targetResourceSpecifier': ''}, {'name': 'creator-store-product:read'}], 'x-roblox-docs': {'category': 'Monetization', 'methodProperties': {'scopes': ['creator-store-product:read']}, 'resource': {'$ref': '#/components/schemas/CreatorStoreProduct', 'name': 'CreatorStoreProduct'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 30}}}
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 30}}, 'x-roblox-scopes': [{'name': 'creator-store-product:read', 'targetResourceSpecifier': ''}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
-from ...models.creator_store_product import CreatorStoreProduct
+from ...models.google_rpc_status import GoogleRpcStatus
+from ...models.marketplace_fiat_service_creator_store_product import MarketplaceFiatServiceCreatorStoreProduct
 
 
 def _get_kwargs(
@@ -44,19 +44,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CreatorStoreProduct | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct:
     if response.status_code == 200:
-        response_200 = CreatorStoreProduct.from_dict(response.json())
+        response_200 = MarketplaceFiatServiceCreatorStoreProduct.from_dict(response.json())
 
         return response_200
 
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    response_default = GoogleRpcStatus.from_dict(response.json())
+
+    return response_default
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CreatorStoreProduct]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +72,7 @@ def sync_detailed(
     creator_store_product_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[CreatorStoreProduct]:
+) -> Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]:
     """Get Creator Store Product
 
      Get a Creator Store product.
@@ -82,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreatorStoreProduct]
+        Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +103,7 @@ def sync(
     creator_store_product_id: str,
     *,
     client: AuthenticatedClient,
-) -> CreatorStoreProduct | None:
+) -> GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct | None:
     """Get Creator Store Product
 
      Get a Creator Store product.
@@ -113,7 +116,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreatorStoreProduct
+        GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct
     """
 
     return sync_detailed(
@@ -126,7 +129,7 @@ async def asyncio_detailed(
     creator_store_product_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[CreatorStoreProduct]:
+) -> Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]:
     """Get Creator Store Product
 
      Get a Creator Store product.
@@ -139,7 +142,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreatorStoreProduct]
+        Response[GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct]
     """
 
     kwargs = _get_kwargs(
@@ -155,7 +158,7 @@ async def asyncio(
     creator_store_product_id: str,
     *,
     client: AuthenticatedClient,
-) -> CreatorStoreProduct | None:
+) -> GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct | None:
     """Get Creator Store Product
 
      Get a Creator Store product.
@@ -168,7 +171,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreatorStoreProduct
+        GoogleRpcStatus | MarketplaceFiatServiceCreatorStoreProduct
     """
 
     return (

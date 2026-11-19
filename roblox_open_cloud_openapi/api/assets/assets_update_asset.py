@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
 if TYPE_CHECKING:
@@ -23,27 +23,31 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Update Asset', 'x-roblox-stability': 'BETA', 'x-roblox-scopes': [{'name': 'asset:read'}, {'name': 'asset:write'}], 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Update Content Only and Create a New Version', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": {assetId} }"\' \\\n--form \'fileContent="@\\"{file-path}\\""\''}, {'language': 'Update Content and Metadata', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=description%2CdisplayName\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\n    \\"assetType\\": \\"{assetType}\\",\n    \\"assetId\\": {assetId},\n    \\"displayName\\": \\"{new display name}\\",\n    \\"description\\": \\"{new description}\\",    \n    \\"creationContext\\": { \n        \\"creator\\": {\n            \\"userId\\": {userId}\n        },\n        \\"expectedPrice\\":{expectedPrice}\n    },\n}"\' \\\n--form \'fileContent=@\\"{file-path}\\"\''}, {'language': 'Update a List of Previews', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=previews\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"previews\\": [{\\"asset\\": \\"assets/123\\", \\"altText\\": \\"Your alt text.\\"}]}"\''}, {'language': 'Update Social Links', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=twitchSocialLink%2CgithubSocialLink\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"twitchSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://twitch.tv/your-channel\\"}, \\"githubSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://github.com/your-repo\\"}}"\''}], 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 120}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 120}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
+{'x-roblox-scopes': [{'name': 'asset:write', 'description': "Required for the asset's creator (user or group)."}], 'x-roblox-cloud-api-operation': True, 'x-roblox-cloud-api-operation-name': 'Update Asset', 'x-roblox-cloud-api-operation-code-samples': [{'language': 'Update Content Only and Create a New Version', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": {assetId} }"\' \\\n--form \'fileContent="@\\"{file-path}\\""\''}, {'language': 'Update Content and Metadata', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=description%2CdisplayName\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\n    \\"assetType\\": \\"{assetType}\\",\n    \\"assetId\\": {assetId},\n    \\"displayName\\": \\"{new display name}\\",\n    \\"description\\": \\"{new description}\\",    \n    \\"creationContext\\": { \n        \\"creator\\": {\n            \\"userId\\": {userId}\n        },\n        \\"expectedPrice\\":{expectedPrice}\n    },\n}"\' \\\n--form \'fileContent=@\\"{file-path}\\"\''}, {'language': 'Update a List of Previews', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=previews\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"previews\\": [{\\"asset\\": \\"assets/123\\", \\"altText\\": \\"Your alt text.\\"}]}"\''}, {'language': 'Update Social Links', 'script': 'curl --location --request PATCH \'https://apis.roblox.com/assets/v1/assets/{assetId}?updateMask=twitchSocialLink%2CgithubSocialLink\' \\\n--header \'x-api-key: {apiKey}\' \\\n--form \'request="{\\"assetId\\": \\"{assetId}\\", \\"twitchSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://twitch.tv/your-channel\\"}, \\"githubSocialLink\\": {\\"title\\": \\"Optional title\\", \\"uri\\": \\"https://github.com/your-repo\\"}}"\''}], 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 120}, 'perOauth2Authorization': {'period': 'MINUTE', 'maxInPeriod': 120}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
 from ...models.assets_update_asset_body import AssetsUpdateAssetBody
-from ...models.ocv1_assets_operation import OCV1AssetsOperation
-from ...models.ocv1_assets_status import OCV1AssetsStatus
+from ...models.assets_upload_api_operation import AssetsUploadApiOperation
+from ...models.assets_upload_api_status import AssetsUploadApiStatus
 from ...types import Unset
 
 
 def _get_kwargs(
-    asset_id: str,
+    asset_id: int,
     *,
     body: AssetsUpdateAssetBody | Unset = UNSET,
-    update_mask: str | Unset = UNSET,
+    update_mask: list[str] | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     params: dict[str, Any] = {}
 
-    params["updateMask"] = update_mask
+    json_update_mask: list[str] | Unset = UNSET
+    if not isinstance(update_mask, Unset):
+        json_update_mask = update_mask
+
+    params["updateMask"] = json_update_mask
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -66,23 +70,30 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     if response.status_code == 200:
-        response_200 = OCV1AssetsOperation.from_dict(response.json())
+        response_200 = AssetsUploadApiOperation.from_dict(response.json())
 
         return response_200
 
     if response.status_code == 400:
-        response_400 = OCV1AssetsStatus.from_dict(response.json())
+        response_400 = AssetsUploadApiStatus.from_dict(response.json())
 
         return response_400
 
     if response.status_code == 401:
-        response_401 = cast(Any, None)
+        response_401 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_401
 
+    if response.status_code == 403:
+        response_403 = AssetsUploadApiStatus.from_dict(response.json())
+
+        return response_403
+
     if response.status_code == 500:
-        response_500 = cast(Any, None)
+        response_500 = AssetsUploadApiStatus.from_dict(response.json())
+
         return response_500
 
     if client.raise_on_unexpected_status:
@@ -93,7 +104,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -103,24 +114,25 @@ def _build_response(
 
 
 def sync_detailed(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
     body: AssetsUpdateAssetBody | Unset = UNSET,
-    update_mask: str | Unset = UNSET,
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+    update_mask: list[str] | Unset = UNSET,
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     """Updates an asset with provided content and metadata.
 
-     Updates an asset with provided content and metadata, including the description, display name, icon,
-    social links, and previews. Currently can only update the content body for **Models**. Icons and
-    Previews must be **Image** assets. Icons must have square dimensions.
+     Updates an asset's content, metadata, or both. Metadata includes the description, display name,
+    icon, social links, and previews. Updating content creates a new asset version and is supported for
+    **Models** and **Places**. For Places, set `published` to `true` to publish the new version. Icons
+    and previews must be **Image** assets, and icons must have square dimensions.
 
-    Provide the [Asset](#Asset), binary asset file path, and [content type](/cloud/guides/usage-
+    Provide the `Asset`, binary asset file path, and [content type](/cloud/guides/usage-
     assets.md#supported-asset-types-and-limits) in the form data.
 
     Args:
-        asset_id (str):
-        update_mask (str | Unset):
+        asset_id (int):
+        update_mask (list[str] | Unset):
         body (AssetsUpdateAssetBody | Unset):
 
     Raises:
@@ -128,7 +140,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]
+        Response[AssetsUploadApiOperation | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -145,24 +157,25 @@ def sync_detailed(
 
 
 def sync(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
     body: AssetsUpdateAssetBody | Unset = UNSET,
-    update_mask: str | Unset = UNSET,
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+    update_mask: list[str] | Unset = UNSET,
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     """Updates an asset with provided content and metadata.
 
-     Updates an asset with provided content and metadata, including the description, display name, icon,
-    social links, and previews. Currently can only update the content body for **Models**. Icons and
-    Previews must be **Image** assets. Icons must have square dimensions.
+     Updates an asset's content, metadata, or both. Metadata includes the description, display name,
+    icon, social links, and previews. Updating content creates a new asset version and is supported for
+    **Models** and **Places**. For Places, set `published` to `true` to publish the new version. Icons
+    and previews must be **Image** assets, and icons must have square dimensions.
 
-    Provide the [Asset](#Asset), binary asset file path, and [content type](/cloud/guides/usage-
+    Provide the `Asset`, binary asset file path, and [content type](/cloud/guides/usage-
     assets.md#supported-asset-types-and-limits) in the form data.
 
     Args:
-        asset_id (str):
-        update_mask (str | Unset):
+        asset_id (int):
+        update_mask (list[str] | Unset):
         body (AssetsUpdateAssetBody | Unset):
 
     Raises:
@@ -170,7 +183,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | OCV1AssetsOperation | OCV1AssetsStatus
+        AssetsUploadApiOperation | AssetsUploadApiStatus
     """
 
     return sync_detailed(
@@ -182,24 +195,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
     body: AssetsUpdateAssetBody | Unset = UNSET,
-    update_mask: str | Unset = UNSET,
-) -> Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]:
+    update_mask: list[str] | Unset = UNSET,
+) -> Response[AssetsUploadApiOperation | AssetsUploadApiStatus]:
     """Updates an asset with provided content and metadata.
 
-     Updates an asset with provided content and metadata, including the description, display name, icon,
-    social links, and previews. Currently can only update the content body for **Models**. Icons and
-    Previews must be **Image** assets. Icons must have square dimensions.
+     Updates an asset's content, metadata, or both. Metadata includes the description, display name,
+    icon, social links, and previews. Updating content creates a new asset version and is supported for
+    **Models** and **Places**. For Places, set `published` to `true` to publish the new version. Icons
+    and previews must be **Image** assets, and icons must have square dimensions.
 
-    Provide the [Asset](#Asset), binary asset file path, and [content type](/cloud/guides/usage-
+    Provide the `Asset`, binary asset file path, and [content type](/cloud/guides/usage-
     assets.md#supported-asset-types-and-limits) in the form data.
 
     Args:
-        asset_id (str):
-        update_mask (str | Unset):
+        asset_id (int):
+        update_mask (list[str] | Unset):
         body (AssetsUpdateAssetBody | Unset):
 
     Raises:
@@ -207,7 +221,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | OCV1AssetsOperation | OCV1AssetsStatus]
+        Response[AssetsUploadApiOperation | AssetsUploadApiStatus]
     """
 
     kwargs = _get_kwargs(
@@ -222,24 +236,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    asset_id: str,
+    asset_id: int,
     *,
     client: AuthenticatedClient,
     body: AssetsUpdateAssetBody | Unset = UNSET,
-    update_mask: str | Unset = UNSET,
-) -> Any | OCV1AssetsOperation | OCV1AssetsStatus | None:
+    update_mask: list[str] | Unset = UNSET,
+) -> AssetsUploadApiOperation | AssetsUploadApiStatus | None:
     """Updates an asset with provided content and metadata.
 
-     Updates an asset with provided content and metadata, including the description, display name, icon,
-    social links, and previews. Currently can only update the content body for **Models**. Icons and
-    Previews must be **Image** assets. Icons must have square dimensions.
+     Updates an asset's content, metadata, or both. Metadata includes the description, display name,
+    icon, social links, and previews. Updating content creates a new asset version and is supported for
+    **Models** and **Places**. For Places, set `published` to `true` to publish the new version. Icons
+    and previews must be **Image** assets, and icons must have square dimensions.
 
-    Provide the [Asset](#Asset), binary asset file path, and [content type](/cloud/guides/usage-
+    Provide the `Asset`, binary asset file path, and [content type](/cloud/guides/usage-
     assets.md#supported-asset-types-and-limits) in the form data.
 
     Args:
-        asset_id (str):
-        update_mask (str | Unset):
+        asset_id (int):
+        update_mask (list[str] | Unset):
         body (AssetsUpdateAssetBody | Unset):
 
     Raises:
@@ -247,7 +262,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | OCV1AssetsOperation | OCV1AssetsStatus
+        AssetsUploadApiOperation | AssetsUploadApiStatus
     """
 
     return (

@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -16,25 +15,33 @@ class SocialLink:
     """A social media link for the asset. Maximum of three per asset. Object name can be any of: <ul><li>`facebookSocialLin
     k`</li><li>`twitterSocialLink`</li><li>`youtubeSocialLink`</li><li>`twitchSocialLink`</li><li>`discordSocialLink`</l
     i><li>`githubSocialLink`</li><li>`robloxSocialLink`</li><li>`guildedSocialLink`</li><li>`devForumSocialLink`</li></u
-    l>For syntax, see the sample request under [Update Asset](#PATCH-v1-assets-_assetId_).
+    l>For syntax, see the sample request under [Update Asset](#Assets_UpdateAsset).
 
         Attributes:
-            title (str | Unset): An optional title for the social media link. Not used on the Creator Hub.
-            uri (str | Unset): The URI for the social media link. Must match the expected format for the type of link. For
-                example, the title for a `twitchSocialLink` object must be of the format `https://twitch.tv/your-channel`.
+            title (None | str | Unset): An optional title for the social media link. Not used on the Creator Hub.
+            uri (None | str | Unset): The URI for the social media link. Must match the expected format for the type of
+                link. For example, the URI for a `twitchSocialLink` object must be of the format `https://twitch.tv/your-
+                channel`.
     """
 
-    title: str | Unset = UNSET
-    uri: str | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    title: None | str | Unset = UNSET
+    uri: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        title = self.title
+        title: None | str | Unset
+        if isinstance(self.title, Unset):
+            title = UNSET
+        else:
+            title = self.title
 
-        uri = self.uri
+        uri: None | str | Unset
+        if isinstance(self.uri, Unset):
+            uri = UNSET
+        else:
+            uri = self.uri
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if title is not UNSET:
             field_dict["title"] = title
@@ -46,30 +53,28 @@ class SocialLink:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        title = d.pop("title", UNSET)
 
-        uri = d.pop("uri", UNSET)
+        def _parse_title(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        title = _parse_title(d.pop("title", UNSET))
+
+        def _parse_uri(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        uri = _parse_uri(d.pop("uri", UNSET))
 
         social_link = cls(
             title=title,
             uri=uri,
         )
 
-        social_link.additional_properties = d
         return social_link
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

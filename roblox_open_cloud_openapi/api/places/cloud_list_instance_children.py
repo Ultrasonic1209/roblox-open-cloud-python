@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-long-running-operation-parameters': {'metadata': {'$ref': '#/components/schemas/ListInstanceChildrenMetadata'}, 'response': {'$ref': '#/components/schemas/ListInstanceChildrenResponse'}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'universe.place.instance:read'}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe.place.instance:read']}, 'resource': {'$ref': '#/components/schemas/Instance', 'name': 'Instance'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 45}}}
+{'x-long-running-operation-parameters': {'metadata': {'$ref': '#/components/schemas/ListInstanceChildrenMetadata'}, 'response': {'$ref': '#/components/schemas/ListInstanceChildrenResponse'}}, 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'universe.place.instance:read', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}, {'name': 'universe.place.instance:read', 'firstPartyOAuthOnly': True}], 'x-roblox-docs': {'category': 'Universes and places', 'methodProperties': {'scopes': ['universe.place.instance:read']}, 'resource': {'$ref': '#/components/schemas/Instance', 'name': 'Instance'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 45}}}
 """
 
 

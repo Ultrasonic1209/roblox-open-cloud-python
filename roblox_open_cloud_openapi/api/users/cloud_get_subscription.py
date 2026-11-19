@@ -23,12 +23,12 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': False}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'universe.subscription-product.subscription:read', 'targetResourceSpecifier': 'universes'}, {'name': 'universe:write'}, {'name': 'universe.subscription-product.subscription:read'}], 'x-roblox-docs': {'category': 'Monetization', 'methodProperties': {'scopes': ['universe:write', 'universe.subscription-product.subscription:read']}, 'resource': {'$ref': '#/components/schemas/Subscription', 'name': 'Subscription'}}, 'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 500}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 3}}}
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 500}, 'perOauth2Authorization': {'period': 'SECOND', 'maxInPeriod': 3}}, 'x-roblox-scopes': [{'name': 'universe:write', 'targetResourceSpecifier': 'universes'}, {'name': 'universe.subscription-product.subscription:read', 'targetResourceSpecifier': 'universes'}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
 from ...models.cloud_get_subscription_view import CloudGetSubscriptionView
-from ...models.subscription import Subscription
+from ...models.roblox_subscriptions_open_cloud_v2_subscription import RobloxSubscriptionsOpenCloudV2Subscription
 from ...types import Unset
 
 
@@ -63,9 +63,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Subscription | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> RobloxSubscriptionsOpenCloudV2Subscription | None:
     if response.status_code == 200:
-        response_200 = Subscription.from_dict(response.json())
+        response_200 = RobloxSubscriptionsOpenCloudV2Subscription.from_dict(response.json())
 
         return response_200
 
@@ -75,7 +77,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Subscription]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[RobloxSubscriptionsOpenCloudV2Subscription]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -91,7 +95,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     view: CloudGetSubscriptionView | Unset = UNSET,
-) -> Response[Subscription]:
+) -> Response[RobloxSubscriptionsOpenCloudV2Subscription]:
     """Get Subscription
 
      Get the subscription.
@@ -115,7 +119,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Subscription]
+        Response[RobloxSubscriptionsOpenCloudV2Subscription]
     """
 
     kwargs = _get_kwargs(
@@ -139,7 +143,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     view: CloudGetSubscriptionView | Unset = UNSET,
-) -> Subscription | None:
+) -> RobloxSubscriptionsOpenCloudV2Subscription | None:
     """Get Subscription
 
      Get the subscription.
@@ -163,7 +167,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Subscription
+        RobloxSubscriptionsOpenCloudV2Subscription
     """
 
     return sync_detailed(
@@ -182,7 +186,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     view: CloudGetSubscriptionView | Unset = UNSET,
-) -> Response[Subscription]:
+) -> Response[RobloxSubscriptionsOpenCloudV2Subscription]:
     """Get Subscription
 
      Get the subscription.
@@ -206,7 +210,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Subscription]
+        Response[RobloxSubscriptionsOpenCloudV2Subscription]
     """
 
     kwargs = _get_kwargs(
@@ -228,7 +232,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     view: CloudGetSubscriptionView | Unset = UNSET,
-) -> Subscription | None:
+) -> RobloxSubscriptionsOpenCloudV2Subscription | None:
     """Get Subscription
 
      Get the subscription.
@@ -252,7 +256,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Subscription
+        RobloxSubscriptionsOpenCloudV2Subscription
     """
 
     return (

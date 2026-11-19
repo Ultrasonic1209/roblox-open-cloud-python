@@ -23,7 +23,7 @@ from ...client import AuthenticatedClient, Client
 from ...types import Response
 
 """
-{'x-roblox-engine-usability': {'apiKeyWithHttpService': True}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:read', 'targetResourceSpecifier': 'universes'}, {'name': 'memory-store.sorted-map:read'}], 'x-roblox-docs': {'category': 'Data and memory stores', 'methodProperties': {'scopes': ['memory-store.sorted-map:read']}, 'resource': {'$ref': '#/components/schemas/MemoryStoreSortedMapItem', 'name': 'MemoryStoreSortedMapItem'}}, 'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}}
+{'x-roblox-stability': 'STABLE', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 1000000}}, 'x-roblox-scopes': [{'name': 'memory-store.sorted-map:read', 'targetResourceSpecifier': 'universes', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': True}}
 """
 
 
@@ -31,7 +31,7 @@ from ...models.memory_store_sorted_map_item import MemoryStoreSortedMapItem
 
 
 def _get_kwargs(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
 ) -> dict[str, Any]:
@@ -74,7 +74,7 @@ def _build_response(
 
 
 def sync_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
@@ -85,7 +85,7 @@ def sync_detailed(
      Gets and returns the value of the given key in the map.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
 
@@ -111,7 +111,7 @@ def sync_detailed(
 
 
 def sync(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
@@ -122,7 +122,7 @@ def sync(
      Gets and returns the value of the given key in the map.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
 
@@ -143,7 +143,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
@@ -154,7 +154,7 @@ async def asyncio_detailed(
      Gets and returns the value of the given key in the map.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
 
@@ -178,7 +178,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    universe_id: str,
+    universe_id: int,
     sorted_map_id: str,
     item_id: str,
     *,
@@ -189,7 +189,7 @@ async def asyncio(
      Gets and returns the value of the given key in the map.
 
     Args:
-        universe_id (str):
+        universe_id (int):
         sorted_map_id (str):
         item_id (str):
 

@@ -19,7 +19,7 @@ class RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType:
     Attributes:
         id (int | Unset):
         type_ (RobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType | Unset):  ['User' = 0,
-            'Group' = 1]
+            'Group' = 1, 'Experience' = 2]
         name (str | Unset):
     """
 
