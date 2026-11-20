@@ -48,8 +48,8 @@ class CampaignOptionsResponse:
             query parameter when supplied.
         objectives (list[CampaignOptionsResponseObjectivesItem] | Unset): The campaign objectives you can create. Values
             can be `PLAYS`, `ENGAGEMENT`, or
-            `ROBUX_SPEND`. objectiveOptions tells you whether each one is available for the
-            experience.
+            `ROBUX_SPEND`. `ENGAGEMENT` is the API value for the Qualify for Kids and Select
+            objective in Ads Manager. objectiveOptions tells you whether each one is available.
         payment_types (list[CampaignOptionsResponsePaymentTypesItem] | Unset): The payment types a campaign may choose.
             Values can be `CREDIT_CARD`,
             `ADS_CREDIT`, or `INVOICE`. With universeId, the payment types at least one of

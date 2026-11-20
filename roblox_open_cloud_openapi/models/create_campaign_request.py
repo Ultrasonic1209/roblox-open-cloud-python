@@ -31,7 +31,8 @@ class CreateCampaignRequest:
             These are Roblox asset IDs, the same values as Creative.assetId.
         name (str): The display name of the campaign. Required.
         objective (CreateCampaignRequestObjective): The advertising goal. Required. Can be `PLAYS`, `ENGAGEMENT`, or
-            `ROBUX_SPEND`. `ENGAGEMENT` does not support targeting; `ENGAGEMENT` and
+            `ROBUX_SPEND`. `ENGAGEMENT` is the API value for the Qualify for Kids and Select
+            objective in Ads Manager. `ENGAGEMENT` does not support targeting; `ENGAGEMENT` and
             `ROBUX_SPEND` are not available for every experience.
         payment_type (CreateCampaignRequestPaymentType): How the campaign is paid for. Required. Can be `CREDIT_CARD`,
             `ADS_CREDIT`, or

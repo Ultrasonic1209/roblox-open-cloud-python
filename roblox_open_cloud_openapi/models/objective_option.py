@@ -25,6 +25,7 @@ class ObjectiveOption:
             ALL_PLAYERS for ENGAGEMENT, which rejects targeting restrictions.
         available (bool): Whether the objective can currently be used.
         objective (ObjectiveOptionObjective): The objective. Values can be `PLAYS`, `ENGAGEMENT`, or `ROBUX_SPEND`.
+            `ENGAGEMENT` is the API value for the Qualify for Kids and Select objective in Ads Manager.
         supports_targeting (bool): Whether create accepts targeting restrictions for this objective. False only for
             `ENGAGEMENT`.
         unavailable_reasons (list[Reason] | Unset): Why the objective is unavailable. Present only when available is

@@ -22,6 +22,7 @@ class PlanningCampaignContext:
     Attributes:
         objective (PlanningCampaignContextObjective): The advertising goal. Can be `PLAYS`, `ENGAGEMENT`, or
             `ROBUX_SPEND`.
+            `ENGAGEMENT` is the API value for the Qualify for Kids and Select objective in Ads Manager.
         target_universe_id (str): The experience to plan for, as a decimal string.
         targeting (Targeting | Unset):
     """
