@@ -19,17 +19,13 @@ T = TypeVar("T", bound="PerformanceEstimateDerivedMetrics")
 class PerformanceEstimateDerivedMetrics:
     """
     Attributes:
-        cost_per_outcome_micro_usd (str | Unset): Cost per outcome in micro-USD, as a decimal string.
         cost_per_outcome_micro_usd_range (PerformanceEstimateMoneyRange | Unset):
     """
 
-    cost_per_outcome_micro_usd: str | Unset = UNSET
     cost_per_outcome_micro_usd_range: PerformanceEstimateMoneyRange | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        cost_per_outcome_micro_usd = self.cost_per_outcome_micro_usd
-
         cost_per_outcome_micro_usd_range: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cost_per_outcome_micro_usd_range, Unset):
             cost_per_outcome_micro_usd_range = self.cost_per_outcome_micro_usd_range.to_dict()
@@ -37,8 +33,6 @@ class PerformanceEstimateDerivedMetrics:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if cost_per_outcome_micro_usd is not UNSET:
-            field_dict["costPerOutcomeMicroUsd"] = cost_per_outcome_micro_usd
         if cost_per_outcome_micro_usd_range is not UNSET:
             field_dict["costPerOutcomeMicroUsdRange"] = cost_per_outcome_micro_usd_range
 
@@ -49,8 +43,6 @@ class PerformanceEstimateDerivedMetrics:
         from ..models.performance_estimate_money_range import PerformanceEstimateMoneyRange  # noqa: PLC0415
 
         d = dict(src_dict)
-        cost_per_outcome_micro_usd = d.pop("costPerOutcomeMicroUsd", UNSET)
-
         _cost_per_outcome_micro_usd_range = d.pop("costPerOutcomeMicroUsdRange", UNSET)
         cost_per_outcome_micro_usd_range: PerformanceEstimateMoneyRange | Unset
         if isinstance(_cost_per_outcome_micro_usd_range, Unset):
@@ -61,7 +53,6 @@ class PerformanceEstimateDerivedMetrics:
             )
 
         performance_estimate_derived_metrics = cls(
-            cost_per_outcome_micro_usd=cost_per_outcome_micro_usd,
             cost_per_outcome_micro_usd_range=cost_per_outcome_micro_usd_range,
         )
 

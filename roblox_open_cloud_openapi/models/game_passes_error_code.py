@@ -27,6 +27,7 @@ class GamePassesErrorCode(StrEnum):
     TARGETUNAUTHORIZEDACCESS = "TargetUnauthorizedAccess"
     UNAUTHORIZEDACCESS = "UnauthorizedAccess"
     UNIVERSENOTFOUND = "UniverseNotFound"
+    UNSUPPORTEDGAMEPASSUPDATE = "UnsupportedGamePassUpdate"
 
     def __str__(self) -> str:
         return str(self.value)

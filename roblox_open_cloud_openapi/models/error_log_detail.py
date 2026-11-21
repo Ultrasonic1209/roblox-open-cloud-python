@@ -16,12 +16,12 @@ class ErrorLogDetail:
     """error log detail
 
     Attributes:
-        id (None | str): The message hash id for this log detail.
-        message (None | str): The message of the error log
+        id (None | str | Unset): The message hash id for this log detail.
         log_severity (None | str | Unset): The logSeverity of the log
         log_source (None | str | Unset): The source of the log
         os (None | str | Unset):
         platform (None | str | Unset):
+        message (None | str | Unset): The message of the error log
         stacktrace (None | str | Unset): The stack trace of the error log. This might be not available
         first_seen_utc (datetime.datetime | None | Unset): UTC timestamp when this error was first observed.
             Null when the source document predates this field being populated.
@@ -29,22 +29,22 @@ class ErrorLogDetail:
             NOTE: This value will only be returned when place id is filtered
     """
 
-    id: None | str
-    message: None | str
+    id: None | str | Unset = UNSET
     log_severity: None | str | Unset = UNSET
     log_source: None | str | Unset = UNSET
     os: None | str | Unset = UNSET
     platform: None | str | Unset = UNSET
+    message: None | str | Unset = UNSET
     stacktrace: None | str | Unset = UNSET
     first_seen_utc: datetime.datetime | None | Unset = UNSET
     first_seen_place_version: int | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        id: None | str
-        id = self.id
-
-        message: None | str
-        message = self.message
+        id: None | str | Unset
+        if isinstance(self.id, Unset):
+            id = UNSET
+        else:
+            id = self.id
 
         log_severity: None | str | Unset
         if isinstance(self.log_severity, Unset):
@@ -70,6 +70,12 @@ class ErrorLogDetail:
         else:
             platform = self.platform
 
+        message: None | str | Unset
+        if isinstance(self.message, Unset):
+            message = UNSET
+        else:
+            message = self.message
+
         stacktrace: None | str | Unset
         if isinstance(self.stacktrace, Unset):
             stacktrace = UNSET
@@ -92,12 +98,9 @@ class ErrorLogDetail:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update(
-            {
-                "id": id,
-                "message": message,
-            }
-        )
+        field_dict.update({})
+        if id is not UNSET:
+            field_dict["id"] = id
         if log_severity is not UNSET:
             field_dict["logSeverity"] = log_severity
         if log_source is not UNSET:
@@ -106,6 +109,8 @@ class ErrorLogDetail:
             field_dict["os"] = os
         if platform is not UNSET:
             field_dict["platform"] = platform
+        if message is not UNSET:
+            field_dict["message"] = message
         if stacktrace is not UNSET:
             field_dict["stacktrace"] = stacktrace
         if first_seen_utc is not UNSET:
@@ -119,19 +124,14 @@ class ErrorLogDetail:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_id(data: object) -> None | str:
+        def _parse_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
-            return cast(None | str, data)
-
-        id = _parse_id(d.pop("id"))
-
-        def _parse_message(data: object) -> None | str:
-            if data is None:
+            if isinstance(data, Unset):
                 return data
-            return cast(None | str, data)
+            return cast(None | str | Unset, data)
 
-        message = _parse_message(d.pop("message"))
+        id = _parse_id(d.pop("id", UNSET))
 
         def _parse_log_severity(data: object) -> None | str | Unset:
             if data is None:
@@ -168,6 +168,15 @@ class ErrorLogDetail:
             return cast(None | str | Unset, data)
 
         platform = _parse_platform(d.pop("platform", UNSET))
+
+        def _parse_message(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        message = _parse_message(d.pop("message", UNSET))
 
         def _parse_stacktrace(data: object) -> None | str | Unset:
             if data is None:
@@ -206,11 +215,11 @@ class ErrorLogDetail:
 
         error_log_detail = cls(
             id=id,
-            message=message,
             log_severity=log_severity,
             log_source=log_source,
             os=os,
             platform=platform,
+            message=message,
             stacktrace=stacktrace,
             first_seen_utc=first_seen_utc,
             first_seen_place_version=first_seen_place_version,

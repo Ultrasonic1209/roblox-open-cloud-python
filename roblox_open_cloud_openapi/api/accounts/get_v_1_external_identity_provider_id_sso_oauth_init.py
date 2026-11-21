@@ -27,15 +27,21 @@ from ...types import UNSET, Response
 """
 
 
+from ...types import Unset
+
+
 def _get_kwargs(
     identity_provider_id: int,
     *,
     post_authentication_intent_id: str,
+    supports_link_candidate: bool | Unset = False,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
     params["postAuthenticationIntentId"] = post_authentication_intent_id
+
+    params["supportsLinkCandidate"] = supports_link_candidate
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -74,6 +80,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     post_authentication_intent_id: str,
+    supports_link_candidate: bool | Unset = False,
 ) -> Response[Any]:
     """Signs a user up for Roblox and links the account to the authenticated external provider ID via
     OAuth.
@@ -84,6 +91,7 @@ def sync_detailed(
     Args:
         identity_provider_id (int):
         post_authentication_intent_id (str):
+        supports_link_candidate (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -96,6 +104,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         identity_provider_id=identity_provider_id,
         post_authentication_intent_id=post_authentication_intent_id,
+        supports_link_candidate=supports_link_candidate,
     )
 
     response = client.get_httpx_client().request(
@@ -110,6 +119,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     post_authentication_intent_id: str,
+    supports_link_candidate: bool | Unset = False,
 ) -> Response[Any]:
     """Signs a user up for Roblox and links the account to the authenticated external provider ID via
     OAuth.
@@ -120,6 +130,7 @@ async def asyncio_detailed(
     Args:
         identity_provider_id (int):
         post_authentication_intent_id (str):
+        supports_link_candidate (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,6 +143,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         identity_provider_id=identity_provider_id,
         post_authentication_intent_id=post_authentication_intent_id,
+        supports_link_candidate=supports_link_candidate,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)

@@ -19,10 +19,11 @@ T = TypeVar("T", bound="PerformanceEstimateBudget")
 class PerformanceEstimateBudget:
     """
     Attributes:
-        daily_amount_micro_usd (str | Unset): Daily budget in micro-USD, as a decimal string.
+        daily_amount_micro_usd (str | Unset): Supplied daily budget in micro-USD, as a decimal string. Omitted when
+            predicting a budget.
         daily_amount_micro_usd_range (PerformanceEstimateMoneyRange | Unset):
-        lifetime_amount_micro_usd (str | Unset): Lifetime budget in micro-USD, as a decimal string. Omitted for a daily
-            budget.
+        lifetime_amount_micro_usd (str | Unset): Supplied lifetime budget in micro-USD, as a decimal string. Omitted for
+            a daily budget or when predicting a budget.
         lifetime_amount_micro_usd_range (PerformanceEstimateMoneyRange | Unset):
     """
 

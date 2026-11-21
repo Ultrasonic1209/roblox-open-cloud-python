@@ -20,9 +20,10 @@ T = TypeVar("T", bound="PerformanceEstimateOutcome")
 class PerformanceEstimateOutcome:
     """
     Attributes:
-        daily_value (int | Unset): Daily outcome.
+        daily_value (int | Unset): Supplied daily outcome. Omitted when predicting an outcome.
         daily_value_range (PerformanceEstimateValueRange | Unset):
-        lifetime_value (int | Unset): Lifetime outcome. Omitted for a daily budget.
+        lifetime_value (int | Unset): Supplied lifetime outcome. Omitted for a daily budget or when predicting an
+            outcome.
         lifetime_value_range (PerformanceEstimateValueRange | Unset):
         outcome_type (PerformanceEstimateOutcomeOutcomeType | Unset): The outcome measured. Always PLAYS.
     """

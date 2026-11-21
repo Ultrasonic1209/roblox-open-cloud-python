@@ -19,10 +19,9 @@ class GamePassesCreateGamePassBody:
     Attributes:
         name (str): The name of the game pass.
         description (None | str | Unset): The description of the game pass.
-        image_file (File | None | Unset): The thumbnail image file to be uploaded.
+        image_file (File | None | Unset): The thumbnail image file to be uploaded. Maximum file size is 5 MB.
         is_for_sale (bool | None | Unset): Whether the game pass should be on sale.
         price (int | None | Unset): The default price of the game pass.
-        is_regional_pricing_enabled (bool | None | Unset): Whether regional pricing should be enabled for the game pass.
         is_managed_pricing_enabled (bool | None | Unset): Whether managed pricing should be enabled for the game pass.
         is_trial_enabled (bool | None | Unset): Whether trials should be enabled for the game pass. Note for trials to
             be available, the game pass must also be on sale.
@@ -33,7 +32,6 @@ class GamePassesCreateGamePassBody:
     image_file: File | None | Unset = UNSET
     is_for_sale: bool | None | Unset = UNSET
     price: int | None | Unset = UNSET
-    is_regional_pricing_enabled: bool | None | Unset = UNSET
     is_managed_pricing_enabled: bool | None | Unset = UNSET
     is_trial_enabled: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -68,12 +66,6 @@ class GamePassesCreateGamePassBody:
         else:
             price = self.price
 
-        is_regional_pricing_enabled: bool | None | Unset
-        if isinstance(self.is_regional_pricing_enabled, Unset):
-            is_regional_pricing_enabled = UNSET
-        else:
-            is_regional_pricing_enabled = self.is_regional_pricing_enabled
-
         is_managed_pricing_enabled: bool | None | Unset
         if isinstance(self.is_managed_pricing_enabled, Unset):
             is_managed_pricing_enabled = UNSET
@@ -101,8 +93,6 @@ class GamePassesCreateGamePassBody:
             field_dict["isForSale"] = is_for_sale
         if price is not UNSET:
             field_dict["price"] = price
-        if is_regional_pricing_enabled is not UNSET:
-            field_dict["isRegionalPricingEnabled"] = is_regional_pricing_enabled
         if is_managed_pricing_enabled is not UNSET:
             field_dict["isManagedPricingEnabled"] = is_managed_pricing_enabled
         if is_trial_enabled is not UNSET:
@@ -138,16 +128,6 @@ class GamePassesCreateGamePassBody:
                 files.append(("price", (None, str(self.price).encode(), "text/plain")))
             else:
                 files.append(("price", (None, str(self.price).encode(), "text/plain")))
-
-        if not isinstance(self.is_regional_pricing_enabled, Unset):
-            if isinstance(self.is_regional_pricing_enabled, bool):
-                files.append(
-                    ("isRegionalPricingEnabled", (None, str(self.is_regional_pricing_enabled).encode(), "text/plain"))
-                )
-            else:
-                files.append(
-                    ("isRegionalPricingEnabled", (None, str(self.is_regional_pricing_enabled).encode(), "text/plain"))
-                )
 
         if not isinstance(self.is_managed_pricing_enabled, Unset):
             if isinstance(self.is_managed_pricing_enabled, bool):
@@ -219,15 +199,6 @@ class GamePassesCreateGamePassBody:
 
         price = _parse_price(d.pop("price", UNSET))
 
-        def _parse_is_regional_pricing_enabled(data: object) -> bool | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(bool | None | Unset, data)
-
-        is_regional_pricing_enabled = _parse_is_regional_pricing_enabled(d.pop("isRegionalPricingEnabled", UNSET))
-
         def _parse_is_managed_pricing_enabled(data: object) -> bool | None | Unset:
             if data is None:
                 return data
@@ -252,7 +223,6 @@ class GamePassesCreateGamePassBody:
             image_file=image_file,
             is_for_sale=is_for_sale,
             price=price,
-            is_regional_pricing_enabled=is_regional_pricing_enabled,
             is_managed_pricing_enabled=is_managed_pricing_enabled,
             is_trial_enabled=is_trial_enabled,
         )

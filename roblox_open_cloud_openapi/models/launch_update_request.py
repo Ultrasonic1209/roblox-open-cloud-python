@@ -34,8 +34,9 @@ class LaunchUpdateRequest:
             Valid values: 1 - 60 minutes
         place_id_to_versions (LaunchUpdateRequestPlaceIdToVersionsType0 | None | Unset): Optional. A mapping of PlaceId
             to the specific versions to restart/bleed off for that place.
-            When set for a place, only servers running those exact versions will be affected.
-            If a place is not in this dictionary or has an empty set, behavior falls back to CloseOldVersionsOnly logic.
+            Only servers running those exact versions will be affected.
+            When set, it must list exactly the places in PlaceIds, each with at least one version, and CloseOldVersionsOnly
+            must be false.
         attributes (None | str | Unset): Optional. Attributes string to include in the ServerLifecycleChanged CSM
             payload published to game servers.
     """

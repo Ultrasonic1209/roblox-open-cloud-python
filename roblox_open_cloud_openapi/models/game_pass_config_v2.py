@@ -6,8 +6,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
-from ..types import UNSET, Unset
-
 if TYPE_CHECKING:
     from ..models.game_passes_price_information_struct import GamePassesPriceInformationStruct
 
@@ -30,7 +28,7 @@ class GamePassConfigV2:
         price_information (GamePassesPriceInformationStruct | None): The pricing configuration associated with the game
             pass.
         is_managed_pricing_enabled (bool): Whether managed pricing is enabled for the game pass.
-        is_trial_enabled (bool | Unset): Whether trials are enabled for the game pass.
+        is_trial_enabled (bool): Whether trials are enabled for the game pass.
     """
 
     game_pass_id: int
@@ -42,7 +40,7 @@ class GamePassConfigV2:
     updated_timestamp: datetime.datetime
     price_information: GamePassesPriceInformationStruct | None
     is_managed_pricing_enabled: bool
-    is_trial_enabled: bool | Unset = UNSET
+    is_trial_enabled: bool
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.game_passes_price_information_struct import GamePassesPriceInformationStruct  # noqa: PLC0415
@@ -84,10 +82,9 @@ class GamePassConfigV2:
                 "updatedTimestamp": updated_timestamp,
                 "priceInformation": price_information,
                 "isManagedPricingEnabled": is_managed_pricing_enabled,
+                "isTrialEnabled": is_trial_enabled,
             }
         )
-        if is_trial_enabled is not UNSET:
-            field_dict["isTrialEnabled"] = is_trial_enabled
 
         return field_dict
 
@@ -127,7 +124,7 @@ class GamePassConfigV2:
 
         is_managed_pricing_enabled = d.pop("isManagedPricingEnabled")
 
-        is_trial_enabled = d.pop("isTrialEnabled", UNSET)
+        is_trial_enabled = d.pop("isTrialEnabled")
 
         game_pass_config_v2 = cls(
             game_pass_id=game_pass_id,

@@ -28,6 +28,7 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
             (RobloxAuthenticationApiModelsRequestExternalAccessRequestIdentityProviderPlatformType | Unset):  ['Undefined' =
             0, 'Xbox' = 1, 'Playstation' = 2, 'Web' = 3, 'Steam' = 4, 'Android' = 5, 'Ios' = 6, 'MacOs' = 7]
         post_authentication_intent_id (str | Unset):
+        supports_link_candidate (bool | Unset):
         additional_info_payload (RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload |
             Unset):
     """
@@ -37,6 +38,7 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
         RobloxAuthenticationApiModelsRequestExternalAccessRequestIdentityProviderPlatformType | Unset
     ) = UNSET
     post_authentication_intent_id: str | Unset = UNSET
+    supports_link_candidate: bool | Unset = UNSET
     additional_info_payload: RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload | Unset = (
         UNSET
     )
@@ -49,6 +51,8 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
             identity_provider_platform_type = self.identity_provider_platform_type.value
 
         post_authentication_intent_id = self.post_authentication_intent_id
+
+        supports_link_candidate = self.supports_link_candidate
 
         additional_info_payload: dict[str, Any] | Unset = UNSET
         if not isinstance(self.additional_info_payload, Unset):
@@ -63,6 +67,8 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
             field_dict["identityProviderPlatformType"] = identity_provider_platform_type
         if post_authentication_intent_id is not UNSET:
             field_dict["postAuthenticationIntentId"] = post_authentication_intent_id
+        if supports_link_candidate is not UNSET:
+            field_dict["supportsLinkCandidate"] = supports_link_candidate
         if additional_info_payload is not UNSET:
             field_dict["additionalInfoPayload"] = additional_info_payload
 
@@ -92,6 +98,8 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
 
         post_authentication_intent_id = d.pop("postAuthenticationIntentId", UNSET)
 
+        supports_link_candidate = d.pop("supportsLinkCandidate", UNSET)
+
         _additional_info_payload = d.pop("additionalInfoPayload", UNSET)
         additional_info_payload: RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload | Unset
         if isinstance(_additional_info_payload, Unset):
@@ -107,6 +115,7 @@ class RobloxAuthenticationApiModelsRequestExternalAccessRequest:
             authentication_proof=authentication_proof,
             identity_provider_platform_type=identity_provider_platform_type,
             post_authentication_intent_id=post_authentication_intent_id,
+            supports_link_candidate=supports_link_candidate,
             additional_info_payload=additional_info_payload,
         )
 

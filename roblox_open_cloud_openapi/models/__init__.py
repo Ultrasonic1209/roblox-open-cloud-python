@@ -213,6 +213,7 @@ from .create_payment_profile_response import CreatePaymentProfileResponse
 from .create_place_version_operation_response import CreatePlaceVersionOperationResponse
 from .create_private_server_request import CreatePrivateServerRequest
 from .create_save_request_type_0 import CreateSaveRequestType0
+from .create_thumbnail_personalization_request import CreateThumbnailPersonalizationRequest
 from .create_universe_regex_http_request import CreateUniverseRegexHttpRequest
 from .creation_context import CreationContext
 from .creative import Creative
@@ -385,6 +386,8 @@ from .filter_operation import FilterOperation
 from .filter_options_response import FilterOptionsResponse
 from .filter_options_response_filters_type_0 import FilterOptionsResponseFiltersType0
 from .filter_type import FilterType
+from .find_personalized_configs_response import FindPersonalizedConfigsResponse
+from .find_thumbnails_response import FindThumbnailsResponse
 from .find_universe_regexes_http_response import FindUniverseRegexesHttpResponse
 from .forecast_restart_response import ForecastRestartResponse
 from .forecast_restart_response_place_forecasts_type_0 import ForecastRestartResponsePlaceForecastsType0
@@ -692,6 +695,12 @@ from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platfo
 from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type_type import (
     GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType,
 )
+from .homepage_thumbnail import HomepageThumbnail
+from .homepage_thumbnail_delete_homepage_thumbnails_response_200 import (
+    HomepageThumbnailDeleteHomepageThumbnailsResponse200,
+)
+from .homepage_thumbnail_status import HomepageThumbnailStatus
+from .homepage_thumbnail_upload_homepage_thumbnails_body import HomepageThumbnailUploadHomepageThumbnailsBody
 from .host_response import HostResponse
 from .host_type import HostType
 from .hydrated_save_type_0 import HydratedSaveType0
@@ -820,6 +829,7 @@ from .model_search_filters_type_0 import ModelSearchFiltersType0
 from .model_sub_type import ModelSubType
 from .moderation_result import ModerationResult
 from .moderation_state import ModerationState
+from .moderation_status import ModerationStatus
 from .money_type_0 import MoneyType0
 from .multipart_upload_chunk_complete_request import MultipartUploadChunkCompleteRequest
 from .multipart_upload_start_request import MultipartUploadStartRequest
@@ -892,6 +902,9 @@ from .performance_estimate_target_outcome import PerformanceEstimateTargetOutcom
 from .performance_estimate_target_outcome_outcome_type import PerformanceEstimateTargetOutcomeOutcomeType
 from .performance_estimate_value_range import PerformanceEstimateValueRange
 from .period import Period
+from .personalized_config_status import PersonalizedConfigStatus
+from .personalized_thumbnail import PersonalizedThumbnail
+from .personalized_thumbnail_status import PersonalizedThumbnailStatus
 from .ping_signal_level import PingSignalLevel
 from .place import Place
 from .place_filter import PlaceFilter
@@ -1807,6 +1820,9 @@ from .roblox_authentication_api_models_request_audit_system_content_additional_a
 from .roblox_authentication_api_models_request_audit_system_content_captured_audit_content import (
     RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent,
 )
+from .roblox_authentication_api_models_request_confirm_link_candidate_request import (
+    RobloxAuthenticationApiModelsRequestConfirmLinkCandidateRequest,
+)
 from .roblox_authentication_api_models_request_delete_passkeys_request import (
     RobloxAuthenticationApiModelsRequestDeletePasskeysRequest,
 )
@@ -1917,6 +1933,9 @@ from .roblox_authentication_api_models_response_external_identity_gateway_extern
 )
 from .roblox_authentication_api_models_response_external_identity_gateway_external_login_response import (
     RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalLoginResponse,
+)
+from .roblox_authentication_api_models_response_external_identity_gateway_link_candidate_response import (
+    RobloxAuthenticationApiModelsResponseExternalIdentityGatewayLinkCandidateResponse,
 )
 from .roblox_authentication_api_models_response_get_client_assertion_response import (
     RobloxAuthenticationApiModelsResponseGetClientAssertionResponse,
@@ -3736,6 +3755,7 @@ from .text_to_speech_service_operation_metadata import TextToSpeechServiceOperat
 from .text_to_speech_service_operation_response import TextToSpeechServiceOperationResponse
 from .text_to_speech_service_status import TextToSpeechServiceStatus
 from .text_to_speech_service_status_details_item import TextToSpeechServiceStatusDetailsItem
+from .thumbnail_personalized_config import ThumbnailPersonalizedConfig
 from .thumbnail_response import ThumbnailResponse
 from .tile_filter import TileFilter
 from .transaction_details_response import TransactionDetailsResponse
@@ -3797,7 +3817,16 @@ from .update_notification_string_request import UpdateNotificationStringRequest
 from .update_place_version_notes_request import UpdatePlaceVersionNotesRequest
 from .update_place_version_notes_response import UpdatePlaceVersionNotesResponse
 from .update_schedule import UpdateSchedule
+from .update_thumbnail_personalization_request import UpdateThumbnailPersonalizationRequest
 from .update_universe_regex_http_request import UpdateUniverseRegexHttpRequest
+from .upload_status import UploadStatus
+from .upload_thumbnail_status import UploadThumbnailStatus
+from .upload_thumbnails_response import UploadThumbnailsResponse
+from .upload_thumbnails_response_file_to_operation_id_dict import UploadThumbnailsResponseFileToOperationIdDict
+from .upload_thumbnails_status_response import UploadThumbnailsStatusResponse
+from .upload_thumbnails_status_response_upload_thumbnail_status_dict import (
+    UploadThumbnailsStatusResponseUploadThumbnailStatusDict,
+)
 from .user import User
 from .user_game_vote_request import UserGameVoteRequest
 from .user_game_vote_response import UserGameVoteResponse
@@ -4022,6 +4051,7 @@ __all__ = (
     "CreatePlaceVersionOperationResponse",
     "CreatePrivateServerRequest",
     "CreateSaveRequestType0",
+    "CreateThumbnailPersonalizationRequest",
     "CreateUniverseRegexHttpRequest",
     "CreationContext",
     "Creative",
@@ -4184,6 +4214,8 @@ __all__ = (
     "FilterOptionsResponse",
     "FilterOptionsResponseFiltersType0",
     "FilterType",
+    "FindPersonalizedConfigsResponse",
+    "FindThumbnailsResponse",
     "FindUniverseRegexesHttpResponse",
     "ForecastRestartResponse",
     "ForecastRestartResponsePlaceForecastsType0",
@@ -4433,6 +4465,10 @@ __all__ = (
     "GroupRoleRolePermissions",
     "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
     "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
+    "HomepageThumbnail",
+    "HomepageThumbnailDeleteHomepageThumbnailsResponse200",
+    "HomepageThumbnailStatus",
+    "HomepageThumbnailUploadHomepageThumbnailsBody",
     "HostResponse",
     "HostType",
     "HydratedSaveType0",
@@ -4557,6 +4593,7 @@ __all__ = (
     "ModelSubType",
     "ModerationResult",
     "ModerationState",
+    "ModerationStatus",
     "MoneyType0",
     "MultipartUploadChunkCompleteRequest",
     "MultipartUploadStartRequest",
@@ -4621,6 +4658,9 @@ __all__ = (
     "PerformanceEstimateTargetOutcomeOutcomeType",
     "PerformanceEstimateValueRange",
     "Period",
+    "PersonalizedConfigStatus",
+    "PersonalizedThumbnail",
+    "PersonalizedThumbnailStatus",
     "PingSignalLevel",
     "Place",
     "PlaceFilter",
@@ -5086,6 +5126,7 @@ __all__ = (
     "RobloxAuthenticationApiModelsRequestAuditSystemContent",
     "RobloxAuthenticationApiModelsRequestAuditSystemContentAdditionalAuditContent",
     "RobloxAuthenticationApiModelsRequestAuditSystemContentCapturedAuditContent",
+    "RobloxAuthenticationApiModelsRequestConfirmLinkCandidateRequest",
     "RobloxAuthenticationApiModelsRequestDeletePasskeysRequest",
     "RobloxAuthenticationApiModelsRequestExternalAccessRequest",
     "RobloxAuthenticationApiModelsRequestExternalAccessRequestAdditionalInfoPayload",
@@ -5123,6 +5164,7 @@ __all__ = (
     "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse",
     "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityNonceResponse",
     "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalLoginResponse",
+    "RobloxAuthenticationApiModelsResponseExternalIdentityGatewayLinkCandidateResponse",
     "RobloxAuthenticationApiModelsResponseGetClientAssertionResponse",
     "RobloxAuthenticationApiModelsResponseInitializeLoginResponse",
     "RobloxAuthenticationApiModelsResponseListPasskeyCredentialResponse",
@@ -5971,6 +6013,7 @@ __all__ = (
     "TextToSpeechServiceOperationResponse",
     "TextToSpeechServiceStatus",
     "TextToSpeechServiceStatusDetailsItem",
+    "ThumbnailPersonalizedConfig",
     "ThumbnailResponse",
     "TileFilter",
     "TransactionDetailsResponse",
@@ -6028,7 +6071,14 @@ __all__ = (
     "UpdatePlaceVersionNotesRequest",
     "UpdatePlaceVersionNotesResponse",
     "UpdateSchedule",
+    "UpdateThumbnailPersonalizationRequest",
     "UpdateUniverseRegexHttpRequest",
+    "UploadStatus",
+    "UploadThumbnailsResponse",
+    "UploadThumbnailsResponseFileToOperationIdDict",
+    "UploadThumbnailsStatusResponse",
+    "UploadThumbnailsStatusResponseUploadThumbnailStatusDict",
+    "UploadThumbnailStatus",
     "User",
     "UserGameVoteRequest",
     "UserGameVoteResponse",

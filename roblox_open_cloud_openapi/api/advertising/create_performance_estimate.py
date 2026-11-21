@@ -108,7 +108,7 @@ def sync_detailed(
     """Create a performance estimate
 
      Estimates an objective from a budget, or the budget required for a target outcome, for an experience
-    the caller can advertise. Results are not cached.
+    the caller can advertise.
 
     Args:
         body (PerformanceEstimateRequest):
@@ -140,7 +140,7 @@ def sync(
     """Create a performance estimate
 
      Estimates an objective from a budget, or the budget required for a target outcome, for an experience
-    the caller can advertise. Results are not cached.
+    the caller can advertise.
 
     Args:
         body (PerformanceEstimateRequest):
@@ -167,7 +167,7 @@ async def asyncio_detailed(
     """Create a performance estimate
 
      Estimates an objective from a budget, or the budget required for a target outcome, for an experience
-    the caller can advertise. Results are not cached.
+    the caller can advertise.
 
     Args:
         body (PerformanceEstimateRequest):
@@ -197,7 +197,7 @@ async def asyncio(
     """Create a performance estimate
 
      Estimates an objective from a budget, or the budget required for a target outcome, for an experience
-    the caller can advertise. Results are not cached.
+    the caller can advertise.
 
     Args:
         body (PerformanceEstimateRequest):

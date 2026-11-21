@@ -17,11 +17,15 @@ class RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdenti
         place_id (int | Unset):
         isolation_context (str | Unset):
         launch_data (str | Unset):
+        outcome (str | Unset):
+        link_candidate_token_id (str | Unset):
     """
 
     place_id: int | Unset = UNSET
     isolation_context: str | Unset = UNSET
     launch_data: str | Unset = UNSET
+    outcome: str | Unset = UNSET
+    link_candidate_token_id: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         place_id = self.place_id
@@ -29,6 +33,10 @@ class RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdenti
         isolation_context = self.isolation_context
 
         launch_data = self.launch_data
+
+        outcome = self.outcome
+
+        link_candidate_token_id = self.link_candidate_token_id
 
         field_dict: dict[str, Any] = {}
 
@@ -39,6 +47,10 @@ class RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdenti
             field_dict["isolationContext"] = isolation_context
         if launch_data is not UNSET:
             field_dict["launchData"] = launch_data
+        if outcome is not UNSET:
+            field_dict["outcome"] = outcome
+        if link_candidate_token_id is not UNSET:
+            field_dict["linkCandidateTokenId"] = link_candidate_token_id
 
         return field_dict
 
@@ -51,10 +63,16 @@ class RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdenti
 
         launch_data = d.pop("launchData", UNSET)
 
+        outcome = d.pop("outcome", UNSET)
+
+        link_candidate_token_id = d.pop("linkCandidateTokenId", UNSET)
+
         roblox_authentication_api_models_response_external_identity_gateway_external_identity_access_response = cls(
             place_id=place_id,
             isolation_context=isolation_context,
             launch_data=launch_data,
+            outcome=outcome,
+            link_candidate_token_id=link_candidate_token_id,
         )
 
         return roblox_authentication_api_models_response_external_identity_gateway_external_identity_access_response

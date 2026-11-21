@@ -16,27 +16,21 @@ class GamePassesErrorResponse:
     """This is the base class for all custom Exceptions that are thrown in this API.
 
     Attributes:
-        error_code (GamePassesErrorCode | Unset): Code representing various error conditions.
-        error_message (None | str | Unset): The human readable error message.
+        error_code (GamePassesErrorCode): Code representing various error conditions.
+        error_message (str): The human readable error message.
         field (None | str | Unset): The relevant field that caused the error.
         hint (None | str | Unset): A hint as to what caused the error, if applicable.
     """
 
-    error_code: GamePassesErrorCode | Unset = UNSET
-    error_message: None | str | Unset = UNSET
+    error_code: GamePassesErrorCode
+    error_message: str
     field: None | str | Unset = UNSET
     hint: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        error_code: str | Unset = UNSET
-        if not isinstance(self.error_code, Unset):
-            error_code = self.error_code.value
+        error_code = self.error_code.value
 
-        error_message: None | str | Unset
-        if isinstance(self.error_message, Unset):
-            error_message = UNSET
-        else:
-            error_message = self.error_message
+        error_message = self.error_message
 
         field: None | str | Unset
         if isinstance(self.field, Unset):
@@ -52,11 +46,12 @@ class GamePassesErrorResponse:
 
         field_dict: dict[str, Any] = {}
 
-        field_dict.update({})
-        if error_code is not UNSET:
-            field_dict["errorCode"] = error_code
-        if error_message is not UNSET:
-            field_dict["errorMessage"] = error_message
+        field_dict.update(
+            {
+                "errorCode": error_code,
+                "errorMessage": error_message,
+            }
+        )
         if field is not UNSET:
             field_dict["field"] = field
         if hint is not UNSET:
@@ -67,21 +62,9 @@ class GamePassesErrorResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        _error_code = d.pop("errorCode", UNSET)
-        error_code: GamePassesErrorCode | Unset
-        if isinstance(_error_code, Unset):
-            error_code = UNSET
-        else:
-            error_code = GamePassesErrorCode(_error_code)
+        error_code = GamePassesErrorCode(d.pop("errorCode"))
 
-        def _parse_error_message(data: object) -> None | str | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | str | Unset, data)
-
-        error_message = _parse_error_message(d.pop("errorMessage", UNSET))
+        error_message = d.pop("errorMessage")
 
         def _parse_field(data: object) -> None | str | Unset:
             if data is None:
