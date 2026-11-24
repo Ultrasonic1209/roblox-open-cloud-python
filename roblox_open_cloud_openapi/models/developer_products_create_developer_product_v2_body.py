@@ -21,10 +21,7 @@ class DeveloperProductsCreateDeveloperProductV2Body:
         description (None | str | Unset): The description of the developer product.
         is_for_sale (bool | None | Unset): Whether the developer product should be on sale.
         price (int | None | Unset): The default price of the developer product.
-        image_file (File | None | Unset): The thumbnail image file to be uploaded.
-        is_regional_pricing_enabled (bool | None | Unset): Whether regional pricing should be enabled for the developer
-            product.
-            Should not be used when setting isManagedPricingEnabled.
+        image_file (File | None | Unset): The thumbnail image file to be uploaded. Maximum file size is 5 MB.
         is_managed_pricing_enabled (bool | None | Unset): Whether managed pricing should be enabled for the developer
             product.
     """
@@ -34,7 +31,6 @@ class DeveloperProductsCreateDeveloperProductV2Body:
     is_for_sale: bool | None | Unset = UNSET
     price: int | None | Unset = UNSET
     image_file: File | None | Unset = UNSET
-    is_regional_pricing_enabled: bool | None | Unset = UNSET
     is_managed_pricing_enabled: bool | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -68,12 +64,6 @@ class DeveloperProductsCreateDeveloperProductV2Body:
         else:
             image_file = self.image_file
 
-        is_regional_pricing_enabled: bool | None | Unset
-        if isinstance(self.is_regional_pricing_enabled, Unset):
-            is_regional_pricing_enabled = UNSET
-        else:
-            is_regional_pricing_enabled = self.is_regional_pricing_enabled
-
         is_managed_pricing_enabled: bool | None | Unset
         if isinstance(self.is_managed_pricing_enabled, Unset):
             is_managed_pricing_enabled = UNSET
@@ -95,8 +85,6 @@ class DeveloperProductsCreateDeveloperProductV2Body:
             field_dict["price"] = price
         if image_file is not UNSET:
             field_dict["imageFile"] = image_file
-        if is_regional_pricing_enabled is not UNSET:
-            field_dict["isRegionalPricingEnabled"] = is_regional_pricing_enabled
         if is_managed_pricing_enabled is not UNSET:
             field_dict["isManagedPricingEnabled"] = is_managed_pricing_enabled
 
@@ -130,16 +118,6 @@ class DeveloperProductsCreateDeveloperProductV2Body:
                 files.append(("imageFile", self.image_file.to_tuple()))
             else:
                 files.append(("imageFile", (None, str(self.image_file).encode(), "text/plain")))
-
-        if not isinstance(self.is_regional_pricing_enabled, Unset):
-            if isinstance(self.is_regional_pricing_enabled, bool):
-                files.append(
-                    ("isRegionalPricingEnabled", (None, str(self.is_regional_pricing_enabled).encode(), "text/plain"))
-                )
-            else:
-                files.append(
-                    ("isRegionalPricingEnabled", (None, str(self.is_regional_pricing_enabled).encode(), "text/plain"))
-                )
 
         if not isinstance(self.is_managed_pricing_enabled, Unset):
             if isinstance(self.is_managed_pricing_enabled, bool):
@@ -205,15 +183,6 @@ class DeveloperProductsCreateDeveloperProductV2Body:
 
         image_file = _parse_image_file(d.pop("imageFile", UNSET))
 
-        def _parse_is_regional_pricing_enabled(data: object) -> bool | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(bool | None | Unset, data)
-
-        is_regional_pricing_enabled = _parse_is_regional_pricing_enabled(d.pop("isRegionalPricingEnabled", UNSET))
-
         def _parse_is_managed_pricing_enabled(data: object) -> bool | None | Unset:
             if data is None:
                 return data
@@ -229,7 +198,6 @@ class DeveloperProductsCreateDeveloperProductV2Body:
             is_for_sale=is_for_sale,
             price=price,
             image_file=image_file,
-            is_regional_pricing_enabled=is_regional_pricing_enabled,
             is_managed_pricing_enabled=is_managed_pricing_enabled,
         )
 

@@ -138,7 +138,12 @@ from .campaign_status_status import CampaignStatusStatus
 from .campaign_video import CampaignVideo
 from .campaign_video_source import CampaignVideoSource
 from .can_invite_user_response import CanInviteUserResponse
+from .can_use_api_keys_request import CanUseApiKeysRequest
+from .can_use_api_keys_response import CanUseApiKeysResponse
 from .category_response import CategoryResponse
+from .channel_content_preference import ChannelContentPreference
+from .channel_preference_request import ChannelPreferenceRequest
+from .channel_preference_response import ChannelPreferenceResponse
 from .chart_overlays import ChartOverlays
 from .chart_tile import ChartTile
 from .chart_tile_metric import ChartTileMetric
@@ -147,6 +152,7 @@ from .check_eligibility_response import CheckEligibilityResponse
 from .client_log import ClientLog
 from .client_status_get_request import ClientStatusGetRequest
 from .client_status_set_request import ClientStatusSetRequest
+from .cloud_authentication_service_status import CloudAuthenticationServiceStatus
 from .cloud_flush_memory_store_scope import CloudFlushMemoryStoreScope
 from .cloud_generate_user_thumbnail_format import CloudGenerateUserThumbnailFormat
 from .cloud_generate_user_thumbnail_shape import CloudGenerateUserThumbnailShape
@@ -228,6 +234,7 @@ from .creator_model_v2_type_0 import CreatorModelV2Type0
 from .creator_store_asset_type_0 import CreatorStoreAssetType0
 from .creator_store_capabilities_model_type_0 import CreatorStoreCapabilitiesModelType0
 from .creator_store_product_type_0 import CreatorStoreProductType0
+from .cross_server_messaging_models_requests_publish_request import CrossServerMessagingModelsRequestsPublishRequest
 from .currency_type import CurrencyType
 from .cursor_paging_direction import CursorPagingDirection
 from .custom_dashboard import CustomDashboard
@@ -452,6 +459,7 @@ from .get_place_contributors_response import GetPlaceContributorsResponse
 from .get_place_version_history_response import GetPlaceVersionHistoryResponse
 from .get_private_server_list_response import GetPrivateServerListResponse
 from .get_saves_response_type_0 import GetSavesResponseType0
+from .get_scopes_response import GetScopesResponse
 from .get_service_efficiency_payment_method_response import GetServiceEfficiencyPaymentMethodResponse
 from .get_start_place_override_response import GetStartPlaceOverrideResponse
 from .get_update_status_response import GetUpdateStatusResponse
@@ -675,6 +683,7 @@ from .get_v4_avatar_users_user_id_selection_types_item import GetV4AvatarUsersUs
 from .get_v4_outfits_outfit_id_details_selection_types_item import GetV4OutfitsOutfitIdDetailsSelectionTypesItem
 from .google_protobuf_any import GoogleProtobufAny
 from .google_protobuf_well_known_types_any import GoogleProtobufWellKnownTypesAny
+from .google_protobuf_well_known_types_empty import GoogleProtobufWellKnownTypesEmpty
 from .google_protobuf_well_known_types_timestamp import GoogleProtobufWellKnownTypesTimestamp
 from .google_rpc_status import GoogleRpcStatus
 from .grant_permission_error import GrantPermissionError
@@ -712,6 +721,31 @@ from .increment_ordered_data_store_entry_request import IncrementOrderedDataStor
 from .instance import Instance
 from .instance_counts_type_0 import InstanceCountsType0
 from .int_64_exclusive_start_key_cursor import Int64ExclusiveStartKeyCursor
+from .internal_controller_http_controller_error_body import InternalControllerHttpControllerErrorBody
+from .internal_controller_http_controller_query_result_data import InternalControllerHttpControllerQueryResultData
+from .internal_controller_http_controller_query_result_response import (
+    InternalControllerHttpControllerQueryResultResponse,
+)
+from .internal_controller_http_controller_query_status_data import InternalControllerHttpControllerQueryStatusData
+from .internal_controller_http_controller_query_status_response import (
+    InternalControllerHttpControllerQueryStatusResponse,
+)
+from .internal_controller_http_controller_researcher_role_data import InternalControllerHttpControllerResearcherRoleData
+from .internal_controller_http_controller_researcher_roles_data import (
+    InternalControllerHttpControllerResearcherRolesData,
+)
+from .internal_controller_http_controller_researcher_roles_response import (
+    InternalControllerHttpControllerResearcherRolesResponse,
+)
+from .internal_controller_http_controller_result_file import InternalControllerHttpControllerResultFile
+from .internal_controller_http_controller_submit_query_data import InternalControllerHttpControllerSubmitQueryData
+from .internal_controller_http_controller_submit_query_request import InternalControllerHttpControllerSubmitQueryRequest
+from .internal_controller_http_controller_submit_query_request_query import (
+    InternalControllerHttpControllerSubmitQueryRequestQuery,
+)
+from .internal_controller_http_controller_submit_query_response import (
+    InternalControllerHttpControllerSubmitQueryResponse,
+)
 from .inventory_item import InventoryItem
 from .inventory_item_asset_details import InventoryItemAssetDetails
 from .inventory_item_asset_details_inventory_item_asset_type import InventoryItemAssetDetailsInventoryItemAssetType
@@ -852,8 +886,6 @@ from .open_cloud_error_of_custom_dashboard_error_details_reason_type_0_type_0 im
     OpenCloudErrorOfCustomDashboardErrorDetailsReasonType0Type0,
 )
 from .open_cloud_error_response_of_custom_dashboard_error import OpenCloudErrorResponseOfCustomDashboardError
-from .open_cloud_universes_service_universe import OpenCloudUniversesServiceUniverse
-from .open_cloud_universes_service_universe_social_link import OpenCloudUniversesServiceUniverseSocialLink
 from .open_cloud_users_operation import OpenCloudUsersOperation
 from .open_cloud_users_status import OpenCloudUsersStatus
 from .operation import Operation
@@ -907,7 +939,10 @@ from .personalized_thumbnail import PersonalizedThumbnail
 from .personalized_thumbnail_status import PersonalizedThumbnailStatus
 from .ping_signal_level import PingSignalLevel
 from .place import Place
+from .place_content_preference import PlaceContentPreference
 from .place_filter import PlaceFilter
+from .place_preference_request import PlacePreferenceRequest
+from .place_preference_response import PlacePreferenceResponse
 from .place_response import PlaceResponse
 from .place_restart_status import PlaceRestartStatus
 from .place_scoring_config import PlaceScoringConfig
@@ -1023,9 +1058,7 @@ from .public_user_universe_payout import PublicUserUniversePayout
 from .publish_dashboard_response import PublishDashboardResponse
 from .publish_draft_request import PublishDraftRequest
 from .publish_draft_response import PublishDraftResponse
-from .publish_request import PublishRequest
 from .publish_status import PublishStatus
-from .publish_universe_message_request import PublishUniverseMessageRequest
 from .query_benchmark_result import QueryBenchmarkResult
 from .query_correction_type_0 import QueryCorrectionType0
 from .query_error import QueryError
@@ -3228,6 +3261,19 @@ from .roblox_marketplace_topic_discovery_topic_discovery_service_v1_beta_1_error
     RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error,
 )
 from .roblox_open_cloud_cloud_v2_asset_type import RobloxOpenCloudCloudV2AssetType
+from .roblox_open_cloud_cloud_v2_publish_universe_message_request import (
+    RobloxOpenCloudCloudV2PublishUniverseMessageRequest,
+)
+from .roblox_opencloud_scopeconfiguration_v2_operation import RobloxOpencloudScopeconfigurationV2Operation
+from .roblox_opencloud_scopeconfiguration_v2_product import RobloxOpencloudScopeconfigurationV2Product
+from .roblox_opencloud_scopeconfiguration_v2_risk_level import RobloxOpencloudScopeconfigurationV2RiskLevel
+from .roblox_opencloud_scopeconfiguration_v2_scope import RobloxOpencloudScopeconfigurationV2Scope
+from .roblox_opencloud_scopeconfiguration_v2_scope_type import RobloxOpencloudScopeconfigurationV2ScopeType
+from .roblox_opencloud_scopeconfiguration_v2_target_part import RobloxOpencloudScopeconfigurationV2TargetPart
+from .roblox_opencloud_scopeconfiguration_v2_target_part_types_value_type import (
+    RobloxOpencloudScopeconfigurationV2TargetPartTypesValueType,
+)
+from .roblox_opencloud_scopeconfiguration_v2_target_type import RobloxOpencloudScopeconfigurationV2TargetType
 from .roblox_paging_cursored_paged_result_roblox_friends_api_models_response_friend_response import (
     RobloxPagingCursoredPagedResultRobloxFriendsApiModelsResponseFriendResponse,
 )
@@ -3771,6 +3817,16 @@ from .transaction_used_types_response import TransactionUsedTypesResponse
 from .translate_text_request import TranslateTextRequest
 from .translate_text_response import TranslateTextResponse
 from .translate_text_response_translations import TranslateTextResponseTranslations
+from .ums_ums_service_models_open_cloud_open_cloud_batch_get_hash_map_items_request import (
+    UmsUmsServiceModelsOpenCloudOpenCloudBatchGetHashMapItemsRequest,
+)
+from .ums_ums_service_models_open_cloud_open_cloud_batch_get_hash_map_items_response import (
+    UmsUmsServiceModelsOpenCloudOpenCloudBatchGetHashMapItemsResponse,
+)
+from .ums_ums_service_models_open_cloud_open_cloud_hash_map_item import UmsUmsServiceModelsOpenCloudOpenCloudHashMapItem
+from .ums_ums_service_models_open_cloud_open_cloud_list_keys_hash_map_items_response import (
+    UmsUmsServiceModelsOpenCloudOpenCloudListKeysHashMapItemsResponse,
+)
 from .unassign_role_group_membership_request import UnassignRoleGroupMembershipRequest
 from .undelete_data_store_request import UndeleteDataStoreRequest
 from .unfollow_experience_notification_request import UnfollowExperienceNotificationRequest
@@ -3980,7 +4036,12 @@ __all__ = (
     "CampaignVideo",
     "CampaignVideoSource",
     "CanInviteUserResponse",
+    "CanUseApiKeysRequest",
+    "CanUseApiKeysResponse",
     "CategoryResponse",
+    "ChannelContentPreference",
+    "ChannelPreferenceRequest",
+    "ChannelPreferenceResponse",
     "ChartOverlays",
     "ChartTile",
     "ChartTileMetric",
@@ -3989,6 +4050,7 @@ __all__ = (
     "ClientLog",
     "ClientStatusGetRequest",
     "ClientStatusSetRequest",
+    "CloudAuthenticationServiceStatus",
     "CloudFlushMemoryStoreScope",
     "CloudGenerateUserThumbnailFormat",
     "CloudGenerateUserThumbnailShape",
@@ -4066,6 +4128,7 @@ __all__ = (
     "CreatorStoreAssetType0",
     "CreatorStoreCapabilitiesModelType0",
     "CreatorStoreProductType0",
+    "CrossServerMessagingModelsRequestsPublishRequest",
     "CurrencyType",
     "CursorPagingDirection",
     "CustomDashboard",
@@ -4272,6 +4335,7 @@ __all__ = (
     "GetPlaceVersionHistoryResponse",
     "GetPrivateServerListResponse",
     "GetSavesResponseType0",
+    "GetScopesResponse",
     "GetServiceEfficiencyPaymentMethodResponse",
     "GetStartPlaceOverrideResponse",
     "GetUpdateStatusResponse",
@@ -4449,6 +4513,7 @@ __all__ = (
     "GetV4OutfitsOutfitIdDetailsSelectionTypesItem",
     "GoogleProtobufAny",
     "GoogleProtobufWellKnownTypesAny",
+    "GoogleProtobufWellKnownTypesEmpty",
     "GoogleProtobufWellKnownTypesTimestamp",
     "GoogleRpcStatus",
     "GrantPermissionError",
@@ -4480,6 +4545,19 @@ __all__ = (
     "Instance",
     "InstanceCountsType0",
     "Int64ExclusiveStartKeyCursor",
+    "InternalControllerHttpControllerErrorBody",
+    "InternalControllerHttpControllerQueryResultData",
+    "InternalControllerHttpControllerQueryResultResponse",
+    "InternalControllerHttpControllerQueryStatusData",
+    "InternalControllerHttpControllerQueryStatusResponse",
+    "InternalControllerHttpControllerResearcherRoleData",
+    "InternalControllerHttpControllerResearcherRolesData",
+    "InternalControllerHttpControllerResearcherRolesResponse",
+    "InternalControllerHttpControllerResultFile",
+    "InternalControllerHttpControllerSubmitQueryData",
+    "InternalControllerHttpControllerSubmitQueryRequest",
+    "InternalControllerHttpControllerSubmitQueryRequestQuery",
+    "InternalControllerHttpControllerSubmitQueryResponse",
     "InventoryItem",
     "InventoryItemAssetDetails",
     "InventoryItemAssetDetailsInventoryItemAssetType",
@@ -4612,8 +4690,6 @@ __all__ = (
     "OpenCloudErrorOfCustomDashboardErrorDetails",
     "OpenCloudErrorOfCustomDashboardErrorDetailsReasonType0Type0",
     "OpenCloudErrorResponseOfCustomDashboardError",
-    "OpenCloudUniversesServiceUniverse",
-    "OpenCloudUniversesServiceUniverseSocialLink",
     "OpenCloudUsersOperation",
     "OpenCloudUsersStatus",
     "Operation",
@@ -4663,7 +4739,10 @@ __all__ = (
     "PersonalizedThumbnailStatus",
     "PingSignalLevel",
     "Place",
+    "PlaceContentPreference",
     "PlaceFilter",
+    "PlacePreferenceRequest",
+    "PlacePreferenceResponse",
     "PlaceResponse",
     "PlaceRestartStatus",
     "PlaceScoringConfig",
@@ -4743,9 +4822,7 @@ __all__ = (
     "PublishDashboardResponse",
     "PublishDraftRequest",
     "PublishDraftResponse",
-    "PublishRequest",
     "PublishStatus",
-    "PublishUniverseMessageRequest",
     "QueryBenchmarkResult",
     "QueryCorrectionType0",
     "QueryError",
@@ -5728,6 +5805,15 @@ __all__ = (
     "RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1AvatarItemItemType",
     "RobloxMarketplaceTopicDiscoveryTopicDiscoveryServiceV1Beta1Error",
     "RobloxOpenCloudCloudV2AssetType",
+    "RobloxOpenCloudCloudV2PublishUniverseMessageRequest",
+    "RobloxOpencloudScopeconfigurationV2Operation",
+    "RobloxOpencloudScopeconfigurationV2Product",
+    "RobloxOpencloudScopeconfigurationV2RiskLevel",
+    "RobloxOpencloudScopeconfigurationV2Scope",
+    "RobloxOpencloudScopeconfigurationV2ScopeType",
+    "RobloxOpencloudScopeconfigurationV2TargetPart",
+    "RobloxOpencloudScopeconfigurationV2TargetPartTypesValueType",
+    "RobloxOpencloudScopeconfigurationV2TargetType",
     "RobloxPagingCursoredPagedResultRobloxFriendsApiModelsResponseFriendResponse",
     "RobloxPagingCursoredPagedResultRobloxFriendsApiModelsResponseTrustedFriendCandidateResponse",
     "RobloxPlatformAvatarBodyColorsModelV2",
@@ -6029,6 +6115,10 @@ __all__ = (
     "TranslateTextRequest",
     "TranslateTextResponse",
     "TranslateTextResponseTranslations",
+    "UmsUmsServiceModelsOpenCloudOpenCloudBatchGetHashMapItemsRequest",
+    "UmsUmsServiceModelsOpenCloudOpenCloudBatchGetHashMapItemsResponse",
+    "UmsUmsServiceModelsOpenCloudOpenCloudHashMapItem",
+    "UmsUmsServiceModelsOpenCloudOpenCloudListKeysHashMapItemsResponse",
     "UnassignRoleGroupMembershipRequest",
     "UndeleteDataStoreRequest",
     "UnfollowExperienceNotificationRequest",

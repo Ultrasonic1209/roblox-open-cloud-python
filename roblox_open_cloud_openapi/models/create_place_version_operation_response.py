@@ -12,10 +12,10 @@ T = TypeVar("T", bound="CreatePlaceVersionOperationResponse")
 
 @_attrs_define
 class CreatePlaceVersionOperationResponse:
-    """response for !:CreatePlaceVersionOperation
+    """The result of saving or publishing a place version.
 
     Attributes:
-        version_number (int | Unset):
+        version_number (int | Unset): The version number of the saved or published place. Example: 7.
     """
 
     version_number: int | Unset = UNSET

@@ -37,6 +37,7 @@ def _get_kwargs(
     *,
     page_size: int | Unset = UNSET,
     page_token: str | Unset = UNSET,
+    is_for_sale: bool | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -44,6 +45,8 @@ def _get_kwargs(
     params["pageSize"] = page_size
 
     params["pageToken"] = page_token
+
+    params["isForSale"] = is_for_sale
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -109,6 +112,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     page_size: int | Unset = UNSET,
     page_token: str | Unset = UNSET,
+    is_for_sale: bool | Unset = UNSET,
 ) -> Response[ErrorResponse | ListDeveloperProductConfigsV2Response]:
     """List developer products by universe with configuration details
 
@@ -116,6 +120,7 @@ def sync_detailed(
         universe_id (int):
         page_size (int | Unset):
         page_token (str | Unset):
+        is_for_sale (bool | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -129,6 +134,7 @@ def sync_detailed(
         universe_id=universe_id,
         page_size=page_size,
         page_token=page_token,
+        is_for_sale=is_for_sale,
     )
 
     response = client.get_httpx_client().request(
@@ -144,6 +150,7 @@ def sync(
     client: AuthenticatedClient,
     page_size: int | Unset = UNSET,
     page_token: str | Unset = UNSET,
+    is_for_sale: bool | Unset = UNSET,
 ) -> ErrorResponse | ListDeveloperProductConfigsV2Response | None:
     """List developer products by universe with configuration details
 
@@ -151,6 +158,7 @@ def sync(
         universe_id (int):
         page_size (int | Unset):
         page_token (str | Unset):
+        is_for_sale (bool | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -165,6 +173,7 @@ def sync(
         client=client,
         page_size=page_size,
         page_token=page_token,
+        is_for_sale=is_for_sale,
     ).parsed
 
 
@@ -174,6 +183,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page_size: int | Unset = UNSET,
     page_token: str | Unset = UNSET,
+    is_for_sale: bool | Unset = UNSET,
 ) -> Response[ErrorResponse | ListDeveloperProductConfigsV2Response]:
     """List developer products by universe with configuration details
 
@@ -181,6 +191,7 @@ async def asyncio_detailed(
         universe_id (int):
         page_size (int | Unset):
         page_token (str | Unset):
+        is_for_sale (bool | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -194,6 +205,7 @@ async def asyncio_detailed(
         universe_id=universe_id,
         page_size=page_size,
         page_token=page_token,
+        is_for_sale=is_for_sale,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -207,6 +219,7 @@ async def asyncio(
     client: AuthenticatedClient,
     page_size: int | Unset = UNSET,
     page_token: str | Unset = UNSET,
+    is_for_sale: bool | Unset = UNSET,
 ) -> ErrorResponse | ListDeveloperProductConfigsV2Response | None:
     """List developer products by universe with configuration details
 
@@ -214,6 +227,7 @@ async def asyncio(
         universe_id (int):
         page_size (int | Unset):
         page_token (str | Unset):
+        is_for_sale (bool | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -229,5 +243,6 @@ async def asyncio(
             client=client,
             page_size=page_size,
             page_token=page_token,
+            is_for_sale=is_for_sale,
         )
     ).parsed

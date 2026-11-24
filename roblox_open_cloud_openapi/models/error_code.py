@@ -6,6 +6,7 @@ class ErrorCode(StrEnum):
     BLOCKED = "Blocked"
     CONFLICT = "Conflict"
     DUPLICATEPRODUCTNAME = "DuplicateProductName"
+    IMAGEFILETOOLARGE = "ImageFileTooLarge"
     INTERNAL = "Internal"
     INVALIDCURSOR = "InvalidCursor"
     INVALIDDESCRIPTION = "InvalidDescription"

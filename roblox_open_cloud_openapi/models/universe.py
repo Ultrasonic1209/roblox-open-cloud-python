@@ -5,7 +5,6 @@ from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.universe_age_rating import UniverseAgeRating
 from ..models.universe_visibility import UniverseVisibility
@@ -26,34 +25,21 @@ class Universe:
         template_root_place (str): The resource path of the template place, used for CreateUniverse.
             The root place of the newly-created universe will be a clone of this
             template. A list of the valid template places can be obtained from
-            ListTemplatePlaces. Format: universes/{universe_id}/places/{place_id} Example:
-            universes/{universe_id}/places/{place_id}.
+            ListTemplatePlaces. Format: universes/{universe_id}/places/{place_id}
         path (str | Unset): The resource path of the universe.
 
-            Format: `universes/{universe_id}` Example: universes/123.
-        create_time (datetime.datetime | Unset): The timestamp when the universe was created. Example:
-            2023-07-05T12:34:56Z.
-        update_time (datetime.datetime | Unset): The timestamp when the universe was last updated. Example:
-            2023-07-05T12:34:56Z.
+            Format: `universes/{universe_id}`
+        create_time (datetime.datetime | Unset): The timestamp when the universe was created.
+        update_time (datetime.datetime | Unset): The timestamp when the universe was last updated.
         display_name (str | Unset): The name of the universe.
 
-            This field can be updated by updating the root place's name. Example: ROBLOX Battle [OPEN].
+            This field can be updated by updating the root place's name.
         description (str | Unset): The description of the universe.
 
-            This field can be updated by updating the root place's description. Example: OPEN SOURCE!
-             Feel free to check out how we made this game and ask us about it!.
+            This field can be updated by updating the root place's description.
         user (str | Unset): The universe is user-owned.
         group (str | Unset): The universe is group-owned.
-        visibility (UniverseVisibility | Unset): Whether or not the universe is publicly accessible.
-
-            Possible values:
-
-              | Value | Description |
-              | --- | --- |
-              | VISIBILITY_UNSPECIFIED | Updates using this value will throw an error on the backend. |
-              | PUBLIC | The universe is public. |
-              | PRIVATE | The universe is private.  If a universe's visibility is set to PRIVATE, all active players will
-            immediately be removed from all running servers. | Example: VISIBILITY_UNSPECIFIED.
+        visibility (UniverseVisibility | Unset): Represents whether or not the Universe is publicly accessible.
         facebook_social_link (UniverseSocialLink | Unset): A social link that may be associated with the universe.
 
             Can only be removed when using a field mask.
@@ -77,18 +63,8 @@ class Universe:
             Can only be removed when using a field mask.
         voice_chat_enabled (bool | Unset): Whether or not voice chat is enabled for users in the Experience.
 
-            Updating this value will not affect active servers. Example: True.
-        age_rating (UniverseAgeRating | Unset): The age rating of this universe.
-
-            Possible values:
-
-              | Value | Description |
-              | --- | --- |
-              | AGE_RATING_UNSPECIFIED | The age rating is not set. |
-              | AGE_RATING_ALL | Supported for all users. |
-              | AGE_RATING_9_PLUS | Supported for users aged 9 and up. |
-              | AGE_RATING_13_PLUS | Supported for users aged 13 and up. |
-              | AGE_RATING_17_PLUS | Supported for users aged 17 and up. | Example: AGE_RATING_UNSPECIFIED.
+            Updating this value will not affect active servers.
+        age_rating (UniverseAgeRating | Unset): Supported age ratings for the universe. This field is read only.
         private_server_price_robux (int | Unset): Represents the price in Robux of private servers.
 
             If unset, private servers are not supported for this universe.
@@ -98,11 +74,11 @@ class Universe:
             Setting to null will disable all active private servers.
 
             Changing the price will cancel all private server subscriptions.
-        desktop_enabled (bool | Unset): Whether or not players can join the Experience via Desktop. Example: True.
-        mobile_enabled (bool | Unset): Whether or not players can join the Experience via Mobile. Example: True.
-        tablet_enabled (bool | Unset): Whether or not players can join the Experience via Tablet. Example: True.
-        console_enabled (bool | Unset): Whether or not players can join the Experience via Console. Example: True.
-        vr_enabled (bool | Unset): Whether or not players can join the Experience via VR. Example: True.
+        desktop_enabled (bool | Unset): Whether or not players can join the Experience via Desktop.
+        mobile_enabled (bool | Unset): Whether or not players can join the Experience via Mobile.
+        tablet_enabled (bool | Unset): Whether or not players can join the Experience via Tablet.
+        console_enabled (bool | Unset): Whether or not players can join the Experience via Console.
+        vr_enabled (bool | Unset): Whether or not players can join the Experience via VR.
         root_place (str | Unset): The resource path of the root place of this universe
             Format: universes/{universe_id}/places/{place_id}
     """
@@ -132,7 +108,6 @@ class Universe:
     console_enabled: bool | Unset = UNSET
     vr_enabled: bool | Unset = UNSET
     root_place: str | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         template_root_place = self.template_root_place
@@ -208,7 +183,7 @@ class Universe:
         root_place = self.root_place
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update(
             {
                 "templateRootPlace": template_root_place,
@@ -403,21 +378,4 @@ class Universe:
             root_place=root_place,
         )
 
-        universe.additional_properties = d
         return universe
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

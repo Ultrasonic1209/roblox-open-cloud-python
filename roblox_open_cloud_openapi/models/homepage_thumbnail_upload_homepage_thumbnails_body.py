@@ -17,7 +17,7 @@ T = TypeVar("T", bound="HomepageThumbnailUploadHomepageThumbnailsBody")
 class HomepageThumbnailUploadHomepageThumbnailsBody:
     """
     Attributes:
-        files (list[File]): The image files to upload.
+        files (list[File]):
     """
 
     files: list[File]

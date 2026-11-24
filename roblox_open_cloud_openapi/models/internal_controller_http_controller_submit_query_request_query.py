@@ -6,52 +6,29 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="PublishUniverseMessageRequest")
+T = TypeVar("T", bound="InternalControllerHttpControllerSubmitQueryRequestQuery")
 
 
 @_attrs_define
-class PublishUniverseMessageRequest:
-    """Publish a message on the specified topic.
+class InternalControllerHttpControllerSubmitQueryRequestQuery:
+    """Query is the filter DSL ({and|or|not:[{operation,field_name,field_values}]})."""
 
-    Attributes:
-        topic (str): The topic on which to publish the message. Example: my-topic.
-        message (str): The message to publish. Example: Hello, world!.
-    """
-
-    topic: str
-    message: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        topic = self.topic
-
-        message = self.message
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "topic": topic,
-                "message": message,
-            }
-        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        topic = d.pop("topic")
+        internal_controller_http_controller_submit_query_request_query = cls()
 
-        message = d.pop("message")
-
-        publish_universe_message_request = cls(
-            topic=topic,
-            message=message,
-        )
-
-        publish_universe_message_request.additional_properties = d
-        return publish_universe_message_request
+        internal_controller_http_controller_submit_query_request_query.additional_properties = d
+        return internal_controller_http_controller_submit_query_request_query
 
     @property
     def additional_keys(self) -> list[str]:

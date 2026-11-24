@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import quote
 
 if TYPE_CHECKING:
@@ -23,30 +23,26 @@ from ...client import AuthenticatedClient, Client
 from ...types import UNSET, Response
 
 """
-{'x-roblox-stability': 'EXPERIMENTAL', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}}, 'x-roblox-scopes': [{'name': 'universe-places:write', 'targetResourceSpecifier': 'v1', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
+{'x-roblox-stability': 'BETA', 'x-roblox-rate-limits': {'perApiKeyOwner': {'period': 'MINUTE', 'maxInPeriod': 30}}, 'x-roblox-scopes': [{'name': 'universe-places:write', 'targetResourceSpecifier': 'v1', 'firstPartyOAuthOnly': True}], 'x-roblox-engine-usability': {'apiKeyWithHttpService': False}}
 """
 
 
 from ...models.create_place_version_operation_response import CreatePlaceVersionOperationResponse
-from ...types import Unset
+from ...types import File, Unset
 
 
 def _get_kwargs(
     universe_id: int,
     place_id: int,
     *,
+    body: File,
     version_type: str | Unset = UNSET,
-    is_old_version_allowed: bool | Unset = UNSET,
-    should_force_restart: bool | Unset = UNSET,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
     params: dict[str, Any] = {}
 
     params["versionType"] = version_type
-
-    params["isOldVersionAllowed"] = is_old_version_allowed
-
-    params["shouldForceRestart"] = should_force_restart
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -59,16 +55,44 @@ def _get_kwargs(
         "params": params,
     }
 
+    _kwargs["content"] = body.payload
+    headers["Content-Type"] = "application/octet-stream"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CreatePlaceVersionOperationResponse | None:
+) -> Any | CreatePlaceVersionOperationResponse | None:
     if response.status_code == 200:
         response_200 = CreatePlaceVersionOperationResponse.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
+
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
+
+    if response.status_code == 403:
+        response_403 = cast(Any, None)
+        return response_403
+
+    if response.status_code == 404:
+        response_404 = cast(Any, None)
+        return response_404
+
+    if response.status_code == 409:
+        response_409 = cast(Any, None)
+        return response_409
+
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -78,7 +102,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CreatePlaceVersionOperationResponse]:
+) -> Response[Any | CreatePlaceVersionOperationResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,33 +116,33 @@ def sync_detailed(
     place_id: int,
     *,
     client: AuthenticatedClient,
+    body: File,
     version_type: str | Unset = UNSET,
-    is_old_version_allowed: bool | Unset = UNSET,
-    should_force_restart: bool | Unset = UNSET,
-) -> Response[CreatePlaceVersionOperationResponse]:
-    """Invokes Roblox.UniversesApi.CreatePlaceVersionApiKeyOperation operation.
+) -> Response[Any | CreatePlaceVersionOperationResponse]:
+    """Publish a Place
+
+     Publish a new place or update an existing place with a new version. Provide a RBXL or RBXLX file in
+    the data-binary.
 
     Args:
         universe_id (int):
         place_id (int):
         version_type (str | Unset):
-        is_old_version_allowed (bool | Unset):
-        should_force_restart (bool | Unset):
+        body (File):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreatePlaceVersionOperationResponse]
+        Response[Any | CreatePlaceVersionOperationResponse]
     """
 
     kwargs = _get_kwargs(
         universe_id=universe_id,
         place_id=place_id,
+        body=body,
         version_type=version_type,
-        is_old_version_allowed=is_old_version_allowed,
-        should_force_restart=should_force_restart,
     )
 
     response = client.get_httpx_client().request(
@@ -133,34 +157,34 @@ def sync(
     place_id: int,
     *,
     client: AuthenticatedClient,
+    body: File,
     version_type: str | Unset = UNSET,
-    is_old_version_allowed: bool | Unset = UNSET,
-    should_force_restart: bool | Unset = UNSET,
-) -> CreatePlaceVersionOperationResponse | None:
-    """Invokes Roblox.UniversesApi.CreatePlaceVersionApiKeyOperation operation.
+) -> Any | CreatePlaceVersionOperationResponse | None:
+    """Publish a Place
+
+     Publish a new place or update an existing place with a new version. Provide a RBXL or RBXLX file in
+    the data-binary.
 
     Args:
         universe_id (int):
         place_id (int):
         version_type (str | Unset):
-        is_old_version_allowed (bool | Unset):
-        should_force_restart (bool | Unset):
+        body (File):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreatePlaceVersionOperationResponse
+        Any | CreatePlaceVersionOperationResponse
     """
 
     return sync_detailed(
         universe_id=universe_id,
         place_id=place_id,
         client=client,
+        body=body,
         version_type=version_type,
-        is_old_version_allowed=is_old_version_allowed,
-        should_force_restart=should_force_restart,
     ).parsed
 
 
@@ -169,33 +193,33 @@ async def asyncio_detailed(
     place_id: int,
     *,
     client: AuthenticatedClient,
+    body: File,
     version_type: str | Unset = UNSET,
-    is_old_version_allowed: bool | Unset = UNSET,
-    should_force_restart: bool | Unset = UNSET,
-) -> Response[CreatePlaceVersionOperationResponse]:
-    """Invokes Roblox.UniversesApi.CreatePlaceVersionApiKeyOperation operation.
+) -> Response[Any | CreatePlaceVersionOperationResponse]:
+    """Publish a Place
+
+     Publish a new place or update an existing place with a new version. Provide a RBXL or RBXLX file in
+    the data-binary.
 
     Args:
         universe_id (int):
         place_id (int):
         version_type (str | Unset):
-        is_old_version_allowed (bool | Unset):
-        should_force_restart (bool | Unset):
+        body (File):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CreatePlaceVersionOperationResponse]
+        Response[Any | CreatePlaceVersionOperationResponse]
     """
 
     kwargs = _get_kwargs(
         universe_id=universe_id,
         place_id=place_id,
+        body=body,
         version_type=version_type,
-        is_old_version_allowed=is_old_version_allowed,
-        should_force_restart=should_force_restart,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -208,25 +232,26 @@ async def asyncio(
     place_id: int,
     *,
     client: AuthenticatedClient,
+    body: File,
     version_type: str | Unset = UNSET,
-    is_old_version_allowed: bool | Unset = UNSET,
-    should_force_restart: bool | Unset = UNSET,
-) -> CreatePlaceVersionOperationResponse | None:
-    """Invokes Roblox.UniversesApi.CreatePlaceVersionApiKeyOperation operation.
+) -> Any | CreatePlaceVersionOperationResponse | None:
+    """Publish a Place
+
+     Publish a new place or update an existing place with a new version. Provide a RBXL or RBXLX file in
+    the data-binary.
 
     Args:
         universe_id (int):
         place_id (int):
         version_type (str | Unset):
-        is_old_version_allowed (bool | Unset):
-        should_force_restart (bool | Unset):
+        body (File):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CreatePlaceVersionOperationResponse
+        Any | CreatePlaceVersionOperationResponse
     """
 
     return (
@@ -234,8 +259,7 @@ async def asyncio(
             universe_id=universe_id,
             place_id=place_id,
             client=client,
+            body=body,
             version_type=version_type,
-            is_old_version_allowed=is_old_version_allowed,
-            should_force_restart=should_force_restart,
         )
     ).parsed

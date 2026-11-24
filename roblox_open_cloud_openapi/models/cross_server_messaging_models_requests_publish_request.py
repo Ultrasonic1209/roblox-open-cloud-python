@@ -7,11 +7,11 @@ from attrs import define as _attrs_define
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="PublishRequest")
+T = TypeVar("T", bound="CrossServerMessagingModelsRequestsPublishRequest")
 
 
 @_attrs_define
-class PublishRequest:
+class CrossServerMessagingModelsRequestsPublishRequest:
     """The request body object with the message string that you want to publish to the live server.
 
     Attributes:
@@ -48,8 +48,8 @@ class PublishRequest:
 
         message = _parse_message(d.pop("message", UNSET))
 
-        publish_request = cls(
+        cross_server_messaging_models_requests_publish_request = cls(
             message=message,
         )
 
-        return publish_request
+        return cross_server_messaging_models_requests_publish_request

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, cast
 
 if TYPE_CHECKING:
     import httpx2 as httpx
@@ -62,7 +62,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse | None:
+) -> Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse | None:
     if response.status_code == 200:
         response_200 = (
             RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse.from_dict(
@@ -72,6 +72,14 @@ def _parse_response(
 
         return response_200
 
+    if response.status_code == 403:
+        response_403 = cast(Any, None)
+        return response_403
+
+    if response.status_code == 503:
+        response_503 = cast(Any, None)
+        return response_503
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -80,7 +88,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]:
+) -> Response[Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -95,7 +103,7 @@ def sync_detailed(
     body: RobloxAuthenticationApiModelsRequestExternalAccessRequest
     | RobloxAuthenticationApiModelsRequestExternalAccessRequest
     | Unset = UNSET,
-) -> Response[RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]:
+) -> Response[Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]:
     """Signs a user up for Roblox and links the account to the authenticated external provider ID.
 
     Args:
@@ -107,7 +115,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]
+        Response[Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]
     """
 
     kwargs = _get_kwargs(
@@ -127,7 +135,7 @@ def sync(
     body: RobloxAuthenticationApiModelsRequestExternalAccessRequest
     | RobloxAuthenticationApiModelsRequestExternalAccessRequest
     | Unset = UNSET,
-) -> RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse | None:
+) -> Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse | None:
     """Signs a user up for Roblox and links the account to the authenticated external provider ID.
 
     Args:
@@ -139,7 +147,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse
+        Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse
     """
 
     return sync_detailed(
@@ -154,7 +162,7 @@ async def asyncio_detailed(
     body: RobloxAuthenticationApiModelsRequestExternalAccessRequest
     | RobloxAuthenticationApiModelsRequestExternalAccessRequest
     | Unset = UNSET,
-) -> Response[RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]:
+) -> Response[Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]:
     """Signs a user up for Roblox and links the account to the authenticated external provider ID.
 
     Args:
@@ -166,7 +174,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]
+        Response[Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse]
     """
 
     kwargs = _get_kwargs(
@@ -184,7 +192,7 @@ async def asyncio(
     body: RobloxAuthenticationApiModelsRequestExternalAccessRequest
     | RobloxAuthenticationApiModelsRequestExternalAccessRequest
     | Unset = UNSET,
-) -> RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse | None:
+) -> Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse | None:
     """Signs a user up for Roblox and links the account to the authenticated external provider ID.
 
     Args:
@@ -196,7 +204,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse
+        Any | RobloxAuthenticationApiModelsResponseExternalIdentityGatewayExternalIdentityAccessResponse
     """
 
     return (

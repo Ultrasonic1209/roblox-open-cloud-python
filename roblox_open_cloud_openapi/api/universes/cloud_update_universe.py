@@ -27,18 +27,14 @@ from ...types import UNSET, Response
 """
 
 
-from ...models.open_cloud_universes_service_universe import OpenCloudUniversesServiceUniverse
+from ...models.universe import Universe
 from ...types import Unset
 
 
 def _get_kwargs(
     universe_id: str,
     *,
-    body: OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | Unset = UNSET,
+    body: Universe | Universe | Universe | Universe | Unset = UNSET,
     update_mask: str | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -57,22 +53,22 @@ def _get_kwargs(
         "params": params,
     }
 
-    if isinstance(body, OpenCloudUniversesServiceUniverse):
+    if isinstance(body, Universe):
         if not isinstance(body, Unset):
             _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/json-patch+json"
-    if isinstance(body, OpenCloudUniversesServiceUniverse):
+    if isinstance(body, Universe):
         if not isinstance(body, Unset):
             _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "application/json"
-    if isinstance(body, OpenCloudUniversesServiceUniverse):
+    if isinstance(body, Universe):
         if not isinstance(body, Unset):
             _kwargs["json"] = body.to_dict()
 
         headers["Content-Type"] = "text/json"
-    if isinstance(body, OpenCloudUniversesServiceUniverse):
+    if isinstance(body, Universe):
         if not isinstance(body, Unset):
             _kwargs["json"] = body.to_dict()
 
@@ -82,11 +78,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> OpenCloudUniversesServiceUniverse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Universe | None:
     if response.status_code == 200:
-        response_200 = OpenCloudUniversesServiceUniverse.from_dict(response.json())
+        response_200 = Universe.from_dict(response.json())
 
         return response_200
 
@@ -96,9 +90,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[OpenCloudUniversesServiceUniverse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Universe]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -111,13 +103,9 @@ def sync_detailed(
     universe_id: str,
     *,
     client: AuthenticatedClient,
-    body: OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | Unset = UNSET,
+    body: Universe | Universe | Universe | Universe | Unset = UNSET,
     update_mask: str | Unset = UNSET,
-) -> Response[OpenCloudUniversesServiceUniverse]:
+) -> Response[Universe]:
     """Update Universe
 
      Updates the specified universe.
@@ -128,17 +116,17 @@ def sync_detailed(
     Args:
         universe_id (str):
         update_mask (str | Unset):
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenCloudUniversesServiceUniverse]
+        Response[Universe]
     """
 
     kwargs = _get_kwargs(
@@ -158,13 +146,9 @@ def sync(
     universe_id: str,
     *,
     client: AuthenticatedClient,
-    body: OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | Unset = UNSET,
+    body: Universe | Universe | Universe | Universe | Unset = UNSET,
     update_mask: str | Unset = UNSET,
-) -> OpenCloudUniversesServiceUniverse | None:
+) -> Universe | None:
     """Update Universe
 
      Updates the specified universe.
@@ -175,17 +159,17 @@ def sync(
     Args:
         universe_id (str):
         update_mask (str | Unset):
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenCloudUniversesServiceUniverse
+        Universe
     """
 
     return sync_detailed(
@@ -200,13 +184,9 @@ async def asyncio_detailed(
     universe_id: str,
     *,
     client: AuthenticatedClient,
-    body: OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | Unset = UNSET,
+    body: Universe | Universe | Universe | Universe | Unset = UNSET,
     update_mask: str | Unset = UNSET,
-) -> Response[OpenCloudUniversesServiceUniverse]:
+) -> Response[Universe]:
     """Update Universe
 
      Updates the specified universe.
@@ -217,17 +197,17 @@ async def asyncio_detailed(
     Args:
         universe_id (str):
         update_mask (str | Unset):
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenCloudUniversesServiceUniverse]
+        Response[Universe]
     """
 
     kwargs = _get_kwargs(
@@ -245,13 +225,9 @@ async def asyncio(
     universe_id: str,
     *,
     client: AuthenticatedClient,
-    body: OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | OpenCloudUniversesServiceUniverse
-    | Unset = UNSET,
+    body: Universe | Universe | Universe | Universe | Unset = UNSET,
     update_mask: str | Unset = UNSET,
-) -> OpenCloudUniversesServiceUniverse | None:
+) -> Universe | None:
     """Update Universe
 
      Updates the specified universe.
@@ -262,17 +238,17 @@ async def asyncio(
     Args:
         universe_id (str):
         update_mask (str | Unset):
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
-        body (OpenCloudUniversesServiceUniverse | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
+        body (Universe | Unset): Represents a Roblox experience.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenCloudUniversesServiceUniverse
+        Universe
     """
 
     return (
