@@ -17,6 +17,7 @@ T = TypeVar("T", bound="LaunchRestartRequestPlacesType0")
 class LaunchRestartRequestPlacesType0:
     """Optional mapping of place ID to specific PlaceFilter objects.
     If empty for a place, restart all versions of that place.
+    If any place specifies versions, every place must.
     If null/omitted entirely, restart all places in the universe.
 
     """

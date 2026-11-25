@@ -1,12 +1,12 @@
-from enum import IntEnum
+from enum import StrEnum
 
 
-class RobloxGroupsApiModelsResponseUserModelBuildersClubMembershipType(IntEnum):
-    VALUE_0 = 0
-    VALUE_1 = 1
-    VALUE_2 = 2
-    VALUE_3 = 3
-    VALUE_4 = 4
+class RobloxGroupsApiModelsResponseUserModelBuildersClubMembershipType(StrEnum):
+    BC = "BC"
+    NONE = "None"
+    OBC = "OBC"
+    ROBLOXPREMIUM = "RobloxPremium"
+    TBC = "TBC"
 
     def __str__(self) -> str:
         return str(self.value)

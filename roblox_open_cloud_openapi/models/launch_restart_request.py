@@ -25,6 +25,7 @@ class LaunchRestartRequest:
         places (LaunchRestartRequestPlacesType0 | None | Unset): Optional mapping of place ID to specific PlaceFilter
             objects.
             If empty for a place, restart all versions of that place.
+            If any place specifies versions, every place must.
             If null/omitted entirely, restart all places in the universe.
         attributes (Any | Unset): Optional JSON object sent to game servers when the restart is scheduled.
             Must be a JSON object and at most 500 bytes when serialized (UTF-8).

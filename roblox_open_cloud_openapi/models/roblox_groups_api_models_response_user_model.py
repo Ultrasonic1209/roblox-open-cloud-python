@@ -33,7 +33,7 @@ class RobloxGroupsApiModelsResponseUserModel:
     display_name: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        builders_club_membership_type: int | Unset = UNSET
+        builders_club_membership_type: str | Unset = UNSET
         if not isinstance(self.builders_club_membership_type, Unset):
             builders_club_membership_type = self.builders_club_membership_type.value
 

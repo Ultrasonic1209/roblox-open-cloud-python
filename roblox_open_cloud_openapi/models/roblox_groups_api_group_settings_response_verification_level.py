@@ -1,11 +1,11 @@
-from enum import IntEnum
+from enum import StrEnum
 
 
-class RobloxGroupsApiGroupSettingsResponseVerificationLevel(IntEnum):
-    VALUE_0 = 0
-    VALUE_1 = 1
-    VALUE_2 = 2
-    VALUE_3 = 3
+class RobloxGroupsApiGroupSettingsResponseVerificationLevel(StrEnum):
+    HIGH = "High"
+    LOW = "Low"
+    MEDIUM = "Medium"
+    NONE = "None"
 
     def __str__(self) -> str:
         return str(self.value)

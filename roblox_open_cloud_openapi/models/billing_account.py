@@ -15,8 +15,8 @@ from ..models.billing_account_type import BillingAccountType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.ads_management_api_creator import AdsManagementApiCreator
     from ..models.billing_account_limits import BillingAccountLimits
-    from ..models.creator import Creator
     from ..models.payment_method import PaymentMethod
 
 
@@ -29,7 +29,7 @@ class BillingAccount:
     Attributes:
         ad_credit_balance_micros (str | Unset): Available ad credit balance in micro-USD, as a decimal string.
         create_time (datetime.datetime | Unset): The time the account was created, as an RFC 3339 UTC timestamp.
-        creator (Creator | Unset):
+        creator (AdsManagementApiCreator | Unset):
         display_name (str | Unset): The human-readable name of the account.
         failed_payment_balance_micros (str | Unset): Total of failed credit card charges in micro-USD, as a decimal
             string.
@@ -72,7 +72,7 @@ class BillingAccount:
 
     ad_credit_balance_micros: str | Unset = UNSET
     create_time: datetime.datetime | Unset = UNSET
-    creator: Creator | Unset = UNSET
+    creator: AdsManagementApiCreator | Unset = UNSET
     display_name: str | Unset = UNSET
     failed_payment_balance_micros: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -197,8 +197,8 @@ class BillingAccount:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.ads_management_api_creator import AdsManagementApiCreator  # noqa: PLC0415
         from ..models.billing_account_limits import BillingAccountLimits  # noqa: PLC0415
-        from ..models.creator import Creator  # noqa: PLC0415
         from ..models.payment_method import PaymentMethod  # noqa: PLC0415
 
         d = dict(src_dict)
@@ -212,11 +212,11 @@ class BillingAccount:
             create_time = datetime.datetime.fromisoformat(_create_time)
 
         _creator = d.pop("creator", UNSET)
-        creator: Creator | Unset
+        creator: AdsManagementApiCreator | Unset
         if isinstance(_creator, Unset):
             creator = UNSET
         else:
-            creator = Creator.from_dict(_creator)
+            creator = AdsManagementApiCreator.from_dict(_creator)
 
         display_name = d.pop("displayName", UNSET)
 

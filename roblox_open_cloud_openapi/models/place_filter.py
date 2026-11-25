@@ -17,6 +17,7 @@ class PlaceFilter:
     Attributes:
         versions (list[int] | None | Unset): List of placeVersions to restart. Mutually exclusive with
             ServerManagementService.V2.Models.PlaceFilter.ExcludeCurrentVersion.
+            If any place in a restart request specifies versions, every place must.
         exclude_current_version (bool | None | Unset): If true, all versions except the most recently published will be
             restarted.
             Mutually exclusive with ServerManagementService.V2.Models.PlaceFilter.Versions.

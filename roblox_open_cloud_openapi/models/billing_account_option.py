@@ -14,7 +14,7 @@ from ..models.billing_account_option_type import BillingAccountOptionType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.creator import Creator
+    from ..models.ads_management_api_creator import AdsManagementApiCreator
 
 
 T = TypeVar("T", bound="BillingAccountOption")
@@ -24,7 +24,7 @@ T = TypeVar("T", bound="BillingAccountOption")
 class BillingAccountOption:
     """
     Attributes:
-        creator (Creator):
+        creator (AdsManagementApiCreator):
         display_name (str): The human-readable name of the account.
         id (str): The billing account ID. Pass it as billingAccountId when creating a campaign.
         payment_types (list[BillingAccountOptionPaymentTypesItem]): The payment types that can fund a new campaign in
@@ -52,7 +52,7 @@ class BillingAccountOption:
             NO_PAYMENT_METHOD means that its ad credit balance is too low, not that a payment method is missing.
     """
 
-    creator: Creator
+    creator: AdsManagementApiCreator
     display_name: str
     id: str
     payment_types: list[BillingAccountOptionPaymentTypesItem]
@@ -117,10 +117,10 @@ class BillingAccountOption:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.creator import Creator  # noqa: PLC0415
+        from ..models.ads_management_api_creator import AdsManagementApiCreator  # noqa: PLC0415
 
         d = dict(src_dict)
-        creator = Creator.from_dict(d.pop("creator"))
+        creator = AdsManagementApiCreator.from_dict(d.pop("creator"))
 
         display_name = d.pop("displayName")
 

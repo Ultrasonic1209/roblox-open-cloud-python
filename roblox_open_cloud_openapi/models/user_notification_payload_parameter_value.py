@@ -16,8 +16,10 @@ class UserNotificationPayloadParameterValue:
     """A parameter value that a template uses to render a notification message.
 
     Attributes:
-        string_value (str | Unset): A string value. Example: bronze egg.
-        int_64_value (int | Unset): An int64 value. Example: 10101010.
+        string_value (str | Unset): A string value. Set either `stringValue` or `int64Value`, not both. Example: bronze
+            egg.
+        int_64_value (int | Unset): An int64 value. Set either `stringValue` or `int64Value`, not both. Example:
+            10101010.
     """
 
     string_value: str | Unset = UNSET

@@ -46,7 +46,7 @@ class GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAs
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: int | Unset = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 

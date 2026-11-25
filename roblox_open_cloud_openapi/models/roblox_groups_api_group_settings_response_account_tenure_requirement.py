@@ -1,13 +1,13 @@
-from enum import IntEnum
+from enum import StrEnum
 
 
-class RobloxGroupsApiGroupSettingsResponseAccountTenureRequirement(IntEnum):
-    VALUE_0 = 0
-    VALUE_1 = 1
-    VALUE_2 = 2
-    VALUE_3 = 3
-    VALUE_4 = 4
-    VALUE_5 = 5
+class RobloxGroupsApiGroupSettingsResponseAccountTenureRequirement(StrEnum):
+    NONE = "None"
+    ONEDAY = "OneDay"
+    ONEMONTH = "OneMonth"
+    ONEWEEK = "OneWeek"
+    THREEDAYS = "ThreeDays"
+    THREEMONTHS = "ThreeMonths"
 
     def __str__(self) -> str:
         return str(self.value)

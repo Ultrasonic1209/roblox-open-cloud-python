@@ -77,11 +77,11 @@ class RobloxGroupsApiGroupSettingsResponse:
 
         is_group_name_change_enabled = self.is_group_name_change_enabled
 
-        verification_level: int | Unset = UNSET
+        verification_level: str | Unset = UNSET
         if not isinstance(self.verification_level, Unset):
             verification_level = self.verification_level.value
 
-        account_tenure_requirement: int | Unset = UNSET
+        account_tenure_requirement: str | Unset = UNSET
         if not isinstance(self.account_tenure_requirement, Unset):
             account_tenure_requirement = self.account_tenure_requirement.value
 

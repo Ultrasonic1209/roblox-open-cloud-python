@@ -9,6 +9,7 @@ from .ad_credit_conversion_tier_breakdown import AdCreditConversionTierBreakdown
 from .ad_credit_conversion_tier_breakdown_tier import AdCreditConversionTierBreakdownTier
 from .ad_format import AdFormat
 from .address import Address
+from .ads_management_api_creator import AdsManagementApiCreator
 from .advertisable_universe import AdvertisableUniverse
 from .agent_response import AgentResponse
 from .agent_type import AgentType
@@ -60,6 +61,31 @@ from .analytics_query_public_api_data_point import AnalyticsQueryPublicApiDataPo
 from .analytics_query_public_api_metric_value import AnalyticsQueryPublicApiMetricValue
 from .any_ import Any
 from .api_empty_response_model import ApiEmptyResponseModel
+from .application_authorizations_api_models_enum_error_code import ApplicationAuthorizationsApiModelsEnumErrorCode
+from .application_authorizations_api_models_response_error_response import (
+    ApplicationAuthorizationsApiModelsResponseErrorResponse,
+)
+from .application_authorizations_api_models_response_operation_configuration_entry import (
+    ApplicationAuthorizationsApiModelsResponseOperationConfigurationEntry,
+)
+from .application_authorizations_api_models_response_product_configuration_entry import (
+    ApplicationAuthorizationsApiModelsResponseProductConfigurationEntry,
+)
+from .application_authorizations_api_models_response_scope_configuration_entry import (
+    ApplicationAuthorizationsApiModelsResponseScopeConfigurationEntry,
+)
+from .application_authorizations_api_models_response_scope_type_configuration_entry import (
+    ApplicationAuthorizationsApiModelsResponseScopeTypeConfigurationEntry,
+)
+from .application_authorizations_api_models_response_scopes_configuration_response import (
+    ApplicationAuthorizationsApiModelsResponseScopesConfigurationResponse,
+)
+from .application_authorizations_api_models_response_target_part_configuration_entry import (
+    ApplicationAuthorizationsApiModelsResponseTargetPartConfigurationEntry,
+)
+from .application_authorizations_api_models_response_target_type_configuration_entry import (
+    ApplicationAuthorizationsApiModelsResponseTargetTypeConfigurationEntry,
+)
 from .archive_notification_string_request import ArchiveNotificationStringRequest
 from .asset_action import AssetAction
 from .asset_grant_request import AssetGrantRequest
@@ -140,6 +166,7 @@ from .campaign_video_source import CampaignVideoSource
 from .can_invite_user_response import CanInviteUserResponse
 from .can_use_api_keys_request import CanUseApiKeysRequest
 from .can_use_api_keys_response import CanUseApiKeysResponse
+from .cancel_transfer_request import CancelTransferRequest
 from .category_response import CategoryResponse
 from .channel_content_preference import ChannelContentPreference
 from .channel_preference_request import ChannelPreferenceRequest
@@ -234,6 +261,7 @@ from .creator_model_v2_type_0 import CreatorModelV2Type0
 from .creator_store_asset_type_0 import CreatorStoreAssetType0
 from .creator_store_capabilities_model_type_0 import CreatorStoreCapabilitiesModelType0
 from .creator_store_product_type_0 import CreatorStoreProductType0
+from .creator_type import CreatorType
 from .cross_server_messaging_models_requests_publish_request import CrossServerMessagingModelsRequestsPublishRequest
 from .currency_type import CurrencyType
 from .cursor_paging_direction import CursorPagingDirection
@@ -366,8 +394,6 @@ from .error_code import ErrorCode
 from .error_envelope import ErrorEnvelope
 from .error_info import ErrorInfo
 from .error_info_metadata_type_0 import ErrorInfoMetadataType0
-from .error_log_detail import ErrorLogDetail
-from .error_log_detail_response import ErrorLogDetailResponse
 from .error_response import ErrorResponse
 from .event_category import EventCategory
 from .event_media import EventMedia
@@ -435,6 +461,7 @@ from .get_experiment_operation_status_response import GetExperimentOperationStat
 from .get_experiment_response import GetExperimentResponse
 from .get_experiment_stats_response import GetExperimentStatsResponse
 from .get_instance_metadata import GetInstanceMetadata
+from .get_latest_transfer_request import GetLatestTransferRequest
 from .get_legacy_develop_v1_places_place_id_teamcreate_active_session_members_limit import (
     GetLegacyDevelopV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit,
 )
@@ -704,6 +731,14 @@ from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platfo
 from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_assets_asset_type_type import (
     GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType,
 )
+from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type import (
+    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType,
+)
+from .groups_api_roblox_web_responses_related_entity_type_response_roblox_platform_core_creator_type_type import (
+    GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType,
+)
+from .hold import Hold
+from .hold_state import HoldState
 from .homepage_thumbnail import HomepageThumbnail
 from .homepage_thumbnail_delete_homepage_thumbnails_response_200 import (
     HomepageThumbnailDeleteHomepageThumbnailsResponse200,
@@ -789,6 +824,8 @@ from .list_group_memberships_response import ListGroupMembershipsResponse
 from .list_group_roles_response import ListGroupRolesResponse
 from .list_instance_children_metadata import ListInstanceChildrenMetadata
 from .list_instance_children_response import ListInstanceChildrenResponse
+from .list_invalid_targets_request import ListInvalidTargetsRequest
+from .list_invalid_targets_response import ListInvalidTargetsResponse
 from .list_inventory_items_response import ListInventoryItemsResponse
 from .list_luau_execution_session_task_logs_response import ListLuauExecutionSessionTaskLogsResponse
 from .list_matchmaking_player_attribute_definitions_response import ListMatchmakingPlayerAttributeDefinitionsResponse
@@ -897,6 +934,8 @@ from .operational_status import OperationalStatus
 from .ordered_data_store_entry import OrderedDataStoreEntry
 from .organizations_service_api_error_code import OrganizationsServiceApiErrorCode
 from .organizations_service_api_error_response import OrganizationsServiceApiErrorResponse
+from .ownership_transfer_api_error_code import OwnershipTransferApiErrorCode
+from .ownership_transfer_api_error_response import OwnershipTransferApiErrorResponse
 from .paginated_game_events_response import PaginatedGameEventsResponse
 from .patch_legacy_groups_v1_groups_group_id_notification_preference_response_200 import (
     PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200,
@@ -1073,11 +1112,14 @@ from .read_memory_store_queue_items_response import ReadMemoryStoreQueueItemsRes
 from .reason import Reason
 from .regex_operation import RegexOperation
 from .regex_status import RegexStatus
+from .reject_transfer_request import RejectTransferRequest
 from .remove_place_matchmaking_scoring_configuration_response import RemovePlaceMatchmakingScoringConfigurationResponse
 from .reorder_universe_regex_http_request import ReorderUniverseRegexHttpRequest
 from .report_notification_request import ReportNotificationRequest
 from .repository import Repository
+from .resource import Resource
 from .resource_configuration import ResourceConfiguration
+from .resource_type import ResourceType
 from .resource_usage import ResourceUsage
 from .response_account_state import ResponseAccountState
 from .restart_state import RestartState
@@ -2688,6 +2730,10 @@ from .roblox_games_api_models_response_purchase_data import RobloxGamesApiModels
 from .roblox_games_api_models_response_refund_policy import RobloxGamesApiModelsResponseRefundPolicy
 from .roblox_games_api_models_response_upsell_ux_treatment import RobloxGamesApiModelsResponseUpsellUxTreatment
 from .roblox_games_api_models_response_upsell_ux_treatment_data import RobloxGamesApiModelsResponseUpsellUxTreatmentData
+from .roblox_groups_api_get_social_link_response import RobloxGroupsApiGetSocialLinkResponse
+from .roblox_groups_api_get_social_link_response_social_links_verification_status import (
+    RobloxGroupsApiGetSocialLinkResponseSocialLinksVerificationStatus,
+)
 from .roblox_groups_api_group_audit_log_page_response_roblox_groups_api_models_response_group_audit_log_response_item import (
     RobloxGroupsApiGroupAuditLogPageResponseRobloxGroupsApiModelsResponseGroupAuditLogResponseItem,
 )
@@ -2718,6 +2764,8 @@ from .roblox_groups_api_models_response_user_model_builders_club_membership_type
 )
 from .roblox_groups_api_post_group_status_request import RobloxGroupsApiPostGroupStatusRequest
 from .roblox_groups_api_shout_response import RobloxGroupsApiShoutResponse
+from .roblox_groups_api_social_link_response import RobloxGroupsApiSocialLinkResponse
+from .roblox_groups_api_social_link_response_type import RobloxGroupsApiSocialLinkResponseType
 from .roblox_groups_api_update_group_description_request import RobloxGroupsApiUpdateGroupDescriptionRequest
 from .roblox_groups_api_update_group_notification_preference_request import (
     RobloxGroupsApiUpdateGroupNotificationPreferenceRequest,
@@ -3814,6 +3862,7 @@ from .transaction_status import TransactionStatus
 from .transaction_totals_response import TransactionTotalsResponse
 from .transaction_type import TransactionType
 from .transaction_used_types_response import TransactionUsedTypesResponse
+from .transfer_get_group_eligibility_response_200 import TransferGetGroupEligibilityResponse200
 from .translate_text_request import TranslateTextRequest
 from .translate_text_response import TranslateTextResponse
 from .translate_text_response_translations import TranslateTextResponseTranslations
@@ -3927,6 +3976,7 @@ __all__ = (
     "AdCreditConversionTierBreakdownTier",
     "Address",
     "AdFormat",
+    "AdsManagementApiCreator",
     "AdvertisableUniverse",
     "AgentResponse",
     "AgentType",
@@ -3958,6 +4008,15 @@ __all__ = (
     "AnalyticsQueryPublicApiMetricValue",
     "Any",
     "ApiEmptyResponseModel",
+    "ApplicationAuthorizationsApiModelsEnumErrorCode",
+    "ApplicationAuthorizationsApiModelsResponseErrorResponse",
+    "ApplicationAuthorizationsApiModelsResponseOperationConfigurationEntry",
+    "ApplicationAuthorizationsApiModelsResponseProductConfigurationEntry",
+    "ApplicationAuthorizationsApiModelsResponseScopeConfigurationEntry",
+    "ApplicationAuthorizationsApiModelsResponseScopesConfigurationResponse",
+    "ApplicationAuthorizationsApiModelsResponseScopeTypeConfigurationEntry",
+    "ApplicationAuthorizationsApiModelsResponseTargetPartConfigurationEntry",
+    "ApplicationAuthorizationsApiModelsResponseTargetTypeConfigurationEntry",
     "ArchiveNotificationStringRequest",
     "AssetAction",
     "AssetGrantRequest",
@@ -4035,6 +4094,7 @@ __all__ = (
     "CampaignStatusStatus",
     "CampaignVideo",
     "CampaignVideoSource",
+    "CancelTransferRequest",
     "CanInviteUserResponse",
     "CanUseApiKeysRequest",
     "CanUseApiKeysResponse",
@@ -4128,6 +4188,7 @@ __all__ = (
     "CreatorStoreAssetType0",
     "CreatorStoreCapabilitiesModelType0",
     "CreatorStoreProductType0",
+    "CreatorType",
     "CrossServerMessagingModelsRequestsPublishRequest",
     "CurrencyType",
     "CursorPagingDirection",
@@ -4250,8 +4311,6 @@ __all__ = (
     "ErrorEnvelope",
     "ErrorInfo",
     "ErrorInfoMetadataType0",
-    "ErrorLogDetail",
-    "ErrorLogDetailResponse",
     "ErrorResponse",
     "EventCategory",
     "EventMedia",
@@ -4319,6 +4378,7 @@ __all__ = (
     "GetExperimentResponse",
     "GetExperimentStatsResponse",
     "GetInstanceMetadata",
+    "GetLatestTransferRequest",
     "GetLegacyDevelopV1PlacesPlaceIdTeamcreateActiveSessionMembersLimit",
     "GetLegacyGroupsV1GroupsGroupIdAuditLogActionType",
     "GetLegacyGroupsV1GroupsGroupIdAuditLogLimit",
@@ -4530,6 +4590,10 @@ __all__ = (
     "GroupRoleRolePermissions",
     "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetType",
     "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformAssetsAssetTypeType",
+    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorType",
+    "GroupsApiRobloxWebResponsesRelatedEntityTypeResponseRobloxPlatformCoreCreatorTypeType",
+    "Hold",
+    "HoldState",
     "HomepageThumbnail",
     "HomepageThumbnailDeleteHomepageThumbnailsResponse200",
     "HomepageThumbnailStatus",
@@ -4601,6 +4665,8 @@ __all__ = (
     "ListGroupRolesResponse",
     "ListInstanceChildrenMetadata",
     "ListInstanceChildrenResponse",
+    "ListInvalidTargetsRequest",
+    "ListInvalidTargetsResponse",
     "ListInventoryItemsResponse",
     "ListLuauExecutionSessionTaskLogsResponse",
     "ListMatchmakingPlayerAttributeDefinitionsResponse",
@@ -4701,6 +4767,8 @@ __all__ = (
     "OrderedDataStoreEntry",
     "OrganizationsServiceApiErrorCode",
     "OrganizationsServiceApiErrorResponse",
+    "OwnershipTransferApiErrorCode",
+    "OwnershipTransferApiErrorResponse",
     "PaginatedGameEventsResponse",
     "PatchLegacyGroupsV1GroupsGroupIdNotificationPreferenceResponse200",
     "PatchV1AutoLocalizationTableGamesGameIdIngestionResponse200",
@@ -4837,11 +4905,14 @@ __all__ = (
     "Reason",
     "RegexOperation",
     "RegexStatus",
+    "RejectTransferRequest",
     "RemovePlaceMatchmakingScoringConfigurationResponse",
     "ReorderUniverseRegexHttpRequest",
     "ReportNotificationRequest",
     "Repository",
+    "Resource",
     "ResourceConfiguration",
+    "ResourceType",
     "ResourceUsage",
     "ResponseAccountState",
     "RestartState",
@@ -5552,6 +5623,8 @@ __all__ = (
     "RobloxGamesApiModelsResponseRefundPolicy",
     "RobloxGamesApiModelsResponseUpsellUxTreatment",
     "RobloxGamesApiModelsResponseUpsellUxTreatmentData",
+    "RobloxGroupsApiGetSocialLinkResponse",
+    "RobloxGroupsApiGetSocialLinkResponseSocialLinksVerificationStatus",
     "RobloxGroupsApiGroupAuditLogPageResponseRobloxGroupsApiModelsResponseGroupAuditLogResponseItem",
     "RobloxGroupsApiGroupDescriptionResponse",
     "RobloxGroupsApiGroupDetailResponse",
@@ -5570,6 +5643,8 @@ __all__ = (
     "RobloxGroupsApiModelsResponseUserModelBuildersClubMembershipType",
     "RobloxGroupsApiPostGroupStatusRequest",
     "RobloxGroupsApiShoutResponse",
+    "RobloxGroupsApiSocialLinkResponse",
+    "RobloxGroupsApiSocialLinkResponseType",
     "RobloxGroupsApiUpdateGroupDescriptionRequest",
     "RobloxGroupsApiUpdateGroupNotificationPreferenceRequest",
     "RobloxGroupsApiUpdateGroupNotificationPreferenceRequestType",
@@ -6112,6 +6187,7 @@ __all__ = (
     "TransactionTotalsResponse",
     "TransactionType",
     "TransactionUsedTypesResponse",
+    "TransferGetGroupEligibilityResponse200",
     "TranslateTextRequest",
     "TranslateTextResponse",
     "TranslateTextResponseTranslations",
